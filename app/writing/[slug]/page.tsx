@@ -27,6 +27,10 @@ export default async function PostPage({ params }: Props) {
 
   if (!post) notFound();
 
+  const index = posts.findIndex((p) => p.slug === slug);
+  const prev = index > 0 ? posts[index - 1] : null;
+  const next = index < posts.length - 1 ? posts[index + 1] : null;
+
   return (
     <div className="max-w-2xl mx-auto px-6 py-16">
       <Link
@@ -72,12 +76,47 @@ export default async function PostPage({ params }: Props) {
       </article>
 
       <div className="mt-16 pt-8 border-t border-[var(--border)]">
-        <Link
-          href="/writing"
-          className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-        >
-          ← Back to all writing
-        </Link>
+        {prev || next ? (
+          <div className="flex justify-between gap-4">
+            <div className="flex-1">
+              {prev && (
+                <Link
+                  href={`/writing/${prev.slug}`}
+                  className="group block text-left"
+                >
+                  <span className="text-xs text-[var(--muted)] mb-1 block">
+                    ← Previous
+                  </span>
+                  <span className="text-sm font-medium text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors leading-snug">
+                    {prev.title}
+                  </span>
+                </Link>
+              )}
+            </div>
+            <div className="flex-1">
+              {next && (
+                <Link
+                  href={`/writing/${next.slug}`}
+                  className="group block text-right"
+                >
+                  <span className="text-xs text-[var(--muted)] mb-1 block">
+                    Next →
+                  </span>
+                  <span className="text-sm font-medium text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors leading-snug">
+                    {next.title}
+                  </span>
+                </Link>
+              )}
+            </div>
+          </div>
+        ) : (
+          <Link
+            href="/writing"
+            className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+          >
+            ← Back to all writing
+          </Link>
+        )}
       </div>
     </div>
   );

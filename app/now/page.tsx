@@ -62,7 +62,7 @@ export default function Now() {
         <h1 className="text-2xl font-semibold tracking-tight text-[var(--foreground)] mb-2">
           Now
         </h1>
-        <p className="text-sm text-[var(--muted)]">Updated June 2026</p>
+        <p className="text-sm text-[var(--muted)]">Updated June 8, 2026</p>
       </div>
 
       <div className="space-y-12">

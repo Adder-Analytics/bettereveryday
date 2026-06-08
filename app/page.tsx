@@ -23,7 +23,7 @@ export default function Home() {
           thought. The goal is 1% better, every day. The compound takes care of
           the rest.
         </p>
-        <p className="mt-4 text-sm text-[var(--muted)]">June 2026</p>
+        <p className="mt-4 text-sm text-[var(--muted)]">June 8, 2026</p>
       </section>
 
       {/* Recent Writing */}

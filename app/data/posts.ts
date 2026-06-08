@@ -139,6 +139,46 @@ export const posts: Post[] = [
 
 <p>The reading system that works is the one you'll actually use, consistently, for years. Complexity is the enemy of consistency. Find the minimum viable system, protect it from the urge to optimize, and trust that the compound will take care of the rest.</p>`,
   },
+  {
+    slug: "plateau-boredom",
+    title: "What to Do When You're Bored of Getting Better",
+    date: "2026-06-08",
+    excerpt:
+      "Around month three or four of any practice, the novelty is gone but the results aren't dramatic enough to compensate. This is the plateau — and it's where almost every long-term skill is actually built.",
+    readTime: 6,
+    tags: ["habits", "mindset"],
+    content: `<p>The first month of any meaningful practice is easy. Everything is new: the concepts, the sensations, the small wins. You can feel yourself improving in ways that are visible and concrete. This is the honeymoon phase, and it's a trap — because it doesn't last, and most people mistake its end for a signal to quit.</p>
+
+<p>Around month three or four, the novelty is gone but the results aren't dramatic enough to compensate. The practice feels like maintenance rather than growth. Other things look more interesting. You start wondering if a different approach might work better. This is the plateau, and it's where almost every long-term skill is actually built.</p>
+
+<h2>Why this moment is everything</h2>
+
+<p>The excitement phase doesn't build lasting capability. It builds familiarity. What happens during the plateau is different in kind: the practice stops being something you do and starts becoming something you are. Identity-level change is slow and invisible and profoundly boring, which is why so few people stay long enough to experience it.</p>
+
+<p>There's a paradox here. The new thing — the fresh system, the different approach, the reset — is appealing precisely because it's new. The excitement is guaranteed for the first few weeks. But you've already done the first few weeks of your current practice. You're comparing the highlight reel of something you haven't started against the lived reality of something you know intimately. That's not a fair comparison, and it's never in favor of the thing you're actually building.</p>
+
+<h2>The switching cost nobody mentions</h2>
+
+<p>When you abandon a practice at month four to start a new one, you lose more than the time invested. You lose the accumulated context: understanding of your specific failure modes, the adjustments you've made to fit the practice to your actual life, the deep familiarity with how it feels when it's working versus when you're coasting. The new practice starts at zero, and you'll hit the same plateau again in a few months, with nothing carried over.</p>
+
+<p>The compound doesn't just operate on your skills — it operates on your self-knowledge. A year of consistent writing teaches you things about how your mind works that four different three-month writing experiments never could. Depth reveals things that breadth misses entirely.</p>
+
+<h2>Reframing boredom</h2>
+
+<p>Boredom in a practice isn't a signal that the practice has stopped working. It's often a signal that you've stopped noticing. The early improvements were obvious. The later improvements are subtle and structural — the way a foundation is less visible than the walls above it but more important.</p>
+
+<p>One reframe that helps: boredom is evidence of competence. When you're struggling and overwhelmed, the practice is teaching you basics. When you're bored, you've entered the territory where mastery lives. The masters in any field are people who found a way to stay interested in things beginners find tedious — the edge cases, the small variations, the details that only matter once you're operating at the frontier. Boredom isn't the opposite of mastery. It's a prerequisite.</p>
+
+<h2>What to do</h2>
+
+<p>Don't quit. But don't grit your way through it either — that's a recipe for resentment, not growth. Instead: get more specific. Boredom is often a sign that you're practicing at too high an altitude. You're doing "writing" instead of working on the specific structural weakness your last ten drafts share. You're doing "training" instead of drilling the movement pattern that's actually limiting your progress.</p>
+
+<p>The plateau becomes productive when you narrow the target. Find the thing that's actually hard right now and go there. The discomfort returns — which means you're back in the territory where learning happens.</p>
+
+<p>The other shift that helps is finding a real audience. External feedback transforms a private practice into a conversation with stakes. Boredom has a harder time surviving accountability.</p>
+
+<p>But mostly: stay. The people who get genuinely good at things aren't the ones who found the perfect practice. They're the ones who showed up long enough to understand what they were actually practicing.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
