@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { posts, formatDate } from "./data/posts";
 
-const recentPosts = posts.slice(0, 3);
+const recentPosts = [...posts]
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 3);
 
 const currentFocus = [
   { label: "Reading", value: "Poor Charlie's Almanack (2nd read) + DDIA" },
@@ -19,11 +21,11 @@ export default function Home() {
           Better Every Day.
         </h1>
         <p className="text-lg text-[var(--muted)] leading-relaxed max-w-lg">
-          A personal record of improvement — in writing, code, movement, and
-          thought. The goal is 1% better, every day. The compound takes care of
-          the rest.
+          Essays on finance, decisions, learning, and craft. The conviction
+          underneath all of it: understanding a few fundamental ideas well beats
+          knowing many things shallowly.
         </p>
-        <p className="mt-4 text-sm text-[var(--muted)]">June 8, 2026</p>
+        <p className="mt-4 text-sm text-[var(--muted)]">June 9, 2026</p>
       </section>
 
       {/* Recent Writing */}

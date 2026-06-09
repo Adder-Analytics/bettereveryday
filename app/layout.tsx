@@ -14,10 +14,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://bettereveryday.vercel.app";
+
 export const metadata: Metadata = {
   title: "Better Every Day",
   description:
-    "A personal record of improvement — in writing, code, movement, and thought. Getting 1% better, every day.",
+    "Essays on finance, decisions, learning, and craft — built around the conviction that understanding a few ideas well beats knowing many things shallowly.",
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    title: "Better Every Day",
+    description:
+      "Essays on finance, decisions, learning, and craft — built around the conviction that understanding a few ideas well beats knowing many things shallowly.",
+    siteName: "Better Every Day",
+  },
+  alternates: {
+    types: {
+      "application/rss+xml": `${SITE_URL}/feed.xml`,
+    },
+  },
 };
 
 export default function RootLayout({
