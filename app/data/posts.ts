@@ -140,6 +140,102 @@ export const posts: Post[] = [
 <p>The reading system that works is the one you'll actually use, consistently, for years. Complexity is the enemy of consistency. Find the minimum viable system, protect it from the urge to optimize, and trust that the compound will take care of the rest.</p>`,
   },
   {
+    slug: "money-math",
+    title: "The Money Math Nobody Teaches You",
+    date: "2026-06-09",
+    excerpt:
+      "The same equation behind the 1% better habit is also the single most important concept in personal finance. Understanding it clearly changes what you do — and when you start.",
+    readTime: 7,
+    tags: ["finance", "math"],
+    content: `<p>There's an equation that appears in two completely different contexts, and recognizing the connection changes how you think about both. You've probably seen it in the context of habits: if you improve by 1% every day for a year, you end up 37 times better. 1.01 to the power of 365. The math of compounding.</p>
+
+<p>The same equation is the most important idea in personal finance. And yet it's almost never taught that way — not in school, not by most financial advisors, not in the breathless articles about which stocks to buy. Understanding it clearly and early is worth more than any investment tip you'll ever receive.</p>
+
+<h2>The arithmetic of time</h2>
+
+<p>Here's what the math actually shows. If you invest $10,000 at age 25 and earn an average annual return of 8% (roughly what broad stock market index funds have historically returned over long periods), by age 65 you'll have about $217,000. That single $10,000 investment grew to 21 times its original value without you touching it.</p>
+
+<p>Wait ten years and invest that same $10,000 at 35 instead. At 65, you'll have about $100,000. Not $217,000. $100,000. The decade of delay — years when you were still young and the market was available to you — cost you $117,000 from a single $10,000 investment.</p>
+
+<p>This is the Rule of 72, and it's the one piece of financial arithmetic worth memorizing: divide 72 by your expected annual return to find how many years it takes to double your money. At 8%, your money doubles every 9 years. At 6%, every 12 years. At 4%, every 18 years. The math demands you start early because every doubling you miss in your twenties is a doubling that would have cascaded through every decade that followed.</p>
+
+<h2>Why people optimize the wrong thing</h2>
+
+<p>Most personal finance coverage focuses on stock picking, timing the market, finding the next great investment, crypto, real estate plays. The implicit promise is that skill in selecting investments will produce better outcomes. And maybe it will — marginally, occasionally, unpredictably.</p>
+
+<p>But the math shows that the variable that matters most isn't which investment you pick. It's how long the money has to compound. A mediocre investment started at 25 beats a great investment started at 45. Time is the lever that moves everything else, and it's the one you can only pull while you're young.</p>
+
+<p>The practical conclusion: maximize time in the market, not return in the market. This means starting as early as possible, in low-cost index funds that track the whole market (Vanguard, Fidelity, and Schwab all offer these with negligible fees), inside tax-advantaged accounts (a 401k match is literally free money; an IRA compounds without annual tax drag), and then leaving it alone for decades.</p>
+
+<h2>The same invisibility problem</h2>
+
+<p>Here's why this is genuinely hard to do even once you understand it: the first decade looks like nothing is happening. You put $500 a month into an index fund from 25 to 35, and at 35 you have roughly $90,000. That's meaningful, but it doesn't feel extraordinary. It feels like a decade of discipline that produced a car's worth of savings.</p>
+
+<p>What's invisible is everything that $90,000 will do from 35 to 65 without you adding another dollar. At 8%, it becomes roughly $906,000. The work you did in your twenties is doing most of the compounding in your fifties and sixties — you just can't see it yet.</p>
+
+<p>This is the identical problem as habits: the effort is front-loaded and the payoff is back-loaded. Our brains are poorly calibrated for this. We're wired to expect proportional returns on proportional effort. The compound doesn't work that way. It's slow, invisible, and then suddenly overwhelming — but only if you started early enough to reach the overwhelming part.</p>
+
+<h2>What to actually do</h2>
+
+<p>The practical version of all this is almost insultingly simple: if your employer offers a 401k match, contribute at least enough to get the full match (that's an immediate 50-100% return before any market growth). Open a Roth IRA if you're eligible. Put the money in a low-cost total market index fund. Set up automatic contributions. Stop looking at it except once a year. Repeat for forty years.</p>
+
+<p>The difficulty isn't the strategy — the strategy is known and simple. The difficulty is the same as every compounding challenge: acting now on behalf of a future self who feels abstract, trusting math you can't see work in real time, and resisting the noise that will tell you to do something clever with money that should be doing something boring.</p>
+
+<p>The compound doesn't care whether you find it exciting. It only cares whether you started.</p>`,
+  },
+  {
+    slug: "decision-quality",
+    title: "The Difference Between a Good Decision and a Good Outcome",
+    date: "2026-06-09",
+    excerpt:
+      "We judge decisions by their outcomes. But outcomes have randomness. Learning to separate decision quality from outcome quality is one of the most useful mental moves you can make.",
+    readTime: 6,
+    tags: ["thinking", "decisions"],
+    content: `<p>A drunk driver makes it home safely. A careful driver gets hit by someone running a red light. We have intuitions about these situations — we know the drunk driver got lucky and the careful driver got unlucky — but we don't apply the same logic to our own decisions, where the feedback is murkier and the stakes feel higher.</p>
+
+<p>This is the distinction between decision quality and outcome quality, and confusing them is one of the most reliably expensive cognitive errors a person can make.</p>
+
+<h2>Resulting</h2>
+
+<p>Annie Duke, a former professional poker player, calls this "resulting" — judging the quality of a decision by its outcome. It's seductive because outcomes are visible and decisions are invisible. You can observe what happened. You can rarely observe how good your thinking was when you made the call.</p>
+
+<p>The problem: outcomes have randomness. A business that succeeded might have been a mediocre decision that got lucky. A business that failed might have been an excellent decision that got unlucky. If you learn from the outcome rather than the decision, you'll update your beliefs in the wrong direction. You'll think the lucky mediocre decision was a good strategy. You'll abandon the unlucky good strategy. Your judgment gets worse over time even as your experience accumulates.</p>
+
+<p>This is especially dangerous in domains where the feedback loop is long and noisy — careers, relationships, investments, creative work. These are precisely the domains where better decisions matter most, and they're the ones where outcome-based learning is most misleading.</p>
+
+<h2>What good decisions actually look like</h2>
+
+<p>A good decision is one that was well-reasoned given the information available at the time, accounted appropriately for uncertainty, and considered the range of plausible outcomes — not just the hoped-for one. Note that this definition says nothing about what actually happened. A good decision can produce a terrible outcome. A bad decision can produce a great one.</p>
+
+<p>The discipline of evaluating decisions this way requires asking: <em>What did I know when I made this call? What was the realistic probability distribution of outcomes? Did I reason honestly about the downside, or did I mostly imagine the upside? Would I make the same decision again with the same information?</em></p>
+
+<p>That last question is the key one. If a bet goes badly but you'd make it again under the same conditions, you didn't make a mistake. You made a good bet that didn't pay off. Those happen. The right response is to keep making good bets, not to abandon the strategy.</p>
+
+<h2>The pre-mortem</h2>
+
+<p>One of the most practically useful tools here is the pre-mortem, developed by psychologist Gary Klein. Before a major decision, imagine that you've already made it, time has passed, and it went badly. Now ask: what went wrong?</p>
+
+<p>This technique works because it bypasses the optimism bias that makes us underweight failure scenarios when we're in the grip of a plan we're excited about. Imagining the failure as already having happened shifts your thinking from advocacy mode to analysis mode. You suddenly find yourself generating risks and failure modes that felt unimportant or even slightly disloyal to the plan a moment ago.</p>
+
+<p>The pre-mortem doesn't mean abandoning the decision — it means stress-testing it. The decisions that survive a serious pre-mortem are more likely to be actually good decisions, not just compelling ones.</p>
+
+<h2>Reversibility as a decision variable</h2>
+
+<p>One clean rule that improves most decision-making: weight the reversibility of a decision heavily. Bad reversible decisions cost you time and perhaps money or embarrassment. You recover. Bad irreversible decisions can cost you things you cannot get back — health, relationships, reputation, compounding years.</p>
+
+<p>For reversible decisions, err toward speed. The cost of being wrong is low, and moving quickly produces information that deliberation can't. For irreversible decisions, slow down dramatically. Add friction intentionally. Sleep on it. Run the pre-mortem. The asymmetry in consequences warrants an asymmetry in care.</p>
+
+<p>Jeff Bezos called these Type 1 and Type 2 decisions — two-way doors and one-way doors. Most decisions are two-way doors. People treat too many of them like one-way doors, which makes them slow. The genuinely one-way doors deserve the slowness. The rest don't.</p>
+
+<h2>The long run</h2>
+
+<p>Here's the uncomfortable part: you can make excellent decisions consistently and still have a bad run of outcomes for years. The randomness is real and it doesn't care about your process. This is why most people don't maintain decision discipline — the feedback is too delayed and too noisy to feel like it's working.</p>
+
+<p>But the math eventually wins. Over enough decisions, the quality of your reasoning shows up in the quality of your outcomes. The poker player who makes correct expected-value decisions every hand will have terrible sessions, terrible months. Over years, the money flows toward them. The investor who makes structurally sound decisions will have ugly years. Over decades, the compound takes hold.</p>
+
+<p>The work isn't to get every outcome right. It's to get your process right, and then trust the process long enough for the math to show itself. That requires separating, in your own mind and in your own self-evaluation, the decisions from the outcomes. It's harder than it sounds. It's also more valuable than almost any other mental skill you could develop.</p>`,
+  },
+  {
     slug: "plateau-boredom",
     title: "What to Do When You're Bored of Getting Better",
     date: "2026-06-08",
