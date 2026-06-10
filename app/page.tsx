@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { posts, formatDate } from "./data/posts";
 
-const recentPosts = [...posts]
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-  .slice(0, 3);
+const sortedPosts = [...posts].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+);
+const recentPosts = sortedPosts.slice(0, 3);
+const lastUpdated = formatDate(sortedPosts[0].date);
 
 const currentFocus = [
   { label: "Reading", value: "Poor Charlie's Almanack (2nd read) + DDIA" },
@@ -25,7 +27,7 @@ export default function Home() {
           underneath all of it: understanding a few fundamental ideas well beats
           knowing many things shallowly.
         </p>
-        <p className="mt-4 text-sm text-[var(--muted)]">June 9, 2026</p>
+        <p className="mt-4 text-sm text-[var(--muted)]">Updated {lastUpdated}</p>
       </section>
 
       {/* Recent Writing */}
@@ -60,6 +62,23 @@ export default function Home() {
           className="inline-block mt-10 text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
         >
           All writing →
+        </Link>
+      </section>
+
+      {/* Models Teaser */}
+      <section className="py-14 border-b border-[var(--border)]">
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-4">
+          Reference
+        </h2>
+        <p className="text-sm text-[var(--muted)] leading-relaxed max-w-md mb-4">
+          A curated collection of mental models — ideas from finance, decisions,
+          systems thinking, and psychology that change how you reason.
+        </p>
+        <Link
+          href="/models"
+          className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          Mental models →
         </Link>
       </section>
 
