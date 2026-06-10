@@ -17,6 +17,9 @@ export function Nav() {
           <Link href="/bookshelf" className="hover:text-[var(--foreground)] transition-colors">
             Bookshelf
           </Link>
+          <Link href="/models" className="hover:text-[var(--foreground)] transition-colors">
+            Models
+          </Link>
           <Link href="/now" className="hover:text-[var(--foreground)] transition-colors">
             Now
           </Link>

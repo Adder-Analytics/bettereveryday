@@ -236,6 +236,88 @@ export const posts: Post[] = [
 <p>The work isn't to get every outcome right. It's to get your process right, and then trust the process long enough for the math to show itself. That requires separating, in your own mind and in your own self-evaluation, the decisions from the outcomes. It's harder than it sounds. It's also more valuable than almost any other mental skill you could develop.</p>`,
   },
   {
+    slug: "orders-of-magnitude",
+    title: "How to Think in Orders of Magnitude",
+    date: "2026-06-10",
+    excerpt:
+      "Most people can't feel the difference between a million and a billion. Fermi estimation is the practice that fixes this — and it's more useful than any other math skill most people will ever learn.",
+    readTime: 7,
+    tags: ["thinking", "math"],
+    content: `<p>The US federal debt is around $34 trillion. A congressional hearing lasts four hours. An advocacy group proposes a policy that will cost $2 billion. These numbers appear in the same news cycle, and most people process them with the same mental shorthand: <em>big number</em>. But $2 billion is not a rounding error on $34 trillion — it's about 0.006% of it. The inability to feel this difference makes it almost impossible to evaluate claims that depend on scale.</p>
+
+<p>Number sense — the ability to reason about scale without getting lost in zeros — is a skill, not a talent. The specific technique for developing it is called Fermi estimation, named for physicist Enrico Fermi, who famously estimated the yield of the first nuclear test by dropping scraps of paper and watching how far the blast wave carried them. He got within a factor of two. The technique generalizes far beyond physics.</p>
+
+<h2>How it works</h2>
+
+<p>The core move is to decompose an unknown quantity into pieces you can estimate. You might not know how many piano tuners are in Chicago, but you can estimate: Chicago has about 3 million people, maybe 1 in 20 households has a piano, each piano gets tuned once a year, a tuner can service about 4 pianos a day and works 250 days a year. That's 3,000,000 ÷ 2.5 people per household ≈ 1,200,000 households; ÷ 20 with a piano = 60,000 pianos; ÷ (4 × 250) = 60 tuners. The actual number is around 50–100. You got there without any specialized knowledge — just multiplication and a few reasonable guesses.</p>
+
+<p>The point isn't precision. Being off by a factor of two is fine for almost every real-world purpose. What matters is being in the right order of magnitude — having an answer that's 60 rather than 6 or 6,000. An estimate within a factor of ten is almost always more useful than refusing to estimate.</p>
+
+<h2>Why the gap between million, billion, and trillion matters</h2>
+
+<p>Here's the intuition most people lack: a million seconds is about 12 days. A billion seconds is 31 years. A trillion seconds is 31,700 years. These three numbers feel adjacent when written out — six zeros, nine zeros, twelve zeros — but they describe completely different things. Any argument that treats them as roughly equivalent is an argument that has already failed.</p>
+
+<p>This confusion is not academic. When politicians discuss budget line items, when journalists write about corporate valuations, when scientists report on distances in space — the numbers span many orders of magnitude, and the inability to feel those magnitudes makes you a passive recipient of whatever framing you're given. Developing even rough intuitions about scale makes you an active reader of quantitative claims.</p>
+
+<h2>A few reference points worth memorizing</h2>
+
+<p>Good Fermi estimation starts with a set of anchors — numbers you know well enough to build from. A short useful list: the world has about 8 billion people; the US has about 330 million; the average US household has about 2.5 people; US GDP is about $26 trillion; a working year has about 2,000 hours; a human lifetime is about 700,000 hours; light travels one foot per nanosecond.</p>
+
+<p>With these anchors, you can estimate almost anything. How much would it cost to give every American $1,000? $330 billion — a significant but not incomprehensible fraction of the federal budget. If a company employs 10,000 people at an average cost of $100,000 per employee, their payroll is $1 billion per year — useful to know before evaluating their profitability. How many 20-minute podcast episodes would you need to listen to one million minutes? About 50,000. You'd have to listen to ten episodes a day for fourteen years.</p>
+
+<h2>The practical application</h2>
+
+<p>Fermi estimation is most useful as a sanity check. When you encounter a claim that depends on a number — a statistic in an article, a projection in a business plan, a cost estimate in a policy debate — the first question is: does this number make sense given what I know about scale?</p>
+
+<p>A common pattern in misleading statistics is to report a number in whatever unit makes it sound most impressive. A drug that "helps 1 in 1,000 patients" sounds less impressive than one that "will help 330,000 Americans" — but they're the same claim. A government program that costs "only $3 per American per year" sounds negligible until you multiply: $3 times 330 million is $990 million, approaching a billion dollars.</p>
+
+<p>The most practically useful version of this skill isn't mastery of Fermi techniques — it's developing the reflex to ask, for any important number: <em>Is this plausible given what I know about scale?</em> That reflex, applied consistently, filters out an enormous fraction of numerical nonsense before it has a chance to influence how you think.</p>`,
+  },
+  {
+    slug: "inflation-silent-tax",
+    title: "Inflation Is a Tax You Never Voted For",
+    date: "2026-06-10",
+    excerpt:
+      "Cash doesn't just sit there — it slowly loses value. Understanding how inflation works, and doing the math on what it actually costs you, changes where you put your money.",
+    readTime: 7,
+    tags: ["finance", "math"],
+    content: `<p>Somewhere between the moment you earn a dollar and the moment you spend it, a fraction of its purchasing power disappears. Not to the IRS — you've already paid them. Not to fees or losses. It just evaporates, quietly, every year. That's inflation, and it's been doing this your entire lifetime.</p>
+
+<p>Most people understand inflation in the abstract: prices go up over time, a dollar today buys less than a dollar ten years ago. What most people don't do is run the actual numbers on what this costs them — specifically, what it costs to hold money in forms that don't keep up. Doing that math changes decisions.</p>
+
+<h2>Real versus nominal</h2>
+
+<p>The most important distinction in personal finance is one that gets almost no attention in mainstream coverage: real returns versus nominal returns. A nominal return is the percentage your money grew. A real return is the percentage your purchasing power grew — which means subtracting inflation.</p>
+
+<p>In 2022, US inflation hit 8%. The average savings account that year offered around 0.1% interest. The nominal return was positive. The real return was negative 7.9%. A year of discipline — keeping money in a savings account instead of spending it — was, in purchasing power terms, a year of decline. The account balance went up; what it could buy went down.</p>
+
+<p>This is not unusual. US inflation has averaged roughly 3–4% annually over long periods. Savings accounts rarely match it. When they do, it's typically during high-inflation crises when the interest rate spike is itself a symptom of the inflation eroding your cash. The structural condition is that safe, liquid money loses real value over time.</p>
+
+<h2>The math of silent loss</h2>
+
+<p>The Rule of 72 — divide 72 by your rate to find how long it takes to double — works just as well applied to inflation as to investment returns. At 3% inflation, prices double every 24 years. A retirement you're planning to fund with $1 million in today's dollars will require closer to $1.8 million in 24 years to buy the same things. The target moves, invisibly, every year.</p>
+
+<p>Here's the concrete version: $100,000 kept in cash today, over ten years at 3% annual inflation, becomes $74,000 in purchasing power. You still have $100,000 in the account. You have not, by any standard you care about, preserved its value. You've chosen a form of slow decline that doesn't appear on any statement.</p>
+
+<p>This is what makes inflation effective as a policy tool and dangerous as a personal assumption: the loss is never visible as a loss. There's no red number, no transaction record, no moment when the subtraction happens. It's distributed across millions of daily prices, and it accumulates over years. By the time you notice it, it's years old.</p>
+
+<h2>Why cash is not the safe choice</h2>
+
+<p>The intuition that cash is safe is correct in one narrow sense: cash doesn't go to zero the way a stock can. It doesn't default the way a bond can. In a short-term crisis, liquidity is real and valuable. Cash's safety is real — over short periods.</p>
+
+<p>Over long periods, the risk of cash isn't a dramatic collapse. It's a slow, certain, invisible one. A 3% annual loss in purchasing power, compounding over twenty years, cuts the real value of your cash by about 45%. The "safe" asset is safe from one kind of risk and fully exposed to another, rarer kind — one you're not measuring because it doesn't show up as a loss.</p>
+
+<p>The investment vehicles that outpace inflation over long periods are equities — ownership stakes in real companies producing real goods and services, whose value tends to grow in real terms because the underlying economy tends to grow in real terms. Stocks are not safe in any short-term sense; they fluctuate dramatically. But "safe from short-term fluctuation" and "safe from long-term purchasing power loss" are different properties, and conflating them produces bad decisions about where to keep money you won't need for decades.</p>
+
+<h2>What to actually do about it</h2>
+
+<p>The practical implication is not complicated: don't hold more cash long-term than you need for genuine liquidity. An emergency fund covering three to six months of expenses in a high-yield savings account is prudent and worth the inflation drag — that's insurance against income disruption, and the premium is the real return you're forgoing. Beyond that, money you won't need for years belongs in assets that grow in real terms.</p>
+
+<p>When evaluating any investment or savings vehicle, the first question is: what is the real return? Nominal returns are the advertised number. Real returns are what you'll actually have when you go to buy something with the money. A bond yielding 4% during 5% inflation is a losing proposition in real terms. A savings account yielding 5% during 2% inflation is a fine short-term holding. The number that matters is always the difference.</p>
+
+<p>Inflation doesn't ask your permission. It doesn't depend on your awareness of it. It operates on your money whether or not you understand it, whether or not you've done the math. The only leverage you have is in deciding, deliberately, which assets you hold — and understanding that "holding cash" is itself a decision with a real cost attached, not a neutral default.</p>`,
+  },
+  {
     slug: "plateau-boredom",
     title: "What to Do When You're Bored of Getting Better",
     date: "2026-06-08",

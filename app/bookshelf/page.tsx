@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { books, categories } from "../data/books";
+import BookshelfList from "./BookshelfList";
 
 export const metadata: Metadata = {
   title: "Bookshelf — Better Every Day",
@@ -12,21 +13,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
-
-function Stars({ rating }: { rating: 1 | 2 | 3 }) {
-  return (
-    <span className="flex gap-0.5" aria-label={`${rating} out of 3`}>
-      {[1, 2, 3].map((n) => (
-        <span
-          key={n}
-          className={`text-xs ${n <= rating ? "text-[var(--accent)]" : "text-[var(--border)]"}`}
-        >
-          ★
-        </span>
-      ))}
-    </span>
-  );
-}
 
 export default function BookshelfPage() {
   return (
@@ -43,46 +29,12 @@ export default function BookshelfPage() {
         </p>
       </div>
 
-      <div className="space-y-16">
-        {categories.map((category) => {
-          const categoryBooks = books.filter((b) => b.category === category);
-          return (
-            <section key={category}>
-              <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-8">
-                {category}
-              </h2>
-              <div className="space-y-10">
-                {categoryBooks.map((book) => (
-                  <div key={book.title} className="group">
-                    <div className="flex items-start justify-between gap-4 mb-1">
-                      <div>
-                        <h3 className="text-base font-medium text-[var(--foreground)] leading-snug">
-                          {book.title}
-                        </h3>
-                        <p className="text-xs text-[var(--muted)] mt-0.5">
-                          {book.author}
-                          {book.year < 2000 ? null : (
-                            <span className="ml-2 opacity-60">{book.year}</span>
-                          )}
-                        </p>
-                      </div>
-                      <Stars rating={book.rating} />
-                    </div>
-                    <p className="text-sm text-[var(--muted)] leading-relaxed mt-3">
-                      {book.annotation}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          );
-        })}
-      </div>
+      <BookshelfList books={books} categories={categories} />
 
       <div className="mt-16 pt-8 border-t border-[var(--border)]">
         <p className="text-sm text-[var(--muted)]">
-          16 books. Updated as I read. Ratings reflect usefulness, not literary
-          merit.
+          {books.length} books. Updated as I read. Ratings reflect usefulness,
+          not literary merit.
         </p>
       </div>
     </div>

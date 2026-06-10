@@ -4,7 +4,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Writing — Better Every Day",
-  description: "Essays on improvement, focus, learning, and the long game.",
+  description:
+    "Essays on finance, decisions, learning, and craft — focused on understanding how things actually work.",
 };
 
 export default function Writing() {
@@ -14,7 +15,8 @@ export default function Writing() {
         Writing
       </h1>
       <p className="text-sm text-[var(--muted)] mb-10">
-        Essays on improvement, focus, learning, and the long game.
+        Essays on finance, decisions, learning, and craft — focused on
+        understanding how things actually work.
       </p>
 
       <WritingList posts={posts} />
