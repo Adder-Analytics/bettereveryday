@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { posts, getPostBySlug, formatDate } from "../../data/posts";
+import { models } from "../../data/models";
 import type { Metadata } from "next";
 
 type Props = {
@@ -39,6 +40,7 @@ export default async function PostPage({ params }: Props) {
   const index = posts.findIndex((p) => p.slug === slug);
   const prev = index > 0 ? posts[index - 1] : null;
   const next = index < posts.length - 1 ? posts[index + 1] : null;
+  const relatedModels = models.filter((m) => m.essays?.includes(slug));
 
   return (
     <div className="max-w-2xl mx-auto px-6 py-16">
@@ -83,6 +85,30 @@ export default async function PostPage({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </article>
+
+      {relatedModels.length > 0 && (
+        <aside className="mt-16 pt-8 border-t border-[var(--border)]">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-5">
+            Related Mental Models
+          </h2>
+          <div className="space-y-4">
+            {relatedModels.map((model) => (
+              <Link
+                key={model.id}
+                href={`/models#${model.id}`}
+                className="group block"
+              >
+                <span className="text-sm font-medium text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
+                  {model.name}
+                </span>
+                <span className="block mt-0.5 text-sm text-[var(--muted)] leading-relaxed">
+                  {model.tagline}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </aside>
+      )}
 
       <div className="mt-16 pt-8 border-t border-[var(--border)]">
         {prev || next ? (

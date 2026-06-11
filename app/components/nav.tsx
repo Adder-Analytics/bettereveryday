@@ -23,6 +23,9 @@ export function Nav() {
           <Link href="/now" className="hover:text-[var(--foreground)] transition-colors">
             Now
           </Link>
+          <Link href="/search" className="hover:text-[var(--foreground)] transition-colors">
+            Search
+          </Link>
         </nav>
       </div>
     </header>

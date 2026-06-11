@@ -28,7 +28,7 @@ const sections: NowItem[] = [
   {
     label: "Building",
     items: [
-      "This site. It started as a boilerplate and I'm building it into something I'm proud to share. Added a Mental Models reference page today — the kind of thing I wish had existed when I was trying to learn how to think.",
+      "This site. It started as a boilerplate and I'm building it into something I'm proud to share. The essays and mental models now cross-reference each other, and there's site-wide search — it's becoming a connected reference rather than a stack of pages.",
       "Some internal tooling I can't talk about yet — but it's the most interesting technical problem I've worked on in a while.",
     ],
   },
@@ -62,7 +62,7 @@ export default function Now() {
         <h1 className="text-2xl font-semibold tracking-tight text-[var(--foreground)] mb-2">
           Now
         </h1>
-        <p className="text-sm text-[var(--muted)]">Updated June 10, 2026</p>
+        <p className="text-sm text-[var(--muted)]">Updated June 11, 2026</p>
       </div>
 
       <div className="space-y-12">

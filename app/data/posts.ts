@@ -318,6 +318,46 @@ export const posts: Post[] = [
 <p>Inflation doesn't ask your permission. It doesn't depend on your awareness of it. It operates on your money whether or not you understand it, whether or not you've done the math. The only leverage you have is in deciding, deliberately, which assets you hold — and understanding that "holding cash" is itself a decision with a real cost attached, not a neutral default.</p>`,
   },
   {
+    slug: "second-order-thinking",
+    title: "And Then What? Thinking Past the First-Order Effect",
+    date: "2026-06-11",
+    excerpt:
+      "Every decision produces consequences, and those consequences produce consequences. Most bad decisions come from stopping the analysis one step too early — and there's a specific question that fixes it.",
+    readTime: 6,
+    tags: ["thinking", "decisions"],
+    content: `<p>In 1935, Australia had a beetle problem. Cane beetles were destroying Queensland's sugar crops, and the government's solution was elegant: import cane toads from South America to eat them. A natural predator, no pesticides, problem solved. The toads were released, and two things happened. First, they largely ignored the beetles, which live near the tops of cane stalks where toads can't reach. Second, they bred. Australia now has hundreds of millions of cane toads, they're toxic to nearly every native predator that tries to eat them, and they've become one of the worst ecological disasters in the country's history.</p>
+
+<p>The failure wasn't a lack of intelligence. The people who made the decision reasoned correctly about the first link in the causal chain: toads eat insects, beetles are insects. What they didn't do was ask the question that would have saved them: <em>and then what?</em></p>
+
+<h2>The seen and the unseen</h2>
+
+<p>The French economist Frédéric Bastiat made this the centerpiece of an essay in 1850, and his framing has never been improved on: the difference between a bad economist and a good one is that the bad economist considers only the effect that can be seen, while the good one also considers the effects that must be foreseen.</p>
+
+<p>His example was a broken shop window. The visible effect: the glazier gets paid, money circulates, and someone might even conclude the broken window stimulated the economy. The unseen effect: the shopkeeper now can't spend that money on the shoes or books he would have bought instead. The glazier's gain is exactly offset by an invisible loss elsewhere. The error isn't in the logic — it's in where the logic stops.</p>
+
+<p>This pattern is everywhere once you have a name for it. The visible effect of a hiring freeze is lower costs this quarter. The unseen effect is the senior engineer who quietly starts interviewing elsewhere because her team is permanently understaffed. The visible effect of skipping the workout is a free hour today. The unseen effect is distributed across hundreds of future days, none of which will individually feel like a consequence.</p>
+
+<h2>Second-level thinking in competitive arenas</h2>
+
+<p>The investor Howard Marks draws the same distinction in markets, where he calls it second-level thinking. First-level thinking says: this is a good company, so the stock will go up. Second-level thinking says: this is a good company, but everyone can see that it's a good company, so its quality is already reflected in the price — the only question that matters is whether it's better or worse than the price implies.</p>
+
+<p>This is the special property of any competitive arena: the first-order conclusion is already priced in. In markets, in job hunting, in choosing where to live, the obvious move has been seen by everyone capable of seeing the obvious. Whatever advantage existed in the first-order observation has been competed away. The opportunity, if there is one, lives exclusively at the second level — in the gap between what's true and what everyone believes is true.</p>
+
+<h2>Why we stop at the first order</h2>
+
+<p>First-order effects are immediate, visible, and attributable. Second-order effects are delayed, diffuse, and deniable. This asymmetry isn't just cognitive — it's built into most incentive structures. A politician gets credit for the visible factory the subsidy created, not blame for the invisible businesses that never started because of the tax that funded it. An executive gets rewarded for this quarter's cost reduction, not penalized for the attrition that shows up in next year's numbers, possibly on someone else's watch.</p>
+
+<p>There's a personal version of this asymmetry, and it has a useful structure: for a surprising number of decisions, the first-order and second-order effects have opposite signs. Eating the dessert is first-order positive, second-order negative. Exercise, hard conversations, saving money, asking the embarrassing question — first-order negative, second-order positive. This suggests a heuristic worth taking seriously: <em>be suspicious of anything that is purely pleasant now, and give a second look at anything whose costs are all up front.</em> Most things worth doing are first-order negative and second-order positive, which is precisely why they remain available to do.</p>
+
+<h2>The practice</h2>
+
+<p>The technique is not complicated. When evaluating a decision, ask "and then what?" — and then ask it again. The first iteration gets you past the immediate effect. The second gets you to the responses: how will the people affected by this adapt? Second-order effects matter most in systems that contain people, because people respond to whatever you do. Prices adjust, competitors react, employees reroute around the policy. A rule that assumes everyone keeps behaving the way they did before the rule is a rule that has already failed.</p>
+
+<p>Two refinements make the question sharper. First, run it across time horizons: what does this look like in ten minutes, ten months, ten years? Decisions that look identical at the first horizon often separate dramatically at the third. Second, ask it about the response to the response — not just "what happens next" but "what will people do about what happens next."</p>
+
+<p>First-order thinking is everyone's default. It's fast, it feels complete, and in simple mechanical situations it's perfectly adequate. But in any system with feedback — an economy, a company, a family, your own habits — the first-order answer is the one everyone already has. The second order is where the actual consequences live, and almost nobody is looking there. That's not a reason to despair about human reasoning. It's an enormous standing opportunity for anyone willing to ask one more question.</p>`,
+  },
+  {
     slug: "plateau-boredom",
     title: "What to Do When You're Bored of Getting Better",
     date: "2026-06-08",

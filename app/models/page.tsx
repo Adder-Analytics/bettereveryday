@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { models, domains } from "../data/models";
+import { getPostBySlug } from "../data/posts";
 
 export const metadata: Metadata = {
   title: "Mental Models — Better Every Day",
@@ -37,7 +39,7 @@ export default function ModelsPage() {
               </h2>
               <div className="space-y-10">
                 {domainModels.map((model) => (
-                  <div key={model.id}>
+                  <div key={model.id} id={model.id} className="scroll-mt-24">
                     <h3 className="text-base font-semibold text-[var(--foreground)] mb-1">
                       {model.name}
                     </h3>
@@ -47,6 +49,25 @@ export default function ModelsPage() {
                     <p className="text-sm text-[var(--muted)] leading-relaxed">
                       {model.explanation}
                     </p>
+                    {model.essays && model.essays.length > 0 && (
+                      <div className="mt-3 space-y-1">
+                        {model.essays.map((slug) => {
+                          const post = getPostBySlug(slug);
+                          if (!post) return null;
+                          return (
+                            <p key={slug} className="text-xs text-[var(--muted)]">
+                              Essay:{" "}
+                              <Link
+                                href={`/writing/${slug}`}
+                                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+                              >
+                                {post.title} →
+                              </Link>
+                            </p>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

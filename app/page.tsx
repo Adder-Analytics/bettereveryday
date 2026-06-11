@@ -72,14 +72,24 @@ export default function Home() {
         </h2>
         <p className="text-sm text-[var(--muted)] leading-relaxed max-w-md mb-4">
           A curated collection of mental models — ideas from finance, decisions,
-          systems thinking, and psychology that change how you reason.
+          systems thinking, and psychology that change how you reason. Each one
+          links to the essays that explore it, and everything on the site is
+          searchable.
         </p>
-        <Link
-          href="/models"
-          className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
-        >
-          Mental models →
-        </Link>
+        <div className="flex gap-6">
+          <Link
+            href="/models"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Mental models →
+          </Link>
+          <Link
+            href="/search"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Search the site →
+          </Link>
+        </div>
       </section>
 
       {/* Now Snapshot */}

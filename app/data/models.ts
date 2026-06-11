@@ -4,6 +4,8 @@ export type Model = {
   domain: string;
   tagline: string;
   explanation: string;
+  /** Slugs of essays that explore this model in depth. */
+  essays?: string[];
 };
 
 export const models: Model[] = [
@@ -15,6 +17,7 @@ export const models: Model[] = [
     tagline: "Returns accumulate on previous returns, producing exponential rather than linear growth.",
     explanation:
       "The returns in year thirty don't just come from the principal — they come from thirty years of accumulated growth. This is why starting early matters more than starting smart, and why the first decade of investing feels unremarkable despite being the most important. The same math applies to knowledge, skills, and reputation: the value of early investment is invisible until it suddenly isn't.",
+    essays: ["money-math", "compounding-improvements"],
   },
   {
     id: "opportunity-cost",
@@ -49,6 +52,7 @@ export const models: Model[] = [
     tagline: "Multiply probability by magnitude for each outcome, then sum — the result is what a decision is worth in expectation.",
     explanation:
       "A 10% chance of winning $1,000 has the same expected value as a 100% chance of winning $100. Thinking in expected value makes you systematically better at trade-offs involving risk and uncertainty — you stop treating unlikely bad outcomes as reasons to avoid favorable bets, and stop treating unlikely good outcomes as justification for bad ones. The challenge: human intuition about probability is poorly calibrated, especially for small or large probabilities.",
+    essays: ["decision-quality"],
   },
   {
     id: "inversion",
@@ -65,6 +69,7 @@ export const models: Model[] = [
     tagline: "Before a major decision, imagine it failed — then ask what went wrong.",
     explanation:
       "Psychologist Gary Klein's technique for bypassing the optimism bias that makes us underweight failure scenarios. Imagining failure as already having happened shifts thinking from advocacy mode to analysis mode: suddenly risks feel real rather than disloyal to the plan. The pre-mortem doesn't mean abandoning the decision — it means stress-testing it. Decisions that survive a rigorous pre-mortem are more likely to actually be good decisions, not just compelling ones.",
+    essays: ["decision-quality"],
   },
   {
     id: "reversibility",
@@ -73,6 +78,7 @@ export const models: Model[] = [
     tagline: "Separate one-way decisions from two-way decisions — and treat them very differently.",
     explanation:
       "Jeff Bezos's 'Type 1 and Type 2' framework: one-way doors require extensive deliberation because you can't undo them; two-way doors should be decided quickly because the cost of being wrong is low and you learn more by moving. The error most organizations make is treating too many decisions like one-way doors, which makes them slow when they should be fast. The genuinely one-way doors — hiring, culture, irreversible commitments — deserve the slowness. Most decisions don't.",
+    essays: ["decision-quality"],
   },
 
   // Systems Thinking
@@ -91,6 +97,7 @@ export const models: Model[] = [
     tagline: "The consequences of consequences are often more important than first-order effects.",
     explanation:
       "Rent control lowers rents in the short term (first order) while reducing housing supply and raising rents in the long term (second order). Antibiotics kill bacteria immediately (first order) while selecting for resistant strains over time (second order). Most policy failures and unintended consequences come from acting on first-order effects without modeling the second. The question to always ask: 'And then what?'",
+    essays: ["second-order-thinking"],
   },
   {
     id: "leverage-points",
@@ -143,6 +150,7 @@ export const models: Model[] = [
     tagline: "Extreme measurements tend to be followed by less extreme ones, regardless of what you do.",
     explanation:
       "The student who scored highest on the first test is likely to score somewhat lower on the next — not because they got worse, but because exceptional performance has a luck component that doesn't replicate. This explains why praising good performance seems to make things worse (they regress toward average regardless) and why punishment after bad performance seems to make things better (they regress toward average regardless). The failure to account for regression to the mean produces an enormous amount of false learning from experience.",
+    essays: ["decision-quality"],
   },
   {
     id: "fermi-estimation",
@@ -151,6 +159,7 @@ export const models: Model[] = [
     tagline: "Estimate any unknown quantity by building it from simpler, knowable pieces.",
     explanation:
       "Enrico Fermi could estimate the number of piano tuners in Chicago from population, piano ownership rates, and tuning frequency — each step an educated guess, but the product a reasonable estimate. The point isn't precision: a Fermi estimate within an order of magnitude is almost always more useful than refusing to estimate. The process reveals which assumptions matter most and which ones barely affect the answer. Develop calibrated reference points — world population is 8 billion, US GDP is $26 trillion — and you can anchor estimates on almost any question.",
+    essays: ["orders-of-magnitude"],
   },
 ];
 

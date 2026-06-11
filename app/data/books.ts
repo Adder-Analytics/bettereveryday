@@ -37,6 +37,16 @@ export const books: Book[] = [
     rating: 2,
   },
 
+  {
+    title: "The Big Short",
+    author: "Michael Lewis",
+    year: 2010,
+    annotation:
+      "The 2008 financial crisis explained through the handful of people who saw it coming, by the best narrative nonfiction writer working. Lewis makes collateralized debt obligations comprehensible by attaching them to characters you care about. Read it for the storytelling, but notice the deeper lesson: the people who got it right weren't smarter — they were the only ones who actually read the documents everyone else assumed someone had read.",
+    category: "Finance",
+    rating: 2,
+  },
+
   // Thinking & Decisions
   {
     title: "Thinking, Fast and Slow",
@@ -71,6 +81,16 @@ export const books: Book[] = [
     year: 2021,
     annotation:
       "The cleanest articulation of what it means to care about being right rather than feeling right. Galef distinguishes the 'soldier' mindset (motivated reasoning, defending your existing beliefs) from the 'scout' mindset (genuine curiosity about what's true). Short, practical, and genuinely changes how you read your own thinking.",
+    category: "Thinking",
+    rating: 2,
+  },
+
+  {
+    title: "How Not to Be Wrong",
+    author: "Jordan Ellenberg",
+    year: 2014,
+    annotation:
+      "Mathematical thinking applied to everyday claims, by a mathematician who can actually write. The opening story alone is worth the book: Abraham Wald and the missing bullet holes — the WWII insight that you should armor the parts of returning planes that don't have damage, because the planes hit there never came back. Survivorship bias, linearity assumptions, regression to the mean — the math that protects you from confident nonsense.",
     category: "Thinking",
     rating: 2,
   },
@@ -122,6 +142,16 @@ export const books: Book[] = [
       "Bryson's comprehensive tour of human anatomy and physiology, written with the humility of a non-expert explaining to other non-experts. The organizing insight: the human body is extraordinarily improbable, constantly solving problems that engineering hasn't, and we understand far less of it than medicine implies. Makes you appreciative in a way that's hard to manufacture any other way.",
     category: "Science",
     rating: 2,
+  },
+
+  {
+    title: "The Selfish Gene",
+    author: "Richard Dawkins",
+    year: 1976,
+    annotation:
+      "Fifty years old and still the best example of what a book can do: hand you a new lens and permanently change what you see through it. The gene's-eye view — organisms as vehicles genes build to propagate themselves — reorganizes your understanding of cooperation, altruism, and conflict in one move. Also the book that coined the word 'meme,' as a throwaway analogy in the final chapter. Skip the later culture-war Dawkins; this is the one that earned the reputation.",
+    category: "Science",
+    rating: 3,
   },
 
   // History & Perspective
