@@ -1,4 +1,5 @@
 import { posts } from "../data/posts";
+import { notes } from "../data/notes";
 
 const SITE_URL = "https://bettereveryday.vercel.app";
 const SITE_TITLE = "Better Every Day";
@@ -14,21 +15,42 @@ function escapeXml(str: string): string {
     .replace(/'/g, "&apos;");
 }
 
-export async function GET() {
-  const sortedPosts = [...posts].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+type FeedItem = {
+  title: string;
+  link: string;
+  description: string;
+  date: string;
+  content: string;
+};
 
-  const items = sortedPosts
+export async function GET() {
+  const feedItems: FeedItem[] = [
+    ...posts.map((post) => ({
+      title: post.title,
+      link: `${SITE_URL}/writing/${post.slug}`,
+      description: post.excerpt,
+      date: post.date,
+      content: post.content,
+    })),
+    ...notes.map((note) => ({
+      title: `Reading note: ${note.title}`,
+      link: `${SITE_URL}/notes#${note.slug}`,
+      description: `A reading note on ${note.bookTitle}.`,
+      date: note.date,
+      content: note.content,
+    })),
+  ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  const items = feedItems
     .map(
-      (post) => `
+      (item) => `
     <item>
-      <title>${escapeXml(post.title)}</title>
-      <link>${SITE_URL}/writing/${post.slug}</link>
-      <guid isPermaLink="true">${SITE_URL}/writing/${post.slug}</guid>
-      <description>${escapeXml(post.excerpt)}</description>
-      <pubDate>${new Date(post.date).toUTCString()}</pubDate>
-      <content:encoded><![CDATA[${post.content}]]></content:encoded>
+      <title>${escapeXml(item.title)}</title>
+      <link>${item.link}</link>
+      <guid isPermaLink="true">${item.link}</guid>
+      <description>${escapeXml(item.description)}</description>
+      <pubDate>${new Date(item.date).toUTCString()}</pubDate>
+      <content:encoded><![CDATA[${item.content}]]></content:encoded>
     </item>`
     )
     .join("\n");

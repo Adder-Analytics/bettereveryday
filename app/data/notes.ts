@@ -1,0 +1,71 @@
+export type Note = {
+  slug: string;
+  title: string;
+  /** Must exactly match a `title` in books.ts — used for bidirectional linking. */
+  bookTitle: string;
+  date: string;
+  content: string;
+};
+
+export const notes: Note[] = [
+  {
+    slug: "kahneman-inside-view",
+    title: "Knowing About a Bias Doesn't Exempt You From It",
+    bookTitle: "Thinking, Fast and Slow",
+    date: "2026-06-12",
+    content: `<p>The most quietly devastating story in the book is one Kahneman tells on himself. He assembled a team to write a decision-making curriculum for Israeli high schools. A year in, he asked everyone to estimate how long the project would take to finish. The estimates clustered around two more years.</p>
+
+<p>Then he asked the team's curriculum expert a different question: how long did <em>comparable teams</em> take? The expert — visibly uncomfortable — reported that about 40% of such teams never finished at all, and none he could recall finished in under seven years. He also rated this team as slightly below average. Then something remarkable happened: nothing. The team, including the expert, including Kahneman, accepted the numbers and kept working off the two-year estimate. The book took eight more years, and by the time it was done, the ministry no longer wanted it.</p>
+
+<p>This is the inside view versus the outside view. The inside view builds a forecast from the particulars of your case — your plan, your team, your visible progress. The outside view asks what happened, on average, to everyone who attempted this class of thing. The outside view is usually right, and almost nobody consults it, because the particulars of our own case feel so much more informative than a base rate.</p>
+
+<p>What stays with me is that awareness did nothing. The man who would win a Nobel Prize partly for describing the planning fallacy heard the base rate, believed it, and proceeded as if he hadn't. The lesson isn't "learn about the bias" — he had written the literature. The lesson is that the correction has to live in the procedure, not in your judgment: make the base-rate lookup a mandatory step before commitment, because the in-the-moment mind will always vote for the inside view.</p>`,
+  },
+  {
+    slug: "housel-tails",
+    title: "Tails Drive Everything — Which Means It's Normal for Most Things to Fail",
+    bookTitle: "The Psychology of Money",
+    date: "2026-06-12",
+    content: `<p>The chapter worth re-reading is the one about Heinz Berggruen, the art dealer who assembled one of the great Picasso and Klee collections of the twentieth century. Was he a genius at picking masterpieces? Housel's answer: probably not — he bought in enormous quantity, and a small handful of acquisitions turned out to be the masterpieces that carried everything else. The bulk of the collection could have been mediocre and the portfolio would still have been historic.</p>
+
+<p>The pattern generalizes further than feels comfortable. Disney produced hundreds of cartoons in the 1930s; Snow White effectively paid for all of them. Venture capital is explicit about expecting a fund's returns to come from one or two companies. Most of what an index fund holds underperforms — the index works anyway, because it is guaranteed to contain the handful of stocks doing nearly all of the compounding.</p>
+
+<p>The implication Housel draws is the useful part: if outcomes are driven by tails, then <em>a strategy can be working while feeling like failure almost all of the time</em>. Most of your individual bets, projects, essays, experiments are supposed to be unremarkable. That's not the strategy breaking; that's what a tail-driven distribution looks like from the inside, on an ordinary day.</p>
+
+<p>This connects to a mistake I'd been making without naming it: judging a portfolio by its median holding, or a body of work by its median piece. In a tail-driven domain that's a category error. The right questions are whether you're taking enough swings for the tail to show up, and whether you can survive — financially, emotionally — the long stretch of unremarkable outcomes that the math requires you to sit through.</p>`,
+  },
+  {
+    slug: "klinkenborg-sentences",
+    title: "Most Writing Problems Are Sentence Problems",
+    bookTitle: "Several Short Sentences About Writing",
+    date: "2026-06-12",
+    content: `<p>Klinkenborg's central claim sounds too small to be a thesis: the sentence is the unit of writing, and almost no one is ever taught to make one. We're taught the surrounding apparatus — paragraphs, transitions, structure, "flow" — and taught, mostly by implication, to fear the short sentence as childish. So we write long ones to sound like writers, and the length conceals the fact that we don't fully know what we're saying.</p>
+
+<p>His test for revision is the part I've actually adopted. Of every sentence, ask three things: What does it say? What doesn't it say? <em>What does it imply?</em> The third question is where bad writing hides. A sentence can be grammatically clean and factually accurate while implying a claim you never examined and wouldn't defend. Implication is the freight a sentence carries without declaring it, and most drafts are full of undeclared freight.</p>
+
+<p>The practical technique that follows: read your draft one sentence at a time, as if each sentence had to survive alone. What this kills is the illusion of flow — the sense that the paragraph is carrying meaning when really each sentence is leaning on its neighbors, none of them bearing weight individually. Flow, in most drafts, is camouflage.</p>
+
+<p>The book practices its own argument: it's written entirely in short, declarative sentences, set like verse, and the form makes the claim more convincingly than an argument could. It changed how I read my own drafts, which is the most a writing book can do.</p>`,
+  },
+  {
+    slug: "dawkins-ess",
+    title: "Stable Doesn't Mean Good",
+    bookTitle: "The Selfish Gene",
+    date: "2026-06-12",
+    content: `<p>The idea from this book that I use most often has nothing to do with genes directly. It's John Maynard Smith's concept of the evolutionarily stable strategy, which Dawkins explains through a population of hawks and doves: hawks always fight, doves always back down. All-doves would be the best world on average — but it isn't stable, because a single hawk in a world of doves wins every encounter and the strategy spreads. The population settles instead at an equilibrium mix that is <em>worse for the average individual than all-doves would have been</em>, yet immune to invasion. That's what stability means: not best, just undefeatable from inside.</p>
+
+<p>Once you have this lens, you see ESS-like equilibria everywhere people interact. The meeting that everyone privately agrees is useless persists because no single attendee can skip it without cost. Escalating work hours, arms races, nine-round interview processes — each is a stable strategy nobody chose and nobody can unilaterally defect from. Bad equilibria don't require villains. They only require that defection be locally punished, even when coordination would make everyone better off.</p>
+
+<p>Two corrections this idea makes to default thinking. First, "this norm exists, therefore it serves us" is a non sequitur — persistence proves only stability, not value. Conflating the two is how bad norms get defended as natural. Second, escaping a bad equilibrium is a coordination problem, not a willpower problem, so the lever is changing payoffs or moving groups at once — lecturing individuals to defect one at a time mostly just gets the defectors punished on schedule.</p>
+
+<p>Fifty years old, and still the clearest account I know of why systems full of reasonable people produce outcomes none of them want.</p>`,
+  },
+];
+
+export const sortedNotes = [...notes].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+);
+
+export function getNotesForBook(bookTitle: string): Note[] {
+  return notes.filter((n) => n.bookTitle === bookTitle);
+}

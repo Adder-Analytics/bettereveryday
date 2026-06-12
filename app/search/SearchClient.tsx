@@ -5,9 +5,10 @@ import Link from "next/link";
 import { posts, formatDate } from "../data/posts";
 import { models } from "../data/models";
 import { books } from "../data/books";
+import { notes } from "../data/notes";
 
 type SearchDoc = {
-  type: "Essay" | "Model" | "Book";
+  type: "Essay" | "Note" | "Model" | "Book";
   title: string;
   href: string;
   snippet: string;
@@ -30,6 +31,15 @@ const docs: SearchDoc[] = [
     meta: `${formatDate(p.date)} · ${p.readTime} min read`,
     titleText: `${p.title} ${p.tags.join(" ")}`.toLowerCase(),
     bodyText: `${p.excerpt} ${stripHtml(p.content)}`.toLowerCase(),
+  })),
+  ...notes.map((n): SearchDoc => ({
+    type: "Note",
+    title: n.title,
+    href: `/notes#${n.slug}`,
+    snippet: stripHtml(n.content).trim().slice(0, 200),
+    meta: `${formatDate(n.date)} · ${n.bookTitle}`,
+    titleText: `${n.title} ${n.bookTitle}`.toLowerCase(),
+    bodyText: stripHtml(n.content).toLowerCase(),
   })),
   ...models.map((m): SearchDoc => ({
     type: "Model",
@@ -72,6 +82,7 @@ function search(query: string): SearchDoc[] {
 
 const typeStyles: Record<SearchDoc["type"], string> = {
   Essay: "text-[var(--accent)] border-[var(--accent)]",
+  Note: "text-[var(--accent)] border-[var(--border)]",
   Model: "text-[var(--muted)] border-[var(--muted)]",
   Book: "text-[var(--muted)] border-[var(--border)]",
 };
@@ -124,9 +135,14 @@ export default function SearchClient() {
 
       {!showResults && (
         <p className="mt-6 text-sm text-[var(--muted)] leading-relaxed">
-          The index covers {posts.length} essays, {models.length} mental
-          models, and {books.length} books. Results link straight to the essay,
-          the model&rsquo;s entry on the reference page, or the bookshelf.
+          The index covers {posts.length} essays, {notes.length} reading notes,{" "}
+          {models.length} mental models, and {books.length} books. Results link
+          straight to the essay, the note, the model&rsquo;s entry on the
+          reference page, or the bookshelf. Tip: press{" "}
+          <kbd className="px-1.5 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
+            /
+          </kbd>{" "}
+          anywhere on the site to jump here.
         </p>
       )}
     </>

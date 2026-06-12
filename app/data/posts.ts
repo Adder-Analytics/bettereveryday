@@ -358,6 +358,54 @@ export const posts: Post[] = [
 <p>First-order thinking is everyone's default. It's fast, it feels complete, and in simple mechanical situations it's perfectly adequate. But in any system with feedback — an economy, a company, a family, your own habits — the first-order answer is the one everyone already has. The second order is where the actual consequences live, and almost nobody is looking there. That's not a reason to despair about human reasoning. It's an enormous standing opportunity for anyone willing to ask one more question.</p>`,
   },
   {
+    slug: "metric-not-the-mission",
+    title: "The Metric Is Not the Mission",
+    date: "2026-06-12",
+    excerpt:
+      "Every measure is a stand-in for something you actually want. Attach rewards to the measure, and people will deliver the measure — not the thing. The pattern has a name, a long history, and a defense.",
+    readTime: 7,
+    tags: ["systems", "decisions"],
+    content: `<p>In 1902, the French colonial government in Hanoi had a rat problem. The city's new sewers had become a breeding ground, plague was a real fear, and the administration announced a sensible-sounding program: a bounty for every rat killed. To keep things sanitary, you didn't have to deliver the rat — just its tail.</p>
+
+<p>The tails came in by the thousands. And then people began noticing something strange in the streets: living rats, healthy and busy, with no tails. The rat catchers had realized that a dead rat earns one bounty, but a live rat that keeps breeding produces an unlimited supply of future tails. Inspectors later found farms on the outskirts of the city where rats were being raised for harvest. The bounty program was producing rats.</p>
+
+<p>The Soviet Union ran the industrial version of this experiment for decades. When nail factories were given quotas by count, they produced millions of tiny, useless nails — maximum units, minimum material. When the planners noticed and switched the quota to weight, the factories pivoted to enormous nails, the size of railroad spikes, useless for almost everything. The detail that matters: the factories weren't malfunctioning. They were doing precisely what they were told. Gaming a metric isn't deviance. It's compliance — with the system as actually specified, rather than as intended.</p>
+
+<h2>A law with two discoverers</h2>
+
+<p>In 1975, the British economist Charles Goodhart observed that any statistical regularity tends to collapse once pressure is placed on it for control purposes. The anthropologist Marilyn Strathern later compressed this into the form everyone now quotes: <em>when a measure becomes a target, it ceases to be a good measure.</em></p>
+
+<p>The same year — apparently independently — the management professor Steven Kerr published a paper whose title says everything: "On the Folly of Rewarding A, While Hoping for B." Organizations, Kerr observed, hope for long-term growth and reward quarterly earnings. They hope for teamwork and reward individual statistics. They hope for candor and reward agreement. And then they are sincerely surprised to receive exactly what they paid for. His sharpest example: in World War II, soldiers went home when the war was won, so individual incentives pointed at collective victory. In Vietnam, soldiers went home when their twelve-month tour ended — and the incentive pointed at personal survival until the date, an entirely different war from the one the strategy assumed.</p>
+
+<h2>The mechanism</h2>
+
+<p>Why does this keep happening, everywhere, to smart people who have read about it happening? Because a metric is never the thing you want. It's a proxy — chosen precisely because it's cheaper to observe than the thing itself. You want educated students; you can measure test scores. You want good code; you can count commits. You want customer relationships; you can count accounts opened.</p>
+
+<p>The gap between the proxy and the target is where the gaming lives, and pressure widens it. Nobody even has to be cynical. Under enough pressure, the people who move the proxy honestly are simply outcompeted by the people who move it any way available. The system selects for gaming whether or not any individual intends it.</p>
+
+<p>Wells Fargo made this legible at scale. Through the early 2010s, the bank's stated goal was deep customer relationships; its measured target was products per customer — eight of them, because "eight is great." Between 2011 and 2015, employees under quota pressure opened on the order of 1.5 million unauthorized accounts and over half a million unauthorized credit cards. The bank paid $185 million in fines, the CEO resigned, and the quotas were abolished. The instructive part is the scale: thousands of employees participated. Wells Fargo did not manage to hire thousands of uniquely dishonest people. It built an incentive structure that reliably manufactured the behavior, then prosecuted the output as if it were a character flaw. Charlie Munger's line is the whole story in nine words: show me the incentive and I'll show you the outcome.</p>
+
+<h2>You do this to yourself</h2>
+
+<p>It's tempting to file all this under management, someone else's problem. But the most consequential Goodhart failures in most lives are self-imposed, because you are both the designer of your own metrics and the agent gaming them.</p>
+
+<p>A daily word count is a proxy for becoming a better writer — until you find yourself padding sentences at 11pm to hit the number. Books read per year is a proxy for understanding — until it quietly incentivizes finishing fast over thinking slowly. The step counter is a proxy for fitness, the salary is a proxy for a good life, and both keep getting optimized long after they've diverged from the thing they were supposed to stand for. The diligent people are the most exposed: gaming your own metrics is what conscientiousness looks like when it stops asking what the metric was for.</p>
+
+<h2>Holding metrics loosely</h2>
+
+<p>The wrong conclusion is to abandon measurement. Unmeasured goals drift, and "I'll just use judgment" is how most ambitions dissolve. The right conclusion is to stop treating any metric as the mission, and to manage the gap deliberately. A few practices that help:</p>
+
+<p><em>Run the pre-mortem on the metric.</em> Before adopting a measure, ask: how would someone hit this number while completely failing at the real goal? If there's an easy answer — and there almost always is — you now know what the metric will eventually produce under pressure. Decide in advance whether you can live with that.</p>
+
+<p><em>Pair metrics so that gaming one trips another.</em> Speed paired with defect rate. Output paired with a spot-check for usefulness. Accounts opened paired with accounts actually used — the single pairing that would have surfaced Wells Fargo's fraud years earlier, since most of the fake accounts sat empty.</p>
+
+<p><em>Retire metrics while they're still working.</em> A measure is most informative when it's fresh, before anyone has had time to optimize against it. Treat metrics as instruments with a service life, not as permanent fixtures.</p>
+
+<p><em>Re-state the mission separately, and check the metric against it.</em> The question "is the number going up?" needs a sibling that gets asked on a schedule: "is the thing the number was supposed to track actually improving?" The moment those two answers diverge, believe the second one.</p>
+
+<p>A metric is a map of the territory you care about. Maps are useful precisely because they leave things out. But the moment you start paying people — including yourself — based on the map, you create a market for redrawing it. The territory doesn't care how the map looks. Keep checking the territory.</p>`,
+  },
+  {
     slug: "plateau-boredom",
     title: "What to Do When You're Bored of Getting Better",
     date: "2026-06-08",

@@ -42,6 +42,7 @@ export const models: Model[] = [
     tagline: "People respond to what they're rewarded for, not what they're told.",
     explanation:
       "Charlie Munger: 'Show me the incentive and I'll show you the outcome.' Almost every institutional dysfunction, perverse behavior, or persistent failure can be traced to an incentive structure that rewards the wrong thing. A doctor paid per procedure has different incentives than one paid per patient outcome. A fund manager paid on assets under management has different incentives than one paid on returns. Before judging people for behaving badly, understand what they're actually being paid — in money, status, or security — to do.",
+    essays: ["metric-not-the-mission"],
   },
 
   // Decision-making
@@ -98,6 +99,15 @@ export const models: Model[] = [
     explanation:
       "Rent control lowers rents in the short term (first order) while reducing housing supply and raising rents in the long term (second order). Antibiotics kill bacteria immediately (first order) while selecting for resistant strains over time (second order). Most policy failures and unintended consequences come from acting on first-order effects without modeling the second. The question to always ask: 'And then what?'",
     essays: ["second-order-thinking"],
+  },
+  {
+    id: "goodharts-law",
+    name: "Goodhart's Law",
+    domain: "Systems",
+    tagline: "When a measure becomes a target, it ceases to be a good measure.",
+    explanation:
+      "Every metric is a proxy — chosen because it's cheaper to observe than the thing you actually want. Attach rewards to the proxy and people will optimize the proxy, widening the gap between what's measured and what matters: test scores without education, accounts opened without customers served. The defense isn't abandoning measurement — it's stress-testing metrics before adopting them ('how could someone hit this number while failing at the goal?'), pairing metrics so gaming one trips another, and retiring measures before they're fully optimized against.",
+    essays: ["metric-not-the-mission"],
   },
   {
     id: "leverage-points",

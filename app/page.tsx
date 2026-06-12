@@ -72,16 +72,26 @@ export default function Home() {
         </h2>
         <p className="text-sm text-[var(--muted)] leading-relaxed max-w-md mb-4">
           A curated collection of mental models — ideas from finance, decisions,
-          systems thinking, and psychology that change how you reason. Each one
-          links to the essays that explore it, and everything on the site is
-          searchable.
+          systems thinking, and psychology that change how you reason. Reading
+          notes capture what specific books did to my thinking. Everything
+          cross-references, and everything is searchable (press{" "}
+          <kbd className="px-1 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
+            /
+          </kbd>{" "}
+          anywhere).
         </p>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap gap-6">
           <Link
             href="/models"
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Mental models →
+          </Link>
+          <Link
+            href="/notes"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Reading notes →
           </Link>
           <Link
             href="/search"

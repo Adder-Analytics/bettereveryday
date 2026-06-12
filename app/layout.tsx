@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Nav } from "./components/nav";
 import { Footer } from "./components/footer";
+import SearchShortcut from "./components/SearchShortcut";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,6 +18,7 @@ const geistMono = Geist_Mono({
 const SITE_URL = "https://bettereveryday.vercel.app";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Better Every Day",
   description:
     "Essays on finance, decisions, learning, and craft — built around the conviction that understanding a few ideas well beats knowing many things shallowly.",
@@ -47,6 +49,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         <Nav />
+        <SearchShortcut />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

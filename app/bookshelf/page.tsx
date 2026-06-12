@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { books, categories } from "../data/books";
+import { notes } from "../data/notes";
 import BookshelfList from "./BookshelfList";
 
 export const metadata: Metadata = {
@@ -13,6 +14,17 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
+const noteLinks = Object.fromEntries(
+  books
+    .map((b) => [
+      b.title,
+      notes
+        .filter((n) => n.bookTitle === b.title)
+        .map((n) => ({ slug: n.slug, title: n.title })),
+    ])
+    .filter(([, links]) => links.length > 0)
+);
 
 export default function BookshelfPage() {
   return (
@@ -29,7 +41,7 @@ export default function BookshelfPage() {
         </p>
       </div>
 
-      <BookshelfList books={books} categories={categories} />
+      <BookshelfList books={books} categories={categories} notes={noteLinks} />
 
       <div className="mt-16 pt-8 border-t border-[var(--border)]">
         <p className="text-sm text-[var(--muted)]">

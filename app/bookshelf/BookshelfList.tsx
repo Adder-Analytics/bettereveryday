@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { Book } from "../data/books";
+
+type NoteLink = { slug: string; title: string };
 
 function Stars({ rating }: { rating: 1 | 2 | 3 }) {
   return (
@@ -21,9 +24,11 @@ function Stars({ rating }: { rating: 1 | 2 | 3 }) {
 export default function BookshelfList({
   books,
   categories,
+  notes = {},
 }: {
   books: Book[];
   categories: string[];
+  notes?: Record<string, NoteLink[]>;
 }) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
@@ -87,6 +92,15 @@ export default function BookshelfList({
                     <p className="text-sm text-[var(--muted)] leading-relaxed mt-3">
                       {book.annotation}
                     </p>
+                    {notes[book.title]?.map((note) => (
+                      <Link
+                        key={note.slug}
+                        href={`/notes#${note.slug}`}
+                        className="block mt-2 text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+                      >
+                        Reading note: {note.title} →
+                      </Link>
+                    ))}
                   </div>
                 ))}
               </div>
