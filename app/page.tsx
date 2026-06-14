@@ -27,7 +27,15 @@ export default function Home() {
           underneath all of it: understanding a few fundamental ideas well beats
           knowing many things shallowly.
         </p>
-        <p className="mt-4 text-sm text-[var(--muted)]">Updated {lastUpdated}</p>
+        <div className="mt-6 flex flex-wrap items-center gap-4">
+          <Link
+            href="/start"
+            className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            New here? Start with a reading path →
+          </Link>
+          <span className="text-sm text-[var(--muted)]">Updated {lastUpdated}</span>
+        </div>
       </section>
 
       {/* Recent Writing */}

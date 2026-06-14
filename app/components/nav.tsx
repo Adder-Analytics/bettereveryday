@@ -10,7 +10,10 @@ export function Nav() {
         >
           Better Every Day
         </Link>
-        <nav className="flex items-center gap-6 text-sm text-[var(--muted)]">
+        <nav className="flex flex-wrap items-center justify-end gap-x-5 gap-y-1 text-sm text-[var(--muted)]">
+          <Link href="/start" className="hover:text-[var(--foreground)] transition-colors">
+            Start
+          </Link>
           <Link href="/writing" className="hover:text-[var(--foreground)] transition-colors">
             Writing
           </Link>

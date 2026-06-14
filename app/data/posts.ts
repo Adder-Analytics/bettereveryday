@@ -406,6 +406,56 @@ export const posts: Post[] = [
 <p>A metric is a map of the territory you care about. Maps are useful precisely because they leave things out. But the moment you start paying people — including yourself — based on the map, you create a market for redrawing it. The territory doesn't care how the map looks. Keep checking the territory.</p>`,
   },
   {
+    slug: "loss-aversion",
+    title: "Losing Hurts More Than Winning Feels Good. Probably.",
+    date: "2026-06-14",
+    excerpt:
+      "It's the most famous finding in behavioral economics — and one of the most quietly contested. How loss aversion held up under scrutiny is a more useful lesson than the bias itself.",
+    readTime: 8,
+    tags: ["psychology", "decisions"],
+    content: `<p>Here is a bet. I flip a fair coin: heads, you win some amount; tails, you lose $100. How large would the win have to be before you'd take it? Almost nobody accepts the even-money version — win $100 or lose $100 on a coin flip. Most people want the upside somewhere around $200 before the bet feels worth it. But a $100-for-$100 coin flip is a mathematical wash, and anything above it is free money in expectation. People decline it anyway. The pain of losing $100 is doing roughly twice the work of the pleasure of winning it.</p>
+
+<p>That asymmetry is loss aversion, and it is the most famous single idea to come out of behavioral economics. It is also, it turns out, one of the most quietly contested. The interesting part isn't the bias — it's what happened when people went looking to confirm it, because the lesson in that is more transferable than the bias itself.</p>
+
+<h2>The case for</h2>
+
+<p>Daniel Kahneman and Amos Tversky built loss aversion into prospect theory in 1979, and in a 1992 sequel they put a number on it: the sting of a loss was about 2.25 times the pleasure of an equivalent gain. "Losses loom larger than gains" became one of the load-bearing sentences of a discipline, and the supporting evidence was genuinely impressive.</p>
+
+<p>The cleanest demonstration is the endowment effect. In a 1990 experiment, Kahneman, Knetsch, and Thaler handed coffee mugs to half the students in a room and nothing to the other half — at random, minutes earlier — then opened a market. If a mug was worth around $5 to a typical person, you'd expect roughly half the owners to sell. Instead, owners demanded about twice what buyers would pay — on the order of $7 to part with a mug versus $3 to acquire one — and almost no trades happened. Ownership, conferred by coin flip moments before, had roughly doubled the thing's value. The standard reading: giving up the mug registered as a loss, and losses loom larger.</p>
+
+<p>It shows up with real money, too. The disposition effect, which Terrance Odean documented across 10,000 brokerage accounts, is the tendency to sell winning investments while clinging to losing ones — investors in his data realized their gains at roughly a 50% higher rate than their losses. Selling a winner books a gain; selling a loser makes the loss real, so people don't. There is a whole catalogue like this — status quo bias, the way a "10% chance of dying" frightens more than an identical "90% chance of surviving" reassures — and loss aversion sat underneath all of it as the common cause.</p>
+
+<h2>The case against</h2>
+
+<p>Then a strange thing happened: the more carefully people looked, the more the <em>universal</em> version frayed.</p>
+
+<p>The sharpest challenge came from David Gal and Derek Rucker in a 2018 paper with a pointed title — "The Loss of Loss Aversion." Their main objection was about confounds. Return to the mugs. Selling a mug you were just handed isn't only experiencing a loss; it's also taking an <em>action</em>, departing from where you already are. Loss is tangled up with action, and gain with inaction. Design the experiment to pull those apart — so that keeping versus switching no longer lines up with losing versus gaining — and much of the asymmetry shrinks or disappears. People may not be loss-averse so much as change-averse, and the two had been quietly measured together.</p>
+
+<p>There was a second, more philosophical objection. Loss aversion was routinely used to explain the endowment effect — while the endowment effect was treated as evidence <em>for</em> loss aversion. Deployed that way, the phrase isn't an explanation at all; it's a relabeling. "People overvalue what they own because losing it would hurt" adds nothing you didn't already see in the behavior. It's a description wearing the costume of a cause.</p>
+
+<h2>What actually survived</h2>
+
+<p>This is the part worth slowing down on, because the honest answer isn't "the famous thing was a myth." It's more interesting than that.</p>
+
+<p>The defenders pushed back hard. A 2020 paper — its subtitle, "reports of its death are greatly exaggerated," sets the tone — pooled more than 17,000 participants and argued that loss aversion is real but has <em>moderators</em>. It's stronger for some people than others (experience and domain knowledge reliably shrink it), stronger for large stakes than trivial ones, stronger in some framings than others. What it is not is a universal constant of 2.25 applying to everyone, everywhere, including a coffee mug you've owned for ninety seconds.</p>
+
+<p>So the careful version of the claim is narrower and more contingent than the slogan, and the slogan oversold it. Losses do tend to loom larger than gains — reliably enough to plan around in some settings, weakly or not at all in others. That's a less quotable sentence than "losses loom larger than gains," and it's the true one.</p>
+
+<h2>Where it still bites</h2>
+
+<p>The practical value didn't evaporate with the universal claim, because the settings where loss aversion holds up best are exactly the consequential ones.</p>
+
+<p>The disposition effect is the clearest. If you can't bring yourself to sell a losing investment — waiting for it to "get back to even" first — notice that "back to even" is a fact about your purchase price, a number the market has never heard of and does not care about. The only real question is whether you'd buy it today at today's price. Sunk costs are the same machine running on time and effort instead of money: the half-finished degree, the project that stopped making sense two years ago, the commitment continued mainly because of what's already been poured in. In every case the spent thing is gone whether you continue or not, and the aversion to "wasting" it is precisely what keeps you spending more.</p>
+
+<p>The framing effects are real enough to defend against, too. The same option described as a loss to avoid will feel more urgent than when it's described as a gain to capture — which is why warranties, insurance upsells, and "don't miss out" are all worded the way they are. When a choice suddenly feels urgent, it's worth asking whether the urgency is in the situation or only in the framing.</p>
+
+<h2>The lesson under the lesson</h2>
+
+<p>Loss aversion is worth understanding. But the more durable skill is in <em>how the idea held up to scrutiny</em> — because most of what you'll meet is in exactly this state: a real effect, oversold as a universal law, quietly walked back to "true under these conditions" by the people who bothered to check.</p>
+
+<p>The discipline is to refuse both lazy responses. One is to swallow the slogan whole — repeating "losses loom twice as large as gains" as a fixed fact, which is more than the evidence will bear. The other is the cynical overcorrection that travels even faster: "loss aversion was debunked," equally false, and seductive because debunking a famous idea feels like sophistication. The honest position is the narrow one in between, and it satisfies neither instinct: it's real, it's contingent, here are the conditions, here's where I'd still bet on it. Hold your most-cited beliefs the way the careful researchers eventually held this one — not "is it true or false," but "where, how much, and how do I know?" That question is worth more than any single bias you might point it at.</p>`,
+  },
+  {
     slug: "plateau-boredom",
     title: "What to Do When You're Bored of Getting Better",
     date: "2026-06-08",
