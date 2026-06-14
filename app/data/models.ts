@@ -139,9 +139,10 @@ export const models: Model[] = [
     id: "loss-aversion",
     name: "Loss Aversion",
     domain: "Psychology",
-    tagline: "Losses hurt about twice as much as equivalent gains feel good.",
+    tagline: "Losses tend to loom larger than equivalent gains — reliably in some settings, less so in others.",
     explanation:
-      "Kahneman and Tversky's finding: the pain of losing $100 is roughly equivalent to the pleasure of winning $200. This asymmetry explains why people hold losing investments too long (selling would make the loss real), avoid risks that are actually favorable (the potential downside looms too large), and are manipulated by framing effects (presenting something as avoiding a loss rather than achieving a gain makes it feel more urgent). Knowing about loss aversion doesn't eliminate it — it just makes it visible.",
+      "Kahneman and Tversky's finding: the pain of losing $100 is roughly equivalent to the pleasure of winning $200. This asymmetry helps explain why people hold losing investments too long (selling would make the loss real), avoid risks that are actually favorable (the downside looms too large), and respond to framing (presenting something as avoiding a loss rather than achieving a gain makes it feel more urgent). How robust the effect is has become genuinely contested — the careful version is that it's contingent, holding up strongly in some settings (the disposition effect, sunk costs) and weakly or not at all in others. Knowing about it doesn't eliminate it; it just makes it visible.",
+    essays: ["loss-aversion"],
   },
 
   // Epistemology
