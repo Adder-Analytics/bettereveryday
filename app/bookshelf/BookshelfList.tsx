@@ -1,0 +1,136 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { type Book, bookAnchor } from "../data/books";
+
+type NoteLink = { slug: string; title: string };
+type ModelLink = { id: string; name: string };
+
+function Stars({ rating }: { rating: 1 | 2 | 3 }) {
+  return (
+    <span className="flex gap-0.5" aria-label={`${rating} out of 3`}>
+      {[1, 2, 3].map((n) => (
+        <span
+          key={n}
+          className={`text-xs ${n <= rating ? "text-[var(--accent)]" : "text-[var(--border)]"}`}
+        >
+          ★
+        </span>
+      ))}
+    </span>
+  );
+}
+
+export default function BookshelfList({
+  books,
+  categories,
+  notes = {},
+  models = {},
+}: {
+  books: Book[];
+  categories: string[];
+  notes?: Record<string, NoteLink[]>;
+  models?: Record<string, ModelLink[]>;
+}) {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const visibleCategories = selectedCategory ? [selectedCategory] : categories;
+
+  return (
+    <>
+      <div className="flex flex-wrap gap-2 mb-12">
+        <button
+          onClick={() => setSelectedCategory(null)}
+          className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+            selectedCategory === null
+              ? "border-[var(--accent)] text-[var(--accent)] bg-[var(--card)]"
+              : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--muted)]"
+          }`}
+        >
+          All
+        </button>
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() =>
+              setSelectedCategory(selectedCategory === cat ? null : cat)
+            }
+            className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+              selectedCategory === cat
+                ? "border-[var(--accent)] text-[var(--accent)] bg-[var(--card)]"
+                : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--muted)]"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <div className="space-y-16">
+        {visibleCategories.map((category) => {
+          const categoryBooks = books.filter((b) => b.category === category);
+          return (
+            <section key={category}>
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-8">
+                {category}
+              </h2>
+              <div className="space-y-10">
+                {categoryBooks.map((book) => (
+                  <div
+                    key={book.title}
+                    id={bookAnchor(book.title)}
+                    className="group scroll-mt-24"
+                  >
+                    <div className="flex items-start justify-between gap-4 mb-1">
+                      <div>
+                        <h3 className="text-base font-medium text-[var(--foreground)] leading-snug">
+                          {book.title}
+                        </h3>
+                        <p className="text-xs text-[var(--muted)] mt-0.5">
+                          {book.author}
+                          {book.year < 2000 ? null : (
+                            <span className="ml-2 opacity-60">{book.year}</span>
+                          )}
+                        </p>
+                      </div>
+                      <Stars rating={book.rating} />
+                    </div>
+                    <p className="text-sm text-[var(--muted)] leading-relaxed mt-3">
+                      {book.annotation}
+                    </p>
+                    {models[book.title]?.length ? (
+                      <p className="mt-3 text-xs text-[var(--muted)]">
+                        Develops:{" "}
+                        {models[book.title].map((model, i) => (
+                          <span key={model.id}>
+                            {i > 0 ? " · " : ""}
+                            <Link
+                              href={`/models#${model.id}`}
+                              className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+                            >
+                              {model.name}
+                            </Link>
+                          </span>
+                        ))}
+                      </p>
+                    ) : null}
+                    {notes[book.title]?.map((note) => (
+                      <Link
+                        key={note.slug}
+                        href={`/notes#${note.slug}`}
+                        className="block mt-2 text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+                      >
+                        Reading note: {note.title} →
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+    </>
+  );
+}
