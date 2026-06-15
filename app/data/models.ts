@@ -125,7 +125,8 @@ export const models: Model[] = [
     domain: "Psychology",
     tagline: "We estimate probability by how easily examples come to mind.",
     explanation:
-      "Plane crashes feel more dangerous than car crashes because they're more vivid and memorable. The availability heuristic makes us systematically overestimate dramatic, recent, or emotionally resonant risks and underestimate mundane, distributed ones. The correction isn't to suppress intuition — it's to look up base rates. When your gut says something is likely, ask: 'What fraction of cases actually go this way?' Your answer is probably biased toward memorable examples.",
+      "Plane crashes feel more dangerous than car crashes because they're more vivid and memorable. The availability heuristic makes us systematically overestimate dramatic, recent, or emotionally resonant risks and underestimate mundane, distributed ones. It usually works — ease of recall once tracked real frequency — and breaks precisely when something other than frequency (vividness, repetition, an algorithmic feed) curates what you remember. The correction isn't to suppress intuition — it's to check where your examples came from, then look up the base rate.",
+    essays: ["availability-heuristic"],
   },
   {
     id: "anchoring",

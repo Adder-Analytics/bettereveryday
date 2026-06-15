@@ -1,3 +1,5 @@
+import { models } from "./models";
+
 export type Book = {
   title: string;
   author: string;
@@ -5,7 +7,20 @@ export type Book = {
   annotation: string;
   category: string;
   rating: 1 | 2 | 3;
+  /** IDs of mental models (see models.ts) this book genuinely develops. */
+  models?: string[];
 };
+
+/** Stable anchor for deep-linking to a book on the bookshelf, e.g. /bookshelf#book-the-big-short */
+export function bookAnchor(title: string): string {
+  return (
+    "book-" +
+    title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+  );
+}
 
 export const books: Book[] = [
   // Finance
@@ -17,6 +32,7 @@ export const books: Book[] = [
       "The best personal finance book written in the last decade, and it's barely about finance. Housel's central argument: your behavior with money matters more than your knowledge of it. Every chapter is a standalone essay. Chapters 3 and 18 alone are worth the read.",
     category: "Finance",
     rating: 3,
+    models: ["compound-interest"],
   },
   {
     title: "The Little Book of Common Sense Investing",
@@ -26,6 +42,7 @@ export const books: Book[] = [
       "The inventor of the index fund explains, in under 200 pages, why almost every investor would do better by buying the whole market and doing nothing. The argument is simple, the evidence is overwhelming, and it will make you deeply suspicious of anyone trying to sell you something more complicated.",
     category: "Finance",
     rating: 3,
+    models: ["compound-interest", "opportunity-cost"],
   },
   {
     title: "A Random Walk Down Wall Street",
@@ -35,6 +52,7 @@ export const books: Book[] = [
       "The classic case for index investing, backed by decades of research. Malkiel's core claim — that stock prices follow a random walk and can't be reliably predicted — has not aged badly. A more rigorous read than Bogle but makes the same essential case.",
     category: "Finance",
     rating: 2,
+    models: ["regression-to-mean", "base-rates"],
   },
 
   {
@@ -45,6 +63,7 @@ export const books: Book[] = [
       "The 2008 financial crisis explained through the handful of people who saw it coming, by the best narrative nonfiction writer working. Lewis makes collateralized debt obligations comprehensible by attaching them to characters you care about. Read it for the storytelling, but notice the deeper lesson: the people who got it right weren't smarter — they were the only ones who actually read the documents everyone else assumed someone had read.",
     category: "Finance",
     rating: 2,
+    models: ["incentive-structures", "second-order-effects"],
   },
 
   // Thinking & Decisions
@@ -56,6 +75,7 @@ export const books: Book[] = [
       "The comprehensive account of how human judgment actually works, from the psychologist who spent a career studying its failures. System 1 and System 2 have become cultural shorthand for a reason. Read the chapters on overconfidence, planning fallacy, and what Kahneman calls 'what you see is all there is' — these are the biases that cost people the most.",
     category: "Thinking",
     rating: 3,
+    models: ["availability-heuristic", "anchoring", "loss-aversion", "base-rates", "regression-to-mean"],
   },
   {
     title: "Fooled by Randomness",
@@ -65,6 +85,7 @@ export const books: Book[] = [
       "Taleb's best book, sharper and less performatively contrarian than his later work. The core argument: we systematically underestimate the role of luck in success and failure, and this leads to learning exactly the wrong lessons from outcomes. Essential reading alongside Annie Duke on decision quality.",
     category: "Thinking",
     rating: 3,
+    models: ["expected-value", "regression-to-mean", "base-rates"],
   },
   {
     title: "How Minds Change",
@@ -93,6 +114,7 @@ export const books: Book[] = [
       "Mathematical thinking applied to everyday claims, by a mathematician who can actually write. The opening story alone is worth the book: Abraham Wald and the missing bullet holes — the WWII insight that you should armor the parts of returning planes that don't have damage, because the planes hit there never came back. Survivorship bias, linearity assumptions, regression to the mean — the math that protects you from confident nonsense.",
     category: "Thinking",
     rating: 2,
+    models: ["regression-to-mean", "expected-value", "fermi-estimation"],
   },
 
   // Writing & Craft
@@ -152,6 +174,7 @@ export const books: Book[] = [
       "Fifty years old and still the best example of what a book can do: hand you a new lens and permanently change what you see through it. The gene's-eye view — organisms as vehicles genes build to propagate themselves — reorganizes your understanding of cooperation, altruism, and conflict in one move. Also the book that coined the word 'meme,' as a throwaway analogy in the final chapter. Skip the later culture-war Dawkins; this is the one that earned the reputation.",
     category: "Science",
     rating: 3,
+    models: ["incentive-structures", "feedback-loops"],
   },
 
   // History & Perspective
@@ -196,3 +219,28 @@ export const books: Book[] = [
 ];
 
 export const categories = Array.from(new Set(books.map((b) => b.category)));
+
+// Build-time integrity check: every model a book claims to teach must exist.
+// Mirrors the throw-on-unknown discipline used for reading paths (threads.ts),
+// so a renamed or mistyped model id fails the build instead of rendering a dead link.
+const modelIds = new Set(models.map((m) => m.id));
+for (const book of books) {
+  for (const id of book.models ?? []) {
+    if (!modelIds.has(id)) {
+      throw new Error(`Book "${book.title}" references unknown model id "${id}"`);
+    }
+  }
+}
+
+/** Models a book develops, resolved to {id, name} for linking. Empty if none. */
+export function getModelsForBook(book: Book): { id: string; name: string }[] {
+  return (book.models ?? [])
+    .map((id) => models.find((m) => m.id === id))
+    .filter((m): m is NonNullable<typeof m> => Boolean(m))
+    .map((m) => ({ id: m.id, name: m.name }));
+}
+
+/** Books that develop a given model id, for the reverse (model → books) direction. */
+export function getBooksForModel(modelId: string): Book[] {
+  return books.filter((b) => b.models?.includes(modelId));
+}

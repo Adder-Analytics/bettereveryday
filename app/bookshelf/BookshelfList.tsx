@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { Book } from "../data/books";
+import { type Book, bookAnchor } from "../data/books";
 
 type NoteLink = { slug: string; title: string };
+type ModelLink = { id: string; name: string };
 
 function Stars({ rating }: { rating: 1 | 2 | 3 }) {
   return (
@@ -25,10 +26,12 @@ export default function BookshelfList({
   books,
   categories,
   notes = {},
+  models = {},
 }: {
   books: Book[];
   categories: string[];
   notes?: Record<string, NoteLink[]>;
+  models?: Record<string, ModelLink[]>;
 }) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
@@ -74,7 +77,11 @@ export default function BookshelfList({
               </h2>
               <div className="space-y-10">
                 {categoryBooks.map((book) => (
-                  <div key={book.title} className="group">
+                  <div
+                    key={book.title}
+                    id={bookAnchor(book.title)}
+                    className="group scroll-mt-24"
+                  >
                     <div className="flex items-start justify-between gap-4 mb-1">
                       <div>
                         <h3 className="text-base font-medium text-[var(--foreground)] leading-snug">
@@ -92,6 +99,22 @@ export default function BookshelfList({
                     <p className="text-sm text-[var(--muted)] leading-relaxed mt-3">
                       {book.annotation}
                     </p>
+                    {models[book.title]?.length ? (
+                      <p className="mt-3 text-xs text-[var(--muted)]">
+                        Develops:{" "}
+                        {models[book.title].map((model, i) => (
+                          <span key={model.id}>
+                            {i > 0 ? " · " : ""}
+                            <Link
+                              href={`/models#${model.id}`}
+                              className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+                            >
+                              {model.name}
+                            </Link>
+                          </span>
+                        ))}
+                      </p>
+                    ) : null}
                     {notes[book.title]?.map((note) => (
                       <Link
                         key={note.slug}

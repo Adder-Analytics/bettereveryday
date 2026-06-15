@@ -495,6 +495,44 @@ export const posts: Post[] = [
 
 <p>But mostly: stay. The people who get genuinely good at things aren't the ones who found the perfect practice. They're the ones who showed up long enough to understand what they were actually practicing.</p>`,
   },
+  {
+    slug: "availability-heuristic",
+    title: "What Comes to Mind Is Not What's Likely",
+    date: "2026-06-15",
+    excerpt:
+      "We judge how common something is by how easily examples come to mind. That worked when memory was a fair sample of the world. It stopped working the moment something else started curating what you remember.",
+    readTime: 6,
+    tags: ["psychology", "thinking"],
+    content: `<p>Ask people whether more deaths in the United States come from homicide or from suicide, and most say homicide. Ask whether more come from accidents or from disease, and many say accidents. Both answers are wrong, and not by a little: suicide kills more people than homicide most years, and disease kills many times more people than accidents. The classic studies — Lichtenstein, Slovic, and colleagues in the late 1970s — found that people systematically overrate dramatic, reported causes of death and underrate quiet, common ones. The error has a direction, and the direction is the whole point.</p>
+
+<p>Tversky and Kahneman named the mechanism in 1973: the <em>availability heuristic</em>. We estimate how frequent or likely something is by how easily instances come to mind. Asked whether shark attacks or falling airplane parts kill more beachgoers, you don't consult a table — you check how readily you can summon an example, and you answer from the ease of that retrieval.</p>
+
+<h2>It usually works, which is the trap</h2>
+
+<p>The reason the heuristic is so deeply wired is that it is usually <em>right</em>. For most of human history, the things you could recall easily were the things you had actually encountered often. If lions came to mind faster than leopards, it was probably because there were more lions around. Ease of recall was a decent proxy for frequency because your memory was a roughly fair sample of your own experience. The heuristic isn't a design flaw; it's a shortcut that was well-calibrated to the environment that produced it.</p>
+
+<p>So the failure isn't that the heuristic is crude. The failure is specific and almost surgical: availability breaks exactly when something other than real frequency determines what you can easily recall. Vividness does it. Recency does it. Emotional charge does it. Sheer repetition does it. When any of those decouple from how often a thing actually happens, your sense of "how common is this?" quietly detaches from the world and attaches to whatever has been loud in your memory lately.</p>
+
+<h2>The environment is now optimized against you</h2>
+
+<p>Here is the uncomfortable modern turn. The information environment most of us live inside is engineered to maximize exactly the properties that break availability — and to strip out the one property that would keep it honest.</p>
+
+<p>News is, almost by definition, a record of the non-representative. A plane that lands safely is not a story; the one in ten million that doesn't is wall-to-wall coverage. Reporting selects for the rare, the dramatic, and the emotionally legible, because that is what holds attention. An algorithmic feed goes further: it is tuned to engagement, and engagement correlates with outrage, fear, and novelty far more than with frequency. The result is a sample of reality curated by newsworthiness — which is close to the precise opposite of a base rate.</p>
+
+<p>This produces a genuinely strange effect: the more closely you follow the news about a category of event, the <em>worse</em> calibrated your sense of its frequency can become. The feeling of being well-informed and the state of being well-calibrated can move in opposite directions. People who consume the most coverage of rare violent crime, plane crashes, or kidnappings are often the most miscalibrated about how common those things are, because their internal sample has been assembled by editors and recommendation engines optimizing for memorability, not for representativeness.</p>
+
+<h2>What this is not</h2>
+
+<p>The careful version matters here, because the lazy version — "your intuition is garbage, ignore your gut" — is both wrong and useless. Availability is not always distorting. For things you sample directly and fairly, recall remains a perfectly good estimator: you don't need a base rate to know how often it rains where you live, because your memory of local weather <em>is</em> a representative sample. The danger zone is narrow and identifiable. It is secondhand, curated, vivid information about large or distant populations — exactly the kind of thing you cannot sample yourself and so must take on a channel's terms.</p>
+
+<p>So the fix is not to distrust intuition wholesale, which no one can actually do and stay functional. The fix is to learn to check the <em>provenance</em> of your sample. When a sense of "this is common" or "this is dangerous" arrives, ask one question: where did my examples come from? My own representative experience — or a channel that selects for memorability? If it's the channel, that's the signal to stop estimating from memory and go look up the actual rate.</p>
+
+<h2>The move under the move</h2>
+
+<p>This is why availability sits next to two other tools and not alone. The first is the <em>base rate</em>: when your gut delivers a frequency, treat it as a hypothesis and find the real proportion — what fraction of cases actually go this way? The second is number sense, the habit of estimating magnitudes from known pieces, because a base rate you can't interpret is no defense at all. Knowing that a risk kills "a few hundred people a year" only protects you if you can feel that against the size of the population it's drawn from.</p>
+
+<p>The question to carry isn't "what comes to mind?" Your mind will always answer that one, instantly and with confidence. The better question is "what would I see if I could sample the whole thing fairly?" — and then the discipline to notice that you usually can't, and to go find the number instead of trusting the highlight reel your memory has been fed. The cost of getting this wrong is not abstract. It's where you point your fear, your money, your attention, and your vote.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

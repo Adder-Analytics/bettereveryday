@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { models, domains } from "../data/models";
 import { getPostBySlug } from "../data/posts";
+import { getBooksForModel, bookAnchor } from "../data/books";
 
 export const metadata: Metadata = {
   title: "Mental Models — Better Every Day",
@@ -38,7 +39,9 @@ export default function ModelsPage() {
                 {domain}
               </h2>
               <div className="space-y-10">
-                {domainModels.map((model) => (
+                {domainModels.map((model) => {
+                  const shelfBooks = getBooksForModel(model.id);
+                  return (
                   <div key={model.id} id={model.id} className="scroll-mt-24">
                     <h3 className="text-base font-semibold text-[var(--foreground)] mb-1">
                       {model.name}
@@ -68,8 +71,25 @@ export default function ModelsPage() {
                         })}
                       </div>
                     )}
+                    {shelfBooks.length > 0 && (
+                      <p className="mt-2 text-xs text-[var(--muted)]">
+                        On the shelf:{" "}
+                        {shelfBooks.map((book, i) => (
+                          <span key={book.title}>
+                            {i > 0 ? " · " : ""}
+                            <Link
+                              href={`/bookshelf#${bookAnchor(book.title)}`}
+                              className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+                            >
+                              {book.title}
+                            </Link>
+                          </span>
+                        ))}
+                      </p>
+                    )}
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </section>
           );

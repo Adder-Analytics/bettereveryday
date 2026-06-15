@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { posts, getPostBySlug, formatDate } from "../../data/posts";
 import { models } from "../../data/models";
+import { getThreadsForEssay } from "../../data/threads";
 import type { Metadata } from "next";
 
 type Props = {
@@ -41,6 +42,7 @@ export default async function PostPage({ params }: Props) {
   const prev = index > 0 ? posts[index - 1] : null;
   const next = index < posts.length - 1 ? posts[index + 1] : null;
   const relatedModels = models.filter((m) => m.essays?.includes(slug));
+  const relatedThreads = getThreadsForEssay(slug);
 
   return (
     <div className="max-w-2xl mx-auto px-6 py-16">
@@ -85,6 +87,30 @@ export default async function PostPage({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </article>
+
+      {relatedThreads.length > 0 && (
+        <aside className="mt-16 pt-8 border-t border-[var(--border)]">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-5">
+            Part of a Reading Path
+          </h2>
+          <div className="space-y-3">
+            {relatedThreads.map((thread) => (
+              <Link
+                key={thread.id}
+                href={`/start#${thread.id}`}
+                className="group block"
+              >
+                <span className="text-sm font-medium text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
+                  {thread.title}
+                </span>
+                <span className="block mt-0.5 text-sm text-[var(--muted)] leading-relaxed">
+                  Step {thread.step} of {thread.total} — see the whole path on Start Here.
+                </span>
+              </Link>
+            ))}
+          </div>
+        </aside>
+      )}
 
       {relatedModels.length > 0 && (
         <aside className="mt-16 pt-8 border-t border-[var(--border)]">

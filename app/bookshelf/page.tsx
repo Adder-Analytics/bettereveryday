@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { books, categories } from "../data/books";
+import { books, categories, getModelsForBook } from "../data/books";
 import { notes } from "../data/notes";
 import BookshelfList from "./BookshelfList";
 
@@ -26,6 +26,12 @@ const noteLinks = Object.fromEntries(
     .filter(([, links]) => links.length > 0)
 );
 
+const modelLinks = Object.fromEntries(
+  books
+    .map((b) => [b.title, getModelsForBook(b)])
+    .filter(([, links]) => (links as unknown[]).length > 0)
+);
+
 export default function BookshelfPage() {
   return (
     <div className="max-w-2xl mx-auto px-6 py-16">
@@ -41,7 +47,12 @@ export default function BookshelfPage() {
         </p>
       </div>
 
-      <BookshelfList books={books} categories={categories} notes={noteLinks} />
+      <BookshelfList
+        books={books}
+        categories={categories}
+        notes={noteLinks}
+        models={modelLinks}
+      />
 
       <div className="mt-16 pt-8 border-t border-[var(--border)]">
         <p className="text-sm text-[var(--muted)]">

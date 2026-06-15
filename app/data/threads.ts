@@ -111,6 +111,11 @@ export const threads: Thread[] = [
         why: "Number sense as a working defense against confident nonsense.",
       },
       {
+        kind: "essay",
+        slug: "availability-heuristic",
+        why: "Why the vivid story misleads — and how the news environment weaponizes it.",
+      },
+      {
         kind: "note",
         slug: "kahneman-inside-view",
         why: "Why awareness of a bias, on its own, changes almost nothing.",
@@ -167,6 +172,24 @@ export const threads: Thread[] = [
     ],
   },
 ];
+
+/**
+ * Reverse lookup: which reading paths include this essay, and where in the
+ * sequence. Lets an essay page show "part of <path> (step N of M)" without the
+ * thread having to declare anything in the essay's direction — declared once in
+ * `threads`, surfaced in both directions, can't drift.
+ */
+export function getThreadsForEssay(
+  slug: string
+): { id: string; title: string; step: number; total: number }[] {
+  return threads.flatMap((thread) => {
+    const i = thread.steps.findIndex(
+      (s) => s.kind === "essay" && s.slug === slug
+    );
+    if (i === -1) return [];
+    return [{ id: thread.id, title: thread.title, step: i + 1, total: thread.steps.length }];
+  });
+}
 
 const kindLabels: Record<ThreadStep["kind"], string> = {
   essay: "Essay",

@@ -60,6 +60,19 @@ export const notes: Note[] = [
 
 <p>Fifty years old, and still the clearest account I know of why systems full of reasonable people produce outcomes none of them want.</p>`,
   },
+  {
+    slug: "ellenberg-survivorship",
+    title: "The Sample You Can See Is Not the Sample You Want",
+    bookTitle: "How Not to Be Wrong",
+    date: "2026-06-15",
+    content: `<p>The story Ellenberg opens with is the one I think about most. In World War II, the U.S. military studied bombers returning from missions to decide where to add armor. The planes came back peppered with bullet holes — concentrated on the fuselage and wings, sparse on the engines — and the natural conclusion was to reinforce where the damage clustered. The statistician Abraham Wald said the opposite: armor the engines, the places with <em>no</em> holes. The holes weren't a map of where planes got hit. They were a map of where a plane could get hit and still make it home. The data set was missing every plane that took an engine round and never returned to be counted.</p>
+
+<p>This is survivorship bias, and once Wald names it you cannot stop seeing it. The reason it's so hard to catch unaided is that the missing cases are, by construction, invisible. You reason confidently from the planes in front of you precisely because the ones that would have corrected you aren't there to be examined. The sample isn't just biased — it has been filtered by the very outcome you're trying to study.</p>
+
+<p>What strikes me is how closely this rhymes with the way memory misleads. The availability heuristic distorts because vivid, reported cases crowd into recall while the mundane ones stay quiet; survivorship distorts because the failures are removed from the data entirely before you ever look. Different mechanisms, same shape: you estimate from the cases that made it to your attention and forget to ask what selection process decided which cases those would be. "Successful founders all dropped out of college" and "the bullet holes are on the wings" are the same sentence.</p>
+
+<p>The practical reflex Ellenberg leaves me with isn't a formula. It's a question to ask before drawing any lesson from a set of examples: <em>what would the cases that didn't survive to be counted look like, and where did they go?</em> The most important data point is often the one that isn't in the room.</p>`,
+  },
 ];
 
 export const sortedNotes = [...notes].sort(
