@@ -135,6 +135,7 @@ export const models: Model[] = [
     tagline: "The first number we encounter disproportionately influences our estimates, even when it's irrelevant.",
     explanation:
       "Tell someone the Ganges River is 2,000 miles long before asking them to estimate the Nile's length, and their guess will be lower than if you'd said the Ganges is 5,000 miles — even though the Ganges has nothing to do with the Nile. Anchoring affects salary negotiations, price perception, and judicial sentencing. The counteraction: generate your own estimate before encountering external figures, and be especially suspicious of the first number offered in any negotiation.",
+    essays: ["anchoring"],
   },
   {
     id: "loss-aversion",

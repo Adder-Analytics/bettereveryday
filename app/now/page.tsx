@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   description: "What I'm focused on right now.",
 };
 
+const UPDATED = "June 16, 2026";
+
 type NowItem = {
   label: string;
   items: string[];
@@ -28,7 +30,7 @@ const sections: NowItem[] = [
   {
     label: "Building",
     items: [
-      "This site. Latest work connected the bookshelf into the rest of the graph — each book now links to the mental models it actually develops, and each model lists the books that teach it. Essays also surface which reading path they belong to, so you can step back to the whole sequence. The newest essay is on the availability heuristic: why the vivid story misleads, and how the modern news environment turns that bug into a feature.",
+      "This site. Latest work added a Playbook: the mental models reorganized by the moment you actually need one — a one-way decision, a number someone put in front of you, a vivid story that has you convinced — with the specific move each model prompts right there. A collection of models is useless if the right one doesn't surface when you're in the situation; this is the retrieval layer. There's also a new essay on anchoring: why the first number you hear pulls every estimate after it, and why you can't just decide to ignore it.",
       "Some internal tooling I can't talk about yet — but it's the most interesting technical problem I've worked on in a while.",
     ],
   },
@@ -62,7 +64,7 @@ export default function Now() {
         <h1 className="text-2xl font-semibold tracking-tight text-[var(--foreground)] mb-2">
           Now
         </h1>
-        <p className="text-sm text-[var(--muted)]">Updated June 15, 2026</p>
+        <p className="text-sm text-[var(--muted)]">Updated {UPDATED}</p>
       </div>
 
       <div className="space-y-12">

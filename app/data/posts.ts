@@ -533,6 +533,50 @@ export const posts: Post[] = [
 
 <p>The question to carry isn't "what comes to mind?" Your mind will always answer that one, instantly and with confidence. The better question is "what would I see if I could sample the whole thing fairly?" — and then the discipline to notice that you usually can't, and to go find the number instead of trusting the highlight reel your memory has been fed. The cost of getting this wrong is not abstract. It's where you point your fear, your money, your attention, and your vote.</p>`,
   },
+  {
+    slug: "anchoring",
+    title: "The First Number Wins",
+    date: "2026-06-16",
+    excerpt:
+      "The first number you hear pulls every estimate that follows toward it — even when you watched it come up on a rigged wheel. Why you can't just decide to ignore it, and what actually helps.",
+    readTime: 7,
+    tags: ["psychology", "decisions"],
+    content: `<p>In one of the most-replicated experiments in psychology, Amos Tversky and Daniel Kahneman spun a wheel of fortune in front of their subjects. The wheel was rigged to stop on 10 or 65. Then they asked a question that had nothing to do with the wheel: what percentage of African countries are in the United Nations? People who watched the wheel land on 10 guessed about 25%. People who saw it land on 65 guessed about 45%. A number everyone knew was random — they had just watched it come up on a wheel — moved their answer by twenty points.</p>
+
+<p>That is anchoring: the first number you encounter pulls every estimate that follows toward itself, even when you know it's meaningless, even when you'd swear it didn't. Tversky and Kahneman named it in 1974, alongside the mechanism they called <em>anchoring and adjustment</em>. You start from whatever number is in front of you and adjust toward what you actually believe — but you stop adjusting too soon, while you're still in the neighborhood of the anchor.</p>
+
+<h2>Why it isn't just a lab trick</h2>
+
+<p>The easy reaction is to file this under lab curiosities — rigged wheels, trivia about the UN. But anchoring runs deep for a reason worth respecting: most of the time, the first number really is informative. When a house lists at $400,000, that figure isn't random. It encodes the seller's read of the market, the neighborhood, the comparable sales. Anchoring on it and adjusting from it is a sensible starting move. The first number you hear is usually a clue, and using clues is not a bug.</p>
+
+<p>Which is exactly why the failure is so hard to catch. The heuristic doesn't break when numbers influence you — that's often correct. It breaks when an <em>uninformative</em> number influences you as much as an informative one. A wheel of fortune carries no information about the United Nations, and it moved people twenty points anyway. The danger isn't that anchors pull. It's that arbitrary and strategically chosen anchors pull about as hard as legitimate ones, and from the inside the two feel identical.</p>
+
+<h2>The number that was chosen to move you</h2>
+
+<p>Once you see that meaningless numbers anchor, you start noticing how many of the numbers around you were placed there on purpose. The opening offer in a negotiation is the clearest case. Research consistently finds that the first number on the table drags the final price toward it — the side that anchors first often does better, because the other party spends the rest of the conversation adjusting away from a figure the first side chose. The "was $200, now $80" tag is the same move: the high "original" is an anchor placed so the real price feels like a rescue.</p>
+
+<p>It reaches places it has no business being. In a striking study, the German researchers Birte Englich, Thomas Mussweiler, and Fritz Strack had experienced judges read a criminal case and then roll a pair of dice — secretly loaded — before recommending a sentence. Judges who rolled high recommended substantially longer sentences than judges who rolled low. These were legal professionals; sentencing was their craft; and a pair of dice moved their judgment. The anchor doesn't need to be plausible to work. It just needs to be the number you saw first.</p>
+
+<p>But honesty about the research cuts both ways, and the negotiation case is where the slogan oversells. Making the first offer is not a free win. If the other side knows things you don't — the true value of the house, what the role actually pays — an aggressive opening anchor can backfire, advertising your ignorance and leaving on the table value you didn't know was there. The careful claim is the contingent one: anchoring first helps when you're well-informed about the range and hurts when you aren't. "Always make the first offer" is exactly the kind of confident, portable rule this site keeps finding to be narrower than advertised.</p>
+
+<h2>Why you can't just decide not to</h2>
+
+<p>The natural response — "fine, I'll ignore the anchor" — doesn't work, and it's worth understanding why. You can't un-hear a number. Once it's in your head it becomes the point your mind adjusts <em>from</em>, and adjustment is effortful: it takes deliberate work to keep moving away from the anchor, and you run out of conviction before you've gone far enough. Worse, people who know about anchoring are not measurably protected from it. Told in advance that the number is random, warned to ignore it, even paid to be accurate — subjects anchor anyway. Like most biases worth knowing, awareness does almost nothing on its own. The correction has to live in what you <em>do</em>, not in what you know.</p>
+
+<h2>What actually helps</h2>
+
+<p>Three habits measurably reduce the damage, and none of them is "try harder to ignore it."</p>
+
+<p><em>Set your own anchor first.</em> Before you look at the salary range, the asking price, the consultant's estimate, write down your own number — what your own analysis predicts — and seal it before exposure. You can't stop their number from pulling you, but you can make sure you arrive with a competing one that wasn't chosen by the other side. This is the concrete reason the other tools on this site earn their place: a base rate or a Fermi estimate is, in practice, a number you generated yourself, which is the only kind of number an anchor can't manufacture for you.</p>
+
+<p><em>Consider the opposite.</em> The one debiasing move that holds up in the lab is to argue against the anchor on purpose — to ask "what are the reasons this number is too high?" and then "too low?" Generating reasons the anchor is wrong is precisely what insufficient adjustment fails to do on its own; doing it deliberately restores some of the adjustment you'd otherwise skip.</p>
+
+<p><em>Ask who put the number there.</em> When a figure appears — a price, a quote, a target, a forecast — pause on its provenance, the same question the availability heuristic demands of a vivid memory: did this number come from the thing I'm trying to estimate, or from someone who benefits from where I land? A list price, an opening bid, a "typical" budget, a suggested donation, the amount pre-filled as the default on a form — these are anchors with authors. Knowing a number was chosen for you doesn't dissolve its pull, but it tells you exactly which numbers deserve an independent estimate of your own to push back against.</p>
+
+<h2>The move under the move</h2>
+
+<p>Anchoring is, in the end, a fact about order: whatever comes first sets the frame, and everything after is an adjustment from it. That's why it appears wherever you have to put a value on something uncertain — money, time, probability, worth — and why the defense always has the same shape. Have your own number ready before you meet theirs. The first number wins; the only way not to lose to someone else's is to bring one of your own.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
