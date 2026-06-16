@@ -98,7 +98,11 @@ export default function StartPage() {
           <Link href="/models" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
             mental models
           </Link>
-          , or press{" "}
+          . Already facing a specific decision? The{" "}
+          <Link href="/playbook" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+            playbook
+          </Link>{" "}
+          finds the right models by the moment you&rsquo;re in. Or press{" "}
           <kbd className="px-1.5 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /
           </kbd>{" "}

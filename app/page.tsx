@@ -80,9 +80,16 @@ export default function Home() {
         </h2>
         <p className="text-sm text-[var(--muted)] leading-relaxed max-w-md mb-4">
           A curated collection of mental models — ideas from finance, decisions,
-          systems thinking, and psychology that change how you reason. Reading
-          notes capture what specific books did to my thinking. Everything
-          cross-references, and everything is searchable (press{" "}
+          systems thinking, and psychology that change how you reason. The{" "}
+          <Link
+            href="/playbook"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            playbook
+          </Link>{" "}
+          flips them around so you can find the right one by the moment you&rsquo;re
+          in. Reading notes capture what specific books did to my thinking.
+          Everything cross-references, and everything is searchable (press{" "}
           <kbd className="px-1 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /
           </kbd>{" "}
@@ -94,6 +101,12 @@ export default function Home() {
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Mental models →
+          </Link>
+          <Link
+            href="/playbook"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            The playbook →
           </Link>
           <Link
             href="/notes"

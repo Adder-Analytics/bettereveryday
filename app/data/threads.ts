@@ -116,6 +116,11 @@ export const threads: Thread[] = [
         why: "Why the vivid story misleads — and how the news environment weaponizes it.",
       },
       {
+        kind: "essay",
+        slug: "anchoring",
+        why: "Why the first number you hear hijacks every estimate after it, even a random one.",
+      },
+      {
         kind: "note",
         slug: "kahneman-inside-view",
         why: "Why awareness of a bias, on its own, changes almost nothing.",

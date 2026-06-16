@@ -6,9 +6,10 @@ import { posts, formatDate } from "../data/posts";
 import { models } from "../data/models";
 import { books } from "../data/books";
 import { notes } from "../data/notes";
+import { situations } from "../data/situations";
 
 type SearchDoc = {
-  type: "Essay" | "Note" | "Model" | "Book";
+  type: "Essay" | "Note" | "Model" | "Book" | "Playbook";
   title: string;
   href: string;
   snippet: string;
@@ -59,6 +60,17 @@ const docs: SearchDoc[] = [
     titleText: `${b.title} ${b.author} ${b.category}`.toLowerCase(),
     bodyText: b.annotation.toLowerCase(),
   })),
+  ...situations.map((s): SearchDoc => ({
+    type: "Playbook",
+    title: s.title,
+    href: `/playbook#${s.id}`,
+    snippet: s.scene,
+    meta: `${s.models.length} models for this situation`,
+    titleText: `${s.title} ${s.question}`.toLowerCase(),
+    bodyText: `${s.scene} ${s.question} ${s.models
+      .map((m) => m.move)
+      .join(" ")}`.toLowerCase(),
+  })),
 ];
 
 function search(query: string): SearchDoc[] {
@@ -85,6 +97,7 @@ const typeStyles: Record<SearchDoc["type"], string> = {
   Note: "text-[var(--accent)] border-[var(--border)]",
   Model: "text-[var(--muted)] border-[var(--muted)]",
   Book: "text-[var(--muted)] border-[var(--border)]",
+  Playbook: "text-[var(--accent)] border-[var(--accent)]",
 };
 
 export default function SearchClient() {
@@ -136,9 +149,10 @@ export default function SearchClient() {
       {!showResults && (
         <p className="mt-6 text-sm text-[var(--muted)] leading-relaxed">
           The index covers {posts.length} essays, {notes.length} reading notes,{" "}
-          {models.length} mental models, and {books.length} books. Results link
-          straight to the essay, the note, the model&rsquo;s entry on the
-          reference page, or the bookshelf. Tip: press{" "}
+          {models.length} mental models, {situations.length} playbook situations,
+          and {books.length} books. Results link straight to the essay, the note,
+          the model&rsquo;s entry on the reference page, the playbook, or the
+          bookshelf. Tip: press{" "}
           <kbd className="px-1.5 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /
           </kbd>{" "}
