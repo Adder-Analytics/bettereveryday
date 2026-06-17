@@ -312,6 +312,34 @@ export function resolveSituation(situation: Situation): ResolvedSituation {
 }
 
 /**
+ * Flat, fully-resolved view of every situation — the shape the decision
+ * worksheet (`/decide`) renders. Reuses resolveSituation so the worksheet, the
+ * playbook, and search all draw from the same curated source and can't drift.
+ */
+export function getWorksheetSituations() {
+  return situations.map((s) => {
+    const r = resolveSituation(s);
+    return {
+      id: r.id,
+      title: r.title,
+      scene: r.scene,
+      question: r.question,
+      models: r.models.map((m) => ({
+        id: m.id,
+        name: m.name,
+        move: m.move,
+        href: m.href,
+      })),
+      references: r.references.map((ref) => ({
+        label: ref.label,
+        title: ref.title,
+        href: ref.href,
+      })),
+    };
+  });
+}
+
+/**
  * Reverse lookup: which situations call for this model. Lets the models page
  * show "Reach for this when…" without the model having to declare anything in
  * the situation's direction — declared once in `situations`, surfaced in both

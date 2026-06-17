@@ -9,7 +9,7 @@ import { notes } from "../data/notes";
 import { situations } from "../data/situations";
 
 type SearchDoc = {
-  type: "Essay" | "Note" | "Model" | "Book" | "Playbook";
+  type: "Essay" | "Note" | "Model" | "Book" | "Playbook" | "Tool";
   title: string;
   href: string;
   snippet: string;
@@ -71,6 +71,20 @@ const docs: SearchDoc[] = [
       .map((m) => m.move)
       .join(" ")}`.toLowerCase(),
   })),
+  {
+    type: "Tool",
+    title: "Work a decision through",
+    href: "/decide",
+    snippet:
+      "An interactive worksheet: pick your situation, write your reasoning against the models that apply, and keep the decision memo.",
+    meta: "Decision worksheet",
+    titleText:
+      "work a decision through decision worksheet decide tool journal memo".toLowerCase(),
+    bodyText:
+      `an interactive worksheet for thinking a real decision through. pick the situation you're in, write your reasoning, and keep a decision memo you can check against later. ${situations
+        .map((s) => s.title)
+        .join(" ")}`.toLowerCase(),
+  },
 ];
 
 function search(query: string): SearchDoc[] {
@@ -98,6 +112,7 @@ const typeStyles: Record<SearchDoc["type"], string> = {
   Model: "text-[var(--muted)] border-[var(--muted)]",
   Book: "text-[var(--muted)] border-[var(--border)]",
   Playbook: "text-[var(--accent)] border-[var(--accent)]",
+  Tool: "text-[var(--accent)] border-[var(--accent)]",
 };
 
 export default function SearchClient() {
@@ -150,9 +165,9 @@ export default function SearchClient() {
         <p className="mt-6 text-sm text-[var(--muted)] leading-relaxed">
           The index covers {posts.length} essays, {notes.length} reading notes,{" "}
           {models.length} mental models, {situations.length} playbook situations,
-          and {books.length} books. Results link straight to the essay, the note,
-          the model&rsquo;s entry on the reference page, the playbook, or the
-          bookshelf. Tip: press{" "}
+          the decision worksheet, and {books.length} books. Results link straight
+          to the essay, the note, the model&rsquo;s entry on the reference page, the
+          playbook, the worksheet, or the bookshelf. Tip: press{" "}
           <kbd className="px-1.5 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /
           </kbd>{" "}
