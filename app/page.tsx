@@ -34,6 +34,12 @@ export default function Home() {
           >
             New here? Start with a reading path →
           </Link>
+          <Link
+            href="/decide"
+            className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Facing a decision now? Work it through →
+          </Link>
           <span className="text-sm text-[var(--muted)]">Updated {lastUpdated}</span>
         </div>
       </section>
@@ -88,7 +94,15 @@ export default function Home() {
             playbook
           </Link>{" "}
           flips them around so you can find the right one by the moment you&rsquo;re
-          in. Reading notes capture what specific books did to my thinking.
+          in, and the{" "}
+          <Link
+            href="/decide"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            worksheet
+          </Link>{" "}
+          lets you actually think a real decision through and keep the memo.
+          Reading notes capture what specific books did to my thinking.
           Everything cross-references, and everything is searchable (press{" "}
           <kbd className="px-1 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /
@@ -107,6 +121,12 @@ export default function Home() {
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             The playbook →
+          </Link>
+          <Link
+            href="/decide"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Decision worksheet →
           </Link>
           <Link
             href="/notes"

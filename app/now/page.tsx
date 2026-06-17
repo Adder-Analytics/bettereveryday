@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: "What I'm focused on right now.",
 };
 
-const UPDATED = "June 16, 2026";
+const UPDATED = "June 17, 2026";
 
 type NowItem = {
   label: string;
@@ -30,7 +30,7 @@ const sections: NowItem[] = [
   {
     label: "Building",
     items: [
-      "This site. Latest work added a Playbook: the mental models reorganized by the moment you actually need one — a one-way decision, a number someone put in front of you, a vivid story that has you convinced — with the specific move each model prompts right there. A collection of models is useless if the right one doesn't surface when you're in the situation; this is the retrieval layer. There's also a new essay on anchoring: why the first number you hear pulls every estimate after it, and why you can't just decide to ignore it.",
+      "This site. Latest work turns the playbook from something you read into something you use: a decision worksheet at /decide. Pick the situation you're actually in, write your reasoning against the few models that apply, and end with the call and the one reason behind it — then copy it out as a plain-text memo. It's decision journaling, the cheapest known way to actually get better at deciding, because the memo is the only record the outcome can't quietly rewrite. Everything stays in your browser. The site had become a beautiful reference you could only read; this is the first page you can do something with.",
       "Some internal tooling I can't talk about yet — but it's the most interesting technical problem I've worked on in a while.",
     ],
   },

@@ -41,7 +41,15 @@ export default function PlaybookPage() {
           </Link>
           : instead of browsing ideas and hoping to remember them later, find the
           moment you&rsquo;re in and see which few tools it calls for — and the one
-          concrete move each one prompts right here.
+          concrete move each one prompts right here. Got a real decision in front
+          of you? Any situation below opens as a fill-in{" "}
+          <Link
+            href="/decide"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            worksheet
+          </Link>{" "}
+          you can think through and keep.
         </p>
       </header>
 
@@ -85,6 +93,13 @@ export default function PlaybookPage() {
                 </li>
               ))}
             </ul>
+
+            <Link
+              href={`/decide?s=${s.id}`}
+              className="mt-6 inline-block text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+            >
+              Work this through in the worksheet →
+            </Link>
 
             {s.references.length > 0 && (
               <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2">
