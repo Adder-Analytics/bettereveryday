@@ -99,9 +99,10 @@ export default function Home() {
             href="/decide"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
-            worksheet
+            decision journal
           </Link>{" "}
-          lets you actually think a real decision through and keep the memo.
+          lets you think a real decision through, log what you expect to happen,
+          and come back later to check it against what actually did.
           Reading notes capture what specific books did to my thinking.
           Everything cross-references, and everything is searchable (press{" "}
           <kbd className="px-1 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
@@ -126,7 +127,7 @@ export default function Home() {
             href="/decide"
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
-            Decision worksheet →
+            Decision journal →
           </Link>
           <Link
             href="/notes"

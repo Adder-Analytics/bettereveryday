@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: "What I'm focused on right now.",
 };
 
-const UPDATED = "June 17, 2026";
+const UPDATED = "June 18, 2026";
 
 type NowItem = {
   label: string;
@@ -30,7 +30,7 @@ const sections: NowItem[] = [
   {
     label: "Building",
     items: [
-      "This site. Latest work turns the playbook from something you read into something you use: a decision worksheet at /decide. Pick the situation you're actually in, write your reasoning against the few models that apply, and end with the call and the one reason behind it — then copy it out as a plain-text memo. It's decision journaling, the cheapest known way to actually get better at deciding, because the memo is the only record the outcome can't quietly rewrite. Everything stays in your browser. The site had become a beautiful reference you could only read; this is the first page you can do something with.",
+      "This site. The worksheet at /decide is now a real decision journal: after you make the call, you record what you expect to happen and how confident you are, log it, and the journal brings it back when the review date arrives — so you can confront what you actually predicted with what happened, grading the decision separately from the result. The write-it-down half was already there; this is the come-back-and-check half, which is where a decision journal actually pays off. Everything stays in your browser, no account, nothing sent anywhere.",
       "Some internal tooling I can't talk about yet — but it's the most interesting technical problem I've worked on in a while.",
     ],
   },
