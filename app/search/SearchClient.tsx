@@ -73,15 +73,15 @@ const docs: SearchDoc[] = [
   })),
   {
     type: "Tool",
-    title: "Work a decision through",
+    title: "Decision journal",
     href: "/decide",
     snippet:
-      "An interactive worksheet: pick your situation, write your reasoning against the models that apply, and keep the decision memo.",
-    meta: "Decision worksheet",
+      "Work a real decision through the models that apply, log what you expect to happen, then come back when the outcome is in and compare. A decision log you can actually learn from.",
+    meta: "Decision journal & worksheet",
     titleText:
-      "work a decision through decision worksheet decide tool journal memo".toLowerCase(),
+      "decision journal worksheet decide tool log review outcome calibration confidence hindsight memo".toLowerCase(),
     bodyText:
-      `an interactive worksheet for thinking a real decision through. pick the situation you're in, write your reasoning, and keep a decision memo you can check against later. ${situations
+      `an interactive decision journal. pick the situation you're in, reason through the models that apply, write the call, record what you expect to happen and how confident you are, and set a review date. come back later to log what actually happened and compare it against what you predicted — defeating hindsight bias and outcome bias. keeps a decision log in your browser. ${situations
         .map((s) => s.title)
         .join(" ")}`.toLowerCase(),
   },
@@ -165,9 +165,9 @@ export default function SearchClient() {
         <p className="mt-6 text-sm text-[var(--muted)] leading-relaxed">
           The index covers {posts.length} essays, {notes.length} reading notes,{" "}
           {models.length} mental models, {situations.length} playbook situations,
-          the decision worksheet, and {books.length} books. Results link straight
+          the decision journal, and {books.length} books. Results link straight
           to the essay, the note, the model&rsquo;s entry on the reference page, the
-          playbook, the worksheet, or the bookshelf. Tip: press{" "}
+          playbook, the journal, or the bookshelf. Tip: press{" "}
           <kbd className="px-1.5 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /
           </kbd>{" "}

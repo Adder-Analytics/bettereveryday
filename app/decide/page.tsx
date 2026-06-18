@@ -4,13 +4,13 @@ import { getWorksheetSituations } from "../data/situations";
 import DecideClient from "./DecideClient";
 
 export const metadata: Metadata = {
-  title: "Work a Decision Through — Better Every Day",
+  title: "Decision Journal — Better Every Day",
   description:
-    "An interactive worksheet for thinking through a real decision. Pick the situation you're in, write your reasoning against the few models that actually apply, and walk away with a decision memo you can check against later.",
+    "An interactive decision journal. Pick the situation you're in, reason through the models that apply, record what you expect to happen — then come back when the outcome is in and compare. The cheapest known way to actually get better at deciding.",
   openGraph: {
-    title: "Work a Decision Through — Better Every Day",
+    title: "Decision Journal — Better Every Day",
     description:
-      "Pick the situation you're in, work your reasoning through the models that apply, and keep the memo. The playbook, made usable in the moment.",
+      "Work a real decision through the models that apply, log what you expect, and review it later against what actually happened. Hindsight bias can't rewrite a record you wrote first.",
     type: "website",
   },
 };
@@ -22,7 +22,7 @@ export default function DecidePage() {
     <div className="max-w-2xl mx-auto px-6 py-16">
       <header className="mb-12">
         <h1 className="text-2xl font-semibold tracking-tight text-[var(--foreground)] mb-4">
-          Work a decision through
+          Decision journal
         </h1>
         <p className="text-base text-[var(--muted)] leading-relaxed">
           The{" "}
@@ -39,12 +39,20 @@ export default function DecidePage() {
           >
             playbook
           </Link>{" "}
-          tells you which ones a moment calls for. This is the last step: actually
-          using them. Pick the situation you&rsquo;re in, write your thinking
-          against each model&rsquo;s prompt, and end with the call and the one reason
-          behind it. Writing a decision down before you know how it turned out is
-          the single cheapest way to get better at deciding — it&rsquo;s the only
-          record that isn&rsquo;t rewritten by the result.
+          tells you which ones a moment calls for. Here you actually use them. Pick
+          the situation you&rsquo;re in, write your thinking against each
+          model&rsquo;s prompt, make the call — then add the part most people skip:
+          what you expect to happen, and how sure you are. Log it, and the journal
+          brings it back when the outcome is in.
+        </p>
+        <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
+          That second half is the whole point. Once you know how something turned
+          out, your memory quietly rewrites what you thought beforehand (hindsight
+          bias), and you start grading decisions by their results instead of their
+          reasoning — so a good call that got unlucky gets filed as a mistake. A
+          record you wrote <em>before</em> the result is the only thing the result
+          can&rsquo;t edit. That&rsquo;s what makes a decision journal the cheapest
+          known way to actually get better at deciding.
         </p>
       </header>
 
