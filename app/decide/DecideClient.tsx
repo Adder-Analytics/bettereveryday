@@ -154,6 +154,55 @@ function mergeEntry(raw: Partial<SituationEntry> | undefined | null): SituationE
   };
 }
 
+/**
+ * Normalize a log entry read from storage or imported from a file. The log is
+ * the one thing on this site worth protecting across years and devices, so it
+ * has to survive shape drift (older entries, hand-edited or partial JSON) the
+ * same way mergeEntry hardens the worksheet. Anything missing gets a safe
+ * default; anything malformed gets dropped rather than rendered.
+ */
+function mergeLogEntry(raw: Partial<LogEntry> | null | undefined): LogEntry {
+  const r = raw ?? {};
+  const reasoning = Array.isArray(r.reasoning)
+    ? r.reasoning.map((x) => ({
+        name: typeof x?.name === "string" ? x.name : "",
+        move: typeof x?.move === "string" ? x.move : "",
+        text: typeof x?.text === "string" ? x.text : "",
+      }))
+    : [];
+  const conf =
+    typeof r.confidence === "number" &&
+    (CONFIDENCE_OPTIONS as readonly number[]).includes(r.confidence)
+      ? r.confidence
+      : null;
+  const oq: OutcomeQuality | null =
+    r.outcomeQuality === "good" || r.outcomeQuality === "bad" || r.outcomeQuality === "tbd"
+      ? r.outcomeQuality
+      : null;
+  const dq: DecisionQuality | null =
+    r.decisionQuality === "again" || r.decisionQuality === "different"
+      ? r.decisionQuality
+      : null;
+  return {
+    id: typeof r.id === "string" && r.id ? r.id : newId(),
+    situationId: typeof r.situationId === "string" ? r.situationId : "",
+    situationTitle: typeof r.situationTitle === "string" && r.situationTitle ? r.situationTitle : "A decision",
+    question: typeof r.question === "string" ? r.question : "",
+    decision: typeof r.decision === "string" ? r.decision : "",
+    reasoning,
+    call: typeof r.call === "string" ? r.call : "",
+    expectation: typeof r.expectation === "string" ? r.expectation : "",
+    confidence: conf,
+    decidedOn: typeof r.decidedOn === "string" && r.decidedOn ? r.decidedOn : todayISO(),
+    reviewOn: typeof r.reviewOn === "string" && r.reviewOn ? r.reviewOn : addDaysISO(todayISO(), REVIEW_DEFAULT_DAYS),
+    reviewedOn: typeof r.reviewedOn === "string" && r.reviewedOn ? r.reviewedOn : null,
+    outcome: typeof r.outcome === "string" ? r.outcome : "",
+    outcomeQuality: oq,
+    decisionQuality: dq,
+    lessons: typeof r.lessons === "string" ? r.lessons : "",
+  };
+}
+
 function loadJSON<T>(key: string, fallback: T): T {
   try {
     const raw = window.localStorage.getItem(key);
@@ -263,6 +312,94 @@ const DECISION_LABELS: Record<DecisionQuality, string> = {
   different: "I'd decide differently",
 };
 
+/**
+ * A worked example — one fully-filled, already-reviewed entry shown read-only so
+ * a first-timer can see what a good forecast and an honest review look like
+ * before writing their own. Deliberately the hardest, most instructive case: a
+ * good decision that got a bad outcome. The two-axis grade (turned out badly,
+ * but I'd make the same call) is exactly the resulting-proof distinction the
+ * whole review screen exists to teach. It is never written into the user's log.
+ */
+const SAMPLE_ENTRY: LogEntry = {
+  id: "sample",
+  situationId: "sample",
+  situationTitle: "A high-stakes, hard-to-reverse decision",
+  question: "What does this look like if it goes wrong, and can I live with that?",
+  decision: "Leave a stable job to join an early-stage startup as employee #6.",
+  reasoning: [
+    {
+      name: "Inversion",
+      move: "Ask what would make this a clear mistake, then check those failure modes.",
+      text:
+        "The obvious way this goes wrong: the company runs out of money and I'm job-hunting in a year with a gap and a pay cut. I checked: 14 months of runway, a lead investor who has bridged before. Survivable, not catastrophic — I have 6 months of savings.",
+    },
+    {
+      name: "Expected value",
+      move: "Weigh outcomes by how likely they are, not by how vivid they are.",
+      text:
+        "Maybe 40% this is a real win (equity + a role I can't get elsewhere yet), 60% it folds or stalls. Even the downside leaves me more hireable for having operated at that altitude. The upside is large and the floor is not the floor I feared.",
+    },
+    {
+      name: "Reversibility",
+      move: "One-way doors deserve more caution than two-way doors.",
+      text:
+        "Less one-way than it feels. My field is hiring; a former manager said the door stays open. The thing I can't get back is the year — but I'd spend that year learning either way.",
+    },
+  ],
+  call:
+    "Take it. The downside is recoverable and the upside isn't available any other way. The one reason that decided it: I'd regret not trying more than I'd regret a year that didn't work out.",
+  expectation:
+    "Within a year I'll have shipped something I'm proud of and learned more than I would have by staying — whether or not the company makes it.",
+  confidence: 70,
+  decidedOn: "2026-01-12",
+  reviewOn: "2026-06-12",
+  reviewedOn: "2026-06-14",
+  outcome:
+    "The company didn't make it — we wound down at month nine after the next round fell through. So the thing I was 70% unsure about happened. But I shipped the payments rewrite end to end, ran a team for the first time, and landed a better role within five weeks of the wind-down.",
+  outcomeQuality: "bad",
+  decisionQuality: "again",
+  lessons:
+    "Grade the bet, not the result: the company folding was inside the 60% I'd priced in, and everything I decided on still held. What I'd carry forward is that my real floor was higher than my gut's floor — I'd weighted the vivid disaster more than its actual probability. Next time, write the floor down in numbers before deciding, like I did here.",
+};
+
+/**
+ * Calibration: the one thing only a journal can show you. Group reviewed entries
+ * by the confidence you claimed at the time, and compare it to how often things
+ * actually turned out the way you predicted. "good" means it went as expected
+ * (a hit); "bad" means it didn't (a miss); "too early to tell" is excluded
+ * because it isn't yet a resolved question. Grounded in the calibration idea
+ * behind Tetlock's forecasting work and Parrish's decision-journal template,
+ * but kept to the same coarse buckets the forecast uses — no false precision.
+ */
+type CalBucket = { confidence: number; n: number; hits: number };
+function computeCalibration(log: LogEntry[]): {
+  buckets: CalBucket[];
+  scored: number;
+  hits: number;
+} {
+  const scorable = log.filter(
+    (e) =>
+      e.reviewedOn &&
+      e.confidence != null &&
+      (e.outcomeQuality === "good" || e.outcomeQuality === "bad")
+  );
+  const buckets: CalBucket[] = CONFIDENCE_OPTIONS.map((c) => {
+    const inBucket = scorable.filter((e) => e.confidence === c);
+    return {
+      confidence: c,
+      n: inBucket.length,
+      hits: inBucket.filter((e) => e.outcomeQuality === "good").length,
+    };
+  }).filter((b) => b.n > 0);
+  return {
+    buckets,
+    scored: scorable.length,
+    hits: scorable.filter((e) => e.outcomeQuality === "good").length,
+  };
+}
+
+const CALIBRATION_MIN = 4; // below this, the numbers say more about luck than calibration
+
 const textareaClass =
   "w-full px-3 py-2 text-sm rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--accent)] transition-colors resize-y leading-relaxed";
 
@@ -279,8 +416,10 @@ export default function DecideClient({
   const [activeId, setActiveId] = useState<string | null>(null);
   const [screen, setScreen] = useState<"work" | "log">("work");
   const [reviewId, setReviewId] = useState<string | null>(null);
+  const [viewingSample, setViewingSample] = useState(false);
   const [copied, setCopied] = useState(false);
   const [justLogged, setJustLogged] = useState(false);
+  const [importNote, setImportNote] = useState<string | null>(null);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Load saved work + the log, and honor a ?s=<id> deep link from the playbook.
@@ -296,7 +435,7 @@ export default function DecideClient({
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setStore(savedStore && typeof savedStore === "object" ? savedStore : {});
-    setLog(Array.isArray(savedLog) ? savedLog : []);
+    setLog(Array.isArray(savedLog) ? savedLog.map(mergeLogEntry) : []);
     if (requested && situations.some((s) => s.id === requested)) {
       setActiveId(requested);
     } else if (wantsLog) {
@@ -357,8 +496,72 @@ export default function DecideClient({
     setScreen("log");
     setReviewId(null);
     setActiveId(null);
+    setViewingSample(false);
+    setImportNote(null);
     if (typeof window !== "undefined") window.scrollTo({ top: 0 });
   }, []);
+
+  const openSample = useCallback(() => {
+    setViewingSample(true);
+    if (typeof window !== "undefined") window.scrollTo({ top: 0 });
+  }, []);
+
+  // Download the log as a JSON file. The journal lives only in this browser by
+  // design; this is the escape hatch that makes that defensible — a backup you
+  // own, and the way to carry it to another device, with nothing sent anywhere.
+  const exportLog = useCallback(() => {
+    try {
+      const payload = JSON.stringify(
+        { app: "bettereveryday-decision-log", version: 1, exportedAt: todayISO(), log },
+        null,
+        2
+      );
+      const blob = new Blob([payload], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `decision-log-${todayISO()}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch {
+      if (typeof window !== "undefined") window.alert("Couldn't export the log in this browser.");
+    }
+  }, [log]);
+
+  // Merge a previously exported file back in. Entries are matched by id so
+  // re-importing the same file (or a partial overlap) never duplicates; only
+  // genuinely new decisions are added. Existing entries are left untouched, so
+  // an import can't quietly overwrite a review you've already written.
+  const importLog = useCallback(
+    (file: File) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const parsed = JSON.parse(String(reader.result));
+          const rawEntries: unknown = Array.isArray(parsed) ? parsed : parsed?.log;
+          if (!Array.isArray(rawEntries)) throw new Error("not a decision log");
+          const incoming = rawEntries.map(mergeLogEntry);
+          setLog((prev) => {
+            const have = new Set(prev.map((e) => e.id));
+            const added = incoming.filter((e) => !have.has(e.id));
+            setImportNote(
+              added.length === 0
+                ? "Nothing new to import — those decisions are already in your log."
+                : `Imported ${added.length} decision${added.length === 1 ? "" : "s"}.`
+            );
+            return added.length === 0 ? prev : [...added, ...prev];
+          });
+        } catch {
+          setImportNote("That file didn't look like a decision-log export.");
+        }
+      };
+      reader.onerror = () => setImportNote("Couldn't read that file.");
+      reader.readAsText(file);
+    },
+    []
+  );
 
   const copy = useCallback(async (text: string) => {
     let ok = false;
@@ -461,6 +664,18 @@ export default function DecideClient({
     setJustLogged(false);
   }, [activeId]);
 
+  // ---- The worked example (read-only, never enters the user's log) ------
+  if (viewingSample) {
+    return (
+      <SampleEntry
+        onBack={() => {
+          setViewingSample(false);
+          if (typeof window !== "undefined") window.scrollTo({ top: 0 });
+        }}
+      />
+    );
+  }
+
   // ---- The decision log -------------------------------------------------
   if (screen === "log") {
     const reviewing = reviewId ? log.find((e) => e.id === reviewId) ?? null : null;
@@ -484,6 +699,10 @@ export default function DecideClient({
           if (typeof window !== "undefined") window.scrollTo({ top: 0 });
         }}
         onBack={() => selectSituation("")}
+        onExport={exportLog}
+        onImport={importLog}
+        onViewSample={openSample}
+        importNote={importNote}
       />
     );
   }
@@ -543,10 +762,22 @@ export default function DecideClient({
           </button>
         )}
 
+        <p className="mt-6 text-sm text-[var(--muted)] leading-relaxed">
+          Not sure what a finished entry looks like?{" "}
+          <button
+            type="button"
+            onClick={openSample}
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity font-medium"
+          >
+            See a worked example →
+          </button>
+        </p>
+
         <p className="mt-8 text-xs text-[var(--muted)] leading-relaxed">
           Everything you write stays in this browser — it&rsquo;s saved locally and
           never sent anywhere. Work a decision through, log it with what you expect
-          to happen, and the log reminds you to come back and check.
+          to happen, and the log reminds you to come back and check. You can{" "}
+          {hydrated && log.length > 0 ? "export it any time as a backup." : "export it as a backup once you've logged one."}
         </p>
       </div>
     );
@@ -810,11 +1041,20 @@ function LogList({
   log,
   onOpen,
   onBack,
+  onExport,
+  onImport,
+  onViewSample,
+  importNote,
 }: {
   log: LogEntry[];
   onOpen: (id: string) => void;
   onBack: () => void;
+  onExport: () => void;
+  onImport: (file: File) => void;
+  onViewSample: () => void;
+  importNote: string | null;
 }) {
+  const fileRef = useRef<HTMLInputElement | null>(null);
   const sorted = [...log].sort((a, b) => {
     const aDue = isDue(a);
     const bDue = isDue(b);
@@ -848,6 +1088,8 @@ function LogList({
         . Open one to record what actually happened — and to see it next to what
         you expected at the time.
       </p>
+
+      <Calibration log={log} />
 
       {log.length === 0 ? (
         <p className="mt-8 text-sm text-[var(--muted)] leading-relaxed">
@@ -898,6 +1140,144 @@ function LogList({
           })}
         </ul>
       )}
+
+      {/* Backup / portability. The journal is local by design; this is what
+          keeps that from meaning "lose it when you clear your browser." */}
+      <div className="mt-10 pt-6 border-t border-[var(--border)]">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          {log.length > 0 && (
+            <button
+              type="button"
+              onClick={onExport}
+              className="text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+            >
+              Export as a file ↓
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={() => fileRef.current?.click()}
+            className="text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Import a backup ↑
+          </button>
+          <button
+            type="button"
+            onClick={onViewSample}
+            className="text-sm text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+          >
+            See a worked example
+          </button>
+          <input
+            ref={fileRef}
+            type="file"
+            accept="application/json,.json"
+            className="sr-only"
+            onChange={(e) => {
+              const f = e.target.files?.[0];
+              if (f) onImport(f);
+              e.target.value = ""; // allow re-importing the same file
+            }}
+          />
+        </div>
+        {importNote && (
+          <p className="mt-3 text-sm text-[var(--foreground)]">{importNote}</p>
+        )}
+        <p className="mt-3 text-xs text-[var(--muted)] leading-relaxed">
+          Your log never leaves this browser. Export downloads a private copy you
+          own — back it up, or import it on another device. Importing only adds
+          decisions you don&rsquo;t already have; it never overwrites a review.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// =========================================================================
+// Calibration: of the decisions you were N% sure of, how many actually went
+// the way you predicted? It's the feedback a journal exists to give and that
+// memory alone can't — but only once enough decisions have been reviewed that
+// the answer is about you and not about luck.
+
+function Calibration({ log }: { log: LogEntry[] }) {
+  const { buckets, scored, hits } = computeCalibration(log);
+  if (scored === 0) return null;
+
+  if (scored < CALIBRATION_MIN) {
+    const left = CALIBRATION_MIN - scored;
+    return (
+      <div className="mt-8 rounded-lg border border-dashed border-[var(--border)] px-4 py-3">
+        <p className="text-sm text-[var(--muted)] leading-relaxed">
+          <span className="font-semibold text-[var(--foreground)]">Calibration</span>{" "}
+          unlocks once you&rsquo;ve reviewed a few decisions with a confidence and a
+          clear outcome. {scored} so far — about {left} more and it&rsquo;ll start
+          telling you something real instead of something lucky.
+        </p>
+      </div>
+    );
+  }
+
+  const overall = Math.round((hits / scored) * 100);
+  const claimedAvg = Math.round(
+    buckets.reduce((s, b) => s + b.confidence * b.n, 0) / scored
+  );
+  const gap = overall - claimedAvg;
+  const verdict =
+    gap <= -12
+      ? "You tend to be more confident than the outcomes justify — the classic overconfidence."
+      : gap >= 12
+        ? "You tend to be less confident than you turn out to be right — you could trust your read a little more."
+        : "Your confidence and your outcomes line up about right — well calibrated, so far.";
+
+  return (
+    <div className="mt-8 rounded-lg border border-[var(--border)] bg-[var(--card)] p-4">
+      <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+        Your calibration
+      </h3>
+      <p className="mt-1.5 text-sm text-[var(--muted)] leading-relaxed">
+        Across {scored} reviewed decision{scored === 1 ? "" : "s"} with a clear
+        outcome, things went the way you predicted {overall}% of the time, against
+        an average confidence of {claimedAvg}%. {verdict}
+      </p>
+      <ul className="mt-4 space-y-2.5">
+        {buckets.map((b) => {
+          const observed = Math.round((b.hits / b.n) * 100);
+          return (
+            <li key={b.confidence} className="text-sm">
+              <div className="flex items-baseline justify-between gap-3">
+                <span className="text-[var(--foreground)]">
+                  When you said{" "}
+                  <span className="font-semibold">{b.confidence}%</span>
+                </span>
+                <span className="text-[var(--muted)] text-xs">
+                  {b.hits} of {b.n} went as expected · {observed}%
+                </span>
+              </div>
+              {/* Claimed vs. observed, side by side. */}
+              <div className="mt-1.5 space-y-1" aria-hidden>
+                <div className="h-1.5 rounded-full bg-[var(--border)] overflow-hidden">
+                  <div
+                    className="h-full bg-[var(--muted)] opacity-50"
+                    style={{ width: `${b.confidence}%` }}
+                  />
+                </div>
+                <div className="h-1.5 rounded-full bg-[var(--border)] overflow-hidden">
+                  <div
+                    className="h-full bg-[var(--accent)]"
+                    style={{ width: `${observed}%` }}
+                  />
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      <p className="mt-4 text-xs text-[var(--muted)] leading-relaxed">
+        The faint bar is what you claimed; the amber bar is what actually
+        happened. Where amber falls short of faint, you were overconfident at that
+        level; where it runs past, you were underconfident. Still a small sample —
+        read it as a hint, not a verdict.
+      </p>
     </div>
   );
 }
@@ -1112,6 +1492,123 @@ function ReviewDetail({
           className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
         >
           Delete
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// =========================================================================
+// The worked example. A complete, already-reviewed entry rendered read-only so
+// a first-timer can see the shape of a good forecast and an honest review
+// before writing their own — and, specifically, see the resulting-proof move:
+// an outcome graded "turned out badly" sitting next to a decision graded "I'd
+// make the same call." It is illustrative only and never touches the log.
+
+function SampleEntry({ onBack }: { onBack: () => void }) {
+  const e = SAMPLE_ENTRY;
+  const reasoned = e.reasoning.filter((r) => r.text.trim());
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={onBack}
+        className="text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+      >
+        ← Back
+      </button>
+
+      <p className="mt-6 text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+        A worked example
+      </p>
+      <h2 className="mt-2 text-xl font-semibold tracking-tight text-[var(--foreground)] leading-snug">
+        {e.decision}
+      </h2>
+      <p className="mt-1 text-xs text-[var(--muted)]">
+        {e.situationTitle} · decided {formatHuman(e.decidedOn)} · reviewed{" "}
+        {formatHuman(e.reviewedOn as string)}
+      </p>
+      <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
+        This is a sample, not one of your decisions — nothing here is saved. It
+        shows what a finished entry looks like once the outcome is in.
+      </p>
+
+      {/* The contemporaneous record. */}
+      <div className="mt-6 rounded-lg border border-[var(--border)] bg-[var(--card)] p-4 space-y-4">
+        <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+          What they wrote at the time
+        </h3>
+        <ul className="space-y-2.5">
+          {reasoned.map((r, i) => (
+            <li key={i} className="text-sm leading-relaxed">
+              <span className="font-semibold text-[var(--foreground)]">{r.name}.</span>{" "}
+              <span className="text-[var(--muted)]">{r.text}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="text-sm leading-relaxed">
+          <span className="font-semibold text-[var(--foreground)]">The call.</span>{" "}
+          <span className="text-[var(--muted)]">{e.call}</span>
+        </div>
+        <div className="text-sm leading-relaxed">
+          <span className="font-semibold text-[var(--foreground)]">I expected.</span>{" "}
+          <span className="text-[var(--muted)]">
+            {e.expectation} — {e.confidence}% confident.
+          </span>
+        </div>
+      </div>
+
+      {/* The review, shown as the record it becomes. */}
+      <div className="mt-8 space-y-5">
+        <div>
+          <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+            What actually happened
+          </h3>
+          <p className="text-sm text-[var(--muted)] leading-relaxed">{e.outcome}</p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div className="rounded-lg border border-[var(--border)] p-3">
+            <span className="block text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+              How it turned out
+            </span>
+            <span className="mt-1 block text-sm font-medium text-[var(--foreground)]">
+              {OUTCOME_LABELS[e.outcomeQuality as OutcomeQuality]}
+            </span>
+          </div>
+          <div className="rounded-lg border border-[var(--accent)] p-3">
+            <span className="block text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+              The decision itself
+            </span>
+            <span className="mt-1 block text-sm font-medium text-[var(--foreground)]">
+              {DECISION_LABELS[e.decisionQuality as DecisionQuality]}
+            </span>
+          </div>
+        </div>
+
+        <p className="text-sm text-[var(--muted)] leading-relaxed pl-4 border-l-2 border-[var(--accent)]">
+          This is the whole point of grading two things at once: it{" "}
+          <span className="text-[var(--foreground)]">turned out badly</span>, and it
+          was still <span className="text-[var(--foreground)]">the right call</span>.
+          A journal that only asked &ldquo;did it work?&rdquo; would file this as a
+          mistake and teach you to make worse decisions that happen to get luckier.
+        </p>
+
+        <div>
+          <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+            What they&rsquo;d carry forward
+          </h3>
+          <p className="text-sm text-[var(--muted)] leading-relaxed">{e.lessons}</p>
+        </div>
+      </div>
+
+      <div className="mt-8">
+        <button
+          type="button"
+          onClick={onBack}
+          className="text-sm font-medium px-4 py-2 rounded-lg bg-[var(--accent)] text-[var(--background)] hover:opacity-90 transition-opacity"
+        >
+          Work a real decision through
         </button>
       </div>
     </div>

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: "What I'm focused on right now.",
 };
 
-const UPDATED = "June 18, 2026";
+const UPDATED = "June 19, 2026";
 
 type NowItem = {
   label: string;
@@ -30,7 +30,7 @@ const sections: NowItem[] = [
   {
     label: "Building",
     items: [
-      "This site. The worksheet at /decide is now a real decision journal: after you make the call, you record what you expect to happen and how confident you are, log it, and the journal brings it back when the review date arrives — so you can confront what you actually predicted with what happened, grading the decision separately from the result. The write-it-down half was already there; this is the come-back-and-check half, which is where a decision journal actually pays off. Everything stays in your browser, no account, nothing sent anywhere.",
+      "This site. The decision journal at /decide can now be kept for years, not just a session: you can export the whole log as a file to back up or carry to another device, and once you've reviewed a few decisions it shows you your own calibration — of the calls you were 70% sure of, how many actually went your way. That last part is the feedback a journal exists to give and that memory alone can't. There's also a worked example now, so a first-timer can see what an honest, already-reviewed entry looks like before writing their own. Still everything in your browser, no account, nothing sent anywhere.",
       "Some internal tooling I can't talk about yet — but it's the most interesting technical problem I've worked on in a while.",
     ],
   },

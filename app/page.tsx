@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { posts, formatDate } from "./data/posts";
+import ReviewDueBadge from "./components/ReviewDueBadge";
 
 const sortedPosts = [...posts].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -84,6 +85,7 @@ export default function Home() {
         <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-4">
           Reference
         </h2>
+        <ReviewDueBadge />
         <p className="text-sm text-[var(--muted)] leading-relaxed max-w-md mb-4">
           A curated collection of mental models — ideas from finance, decisions,
           systems thinking, and psychology that change how you reason. The{" "}

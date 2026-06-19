@@ -79,9 +79,9 @@ const docs: SearchDoc[] = [
       "Work a real decision through the models that apply, log what you expect to happen, then come back when the outcome is in and compare. A decision log you can actually learn from.",
     meta: "Decision journal & worksheet",
     titleText:
-      "decision journal worksheet decide tool log review outcome calibration confidence hindsight memo".toLowerCase(),
+      "decision journal worksheet decide tool log review outcome calibration confidence hindsight memo export import backup example".toLowerCase(),
     bodyText:
-      `an interactive decision journal. pick the situation you're in, reason through the models that apply, write the call, record what you expect to happen and how confident you are, and set a review date. come back later to log what actually happened and compare it against what you predicted — defeating hindsight bias and outcome bias. keeps a decision log in your browser. ${situations
+      `an interactive decision journal. pick the situation you're in, reason through the models that apply, write the call, record what you expect to happen and how confident you are, and set a review date. come back later to log what actually happened and compare it against what you predicted — defeating hindsight bias and outcome bias. keeps a decision log in your browser that you can export as a file to back up or move between devices, and import again. shows your calibration once you've reviewed a few decisions — of the calls you were seventy percent sure of, how many actually went your way. includes a worked example. ${situations
         .map((s) => s.title)
         .join(" ")}`.toLowerCase(),
   },

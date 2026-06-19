@@ -54,6 +54,16 @@ export default function DecidePage() {
           can&rsquo;t edit. That&rsquo;s what makes a decision journal the cheapest
           known way to actually get better at deciding.
         </p>
+        <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
+          It only works if you keep it, so the log is yours to keep: everything
+          stays in your browser, you can export it as a file to back up or move to
+          another device, and once you&rsquo;ve reviewed a few decisions it&rsquo;ll
+          show you your own calibration — how often things actually went the way you
+          were sure they would. New here?{" "}
+          <span className="text-[var(--foreground)]">
+            There&rsquo;s a worked example linked below the situations.
+          </span>
+        </p>
       </header>
 
       <DecideClient situations={situations} />
