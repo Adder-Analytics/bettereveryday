@@ -1,3 +1,5 @@
+import { models } from "./models";
+
 export type Note = {
   slug: string;
   title: string;
@@ -5,11 +7,19 @@ export type Note = {
   bookTitle: string;
   date: string;
   content: string;
+  /**
+   * IDs of mental models (see models.ts) this note sharpens — the abstract idea
+   * the concrete story is an instance of. Surfaced in both directions: the note
+   * links out to the model, and the model lists the note. Unknown ids throw at
+   * build time (see getNotesForModel's caller / resolveNoteModels).
+   */
+  models?: string[];
 };
 
 export const notes: Note[] = [
   {
     slug: "kahneman-inside-view",
+    models: ["base-rates"],
     title: "Knowing About a Bias Doesn't Exempt You From It",
     bookTitle: "Thinking, Fast and Slow",
     date: "2026-06-12",
@@ -23,6 +33,7 @@ export const notes: Note[] = [
   },
   {
     slug: "housel-tails",
+    models: ["expected-value", "margin-of-safety"],
     title: "Tails Drive Everything — Which Means It's Normal for Most Things to Fail",
     bookTitle: "The Psychology of Money",
     date: "2026-06-12",
@@ -49,6 +60,7 @@ export const notes: Note[] = [
   },
   {
     slug: "dawkins-ess",
+    models: ["incentive-structures", "leverage-points"],
     title: "Stable Doesn't Mean Good",
     bookTitle: "The Selfish Gene",
     date: "2026-06-12",
@@ -62,6 +74,7 @@ export const notes: Note[] = [
   },
   {
     slug: "ellenberg-survivorship",
+    models: ["availability-heuristic", "base-rates"],
     title: "The Sample You Can See Is Not the Sample You Want",
     bookTitle: "How Not to Be Wrong",
     date: "2026-06-15",
@@ -81,4 +94,30 @@ export const sortedNotes = [...notes].sort(
 
 export function getNotesForBook(bookTitle: string): Note[] {
   return notes.filter((n) => n.bookTitle === bookTitle);
+}
+
+/**
+ * The models a note sharpens, resolved to {id, name} so titles come from the
+ * source data and can't drift. Throws at build time on an unknown id — the same
+ * throw-on-unknown discipline situations.ts and books.ts use.
+ */
+export function resolveNoteModels(note: Note): { id: string; name: string }[] {
+  return (note.models ?? []).map((id) => {
+    const model = models.find((m) => m.id === id);
+    if (!model) {
+      throw new Error(`Note "${note.slug}" references unknown model "${id}"`);
+    }
+    return { id: model.id, name: model.name };
+  });
+}
+
+/**
+ * Reverse lookup: which reading notes illuminate this model. Lets the models
+ * page surface "In the reading notes" without the model declaring anything —
+ * declared once on the note, surfaced in both directions, can't drift.
+ */
+export function getNotesForModel(id: string): { slug: string; title: string }[] {
+  return notes
+    .filter((n) => (n.models ?? []).includes(id))
+    .map((n) => ({ slug: n.slug, title: n.title }));
 }

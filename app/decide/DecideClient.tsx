@@ -301,6 +301,89 @@ function buildLogMemo(e: LogEntry): string {
   return lines.join("\n");
 }
 
+// ---- calendar reminder (.ics) -------------------------------------------
+// The journal's whole thesis is "come back when the outcome is in" — but that
+// only happens if something reminds you, and a badge you only see if you visit
+// the site can't. This writes a standard iCalendar file (RFC 5545) you can drop
+// into Google / Apple / Outlook, so the review lands in the one place you'll
+// actually look on the day. Generated entirely in the browser; like everything
+// else here, nothing is sent anywhere.
+const SITE_URL = "https://bettereveryday.vercel.app";
+
+/** Escape a value for an iCalendar TEXT property (RFC 5545 §3.3.11). */
+function icsEscape(text: string): string {
+  return text
+    .replace(/\\/g, "\\\\")
+    .replace(/;/g, "\\;")
+    .replace(/,/g, "\\,")
+    .replace(/\r?\n/g, "\\n");
+}
+
+/** Fold content lines to <=75 chars; continuation lines begin with a space. */
+function icsFold(line: string): string {
+  if (line.length <= 75) return line;
+  const chunks = [line.slice(0, 75)];
+  let rest = line.slice(75);
+  while (rest.length > 0) {
+    chunks.push(" " + rest.slice(0, 74));
+    rest = rest.slice(74);
+  }
+  return chunks.join("\r\n");
+}
+
+/** Current time as a UTC iCalendar timestamp, YYYYMMDDTHHMMSSZ. */
+function icsStamp(): string {
+  return new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+}
+
+function buildICS(e: LogEntry): string {
+  const day = e.reviewOn.replace(/-/g, ""); // YYYYMMDD
+  // A 9:00–9:30 floating-local event with an alarm at start: it fires at a
+  // humane hour wherever you happen to be, instead of at midnight like a bare
+  // all-day event, and it carries enough context to act on without the site.
+  const dtStart = `${day}T090000`;
+  const dtEnd = `${day}T093000`;
+  const title = (e.decision.trim() || e.situationTitle).replace(/\s+/g, " ").trim();
+
+  const desc: string[] = [
+    "Time to review a decision you logged — grade it before memory rewrites what you expected.",
+  ];
+  if (e.question.trim()) desc.push(`\nYou asked: ${e.question.trim()}`);
+  if (e.call.trim()) desc.push(`\nYour call: ${e.call.trim()}`);
+  if (e.expectation.trim()) {
+    const conf = e.confidence != null ? ` (${e.confidence}% confident)` : "";
+    desc.push(`\nYou expected: ${e.expectation.trim()}${conf}`);
+  }
+  desc.push(
+    "\nNow: what actually happened — and was it a good decision regardless of how it turned out?"
+  );
+  desc.push(`\nOpen your journal: ${SITE_URL}/decide?log=1`);
+
+  const lines = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Better Every Day//Decision Journal//EN",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    "BEGIN:VEVENT",
+    `UID:decide-${e.id}@bettereveryday`,
+    `DTSTAMP:${icsStamp()}`,
+    `DTSTART:${dtStart}`,
+    `DTEND:${dtEnd}`,
+    `SUMMARY:${icsEscape(`Review your decision: ${title}`)}`,
+    `DESCRIPTION:${icsEscape(desc.join(""))}`,
+    `URL:${SITE_URL}/decide?log=1`,
+    "BEGIN:VALARM",
+    "ACTION:DISPLAY",
+    "DESCRIPTION:Review your decision",
+    "TRIGGER:-PT0M",
+    "END:VALARM",
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ];
+  return lines.map(icsFold).join("\r\n") + "\r\n";
+}
+
 const OUTCOME_LABELS: Record<OutcomeQuality, string> = {
   good: "Turned out well",
   bad: "Turned out badly",
@@ -419,6 +502,7 @@ export default function DecideClient({
   const [viewingSample, setViewingSample] = useState(false);
   const [copied, setCopied] = useState(false);
   const [justLogged, setJustLogged] = useState(false);
+  const [loggedEntry, setLoggedEntry] = useState<LogEntry | null>(null);
   const [importNote, setImportNote] = useState<string | null>(null);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -489,6 +573,7 @@ export default function DecideClient({
     setScreen("work");
     setCopied(false);
     setJustLogged(false);
+    setLoggedEntry(null);
     if (typeof window !== "undefined") window.scrollTo({ top: 0 });
   }, []);
 
@@ -563,6 +648,26 @@ export default function DecideClient({
     []
   );
 
+  // Download a calendar reminder for one decision's review date. The journal
+  // can only pay off if you come back; this puts the "come back" into the
+  // calendar you already check, generated locally with nothing sent anywhere.
+  const downloadICS = useCallback((e: LogEntry) => {
+    try {
+      const blob = new Blob([buildICS(e)], { type: "text/calendar;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `review-decision-${e.reviewOn}.ics`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch {
+      if (typeof window !== "undefined")
+        window.alert("Couldn't create the calendar file in this browser.");
+    }
+  }, []);
+
   const copy = useCallback(async (text: string) => {
     let ok = false;
     try {
@@ -624,6 +729,7 @@ export default function DecideClient({
     };
     setLog((prev) => [newEntry, ...prev]);
     setJustLogged(true);
+    setLoggedEntry(newEntry);
     if (typeof window !== "undefined") window.scrollTo({ top: 0 });
   }, [active, store]);
 
@@ -662,6 +768,7 @@ export default function DecideClient({
       return next;
     });
     setJustLogged(false);
+    setLoggedEntry(null);
   }, [activeId]);
 
   // ---- The worked example (read-only, never enters the user's log) ------
@@ -687,6 +794,7 @@ export default function DecideClient({
           onChange={(fn) => updateLogEntry(reviewing.id, fn)}
           onDelete={() => deleteLogEntry(reviewing.id)}
           onCopy={() => copy(buildLogMemo(reviewing))}
+          onReminder={() => downloadICS(reviewing)}
           copied={copied}
         />
       );
@@ -986,17 +1094,32 @@ export default function DecideClient({
       </div>
 
       {justLogged && (
-        <p className="mt-4 text-sm text-[var(--foreground)] rounded-lg border border-[var(--accent)] bg-[var(--card)] px-4 py-3 leading-relaxed">
-          Logged. It&rsquo;s saved with today&rsquo;s date and a reminder to review
-          on {formatHuman(entry.reviewOn)}.{" "}
-          <button
-            type="button"
-            onClick={goLog}
-            className="text-[var(--accent)] hover:opacity-70 transition-opacity font-medium"
-          >
-            See your decision log →
-          </button>
-        </p>
+        <div className="mt-4 rounded-lg border border-[var(--accent)] bg-[var(--card)] px-4 py-3">
+          <p className="text-sm text-[var(--foreground)] leading-relaxed">
+            Logged, with today&rsquo;s date and a review set for{" "}
+            {formatHuman(entry.reviewOn)}. The journal only pays off if you come
+            back when the outcome is in — so put the review where you&rsquo;ll
+            actually see it.
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+            {loggedEntry && (
+              <button
+                type="button"
+                onClick={() => downloadICS(loggedEntry)}
+                className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Add the review to my calendar ↓
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={goLog}
+              className="text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+            >
+              See your decision log →
+            </button>
+          </div>
+        </div>
       )}
 
       {active.references.length > 0 && (
@@ -1295,6 +1418,7 @@ function ReviewDetail({
   onChange,
   onDelete,
   onCopy,
+  onReminder,
   copied,
 }: {
   entry: LogEntry;
@@ -1302,6 +1426,7 @@ function ReviewDetail({
   onChange: (fn: (e: LogEntry) => LogEntry) => void;
   onDelete: () => void;
   onCopy: () => void;
+  onReminder: () => void;
   copied: boolean;
 }) {
   const reasoned = entry.reasoning.filter((r) => r.text.trim());
@@ -1486,6 +1611,15 @@ function ReviewDetail({
         >
           {copied ? "Copied ✓" : "Copy entry"}
         </button>
+        {!entry.reviewedOn && (
+          <button
+            type="button"
+            onClick={onReminder}
+            className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+          >
+            Add to calendar ↓
+          </button>
+        )}
         <button
           type="button"
           onClick={onDelete}

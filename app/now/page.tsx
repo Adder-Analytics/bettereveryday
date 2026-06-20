@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: "What I'm focused on right now.",
 };
 
-const UPDATED = "June 19, 2026";
+const UPDATED = "June 20, 2026";
 
 type NowItem = {
   label: string;
@@ -30,7 +30,8 @@ const sections: NowItem[] = [
   {
     label: "Building",
     items: [
-      "This site. The decision journal at /decide can now be kept for years, not just a session: you can export the whole log as a file to back up or carry to another device, and once you've reviewed a few decisions it shows you your own calibration — of the calls you were 70% sure of, how many actually went your way. That last part is the feedback a journal exists to give and that memory alone can't. There's also a worked example now, so a first-timer can see what an honest, already-reviewed entry looks like before writing their own. Still everything in your browser, no account, nothing sent anywhere.",
+      "This site. The decision journal at /decide now closes its own loop: when you log a decision you can add the review to your calendar — a standard .ics file that drops into Google, Apple, or Outlook and pings you on the day with the question and what you predicted. A journal whose whole thesis is 'come back when the outcome is in' was, until now, relying on you to remember to come back; the reminder lands where you'll actually see it. (It still keeps for years too — export the whole log, carry it between devices, and once you've reviewed a few decisions it shows your calibration: of the calls you were 70% sure of, how many actually went your way.) Generated entirely in your browser, no account, nothing sent anywhere.",
+      "Connected the last loose edge in the reference: reading notes now link to the mental model each one is a concrete instance of, and every model lists the notes that illuminate it — so a story (Wald's bombers) and the idea it teaches (survivorship, base rates) are one click apart in both directions.",
       "Some internal tooling I can't talk about yet — but it's the most interesting technical problem I've worked on in a while.",
     ],
   },
