@@ -4,6 +4,7 @@ import { models, domains } from "../data/models";
 import { getPostBySlug } from "../data/posts";
 import { getBooksForModel, bookAnchor } from "../data/books";
 import { getSituationsForModel } from "../data/situations";
+import { getNotesForModel } from "../data/notes";
 
 export const metadata: Metadata = {
   title: "Mental Models — Better Every Day",
@@ -43,6 +44,7 @@ export default function ModelsPage() {
                 {domainModels.map((model) => {
                   const shelfBooks = getBooksForModel(model.id);
                   const modelSituations = getSituationsForModel(model.id);
+                  const modelNotes = getNotesForModel(model.id);
                   return (
                   <div key={model.id} id={model.id} className="scroll-mt-24">
                     <h3 className="text-base font-semibold text-[var(--foreground)] mb-1">
@@ -100,6 +102,22 @@ export default function ModelsPage() {
                               className="text-[var(--accent)] hover:opacity-70 transition-opacity"
                             >
                               {s.title}
+                            </Link>
+                          </span>
+                        ))}
+                      </p>
+                    )}
+                    {modelNotes.length > 0 && (
+                      <p className="mt-2 text-xs text-[var(--muted)]">
+                        In the reading notes:{" "}
+                        {modelNotes.map((n, i) => (
+                          <span key={n.slug}>
+                            {i > 0 ? " · " : ""}
+                            <Link
+                              href={`/notes#${n.slug}`}
+                              className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+                            >
+                              {n.title}
                             </Link>
                           </span>
                         ))}

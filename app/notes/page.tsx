@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { sortedNotes } from "../data/notes";
+import { sortedNotes, resolveNoteModels } from "../data/notes";
 import { formatDate } from "../data/posts";
 
 export const metadata: Metadata = {
@@ -37,7 +37,9 @@ export default function NotesPage() {
       </div>
 
       <div className="space-y-16">
-        {sortedNotes.map((note) => (
+        {sortedNotes.map((note) => {
+          const noteModels = resolveNoteModels(note);
+          return (
           <article key={note.slug} id={note.slug} className="scroll-mt-24">
             <header className="mb-6">
               <div className="flex items-center gap-4 mb-3">
@@ -60,8 +62,25 @@ export default function NotesPage() {
               className="prose"
               dangerouslySetInnerHTML={{ __html: note.content }}
             />
+            {noteModels.length > 0 && (
+              <p className="mt-5 text-xs text-[var(--muted)]">
+                The model underneath:{" "}
+                {noteModels.map((m, i) => (
+                  <span key={m.id}>
+                    {i > 0 ? " · " : ""}
+                    <Link
+                      href={`/models#${m.id}`}
+                      className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+                    >
+                      {m.name}
+                    </Link>
+                  </span>
+                ))}
+              </p>
+            )}
           </article>
-        ))}
+          );
+        })}
       </div>
 
       <div className="mt-16 pt-8 border-t border-[var(--border)]">
