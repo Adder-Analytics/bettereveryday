@@ -336,7 +336,9 @@ function icsStamp(): string {
   return new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 }
 
-function buildICS(e: LogEntry): string {
+/** The VEVENT block for one decision's review — reused by the single-entry and
+ *  bulk builders so both emit identical, spec-conformant events. */
+function icsVEvent(e: LogEntry): string[] {
   const day = e.reviewOn.replace(/-/g, ""); // YYYYMMDD
   // A 9:00–9:30 floating-local event with an alarm at start: it fires at a
   // humane hour wherever you happen to be, instead of at midnight like a bare
@@ -359,12 +361,7 @@ function buildICS(e: LogEntry): string {
   );
   desc.push(`\nOpen your journal: ${SITE_URL}/decide?log=1`);
 
-  const lines = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Better Every Day//Decision Journal//EN",
-    "CALSCALE:GREGORIAN",
-    "METHOD:PUBLISH",
+  return [
     "BEGIN:VEVENT",
     `UID:decide-${e.id}@bettereveryday`,
     `DTSTAMP:${icsStamp()}`,
@@ -379,9 +376,33 @@ function buildICS(e: LogEntry): string {
     "TRIGGER:-PT0M",
     "END:VALARM",
     "END:VEVENT",
+  ];
+}
+
+/** Wrap one or more VEVENT blocks in a VCALENDAR envelope, fold to ≤75 chars,
+ *  and join with CRLF per RFC 5545. */
+function wrapCalendar(events: string[][]): string {
+  const lines = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Better Every Day//Decision Journal//EN",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    ...events.flat(),
     "END:VCALENDAR",
   ];
   return lines.map(icsFold).join("\r\n") + "\r\n";
+}
+
+function buildICS(e: LogEntry): string {
+  return wrapCalendar([icsVEvent(e)]);
+}
+
+/** One calendar file holding a review reminder for every still-pending
+ *  decision — back-fill the whole backlog in one drop instead of one at a
+ *  time. Stable per-entry UIDs mean re-importing only updates, never dupes. */
+function buildICSBulk(entries: LogEntry[]): string {
+  return wrapCalendar(entries.map(icsVEvent));
 }
 
 const OUTCOME_LABELS: Record<OutcomeQuality, string> = {
@@ -482,6 +503,65 @@ function computeCalibration(log: LogEntry[]): {
 }
 
 const CALIBRATION_MIN = 4; // below this, the numbers say more about luck than calibration
+
+/**
+ * Resulting: the journal's most thesis-central read, and the one it has been
+ * collecting the data for all along without ever summarizing it. At review you
+ * grade two things on purpose-separate axes — how it *turned out* (outcome) and,
+ * ignoring the result, whether it was *the right call* (decision quality). The
+ * trap the whole site exists to fight, which Annie Duke named "resulting," is
+ * judging the second by the first: filing a good call that got unlucky as a
+ * mistake, and a bad call that got lucky as wisdom. Crossing the two axes makes
+ * that visible — and unlike a calibration curve, these are plain category counts,
+ * so they stay honest even at the small samples a personal journal produces.
+ *
+ *               turned out WELL        turned out BADLY
+ *  same call    earned (skill)         priced-in bad luck
+ *  different    got away with it       genuine mistake
+ *
+ * The two off-diagonal cells are the *divergences* — every decision where the
+ * outcome and your own honest judgment point opposite ways. That count is the
+ * single most useful number here: it's the proof, in your own hand, that you
+ * cannot read decision quality off results.
+ */
+type ResultingCell = "earned" | "unlucky" | "lucky" | "mistake";
+function computeResulting(log: LogEntry[]): {
+  counts: Record<ResultingCell, number>;
+  scored: number;
+  keptSame: number; // decisions you'd make again, regardless of outcome
+  goodOutcomes: number; // decisions that turned out well, regardless of the call
+  divergences: number; // outcome and judgment disagree
+} {
+  const scorable = log.filter(
+    (e) =>
+      e.reviewedOn &&
+      (e.outcomeQuality === "good" || e.outcomeQuality === "bad") &&
+      (e.decisionQuality === "again" || e.decisionQuality === "different")
+  );
+  const counts: Record<ResultingCell, number> = {
+    earned: 0,
+    unlucky: 0,
+    lucky: 0,
+    mistake: 0,
+  };
+  for (const e of scorable) {
+    const good = e.outcomeQuality === "good";
+    const same = e.decisionQuality === "again";
+    if (good && same) counts.earned++;
+    else if (!good && same) counts.unlucky++;
+    else if (good && !same) counts.lucky++;
+    else counts.mistake++;
+  }
+  return {
+    counts,
+    scored: scorable.length,
+    keptSame: counts.earned + counts.unlucky,
+    goodOutcomes: counts.earned + counts.lucky,
+    divergences: counts.unlucky + counts.lucky,
+  };
+}
+
+const RESULTING_MIN = 3; // one or two reviews isn't a pattern, but counts never lie
 
 const textareaClass =
   "w-full px-3 py-2 text-sm rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--accent)] transition-colors resize-y leading-relaxed";
@@ -651,13 +731,13 @@ export default function DecideClient({
   // Download a calendar reminder for one decision's review date. The journal
   // can only pay off if you come back; this puts the "come back" into the
   // calendar you already check, generated locally with nothing sent anywhere.
-  const downloadICS = useCallback((e: LogEntry) => {
+  const saveICS = useCallback((ics: string, filename: string) => {
     try {
-      const blob = new Blob([buildICS(e)], { type: "text/calendar;charset=utf-8" });
+      const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `review-decision-${e.reviewOn}.ics`;
+      a.download = filename;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -667,6 +747,20 @@ export default function DecideClient({
         window.alert("Couldn't create the calendar file in this browser.");
     }
   }, []);
+
+  const downloadICS = useCallback(
+    (e: LogEntry) => saveICS(buildICS(e), `review-decision-${e.reviewOn}.ics`),
+    [saveICS]
+  );
+
+  // One file with a reminder for every decision still awaiting review — so a
+  // backlog of pending reviews can be back-filled into the calendar in one drop
+  // instead of opening each entry. Stable per-entry UIDs keep re-adds idempotent.
+  const downloadAllICS = useCallback(() => {
+    const pending = log.filter((e) => !e.reviewedOn);
+    if (pending.length === 0) return;
+    saveICS(buildICSBulk(pending), `review-decisions-${todayISO()}.ics`);
+  }, [log, saveICS]);
 
   const copy = useCallback(async (text: string) => {
     let ok = false;
@@ -810,6 +904,7 @@ export default function DecideClient({
         onExport={exportLog}
         onImport={importLog}
         onViewSample={openSample}
+        onRemindAll={downloadAllICS}
         importNote={importNote}
       />
     );
@@ -1167,6 +1262,7 @@ function LogList({
   onExport,
   onImport,
   onViewSample,
+  onRemindAll,
   importNote,
 }: {
   log: LogEntry[];
@@ -1175,6 +1271,7 @@ function LogList({
   onExport: () => void;
   onImport: (file: File) => void;
   onViewSample: () => void;
+  onRemindAll: () => void;
   importNote: string | null;
 }) {
   const fileRef = useRef<HTMLInputElement | null>(null);
@@ -1185,6 +1282,7 @@ function LogList({
     return b.decidedOn.localeCompare(a.decidedOn); // then newest decided
   });
   const dueCount = log.filter(isDue).length;
+  const pendingCount = log.filter((e) => !e.reviewedOn).length;
 
   return (
     <div>
@@ -1212,6 +1310,17 @@ function LogList({
         you expected at the time.
       </p>
 
+      {pendingCount > 1 && (
+        <button
+          type="button"
+          onClick={onRemindAll}
+          className="mt-4 text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          Add all {pendingCount} pending reviews to my calendar ↓
+        </button>
+      )}
+
+      <Resulting log={log} />
       <Calibration log={log} />
 
       {log.length === 0 ? (
@@ -1400,6 +1509,127 @@ function Calibration({ log }: { log: LogEntry[] }) {
         happened. Where amber falls short of faint, you were overconfident at that
         level; where it runs past, you were underconfident. Still a small sample —
         read it as a hint, not a verdict.
+      </p>
+    </div>
+  );
+}
+
+// =========================================================================
+// Resulting: of the decisions you've reviewed, how often does the result agree
+// with your own honest judgment of the call? The two off-diagonal cells — a good
+// call that got unlucky, a bad call that got lucky — are the whole reason a
+// journal beats memory. Plain counts, so they're honest from the very first few.
+
+function Resulting({ log }: { log: LogEntry[] }) {
+  const { counts, scored, keptSame, goodOutcomes, divergences } = computeResulting(log);
+  if (scored === 0) return null;
+
+  if (scored < RESULTING_MIN) {
+    const left = RESULTING_MIN - scored;
+    return (
+      <div className="mt-6 rounded-lg border border-dashed border-[var(--border)] px-4 py-3">
+        <p className="text-sm text-[var(--muted)] leading-relaxed">
+          <span className="font-semibold text-[var(--foreground)]">
+            Decision vs. outcome
+          </span>{" "}
+          opens up once you&rsquo;ve reviewed a few decisions and graded both how
+          they turned out and whether you&rsquo;d make the same call. {scored} so
+          far — about {left} more and it&rsquo;ll show you where luck and judgment
+          part ways.
+        </p>
+      </div>
+    );
+  }
+
+  const keptPct = Math.round((keptSame / scored) * 100);
+  const goodPct = Math.round((goodOutcomes / scored) * 100);
+  const cells: { key: ResultingCell; label: string; gloss: string; strong: boolean }[] = [
+    {
+      key: "earned",
+      label: "Earned it",
+      gloss: "good call, good result — credit you can keep",
+      strong: false,
+    },
+    {
+      key: "unlucky",
+      label: "Priced-in bad luck",
+      gloss: "right call, bad result — a bet you shouldn't regret",
+      strong: true,
+    },
+    {
+      key: "lucky",
+      label: "Got away with it",
+      gloss: "wrong call, good result — don't bank the lesson",
+      strong: true,
+    },
+    {
+      key: "mistake",
+      label: "Worth learning from",
+      gloss: "wrong call, bad result — the real mistakes",
+      strong: false,
+    },
+  ];
+
+  return (
+    <div className="mt-6 rounded-lg border border-[var(--border)] bg-[var(--card)] p-4">
+      <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+        Decision vs. outcome
+      </h3>
+      <p className="mt-1.5 text-sm text-[var(--muted)] leading-relaxed">
+        Across {scored} reviewed decision{scored === 1 ? "" : "s"},{" "}
+        <span className="text-[var(--foreground)] font-medium">{goodPct}%</span>{" "}
+        turned out well — but{" "}
+        <span className="text-[var(--foreground)] font-medium">{keptPct}%</span>{" "}
+        you&rsquo;d make the same way again. That second number is the one that
+        tracks your judgment; the first is partly the dice.
+      </p>
+
+      <div className="mt-4 grid grid-cols-2 gap-2">
+        {cells.map((c) => (
+          <div
+            key={c.key}
+            className={`rounded-lg border p-3 ${
+              c.strong ? "border-[var(--accent)]" : "border-[var(--border)]"
+            }`}
+          >
+            <div className="flex items-baseline justify-between gap-2">
+              <span className="text-sm font-semibold text-[var(--foreground)] leading-snug">
+                {c.label}
+              </span>
+              <span className="text-base font-semibold text-[var(--foreground)] tabular-nums">
+                {counts[c.key]}
+              </span>
+            </div>
+            <span className="mt-1 block text-xs text-[var(--muted)] leading-relaxed">
+              {c.gloss}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
+        {divergences === 0 ? (
+          <>
+            So far, every result has matched your read of the call. Keep going —
+            the moment they diverge is the moment the journal earns its keep.
+          </>
+        ) : (
+          <>
+            In{" "}
+            <span className="text-[var(--foreground)] font-medium">
+              {divergences} of {scored}
+            </span>{" "}
+            ({Math.round((divergences / scored) * 100)}%), the result and your
+            honest judgment disagreed — good calls that got unlucky, or bad calls
+            that got away with it. That gap is the proof, in your own hand, that
+            you can&rsquo;t read the quality of a decision off how it happened to
+            turn out. Bank the lesson from the calls you&rsquo;d change; forgive
+            yourself the ones that were right and just unlucky.
+          </>
+        )}
+      </p>
+      <p className="mt-3 text-xs text-[var(--muted)] leading-relaxed">
+        Still a small sample — a tendency, not a verdict.
       </p>
     </div>
   );
