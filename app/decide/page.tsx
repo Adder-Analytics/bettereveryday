@@ -58,9 +58,10 @@ export default function DecidePage() {
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
           It only works if you keep it, so the log is yours to keep: everything
           stays in your browser, you can export it as a file to back up or move to
-          another device, and once you&rsquo;ve reviewed a few decisions it&rsquo;ll
-          show you your own calibration — how often things actually went the way you
-          were sure they would. New here?{" "}
+          another device, and once you&rsquo;ve reviewed a few decisions it shows you
+          two things memory can&rsquo;t: how well-calibrated your confidence is, and
+          how often a good call got unlucky or a bad call got lucky — so you grade
+          the decision, not the dice. New here?{" "}
           <span className="text-[var(--foreground)]">
             There&rsquo;s a worked example linked below the situations.
           </span>
