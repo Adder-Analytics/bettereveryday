@@ -577,6 +577,44 @@ export const posts: Post[] = [
 
 <p>Anchoring is, in the end, a fact about order: whatever comes first sets the frame, and everything after is an adjustment from it. That's why it appears wherever you have to put a value on something uncertain — money, time, probability, worth — and why the defense always has the same shape. Have your own number ready before you meet theirs. The first number wins; the only way not to lose to someone else's is to bring one of your own.</p>`,
   },
+  {
+    slug: "whether-or-not",
+    title: "The First Mistake Is the Question",
+    date: "2026-06-22",
+    excerpt:
+      "Most bad decisions aren't reasoned badly — they're framed badly, as 'whether or not' to do one thing, which quietly throws away every option nobody named. The fix takes minutes and routinely changes the answer.",
+    readTime: 6,
+    tags: ["decisions", "thinking"],
+    content: `<p>Here is a decision you have probably made some version of: <em>should I take this job, or not?</em> It feels like a decision. You can weigh it. You can list the pros and the cons, sleep on it, ask a friend. But notice what the question has already done before you've reasoned about anything. It has reduced a wide-open situation — your work, your next few years, the dozen things you could be doing with them — to a single yes-or-no about one option. Everything you didn't name has quietly left the room.</p>
+
+<p>Chip and Dan Heath, in their book <em>Decisive</em>, argue that this is where most decisions go wrong: not in the analysis, but in the framing that happens before any analysis starts. They call it <strong>narrow framing</strong> — treating a choice as "whether or not to do X" when the real choice is "X, or Y, or Z, or some combination nobody has written down yet." And the cost is large. When researchers tracked the decisions of teenagers, they found the kids framed something like two-thirds of their choices as "whether or not" — whether or not to go to the party, whether or not to break up. Adults in organizations do barely better. A study of company decisions found that only about a third of them ever considered more than one alternative. The rest were "whether or not" calls dressed up as deliberation.</p>
+
+<h2>Why the frame is invisible</h2>
+
+<p>The reason narrow framing is so dangerous is that it doesn't feel like a mistake. It feels like focus. When you're weighing whether or not to take the job, you are genuinely thinking hard — you're just thinking hard inside a box you didn't notice you were standing in. The diligence is real. The boundary of the question is the problem, and diligence inside a bad boundary only makes you more confident in a choice you never really opened up.</p>
+
+<p>There's a tell, and it's almost grammatical. Any time you can phrase your decision with the word "whether," or any time it has exactly two sides — this or nothing, in or out, yes or no — you are probably in a narrow frame. Real decisions rarely have two sides. "Should I quit?" hides: negotiate the thing that's making you want to quit, transfer teams, go part-time, stay and start something on the side, leave for a specific better thing rather than away from this one. Each of those is a door the original question painted over.</p>
+
+<h2>The cheapest improvement in decision-making</h2>
+
+<p>The fix is almost embarrassingly mechanical, which is what makes it trustworthy: it doesn't depend on being wise in the moment. Before you decide, force the frame open.</p>
+
+<p><em>Make yourself find one more option.</em> Not ten — the goal isn't paralysis. Just refuse to decide between one thing and nothing. The Heaths cite a striking finding from the German decision researcher Paul Nutt: simply adding a second alternative to consider made decisions dramatically more likely to be rated successful years later. The act of generating an option you weren't already attached to is most of the benefit, because it breaks the spell of the single path.</p>
+
+<p><em>Run the vanishing test.</em> Ask: "what would I do if this option were suddenly off the table — illegal, impossible, gone?" People who insist they have only one choice can almost always answer this instantly, which proves they had other options the whole time; the frame had just hidden them. The job offer evaporates — now what? Whatever you'd scramble to do is a real alternative you were pretending you didn't have.</p>
+
+<p><em>Find someone who already solved it.</em> Most of your decisions are not original. Someone has taken this job, made this move, had this hard conversation. Their experience is a cheaper teacher than your own future regret. This is the same instinct as looking up a base rate — replace the vivid story in your head with what actually tends to happen to people who do the thing.</p>
+
+<h2>The trap on the other side</h2>
+
+<p>It would be too neat to say "always widen, more options are always better," and it isn't true. Past a handful, more choices mostly produce anxiety and stall, not better outcomes — the well-documented cost of choice overload. And widening can curdle into its own avoidance: generating endless alternatives is a comfortable way to never decide, especially for a choice that's genuinely close and genuinely reversible. The honest version of the rule is narrow: the failure to beat is the <em>frame with one option in it</em>. Going from one to two or three is where almost all the value lives. Going from three to fifteen is usually a new way of being stuck.</p>
+
+<p>This is also why widening pairs with the rest of a good decision rather than replacing it. Once you have real alternatives on the table, you still have to weigh them honestly — against the base rate, against the range of plausible outcomes, against how reversible each one is. Widening the frame doesn't make the decision for you. It just guarantees you're deciding among the choices you actually have, instead of the single one that happened to be loudest.</p>
+
+<h2>Try it on the next one</h2>
+
+<p>The next time you catch yourself asking whether or not to do something, stop at the word "whether." Write the question again with an "or" in it and at least two real options after it. It costs a few minutes, it requires no special insight, and it routinely changes the answer — not because you reasoned better, but because you finally let yourself reason about the right thing. The worksheet on this site opens every general decision with exactly this move, because it's the one step that, skipped, makes all the careful thinking that follows quietly beside the point.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

@@ -232,6 +232,36 @@ export const situations: Situation[] = [
     essays: ["money-math", "compounding-improvements"],
     notes: ["housel-tails"],
   },
+  {
+    id: "weigh-it-through",
+    title: "Any other decision — weigh it through",
+    scene:
+      "It doesn't fit a neat category. Two jobs, a hard conversation, whether to move, whether to commit — just a real choice you keep turning over. Start here and work it like any good decision.",
+    question: "What am I actually choosing between — and what would have to be true for this to be the right call?",
+    models: [
+      {
+        id: "narrow-framing",
+        move: "Notice if you've framed this as 'whether or not.' That framing hides every option you didn't name. Before anything else, write down at least one more real choice — and ask who has already solved this exact problem.",
+      },
+      {
+        id: "base-rates",
+        move: "Set the story you're telling yourself against what usually happens. What's the base rate for people who've made this move? Go find it, or ask someone who has, before you trust your gut on how it'll go.",
+      },
+      {
+        id: "expected-value",
+        move: "Weigh each option by how likely each outcome is, not how vivid it is. A small chance of a big loss and a vivid worst case are not the same thing — name the real probabilities, even roughly.",
+      },
+      {
+        id: "pre-mortem",
+        move: "Assume it's a year out and this went badly. Write the story of why — then set the tripwire: the specific thing that, if you saw it, would tell you to stop and reconsider rather than ride it down.",
+      },
+      {
+        id: "reversibility",
+        move: "Ask whether this is a one-way or two-way door. If you can undo it cheaply, decide fast and learn by moving; agonizing over a reversible choice is its own kind of mistake. Save the slow, careful deliberation for the doors that don't swing back.",
+      },
+    ],
+    essays: ["whether-or-not", "decision-quality"],
+  },
 ];
 
 const kindLabels = { essay: "Essay", model: "Model", note: "Reading note" } as const;

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: "What I'm focused on right now.",
 };
 
-const UPDATED = "June 21, 2026";
+const UPDATED = "June 22, 2026";
 
 type NowItem = {
   label: string;
@@ -30,7 +30,7 @@ const sections: NowItem[] = [
   {
     label: "Building",
     items: [
-      "This site. The decision journal at /decide now shows you the lesson it was quietly collecting all along: it grades every reviewed decision on two separate axes — how it turned out, and whether you'd make the same call ignoring the result — but only ever summarized the first. Now it crosses them. Across your reviewed decisions it tells you how many were good calls that got unlucky, and how many were bad calls that got away with it — the divergences between luck and judgment that are the entire reason a journal beats memory. (Annie Duke calls judging the second by the first 'resulting'; it's the trap the whole site exists to fight, and now the journal names it in your own data.) Unlike a calibration curve, these are plain counts, so they stay honest from the first few entries. Plus: add every pending review to your calendar in one drop, not one at a time.",
+      "This site. The decision tool at /decide had a quiet gap: it only worked the eight named situations I'd curated — a one-way door, a number someone put in front of you, designing incentives. A real decision that didn't fit one of those molds had nowhere to go. So now there's a catch-all worksheet that works any decision through, built on the Heath brothers' WRAP process: widen the options before anything else (most choices are framed as a narrow 'whether or not,' which throws away every option nobody named), reality-test against the base rate, weigh by probability not vividness, run a pre-mortem and set a tripwire, and calibrate how much to deliberate to how reversible it is. I added the missing mental model that anchors it — Narrow Framing, the most common decision error, which happens before any analysis in how you pose the question — and an essay on it ('The First Mistake Is the Question'). It removes the biggest reason someone would land on the tool and bounce: 'my decision isn't on the list.'",
       "The decision journal also still keeps for years — export the whole log, carry it between devices, set a calendar reminder for any review, and once you've reviewed a few it shows your calibration: of the calls you were 70% sure of, how many actually went your way. Generated entirely in your browser, no account, nothing sent anywhere.",
       "Connected the last loose edge in the reference: reading notes now link to the mental model each one is a concrete instance of, and every model lists the notes that illuminate it — so a story (Wald's bombers) and the idea it teaches (survivorship, base rates) are one click apart in both directions.",
       "Some internal tooling I can't talk about yet — but it's the most interesting technical problem I've worked on in a while.",

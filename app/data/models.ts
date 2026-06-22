@@ -81,6 +81,15 @@ export const models: Model[] = [
       "Jeff Bezos's 'Type 1 and Type 2' framework: one-way doors require extensive deliberation because you can't undo them; two-way doors should be decided quickly because the cost of being wrong is low and you learn more by moving. The error most organizations make is treating too many decisions like one-way doors, which makes them slow when they should be fast. The genuinely one-way doors — hiring, culture, irreversible commitments — deserve the slowness. Most decisions don't.",
     essays: ["decision-quality"],
   },
+  {
+    id: "narrow-framing",
+    name: "Narrow Framing",
+    domain: "Decisions",
+    tagline: "Most decisions are framed as 'whether or not' — and the framing quietly throws away every option you didn't name.",
+    explanation:
+      "Chip and Dan Heath's central finding in Decisive: the most common decision error happens before any analysis, in how the choice is posed. 'Should I quit my job or not?' hides the third, fourth, and fifth options — negotiate, transfer, take a sabbatical, stay and start something on the side. A 'whether or not' question has you weighing a single path against nothing, when you should be weighing it against the alternatives you haven't bothered to find. The tell is the word 'whether,' or any choice that has exactly two sides. The fix is mechanical: force yourself to generate at least one more real option before you decide, ask 'what would I do if this option vanished?', and look for someone who has already solved this exact problem. Widening the frame costs minutes and routinely changes the answer.",
+    essays: ["whether-or-not"],
+  },
 
   // Systems Thinking
   {

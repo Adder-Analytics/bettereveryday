@@ -40,8 +40,10 @@ export default function DecidePage() {
             playbook
           </Link>{" "}
           tells you which ones a moment calls for. Here you actually use them. Pick
-          the situation you&rsquo;re in, write your thinking against each
-          model&rsquo;s prompt, make the call — then add the part most people skip:
+          the situation you&rsquo;re in — or, if yours doesn&rsquo;t fit a neat
+          category, the catch-all that works any decision through — write your
+          thinking against each model&rsquo;s prompt, make the call — then add the
+          part most people skip:
           what you expect to happen, and how sure you are. Log it, set a review
           date, and add that review to your calendar so it actually comes back to
           you when the outcome is in.
