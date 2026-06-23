@@ -90,6 +90,15 @@ export const models: Model[] = [
       "Chip and Dan Heath's central finding in Decisive: the most common decision error happens before any analysis, in how the choice is posed. 'Should I quit my job or not?' hides the third, fourth, and fifth options — negotiate, transfer, take a sabbatical, stay and start something on the side. A 'whether or not' question has you weighing a single path against nothing, when you should be weighing it against the alternatives you haven't bothered to find. The tell is the word 'whether,' or any choice that has exactly two sides. The fix is mechanical: force yourself to generate at least one more real option before you decide, ask 'what would I do if this option vanished?', and look for someone who has already solved this exact problem. Widening the frame costs minutes and routinely changes the answer.",
     essays: ["whether-or-not"],
   },
+  {
+    id: "self-distancing",
+    name: "Self-Distancing",
+    domain: "Decisions",
+    tagline: "You reason more wisely about other people's problems than your own — so step outside your own to decide.",
+    explanation:
+      "Two findings, pointing the same way. George Loewenstein's hot–cold empathy gap: in a 'hot' visceral state — fear, anger, infatuation, the panic after bad news — we systematically overweight the present feeling and can't model the calm self who has to live with the choice (and, once calm, can't quite believe we felt that way). And Solomon's paradox, named for the wise king who ruined his own house: Igor Grossmann and Ethan Kross found people reason more wisely about a friend's dilemma than an identical one of their own — and that the gap closes when they take distance from themselves. The practical tools are just ways to manufacture that distance. Temporal distance: how will this look in ten minutes, ten months, ten years? (Suzy Welch's 10/10/10 — the ten-minute pang usually shrinks against the ten-year view, which is exactly the recalibration a hot state blocks.) Social distance: what would I tell a friend in this spot, or what would the person I want to be do here? A simple cooling-off period does the same work by letting the hot state pass. The honest caveat runs the other way, though: distance is for stripping the visceral *overweighting*, not for numbing a feeling that is real information. 'It won't matter in ten years' flattens almost everything, and can become a way to talk yourself out of a problem worth acting on now. Use it on choices you'll have to live with once you're calm; don't use it to explain away the calm signal itself.",
+    essays: ["advice-you-dont-take"],
+  },
 
   // Systems Thinking
   {
