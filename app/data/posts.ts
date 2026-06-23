@@ -615,6 +615,50 @@ export const posts: Post[] = [
 
 <p>The next time you catch yourself asking whether or not to do something, stop at the word "whether." Write the question again with an "or" in it and at least two real options after it. It costs a few minutes, it requires no special insight, and it routinely changes the answer — not because you reasoned better, but because you finally let yourself reason about the right thing. The worksheet on this site opens every general decision with exactly this move, because it's the one step that, skipped, makes all the careful thinking that follows quietly beside the point.</p>`,
   },
+  {
+    slug: "advice-you-dont-take",
+    title: "You Give Better Advice Than You Take",
+    date: "2026-06-23",
+    excerpt:
+      "You can see the answer to a friend's dilemma in seconds and stay blind to the same one in your own life. That gap is measurable — and you can close it on purpose.",
+    readTime: 6,
+    tags: ["decisions", "psychology"],
+    content: `<p>A friend sits across from you and lays out their dilemma — the job, the relationship, the move — and within a minute you can see it. Not because you're wiser than they are, but because you can see the whole board, and they can only see the one square they're standing on. What's strange is that you have a version of that exact dilemma in your own life, and on that one you are just as stuck as they are. You give counsel you can't take. You can read everyone's life but your own.</p>
+
+<p>This isn't a personal failing. It's reliable enough to have a name and a number behind it.</p>
+
+<h2>The wise king who couldn't run his house</h2>
+
+<p>Psychologists call it Solomon's paradox, after the biblical king famous for dispensing wisdom to everyone who came to him and famous, in the same stories, for a personal life he governed disastrously. Igor Grossmann and Ethan Kross put it to the test: they gave people dilemmas — some framed as their own, some as a friend's — and scored the reasoning for the things wisdom is actually made of, like recognizing the limits of your own knowledge, considering other perspectives, and looking for compromise. People reasoned more wisely about a friend's problem than about an identical one of their own. The same person, the same problem, two different qualities of thought — the only thing that changed was whose name was on it.</p>
+
+<p>The part that matters for everyday use is what fixed it. When the researchers had people reflect on their <em>own</em> dilemma from a distanced, third-person vantage — as if watching it happen to someone else — the gap closed. The wisdom was available the whole time. It was just locked behind the first person.</p>
+
+<h2>Why the hot state is a bad advisor</h2>
+
+<p>The mechanism underneath is what George Loewenstein named the hot–cold empathy gap. In a "hot" visceral state — fear, anger, infatuation, the adrenaline after bad news, the sting of a loss — we systematically overweight what we feel right now and lose the ability to model the calm version of ourselves who has to live with the choice. And it runs both directions: once you've cooled off, you genuinely can't reconstruct why it felt so urgent. Anyone who has read an email they fired off in anger, or remembered a panic-sell at the bottom of a dip, has met both selves and watched them fail to understand each other.</p>
+
+<p>The danger isn't feeling things. The danger is that a hot state quietly rewrites the weights — it makes the ten-minute relief of sending the email outrank the ten-month cost of having sent it, and it does that without announcing itself as a feeling at all. It shows up disguised as obviousness. The call feels less like an emotion and more like simply seeing clearly. That's exactly when it's worth distrusting.</p>
+
+<h2>Manufacturing distance</h2>
+
+<p>If the problem is that you're standing too close to your own life, the fix is to step back from it — and you can do that deliberately, in two directions.</p>
+
+<p><strong>Across time.</strong> Suzy Welch's version is the cleanest: how will I feel about this in ten minutes, in ten months, in ten years? The three horizons do real work because a hot state collapses them into one. The ten-minute pang — the awkwardness of the hard conversation, the rush of the impulse buy, the relief of quitting — is loud and almost always shrinks against the ten-year view. Running the three on purpose is just forcing the recalibration the feeling is blocking. Sometimes the answer survives all three horizons, and then you know it wasn't the heat talking.</p>
+
+<p><strong>Across person.</strong> Ask what you'd tell a friend who described this exact situation to you — or what the person you're trying to become would do here. Say it in the third person, by name, if it helps: not "should I take this" but "should she take this." It sounds like a gimmick and it measurably isn't; it's the same move that closed the gap in the research. The advice you'd give a friend is the advice you'd give yourself if you could see your own board.</p>
+
+<p>The oldest tool of all is just a cooling-off period. Most hot decisions have a fuse far shorter than the choice itself — sleep on it and the part that was deciding for you is often simply gone by morning. The rule worth keeping is structural: never make an irreversible decision in a hot state. If the door swings both ways, waiting costs you almost nothing. If it doesn't, that's precisely the one you don't decide while you're on fire.</p>
+
+<h2>The trap on the other side</h2>
+
+<p>It would be too tidy to conclude "get distance, stay cool, feelings are noise" — and it's false. Distance is for stripping the visceral <em>overweighting</em>, not for numbing a feeling that carries real information. Some feelings are data. The dread you feel walking into a place, the way a person makes you smaller, the quiet wrongness of a deal that pencils out fine — those aren't heat to be cooled off. They're signal, and "I'm sure I'll feel differently in a week" is exactly how you talk yourself out of acting on them.</p>
+
+<p>The ten-year horizon has its own failure mode, too. Almost nothing survives it; at ten years, the projects, the people, the whole afternoon all flatten toward the same gray "won't matter." Lean on it too hard and it curdles into a reason to never care about anything, which is its own way of deciding badly. The honest version is narrow: use distance on the choices you'll have to live with once you're calm — the ones a hot state is about to overweight — and not as a solvent for every feeling you'd rather not have. The goal isn't to feel less. It's to keep the feeling from doing your arithmetic for you.</p>
+
+<h2>The next time you're on fire</h2>
+
+<p>The next time a decision feels urgent and obvious and your pulse is up, treat that exact combination as the signal to wait. Run the three horizons. Write the question with someone else's name in it and answer that one. If the door is reversible, sleep on it; if it isn't, that's the strongest reason of all not to walk through it tonight. You already have good judgment — you spend it on your friends every week. This is just how you point it at your own life, which is the one place it's hardest to aim and matters most.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

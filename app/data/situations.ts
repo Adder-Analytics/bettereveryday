@@ -233,6 +233,34 @@ export const situations: Situation[] = [
     notes: ["housel-tails"],
   },
   {
+    id: "deciding-while-hot",
+    title: "You're about to decide in the grip of a strong feeling",
+    scene:
+      "Anger with your thumb over Send. The panic after bad news. Infatuation, or the fear of missing out while a price runs away from you. The sting of a sunk cost you can't stand to write off. The call feels urgent and obvious right now.",
+    question:
+      "Would the calm version of me — or a friend I trust — make this same call, or am I acting on a feeling that won't be here in a week?",
+    models: [
+      {
+        id: "self-distancing",
+        move: "Get outside the hot state before you act. Run 10/10/10: how will this look in ten minutes, ten months, ten years? Then ask what you'd tell a friend in exactly this spot. If nothing forces your hand in the next hour, sleep on it — the feeling that's deciding for you is usually the part that won't survive the night.",
+      },
+      {
+        id: "loss-aversion",
+        move: "A hot decision is often a fear of loss wearing a disguise. Name precisely what you're afraid of losing. If it's a sunk cost — money, time, face already gone — that's a fact about the past, not a reason. Ask only whether you'd choose this fresh today.",
+      },
+      {
+        id: "reversibility",
+        move: "If this is a two-way door, the cooling-off costs you almost nothing — so take it. If it's one-way, that settles it: an irreversible choice is exactly the one never to make while the feeling is loudest.",
+      },
+      {
+        id: "base-rates",
+        move: "The feeling is telling you a vivid story about how this goes. Set it against what usually happens to people who make this move when they're this worked up. Go find the rate, or ask someone who's been here, before you trust the story.",
+      },
+    ],
+    essays: ["advice-you-dont-take", "decision-quality"],
+    notes: ["kahneman-inside-view"],
+  },
+  {
     id: "weigh-it-through",
     title: "Any other decision — weigh it through",
     scene:
@@ -250,6 +278,10 @@ export const situations: Situation[] = [
       {
         id: "expected-value",
         move: "Weigh each option by how likely each outcome is, not how vivid it is. A small chance of a big loss and a vivid worst case are not the same thing — name the real probabilities, even roughly.",
+      },
+      {
+        id: "self-distancing",
+        move: "Get some distance before you commit. How will this look in ten months, ten years? What would you tell a friend who described this exact choice to you? The advice you'd give them is usually clearer than the one you're giving yourself.",
       },
       {
         id: "pre-mortem",
