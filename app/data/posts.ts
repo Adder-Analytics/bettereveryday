@@ -659,6 +659,46 @@ export const posts: Post[] = [
 
 <p>The next time a decision feels urgent and obvious and your pulse is up, treat that exact combination as the signal to wait. Run the three horizons. Write the question with someone else's name in it and answer that one. If the door is reversible, sleep on it; if it isn't, that's the strongest reason of all not to walk through it tonight. You already have good judgment — you spend it on your friends every week. This is just how you point it at your own life, which is the one place it's hardest to aim and matters most.</p>`,
   },
+  {
+    slug: "deciding-and-doing",
+    title: "The Distance Between Deciding and Doing",
+    date: "2026-06-25",
+    excerpt:
+      "The hard part of most decisions isn't making them. It's the silence afterward, where a clear call quietly never becomes an action. There's a fix, and it's almost mechanical.",
+    readTime: 6,
+    tags: ["decisions", "habits"],
+    content: `<p>Picture the moment you finally settle something you've been turning over — take the job, have the conversation, start putting money away, see the doctor about the thing you've been ignoring. There's a particular relief in it, the relief of a question closed. And then, often, nothing happens. A week later the call is still just a call. You haven't booked the appointment, sent the message, opened the account. The decision, it turns out, was never the hard part. The doing was — and the deciding felt so much like progress that it disguised how little had actually moved.</p>
+
+<p>This is not a personal failing either, and it's not rare. Psychologists call it the intention–action gap, and it's one of the most reliably measured facts about human behavior: knowing what you intend to do barely predicts whether you'll do it. Reviews of the research keep finding that even strong, sincere intentions explain only a modest slice of what people actually go on to do. The gap is the default, not the exception. An intention lives in your head and quietly waits to be remembered, re-decided, and acted on at some unspecified later moment — and that moment, undefended, tends never to arrive.</p>
+
+<h2>The fix is suspiciously small</h2>
+
+<p>The psychologist Peter Gollwitzer spent a career on a fix so small it sounds like it can't possibly matter. Take the thing you intend to do and rewrite it as an <strong>if-then plan</strong>: "When <em>this specific situation</em> arises, I will <em>do this specific thing</em>." Not "I should exercise more," but "When I get home on Monday, Wednesday, and Friday, I'll change into running clothes before I sit down." Not "I'll deal with the money stuff," but "When my paycheck lands, I'll move $200 into savings before I do anything else."</p>
+
+<p>The effect is not subtle. Pooling 94 separate studies and more than eight thousand people, Gollwitzer and his colleague Paschal Sheeran found that forming that one if-then plan produced a medium-to-large jump in follow-through over wanting the same goal exactly as much without one. It's one of the most replicated results in the field, and it costs a single sentence.</p>
+
+<h2>Why a sentence does so much</h2>
+
+<p>The mechanism is the interesting part. When you write the if-then, you hand control of the behavior away from your in-the-moment self — the one who's tired, distracted, already running late, quietly hoping to skip it — and give it to the situation. You've pre-decided. So when the cue actually arrives, the action fires with far less of the friction of choosing all over again. You're not spending willpower at the moment of truth; you spent your deliberation up front and bought yourself something closer to a reflex.</p>
+
+<p>And the specificity is the whole trick. A cue has to be concrete enough to actually trip — a time, a place, an event you'll unambiguously notice. "Soon," "later," "when things calm down" never become cues, so they never fire, which is precisely why the most sincere version of a vague plan still dies. The if-then works not because it makes you want the goal more, but because it removes the requirement that you remember and re-choose it at exactly the moment you're least equipped to.</p>
+
+<h2>The same tool, pointed backwards</h2>
+
+<p>There's a second place the if-then earns its keep, and it's one this site has circled before. In <em>Decisive</em>, Chip and Dan Heath call it a <strong>tripwire</strong>: a signal you set in advance that snaps you awake to reconsider. Their example is Kodak, which decided not to chase digital photography and then simply rode that decision down for years. The decision might even have been defensible at the time; what was missing was the tripwire — "when the market is 10% digital, we revisit this." A line that would have forced a fresh look at the moment the old call stopped being right.</p>
+
+<p>A tripwire is just an implementation intention aimed at the reconsidering instead of the doing: "if I see X, I stop and rethink." And it solves the opposite failure. The first kind of if-then makes sure a good decision actually <em>happens</em>. The tripwire makes sure a decision that's quietly going wrong doesn't <em>coast</em> — doesn't drift past the moment you should have changed course, carried along by the same momentum that's supposed to help you. Between them they cover both ways a decision dies after you make it: never started, or never revisited.</p>
+
+<h2>The trap on the other side</h2>
+
+<p>It would be too neat to say "make the plan, and the plan delivers the outcome." Two honest limits keep it from being magic. The first: an if-then helps most when the obstacle is <em>getting started</em>, <em>remembering</em>, or <em>catching a narrow window</em>. It is far weaker against a goal you don't really want, where the true problem is the wanting, not the planning — no clever cue rescues a decision your gut keeps voting against. If you've set a perfectly good plan three times and skated past it three times, that's worth reading as a signal to revisit the call itself, not as a reason to engineer a fourth, more elaborate trigger.</p>
+
+<p>The second: a plan welded to a single cue can make you brittle. If your run only happens "when I get home at six," the evening that falls apart takes the run with it, where a looser intention would have improvised a different slot. The repair is to plan for the cue to miss — a backup if-then, or a tripwire that tells you when to abandon the plan entirely rather than keep forcing it. Following through and knowing when to stop are the same skill, and the if-then is how you write both down.</p>
+
+<h2>Where the worksheet now ends</h2>
+
+<p>This is why the decision worksheet on this site no longer stops at the call. After you've written what you're going to do, it asks for one more line — the first move: the smallest concrete step, and exactly when or where you'll take it. It's the cheapest field on the page, a single if-then sentence. On the evidence, it's also the one most likely to decide whether any of the careful thinking above it ever makes it out of your head and into your life.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

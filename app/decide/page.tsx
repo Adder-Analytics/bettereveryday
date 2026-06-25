@@ -42,11 +42,11 @@ export default function DecidePage() {
           tells you which ones a moment calls for. Here you actually use them. Pick
           the situation you&rsquo;re in — or, if yours doesn&rsquo;t fit a neat
           category, the catch-all that works any decision through — write your
-          thinking against each model&rsquo;s prompt, make the call — then add the
-          part most people skip:
-          what you expect to happen, and how sure you are. Log it, set a review
-          date, and add that review to your calendar so it actually comes back to
-          you when the outcome is in.
+          thinking against each model&rsquo;s prompt, make the call, then name the
+          first move that turns it into an action — and add the part most people
+          skip: what you expect to happen, and how sure you are. Log it, set a
+          review date, and add that review to your calendar so it actually comes
+          back to you when the outcome is in.
         </p>
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
           That second half is the whole point. Once you know how something turned

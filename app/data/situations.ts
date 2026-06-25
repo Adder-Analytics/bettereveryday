@@ -294,6 +294,29 @@ export const situations: Situation[] = [
     ],
     essays: ["whether-or-not", "decision-quality"],
   },
+  {
+    id: "make-it-happen",
+    title: "You've made the call — now make sure it happens",
+    scene:
+      "The decision is made, and it was the right one. But 'decided' and 'done' are different things, and the week after a decision is where most of them quietly die — never started, or never revisited when something changed.",
+    question:
+      "What is the first concrete move, exactly when and where will I make it — and what would tell me to stop and reconsider?",
+    models: [
+      {
+        id: "implementation-intentions",
+        move: "Don't leave it at 'I'll get to it.' Write the if-then: when X happens — a specific time, place, or event you'll actually notice — I will do Y. Make Y the smallest first step you could finish this week, and hand it to the cue instead of to your future, busier self.",
+      },
+      {
+        id: "pre-mortem",
+        move: "Set the tripwire before you start. Decide now the one signal that would tell you to stop and reconsider rather than ride it down — 'if I see X, I revisit this.' It's an if-then aimed at the reconsidering, and it keeps a decision that's slowly going wrong from coasting past the moment you should have changed course.",
+      },
+      {
+        id: "reversibility",
+        move: "If the first step is cheap and easy to undo, take it now rather than planning it perfectly. Action creates information that no amount of deliberation can — and for a two-way door, starting is how you find out whether you were right.",
+      },
+    ],
+    essays: ["deciding-and-doing", "decision-quality"],
+  },
 ];
 
 const kindLabels = { essay: "Essay", model: "Model", note: "Reading note" } as const;

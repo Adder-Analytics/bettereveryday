@@ -42,6 +42,9 @@ type SituationEntry = {
   context: string;
   answers: Record<string, string>;
   conclusion: string;
+  /** The first concrete move, ideally as an if-then — what turns a decision */
+  /** into an action. See the "deciding-and-doing" essay; bridges decide→do. */
+  firstStep: string;
   expectation: string;
   confidence: number | null;
   reviewOn: string; // ISO yyyy-mm-dd
@@ -68,6 +71,7 @@ type LogEntry = {
   decision: string;
   reasoning: { name: string; move: string; text: string }[];
   call: string;
+  firstStep: string;
   expectation: string;
   confidence: number | null;
   decidedOn: string; // ISO yyyy-mm-dd
@@ -129,6 +133,7 @@ function emptyEntry(): SituationEntry {
     context: "",
     answers: {},
     conclusion: "",
+    firstStep: "",
     expectation: "",
     confidence: null,
     reviewOn: addDaysISO(todayISO(), REVIEW_DEFAULT_DAYS),
@@ -148,6 +153,7 @@ function mergeEntry(raw: Partial<SituationEntry> | undefined | null): SituationE
     context: raw.context ?? base.context,
     answers: raw.answers ?? base.answers,
     conclusion: raw.conclusion ?? base.conclusion,
+    firstStep: raw.firstStep ?? base.firstStep,
     expectation: raw.expectation ?? base.expectation,
     confidence: raw.confidence ?? base.confidence,
     reviewOn: raw.reviewOn || base.reviewOn,
@@ -191,6 +197,7 @@ function mergeLogEntry(raw: Partial<LogEntry> | null | undefined): LogEntry {
     decision: typeof r.decision === "string" ? r.decision : "",
     reasoning,
     call: typeof r.call === "string" ? r.call : "",
+    firstStep: typeof r.firstStep === "string" ? r.firstStep : "",
     expectation: typeof r.expectation === "string" ? r.expectation : "",
     confidence: conf,
     decidedOn: typeof r.decidedOn === "string" && r.decidedOn ? r.decidedOn : todayISO(),
@@ -221,6 +228,7 @@ function countFilled(raw: Partial<SituationEntry>): number {
   let n = 0;
   if (entry.context.trim()) n++;
   if (entry.conclusion.trim()) n++;
+  if (entry.firstStep.trim()) n++;
   if (entry.expectation.trim()) n++;
   for (const v of Object.values(entry.answers)) if (v?.trim()) n++;
   return n;
@@ -248,6 +256,11 @@ function buildMemo(s: WorksheetSituation, entry: SituationEntry): string {
   lines.push("WHAT I'M GOING TO DO");
   lines.push(entry.conclusion.trim() || "(undecided)");
   lines.push("");
+  if (entry.firstStep.trim()) {
+    lines.push("THE FIRST MOVE");
+    lines.push(entry.firstStep.trim());
+    lines.push("");
+  }
   lines.push("WHAT I EXPECT TO HAPPEN");
   lines.push(entry.expectation.trim() || "(not stated)");
   if (entry.confidence != null) lines.push(`Confidence: ${entry.confidence}%`);
@@ -278,6 +291,11 @@ function buildLogMemo(e: LogEntry): string {
   lines.push("THE CALL");
   lines.push(e.call.trim() || "(undecided)");
   lines.push("");
+  if (e.firstStep.trim()) {
+    lines.push("THE FIRST MOVE");
+    lines.push(e.firstStep.trim());
+    lines.push("");
+  }
   lines.push("WHAT I EXPECTED");
   lines.push(e.expectation.trim() || "(not stated)");
   if (e.confidence != null) lines.push(`Confidence at the time: ${e.confidence}%`);
@@ -352,6 +370,7 @@ function icsVEvent(e: LogEntry): string[] {
   ];
   if (e.question.trim()) desc.push(`\nYou asked: ${e.question.trim()}`);
   if (e.call.trim()) desc.push(`\nYour call: ${e.call.trim()}`);
+  if (e.firstStep.trim()) desc.push(`\nYour first move: ${e.firstStep.trim()}`);
   if (e.expectation.trim()) {
     const conf = e.confidence != null ? ` (${e.confidence}% confident)` : "";
     desc.push(`\nYou expected: ${e.expectation.trim()}${conf}`);
@@ -452,6 +471,8 @@ const SAMPLE_ENTRY: LogEntry = {
   ],
   call:
     "Take it. The downside is recoverable and the upside isn't available any other way. The one reason that decided it: I'd regret not trying more than I'd regret a year that didn't work out.",
+  firstStep:
+    "When I get the written offer, I'll reply to accept within 24 hours, and that same week move three months of expenses into a separate 'runway' account so the savings buffer is real and not just a number I told myself. Tripwire: if we're down to four months of company runway with no term sheet in sight, I start interviewing instead of hoping.",
   expectation:
     "Within a year I'll have shipped something I'm proud of and learned more than I would have by staying — whether or not the company makes it.",
   confidence: 70,
@@ -811,6 +832,7 @@ export default function DecideClient({
         text: e.answers[m.id] ?? "",
       })),
       call: e.conclusion,
+      firstStep: e.firstStep,
       expectation: e.expectation,
       confidence: e.confidence,
       decidedOn: todayISO(),
@@ -921,7 +943,7 @@ export default function DecideClient({
           {situations.map((s) => {
             const saved = store[s.id];
             const filled = saved ? countFilled(saved) : 0;
-            const total = s.models.length + 3; // context + models + conclusion + expectation
+            const total = s.models.length + 4; // context + models + conclusion + first move + expectation
             return (
               <li key={s.id}>
                 <button
@@ -1079,6 +1101,43 @@ export default function DecideClient({
             }))
           }
           placeholder="The call, and the one reason that decided it. Write it down now — it's the part you'll want to check against later."
+          className={textareaClass}
+        />
+      </div>
+
+      {/* The first move — what turns the decision into an action. A decision you
+          never act on fails as surely as a bad one; an if-then plan is what most
+          reliably closes that gap (see the "deciding-and-doing" essay). */}
+      <div className="mt-10">
+        <div className="flex items-baseline justify-between gap-3">
+          <label
+            htmlFor="decide-first-step"
+            className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2"
+          >
+            The first move
+          </label>
+          <Link
+            href="/models#implementation-intentions"
+            className="shrink-0 text-xs text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+          >
+            why this works
+          </Link>
+        </div>
+        <p className="mb-2 text-sm text-[var(--muted)] leading-relaxed">
+          A decision you don&rsquo;t act on fails as surely as a bad one. Name the
+          smallest first step and the cue that triggers it, as an if-then:{" "}
+          <span className="text-[var(--foreground)]">when</span> X happens,{" "}
+          <span className="text-[var(--foreground)]">I will</span> do Y. If it helps,
+          add the tripwire — the signal that would tell you to stop and reconsider.
+        </p>
+        <textarea
+          id="decide-first-step"
+          rows={3}
+          value={entry.firstStep}
+          onChange={(e) =>
+            update(active.id, (prev) => ({ ...prev, firstStep: e.target.value }))
+          }
+          placeholder="e.g. When I sit down at my desk tomorrow morning, before email, I'll draft the resignation message and send it to myself to read once more. Tripwire: if I haven't sent it by Friday, I tell a friend so it stops being private."
           className={textareaClass}
         />
       </div>
@@ -1704,6 +1763,15 @@ function ReviewDetail({
           </span>
         </div>
 
+        {entry.firstStep.trim() && (
+          <div className="text-sm leading-relaxed">
+            <span className="font-semibold text-[var(--foreground)]">
+              First move.
+            </span>{" "}
+            <span className="text-[var(--muted)]">{entry.firstStep.trim()}</span>
+          </div>
+        )}
+
         <div className="text-sm leading-relaxed">
           <span className="font-semibold text-[var(--foreground)]">
             I expected.
@@ -1913,6 +1981,10 @@ function SampleEntry({ onBack }: { onBack: () => void }) {
         <div className="text-sm leading-relaxed">
           <span className="font-semibold text-[var(--foreground)]">The call.</span>{" "}
           <span className="text-[var(--muted)]">{e.call}</span>
+        </div>
+        <div className="text-sm leading-relaxed">
+          <span className="font-semibold text-[var(--foreground)]">First move.</span>{" "}
+          <span className="text-[var(--muted)]">{e.firstStep}</span>
         </div>
         <div className="text-sm leading-relaxed">
           <span className="font-semibold text-[var(--foreground)]">I expected.</span>{" "}
