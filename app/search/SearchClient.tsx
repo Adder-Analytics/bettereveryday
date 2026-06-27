@@ -73,6 +73,18 @@ const docs: SearchDoc[] = [
   })),
   {
     type: "Tool",
+    title: "Calibration trainer",
+    href: "/calibrate",
+    snippet:
+      "Does your 90% actually mean 90%? Put confidence intervals on facts with knowable answers and find out, immediately, how overconfident you are — then recalibrate the feeling of being sure. One of the few thinking skills that's quickly, measurably trainable.",
+    meta: "Calibration trainer",
+    titleText:
+      "calibration trainer calibrate confidence overconfidence forecasting probability 90 percent interval equivalent bet hubbard tetlock superforecaster uncertainty estimate odds".toLowerCase(),
+    bodyText:
+      "a calibration trainer. the decision journal asks how sure you are; this is where you find out whether your sure is worth anything. two modes: give ninety percent confidence intervals on numeric trivia with knowable answers — calibrated people's ranges contain the truth about nine times in ten, most people get half that — or say whether a statement is true and how confident, then see your calibration curve, of the times you said seventy percent how often were you right. uses douglas hubbard's equivalent bet to catch overconfidence: would you rather win on your range or on a nine-in-ten wheel. calibration is one of the few biases that's trainable in an afternoon with feedback, and being well-calibrated is what most distinguishes philip tetlock's superforecasters. your record accumulates across rounds in your browser. the skill underneath every forecast in the decision journal.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Decision journal",
     href: "/decide",
     snippet:
@@ -165,9 +177,10 @@ export default function SearchClient() {
         <p className="mt-6 text-sm text-[var(--muted)] leading-relaxed">
           The index covers {posts.length} essays, {notes.length} reading notes,{" "}
           {models.length} mental models, {situations.length} playbook situations,
-          the decision journal, and {books.length} books. Results link straight
-          to the essay, the note, the model&rsquo;s entry on the reference page, the
-          playbook, the journal, or the bookshelf. Tip: press{" "}
+          the decision journal, the calibration trainer, and {books.length} books.
+          Results link straight to the essay, the note, the model&rsquo;s entry on
+          the reference page, the playbook, the journal, the trainer, or the
+          bookshelf. Tip: press{" "}
           <kbd className="px-1.5 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /
           </kbd>{" "}

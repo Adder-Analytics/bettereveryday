@@ -102,7 +102,11 @@ export default function StartPage() {
           <Link href="/playbook" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
             playbook
           </Link>{" "}
-          finds the right models by the moment you&rsquo;re in. Or press{" "}
+          finds the right models by the moment you&rsquo;re in, and the{" "}
+          <Link href="/calibrate" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+            calibration trainer
+          </Link>{" "}
+          tests whether your &ldquo;90% sure&rdquo; is worth anything. Or press{" "}
           <kbd className="px-1.5 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /
           </kbd>{" "}

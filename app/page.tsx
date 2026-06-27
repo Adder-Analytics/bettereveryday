@@ -104,8 +104,16 @@ export default function Home() {
             decision journal
           </Link>{" "}
           lets you think a real decision through, log what you expect to happen,
-          and come back later to check it against what actually did.
-          Reading notes capture what specific books did to my thinking.
+          and come back later to check it against what actually did. The{" "}
+          <Link
+            href="/calibrate"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            calibration trainer
+          </Link>{" "}
+          teaches the skill underneath that — whether your &ldquo;90% sure&rdquo;
+          is worth anything. Reading notes capture what specific books did to my
+          thinking.
           Everything cross-references, and everything is searchable (press{" "}
           <kbd className="px-1 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /
@@ -130,6 +138,12 @@ export default function Home() {
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Decision journal →
+          </Link>
+          <Link
+            href="/calibrate"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Calibration trainer →
           </Link>
           <Link
             href="/notes"

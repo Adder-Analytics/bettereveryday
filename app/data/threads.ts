@@ -78,6 +78,11 @@ export const threads: Thread[] = [
       },
       {
         kind: "essay",
+        slug: "your-ninety-percent",
+        why: "Before you trust your own forecast: is your “90% sure” worth anything? Usually not — but it's fixable.",
+      },
+      {
+        kind: "essay",
         slug: "second-order-thinking",
         why: "“And then what?” The question that catches most avoidable mistakes.",
       },
@@ -124,6 +129,11 @@ export const threads: Thread[] = [
         kind: "note",
         slug: "kahneman-inside-view",
         why: "Why awareness of a bias, on its own, changes almost nothing.",
+      },
+      {
+        kind: "model",
+        id: "calibration",
+        why: "The cheerful exception to that rule — the one bias you really can train away, in an afternoon.",
       },
       {
         kind: "essay",

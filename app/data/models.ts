@@ -193,6 +193,15 @@ export const models: Model[] = [
     essays: ["decision-quality"],
   },
   {
+    id: "calibration",
+    name: "Calibration",
+    domain: "Epistemology",
+    tagline: "A probability is only honest if it comes true at the rate it claims — and most people's don't.",
+    explanation:
+      "When a calibrated person says they're 90% sure, they're right about nine times in ten; when they say 70%, about seven. Almost nobody starts out this way. The near-universal default is overconfidence — people's 90% confidence intervals contain the true answer closer to half the time, and their 'certainties' fail often enough to matter. What makes calibration worth singling out is that, unlike most biases, it's quickly and measurably trainable: Douglas Hubbard found that most people reach near-perfect calibration within about half a day of practice with immediate feedback, and being well-calibrated is the trait that most distinguishes Philip Tetlock's superforecasters. The mechanics are simple — put a number on your uncertainty, check it against reality, and repeat until the feeling of '90% sure' actually behaves like 90%. The classic tool for catching your own overconfidence is the equivalent bet: would you rather win on your stated range, or on a gamble with the same stated odds? If you'd take the gamble, your confidence was inflated. The honest caveat: calibration on checkable trivia is a warm-up. Real decisions are messier and feedback is slow or never arrives, which is exactly why a decision journal — write the probability down before the outcome — is the only way to keep score on the bets that count.",
+    essays: ["your-ninety-percent"],
+  },
+  {
     id: "fermi-estimation",
     name: "Fermi Estimation",
     domain: "Epistemology",

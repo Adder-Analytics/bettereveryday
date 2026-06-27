@@ -1201,6 +1201,16 @@ export default function DecideClient({
               );
             })}
           </div>
+          <p className="mt-2 text-xs text-[var(--muted)] leading-relaxed">
+            Not sure that number means what you think it does?{" "}
+            <Link
+              href="/calibrate"
+              className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+            >
+              Find out whether your 90% is really 90%
+            </Link>{" "}
+            — calibration is trainable in an afternoon.
+          </p>
         </div>
 
         <div className="mt-5">

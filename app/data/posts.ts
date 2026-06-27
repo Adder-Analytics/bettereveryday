@@ -699,6 +699,46 @@ export const posts: Post[] = [
 
 <p>This is why the decision worksheet on this site no longer stops at the call. After you've written what you're going to do, it asks for one more line — the first move: the smallest concrete step, and exactly when or where you'll take it. It's the cheapest field on the page, a single if-then sentence. On the evidence, it's also the one most likely to decide whether any of the careful thinking above it ever makes it out of your head and into your life.</p>`,
   },
+  {
+    slug: "your-ninety-percent",
+    title: "Your 90% Isn't 90%",
+    date: "2026-06-27",
+    excerpt:
+      "When you say you're 90% sure, how often are you actually right? For most people the honest answer is closer to 50% — and unlike almost every other bias, this one you can fix in an afternoon.",
+    readTime: 7,
+    tags: ["decisions", "epistemology", "forecasting"],
+    content: `<p>Here is a small, slightly uncomfortable experiment. Without looking it up: how long is the Nile? Don't give a single number — give a range, a low and a high, wide enough that you're <em>90% sure</em> the true length falls inside it. Whatever range you just pictured, sit with how confident you feel about it. Then do the same for the year Mozart was born, the diameter of the Moon, the number of bones in your body.</p>
+
+<p>Now the catch. If your ranges really are 90% confidence intervals, then across ten of them the truth should land outside only about once. When researchers run this — and they have run it on thousands of people — the typical result is that something like half the answers fall outside the ranges. People who sincerely believe they're 90% sure are, in practice, more like 50% sure. They've drawn their ranges far too narrow, because a narrow range feels knowledgeable and a wide one feels like admitting you don't know. The feeling of confidence and the fact of being right have quietly come apart.</p>
+
+<p>This is overconfidence, and it is about as close to universal as findings about human judgment get. It shows up in trivia and in expert forecasts; in doctors estimating diagnoses, engineers estimating timelines, executives estimating markets. The number you attach to your certainty — "I'm pretty sure," "90% chance," "no way that happens" — is, for almost everyone, systematically inflated. And it matters far beyond trivia, because that same inflated number is the one you use to decide whether a risk is worth taking, whether a plan needs a backup, whether the thing you're sure about deserves a second look.</p>
+
+<h2>The thing that makes it different</h2>
+
+<p>Most of what's known about cognitive bias is a little demoralizing. You read about anchoring or loss aversion or the availability heuristic, you nod, you understand the mechanism exactly — and then you go on being anchored and loss-averse and swayed by vivid stories, because knowing about a bias mostly doesn't dissolve it. The illusions persist even when you can name them.</p>
+
+<p>Calibration is the cheerful exception. It behaves less like a fixed flaw and more like a skill you simply haven't practiced — and a fast-learning one. Douglas Hubbard, who has trained thousands of people to put honest numbers on uncertainty, reports that most reach near-perfect calibration after about half a day of doing rounds and seeing how they did. Half a day. The trait that most sharply distinguishes Philip Tetlock's "superforecasters" from everyone else isn't intelligence or access to secrets; it's that their probabilities are well-calibrated — when they say 70%, it happens about 70% of the time. That's not a gift they were born with. It's the residue of keeping score.</p>
+
+<p>Which points at what actually builds the skill, and it's almost insultingly simple: put a number on your uncertainty, check it against reality, and repeat until the feeling of "90% sure" starts behaving like 90%. The only essential ingredient is feedback fast enough to learn from — which is exactly what ordinary life, with its slow and ambiguous outcomes, refuses to give you.</p>
+
+<h2>The equivalent bet</h2>
+
+<p>There's one tool worth carrying out of all this, because it catches your overconfidence in the act. Hubbard calls it the <strong>equivalent bet</strong>. You've drawn your 90% range for the length of the Nile. Now imagine two ways to win $1,000. Option one: you win if the true answer falls inside your range. Option two: you spin a wheel that pays out nine times in ten. Which would you rather have?</p>
+
+<p>If you find yourself preferring the wheel, you've just confessed something — that you don't actually believe your range has a 90% chance of being right. So widen it. Keep widening until the two bets feel genuinely equal, until you'd be honestly indifferent between trusting your range and trusting a 9-in-10 gamble. That point of indifference is what 90% confidence actually feels like from the inside, and the first time you find it, you'll be startled how much wider the range had to get. The bet works because it converts a vague feeling of confidence into a concrete choice with money on it, and money has a way of making us honest.</p>
+
+<p>The same move works on yes-or-no questions. Before you say "they'll definitely ship on time," ask whether you'd take an even-money bet on it, or want odds. Whether you'd put it at 60% or 95% is the difference between a hunch and a forecast — and the gap between them is usually where the trouble lives.</p>
+
+<h2>Where it stops being a game</h2>
+
+<p>Now the honest limit, because there always is one. Getting calibrated on checkable trivia is a warm-up, not the finish line. Two things separate the Nile from the decisions you actually lose sleep over. First, the questions that matter are messier — "will this hire work out," "is this the right time to move" — and they don't come with an answer key in the footnotes. Second, and worse, the feedback is slow, partial, or never arrives at all. You make a big call, the world moves on, and you never get the clean "right / wrong" the trivia hands you instantly. Without that feedback loop, the skill has nothing to train against, and the overconfidence creeps back.</p>
+
+<p>So the trainer on this site is deliberately the small version of the problem: trivia, because trivia can be scored. It's there to do one thing — recalibrate the <em>feeling</em> of being sure — so that when that feeling next shows up over something that matters, you recognize it for the unreliable narrator it is and widen the range accordingly. Being right about the Moon's diameter is worthless in itself. The transfer is the point: a person who has felt, viscerally, how often their 90% was really 50% carries a useful suspicion of their own certainty into every room.</p>
+
+<p>And for the decisions that don't come with an answer key, there's only one way to manufacture the missing feedback: write the probability down before the outcome, then go back and check. That's the entire reason this site has a <a href="/decide">decision journal</a> — it's a calibration trainer for the questions reality refuses to grade for you. The <a href="/calibrate">trainer</a> teaches your gut what a real 90% feels like in an afternoon. The journal is how you keep that honesty alive on the bets that actually count, one logged forecast at a time.</p>
+
+<p>Start with the cheap version. Draw a few ranges, run the bet against yourself, watch the truth slip outside more often than you'd ever have guessed. It's a strangely freeing thing to learn. The goal was never to be certain — it was to know exactly how uncertain you are, and to finally have the number be true.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
