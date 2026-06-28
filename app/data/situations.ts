@@ -133,7 +133,7 @@ export const situations: Situation[] = [
         move: "Be suspicious of the first figure anyone offers — including the one already sitting in your own head before you've done any work.",
       },
     ],
-    essays: ["orders-of-magnitude"],
+    essays: ["guessing-on-purpose", "orders-of-magnitude"],
   },
   {
     id: "judging-a-decision",

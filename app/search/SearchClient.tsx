@@ -85,6 +85,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Estimation trainer",
+    href: "/estimate",
+    snippet:
+      "How many piano tuners work in Chicago? You can get within a factor of two without looking it up — by breaking the question into pieces you can estimate and multiplying. Practise Fermi estimation: decompose a hard quantity, or take one-shot order-of-magnitude guesses and see how far off you were.",
+    meta: "Estimation trainer",
+    titleText:
+      "estimation trainer estimate fermi decomposition order of magnitude back of the envelope guess number sense market sizing approximation napkin math piano tuners chicago".toLowerCase(),
+    bodyText:
+      "an estimation trainer for fermi estimation. most useful questions don't come with the number attached: how big is this market, how long will this take, how many people would use this. the skill is to break the question into smaller pieces you can guess and multiply them — the rough parts beat the confident whole because independent errors tend to cancel. two modes: decompose, which walks one hard problem (how many piano tuners in chicago, how many golf balls fit in a school bus) by asking for a gut guess first and then building the answer from its factors so you watch the decomposition beat the gut; and one-shot, eight quantities that span orders of magnitude — trees on earth, neurons in a brain, people who have ever lived — scored by how many factors of ten you were off, aiming to land within an order of magnitude. named for enrico fermi. your record accumulates across rounds in your browser, tracking your typical miss and how often decomposition beats your gut. the companion skill is calibration: a number is only worth as much as the honest error bars around it.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Decision journal",
     href: "/decide",
     snippet:
@@ -177,9 +189,10 @@ export default function SearchClient() {
         <p className="mt-6 text-sm text-[var(--muted)] leading-relaxed">
           The index covers {posts.length} essays, {notes.length} reading notes,{" "}
           {models.length} mental models, {situations.length} playbook situations,
-          the decision journal, the calibration trainer, and {books.length} books.
+          the decision journal, the calibration trainer, the estimation trainer,
+          and {books.length} books.
           Results link straight to the essay, the note, the model&rsquo;s entry on
-          the reference page, the playbook, the journal, the trainer, or the
+          the reference page, the playbook, the journal, a trainer, or the
           bookshelf. Tip: press{" "}
           <kbd className="px-1.5 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /

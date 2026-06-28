@@ -271,7 +271,9 @@ export const posts: Post[] = [
 
 <p>A common pattern in misleading statistics is to report a number in whatever unit makes it sound most impressive. A drug that "helps 1 in 1,000 patients" sounds less impressive than one that "will help 330,000 Americans" — but they're the same claim. A government program that costs "only $3 per American per year" sounds negligible until you multiply: $3 times 330 million is $990 million, approaching a billion dollars.</p>
 
-<p>The most practically useful version of this skill isn't mastery of Fermi techniques — it's developing the reflex to ask, for any important number: <em>Is this plausible given what I know about scale?</em> That reflex, applied consistently, filters out an enormous fraction of numerical nonsense before it has a chance to influence how you think.</p>`,
+<p>The most practically useful version of this skill isn't mastery of Fermi techniques — it's developing the reflex to ask, for any important number: <em>Is this plausible given what I know about scale?</em> That reflex, applied consistently, filters out an enormous fraction of numerical nonsense before it has a chance to influence how you think.</p>
+
+<p>Like any reflex, it's built by repetition. There's an <a href="/estimate">estimation trainer</a> on this site for exactly that — problems to decompose and order-of-magnitude guesses to check against the real figure. And for <em>why</em> a chain of rough guesses lands closer than a single confident one, see <a href="/writing/guessing-on-purpose">How to Guess on Purpose</a>.</p>`,
   },
   {
     slug: "inflation-silent-tax",
@@ -698,6 +700,48 @@ export const posts: Post[] = [
 <h2>Where the worksheet now ends</h2>
 
 <p>This is why the decision worksheet on this site no longer stops at the call. After you've written what you're going to do, it asks for one more line — the first move: the smallest concrete step, and exactly when or where you'll take it. It's the cheapest field on the page, a single if-then sentence. On the evidence, it's also the one most likely to decide whether any of the careful thinking above it ever makes it out of your head and into your life.</p>`,
+  },
+  {
+    slug: "guessing-on-purpose",
+    title: "How to Guess on Purpose",
+    date: "2026-06-28",
+    excerpt:
+      "Asked for a number you don't have, most people freeze or wave a hand. There's a third option — break the question into pieces you can guess, and multiply. The rough parts beat the confident whole, for a reason worth understanding.",
+    readTime: 7,
+    tags: ["thinking", "math", "decisions"],
+    content: `<p>Someone asks you a question with a number for an answer, and you don't have the number. How many electric cars are on the road in your country? What would it cost to repaint every classroom in the city? How many people would actually use the thing you're thinking of building? Most people do one of two things here, and both are bad. They freeze — "no idea, I'd have to look it up" — and the conversation moves on without the number that would have settled it. Or they wave a hand and produce a single confident figure pulled from nowhere, which is worse, because now there's a number on the table and it's wrong.</p>
+
+<p>There is a third option, and it is a learnable skill rather than a gift. You break the question into smaller questions you <em>can</em> guess at, and you multiply your guesses together. It sounds too simple to help. It helps enormously, and the reason it helps is genuinely surprising — surprising enough that it's worth the rest of this piece.</p>
+
+<h2>The move</h2>
+
+<p>Say you're weighing whether to build a small paid app for dog owners in your city, and you want a rough sense of the yearly revenue if it goes reasonably well. You have no idea. But you can chip at the pieces. Your city has maybe a million people; perhaps one household in three has a dog, and households run about two and a half people, so call it 130,000 dogs. Maybe one owner in twenty is the kind who buys apps like this — 6,500 of them. At, say, $30 a year, that's around $200,000 a year if it goes well. None of those five guesses is solid. The answer is still useful: it tells you this is a modest side business, not a company, and it tells you the whole thing hinges on that "one owner in twenty," which you could actually go check.</p>
+
+<p>This is Fermi estimation — named for the physicist who estimated the first atomic bomb's yield by tossing scraps of paper into the blast wave, and got within a factor of two. The mechanics are nothing more than the multiplication you already know. The skill is the decomposition: choosing pieces small and familiar enough that you can put a number on each without flinching.</p>
+
+<h2>Why the rough parts beat the confident whole</h2>
+
+<p>Here's the part that feels like a trick but isn't. Each of those five guesses might be off by a lot — easily a factor of two in either direction. You'd think stringing five wobbly guesses together would multiply the wobble into nonsense. The opposite tends to happen. The errors point in different directions and partly cancel.</p>
+
+<p>The intuition: when you guess a single number for a thing you don't understand, your one error has nowhere to go — whatever you're wrong by, you're wrong by all of it. When you guess five numbers, you'll overshoot some and undershoot others, more or less at random. An overshoot on dog ownership gets quietly offset by an undershoot on willingness to pay. The more independent pieces you break the problem into, the more your individual mistakes average out, and the more the product converges on something reasonable. It's the same reason a poll of a thousand people beats asking one loud person: independent errors wash out in aggregate. Decomposition manufactures that aggregate out of a single hard question.</p>
+
+<p>That is the real case for the technique, and it's stronger than "some structure is better than none." A decomposed estimate isn't just more organized than a gut guess. On the questions that matter — the ones where you genuinely have no feel for the answer — it is reliably, measurably closer to the truth.</p>
+
+<h2>Where it stops working</h2>
+
+<p>The cancellation is the whole engine, which means the honest limit is exactly where the cancellation fails. It needs your errors to be roughly independent and roughly unbiased — scattered around the truth, not all leaning the same way. Two things break that.</p>
+
+<p>The first is correlated error. If you're estimating a project's cost and you're an optimist, you won't make scattered mistakes — you'll shade <em>every</em> factor low, and the optimism compounds instead of cancelling. This is why your decomposed timelines and budgets still come out too rosy: the errors share a direction. The fix isn't more factors; it's checking each one against the outside world, or handing the estimate to a pessimist.</p>
+
+<p>The second is the load-bearing factor. Sometimes one piece dominates, and being a hundred-fold off on that one piece sinks the whole estimate no matter how careful the rest were. But this is also where decomposition quietly earns its keep, because it <em>shows you which factor that is</em>. You can see that the dog-app answer lives or dies on the conversion rate, and that the bus-full-of-golf-balls answer barely cares whether the bus is ten or twelve metres long. The estimate hands you the one number worth arguing about.</p>
+
+<h2>The number was never the point</h2>
+
+<p>Which is the part most people miss. The output of a Fermi estimate — $200,000, sixty piano tuners, three trillion trees — is the least valuable thing it produces. The valuable thing is the <em>structure</em>: an explicit list of the assumptions your answer rests on, and a clear view of which one it actually hinges on. A vague feeling that "this market seems big" can't be checked or argued with. A chain of five named factors can be. You can hand it to someone who'll say "your conversion rate is fantasy," and now you're having the right argument.</p>
+
+<p>This is why estimation belongs next to the rest of the thinking on this site rather than off in a math corner. Most real decisions secretly turn on a quantity nobody has bothered to estimate — how likely, how big, how long, how much. Refusing to put a number on it doesn't make the decision more careful; it just means you're deciding on the same hidden guess, with none of it written down where you could check it. Guessing on purpose drags that guess into the open.</p>
+
+<p>So practise it deliberately, the way you'd practise anything. The <a href="/estimate">estimation trainer</a> on this site gives you problems to decompose and order-of-magnitude guesses to test, and shows you — round over round — your estimates tightening. Pair it with two things: <a href="/writing/orders-of-magnitude">a feel for scale</a>, so your factors aren't off by powers of ten to begin with, and <a href="/calibrate">honest confidence</a>, so the error bars you put around the final number mean what they say. A number you built on purpose, with calibrated uncertainty around it, is worth more than any figure you could have looked up — because you know exactly what it depends on.</p>`,
   },
   {
     slug: "your-ninety-percent",

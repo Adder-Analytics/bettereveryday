@@ -117,6 +117,11 @@ export const threads: Thread[] = [
       },
       {
         kind: "essay",
+        slug: "guessing-on-purpose",
+        why: "And how to produce a number of your own when you don't have one — decomposition, and why rough parts beat a confident whole.",
+      },
+      {
+        kind: "essay",
         slug: "availability-heuristic",
         why: "Why the vivid story misleads — and how the news environment weaponizes it.",
       },

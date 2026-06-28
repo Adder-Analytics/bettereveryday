@@ -112,7 +112,15 @@ export default function Home() {
             calibration trainer
           </Link>{" "}
           teaches the skill underneath that — whether your &ldquo;90% sure&rdquo;
-          is worth anything. Reading notes capture what specific books did to my
+          is worth anything — and the{" "}
+          <Link
+            href="/estimate"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            estimation trainer
+          </Link>{" "}
+          the one beside it: getting to a defensible number when you don&rsquo;t
+          have one. Reading notes capture what specific books did to my
           thinking.
           Everything cross-references, and everything is searchable (press{" "}
           <kbd className="px-1 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
@@ -144,6 +152,12 @@ export default function Home() {
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Calibration trainer →
+          </Link>
+          <Link
+            href="/estimate"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Estimation trainer →
           </Link>
           <Link
             href="/notes"

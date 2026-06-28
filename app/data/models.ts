@@ -207,8 +207,8 @@ export const models: Model[] = [
     domain: "Epistemology",
     tagline: "Estimate any unknown quantity by building it from simpler, knowable pieces.",
     explanation:
-      "Enrico Fermi could estimate the number of piano tuners in Chicago from population, piano ownership rates, and tuning frequency — each step an educated guess, but the product a reasonable estimate. The point isn't precision: a Fermi estimate within an order of magnitude is almost always more useful than refusing to estimate. The process reveals which assumptions matter most and which ones barely affect the answer. Develop calibrated reference points — world population is 8 billion, US GDP is $26 trillion — and you can anchor estimates on almost any question.",
-    essays: ["orders-of-magnitude"],
+      "Enrico Fermi could estimate the number of piano tuners in Chicago from population, piano ownership rates, and tuning frequency — each step an educated guess, but the product a reasonable estimate. It works because the errors in independent guesses tend to point in different directions and partly cancel, so the product lands closer than any single guess would. The point isn't precision: a Fermi estimate within an order of magnitude is almost always more useful than refusing to estimate. The process also reveals which assumptions matter most and which ones barely affect the answer. Develop calibrated reference points — world population is 8 billion, US GDP is $26 trillion — and you can anchor estimates on almost any question. It's a trainable skill: the estimation trainer on this site is a place to practise it.",
+    essays: ["orders-of-magnitude", "guessing-on-purpose"],
   },
 ];
 
