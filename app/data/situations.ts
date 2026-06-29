@@ -88,7 +88,7 @@ export const situations: Situation[] = [
         move: "The real price isn't the sticker. It's the next-best thing the same money or time could have bought.",
       },
     ],
-    essays: ["anchoring"],
+    essays: ["anchoring", "how-much-should-this-change-your-mind"],
   },
   {
     id: "vivid-story",
@@ -110,7 +110,7 @@ export const situations: Situation[] = [
         move: "An extreme event is, almost by definition, likely to be followed by something less extreme. One dramatic data point is not a trend.",
       },
     ],
-    essays: ["availability-heuristic"],
+    essays: ["availability-heuristic", "how-much-should-this-change-your-mind"],
     notes: ["kahneman-inside-view"],
   },
   {

@@ -783,6 +783,52 @@ export const posts: Post[] = [
 
 <p>Start with the cheap version. Draw a few ranges, run the bet against yourself, watch the truth slip outside more often than you'd ever have guessed. It's a strangely freeing thing to learn. The goal was never to be certain — it was to know exactly how uncertain you are, and to finally have the number be true.</p>`,
   },
+  {
+    slug: "how-much-should-this-change-your-mind",
+    title: "How Much Should This Change Your Mind?",
+    date: "2026-06-29",
+    excerpt:
+      "A 99%-accurate test comes back positive for a disease 1 person in 1,000 has. Your chance of having it isn't 99% — it's about 9%. The gap is a base rate, and forgetting it is one of the most expensive habits in human judgement.",
+    readTime: 7,
+    tags: ["decisions", "epistemology", "forecasting"],
+    content: `<p>Try this before you read on. There's a disease that 1 person in 1,000 has. There's a test for it that's 99% accurate — it comes back positive for 99% of people who have the disease, and falsely positive for only 1% of people who don't. You take the test. It's positive. What's the chance you actually have the disease?</p>
+
+<p>Most people, asked this cold, answer somewhere around 99%. The number feels like it's about you now — the test was nearly perfect and it pointed at you. The real answer is about 9%. Not 90%, not 50% — nine percent. If that feels wrong, you've just met one of the most consequential errors in everyday reasoning, and the good news is that it comes apart cleanly the moment you stop thinking in percentages.</p>
+
+<h2>Count the crowd</h2>
+
+<p>Here's the same problem with the percentages turned into people. Picture 100,000 of them. One in a thousand has the disease, so 100 do. The test catches 99% of them: 99 true positives. The other 99,900 people are healthy — but the test falsely flags 1% of them anyway, and 1% of 99,900 is 999 false positives. So 99 + 999 = 1,098 people test positive, and only 99 of them are actually sick. Your chance, given a positive, is 99 out of 1,098 — about 9%.</p>
+
+<p>Nothing changed but the format, and yet the answer that was invisible in percentages is obvious as a headcount. This is Gerd Gigerenzer's finding, and it's a genuinely hopeful one: the difficulty was never your intelligence, it was the representation. Probabilities hide the thing that matters; <strong>natural frequencies</strong> — concrete counts out of a real crowd — put it back. The reason the answer is so low is now plain to see: the disease is rare, so the tiny sliver of true cases is simply outnumbered by the false alarms the test scatters across the enormous healthy majority.</p>
+
+<p>The piece your intuition dropped is the <strong>base rate</strong> — how common the thing was before any test. A positive result is evidence, and evidence is supposed to move you <em>from</em> somewhere. Start almost nowhere — 1 in 1,000 — and even strong evidence can only carry you to 9%. Skip the starting point and you treat the test's accuracy as if it were the answer. That's base-rate neglect, and it is close to universal.</p>
+
+<h2>It isn't just a puzzle</h2>
+
+<p>This would be a parlour trick if it stayed in textbooks. It doesn't. The original version of the problem was put to practising physicians — given a disease's prevalence, a test's detection rate, and its false-positive rate, what should a patient with a positive result conclude? The large majority got it badly wrong, most of them answering ten times too high. These were doctors, reasoning about the tool they use every day, and the format alone defeated them. Reframe it as natural frequencies and most of them get it right.</p>
+
+<p>Once you've seen the shape, you start seeing it everywhere. The "highly accurate" screening that, applied to a healthy population, produces far more false alarms than real findings. The fraud alert that fires so often on legitimate purchases that people learn to wave it through. The face-recognition match at the airport that's almost certainly an innocent traveller, because the genuine target is one in tens of thousands. The security system, the background check, the diagnostic panel: whenever a test for a <em>rare</em> thing is run across <em>everyone</em>, the math guarantees the alarms will be mostly false — not because the test is bad, but because the base rate is low. A test can be excellent and a positive result can still mean almost nothing.</p>
+
+<h2>The lesson is not "distrust tests"</h2>
+
+<p>It's tempting to walk away with "results don't mean much," and that's the wrong lesson — the symmetric error in the other direction. The honest rule is that <em>the same result means different things at different base rates</em>. Take that 9% disease test and imagine a patient who already has every symptom and a family history, so that, before testing, the odds they have it are more like 1 in 3 rather than 1 in 1,000. Run the same arithmetic and a positive now means roughly an 80% chance — because this time the evidence is updating a prior that was already substantial. Same test, same accuracy, completely different conclusion.</p>
+
+<p>That's the whole idea, and it has a name: you're combining a prior with the strength of the evidence to get a posterior — Bayes' rule, though you never need the formula if you can count a crowd. A positive flu test in the middle of flu season, when a third of the people around you are sick, really is strong news. The identical test for something genuinely rare is nearly silent. The number you should land on isn't "trust it" or "distrust it" — it's the result <em>weighed against</em> how common the thing was to begin with.</p>
+
+<h2>Where it gets hard</h2>
+
+<p>Now the catch, because there always is one, and here it's a real one. The arithmetic is the easy part. The hard part is knowing the base rate at all — and choosing the right one.</p>
+
+<p>The neat textbook problems hand you "1 in 1,000." Life rarely does. To ask how likely your startup is to reach a billion dollars, or this hire is to work out, or this lump is to be serious, you first have to pick the reference class: <em>this kind of thing, among what set of things?</em> Startups in general, or venture-backed startups in your sector with this much funding? The choice moves the answer enormously, and there's no formula that picks for you — narrow the class until it's "companies exactly like mine" and you're back to a sample of one, with no base rate left. This is the genuinely difficult judgement, the place where two careful people can disagree, and no amount of crowd-counting resolves it.</p>
+
+<p>And the prior has to be honest, because the rule cuts both ways: a confident wrong base rate produces a confident wrong answer, with the arithmetic lending it false authority. Garbage prior in, garbage posterior out. So the skill isn't really the multiplication. It's the discipline of asking, before you react to any vivid new piece of evidence, "what's the rate for things like this?" — and the humility to admit when you're guessing at it.</p>
+
+<h2>The everyday version</h2>
+
+<p>Strip away the tests and what's left is a habit of mind you use a hundred times a day, mostly badly. A dramatic news story arrives and feels like a trend. A single bad review feels like the truth about a product. One vivid anecdote about someone who quit their job and got rich feels like evidence about your odds. Each of these is a piece of evidence shouting for a big update, and in each case the right first move is the same quiet question: how often does this actually happen, to people in general, before I heard this one loud story? The story is real. It's just not the whole probability — it's the part you multiply <em>against</em> the base rate, not instead of it.</p>
+
+<p>That's why this sits next to the other thinking on this site rather than in a statistics appendix. <a href="/writing/your-ninety-percent">Calibration</a> asks how wide your uncertainty should be; <a href="/writing/guessing-on-purpose">estimation</a> asks how to get to a number when you don't have one; this asks how much a new fact should move the number you've got. All three are the same project — putting honest numbers on an uncertain world — and all three are trainable. The <a href="/update">base-rate trainer</a> here gives you the test problems to work, first slowly as a crowd you can count and then as quick rounds, and quietly tracks the one thing worth knowing about your own judgement: whether you keep landing too high. Most people do, at first. It's the most fixable expensive habit you have.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

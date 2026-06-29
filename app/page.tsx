@@ -120,8 +120,16 @@ export default function Home() {
             estimation trainer
           </Link>{" "}
           the one beside it: getting to a defensible number when you don&rsquo;t
-          have one. Reading notes capture what specific books did to my
-          thinking.
+          have one. The{" "}
+          <Link
+            href="/update"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            base-rate trainer
+          </Link>{" "}
+          rounds out the set: how much a new test result, alarm, or vivid story
+          should actually change your mind. Reading notes capture what specific
+          books did to my thinking.
           Everything cross-references, and everything is searchable (press{" "}
           <kbd className="px-1 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /
@@ -158,6 +166,12 @@ export default function Home() {
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Estimation trainer →
+          </Link>
+          <Link
+            href="/update"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Base-rate trainer →
           </Link>
           <Link
             href="/notes"

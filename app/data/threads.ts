@@ -146,6 +146,11 @@ export const threads: Thread[] = [
         why: "How to hold a famous finding that turns out to be genuinely contested.",
       },
       {
+        kind: "essay",
+        slug: "how-much-should-this-change-your-mind",
+        why: "The vivid story is evidence — but how much should it actually move you? Why a 99%-accurate test can still mean a 9% chance, and how to count your way out of the trap.",
+      },
+      {
         kind: "model",
         id: "base-rates",
         why: "Start from the prior probability, then let the specifics update it.",

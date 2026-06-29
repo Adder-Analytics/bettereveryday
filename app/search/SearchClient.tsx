@@ -97,6 +97,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Base-rate trainer",
+    href: "/update",
+    snippet:
+      "A 99%-accurate test for a 1-in-1,000 disease comes back positive — your chance of having it is about 9%, not 99%. Practise updating on evidence the way the numbers demand: weigh a result against how rare the thing was, and watch the base rate do the work. Catches the near-universal habit of trusting the test and forgetting the prior.",
+    meta: "Base-rate trainer",
+    titleText:
+      "base rate trainer update bayes bayesian posterior prior probability conditional false positive base-rate neglect natural frequencies gigerenzer test screening prevalence sensitivity specificity evidence belief".toLowerCase(),
+    bodyText:
+      "a base-rate trainer for bayesian updating. a test is 99 percent accurate and you test positive for a disease one person in a thousand has, so what's the chance you have it. almost everyone says ninety-nine percent; it's about nine percent, because the rare true cases are swamped by false positives from the huge healthy majority. that error — fixating on the test's accuracy and forgetting how rare the thing is — is base-rate neglect, and it's behind needless cancer scares, highly accurate screens that are wrong most of the time, fraud alerts you learn to ignore, and mass-surveillance false alarms. the cure is gerd gigerenzer's natural frequencies: stop thinking in percentages and count a concrete crowd, where the answer becomes something you can simply tally. two modes: walk through one scenario slowly (a positive mammogram, a rare-disease test) by guessing first and then watching the numbers redrawn as a crowd; or a round of six quick ones (a fraud alert, a drug test, a flu test in season, an airport face-recognition match) scored on how many percentage points off you were and whether you keep landing high — the signature of neglecting the base rate. it isn't always distrust the test: when the base rate is high a positive is strong evidence, and the same test means different things at different base rates. the hard part is choosing the right reference class and an honest prior. your record accumulates across rounds in your browser. the companions are calibration and estimation: how wide your uncertainty should be, how to get to a number, and how much a new fact should move it.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Decision journal",
     href: "/decide",
     snippet:
@@ -189,8 +201,8 @@ export default function SearchClient() {
         <p className="mt-6 text-sm text-[var(--muted)] leading-relaxed">
           The index covers {posts.length} essays, {notes.length} reading notes,{" "}
           {models.length} mental models, {situations.length} playbook situations,
-          the decision journal, the calibration trainer, the estimation trainer,
-          and {books.length} books.
+          the decision journal, the calibration, estimation, and base-rate
+          trainers, and {books.length} books.
           Results link straight to the essay, the note, the model&rsquo;s entry on
           the reference page, the playbook, the journal, a trainer, or the
           bookshelf. Tip: press{" "}

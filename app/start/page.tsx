@@ -110,7 +110,11 @@ export default function StartPage() {
           <Link href="/estimate" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
             estimation trainer
           </Link>{" "}
-          builds the knack of getting to a number when you don&rsquo;t have one. Or press{" "}
+          builds the knack of getting to a number when you don&rsquo;t have one, and the{" "}
+          <Link href="/update" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+            base-rate trainer
+          </Link>{" "}
+          drills how much a new result should actually change your mind. Or press{" "}
           <kbd className="px-1.5 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /
           </kbd>{" "}
