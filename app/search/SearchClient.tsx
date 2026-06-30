@@ -73,6 +73,18 @@ const docs: SearchDoc[] = [
   })),
   {
     type: "Tool",
+    title: "Practice your judgement",
+    href: "/practice",
+    snippet:
+      "Three short trainers for the three numbers under every decision: how sure you are, how to get to a number at all, and how much a new fact should move you. One page reads all three of your records — calibration, estimation, base rates — shows them side by side, and points you at the weakest of the three.",
+    meta: "Practice hub — all three trainers",
+    titleText:
+      "practice hub trainers judgement judgment dashboard profile calibration estimation base rates forecasting uncertainty three numbers decisions what to practice next thinking gym".toLowerCase(),
+    bodyText:
+      "the practice hub. calibration, estimation, and base-rate updating are three faces of one skill: putting honest numbers on an uncertain world. how wide should your uncertainty be, how do you get to a number at all, and how much should a new fact move the number you've got. this page reads all three trainer records from your browser and shows them together — your ninety-percent hit rate beside your typical estimation miss beside your base-rate lean — so you can see in one glance which of the three your judgement is weakest on, and it suggests where to spend the next ten minutes. nothing leaves the browser. paired with the essay three numbers for an uncertain world. the place all three come together is the decision journal, where you estimate an outcome, put honest error bars on it, and update when reality reports back.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Calibration trainer",
     href: "/calibrate",
     snippet:
@@ -201,8 +213,8 @@ export default function SearchClient() {
         <p className="mt-6 text-sm text-[var(--muted)] leading-relaxed">
           The index covers {posts.length} essays, {notes.length} reading notes,{" "}
           {models.length} mental models, {situations.length} playbook situations,
-          the decision journal, the calibration, estimation, and base-rate
-          trainers, and {books.length} books.
+          the decision journal, the practice hub and its calibration, estimation,
+          and base-rate trainers, and {books.length} books.
           Results link straight to the essay, the note, the model&rsquo;s entry on
           the reference page, the playbook, the journal, a trainer, or the
           bookshelf. Tip: press{" "}

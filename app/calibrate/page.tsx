@@ -81,6 +81,14 @@ export default function CalibratePage() {
           >
             decision journal
           </Link>
+          . This is one of three trainers for putting honest numbers on an
+          uncertain world — see it beside the other two on the{" "}
+          <Link
+            href="/practice"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            practice page
+          </Link>
           .
         </p>
       </div>

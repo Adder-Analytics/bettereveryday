@@ -829,6 +829,44 @@ export const posts: Post[] = [
 
 <p>That's why this sits next to the other thinking on this site rather than in a statistics appendix. <a href="/writing/your-ninety-percent">Calibration</a> asks how wide your uncertainty should be; <a href="/writing/guessing-on-purpose">estimation</a> asks how to get to a number when you don't have one; this asks how much a new fact should move the number you've got. All three are the same project — putting honest numbers on an uncertain world — and all three are trainable. The <a href="/update">base-rate trainer</a> here gives you the test problems to work, first slowly as a crowd you can count and then as quick rounds, and quietly tracks the one thing worth knowing about your own judgement: whether you keep landing too high. Most people do, at first. It's the most fixable expensive habit you have.</p>`,
   },
+  {
+    slug: "three-numbers-for-an-uncertain-world",
+    title: "Three Numbers for an Uncertain World",
+    date: "2026-06-30",
+    excerpt:
+      "Almost every real decision hides the same three questions: how sure am I, what's my best guess, and how much should this new thing change my mind? Each has a wrong answer you reach for by default — and each is a skill you can train.",
+    readTime: 6,
+    tags: ["decisions", "forecasting", "epistemology"],
+    content: `<p>Watch yourself make a real decision — take a job, price a project, read a worrying symptom, believe a headline — and underneath the specifics you'll find you're doing arithmetic with numbers you never wrote down. <em>How likely is this? How big is it? How much does this new fact change things?</em> You answer all three in an instant, mostly without noticing, and the quality of the decision rides on answers you never checked. The uncomfortable finding from decades of research is that the default answers are wrong in predictable directions — and the hopeful finding is that all three are skills, trainable the way a backhand or a scale is trainable: with reps and honest feedback.</p>
+
+<p>There are, as far as I can tell, exactly three of these numbers. Naming them is most of the battle, because once you can see which one a decision is leaning on, you know which mistake you're about to make.</p>
+
+<h2>One: how sure are you?</h2>
+
+<p>The first number is the width of your uncertainty. Not "am I confident" — confidence is a feeling and it lies — but how much room you're actually leaving for being wrong. Ask people for a range they're 90% sure contains some answer, and the truth falls inside barely half the time. The interval that <em>feels</em> like 90% is really a 50% interval wearing a confident face. The error has a direction: almost everyone's ranges are too narrow. We are, as a species, more sure than we have any right to be.</p>
+
+<p>This is the most quietly trainable of the three. Douglas Hubbard finds that most people go from badly overconfident to nearly calibrated in an afternoon, just by making range guesses and seeing how often the truth lands inside. Being well-calibrated — your "70% sure" coming true about 70% of the time — is the single trait that most distinguishes the forecasters who beat everyone else. You can't fix a width you can't feel, and the only way to feel it is to be graded.</p>
+
+<h2>Two: how do you get to a number at all?</h2>
+
+<p>The second number is the estimate itself — and the failure here isn't being wrong, it's freezing. Asked how big a market is, how long a project will take, how many people would use a thing, most people either wave a hand or quote back the first figure they heard. But there's a third move, and it's a craft: break the question into pieces you can actually guess, and multiply them back together. How many piano tuners in Chicago? You don't know — but you can guess the city's population, how many households own a piano, how often one gets tuned, how many a tuner can service in a year. Four shaky guesses chained together land startlingly close.</p>
+
+<p>The reason it works is the part worth keeping: a chain of rough guesses beats one confident guess, because the errors point in different directions and partly cancel. Overshoot the pianos, undershoot the tunings, and the mistakes eat each other. The bonus is that a decomposition shows you <em>which</em> assumption the answer hinges on — it turns a vibe into something you can argue with and check. The risk is the mirror image: if your errors all lean the same way — a chronic optimist's do — they compound instead of cancelling, and one load-bearing factor can still sink the whole estimate.</p>
+
+<h2>Three: how much should this change your mind?</h2>
+
+<p>The third number is the update — how far a new piece of evidence should move you. This is where the most expensive single mistake in everyday reasoning lives. A test that's 99% accurate comes back positive for a disease one person in a thousand has, and almost everyone, including most doctors asked the question, puts the odds of being sick near 99%. It's about 9%, because the rare true cases are swamped by false alarms from the enormous healthy majority. The mistake is forgetting the <em>base rate</em> — how common the thing was before the evidence arrived — and just reading the evidence off as the answer.</p>
+
+<p>The everyday version skips the lab entirely. A dramatic headline feels like a trend. One bad review feels like the truth. A single story about someone who quit and got rich feels like evidence about your odds. Each is a loud fact demanding a big update, and in each case the right move is the same quiet question: how often does this happen, to people in general, before I heard this one story? The evidence is real. It's the thing you weigh <em>against</em> the prior, not instead of it.</p>
+
+<h2>Why three, together</h2>
+
+<p>Each of these has its own essay and its own trainer on this site, and you could stop at any one of them and come out ahead. But they're worth holding together, because they're not really three skills — they're three views of one. <strong>Width</strong> asks how much you don't know. <strong>Estimation</strong> asks for your best single number anyway. <strong>Updating</strong> asks how to revise that number when the world says something. Every forecast you make in the <a href="/decide">decision journal</a> uses all three at once: you estimate an outcome, you put honest error bars on it, and then — when reality reports back — you update. Get one wrong and the other two inherit the error. A sharp estimate with no error bars is a trap; well-drawn error bars around a number you reached by panic are decoration; a perfect prior you refuse to update is a different kind of stubbornness.</p>
+
+<p>What I like about treating them as a set is that it makes your own weak spot legible. Most people aren't bad at "thinking" in some vague global way; they're specifically overconfident, or specifically frozen in front of a blank estimate, or specifically prone to letting the latest vivid thing knock them around. Those are different muscles with different exercises. The <a href="/practice">practice page</a> puts all three records side by side for exactly this reason — so you can see which number your judgement is shakiest on, and spend the next ten minutes there instead of practising the one you're already good at.</p>
+
+<p>None of this turns an uncertain world into a certain one. The point was never certainty. It's that the world hands you the same three questions over and over, you're already answering them whether you mean to or not, and — unlike most things worth getting better at — these three will tell you your score if you let them. That's rare enough to be worth using.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

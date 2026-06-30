@@ -106,29 +106,15 @@ export default function Home() {
           lets you think a real decision through, log what you expect to happen,
           and come back later to check it against what actually did. The{" "}
           <Link
-            href="/calibrate"
+            href="/practice"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
-            calibration trainer
+            practice page
           </Link>{" "}
-          teaches the skill underneath that — whether your &ldquo;90% sure&rdquo;
-          is worth anything — and the{" "}
-          <Link
-            href="/estimate"
-            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            estimation trainer
-          </Link>{" "}
-          the one beside it: getting to a defensible number when you don&rsquo;t
-          have one. The{" "}
-          <Link
-            href="/update"
-            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            base-rate trainer
-          </Link>{" "}
-          rounds out the set: how much a new test result, alarm, or vivid story
-          should actually change your mind. Reading notes capture what specific
+          trains the three skills underneath every forecast — how sure you should
+          be, how to get to a number at all, and how much a new fact should move
+          it — and shows all three of your records in one place, so you can see
+          which your judgement is weakest on. Reading notes capture what specific
           books did to my thinking.
           Everything cross-references, and everything is searchable (press{" "}
           <kbd className="px-1 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
@@ -156,22 +142,10 @@ export default function Home() {
             Decision journal →
           </Link>
           <Link
-            href="/calibrate"
+            href="/practice"
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
-            Calibration trainer →
-          </Link>
-          <Link
-            href="/estimate"
-            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            Estimation trainer →
-          </Link>
-          <Link
-            href="/update"
-            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            Base-rate trainer →
+            Practice your judgement →
           </Link>
           <Link
             href="/notes"
