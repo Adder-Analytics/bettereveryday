@@ -102,19 +102,13 @@ export default function StartPage() {
           <Link href="/playbook" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
             playbook
           </Link>{" "}
-          finds the right models by the moment you&rsquo;re in, the{" "}
-          <Link href="/calibrate" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
-            calibration trainer
+          finds the right models by the moment you&rsquo;re in, and the{" "}
+          <Link href="/practice" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+            practice page
           </Link>{" "}
-          tests whether your &ldquo;90% sure&rdquo; is worth anything, and the{" "}
-          <Link href="/estimate" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
-            estimation trainer
-          </Link>{" "}
-          builds the knack of getting to a number when you don&rsquo;t have one, and the{" "}
-          <Link href="/update" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
-            base-rate trainer
-          </Link>{" "}
-          drills how much a new result should actually change your mind. Or press{" "}
+          drills the three skills under every forecast — how sure to be, how to get
+          to a number, and how much a new result should change your mind — and shows
+          which of the three your judgement is weakest on. Or press{" "}
           <kbd className="px-1.5 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /
           </kbd>{" "}

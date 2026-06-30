@@ -82,6 +82,13 @@ export default function EstimatePage() {
           >
             calibration trainer
           </Link>
+          ; both, with the base-rate trainer, sit together on the{" "}
+          <Link
+            href="/practice"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            practice page
+          </Link>
           .
         </p>
       </div>

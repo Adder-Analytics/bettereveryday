@@ -32,14 +32,8 @@ export function Nav() {
           <Link href="/decide" className="hover:text-[var(--foreground)] transition-colors">
             Decide
           </Link>
-          <Link href="/calibrate" className="hover:text-[var(--foreground)] transition-colors">
-            Calibrate
-          </Link>
-          <Link href="/estimate" className="hover:text-[var(--foreground)] transition-colors">
-            Estimate
-          </Link>
-          <Link href="/update" className="hover:text-[var(--foreground)] transition-colors">
-            Update
+          <Link href="/practice" className="hover:text-[var(--foreground)] transition-colors">
+            Practice
           </Link>
           <Link href="/now" className="hover:text-[var(--foreground)] transition-colors">
             Now
