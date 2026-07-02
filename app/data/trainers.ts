@@ -34,6 +34,8 @@ type UpdateRecord = {
   sumAbsErr: number;
   sumSignedErr: number;
   within: number;
+  /** The pick-the-prior mode's record — absent in records written before it existed. */
+  prior?: { n?: number; sumAbs?: number; sumSigned?: number };
 };
 
 const CALIBRATE_KEY = "calibrate:v1";
@@ -245,8 +247,11 @@ function updateProfile(r: UpdateRecord | null): TrainerProfile {
   const n = r?.n ?? 0;
   const sumAbsErr = r?.sumAbsErr ?? 0;
   const sumSignedErr = r?.sumSignedErr ?? 0;
+  const priorN = r?.prior?.n ?? 0;
+  const priorSigned = r?.prior?.sumSigned ?? 0;
+  const premium = priorN > 0 ? priorSigned / priorN : 0;
 
-  if (n === 0) {
+  if (n === 0 && priorN === 0) {
     return {
       ...base,
       hasData: false,
@@ -260,6 +265,36 @@ function updateProfile(r: UpdateRecord | null): TrainerProfile {
     };
   }
 
+  // A word on the pick-the-prior drills, when they've accumulated enough to
+  // mean something — appended to whichever verdict applies below.
+  const premiumNote =
+    priorN >= 3 && Math.abs(premium) >= 15
+      ? ` And in the pick-the-prior drills your gut runs about ${Math.abs(Math.round(premium))} points ${premium >= 0 ? "above" : "below"} the outside view.`
+      : "";
+
+  // Only pick-the-prior data so far: the inside-view premium is the number.
+  if (n === 0) {
+    const lean = Math.abs(Math.round(premium));
+    const verdict =
+      priorN < 3
+        ? `Early days — across ${priorN} pick-the-prior drill${priorN === 1 ? "" : "s"}, your gut ran ${lean} point${lean === 1 ? "" : "s"} ${premium >= 0 ? "above" : "below"} the outside view. A few more and the lean means something.`
+        : premium >= 15
+          ? `Across ${priorN} pick-the-prior drills, your gut runs about ${lean} points above the outside view — your case keeps feeling like the exception.`
+          : premium <= -15
+            ? `Across ${priorN} pick-the-prior drills, your gut runs about ${lean} points below the outside view — gloomier than the record.`
+            : `Across ${priorN} pick-the-prior drills, your gut stays close to the outside view — your instincts already consult the record.`;
+    return {
+      ...base,
+      hasData: true,
+      n: priorN,
+      headline: `${premium >= 0 ? "+" : ""}${Math.round(premium)} pts`,
+      headlineLabel: "inside-view premium (gut − outside view)",
+      verdict,
+      tone: priorN < 3 ? "mid" : Math.abs(premium) >= 15 ? "work" : "good",
+      needsPractice: priorN < 3 ? 40 : clamp((Math.abs(premium) / 40) * 100),
+    };
+  }
+
   const typicalMiss = Math.round(sumAbsErr / n);
   const bias = sumSignedErr / n;
   const leansHigh = bias >= 5;
@@ -267,24 +302,30 @@ function updateProfile(r: UpdateRecord | null): TrainerProfile {
   const lean = Math.abs(Math.round(bias));
 
   const verdict =
-    n < 6
+    (n < 6
       ? `Early days — across ${n} update${n === 1 ? "" : "s"}, your typical miss is ${typicalMiss} point${typicalMiss === 1 ? "" : "s"}. A round or two more and your lean means something.`
       : leansHigh
         ? `You come in about ${lean} points high on average — the classic base-rate-neglect signature: trusting the test and underweighting how rare the thing is.`
         : leansLow
           ? `You come in about ${lean} points low on average — erring cautious, underweighting evidence that genuinely should move you.`
-          : `Your highs and lows roughly cancel — you're weighing evidence against the base rate, not anchoring on either. Typical miss: ${typicalMiss} points.`;
+          : `Your highs and lows roughly cancel — you're weighing evidence against the base rate, not anchoring on either. Typical miss: ${typicalMiss} points.`) +
+    premiumNote;
 
   const tone: Tone =
     n < 6 ? "mid" : leansHigh ? "work" : leansLow ? "mid" : typicalMiss <= 12 ? "good" : "mid";
 
-  // Both the size of the miss and a persistent high lean argue for practice.
-  const needs = Math.max((typicalMiss / 30) * 100, leansHigh ? (lean / 20) * 100 + 30 : 0);
+  // The size of the miss, a persistent high lean, and a fat inside-view premium
+  // all argue for practice.
+  const needs = Math.max(
+    (typicalMiss / 30) * 100,
+    leansHigh ? (lean / 20) * 100 + 30 : 0,
+    priorN >= 3 ? (Math.abs(premium) / 40) * 100 : 0
+  );
 
   return {
     ...base,
     hasData: true,
-    n,
+    n: n + priorN,
     headline: `${typicalMiss} pts`,
     headlineLabel: "your typical miss, in points",
     verdict,

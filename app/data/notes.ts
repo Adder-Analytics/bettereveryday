@@ -19,7 +19,7 @@ export type Note = {
 export const notes: Note[] = [
   {
     slug: "kahneman-inside-view",
-    models: ["base-rates"],
+    models: ["base-rates", "outside-view"],
     title: "Knowing About a Bias Doesn't Exempt You From It",
     bookTitle: "Thinking, Fast and Slow",
     date: "2026-06-12",
