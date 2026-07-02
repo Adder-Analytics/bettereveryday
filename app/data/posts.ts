@@ -867,6 +867,52 @@ export const posts: Post[] = [
 
 <p>None of this turns an uncertain world into a certain one. The point was never certainty. It's that the world hands you the same three questions over and over, you're already answering them whether you mean to or not, and — unlike most things worth getting better at — these three will tell you your score if you let them. That's rare enough to be worth using.</p>`,
   },
+  {
+    slug: "nobody-thinks-theyre-the-base-rate",
+    title: "Nobody Thinks They're the Base Rate",
+    date: "2026-07-02",
+    excerpt:
+      "Newlyweds, asked what fraction of marriages end in divorce, answer about half — accurately. Asked about their own marriage, the median answer is zero. The gap between those two numbers is the inside view, and closing it is a skill.",
+    readTime: 7,
+    tags: ["decisions", "forecasting", "epistemology"],
+    content: `<p>In the early 1990s, two researchers asked people applying for marriage licenses a pair of questions. First: what fraction of American marriages end in divorce? The couples knew the statistic — about half, they said, which was right. Then the second question: what's the chance <em>your</em> marriage ends in divorce? The median answer was zero. Not "lower than average." Zero percent — from people who had just correctly recited the average, standing in the building where you file the paperwork.</p>
+
+<p>It's easy to laugh at newlyweds, so try the same move on yourself. How do most estimated timelines go? Late — everyone knows this. How will your current project go? You've got a good feeling about this one. What happens to most people who buy a gym membership in January? You already know. And you, this January? This time is different. The couples aren't unusually deluded. They're doing the thing everyone does with every case they're standing inside of: reasoning from the particulars in front of them, and quietly filing the statistics under <em>other people</em>.</p>
+
+<h2>Two ways to forecast</h2>
+
+<p>Daniel Kahneman gave the two moves names that stuck. The <strong>inside view</strong> builds a forecast from the case itself — your plan, your team, your talent, what you can see from where you stand. The <strong>outside view</strong> ignores nearly all of that and asks one question: <em>what happened to everyone else who tried this kind of thing?</em> Find the class your case belongs to, look up how that class actually turned out, and start your forecast there — from the record, not the story.</p>
+
+<p>The inside view feels more responsible. You have all this specific information — surely using it beats some crude average over people who aren't you? But that intuition gets the situation backwards, and the reason is worth holding onto. Your specific information is mostly a <em>plan</em>, and a plan is a story about the best case: it contains the steps you thought of, scheduled as if each will go roughly as imagined. What sinks projects is what's not in the story — the contractor who vanishes, the dependency that ships broken, the month you lose to something that, today, has no name. You can't enumerate surprises from inside the plan; reading it harder just makes the story more vivid. But the outside view has already counted them, blindly and honestly, because every surprise that ever wrecked a similar case is baked into how the class turned out. The crude average knows things the detailed story structurally cannot.</p>
+
+<h2>The most replicated embarrassment in psychology</h2>
+
+<p>Measure the gap and it's not subtle. In the classic study, students predicted how long their thesis projects would take: 34 days, on average. Actual: 55. Only about 30% finished by the date they'd named — and when researchers asked instead for a date they were "99% sure" to finish by, still fewer than half made it. That's the <strong>planning fallacy</strong>, and it does not spare professionals: across Bent Flyvbjerg's database of thousands of major projects — full-time planners, formal schedules, real money — roughly one in ten comes in on budget. Nine of ten megaprojects run over, the overruns repeat decade after decade, and the estimates never learn.</p>
+
+<p>They never learn because each new project is planned from the inside, where this one, with its visible steps and its competent team, feels like the exception. Which is the newlywed answer again, wearing a hard hat. The failure isn't ignorance of the base rate — the students knew about late projects, the planners had lived through the last overrun. The failure is that the base rate never feels like it's <em>about you</em>. Nobody thinks they're the base rate. That's what a base rate is: everyone, each of whom thought they weren't.</p>
+
+<p>There's an institutional version of the fix — <strong>reference-class forecasting</strong>, developed by Flyvbjerg from Kahneman's work, now required for big projects by some governments. Strip the ceremony and it's three steps. Pick the class your case belongs to. Get the distribution of how that class actually turned out. Start there, and let the particulars of your case argue for a <em>modest</em> adjustment — earned with evidence you could defend out loud, not with the feeling of being special.</p>
+
+<h2>The hard judgement is choosing the class</h2>
+
+<p>Everything above makes the outside view sound mechanical, and the arithmetic is. The judgement that isn't — the part that makes this a skill rather than a lookup — is deciding what counts as "this kind of thing." Choose the class badly and the outside view launders a bad prior into a confident wrong answer. A few rules of thumb do most of the work.</p>
+
+<p><strong>Start broad, and narrow only as far as real data takes you.</strong> A wedding guest starting from "all first marriages" gets about 55% lasting. Narrowing to "college graduates marrying after 25" legitimately moves it to roughly 75% — because that's a measured class with a measured difference. Narrowing further to "couples as right for each other as these two" moves it to wherever you wanted it to go, because that class has a membership of one and its only data is your impression. That's the boundary: narrow with statistics, never with adjectives.</p>
+
+<p><strong>A class of one is not a class.</strong> "Projects exactly like this one, run by me, this year" sounds rigorous and is just the inside view with a census form. If the class you've picked contains only your case, you haven't consulted the record — you've asked the story to grade itself.</p>
+
+<p><strong>A rate you can't source isn't a rate.</strong> Everyone knows 90% of restaurants fail in the first year. No study has ever found this; the figure traces to a two-decade-old TV commercial. When economists tracked every restaurant in the government's business census, about 17% closed in year one, and just under half were still open at five years — almost exactly the rate for new businesses generally. Folklore can be pessimistic too, and the outside view corrects in both directions: the friend opening a restaurant deserves neither your gut's 80% nor the commercial's 10%, but the record's roughly-half.</p>
+
+<p><strong>Define the event before you pick the class.</strong> "What's the chance the startup succeeds?" has no base rate, because "succeeds" isn't an event. Returns its investors' capital: about one in four. Reaches a billion-dollar valuation: about one in a hundred. The honest number moves by a factor of twenty-five depending on what you meant, which means half of choosing the reference class is being forced to say precisely what you're predicting — a benefit smuggled in as a chore.</p>
+
+<h2>Knowing this will not save you</h2>
+
+<p>Here is the uncomfortable coda, and this site's <a href="/notes#kahneman-inside-view">favorite cautionary tale</a>. Kahneman — the man who named the inside view — once asked his own textbook team how long their project would take. Two more years, they estimated. He then asked the team's expert how long comparable teams took: seven-plus years, the expert admitted, and 40% never finished at all. The team heard the base rate, believed it, and kept working to the two-year plan anyway. The book took eight more years. Awareness did nothing — for the people who literally wrote the literature.</p>
+
+<p>So the correction can't live in your judgement; it has to live in your <em>procedure</em>. Make the outside view a mandatory step, not a virtue you hope to remember under enthusiasm. Before you commit — in the <a href="/decide">decision journal</a>, on the whiteboard, in the email promising a date — the question "what's the rate for things like this?" gets asked and answered, every time, the way a pilot runs a checklist whether or not the sky looks clear. And because the reflex only builds with reps, the <a href="/update">base-rate trainer</a> now has a mode for exactly this: messy questions with no answer key, where you give your gut number first, then choose the reference class you'd start from — with the traps included, folklore rates and classes-of-one, because those are the candidates real life offers you too. It keeps one score across visits: how far your gut runs above the outside view before any evidence arrives. Your inside-view premium.</p>
+
+<p>None of this asks you to stop believing your case is special. Every case is special; the classes are coarse and your particulars are real. The discipline is only about <em>where you stand</em> while you argue for the adjustment: on the record of everyone who tried, nudging the number with evidence — instead of on the story, defending zero percent in the marriage-license line. <a href="/writing/how-much-should-this-change-your-mind">How far the evidence should move you</a> is a skill this site drills elsewhere. This one is quieter and comes first: before you can update the number, you have to be honest about where the number starts.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

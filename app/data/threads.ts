@@ -156,6 +156,16 @@ export const threads: Thread[] = [
         why: "Start from the prior probability, then let the specifics update it.",
       },
       {
+        kind: "essay",
+        slug: "nobody-thinks-theyre-the-base-rate",
+        why: "But where does the prior come from? The inside view, the planning fallacy, and how to choose a reference class honestly — the judgement upstream of all the arithmetic.",
+      },
+      {
+        kind: "model",
+        id: "outside-view",
+        why: "The one-screen version: forecast from the record of everyone who tried, not from the story of your attempt.",
+      },
+      {
         kind: "model",
         id: "regression-to-mean",
         why: "Why so much hard-won experience teaches exactly the wrong lesson.",

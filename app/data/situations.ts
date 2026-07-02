@@ -136,6 +136,34 @@ export const situations: Situation[] = [
     essays: ["guessing-on-purpose", "orders-of-magnitude"],
   },
   {
+    id: "promising-a-date",
+    title: "You're about to promise a deadline",
+    scene:
+      "A launch date, a client quote, a 'done by Friday,' a renovation budget. The plan is in front of you, every step looks doable, and someone is waiting for a number.",
+    question:
+      "What happened to everyone else who planned something like this — and why would my case be different?",
+    models: [
+      {
+        id: "outside-view",
+        move: "Don't forecast from the plan — a plan is a story about the best case. Find the class this belongs to (your own past projects, projects like this generally), start from how that class actually went, and let the particulars argue for a modest adjustment.",
+      },
+      {
+        id: "margin-of-safety",
+        move: "Size the buffer to the usual overrun, not to your confidence. People run about 60% over their own predictions on familiar work; padding that feels excessive from the inside is usually about right from the record.",
+      },
+      {
+        id: "pre-mortem",
+        move: "It's the deadline and you missed by half. Write what ate the time. The steps that sink schedules are the ones not on the list, and they only become visible when you imagine the miss as already real.",
+      },
+      {
+        id: "implementation-intentions",
+        move: "Set the tripwire now: 'if the halfway milestone slips past its date, we re-plan the rest' — so the schedule gets revisited by trigger, not by hope.",
+      },
+    ],
+    essays: ["nobody-thinks-theyre-the-base-rate"],
+    notes: ["kahneman-inside-view"],
+  },
+  {
     id: "judging-a-decision",
     title: "You're judging whether a decision was good",
     scene:
