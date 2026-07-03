@@ -83,6 +83,11 @@ export const threads: Thread[] = [
       },
       {
         kind: "essay",
+        slug: "experience-doesnt-teach",
+        why: "And why the fix never happens on its own: weather forecasters are calibrated because the rain grades them daily — your decisions get no such courtesy, so the scoreboard has to be built.",
+      },
+      {
+        kind: "essay",
         slug: "second-order-thinking",
         why: "“And then what?” The question that catches most avoidable mistakes.",
       },
@@ -154,6 +159,16 @@ export const threads: Thread[] = [
         kind: "model",
         id: "base-rates",
         why: "Start from the prior probability, then let the specifics update it.",
+      },
+      {
+        kind: "essay",
+        slug: "nobody-thinks-theyre-the-base-rate",
+        why: "But where does the prior come from? The inside view, the planning fallacy, and how to choose a reference class honestly — the judgement upstream of all the arithmetic.",
+      },
+      {
+        kind: "model",
+        id: "outside-view",
+        why: "The one-screen version: forecast from the record of everyone who tried, not from the story of your attempt.",
       },
       {
         kind: "model",

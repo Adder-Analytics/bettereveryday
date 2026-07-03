@@ -867,6 +867,94 @@ export const posts: Post[] = [
 
 <p>None of this turns an uncertain world into a certain one. The point was never certainty. It's that the world hands you the same three questions over and over, you're already answering them whether you mean to or not, and — unlike most things worth getting better at — these three will tell you your score if you let them. That's rare enough to be worth using.</p>`,
   },
+  {
+    slug: "nobody-thinks-theyre-the-base-rate",
+    title: "Nobody Thinks They're the Base Rate",
+    date: "2026-07-02",
+    excerpt:
+      "Newlyweds, asked what fraction of marriages end in divorce, answer about half — accurately. Asked about their own marriage, the median answer is zero. The gap between those two numbers is the inside view, and closing it is a skill.",
+    readTime: 7,
+    tags: ["decisions", "forecasting", "epistemology"],
+    content: `<p>In the early 1990s, two researchers asked people applying for marriage licenses a pair of questions. First: what fraction of American marriages end in divorce? The couples knew the statistic — about half, they said, which was right. Then the second question: what's the chance <em>your</em> marriage ends in divorce? The median answer was zero. Not "lower than average." Zero percent — from people who had just correctly recited the average, standing in the building where you file the paperwork.</p>
+
+<p>It's easy to laugh at newlyweds, so try the same move on yourself. How do most estimated timelines go? Late — everyone knows this. How will your current project go? You've got a good feeling about this one. What happens to most people who buy a gym membership in January? You already know. And you, this January? This time is different. The couples aren't unusually deluded. They're doing the thing everyone does with every case they're standing inside of: reasoning from the particulars in front of them, and quietly filing the statistics under <em>other people</em>.</p>
+
+<h2>Two ways to forecast</h2>
+
+<p>Daniel Kahneman gave the two moves names that stuck. The <strong>inside view</strong> builds a forecast from the case itself — your plan, your team, your talent, what you can see from where you stand. The <strong>outside view</strong> ignores nearly all of that and asks one question: <em>what happened to everyone else who tried this kind of thing?</em> Find the class your case belongs to, look up how that class actually turned out, and start your forecast there — from the record, not the story.</p>
+
+<p>The inside view feels more responsible. You have all this specific information — surely using it beats some crude average over people who aren't you? But that intuition gets the situation backwards, and the reason is worth holding onto. Your specific information is mostly a <em>plan</em>, and a plan is a story about the best case: it contains the steps you thought of, scheduled as if each will go roughly as imagined. What sinks projects is what's not in the story — the contractor who vanishes, the dependency that ships broken, the month you lose to something that, today, has no name. You can't enumerate surprises from inside the plan; reading it harder just makes the story more vivid. But the outside view has already counted them, blindly and honestly, because every surprise that ever wrecked a similar case is baked into how the class turned out. The crude average knows things the detailed story structurally cannot.</p>
+
+<h2>The most replicated embarrassment in psychology</h2>
+
+<p>Measure the gap and it's not subtle. In the classic study, students predicted how long their thesis projects would take: 34 days, on average. Actual: 55. Only about 30% finished by the date they'd named — and when researchers asked instead for a date they were "99% sure" to finish by, still fewer than half made it. That's the <strong>planning fallacy</strong>, and it does not spare professionals: across Bent Flyvbjerg's database of thousands of major projects — full-time planners, formal schedules, real money — roughly one in ten comes in on budget. Nine of ten megaprojects run over, the overruns repeat decade after decade, and the estimates never learn.</p>
+
+<p>They never learn because each new project is planned from the inside, where this one, with its visible steps and its competent team, feels like the exception. Which is the newlywed answer again, wearing a hard hat. The failure isn't ignorance of the base rate — the students knew about late projects, the planners had lived through the last overrun. The failure is that the base rate never feels like it's <em>about you</em>. Nobody thinks they're the base rate. That's what a base rate is: everyone, each of whom thought they weren't.</p>
+
+<p>There's an institutional version of the fix — <strong>reference-class forecasting</strong>, developed by Flyvbjerg from Kahneman's work, now required for big projects by some governments. Strip the ceremony and it's three steps. Pick the class your case belongs to. Get the distribution of how that class actually turned out. Start there, and let the particulars of your case argue for a <em>modest</em> adjustment — earned with evidence you could defend out loud, not with the feeling of being special.</p>
+
+<h2>The hard judgement is choosing the class</h2>
+
+<p>Everything above makes the outside view sound mechanical, and the arithmetic is. The judgement that isn't — the part that makes this a skill rather than a lookup — is deciding what counts as "this kind of thing." Choose the class badly and the outside view launders a bad prior into a confident wrong answer. A few rules of thumb do most of the work.</p>
+
+<p><strong>Start broad, and narrow only as far as real data takes you.</strong> A wedding guest starting from "all first marriages" gets about 55% lasting. Narrowing to "college graduates marrying after 25" legitimately moves it to roughly 75% — because that's a measured class with a measured difference. Narrowing further to "couples as right for each other as these two" moves it to wherever you wanted it to go, because that class has a membership of one and its only data is your impression. That's the boundary: narrow with statistics, never with adjectives.</p>
+
+<p><strong>A class of one is not a class.</strong> "Projects exactly like this one, run by me, this year" sounds rigorous and is just the inside view with a census form. If the class you've picked contains only your case, you haven't consulted the record — you've asked the story to grade itself.</p>
+
+<p><strong>A rate you can't source isn't a rate.</strong> Everyone knows 90% of restaurants fail in the first year. No study has ever found this; the figure traces to a two-decade-old TV commercial. When economists tracked every restaurant in the government's business census, about 17% closed in year one, and just under half were still open at five years — almost exactly the rate for new businesses generally. Folklore can be pessimistic too, and the outside view corrects in both directions: the friend opening a restaurant deserves neither your gut's 80% nor the commercial's 10%, but the record's roughly-half.</p>
+
+<p><strong>Define the event before you pick the class.</strong> "What's the chance the startup succeeds?" has no base rate, because "succeeds" isn't an event. Returns its investors' capital: about one in four. Reaches a billion-dollar valuation: about one in a hundred. The honest number moves by a factor of twenty-five depending on what you meant, which means half of choosing the reference class is being forced to say precisely what you're predicting — a benefit smuggled in as a chore.</p>
+
+<h2>Knowing this will not save you</h2>
+
+<p>Here is the uncomfortable coda, and this site's <a href="/notes#kahneman-inside-view">favorite cautionary tale</a>. Kahneman — the man who named the inside view — once asked his own textbook team how long their project would take. Two more years, they estimated. He then asked the team's expert how long comparable teams took: seven-plus years, the expert admitted, and 40% never finished at all. The team heard the base rate, believed it, and kept working to the two-year plan anyway. The book took eight more years. Awareness did nothing — for the people who literally wrote the literature.</p>
+
+<p>So the correction can't live in your judgement; it has to live in your <em>procedure</em>. Make the outside view a mandatory step, not a virtue you hope to remember under enthusiasm. Before you commit — in the <a href="/decide">decision journal</a>, on the whiteboard, in the email promising a date — the question "what's the rate for things like this?" gets asked and answered, every time, the way a pilot runs a checklist whether or not the sky looks clear. And because the reflex only builds with reps, the <a href="/update">base-rate trainer</a> now has a mode for exactly this: messy questions with no answer key, where you give your gut number first, then choose the reference class you'd start from — with the traps included, folklore rates and classes-of-one, because those are the candidates real life offers you too. It keeps one score across visits: how far your gut runs above the outside view before any evidence arrives. Your inside-view premium.</p>
+
+<p>None of this asks you to stop believing your case is special. Every case is special; the classes are coarse and your particulars are real. The discipline is only about <em>where you stand</em> while you argue for the adjustment: on the record of everyone who tried, nudging the number with evidence — instead of on the story, defending zero percent in the marriage-license line. <a href="/writing/how-much-should-this-change-your-mind">How far the evidence should move you</a> is a skill this site drills elsewhere. This one is quieter and comes first: before you can update the number, you have to be honest about where the number starts.</p>`,
+  },
+  {
+    slug: "experience-doesnt-teach",
+    title: "Experience Doesn't Teach",
+    date: "2026-07-03",
+    excerpt:
+      "When a weather forecaster says 70% chance of rain, it rains about 70% of the time — a calibration almost no other profession can show. Not because weather is easy, but because the rain answers back: fast, unambiguous, and scored. Most of life never answers. That part is fixable.",
+    readTime: 7,
+    tags: ["decisions", "learning", "epistemology"],
+    content: `<p>There is exactly one profession famous for knowing how likely it is to be right, and it's the one we make jokes about. When a National Weather Service forecaster says there's a 70&nbsp;percent chance of rain, it rains on about 70&nbsp;percent of those days. When they say 90, about 90. Allan Murphy and Robert Winkler measured this in the 1970s, on years of operational forecasts, and the result has held up ever since: forecasters' stated probabilities track reality about as closely as human judgement gets. Almost nobody else can show a curve like that. In a classic study of a real clinic, physicians' confident diagnoses of pneumonia ran far ahead of how many patients actually had it — and doctors are the people we trust with the stakes.</p>
+
+<p>The strange part is that meteorologists earn their calibration on one of the least predictable systems humans deal with. Weather is the textbook example of chaos; whether your new hire works out is, by comparison, a simple question. So the difference can't be that weather is easy or that forecasters are smarter. The difference is what happens <em>after</em> the forecast.</p>
+
+<h2>The loop</h2>
+
+<p>Consider what a weather forecaster's day actually delivers. The forecast is a number, stated in advance, in writing — not "looks like rain," but 70&nbsp;percent, on the record. The outcome arrives fast: by tomorrow morning it rained or it didn't, and nobody argues about which. And the two are scored against each other — the US Weather Bureau started formally grading probability forecasts in the 1950s, using a rule its own statistician, Glenn Brier, worked out — so every forecaster gets an unambiguous, personal answer to the only question that improves you: <em>when I say 70, what actually happens?</em> Repeat a thousand times a year for a career.</p>
+
+<p>Now count how many of those properties your own judgement gets. You predicted the reorganization would be a disaster — but you never said how confident you were, or what "disaster" would look like, so whatever happens can be read as roughly what you meant. The outcome lands quarters later, tangled with everything else that happened in between. And by then, memory has quietly done you the favor psychologists call hindsight bias: what you <em>now know</em> happened seeps backward into what you're sure you <em>expected</em>, so the record you consult — your own recollection — has been edited by the result. You were never scored, and the one scorekeeper you carry with you cheats in your favor.</p>
+
+<h2>Kind worlds and wicked ones</h2>
+
+<p>The psychologist Robin Hogarth gave the two situations names. A <strong>kind</strong> learning environment is one where feedback is quick, accurate, and honestly linked to what you did: chess, golf, weather forecasting. Practice in a kind world compounds — experience really does become skill, which is why ten thousand hours of chess makes a grandmaster. A <strong>wicked</strong> environment gives feedback that is delayed, noisy, missing, or actively misleading — and most judgement calls that matter live there. Hiring: you never learn how the people you rejected would have done. Strategy: the market moved for nine reasons and you tested one. Medicine, sometimes, at its worst: Hogarth tells of a turn-of-the-century physician who could famously spot typhoid before symptoms showed by palpating patients' tongues — and whose intuition was "confirmed" again and again, patient after patient falling ill exactly as predicted. He was a healthy carrier. His examinations were spreading the disease. The feedback loop wasn't just broken; it was manufacturing confidence in the thing causing the harm.</p>
+
+<p>This is why the proverb about ten years of experience being one year repeated ten times is more than a jab. In a wicked environment, experience doesn't teach — it <em>confirms</em>. You keep making the call, the feedback keeps failing to arrive or arriving garbled, and the main thing that grows is your certainty. The senior person's confidence is real; whether their accuracy grew with it depends entirely on whether their world ever answered back. Seniority is measured in years. Calibration is measured in graded forecasts. They only correlate in kind worlds.</p>
+
+<h2>Feedback is the active ingredient</h2>
+
+<p>The hopeful result hiding in this literature is that the forecasters' calibration is made, not born. Sarah Lichtenstein and Baruch Fischhoff ran the experiment directly in 1980: take ordinarily overconfident people, have them make a couple of hundred judgements, and after each round show them the score — how often their "80&nbsp;percent sure" actually came true. Calibration improved, substantially, and it didn't take a career: most of the gain arrived early. The same shape shows up wherever the loop gets closed — <a href="/writing/deliberate-practice">deliberate practice</a> was never "years of doing the thing"; it was always tight cycles of attempt and honest correction, and judgement turns out to obey the same law as backhands. People aren't incurably overconfident. They're unscored.</p>
+
+<p>So the question stops being "how do I get more experience?" and becomes an engineering problem: <em>my environment won't grade me — where do I get the grades?</em> Three properties do the teaching, and they're exactly the three the weather forecaster gets for free. The forecast has to be <strong>specific in advance</strong> — a number and a named outcome, so the result can actually contradict you. The feedback has to be <strong>prompt enough to reach you</strong> — or failing that, scheduled, so it arrives at all. And it has to be scored against <strong>what you actually said, not what you remember saying</strong> — which, given hindsight bias, means it has to be written down somewhere memory can't reach.</p>
+
+<h2>Building the machine</h2>
+
+<p>Everything this site's tools do, under the hood, is manufacture those three properties for a world that doesn't supply them. The <a href="/practice">trainers</a> are an imported kind environment: trivia and scenarios with knowable answers, so the loop that takes a forecaster years closes in an afternoon — you say 90, you find out in seconds, and the feeling of "90&nbsp;percent sure" starts to mean something. That's real, and measured: it's the Lichtenstein–Fischhoff procedure as a game.</p>
+
+<p>But your actual decisions still live in the wicked world, and no amount of trivia changes that. The <a href="/decide">decision journal</a> is the wickedness-correction device: it makes the forecast specific in advance (what do you expect, how sure are you), schedules the feedback (a review date, so the outcome comes back to you instead of dissolving), and freezes the record where hindsight can't edit it (you grade against the words you wrote, not the memory the result has been rewriting). It is, deliberately, a machine for doing to your decisions what the Weather Bureau did to its forecasters in 1950 — and the <a href="/practice">practice page</a> now shows both scoreboards side by side, the warm-up and the real game, because the trivia score was only ever there in service of the real one.</p>
+
+<h2>The honest limit</h2>
+
+<p>The journal's loop is still the slower, muddier one, and pretending otherwise would be its own miscalibration. You make a handful of consequential decisions a year, not a thousand; your real-world sample will stay small for a long time, and the numbers it produces stay coarse — counts, not curves. "Did it go as expected?" is itself a judgement call in a way "did it rain?" never is, and some outcomes stay genuinely ambiguous forever. A manufactured feedback loop narrows the gap between your world and the forecaster's; nothing closes it.</p>
+
+<p>But coarse, honest feedback beats vivid, flattering feedback by a margin that's hard to overstate — the tongue-palpating doctor had <em>abundant</em> feedback, remember, all of it vivid and all of it wrong in his favor. A few dozen written-in-advance forecasts, graded against what you actually said, will teach you more about your own judgement than a decade of remembered vindication. The rain answers the forecaster whether or not he wants to hear it. Your life will mostly spare you the answer. That courtesy is the whole problem, and declining it is the skill.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

@@ -2,49 +2,27 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { countDueReviews } from "../data/journal";
 
 /**
  * A tiny client island that surfaces the decision journal's "review due" count
  * where you already are — the homepage — instead of only inside /decide. The
  * journal can only nudge you if you open it; this brings the nudge to you.
  *
- * It reads the same localStorage key the journal writes (decide:log:v1) and
- * counts entries whose review date has arrived and that haven't been reviewed.
+ * The counting lives in app/data/journal.ts (the shared read side of the
+ * journal's log), so this badge and the practice hub can never disagree.
  * Renders null on the server and on first client paint (matching the server),
  * then reveals itself after mount only if there's actually something due — so
  * there's no hydration mismatch and no empty placeholder for new visitors.
  */
-const LOG_KEY = "decide:log:v1";
-
-function todayISO(): string {
-  const d = new Date();
-  const p = (n: number) => String(n).padStart(2, "0");
-  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
-}
-
 export default function ReviewDueBadge() {
   const [due, setDue] = useState(0);
 
   useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem(LOG_KEY);
-      if (!raw) return;
-      const log = JSON.parse(raw);
-      if (!Array.isArray(log)) return;
-      const today = todayISO();
-      const count = log.filter(
-        (e) =>
-          e &&
-          !e.reviewedOn &&
-          typeof e.reviewOn === "string" &&
-          e.reviewOn <= today
-      ).length;
-      /* eslint-disable-next-line react-hooks/set-state-in-effect -- one-time
-         read from browser storage after mount; intentional, can't run in render */
-      if (count > 0) setDue(count);
-    } catch {
-      /* no log, unreadable storage, or bad JSON — show nothing */
-    }
+    const count = countDueReviews();
+    /* eslint-disable-next-line react-hooks/set-state-in-effect -- one-time
+       read from browser storage after mount; intentional, can't run in render */
+    if (count > 0) setDue(count);
   }, []);
 
   if (due === 0) return null;
