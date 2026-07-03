@@ -83,6 +83,11 @@ export const threads: Thread[] = [
       },
       {
         kind: "essay",
+        slug: "experience-doesnt-teach",
+        why: "And why the fix never happens on its own: weather forecasters are calibrated because the rain grades them daily — your decisions get no such courtesy, so the scoreboard has to be built.",
+      },
+      {
+        kind: "essay",
         slug: "second-order-thinking",
         why: "“And then what?” The question that catches most avoidable mistakes.",
       },

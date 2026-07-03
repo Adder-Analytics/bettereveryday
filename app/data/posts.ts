@@ -913,6 +913,48 @@ export const posts: Post[] = [
 
 <p>None of this asks you to stop believing your case is special. Every case is special; the classes are coarse and your particulars are real. The discipline is only about <em>where you stand</em> while you argue for the adjustment: on the record of everyone who tried, nudging the number with evidence — instead of on the story, defending zero percent in the marriage-license line. <a href="/writing/how-much-should-this-change-your-mind">How far the evidence should move you</a> is a skill this site drills elsewhere. This one is quieter and comes first: before you can update the number, you have to be honest about where the number starts.</p>`,
   },
+  {
+    slug: "experience-doesnt-teach",
+    title: "Experience Doesn't Teach",
+    date: "2026-07-03",
+    excerpt:
+      "When a weather forecaster says 70% chance of rain, it rains about 70% of the time — a calibration almost no other profession can show. Not because weather is easy, but because the rain answers back: fast, unambiguous, and scored. Most of life never answers. That part is fixable.",
+    readTime: 7,
+    tags: ["decisions", "learning", "epistemology"],
+    content: `<p>There is exactly one profession famous for knowing how likely it is to be right, and it's the one we make jokes about. When a National Weather Service forecaster says there's a 70&nbsp;percent chance of rain, it rains on about 70&nbsp;percent of those days. When they say 90, about 90. Allan Murphy and Robert Winkler measured this in the 1970s, on years of operational forecasts, and the result has held up ever since: forecasters' stated probabilities track reality about as closely as human judgement gets. Almost nobody else can show a curve like that. In a classic study of a real clinic, physicians' confident diagnoses of pneumonia ran far ahead of how many patients actually had it — and doctors are the people we trust with the stakes.</p>
+
+<p>The strange part is that meteorologists earn their calibration on one of the least predictable systems humans deal with. Weather is the textbook example of chaos; whether your new hire works out is, by comparison, a simple question. So the difference can't be that weather is easy or that forecasters are smarter. The difference is what happens <em>after</em> the forecast.</p>
+
+<h2>The loop</h2>
+
+<p>Consider what a weather forecaster's day actually delivers. The forecast is a number, stated in advance, in writing — not "looks like rain," but 70&nbsp;percent, on the record. The outcome arrives fast: by tomorrow morning it rained or it didn't, and nobody argues about which. And the two are scored against each other — the US Weather Bureau started formally grading probability forecasts in the 1950s, using a rule its own statistician, Glenn Brier, worked out — so every forecaster gets an unambiguous, personal answer to the only question that improves you: <em>when I say 70, what actually happens?</em> Repeat a thousand times a year for a career.</p>
+
+<p>Now count how many of those properties your own judgement gets. You predicted the reorganization would be a disaster — but you never said how confident you were, or what "disaster" would look like, so whatever happens can be read as roughly what you meant. The outcome lands quarters later, tangled with everything else that happened in between. And by then, memory has quietly done you the favor psychologists call hindsight bias: what you <em>now know</em> happened seeps backward into what you're sure you <em>expected</em>, so the record you consult — your own recollection — has been edited by the result. You were never scored, and the one scorekeeper you carry with you cheats in your favor.</p>
+
+<h2>Kind worlds and wicked ones</h2>
+
+<p>The psychologist Robin Hogarth gave the two situations names. A <strong>kind</strong> learning environment is one where feedback is quick, accurate, and honestly linked to what you did: chess, golf, weather forecasting. Practice in a kind world compounds — experience really does become skill, which is why ten thousand hours of chess makes a grandmaster. A <strong>wicked</strong> environment gives feedback that is delayed, noisy, missing, or actively misleading — and most judgement calls that matter live there. Hiring: you never learn how the people you rejected would have done. Strategy: the market moved for nine reasons and you tested one. Medicine, sometimes, at its worst: Hogarth tells of a turn-of-the-century physician who could famously spot typhoid before symptoms showed by palpating patients' tongues — and whose intuition was "confirmed" again and again, patient after patient falling ill exactly as predicted. He was a healthy carrier. His examinations were spreading the disease. The feedback loop wasn't just broken; it was manufacturing confidence in the thing causing the harm.</p>
+
+<p>This is why the proverb about ten years of experience being one year repeated ten times is more than a jab. In a wicked environment, experience doesn't teach — it <em>confirms</em>. You keep making the call, the feedback keeps failing to arrive or arriving garbled, and the main thing that grows is your certainty. The senior person's confidence is real; whether their accuracy grew with it depends entirely on whether their world ever answered back. Seniority is measured in years. Calibration is measured in graded forecasts. They only correlate in kind worlds.</p>
+
+<h2>Feedback is the active ingredient</h2>
+
+<p>The hopeful result hiding in this literature is that the forecasters' calibration is made, not born. Sarah Lichtenstein and Baruch Fischhoff ran the experiment directly in 1980: take ordinarily overconfident people, have them make a couple of hundred judgements, and after each round show them the score — how often their "80&nbsp;percent sure" actually came true. Calibration improved, substantially, and it didn't take a career: most of the gain arrived early. The same shape shows up wherever the loop gets closed — <a href="/writing/deliberate-practice">deliberate practice</a> was never "years of doing the thing"; it was always tight cycles of attempt and honest correction, and judgement turns out to obey the same law as backhands. People aren't incurably overconfident. They're unscored.</p>
+
+<p>So the question stops being "how do I get more experience?" and becomes an engineering problem: <em>my environment won't grade me — where do I get the grades?</em> Three properties do the teaching, and they're exactly the three the weather forecaster gets for free. The forecast has to be <strong>specific in advance</strong> — a number and a named outcome, so the result can actually contradict you. The feedback has to be <strong>prompt enough to reach you</strong> — or failing that, scheduled, so it arrives at all. And it has to be scored against <strong>what you actually said, not what you remember saying</strong> — which, given hindsight bias, means it has to be written down somewhere memory can't reach.</p>
+
+<h2>Building the machine</h2>
+
+<p>Everything this site's tools do, under the hood, is manufacture those three properties for a world that doesn't supply them. The <a href="/practice">trainers</a> are an imported kind environment: trivia and scenarios with knowable answers, so the loop that takes a forecaster years closes in an afternoon — you say 90, you find out in seconds, and the feeling of "90&nbsp;percent sure" starts to mean something. That's real, and measured: it's the Lichtenstein–Fischhoff procedure as a game.</p>
+
+<p>But your actual decisions still live in the wicked world, and no amount of trivia changes that. The <a href="/decide">decision journal</a> is the wickedness-correction device: it makes the forecast specific in advance (what do you expect, how sure are you), schedules the feedback (a review date, so the outcome comes back to you instead of dissolving), and freezes the record where hindsight can't edit it (you grade against the words you wrote, not the memory the result has been rewriting). It is, deliberately, a machine for doing to your decisions what the Weather Bureau did to its forecasters in 1950 — and the <a href="/practice">practice page</a> now shows both scoreboards side by side, the warm-up and the real game, because the trivia score was only ever there in service of the real one.</p>
+
+<h2>The honest limit</h2>
+
+<p>The journal's loop is still the slower, muddier one, and pretending otherwise would be its own miscalibration. You make a handful of consequential decisions a year, not a thousand; your real-world sample will stay small for a long time, and the numbers it produces stay coarse — counts, not curves. "Did it go as expected?" is itself a judgement call in a way "did it rain?" never is, and some outcomes stay genuinely ambiguous forever. A manufactured feedback loop narrows the gap between your world and the forecaster's; nothing closes it.</p>
+
+<p>But coarse, honest feedback beats vivid, flattering feedback by a margin that's hard to overstate — the tongue-palpating doctor had <em>abundant</em> feedback, remember, all of it vivid and all of it wrong in his favor. A few dozen written-in-advance forecasts, graded against what you actually said, will teach you more about your own judgement than a decade of remembered vindication. The rain answers the forecaster whether or not he wants to hear it. Your life will mostly spare you the answer. That courtesy is the whole problem, and declining it is the skill.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
