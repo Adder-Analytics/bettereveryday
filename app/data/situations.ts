@@ -289,6 +289,38 @@ export const situations: Situation[] = [
     notes: ["kahneman-inside-view"],
   },
   {
+    id: "time-to-quit",
+    title: "You can't tell if it's time to quit",
+    scene:
+      "The project that's been 'almost there' for a year. The job, the strategy, the manuscript, the relationship with the sunk decade. Everything already spent argues for one more push — and one more after that.",
+    question:
+      "Knowing what I know now, would I start this today — and what, specifically, would have to happen for me to stop?",
+    models: [
+      {
+        id: "loss-aversion",
+        move: "Quitting converts a paper loss into a real one, and that's most of why it hurts — but the pain of admitting the loss is not information about the future. What's spent is spent whether you stay or go; only what comes next is still on the table.",
+      },
+      {
+        id: "opportunity-cost",
+        move: "Staying isn't free. Every month in this is a month not in the next thing — price the persistence in what the same time, money, and attention would earn elsewhere, not against zero.",
+      },
+      {
+        id: "outside-view",
+        move: "Your sense of 'almost there' comes from inside the story. What actually happened to people who were this deep in this kind of thing — how often did the next push crack it, and how often was 'almost' the permanent condition?",
+      },
+      {
+        id: "self-distancing",
+        move: "Describe the situation to yourself as if a friend brought it to you — the years in, the current trajectory, the reasons to stay. Notice how fast the advice comes when the sunk cost isn't yours.",
+      },
+      {
+        id: "tripwires",
+        move: "If you can't make the call today, make the smaller one: set the kill criteria — a state and a date. 'If X isn't true by then, I stop.' Put the date in your calendar. Quitting on time will feel like quitting too early; that feeling is the bias, not the verdict.",
+      },
+    ],
+    essays: ["hold-the-funeral-first", "decision-quality"],
+    notes: ["housel-tails"],
+  },
+  {
     id: "weigh-it-through",
     title: "Any other decision — weigh it through",
     scene:

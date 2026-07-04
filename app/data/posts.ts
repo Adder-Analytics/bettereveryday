@@ -955,6 +955,58 @@ export const posts: Post[] = [
 
 <p>But coarse, honest feedback beats vivid, flattering feedback by a margin that's hard to overstate — the tongue-palpating doctor had <em>abundant</em> feedback, remember, all of it vivid and all of it wrong in his favor. A few dozen written-in-advance forecasts, graded against what you actually said, will teach you more about your own judgement than a decade of remembered vindication. The rain answers the forecaster whether or not he wants to hear it. Your life will mostly spare you the answer. That courtesy is the whole problem, and declining it is the skill.</p>`,
   },
+  {
+    slug: "hold-the-funeral-first",
+    title: "Hold the Funeral First",
+    date: "2026-07-04",
+    excerpt:
+      "Ask whether a plan could fail and your mind defends it. Tell it the plan has failed and your mind explains it — and people are measurably better at explaining than predicting. Why the pre-mortem's one-word tense trick works, and why the list it produces is only half the tool.",
+    readTime: 8,
+    tags: ["decisions", "planning", "psychology"],
+    content: `<p>There is a moment near the start of every doomed plan when someone in the room already knows why it will die — and says nothing. Not from cowardice, exactly. The plan has momentum, the leader is visibly committed, and voicing the doubt would make you the person who isn't on board. So the meeting ends in agreement, the plan launches with its flaw riding along in someone's head, and a year later everyone gets to say they'd had a bad feeling. When you plan alone the dynamic is worse, not better: the advocate and the doubter share a skull, and the advocate runs the meeting.</p>
+
+<p>The psychologist Gary Klein published a fix in 2007 that takes about twenty minutes and has become the rare debiasing technique with a fan club. Just before a plan kicks off, gather the people who know it, and have someone say: <em>imagine we're a year into the future. We implemented the plan as it now stands. It failed — spectacularly. Take a few minutes and write the history of that disaster.</em> Everyone writes alone. Then you go around the room, one reason per person, until every list is on the table.</p>
+
+<p>Notice what the framing did not say: "what are the risks?" It said the thing is already dead. You are not being asked to predict — you're being asked to explain.</p>
+
+<h2>A certainty is explained; a possibility is debated</h2>
+
+<p>That tense shift is the whole engine, and it was measured before it had a use. In 1989, Deborah Mitchell, Jay Russo, and Nancy Pennington ran the comparison directly: ask one group whether an outcome <em>might</em> happen and why, and tell another the outcome <em>has</em> happened and ask why it did. The second framing — they called it <strong>prospective hindsight</strong> — raised people's ability to correctly identify reasons for the outcome by about 30&nbsp;percent. A possibility invites your mind to litigate it, and if you're the plan's author, your mind is a motivated lawyer. A certainty closes the case and reassigns everyone to forensics. "It failed" can't be argued with, only accounted for — and the accounting is where the fixable causes live.</p>
+
+<p>In a group, the trick does a second job that may matter more. Daniel Kahneman — who calls the pre-mortem his favorite way of countering overconfidence — says its main virtue is that it <em>legitimizes doubts</em>. As a team converges on a decision, expressed doubt slides from useful to disloyal, and the people with the sharpest reservations go quietest. The pre-mortem inverts the incentive in one sentence: once the plan is declared dead, the smartest person in the room is by definition the one who finds the most interesting reason it died. The same people who would never have volunteered an objection will compete to produce one, because it stopped being an objection and became insight.</p>
+
+<h2>Running it alone</h2>
+
+<p>Honesty requires saying that Klein's version is a group ritual, and half its power is social. Run it solo and nobody hands you the safety of the room. What's left is the part that was measured on individuals — the tense shift — and it's worth the twenty minutes on its own: writing the history of your plan's death gives your own doubts the standing your own advocacy denies them. The room's other advantage, breadth, you have to manufacture: ten people carry ten different worries, and you carry one, usually rehearsed. The substitute is to walk the perimeter deliberately — the people the plan quietly depends on, the money and fuel it burns, the schedule it assumed was the median case when it was the best one, the outside world it assumed would hold still, and the version of you it requires who has never once shown up. The first two reasons on your list will be the ones you already knew about. The useful ones — the embarrassing ones — tend to arrive around number four or five, after the rehearsed worries run out.</p>
+
+<h2>From dread to decisions</h2>
+
+<p>What most retellings of the pre-mortem skip is that a list of failure modes is not an output. Organized dread is still dread. The exercise pays off in the triage, where every cause of death gets exactly one of three verbs.</p>
+
+<p><strong>Change the plan.</strong> Some failures, once written down, are just cheap to fix — the funeral was the price of seeing them. This is the best outcome the exercise offers: the failure happened, completely, on paper, and cost you a sentence.</p>
+
+<p><strong>Set a tripwire.</strong> Some failures can't be fixed in advance, only caught early — and these are where plans actually die, because catching-early is a decision, and nobody re-decides a running plan on a random Tuesday. More on this in a moment, because it's the half of the tool with its own literature.</p>
+
+<p><strong>Accept it.</strong> Some risks you simply carry — unfixable, unwatchable, or too expensive to insure against. Naming them still buys you something real: a risk accepted with open eyes stops generating background anxiety, and future-you knows it was seen rather than missed.</p>
+
+<h2>The brown M&amp;Ms</h2>
+
+<p>Van Halen's touring contract in the 1980s famously demanded a bowl of M&amp;Ms backstage with the brown ones removed. It reads as rock-star decadence and was the opposite: the band traveled with nine trucks of rigging that could kill someone if a venue skimped on staging, and the M&amp;M clause was buried mid-contract precisely so it would only be honored by crews who had read every line. Brown M&amp;Ms in the bowl meant the contract hadn't been read — so, David Lee Roth wrote, line-check <em>everything</em>. The genius of it is that the expensive thing to detect (a sloppy crew) was made observable by a cheap thing (a glance at a bowl), and the response was decided before anyone was tired, embarrassed, or hopeful.</p>
+
+<p>That's a <a href="/models#tripwires">tripwire</a>: a signal, chosen in advance, that means <em>stop and re-decide</em>. Chip and Dan Heath, who pulled the Van Halen story into the decision literature, compare it to the fuel light in a car — you don't monitor the gauge continuously, and you don't need to, because a threshold you set while calm will interrupt you at the right moment. Annie Duke's version, built for the harder case of quitting things, is <strong>kill criteria</strong>, and her formula is worth memorizing: a good one has <em>a state and a date</em>. Not "if it isn't working we'll rethink" — that clause has never once fired in the history of planning, because "working" renegotiates itself in the moment. Instead: if we're below a hundred paying users on March&nbsp;1, we stop. The state is observable enough that you can't argue with it; the date is a real calendar day on which someone is obligated to look.</p>
+
+<h2>The man who set the turnaround time</h2>
+
+<p>The reason tripwires need this much structure is that the person crossing one is not the person who set it. On Everest, expedition leaders enforce a turnaround time on summit day — reach the top by early afternoon or turn back wherever you are, because the mountain kills people on the descent, in the dark, when the weather turns. It's a textbook tripwire: a state, a date, decided at base camp by calm people. In the 1996 season the leader most insistent on it was Rob Hall, a guide with five summits behind him. On May&nbsp;10, three of his clients did the arithmetic mid-morning, saw they wouldn't summit in time, and turned around a few hundred meters short. Hall himself pressed on past his own deadline, summited in the early afternoon, then waited near the top for a struggling client. The storm caught them on the descent, and neither came home. The three who turned around are names nobody knows, which is Duke's bitter footnote about quitting: do it on time and it will usually feel — and look — like quitting too early. Nobody writes books about the summit you sensibly declined.</p>
+
+<p>The lesson isn't that Hall didn't understand turnaround times; he understood them better than almost anyone alive. It's the same lesson <a href="/writing/nobody-thinks-theyre-the-base-rate">this site keeps colliding with</a>: awareness doesn't protect you, procedure does — and a procedure you can quietly renegotiate under summit fever isn't a procedure. So give the tripwire the structure that takes your future self out of the loop: write the signal down where the wanting can't edit it, give it a date, and put the date somewhere that will interrupt you — a calendar that doesn't care how the plan feels that morning. An if-then owned by the calendar is an <a href="/models#implementation-intentions">implementation intention</a> pointed at reconsidering instead of doing — the same tool that starts a plan, aimed at the rarer skill of stopping one.</p>
+
+<h2>The honest limits</h2>
+
+<p>A pre-mortem is not prophecy. You'll list ten causes of death and reality will select the eleventh; the only defense against the failures no one in the room can enumerate is the record of everyone who tried before you, which is a <a href="/writing/nobody-thinks-theyre-the-base-rate">different tool</a>. It isn't a pessimism ritual either — Klein's point was always that plans should <em>survive</em> their funerals, modified: the exercise usually ends with the same plan, three sentences stronger and a couple of tripwires better guarded. And the guard is only as good as its externality. A tripwire that lives in your head is a mood. A tripwire with a state, a date, and a reminder that arrives whether or not you want to hear it is the closest a solo decision-maker gets to the friend at base camp with the authority to call you down.</p>
+
+<p>There's a <a href="/premortem">room for this</a> on the site now: it runs the exercise in Klein's order — the plan, the funeral, the triage — and won't let a tripwire leave without a signal and a date, which it will hand to your calendar. Every plan gets its autopsy eventually. The only decision you get to make is whether to hold it while the patient can still benefit.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
