@@ -121,6 +121,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Pre-mortem",
+    href: "/premortem",
+    snippet:
+      "Declare the plan dead before it starts and write the history of the failure — people are about 30% better at explaining an outcome than predicting one. Then turn every cause into a plan change, a tripwire with a date, or a risk you accept on purpose. Gary Klein's exercise, runnable solo in twenty minutes.",
+    meta: "Pre-mortem & tripwires",
+    titleText:
+      "premortem pre-mortem tool plan failure tripwire tripwires kill criteria quit quitting stop reconsider klein prospective hindsight risk stress test funeral autopsy".toLowerCase(),
+    bodyText:
+      "a guided pre-mortem room. gary klein's technique: instead of asking what could go wrong, declare that the plan has already failed and write the history of that failure — prospective hindsight, imagining the event as already having happened, raises the ability to identify reasons for future outcomes by about thirty percent (mitchell, russo and pennington). kahneman calls it his favorite counter to overconfidence because it legitimizes doubt. three steps: name the plan and the day you'd know it failed; write the reasons it died, past tense, fast, with lenses for when you're stuck (people, money, time, the outside world, you); then triage every cause — change the plan now while it's cheap, set a tripwire, or accept the risk with open eyes. tripwires are annie duke's kill criteria: a state and a date — an observable signal ('below 100 paying users') and a real calendar day to check it, decided while you're calm, like van halen's brown m&ms clause or the everest turnaround time. each tripwire check can be added to your calendar as an ics reminder for google, apple, or outlook, carrying the signal and the failure it guards. saved pre-mortems stay in your browser; nothing is sent anywhere. pairs with the decision journal for logging the decision itself, and the essay hold the funeral first.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Decision journal",
     href: "/decide",
     snippet:

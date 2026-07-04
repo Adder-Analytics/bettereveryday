@@ -104,7 +104,16 @@ export default function Home() {
             decision journal
           </Link>{" "}
           lets you think a real decision through, log what you expect to happen,
-          and come back later to check it against what actually did. The{" "}
+          and come back later to check it against what actually did. Before a
+          big commitment, the{" "}
+          <Link
+            href="/premortem"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            pre-mortem room
+          </Link>{" "}
+          finds the failure while it&rsquo;s still cheap — and leaves tripwires
+          on your calendar, not worries in your head. The{" "}
           <Link
             href="/practice"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
@@ -141,6 +150,12 @@ export default function Home() {
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Decision journal →
+          </Link>
+          <Link
+            href="/premortem"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Run a pre-mortem →
           </Link>
           <Link
             href="/practice"

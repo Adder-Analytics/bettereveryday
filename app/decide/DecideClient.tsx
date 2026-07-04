@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { SITE_URL, icsEscape, icsStamp, wrapCalendar } from "../data/ics";
 
 /**
  * Plain, serializable shapes passed down from the server page. These mirror the
@@ -325,34 +326,8 @@ function buildLogMemo(e: LogEntry): string {
 // the site can't. This writes a standard iCalendar file (RFC 5545) you can drop
 // into Google / Apple / Outlook, so the review lands in the one place you'll
 // actually look on the day. Generated entirely in the browser; like everything
-// else here, nothing is sent anywhere.
-const SITE_URL = "https://bettereveryday.vercel.app";
-
-/** Escape a value for an iCalendar TEXT property (RFC 5545 §3.3.11). */
-function icsEscape(text: string): string {
-  return text
-    .replace(/\\/g, "\\\\")
-    .replace(/;/g, "\\;")
-    .replace(/,/g, "\\,")
-    .replace(/\r?\n/g, "\\n");
-}
-
-/** Fold content lines to <=75 chars; continuation lines begin with a space. */
-function icsFold(line: string): string {
-  if (line.length <= 75) return line;
-  const chunks = [line.slice(0, 75)];
-  let rest = line.slice(75);
-  while (rest.length > 0) {
-    chunks.push(" " + rest.slice(0, 74));
-    rest = rest.slice(74);
-  }
-  return chunks.join("\r\n");
-}
-
-/** Current time as a UTC iCalendar timestamp, YYYYMMDDTHHMMSSZ. */
-function icsStamp(): string {
-  return new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
-}
+// else here, nothing is sent anywhere. The RFC 5545 plumbing is shared with
+// the pre-mortem's tripwire reminders (see data/ics.ts).
 
 /** The VEVENT block for one decision's review — reused by the single-entry and
  *  bulk builders so both emit identical, spec-conformant events. */
@@ -398,30 +373,15 @@ function icsVEvent(e: LogEntry): string[] {
   ];
 }
 
-/** Wrap one or more VEVENT blocks in a VCALENDAR envelope, fold to ≤75 chars,
- *  and join with CRLF per RFC 5545. */
-function wrapCalendar(events: string[][]): string {
-  const lines = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Better Every Day//Decision Journal//EN",
-    "CALSCALE:GREGORIAN",
-    "METHOD:PUBLISH",
-    ...events.flat(),
-    "END:VCALENDAR",
-  ];
-  return lines.map(icsFold).join("\r\n") + "\r\n";
-}
-
 function buildICS(e: LogEntry): string {
-  return wrapCalendar([icsVEvent(e)]);
+  return wrapCalendar([icsVEvent(e)], "Decision Journal");
 }
 
 /** One calendar file holding a review reminder for every still-pending
  *  decision — back-fill the whole backlog in one drop instead of one at a
  *  time. Stable per-entry UIDs mean re-importing only updates, never dupes. */
 function buildICSBulk(entries: LogEntry[]): string {
-  return wrapCalendar(entries.map(icsVEvent));
+  return wrapCalendar(entries.map(icsVEvent), "Decision Journal");
 }
 
 const OUTCOME_LABELS: Record<OutcomeQuality, string> = {

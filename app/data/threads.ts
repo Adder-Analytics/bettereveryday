@@ -97,9 +97,19 @@ export const threads: Thread[] = [
         why: "What happens when the measure you chose quietly becomes the goal.",
       },
       {
+        kind: "essay",
+        slug: "hold-the-funeral-first",
+        why: "Then stress-test the call before you commit: declare it already failed, explain why — and set the tripwires that will tell you when to stop.",
+      },
+      {
         kind: "model",
         id: "pre-mortem",
-        why: "Stress-test a plan by assuming it already failed, then asking why.",
+        why: "The one-screen version of the funeral: assume it failed, write the history, triage the causes.",
+      },
+      {
+        kind: "model",
+        id: "tripwires",
+        why: "And the guard it leaves behind: a state and a date, set while you're calm, that outranks your future self.",
       },
       {
         kind: "model",

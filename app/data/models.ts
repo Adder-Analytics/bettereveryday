@@ -67,10 +67,19 @@ export const models: Model[] = [
     id: "pre-mortem",
     name: "Pre-mortem",
     domain: "Decisions",
-    tagline: "Before a major decision, imagine it failed — then ask what went wrong.",
+    tagline: "Before a major decision, declare it already failed — then write the history of how.",
     explanation:
-      "Psychologist Gary Klein's technique for bypassing the optimism bias that makes us underweight failure scenarios. Imagining failure as already having happened shifts thinking from advocacy mode to analysis mode: suddenly risks feel real rather than disloyal to the plan. The pre-mortem doesn't mean abandoning the decision — it means stress-testing it. Decisions that survive a rigorous pre-mortem are more likely to actually be good decisions, not just compelling ones.",
-    essays: ["decision-quality"],
+      "Psychologist Gary Klein's technique (HBR, 2007) for bypassing the optimism that makes us underweight failure: don't ask what could go wrong — announce that the plan has already failed, spectacularly, and have everyone independently write the story of why. The tense is the active ingredient. A possibility gets debated, and the plan's author is a motivated lawyer; a certainty gets explained, and explaining is something people are measurably better at — Mitchell, Russo & Pennington (1989) found that 'prospective hindsight,' imagining an event as having already occurred, raises the ability to correctly identify reasons for future outcomes by about 30%. In a group it does a second job Kahneman calls its main virtue: it legitimizes doubt — once the plan is declared dead, finding flaws stops being disloyalty and becomes the way to look smart, so the sharpest reservations finally surface. The pre-mortem doesn't mean abandoning the decision; plans should survive their funeral, modified. The output that matters is the triage: each imagined cause of death becomes a plan change made now while it's cheap, a tripwire set for later, or a risk accepted with open eyes. The pre-mortem room on this site runs the whole exercise, solo, in about twenty minutes.",
+    essays: ["decision-quality", "hold-the-funeral-first"],
+  },
+  {
+    id: "tripwires",
+    name: "Tripwires",
+    domain: "Decisions",
+    tagline: "Decide in advance what would make you stop and re-decide — an observable signal and a date, set while you're calm.",
+    explanation:
+      "Van Halen's touring contract demanded a backstage bowl of M&Ms with the brown ones removed — not decadence but a detector: the clause was buried mid-contract, so brown M&Ms in the bowl meant the venue hadn't read the document that kept nine trucks of rigging from killing someone, and the band knew to line-check everything. That's a tripwire, in Chip and Dan Heath's coinage: a cheap, observable signal chosen in advance that means stop and reconsider — the fuel light that interrupts you at the threshold you set while calm, so you don't have to monitor the gauge or trust the moment's judgement. Annie Duke's version for the quitting problem, kill criteria, gives the recipe: a good tripwire is a state and a date. Not 'if it isn't working we'll rethink' — 'working' renegotiates itself in the moment and that clause has never fired — but 'if we're under 100 paying users on March 1, we stop.' The state must be observable enough that you can't argue with it; the date must be a real day on which you're obligated to look, which means it belongs in a calendar, not a memory. The cautionary case is the 1996 Everest disaster: the turnaround time — a textbook tripwire — was championed by Rob Hall, who then crossed his own line under summit fever and died descending, while the three clients who turned around on schedule survived, unremembered. The person crossing a tripwire is never the person who set it, so build it to outrank your future self: written down, dated, delivered by something that doesn't care how the plan feels that morning. Structurally it's an implementation intention pointed at reconsidering rather than doing — and the pre-mortem is where the signals worth watching come from.",
+    essays: ["hold-the-funeral-first"],
   },
   {
     id: "reversibility",
