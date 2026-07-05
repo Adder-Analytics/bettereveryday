@@ -39,13 +39,18 @@ export default function UpdatePage() {
           fools you in the abstract becomes something you can just count.
         </p>
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
-          Two modes below. <span className="text-[var(--foreground)]">Walk through one</span>{" "}
+          Three modes below. <span className="text-[var(--foreground)]">Walk through one</span>{" "}
           takes a single scenario slowly: guess first, then watch the numbers
           redrawn as a crowd.{" "}
           <span className="text-[var(--foreground)]">A round</span> runs six quick
           ones and scores not just how far off you were, but whether you keep
-          landing high — the signature of neglecting the base rate. Everything
-          stays in your browser; your record builds across rounds.
+          landing high — the signature of neglecting the base rate. And{" "}
+          <span className="text-[var(--foreground)]">Pick the prior</span> drills
+          the judgement the first two modes hand you for free: real questions
+          don&rsquo;t come with the base rate attached, so this one makes you choose
+          the reference class yourself — and tracks how far your gut runs above
+          the outside view before any evidence arrives. Everything stays in your
+          browser; your record builds across rounds.
         </p>
       </header>
 
@@ -59,13 +64,27 @@ export default function UpdatePage() {
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             How Much Should This Change Your Mind?
+          </Link>{" "}
+          — and for the pick-the-prior mode,{" "}
+          <Link
+            href="/writing/nobody-thinks-theyre-the-base-rate"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Nobody Thinks They&rsquo;re the Base Rate
           </Link>
-          . The model behind it:{" "}
+          . The models behind it:{" "}
           <Link
             href="/models#base-rates"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Base Rates
+          </Link>{" "}
+          and the{" "}
+          <Link
+            href="/models#outside-view"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Outside View
           </Link>
           . Its companions — putting an honest number on a quantity, and an honest
           width on your confidence — are the{" "}

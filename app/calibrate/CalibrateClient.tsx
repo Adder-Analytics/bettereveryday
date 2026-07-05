@@ -10,20 +10,43 @@ import {
   type RangeQuestion,
   type BinaryQuestion,
 } from "../data/calibration";
+import { foldIntoDay, localDayISO } from "../data/history";
 
 /**
  * The lifetime record, the genuinely useful part: calibration is a fact about
  * you that only emerges over volume, so a single ten-question round is noisy.
  * We accumulate every answered question across sessions, the same way the
  * decision journal accumulates reviewed decisions. Stays in the browser.
+ *
+ * `days` is the dated side of the same record: one bucket per calendar day
+ * practised, so the practice hub can split your first rounds from your latest
+ * and answer whether you're actually getting better (see data/history.ts).
+ * Records written before it existed simply lack the field and load with it
+ * empty — the lifetime sums are untouched and the trend starts counting from
+ * today.
  */
+type CalDay = {
+  d: string;
+  rangeN: number;
+  rangeHits: number;
+  binaryN: number;
+  /** Sum of claimed confidences, so a per-era overconfidence gap is computable. */
+  binaryClaimed: number;
+  binaryHits: number;
+};
+
 type Record = {
   range: { n: number; hits: number };
   binary: { [confidence: number]: { n: number; hits: number } };
+  days: CalDay[];
 };
 
 const STORAGE_KEY = "calibrate:v1";
-const EMPTY_RECORD: Record = { range: { n: 0, hits: 0 }, binary: {} };
+const EMPTY_RECORD: Record = { range: { n: 0, hits: 0 }, binary: {}, days: [] };
+
+function emptyDay(d: string): CalDay {
+  return { d, rangeN: 0, rangeHits: 0, binaryN: 0, binaryClaimed: 0, binaryHits: 0 };
+}
 
 function loadRecord(): Record {
   if (typeof window === "undefined") return EMPTY_RECORD;
@@ -31,12 +54,26 @@ function loadRecord(): Record {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return EMPTY_RECORD;
     const parsed = JSON.parse(raw) as Partial<Record>;
+    const days = Array.isArray(parsed.days)
+      ? parsed.days
+          .filter((b) => b && typeof b === "object" && typeof b.d === "string" && b.d)
+          .map((b) => ({
+            d: b.d,
+            rangeN: typeof b.rangeN === "number" ? b.rangeN : 0,
+            rangeHits: typeof b.rangeHits === "number" ? b.rangeHits : 0,
+            binaryN: typeof b.binaryN === "number" ? b.binaryN : 0,
+            binaryClaimed: typeof b.binaryClaimed === "number" ? b.binaryClaimed : 0,
+            binaryHits: typeof b.binaryHits === "number" ? b.binaryHits : 0,
+          }))
+          .sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0))
+      : [];
     return {
       range: {
         n: parsed.range?.n ?? 0,
         hits: parsed.range?.hits ?? 0,
       },
       binary: parsed.binary ?? {},
+      days,
     };
   } catch {
     return EMPTY_RECORD;
@@ -110,6 +147,11 @@ export default function CalibrateClient() {
       const next: Record = {
         ...prev,
         range: { n: prev.range.n + n, hits: prev.range.hits + hits },
+        days: foldIntoDay(prev.days, localDayISO(), emptyDay, (b) => ({
+          ...b,
+          rangeN: b.rangeN + n,
+          rangeHits: b.rangeHits + hits,
+        })),
       };
       saveRecord(next);
       return next;
@@ -126,7 +168,18 @@ export default function CalibrateClient() {
           hits: b.hits + (r.correct ? 1 : 0),
         };
       }
-      const next: Record = { ...prev, binary };
+      const claimed = rounds.reduce((s, r) => s + r.confidence, 0);
+      const hits = rounds.filter((r) => r.correct).length;
+      const next: Record = {
+        ...prev,
+        binary,
+        days: foldIntoDay(prev.days, localDayISO(), emptyDay, (b) => ({
+          ...b,
+          binaryN: b.binaryN + rounds.length,
+          binaryClaimed: b.binaryClaimed + claimed,
+          binaryHits: b.binaryHits + hits,
+        })),
+      };
       saveRecord(next);
       return next;
     });

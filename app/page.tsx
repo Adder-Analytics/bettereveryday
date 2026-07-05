@@ -104,7 +104,16 @@ export default function Home() {
             decision journal
           </Link>{" "}
           lets you think a real decision through, log what you expect to happen,
-          and come back later to check it against what actually did. The{" "}
+          and come back later to check it against what actually did. Before a
+          big commitment, the{" "}
+          <Link
+            href="/premortem"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            pre-mortem room
+          </Link>{" "}
+          finds the failure while it&rsquo;s still cheap — and leaves tripwires
+          on your calendar, not worries in your head. The{" "}
           <Link
             href="/practice"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
@@ -113,8 +122,11 @@ export default function Home() {
           </Link>{" "}
           trains the three skills underneath every forecast — how sure you should
           be, how to get to a number at all, and how much a new fact should move
-          it — and shows all three of your records in one place, so you can see
-          which your judgement is weakest on. Reading notes capture what specific
+          it — and shows those records beside the one that counts: how your real,
+          reviewed decisions actually went. And once your record spans enough
+          time, it answers the question in the site&rsquo;s name — your first
+          rounds beside your latest, whether you&rsquo;re actually getting
+          better. Reading notes capture what specific
           books did to my thinking.
           Everything cross-references, and everything is searchable (press{" "}
           <kbd className="px-1 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
@@ -140,6 +152,12 @@ export default function Home() {
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Decision journal →
+          </Link>
+          <Link
+            href="/premortem"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Run a pre-mortem →
           </Link>
           <Link
             href="/practice"

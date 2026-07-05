@@ -136,6 +136,34 @@ export const situations: Situation[] = [
     essays: ["guessing-on-purpose", "orders-of-magnitude"],
   },
   {
+    id: "promising-a-date",
+    title: "You're about to promise a deadline",
+    scene:
+      "A launch date, a client quote, a 'done by Friday,' a renovation budget. The plan is in front of you, every step looks doable, and someone is waiting for a number.",
+    question:
+      "What happened to everyone else who planned something like this — and why would my case be different?",
+    models: [
+      {
+        id: "outside-view",
+        move: "Don't forecast from the plan — a plan is a story about the best case. Find the class this belongs to (your own past projects, projects like this generally), start from how that class actually went, and let the particulars argue for a modest adjustment.",
+      },
+      {
+        id: "margin-of-safety",
+        move: "Size the buffer to the usual overrun, not to your confidence. People run about 60% over their own predictions on familiar work; padding that feels excessive from the inside is usually about right from the record.",
+      },
+      {
+        id: "pre-mortem",
+        move: "It's the deadline and you missed by half. Write what ate the time. The steps that sink schedules are the ones not on the list, and they only become visible when you imagine the miss as already real.",
+      },
+      {
+        id: "implementation-intentions",
+        move: "Set the tripwire now: 'if the halfway milestone slips past its date, we re-plan the rest' — so the schedule gets revisited by trigger, not by hope.",
+      },
+    ],
+    essays: ["nobody-thinks-theyre-the-base-rate"],
+    notes: ["kahneman-inside-view"],
+  },
+  {
     id: "judging-a-decision",
     title: "You're judging whether a decision was good",
     scene:
@@ -259,6 +287,38 @@ export const situations: Situation[] = [
     ],
     essays: ["advice-you-dont-take", "decision-quality"],
     notes: ["kahneman-inside-view"],
+  },
+  {
+    id: "time-to-quit",
+    title: "You can't tell if it's time to quit",
+    scene:
+      "The project that's been 'almost there' for a year. The job, the strategy, the manuscript, the relationship with the sunk decade. Everything already spent argues for one more push — and one more after that.",
+    question:
+      "Knowing what I know now, would I start this today — and what, specifically, would have to happen for me to stop?",
+    models: [
+      {
+        id: "loss-aversion",
+        move: "Quitting converts a paper loss into a real one, and that's most of why it hurts — but the pain of admitting the loss is not information about the future. What's spent is spent whether you stay or go; only what comes next is still on the table.",
+      },
+      {
+        id: "opportunity-cost",
+        move: "Staying isn't free. Every month in this is a month not in the next thing — price the persistence in what the same time, money, and attention would earn elsewhere, not against zero.",
+      },
+      {
+        id: "outside-view",
+        move: "Your sense of 'almost there' comes from inside the story. What actually happened to people who were this deep in this kind of thing — how often did the next push crack it, and how often was 'almost' the permanent condition?",
+      },
+      {
+        id: "self-distancing",
+        move: "Describe the situation to yourself as if a friend brought it to you — the years in, the current trajectory, the reasons to stay. Notice how fast the advice comes when the sunk cost isn't yours.",
+      },
+      {
+        id: "tripwires",
+        move: "If you can't make the call today, make the smaller one: set the kill criteria — a state and a date. 'If X isn't true by then, I stop.' Put the date in your calendar. Quitting on time will feel like quitting too early; that feeling is the bias, not the verdict.",
+      },
+    ],
+    essays: ["hold-the-funeral-first", "decision-quality"],
+    notes: ["housel-tails"],
   },
   {
     id: "weigh-it-through",

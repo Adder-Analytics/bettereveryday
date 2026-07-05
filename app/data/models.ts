@@ -17,7 +17,7 @@ export const models: Model[] = [
     tagline: "Returns accumulate on previous returns, producing exponential rather than linear growth.",
     explanation:
       "The returns in year thirty don't just come from the principal — they come from thirty years of accumulated growth. This is why starting early matters more than starting smart, and why the first decade of investing feels unremarkable despite being the most important. The same math applies to knowledge, skills, and reputation: the value of early investment is invisible until it suddenly isn't.",
-    essays: ["money-math", "compounding-improvements"],
+    essays: ["money-math", "compounding-improvements", "the-compound-needs-evidence"],
   },
   {
     id: "opportunity-cost",
@@ -67,10 +67,19 @@ export const models: Model[] = [
     id: "pre-mortem",
     name: "Pre-mortem",
     domain: "Decisions",
-    tagline: "Before a major decision, imagine it failed — then ask what went wrong.",
+    tagline: "Before a major decision, declare it already failed — then write the history of how.",
     explanation:
-      "Psychologist Gary Klein's technique for bypassing the optimism bias that makes us underweight failure scenarios. Imagining failure as already having happened shifts thinking from advocacy mode to analysis mode: suddenly risks feel real rather than disloyal to the plan. The pre-mortem doesn't mean abandoning the decision — it means stress-testing it. Decisions that survive a rigorous pre-mortem are more likely to actually be good decisions, not just compelling ones.",
-    essays: ["decision-quality"],
+      "Psychologist Gary Klein's technique (HBR, 2007) for bypassing the optimism that makes us underweight failure: don't ask what could go wrong — announce that the plan has already failed, spectacularly, and have everyone independently write the story of why. The tense is the active ingredient. A possibility gets debated, and the plan's author is a motivated lawyer; a certainty gets explained, and explaining is something people are measurably better at — Mitchell, Russo & Pennington (1989) found that 'prospective hindsight,' imagining an event as having already occurred, raises the ability to correctly identify reasons for future outcomes by about 30%. In a group it does a second job Kahneman calls its main virtue: it legitimizes doubt — once the plan is declared dead, finding flaws stops being disloyalty and becomes the way to look smart, so the sharpest reservations finally surface. The pre-mortem doesn't mean abandoning the decision; plans should survive their funeral, modified. The output that matters is the triage: each imagined cause of death becomes a plan change made now while it's cheap, a tripwire set for later, or a risk accepted with open eyes. The pre-mortem room on this site runs the whole exercise, solo, in about twenty minutes.",
+    essays: ["decision-quality", "hold-the-funeral-first"],
+  },
+  {
+    id: "tripwires",
+    name: "Tripwires",
+    domain: "Decisions",
+    tagline: "Decide in advance what would make you stop and re-decide — an observable signal and a date, set while you're calm.",
+    explanation:
+      "Van Halen's touring contract demanded a backstage bowl of M&Ms with the brown ones removed — not decadence but a detector: the clause was buried mid-contract, so brown M&Ms in the bowl meant the venue hadn't read the document that kept nine trucks of rigging from killing someone, and the band knew to line-check everything. That's a tripwire, in Chip and Dan Heath's coinage: a cheap, observable signal chosen in advance that means stop and reconsider — the fuel light that interrupts you at the threshold you set while calm, so you don't have to monitor the gauge or trust the moment's judgement. Annie Duke's version for the quitting problem, kill criteria, gives the recipe: a good tripwire is a state and a date. Not 'if it isn't working we'll rethink' — 'working' renegotiates itself in the moment and that clause has never fired — but 'if we're under 100 paying users on March 1, we stop.' The state must be observable enough that you can't argue with it; the date must be a real day on which you're obligated to look, which means it belongs in a calendar, not a memory. The cautionary case is the 1996 Everest disaster: the turnaround time — a textbook tripwire — was championed by Rob Hall, who then crossed his own line under summit fever and died descending, while the three clients who turned around on schedule survived, unremembered. The person crossing a tripwire is never the person who set it, so build it to outrank your future self: written down, dated, delivered by something that doesn't care how the plan feels that morning. Structurally it's an implementation intention pointed at reconsidering rather than doing — and the pre-mortem is where the signals worth watching come from.",
+    essays: ["hold-the-funeral-first"],
   },
   {
     id: "reversibility",
@@ -116,7 +125,8 @@ export const models: Model[] = [
     domain: "Systems",
     tagline: "Systems regulate or amplify themselves through circular causation.",
     explanation:
-      "A thermostat is a negative feedback loop: output (temperature) feeds back to reduce the driver (heating). A microphone near a speaker is a positive feedback loop: output (sound) amplifies the input, producing a screech. Understanding which type is operating predicts whether a system will seek equilibrium or spiral. Most healthy systems rely on negative feedback to self-correct. Most crises involve positive feedback loops that weren't noticed until they were hard to stop.",
+      "A thermostat is a negative feedback loop: output (temperature) feeds back to reduce the driver (heating). A microphone near a speaker is a positive feedback loop: output (sound) amplifies the input, producing a screech. Understanding which type is operating predicts whether a system will seek equilibrium or spiral. Most healthy systems rely on negative feedback to self-correct. Most crises involve positive feedback loops that weren't noticed until they were hard to stop. The same lens explains why experience makes some people better and merely makes others confident: learning is a feedback loop, and it only closes when your output — a prediction, a decision — comes back scored, quickly and honestly. Robin Hogarth called environments that do this 'kind' (chess, golf, weather forecasting) and those that don't — feedback delayed, noisy, missing, or misleading — 'wicked' (hiring, strategy, most judgement calls that matter). In a wicked environment the loop that closes isn't accuracy but confidence: outcomes arrive late and garbled, memory rewrites the prediction to fit them, and each repetition amplifies certainty instead of correcting it — a positive feedback loop wearing the costume of experience. The fix is structural, not motivational: build the missing negative loop yourself, by writing forecasts down in advance and scheduling the moment reality grades them.",
+    essays: ["experience-doesnt-teach", "the-compound-needs-evidence"],
   },
   {
     id: "second-order-effects",
@@ -181,8 +191,17 @@ export const models: Model[] = [
     domain: "Epistemology",
     tagline: "The prior probability of an event, before considering specific evidence.",
     explanation:
-      "When a startup founder says their company will be worth $1 billion, the right starting place isn't enthusiasm or skepticism — it's the base rate: what fraction of startups actually reach that outcome? The specific evidence about this particular team and idea then updates that prior. Starting without a base rate is one of the most common sources of overconfidence in forecasting, investing, and career planning. The base rate is not the final answer — it's the right starting place. The classic demonstration of how badly we neglect it: a test that's 99% accurate, for a disease 1 person in 1,000 has, comes back positive — and the chance you're actually sick is about 9%, not 99%, because the rare true cases are swamped by false positives drawn from the huge healthy majority. Most people, including most doctors asked this exact question, are off by a factor of ten. The cure is Gerd Gigerenzer's: stop thinking in percentages and count a concrete crowd — natural frequencies make the answer something you can simply tally. The hard part isn't the arithmetic but choosing the right reference class and an honest prior; a confident wrong base rate produces a confident wrong answer. The base-rate trainer on this site is a place to practise updating evidence against the prior — and to find out whether you systematically land too high.",
+      "When a startup founder says their company will be worth $1 billion, the right starting place isn't enthusiasm or skepticism — it's the base rate: what fraction of startups actually reach that outcome? The specific evidence about this particular team and idea then updates that prior. Starting without a base rate is one of the most common sources of overconfidence in forecasting, investing, and career planning. The base rate is not the final answer — it's the right starting place. The classic demonstration of how badly we neglect it: a test that's 99% accurate, for a disease 1 person in 1,000 has, comes back positive — and the chance you're actually sick is about 9%, not 99%, because the rare true cases are swamped by false positives drawn from the huge healthy majority. Most people, including most doctors asked this exact question, are off by a factor of ten. The cure is Gerd Gigerenzer's: stop thinking in percentages and count a concrete crowd — natural frequencies make the answer something you can simply tally. The hard part isn't the arithmetic but choosing the right reference class and an honest prior; a confident wrong base rate produces a confident wrong answer — that upstream judgement is its own model, the Outside View. The base-rate trainer on this site is a place to practise updating evidence against the prior — and to find out whether you systematically land too high.",
     essays: ["how-much-should-this-change-your-mind"],
+  },
+  {
+    id: "outside-view",
+    name: "Outside View",
+    domain: "Epistemology",
+    tagline: "Forecast from what happened to everyone who tried this kind of thing — not from the story of your attempt.",
+    explanation:
+      "Kahneman's names for the two ways to predict: the inside view builds the forecast from your case's particulars — the plan, the team, the visible progress — while the outside view asks what happened, on average, to everyone who attempted this class of thing, and starts the forecast there. The inside view feels more responsible, because your specific information is real; but that information is mostly a plan, and a plan is a story about the best case — the surprises that will actually sink it are precisely the things not in the story. The outside view has already counted them: every surprise that wrecked a similar case is baked into how the class turned out. The measured gap is the planning fallacy — students predicting 34 days and taking 55, nine in ten megaprojects over budget, newlyweds who correctly recite the ~50% divorce rate and put their own odds at zero. The mechanical form is reference-class forecasting: pick the class your case belongs to, take its actual outcome distribution as your starting point, then let the particulars argue for a modest, evidence-backed adjustment. The genuinely hard judgement is choosing the class — start broad, narrow only as far as measured differences take you (never with adjectives), reject folklore rates you can't source, and remember a class of one is not a class. And the humbling coda, from Kahneman's own curriculum project: knowing about the inside view doesn't protect you from it, so the lookup has to be a mandatory procedure — a checklist step before commitment, not a virtue you hope to remember. The base-rate trainer's pick-the-prior mode exists to drill exactly this choice.",
+    essays: ["nobody-thinks-theyre-the-base-rate"],
   },
   {
     id: "regression-to-mean",
@@ -190,8 +209,8 @@ export const models: Model[] = [
     domain: "Epistemology",
     tagline: "Extreme measurements tend to be followed by less extreme ones, regardless of what you do.",
     explanation:
-      "The student who scored highest on the first test is likely to score somewhat lower on the next — not because they got worse, but because exceptional performance has a luck component that doesn't replicate. This explains why praising good performance seems to make things worse (they regress toward average regardless) and why punishment after bad performance seems to make things better (they regress toward average regardless). The failure to account for regression to the mean produces an enormous amount of false learning from experience.",
-    essays: ["decision-quality"],
+      "The student who scored highest on the first test is likely to score somewhat lower on the next — not because they got worse, but because exceptional performance has a luck component that doesn't replicate. This explains why praising good performance seems to make things worse (they regress toward average regardless) and why punishment after bad performance seems to make things better (they regress toward average regardless). The failure to account for regression to the mean produces an enormous amount of false learning from experience. It also poisons self-assessment during practice: your best-ever session is partly luck, so the next one will usually be worse no matter what you do — which feels like backsliding and manufactures a false lesson out of whatever you changed that morning. The cure is resolution: grade eras against eras, never today against yesterday.",
+    essays: ["decision-quality", "the-compound-needs-evidence"],
   },
   {
     id: "calibration",
@@ -200,7 +219,7 @@ export const models: Model[] = [
     tagline: "A probability is only honest if it comes true at the rate it claims — and most people's don't.",
     explanation:
       "When a calibrated person says they're 90% sure, they're right about nine times in ten; when they say 70%, about seven. Almost nobody starts out this way. The near-universal default is overconfidence — people's 90% confidence intervals contain the true answer closer to half the time, and their 'certainties' fail often enough to matter. What makes calibration worth singling out is that, unlike most biases, it's quickly and measurably trainable: Douglas Hubbard found that most people reach near-perfect calibration within about half a day of practice with immediate feedback, and being well-calibrated is the trait that most distinguishes Philip Tetlock's superforecasters. The mechanics are simple — put a number on your uncertainty, check it against reality, and repeat until the feeling of '90% sure' actually behaves like 90%. The classic tool for catching your own overconfidence is the equivalent bet: would you rather win on your stated range, or on a gamble with the same stated odds? If you'd take the gamble, your confidence was inflated. The honest caveat: calibration on checkable trivia is a warm-up. Real decisions are messier and feedback is slow or never arrives, which is exactly why a decision journal — write the probability down before the outcome — is the only way to keep score on the bets that count.",
-    essays: ["your-ninety-percent"],
+    essays: ["your-ninety-percent", "experience-doesnt-teach"],
   },
   {
     id: "fermi-estimation",

@@ -11,6 +11,13 @@ import {
   updateVerdict,
   type BayesProblem,
 } from "../data/bayes";
+import {
+  referenceProblems,
+  honestClasses,
+  honestRange,
+  type ReferenceProblem,
+} from "../data/reference";
+import { foldIntoDay, localDayISO } from "../data/history";
 
 /**
  * The lifetime record. Base-rate neglect, like calibration and estimation, is a
@@ -18,16 +25,53 @@ import {
  * miss (how many points off, typically) and a running *signed* miss, because the
  * sign is the whole diagnosis: coming in high, again and again, is the signature
  * of trusting the test and forgetting the base rate. Stays in the browser.
+ *
+ * `prior` is the pick-the-prior mode's record, kept separately because it
+ * measures a different thing: not how you weigh evidence against a given prior,
+ * but how far your gut runs from the outside view before any evidence arrives —
+ * the inside-view premium, signed so a persistent rosy lean is visible. Older
+ * stored records simply lack the field and load with it empty.
  */
+type PriorRecord = {
+  n: number;
+  sumAbs: number;
+  sumSigned: number;
+};
+
+type UpdDay = {
+  d: string;
+  n: number;
+  sumAbsErr: number;
+  priorN: number;
+  priorSigned: number;
+};
+
 type Record = {
   n: number;
   sumAbsErr: number;
   sumSignedErr: number;
   within: number;
+  prior: PriorRecord;
+  /** One bucket per practice day, so the hub can show whether your typical
+   *  miss is shrinking over time (see data/history.ts). Older records lack
+   *  the field and load with it empty. */
+  days: UpdDay[];
 };
 
 const STORAGE_KEY = "update:v1";
-const EMPTY_RECORD: Record = { n: 0, sumAbsErr: 0, sumSignedErr: 0, within: 0 };
+const EMPTY_PRIOR: PriorRecord = { n: 0, sumAbs: 0, sumSigned: 0 };
+const EMPTY_RECORD: Record = {
+  n: 0,
+  sumAbsErr: 0,
+  sumSignedErr: 0,
+  within: 0,
+  prior: EMPTY_PRIOR,
+  days: [],
+};
+
+function emptyDay(d: string): UpdDay {
+  return { d, n: 0, sumAbsErr: 0, priorN: 0, priorSigned: 0 };
+}
 
 function loadRecord(): Record {
   if (typeof window === "undefined") return EMPTY_RECORD;
@@ -35,11 +79,29 @@ function loadRecord(): Record {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return EMPTY_RECORD;
     const parsed = JSON.parse(raw) as Partial<Record>;
+    const days = Array.isArray(parsed.days)
+      ? parsed.days
+          .filter((b) => b && typeof b === "object" && typeof b.d === "string" && b.d)
+          .map((b) => ({
+            d: b.d,
+            n: typeof b.n === "number" ? b.n : 0,
+            sumAbsErr: typeof b.sumAbsErr === "number" ? b.sumAbsErr : 0,
+            priorN: typeof b.priorN === "number" ? b.priorN : 0,
+            priorSigned: typeof b.priorSigned === "number" ? b.priorSigned : 0,
+          }))
+          .sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0))
+      : [];
     return {
       n: parsed.n ?? 0,
       sumAbsErr: parsed.sumAbsErr ?? 0,
       sumSignedErr: parsed.sumSignedErr ?? 0,
       within: parsed.within ?? 0,
+      prior: {
+        n: parsed.prior?.n ?? 0,
+        sumAbs: parsed.prior?.sumAbs ?? 0,
+        sumSigned: parsed.prior?.sumSigned ?? 0,
+      },
+      days,
     };
   } catch {
     return EMPTY_RECORD;
@@ -76,7 +138,7 @@ const primaryBtn =
 const secondaryBtn =
   "px-4 py-2 text-sm font-medium rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors";
 
-type Mode = "menu" | "walk" | "round";
+type Mode = "menu" | "walk" | "round" | "prior";
 
 export default function UpdateClient() {
   const [mounted, setMounted] = useState(false);
@@ -84,6 +146,7 @@ export default function UpdateClient() {
   const [roundKey, setRoundKey] = useState(0);
   const [walkProblem, setWalkProblem] = useState<BayesProblem | null>(null);
   const [round, setRound] = useState<BayesProblem[]>([]);
+  const [priorProblem, setPriorProblem] = useState<ReferenceProblem | null>(null);
   const [record, setRecord] = useState<Record>(EMPTY_RECORD);
 
   // One-time hydration from browser storage: the record only exists on the
@@ -110,14 +173,48 @@ export default function UpdateClient() {
     setRoundKey((k) => k + 1);
   }
 
+  function startPrior() {
+    setPriorProblem(pickRandom(referenceProblems, 1, Math.random)[0]);
+    setMode("prior");
+    setRoundKey((k) => k + 1);
+  }
+
   /** Fold a batch of signed point-errors into the lifetime record. */
   function commit(signedErrors: number[]) {
+    const sumAbs = signedErrors.reduce((s, e) => s + Math.abs(e), 0);
     setRecord((prev) => {
       const next: Record = {
+        ...prev,
         n: prev.n + signedErrors.length,
-        sumAbsErr: prev.sumAbsErr + signedErrors.reduce((s, e) => s + Math.abs(e), 0),
+        sumAbsErr: prev.sumAbsErr + sumAbs,
         sumSignedErr: prev.sumSignedErr + signedErrors.reduce((s, e) => s + e, 0),
         within: prev.within + signedErrors.filter((e) => Math.abs(e) <= 10).length,
+        days: foldIntoDay(prev.days, localDayISO(), emptyDay, (b) => ({
+          ...b,
+          n: b.n + signedErrors.length,
+          sumAbsErr: b.sumAbsErr + sumAbs,
+        })),
+      };
+      saveRecord(next);
+      return next;
+    });
+  }
+
+  /** Fold one pick-the-prior gap (gut − chosen class rate) into the record. */
+  function commitPrior(signedGap: number) {
+    setRecord((prev) => {
+      const next: Record = {
+        ...prev,
+        prior: {
+          n: prev.prior.n + 1,
+          sumAbs: prev.prior.sumAbs + Math.abs(signedGap),
+          sumSigned: prev.prior.sumSigned + signedGap,
+        },
+        days: foldIntoDay(prev.days, localDayISO(), emptyDay, (b) => ({
+          ...b,
+          priorN: b.priorN + 1,
+          priorSigned: b.priorSigned + signedGap,
+        })),
       };
       saveRecord(next);
       return next;
@@ -130,7 +227,9 @@ export default function UpdateClient() {
   }
 
   if (!mounted) {
-    return <MenuShell onWalk={() => {}} onRound={() => {}} record={null} onReset={() => {}} />;
+    return (
+      <MenuShell onWalk={() => {}} onRound={() => {}} onPrior={() => {}} record={null} onReset={() => {}} />
+    );
   }
 
   if (mode === "walk" && walkProblem) {
@@ -157,8 +256,26 @@ export default function UpdateClient() {
     );
   }
 
+  if (mode === "prior" && priorProblem) {
+    return (
+      <PriorRound
+        key={roundKey}
+        problem={priorProblem}
+        onComplete={commitPrior}
+        onAgain={startPrior}
+        onExit={() => setMode("menu")}
+      />
+    );
+  }
+
   return (
-    <MenuShell onWalk={startWalk} onRound={startRound} record={record} onReset={resetRecord} />
+    <MenuShell
+      onWalk={startWalk}
+      onRound={startRound}
+      onPrior={startPrior}
+      record={record}
+      onReset={resetRecord}
+    />
   );
 }
 
@@ -167,11 +284,13 @@ export default function UpdateClient() {
 function MenuShell({
   onWalk,
   onRound,
+  onPrior,
   record,
   onReset,
 }: {
   onWalk: () => void;
   onRound: () => void;
+  onPrior: () => void;
   record: Record | null;
   onReset: () => void;
 }) {
@@ -206,6 +325,22 @@ function MenuShell({
             Start a round →
           </button>
         </div>
+        <div className={`${cardClass} sm:col-span-2`}>
+          <h2 className="text-base font-semibold text-[var(--foreground)]">Pick the prior</h2>
+          <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            The other two modes hand you the base rate. Real questions don&rsquo;t —{" "}
+            <span className="text-[var(--foreground)]">
+              choosing where the number comes from is the hard judgement
+            </span>
+            . A messy question with no answer key (a deadline, a friend&rsquo;s
+            restaurant, a wedding): give your gut answer, then choose the
+            reference class you&rsquo;d start from — and watch out, some of the
+            candidates aren&rsquo;t classes at all.
+          </p>
+          <button onClick={onPrior} className={`${primaryBtn} mt-4`}>
+            Pick a prior →
+          </button>
+        </div>
       </div>
 
       {record && <LifetimeRecord record={record} onReset={onReset} />}
@@ -214,13 +349,15 @@ function MenuShell({
 }
 
 function LifetimeRecord({ record, onReset }: { record: Record; onReset: () => void }) {
-  if (record.n === 0) return null;
+  if (record.n === 0 && record.prior.n === 0) return null;
 
-  const typicalMiss = Math.round(record.sumAbsErr / record.n);
-  const bias = record.sumSignedErr / record.n;
-  const withinPct = Math.round((record.within / record.n) * 100);
+  const typicalMiss = record.n > 0 ? Math.round(record.sumAbsErr / record.n) : 0;
+  const bias = record.n > 0 ? record.sumSignedErr / record.n : 0;
+  const withinPct = record.n > 0 ? Math.round((record.within / record.n) * 100) : 0;
   const leansHigh = bias >= 5;
   const leansLow = bias <= -5;
+
+  const premium = record.prior.n > 0 ? record.prior.sumSigned / record.prior.n : 0;
 
   return (
     <div className="mt-8 rounded-lg border border-[var(--border)] p-5">
@@ -241,31 +378,56 @@ function LifetimeRecord({ record, onReset }: { record: Record; onReset: () => vo
         round, here in your browser.
       </p>
 
-      <p className="mt-4 text-sm text-[var(--foreground)] leading-relaxed">
-        Across <span className="font-semibold">{record.n}</span> update
-        {record.n === 1 ? "" : "s"}, your typical miss is{" "}
-        <span className="font-semibold">{typicalMiss} point{typicalMiss === 1 ? "" : "s"}</span>, and{" "}
-        <span className="font-semibold">{withinPct}%</span> landed within ten of
-        the truth.
-      </p>
+      {record.n > 0 && (
+        <>
+          <p className="mt-4 text-sm text-[var(--foreground)] leading-relaxed">
+            Across <span className="font-semibold">{record.n}</span> update
+            {record.n === 1 ? "" : "s"}, your typical miss is{" "}
+            <span className="font-semibold">{typicalMiss} point{typicalMiss === 1 ? "" : "s"}</span>, and{" "}
+            <span className="font-semibold">{withinPct}%</span> landed within ten of
+            the truth.
+          </p>
 
-      <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
-        On average you came in{" "}
-        <span className="font-semibold">
-          {Math.abs(Math.round(bias))} point{Math.abs(Math.round(bias)) === 1 ? "" : "s"}{" "}
-          {bias >= 0 ? "high" : "low"}
-        </span>
-        .{" "}
-        <span className="text-[var(--muted)]">
-          {record.n < ROUND_SIZE
-            ? "A round or two more and this lean means something."
-            : leansHigh
-              ? "That's the classic base-rate-neglect signature — trusting the test and underweighting how rare the thing is. When a result surprises you, recount the crowd: most positives come from the big innocent group."
-              : leansLow
-                ? "You're erring cautious — underweighting the evidence rather than the base rate. Worth checking you're not waving away results that genuinely should move you."
-                : "Nicely balanced — you're weighing the evidence against the base rate, not anchoring on either one."}
-        </span>
-      </p>
+          <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
+            On average you came in{" "}
+            <span className="font-semibold">
+              {Math.abs(Math.round(bias))} point{Math.abs(Math.round(bias)) === 1 ? "" : "s"}{" "}
+              {bias >= 0 ? "high" : "low"}
+            </span>
+            .{" "}
+            <span className="text-[var(--muted)]">
+              {record.n < ROUND_SIZE
+                ? "A round or two more and this lean means something."
+                : leansHigh
+                  ? "That's the classic base-rate-neglect signature — trusting the test and underweighting how rare the thing is. When a result surprises you, recount the crowd: most positives come from the big innocent group."
+                  : leansLow
+                    ? "You're erring cautious — underweighting the evidence rather than the base rate. Worth checking you're not waving away results that genuinely should move you."
+                    : "Nicely balanced — you're weighing the evidence against the base rate, not anchoring on either one."}
+            </span>
+          </p>
+        </>
+      )}
+
+      {record.prior.n > 0 && (
+        <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
+          In <span className="font-semibold">{record.prior.n}</span> pick-the-prior
+          drill{record.prior.n === 1 ? "" : "s"}, your gut ran{" "}
+          <span className="font-semibold">
+            {Math.abs(Math.round(premium))} point{Math.abs(Math.round(premium)) === 1 ? "" : "s"}{" "}
+            {premium >= 0 ? "above" : "below"}
+          </span>{" "}
+          the outside view — your inside-view premium.{" "}
+          <span className="text-[var(--muted)]">
+            {record.prior.n < 3
+              ? "A few more and the lean means something."
+              : premium >= 15
+                ? "A steady rosy lean: your case keeps feeling like the exception. Start from the class, then let the particulars argue for a modest adjustment."
+                : premium <= -15
+                  ? "You run gloomier than the record — worth checking you're not reaching for the grimmest class by reflex."
+                  : "Close to the record — your instincts are already consulting the outside view."}
+          </span>
+        </p>
+      )}
     </div>
   );
 }
@@ -576,6 +738,262 @@ function QuickRound({
         </div>
       ) : (
         <RoundResult results={results} onAgain={onAgain} onExit={onExit} />
+      )}
+    </div>
+  );
+}
+
+/* ----------------------------- pick the prior ----------------------------- */
+
+/**
+ * The reveal strip: every honest class's rate on a 0–100 line, beside your gut.
+ * No text on the strip itself — with classes as close as 45 and 50 the labels
+ * would collide — so the numbers live in the list below and in tooltips.
+ */
+function PriorStrip({
+  problem,
+  chosenId,
+  guess,
+}: {
+  problem: ReferenceProblem;
+  chosenId: string;
+  guess: number;
+}) {
+  const classes = honestClasses(problem);
+  return (
+    <div>
+      <div className="relative h-8 rounded-md border border-[var(--border)] bg-[var(--card)]">
+        {classes.map((c) => (
+          <div
+            key={c.id}
+            title={`${c.label}: ${c.rate}%`}
+            className={`absolute top-0 h-full ${
+              c.id === chosenId ? "w-1 bg-[var(--accent)]" : "w-0.5 bg-[var(--muted)]"
+            }`}
+            style={{ left: `calc(${c.rate}% - 1px)` }}
+          />
+        ))}
+        <div
+          title={`Your gut: ${Math.round(guess)}%`}
+          className="absolute -top-1.5 h-3 w-3 rotate-45 border border-[var(--foreground)] bg-[var(--background)]"
+          style={{ left: `calc(${Math.min(Math.max(guess, 0), 100)}% - 6px)` }}
+        />
+      </div>
+      <div className="mt-1.5 flex justify-between text-[10px] text-[var(--muted)]">
+        <span>0%</span>
+        <span>
+          <span className="inline-block h-2 w-2 rotate-45 border border-[var(--foreground)] align-middle mr-1.5" />
+          your gut · <span className="text-[var(--accent)]">▮</span> the class you chose ·{" "}
+          ▏other honest classes
+        </span>
+        <span>100%</span>
+      </div>
+    </div>
+  );
+}
+
+type PriorPhase = "guess" | "pick" | "done";
+
+function PriorRound({
+  problem,
+  onComplete,
+  onAgain,
+  onExit,
+}: {
+  problem: ReferenceProblem;
+  onComplete: (signedGap: number) => void;
+  onAgain: () => void;
+  onExit: () => void;
+}) {
+  const [phase, setPhase] = useState<PriorPhase>("guess");
+  const [guess, setGuess] = useState("");
+  // The last card clicked — traps stay clickable so their correction shows,
+  // but only a class with a rate can anchor the reveal.
+  const [pickedId, setPickedId] = useState<string | null>(null);
+
+  const guessNum = parsePct(guess);
+  const picked = problem.classes.find((c) => c.id === pickedId) ?? null;
+  const anchor = picked && picked.rate !== null ? picked : null;
+  const range = honestRange(problem);
+
+  function reveal() {
+    if (!anchor || guessNum === null || phase === "done") return;
+    setPhase("done");
+    onComplete(guessNum - (anchor.rate as number));
+  }
+
+  return (
+    <div>
+      <button
+        onClick={onExit}
+        className="text-xs text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+      >
+        ← Back to menu
+      </button>
+
+      <div className="mt-4 rounded-lg border border-dashed border-[var(--border)] px-4 py-3">
+        <p className="text-sm text-[var(--muted)] leading-relaxed">
+          <span className="font-semibold text-[var(--foreground)]">The move.</span>{" "}
+          There&rsquo;s no answer key this time — that&rsquo;s the point. Real questions
+          don&rsquo;t hand you the base rate; you have to decide{" "}
+          <em>what usually happens to cases like this one</em>, which means
+          deciding what counts as a case like this one. Gut answer first. Then
+          choose your starting point.
+        </p>
+      </div>
+
+      <h2 className="mt-8 text-lg font-medium text-[var(--foreground)] leading-snug">
+        {problem.title}
+      </h2>
+      <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">{problem.scenario}</p>
+      <p className="mt-3 text-sm font-medium text-[var(--foreground)] leading-relaxed">
+        {problem.question}
+      </p>
+
+      <div className="mt-5">
+        <label className="block text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)] mb-1.5">
+          Your gut answer — before looking anything up
+        </label>
+        <div className="flex flex-wrap items-center gap-2">
+          <input
+            aria-label="Your gut answer, as a percentage"
+            inputMode="numeric"
+            disabled={phase !== "guess"}
+            value={guess}
+            onChange={(e) => setGuess(e.target.value)}
+            placeholder="0–100"
+            className={`${inputClass} w-28`}
+          />
+          <span className="text-[var(--muted)] text-sm">%</span>
+          {phase === "guess" && (
+            <button
+              onClick={() => guessNum !== null && setPhase("pick")}
+              disabled={guessNum === null}
+              className={`${primaryBtn} ml-1`}
+            >
+              Now pick the prior →
+            </button>
+          )}
+        </div>
+      </div>
+
+      {phase !== "guess" && (
+        <div className="mt-8">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)] mb-3">
+            Which of these would you start from?
+          </p>
+          <div className="space-y-3">
+            {problem.classes.map((c) => {
+              const isPicked = pickedId === c.id;
+              const showTrapNote = isPicked && c.trap && phase !== "done";
+              return (
+                <div key={c.id}>
+                  <button
+                    onClick={() => phase === "pick" && setPickedId(c.id)}
+                    disabled={phase === "done"}
+                    className={`w-full text-left rounded-lg border p-4 transition-colors ${
+                      isPicked && !c.trap
+                        ? "border-[var(--accent)] bg-[var(--card)]"
+                        : isPicked && c.trap
+                          ? "border-[var(--accent)] border-dashed bg-[var(--card)]"
+                          : "border-[var(--border)] bg-[var(--card)] hover:border-[var(--accent)]"
+                    } ${phase === "done" ? "cursor-default" : ""}`}
+                  >
+                    <span className="block text-sm font-medium text-[var(--foreground)]">
+                      {c.label}
+                      {phase === "done" && c.rate !== null && (
+                        <span className="ml-2 tabular-nums text-[var(--accent)]">{c.rate}%</span>
+                      )}
+                      {phase === "done" && c.trap && (
+                        <span className="ml-2 text-xs font-normal text-[var(--muted)]">
+                          {c.trap === "one" ? "— a class of one" : "— folklore, no data"}
+                        </span>
+                      )}
+                    </span>
+                    <span className="mt-1 block text-xs text-[var(--muted)] leading-relaxed">
+                      {c.description}
+                    </span>
+                  </button>
+                  {showTrapNote && (
+                    <div className="mt-2 rounded-md border border-[var(--accent)] px-3 py-2 text-xs leading-relaxed text-[var(--muted)]">
+                      <span className="font-semibold text-[var(--accent)]">
+                        {c.trap === "one" ? "That's not a class." : "That's not a base rate."}
+                      </span>{" "}
+                      {c.note} <span className="text-[var(--foreground)]">Pick again.</span>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {phase === "pick" && (
+            <div className="mt-5 flex items-center gap-4">
+              <button onClick={reveal} disabled={!anchor} className={primaryBtn}>
+                Start from this class →
+              </button>
+              {!anchor && (
+                <span className="text-xs text-[var(--muted)]">
+                  Choose a class with a rate behind it.
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {phase === "done" && anchor && guessNum !== null && (
+        <div className="mt-8 rounded-lg border border-[var(--border)] bg-[var(--card)] p-5">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            Your gut vs. the outside view
+          </h2>
+
+          <div className="mt-4">
+            <PriorStrip problem={problem} chosenId={anchor.id} guess={guessNum} />
+          </div>
+
+          <p className="mt-5 text-sm text-[var(--foreground)] leading-relaxed">
+            Every class with a history lands between{" "}
+            <span className="font-semibold tabular-nums">{range.lo}%</span> and{" "}
+            <span className="font-semibold tabular-nums">{range.hi}%</span>. You chose{" "}
+            <span className="font-semibold">{anchor.label.toLowerCase()}</span> at{" "}
+            <span className="font-semibold tabular-nums">{anchor.rate}%</span> — and your gut
+            said <span className="font-semibold tabular-nums">{Math.round(guessNum)}%</span>
+            {Math.abs(Math.round(guessNum - (anchor.rate as number))) <= 5 ? (
+              <>, nearly on top of it. Your instinct was already consulting the record.</>
+            ) : (
+              <>
+                , {Math.abs(Math.round(guessNum - (anchor.rate as number)))} points{" "}
+                {guessNum >= (anchor.rate as number) ? "above" : "below"} your own starting
+                point. That gap is the inside view — the part of your answer that came from
+                the story instead of the record.
+              </>
+            )}
+          </p>
+
+          <p className="mt-4 text-sm text-[var(--foreground)] leading-relaxed">{problem.lesson}</p>
+
+          <ul className="mt-4 space-y-2 text-xs text-[var(--muted)] leading-relaxed">
+            {problem.classes.map((c) => (
+              <li key={c.id}>
+                <span className="font-medium text-[var(--foreground)]">{c.label}</span>
+                {c.rate !== null && <span className="tabular-nums"> ({c.rate}%)</span>} —{" "}
+                {c.note}
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-4 text-xs text-[var(--muted)] leading-relaxed">{problem.source}</p>
+
+          <div className="mt-5 flex flex-wrap gap-3">
+            <button onClick={onAgain} className={primaryBtn}>
+              Another one →
+            </button>
+            <button onClick={onExit} className={secondaryBtn}>
+              Back to menu
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

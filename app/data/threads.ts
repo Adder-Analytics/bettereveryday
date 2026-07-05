@@ -58,6 +58,11 @@ export const threads: Thread[] = [
         why: "What it takes to stay in long enough for the compound to actually arrive.",
       },
       {
+        kind: "essay",
+        slug: "the-compound-needs-evidence",
+        why: "How to see the invisible progress without inventing it — the day is noise, the trend is the signal.",
+      },
+      {
         kind: "model",
         id: "compound-interest",
         why: "The one-screen version of the whole thread, to keep.",
@@ -83,6 +88,11 @@ export const threads: Thread[] = [
       },
       {
         kind: "essay",
+        slug: "experience-doesnt-teach",
+        why: "And why the fix never happens on its own: weather forecasters are calibrated because the rain grades them daily — your decisions get no such courtesy, so the scoreboard has to be built.",
+      },
+      {
+        kind: "essay",
         slug: "second-order-thinking",
         why: "“And then what?” The question that catches most avoidable mistakes.",
       },
@@ -92,9 +102,19 @@ export const threads: Thread[] = [
         why: "What happens when the measure you chose quietly becomes the goal.",
       },
       {
+        kind: "essay",
+        slug: "hold-the-funeral-first",
+        why: "Then stress-test the call before you commit: declare it already failed, explain why — and set the tripwires that will tell you when to stop.",
+      },
+      {
         kind: "model",
         id: "pre-mortem",
-        why: "Stress-test a plan by assuming it already failed, then asking why.",
+        why: "The one-screen version of the funeral: assume it failed, write the history, triage the causes.",
+      },
+      {
+        kind: "model",
+        id: "tripwires",
+        why: "And the guard it leaves behind: a state and a date, set while you're calm, that outranks your future self.",
       },
       {
         kind: "model",
@@ -154,6 +174,16 @@ export const threads: Thread[] = [
         kind: "model",
         id: "base-rates",
         why: "Start from the prior probability, then let the specifics update it.",
+      },
+      {
+        kind: "essay",
+        slug: "nobody-thinks-theyre-the-base-rate",
+        why: "But where does the prior come from? The inside view, the planning fallacy, and how to choose a reference class honestly — the judgement upstream of all the arithmetic.",
+      },
+      {
+        kind: "model",
+        id: "outside-view",
+        why: "The one-screen version: forecast from the record of everyone who tried, not from the story of your attempt.",
       },
       {
         kind: "model",

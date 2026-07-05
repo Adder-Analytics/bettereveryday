@@ -74,8 +74,25 @@ export default function DecidePage() {
 
       <div className="mt-16 pt-8 border-t border-[var(--border)]">
         <p className="text-sm text-[var(--muted)] leading-relaxed">
-          Nothing you write here leaves your browser. Prefer to just read about
-          the tools? Browse the{" "}
+          Nothing you write here leaves your browser. About to commit to
+          something big? Hold the{" "}
+          <Link
+            href="/premortem"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            pre-mortem
+          </Link>{" "}
+          first — find the failure while changing course is still cheap, then
+          log the decision here. Your reviewed forecasts
+          also appear on the{" "}
+          <Link
+            href="/practice"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            practice page
+          </Link>{" "}
+          — your real record, beside the trainers that warm you up for it.
+          Prefer to just read about the tools? Browse the{" "}
           <Link
             href="/models"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
