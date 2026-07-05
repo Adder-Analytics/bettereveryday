@@ -17,6 +17,7 @@ import {
   honestRange,
   type ReferenceProblem,
 } from "../data/reference";
+import { foldIntoDay, localDayISO } from "../data/history";
 
 /**
  * The lifetime record. Base-rate neglect, like calibration and estimation, is a
@@ -37,12 +38,24 @@ type PriorRecord = {
   sumSigned: number;
 };
 
+type UpdDay = {
+  d: string;
+  n: number;
+  sumAbsErr: number;
+  priorN: number;
+  priorSigned: number;
+};
+
 type Record = {
   n: number;
   sumAbsErr: number;
   sumSignedErr: number;
   within: number;
   prior: PriorRecord;
+  /** One bucket per practice day, so the hub can show whether your typical
+   *  miss is shrinking over time (see data/history.ts). Older records lack
+   *  the field and load with it empty. */
+  days: UpdDay[];
 };
 
 const STORAGE_KEY = "update:v1";
@@ -53,7 +66,12 @@ const EMPTY_RECORD: Record = {
   sumSignedErr: 0,
   within: 0,
   prior: EMPTY_PRIOR,
+  days: [],
 };
+
+function emptyDay(d: string): UpdDay {
+  return { d, n: 0, sumAbsErr: 0, priorN: 0, priorSigned: 0 };
+}
 
 function loadRecord(): Record {
   if (typeof window === "undefined") return EMPTY_RECORD;
@@ -61,6 +79,18 @@ function loadRecord(): Record {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return EMPTY_RECORD;
     const parsed = JSON.parse(raw) as Partial<Record>;
+    const days = Array.isArray(parsed.days)
+      ? parsed.days
+          .filter((b) => b && typeof b === "object" && typeof b.d === "string" && b.d)
+          .map((b) => ({
+            d: b.d,
+            n: typeof b.n === "number" ? b.n : 0,
+            sumAbsErr: typeof b.sumAbsErr === "number" ? b.sumAbsErr : 0,
+            priorN: typeof b.priorN === "number" ? b.priorN : 0,
+            priorSigned: typeof b.priorSigned === "number" ? b.priorSigned : 0,
+          }))
+          .sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0))
+      : [];
     return {
       n: parsed.n ?? 0,
       sumAbsErr: parsed.sumAbsErr ?? 0,
@@ -71,6 +101,7 @@ function loadRecord(): Record {
         sumAbs: parsed.prior?.sumAbs ?? 0,
         sumSigned: parsed.prior?.sumSigned ?? 0,
       },
+      days,
     };
   } catch {
     return EMPTY_RECORD;
@@ -150,13 +181,19 @@ export default function UpdateClient() {
 
   /** Fold a batch of signed point-errors into the lifetime record. */
   function commit(signedErrors: number[]) {
+    const sumAbs = signedErrors.reduce((s, e) => s + Math.abs(e), 0);
     setRecord((prev) => {
       const next: Record = {
         ...prev,
         n: prev.n + signedErrors.length,
-        sumAbsErr: prev.sumAbsErr + signedErrors.reduce((s, e) => s + Math.abs(e), 0),
+        sumAbsErr: prev.sumAbsErr + sumAbs,
         sumSignedErr: prev.sumSignedErr + signedErrors.reduce((s, e) => s + e, 0),
         within: prev.within + signedErrors.filter((e) => Math.abs(e) <= 10).length,
+        days: foldIntoDay(prev.days, localDayISO(), emptyDay, (b) => ({
+          ...b,
+          n: b.n + signedErrors.length,
+          sumAbsErr: b.sumAbsErr + sumAbs,
+        })),
       };
       saveRecord(next);
       return next;
@@ -173,6 +210,11 @@ export default function UpdateClient() {
           sumAbs: prev.prior.sumAbs + Math.abs(signedGap),
           sumSigned: prev.prior.sumSigned + signedGap,
         },
+        days: foldIntoDay(prev.days, localDayISO(), emptyDay, (b) => ({
+          ...b,
+          priorN: b.priorN + 1,
+          priorSigned: b.priorSigned + signedGap,
+        })),
       };
       saveRecord(next);
       return next;

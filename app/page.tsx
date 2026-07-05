@@ -123,8 +123,10 @@ export default function Home() {
           trains the three skills underneath every forecast — how sure you should
           be, how to get to a number at all, and how much a new fact should move
           it — and shows those records beside the one that counts: how your real,
-          reviewed decisions actually went, so the warm-up scores and the real
-          game sit on one page. Reading notes capture what specific
+          reviewed decisions actually went. And once your record spans enough
+          time, it answers the question in the site&rsquo;s name — your first
+          rounds beside your latest, whether you&rsquo;re actually getting
+          better. Reading notes capture what specific
           books did to my thinking.
           Everything cross-references, and everything is searchable (press{" "}
           <kbd className="px-1 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">

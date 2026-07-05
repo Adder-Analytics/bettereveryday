@@ -15,12 +15,13 @@
  * never disagree about the same record.
  */
 
-import type { Tone } from "./trainers";
+import type { Tone, Trend } from "./trainers";
 
 /* The subset of the journal's LogEntry this module reads. Mirrors the type
    declared in DecideClient; the loader below tolerates missing or malformed
    fields so an older or hand-edited log degrades to "no data", not a throw. */
 type LogEntryish = {
+  decidedOn?: unknown;
   reviewOn?: unknown;
   reviewedOn?: unknown;
   confidence?: unknown;
@@ -35,6 +36,13 @@ const LOG_KEY = "decide:log:v1";
 const CALIBRATION_MIN = 4;
 /** Mirrors the journal's RESULTING_MIN: one or two reviews isn't a pattern. */
 const RESULTING_MIN = 3;
+/** Scored reviews per half before the real-world trend will speak — the same
+ *  bar the journal sets before calling anything calibration at all. */
+const TREND_MIN_PER_HALF = CALIBRATION_MIN;
+/** Days between your first and latest scored forecast before "over time"
+ *  means anything here. The journal runs on review dates months out, so its
+ *  eras are longer than the trainers'. */
+const TREND_MIN_SPAN = 28;
 
 function todayISO(): string {
   const d = new Date();
@@ -94,7 +102,63 @@ export type JournalProfile = {
   /** A plain-language reading of where you stand. */
   verdict: string;
   tone: Tone;
+  /** Your first scored forecasts vs your latest — the real-world trend.
+   *  Null until each half holds enough reviews and the record spans a month. */
+  trend: Trend | null;
 };
+
+/**
+ * The trend on the bets that count: split the scored entries by when the
+ * forecast was *made* (decidedOn — the moment being graded), and compare the
+ * overconfidence gap of the first half against the latest. Entries are split
+ * by count, not calendar, so both eras carry the same weight.
+ */
+function journalTrend(scorable: LogEntryish[]): Trend | null {
+  const dated = scorable.filter(
+    (e) => typeof e.decidedOn === "string" && e.decidedOn
+  );
+  if (dated.length < TREND_MIN_PER_HALF * 2) return null;
+  const sorted = [...dated].sort((a, b) =>
+    (a.decidedOn as string) < (b.decidedOn as string) ? -1 : 1
+  );
+  const first = new Date(`${sorted[0].decidedOn as string}T00:00:00`).getTime();
+  const last = new Date(
+    `${sorted[sorted.length - 1].decidedOn as string}T00:00:00`
+  ).getTime();
+  if (!Number.isFinite(first) || !Number.isFinite(last)) return null;
+  if (Math.round((last - first) / 86_400_000) < TREND_MIN_SPAN) return null;
+
+  const cut = Math.floor(sorted.length / 2);
+  const gapOf = (half: LogEntryish[]) => {
+    const claimed =
+      half.reduce((s, e) => s + (e.confidence as number), 0) / half.length;
+    const actual =
+      (half.filter((e) => e.outcomeQuality === "good").length / half.length) *
+      100;
+    return Math.round(claimed - actual);
+  };
+  const early = sorted.slice(0, cut);
+  const late = sorted.slice(cut);
+  const earlyGap = gapOf(early);
+  const lateGap = gapOf(late);
+  const delta = Math.abs(earlyGap) - Math.abs(lateGap);
+  const [reading, tone]: [string, Tone] =
+    delta >= 8
+      ? ["On the bets that count, your word is getting better — the gap between claimed and actual is closing.", "good"]
+      : delta <= -8
+        ? ["The gap between how sure you were and how things went has widened across your record — worth a look at what changed.", "work"]
+        : Math.abs(lateGap) <= 7
+          ? ["Steady and close — on real bets, your word holds.", "good"]
+          : ["Holding steady. Real reviews accrue slowly — direction here is measured in months, not weeks.", "mid"];
+  return {
+    earlyLabel: `first ${early.length} decisions`,
+    early: `${earlyGap >= 0 ? "+" : ""}${earlyGap} pt gap`,
+    lateLabel: `latest ${late.length}`,
+    late: `${lateGap >= 0 ? "+" : ""}${lateGap} pt gap`,
+    reading,
+    tone,
+  };
+}
 
 /** Read the journal's log from the browser and fold it into one profile. */
 export function loadJournalProfile(): JournalProfile {
@@ -147,6 +211,7 @@ export function loadJournalProfile(): JournalProfile {
     gap,
     resultingScored,
     divergences,
+    trend: journalTrend(scorable),
   };
 
   // Nothing logged yet: the invitation state.

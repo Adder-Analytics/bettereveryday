@@ -17,7 +17,7 @@ export const models: Model[] = [
     tagline: "Returns accumulate on previous returns, producing exponential rather than linear growth.",
     explanation:
       "The returns in year thirty don't just come from the principal — they come from thirty years of accumulated growth. This is why starting early matters more than starting smart, and why the first decade of investing feels unremarkable despite being the most important. The same math applies to knowledge, skills, and reputation: the value of early investment is invisible until it suddenly isn't.",
-    essays: ["money-math", "compounding-improvements"],
+    essays: ["money-math", "compounding-improvements", "the-compound-needs-evidence"],
   },
   {
     id: "opportunity-cost",
@@ -126,7 +126,7 @@ export const models: Model[] = [
     tagline: "Systems regulate or amplify themselves through circular causation.",
     explanation:
       "A thermostat is a negative feedback loop: output (temperature) feeds back to reduce the driver (heating). A microphone near a speaker is a positive feedback loop: output (sound) amplifies the input, producing a screech. Understanding which type is operating predicts whether a system will seek equilibrium or spiral. Most healthy systems rely on negative feedback to self-correct. Most crises involve positive feedback loops that weren't noticed until they were hard to stop. The same lens explains why experience makes some people better and merely makes others confident: learning is a feedback loop, and it only closes when your output — a prediction, a decision — comes back scored, quickly and honestly. Robin Hogarth called environments that do this 'kind' (chess, golf, weather forecasting) and those that don't — feedback delayed, noisy, missing, or misleading — 'wicked' (hiring, strategy, most judgement calls that matter). In a wicked environment the loop that closes isn't accuracy but confidence: outcomes arrive late and garbled, memory rewrites the prediction to fit them, and each repetition amplifies certainty instead of correcting it — a positive feedback loop wearing the costume of experience. The fix is structural, not motivational: build the missing negative loop yourself, by writing forecasts down in advance and scheduling the moment reality grades them.",
-    essays: ["experience-doesnt-teach"],
+    essays: ["experience-doesnt-teach", "the-compound-needs-evidence"],
   },
   {
     id: "second-order-effects",
@@ -209,8 +209,8 @@ export const models: Model[] = [
     domain: "Epistemology",
     tagline: "Extreme measurements tend to be followed by less extreme ones, regardless of what you do.",
     explanation:
-      "The student who scored highest on the first test is likely to score somewhat lower on the next — not because they got worse, but because exceptional performance has a luck component that doesn't replicate. This explains why praising good performance seems to make things worse (they regress toward average regardless) and why punishment after bad performance seems to make things better (they regress toward average regardless). The failure to account for regression to the mean produces an enormous amount of false learning from experience.",
-    essays: ["decision-quality"],
+      "The student who scored highest on the first test is likely to score somewhat lower on the next — not because they got worse, but because exceptional performance has a luck component that doesn't replicate. This explains why praising good performance seems to make things worse (they regress toward average regardless) and why punishment after bad performance seems to make things better (they regress toward average regardless). The failure to account for regression to the mean produces an enormous amount of false learning from experience. It also poisons self-assessment during practice: your best-ever session is partly luck, so the next one will usually be worse no matter what you do — which feels like backsliding and manufactures a false lesson out of whatever you changed that morning. The cure is resolution: grade eras against eras, never today against yesterday.",
+    essays: ["decision-quality", "the-compound-needs-evidence"],
   },
   {
     id: "calibration",

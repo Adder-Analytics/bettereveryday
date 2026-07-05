@@ -11,6 +11,7 @@ import {
   type FermiProblem,
   type EstimateQuestion,
 } from "../data/estimation";
+import { foldIntoDay, localDayISO } from "../data/history";
 
 /**
  * The lifetime record. Estimation skill, like calibration, is a pattern that
@@ -18,16 +19,33 @@ import {
  * how often a decomposition beat the gut guess, and how tight the one-shot
  * estimates have been (a typical miss, in factors of ten). Stays in the browser.
  */
+type EstDay = {
+  d: string;
+  oneshotN: number;
+  sumAbsLog: number;
+  decomposeN: number;
+  beatGut: number;
+};
+
 type Record = {
   decompose: { n: number; beatGut: number };
   oneshot: { n: number; sumAbsLog: number; withinOrder: number };
+  /** One bucket per practice day, so the hub can show whether your typical
+   *  miss is tightening over time (see data/history.ts). Older records lack
+   *  the field and load with it empty. */
+  days: EstDay[];
 };
 
 const STORAGE_KEY = "estimate:v1";
 const EMPTY_RECORD: Record = {
   decompose: { n: 0, beatGut: 0 },
   oneshot: { n: 0, sumAbsLog: 0, withinOrder: 0 },
+  days: [],
 };
+
+function emptyDay(d: string): EstDay {
+  return { d, oneshotN: 0, sumAbsLog: 0, decomposeN: 0, beatGut: 0 };
+}
 
 function loadRecord(): Record {
   if (typeof window === "undefined") return EMPTY_RECORD;
@@ -35,6 +53,18 @@ function loadRecord(): Record {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return EMPTY_RECORD;
     const parsed = JSON.parse(raw) as Partial<Record>;
+    const days = Array.isArray(parsed.days)
+      ? parsed.days
+          .filter((b) => b && typeof b === "object" && typeof b.d === "string" && b.d)
+          .map((b) => ({
+            d: b.d,
+            oneshotN: typeof b.oneshotN === "number" ? b.oneshotN : 0,
+            sumAbsLog: typeof b.sumAbsLog === "number" ? b.sumAbsLog : 0,
+            decomposeN: typeof b.decomposeN === "number" ? b.decomposeN : 0,
+            beatGut: typeof b.beatGut === "number" ? b.beatGut : 0,
+          }))
+          .sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0))
+      : [];
     return {
       decompose: {
         n: parsed.decompose?.n ?? 0,
@@ -45,6 +75,7 @@ function loadRecord(): Record {
         sumAbsLog: parsed.oneshot?.sumAbsLog ?? 0,
         withinOrder: parsed.oneshot?.withinOrder ?? 0,
       },
+      days,
     };
   } catch {
     return EMPTY_RECORD;
@@ -142,6 +173,11 @@ export default function EstimateClient() {
           n: prev.decompose.n + 1,
           beatGut: prev.decompose.beatGut + (beatGut ? 1 : 0),
         },
+        days: foldIntoDay(prev.days, localDayISO(), emptyDay, (b) => ({
+          ...b,
+          decomposeN: b.decomposeN + 1,
+          beatGut: b.beatGut + (beatGut ? 1 : 0),
+        })),
       };
       saveRecord(next);
       return next;
@@ -149,15 +185,21 @@ export default function EstimateClient() {
   }
 
   function commitOneshot(logErrors: number[]) {
+    const sum = logErrors.reduce((s, e) => s + e, 0);
     setRecord((prev) => {
       const next: Record = {
         ...prev,
         oneshot: {
           n: prev.oneshot.n + logErrors.length,
-          sumAbsLog: prev.oneshot.sumAbsLog + logErrors.reduce((s, e) => s + e, 0),
+          sumAbsLog: prev.oneshot.sumAbsLog + sum,
           withinOrder:
             prev.oneshot.withinOrder + logErrors.filter((e) => e <= 1).length,
         },
+        days: foldIntoDay(prev.days, localDayISO(), emptyDay, (b) => ({
+          ...b,
+          oneshotN: b.oneshotN + logErrors.length,
+          sumAbsLog: b.sumAbsLog + sum,
+        })),
       };
       saveRecord(next);
       return next;

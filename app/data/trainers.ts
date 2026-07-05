@@ -14,19 +14,49 @@
  * read side only, so adding it can't regress any existing tool.
  */
 
+import { MIN_TREND_SPAN_DAYS, spanDays, splitByWeight } from "./history";
+
 /* ----------------------------- record shapes ----------------------------- */
 /* These mirror the types declared inside each trainer's client. They must stay
    in sync with the writers; the loaders below tolerate missing/partial fields
    so an older or newer record shape degrades to "no data" rather than throwing. */
 
+type CalDay = {
+  d: string;
+  rangeN?: number;
+  rangeHits?: number;
+  binaryN?: number;
+  binaryClaimed?: number;
+  binaryHits?: number;
+};
+
+type EstDay = {
+  d: string;
+  oneshotN?: number;
+  sumAbsLog?: number;
+  decomposeN?: number;
+  beatGut?: number;
+};
+
+type UpdDay = {
+  d: string;
+  n?: number;
+  sumAbsErr?: number;
+  priorN?: number;
+  priorSigned?: number;
+};
+
 type CalibrateRecord = {
   range: { n: number; hits: number };
   binary: { [confidence: number]: { n: number; hits: number } };
+  /** Per-day buckets — absent in records written before the trend existed. */
+  days?: CalDay[];
 };
 
 type EstimateRecord = {
   decompose: { n: number; beatGut: number };
   oneshot: { n: number; sumAbsLog: number; withinOrder: number };
+  days?: EstDay[];
 };
 
 type UpdateRecord = {
@@ -36,6 +66,7 @@ type UpdateRecord = {
   within: number;
   /** The pick-the-prior mode's record — absent in records written before it existed. */
   prior?: { n?: number; sumAbs?: number; sumSigned?: number };
+  days?: UpdDay[];
 };
 
 const CALIBRATE_KEY = "calibrate:v1";
@@ -57,6 +88,25 @@ function read<T>(key: string): T | null {
 
 /** How the headline should read — drives the colour of the stat. */
 export type Tone = "good" | "mid" | "work" | "none";
+
+/**
+ * The answer to the site's own name, computed honestly or not at all: your
+ * first rounds against your latest, split by volume (see data/history.ts).
+ * Null until each half can carry the claim — a minimum of answers per half
+ * and at least two weeks between the first and last practice day — because
+ * a "trend" read off two noisy handfuls is worse than silence.
+ */
+export type Trend = {
+  /** e.g. "first 30 ranges" */
+  earlyLabel: string;
+  /** e.g. "58% held" */
+  early: string;
+  lateLabel: string;
+  late: string;
+  /** One plain sentence on what the movement means — including "nothing yet". */
+  reading: string;
+  tone: Tone;
+};
 
 export type TrainerProfile = {
   id: "calibrate" | "estimate" | "update";
@@ -82,6 +132,8 @@ export type TrainerProfile = {
    * it's a gentle heuristic, never shown as a score.
    */
   needsPractice: number | null;
+  /** First half vs latest half, once the dated record can carry it. */
+  trend: Trend | null;
 };
 
 function clamp(n: number): number {
@@ -96,12 +148,176 @@ function fmtFactor(n: number): string {
   return Math.round(n).toLocaleString("en-US");
 }
 
+/* ------------------------------- the trend ------------------------------- */
+/* Minimum answers per half before a trend will speak. Set where the halves
+   stop being coin flips: at 15 ranges per half, one lucky round still moves
+   the rate several points, which is why the flat reading stays humble. */
+const TREND_MIN_RANGES = 15;
+const TREND_MIN_BINARY = 20;
+const TREND_MIN_ONESHOT = 8;
+const TREND_MIN_UPDATES = 6;
+
+/** Keep only well-formed buckets, in date order. */
+function cleanDays<T extends { d: string }>(days: T[] | undefined): T[] {
+  if (!Array.isArray(days)) return [];
+  return days
+    .filter((b) => b && typeof b === "object" && typeof b.d === "string" && b.d)
+    .slice()
+    .sort((a, b) => (a.d < b.d ? -1 : a.d > b.d ? 1 : 0));
+}
+
+/**
+ * Split day buckets into halves by volume and check the honesty gates: enough
+ * weight in each half, and enough calendar between the first and last carrying
+ * day for "over time" to mean anything. Returns the halves or null.
+ */
+function honestHalves<T extends { d: string }>(
+  days: T[],
+  weight: (b: T) => number,
+  minPerHalf: number
+): { early: T[]; late: T[]; earlyN: number; lateN: number } | null {
+  const carrying = days.filter((b) => weight(b) > 0);
+  if (spanDays(carrying) < MIN_TREND_SPAN_DAYS) return null;
+  const split = splitByWeight(carrying, weight);
+  if (!split) return null;
+  const earlyN = split.early.reduce((s, b) => s + weight(b), 0);
+  const lateN = split.late.reduce((s, b) => s + weight(b), 0);
+  if (earlyN < minPerHalf || lateN < minPerHalf) return null;
+  return { ...split, earlyN, lateN };
+}
+
+function calibrateTrend(r: CalibrateRecord | null): Trend | null {
+  const days = cleanDays(r?.days);
+
+  // Prefer the range trend — same priority as the headline.
+  const ranges = honestHalves(days, (b) => b.rangeN ?? 0, TREND_MIN_RANGES);
+  if (ranges) {
+    const rate = (half: CalDay[]) =>
+      Math.round(
+        (half.reduce((s, b) => s + (b.rangeHits ?? 0), 0) /
+          half.reduce((s, b) => s + (b.rangeN ?? 0), 0)) *
+          100
+      );
+    const earlyRate = rate(ranges.early);
+    const lateRate = rate(ranges.late);
+    // Better = closer to an honest 90, from either side — not simply higher.
+    const delta = Math.abs(90 - earlyRate) - Math.abs(90 - lateRate);
+    const [reading, tone]: [string, Tone] =
+      delta >= 6
+        ? ["Your ranges are moving toward an honest 90% — the practice is landing.", "good"]
+        : delta <= -6
+          ? ["Your latest ranges sit further from 90% than your first did — worth slowing down before you commit a range.", "work"]
+          : Math.abs(90 - lateRate) <= 7
+            ? ["Steady at calibrated — from here, improvement means staying put.", "good"]
+            : ["Holding steady. A plateau isn't a verdict — but check the questions still sting.", "mid"];
+    return {
+      earlyLabel: `first ${ranges.earlyN} ranges`,
+      early: `${earlyRate}% held`,
+      lateLabel: `latest ${ranges.lateN}`,
+      late: `${lateRate}% held`,
+      reading,
+      tone,
+    };
+  }
+
+  // Fall back to the true/false overconfidence gap.
+  const bin = honestHalves(days, (b) => b.binaryN ?? 0, TREND_MIN_BINARY);
+  if (bin) {
+    const gap = (half: CalDay[]) => {
+      const n = half.reduce((s, b) => s + (b.binaryN ?? 0), 0);
+      const claimed = half.reduce((s, b) => s + (b.binaryClaimed ?? 0), 0) / n;
+      const actual = (half.reduce((s, b) => s + (b.binaryHits ?? 0), 0) / n) * 100;
+      return Math.round(claimed - actual);
+    };
+    const earlyGap = gap(bin.early);
+    const lateGap = gap(bin.late);
+    const delta = Math.abs(earlyGap) - Math.abs(lateGap);
+    const [reading, tone]: [string, Tone] =
+      delta >= 6
+        ? ["Your confidence is tracking your hit rate more closely than when you started.", "good"]
+        : delta <= -6
+          ? ["The gap between how sure you feel and how often you're right has widened lately.", "work"]
+          : Math.abs(lateGap) <= 7
+            ? ["Steady at calibrated — from here, improvement means staying put.", "good"]
+            : ["Holding steady. A plateau isn't a verdict — but check the questions still sting.", "mid"];
+    return {
+      earlyLabel: `first ${bin.earlyN} calls`,
+      early: `${earlyGap >= 0 ? "+" : ""}${earlyGap} pt gap`,
+      lateLabel: `latest ${bin.lateN}`,
+      late: `${lateGap >= 0 ? "+" : ""}${lateGap} pt gap`,
+      reading,
+      tone,
+    };
+  }
+
+  return null;
+}
+
+function estimateTrend(r: EstimateRecord | null): Trend | null {
+  const days = cleanDays(r?.days);
+  const halves = honestHalves(days, (b) => b.oneshotN ?? 0, TREND_MIN_ONESHOT);
+  if (!halves) return null;
+  const meanLog = (half: EstDay[]) =>
+    half.reduce((s, b) => s + (b.sumAbsLog ?? 0), 0) /
+    half.reduce((s, b) => s + (b.oneshotN ?? 0), 0);
+  const earlyLog = meanLog(halves.early);
+  const lateLog = meanLog(halves.late);
+  const delta = earlyLog - lateLog; // positive = tightening
+  const [reading, tone]: [string, Tone] =
+    delta >= 0.15
+      ? ["Your typical miss is tightening — decomposition is becoming the reflex.", "good"]
+      : delta <= -0.15
+        ? ["Your recent estimates run wider of the mark than your first did — back to factors before committing a number.", "work"]
+        : Math.pow(10, lateLog) <= 3
+          ? ["Steady at genuinely good — most guesses land in the right neighbourhood.", "good"]
+          : ["Holding steady. A plateau isn't a verdict — but check the questions still sting.", "mid"];
+  return {
+    earlyLabel: `first ${halves.earlyN} estimates`,
+    early: `${fmtFactor(Math.pow(10, earlyLog))}× off`,
+    lateLabel: `latest ${halves.lateN}`,
+    late: `${fmtFactor(Math.pow(10, lateLog))}× off`,
+    reading,
+    tone,
+  };
+}
+
+function updateTrend(r: UpdateRecord | null): Trend | null {
+  const days = cleanDays(r?.days);
+  const halves = honestHalves(days, (b) => b.n ?? 0, TREND_MIN_UPDATES);
+  if (!halves) return null;
+  const miss = (half: UpdDay[]) =>
+    Math.round(
+      half.reduce((s, b) => s + (b.sumAbsErr ?? 0), 0) /
+        half.reduce((s, b) => s + (b.n ?? 0), 0)
+    );
+  const earlyMiss = miss(halves.early);
+  const lateMiss = miss(halves.late);
+  const delta = earlyMiss - lateMiss;
+  const [reading, tone]: [string, Tone] =
+    delta >= 5
+      ? ["Your updates are landing closer to what the numbers demand — the base rate is starting to do its work.", "good"]
+      : delta <= -5
+        ? ["Your recent updates miss by more than your first did — count the crowd before you answer.", "work"]
+        : lateMiss <= 12
+          ? ["Steady at close — you're weighing evidence against the prior, not anchoring on either.", "good"]
+          : ["Holding steady. A plateau isn't a verdict — but check the questions still sting.", "mid"];
+  return {
+    earlyLabel: `first ${halves.earlyN} updates`,
+    early: `${earlyMiss} pts off`,
+    lateLabel: `latest ${halves.lateN}`,
+    late: `${lateMiss} pts off`,
+    reading,
+    tone,
+  };
+}
+
 function calibrateProfile(r: CalibrateRecord | null): TrainerProfile {
   const base = {
     id: "calibrate" as const,
     name: "Calibration",
     route: "/calibrate",
     question: "How wide should your uncertainty be?",
+    trend: calibrateTrend(r),
   };
 
   const rangeN = r?.range?.n ?? 0;
@@ -178,6 +394,7 @@ function estimateProfile(r: EstimateRecord | null): TrainerProfile {
     name: "Estimation",
     route: "/estimate",
     question: "How do you get to a number at all?",
+    trend: estimateTrend(r),
   };
 
   const oneshotN = r?.oneshot?.n ?? 0;
@@ -242,6 +459,7 @@ function updateProfile(r: UpdateRecord | null): TrainerProfile {
     name: "Base rates",
     route: "/update",
     question: "How much should new evidence move you?",
+    trend: updateTrend(r),
   };
 
   const n = r?.n ?? 0;

@@ -5,11 +5,11 @@ import PracticeClient from "./PracticeClient";
 export const metadata: Metadata = {
   title: "Practice — Better Every Day",
   description:
-    "Three short trainers for the three numbers under every decision — how sure you are, how to get to a number at all, and how much a new fact should change your mind — plus your real record from the decision journal, side by side. See your whole judgement profile in one place, warm-up scores and real bets together.",
+    "Three short trainers for the three numbers under every decision — how sure you are, how to get to a number at all, and how much a new fact should change your mind — plus your real record from the decision journal, side by side. And once your record spans enough time, the trend: your first rounds beside your latest.",
   openGraph: {
     title: "Practice — Better Every Day",
     description:
-      "Calibration, estimation, and base rates are three faces of one skill: putting honest numbers on an uncertain world. One page for all three records — beside your real record from the decision journal — and a nudge toward the next ten minutes.",
+      "Calibration, estimation, and base rates are three faces of one skill: putting honest numbers on an uncertain world. One page for all three records — beside your real record from the decision journal — plus the trend that answers whether you're actually getting better.",
     type: "website",
   },
 };
@@ -47,7 +47,11 @@ export default function PracticePage() {
           seconds. Your actual decisions get graded slowly and ambiguously, which
           is why the journal writes the forecast down first and scores it when
           reality reports back. This page reads all of it — kept privately in
-          your browser — and shows the warm-up and the real game together.
+          your browser — and shows the warm-up and the real game together. And
+          because a day&rsquo;s score is mostly noise, it also keeps the number
+          this site is named after: once your record spans enough time, each
+          card shows your first rounds beside your latest — whether you&rsquo;re
+          actually getting better.
         </p>
       </header>
 
@@ -69,6 +73,14 @@ export default function PracticePage() {
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Experience Doesn&rsquo;t Teach
+          </Link>
+          . And why the trend refuses to speak early — what a day&rsquo;s score
+          can and can&rsquo;t tell you:{" "}
+          <Link
+            href="/writing/the-compound-needs-evidence"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            The Compound Needs Evidence
           </Link>
           . Each skill also has its own essay and model — linked from its trainer.
         </p>

@@ -8,6 +8,7 @@ import {
   type TrainerProfile,
   type Suggestion,
   type Tone,
+  type Trend,
 } from "../data/trainers";
 import { loadJournalProfile, type JournalProfile } from "../data/journal";
 
@@ -112,6 +113,19 @@ function Shell({
           Why these three →
         </Link>
       </p>
+      <p className="mt-3 text-xs text-[var(--muted)] leading-relaxed">
+        As your record grows, each card also answers the question in the
+        site&rsquo;s name: your first rounds beside your latest, once each half
+        is big enough to mean something and your record spans a couple of
+        weeks. Until then the cards stay quiet on purpose — a trend read off a
+        handful of noisy answers would be astrology with axes.{" "}
+        <Link
+          href="/writing/the-compound-needs-evidence"
+          className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          Why the trend is slow to speak →
+        </Link>
+      </p>
     </div>
   );
 }
@@ -202,10 +216,37 @@ function StatCard({ profile }: { profile: TrainerProfile }) {
         {profile.verdict}
       </p>
 
+      {profile.trend && <TrendBlock trend={profile.trend} />}
+
       <span className="mt-4 text-xs text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">
         {started ? `${profile.n} answered · open →` : "Try it →"}
       </span>
     </Link>
+  );
+}
+
+/**
+ * The answer to the site's own name: your first rounds beside your latest.
+ * Only rendered when the halves can carry the claim — enough volume per half
+ * and enough calendar between them (see the trend logic in data/trainers.ts
+ * and data/journal.ts, and the essay "The Compound Needs Evidence").
+ */
+function TrendBlock({ trend }: { trend: Trend }) {
+  return (
+    <div className="mt-4 rounded-md border border-[var(--border)] bg-[var(--background)] p-3">
+      <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+        Since you started
+      </p>
+      <p className="mt-1.5 text-xs leading-relaxed text-[var(--foreground)] tabular-nums">
+        <span className="text-[var(--muted)]">{trend.earlyLabel}:</span>{" "}
+        <span className="font-medium">{trend.early}</span>
+        <span className="text-[var(--muted)]"> · {trend.lateLabel}:</span>{" "}
+        <span className="font-medium">{trend.late}</span>
+      </p>
+      <p className={`mt-1 text-xs leading-relaxed ${toneText[trend.tone]}`}>
+        {trend.reading}
+      </p>
+    </div>
   );
 }
 
@@ -276,6 +317,8 @@ function JournalCard({ journal }: { journal: JournalProfile | null }) {
       <p className="mt-4 text-sm text-[var(--foreground)] leading-relaxed">
         {journal.verdict}
       </p>
+
+      {journal.trend && <TrendBlock trend={journal.trend} />}
 
       <span className="mt-4 text-xs text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">
         {journal.total} logged

@@ -58,6 +58,11 @@ export const threads: Thread[] = [
         why: "What it takes to stay in long enough for the compound to actually arrive.",
       },
       {
+        kind: "essay",
+        slug: "the-compound-needs-evidence",
+        why: "How to see the invisible progress without inventing it — the day is noise, the trend is the signal.",
+      },
+      {
         kind: "model",
         id: "compound-interest",
         why: "The one-screen version of the whole thread, to keep.",
