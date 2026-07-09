@@ -5,7 +5,12 @@ import Link from "next/link";
 import { SITE_URL, icsEscape, icsStamp, wrapCalendar } from "../data/ics";
 import {
   LENSES,
+  PREMORTEM_SAVED_KEY,
   SAMPLE_PREMORTEM,
+  dueTripwireChecks,
+  isDueTripwireCheck,
+  mergePremortem,
+  mergeReason,
   type Premortem,
   type PremortemReason,
   type TriageKind,
@@ -20,7 +25,7 @@ import {
  * journal, and nothing ever leaves the browser.
  */
 
-const SAVED_KEY = "premortem:v1";
+const SAVED_KEY = PREMORTEM_SAVED_KEY;
 const DRAFT_KEY = "premortem:draft:v1";
 
 const JUDGE_DEFAULT_DAYS = 365; // Klein's framing: "imagine we're a year out"
@@ -80,38 +85,10 @@ function emptyDraft(): Draft {
 }
 
 // ---- defensive load ------------------------------------------------------
-// Saved pre-mortems are the user's thinking; like the decision log, they have
-// to survive shape drift and hand-edited JSON. Anything missing gets a safe
-// default; anything malformed degrades instead of throwing.
-
-function mergeReason(raw: Partial<PremortemReason> | null | undefined): PremortemReason {
-  const r = raw ?? {};
-  const triage: TriageKind | null =
-    r.triage === "change" || r.triage === "tripwire" || r.triage === "accept"
-      ? r.triage
-      : null;
-  return {
-    id: typeof r.id === "string" && r.id ? r.id : newId(),
-    text: typeof r.text === "string" ? r.text : "",
-    triage,
-    detail: typeof r.detail === "string" ? r.detail : "",
-    signal: typeof r.signal === "string" ? r.signal : "",
-    checkOn: typeof r.checkOn === "string" ? r.checkOn : "",
-  };
-}
-
-function mergePremortem(raw: Partial<Premortem> | null | undefined): Premortem {
-  const r = raw ?? {};
-  return {
-    id: typeof r.id === "string" && r.id ? r.id : newId(),
-    plan: typeof r.plan === "string" && r.plan ? r.plan : "A plan",
-    judgeOn: typeof r.judgeOn === "string" ? r.judgeOn : "",
-    reasons: Array.isArray(r.reasons)
-      ? r.reasons.map(mergeReason).filter((x) => x.text.trim())
-      : [],
-    createdOn: typeof r.createdOn === "string" && r.createdOn ? r.createdOn : todayISO(),
-  };
-}
+// The merge discipline for saved pre-mortems lives in data/premortem.ts now,
+// shared with the read side (the due badge, the journal's cross-link) so the
+// room and its readers can never disagree about a record's shape. The draft
+// merge stays here — only this screen ever reads or writes a draft.
 
 function mergeDraft(raw: Partial<Draft> | null | undefined): Draft {
   const base = emptyDraft();
@@ -167,7 +144,13 @@ function buildPremortemMemo(pm: Premortem): string {
     } else if (r.triage === "tripwire") {
       lines.push(
         `   → Tripwire: if ${r.signal.trim() || "(no signal named)"} — stop and reconsider.` +
-          (r.checkOn ? ` Check on ${formatHuman(r.checkOn)}.` : "")
+          (r.checkedOn
+            ? r.fired
+              ? ` FIRED ${formatHuman(r.checkedOn)}.`
+              : ` Checked ${formatHuman(r.checkedOn)}: all clear.`
+            : r.checkOn
+              ? ` Check on ${formatHuman(r.checkOn)}.`
+              : "")
       );
     } else if (r.triage === "accept") {
       lines.push(
@@ -228,7 +211,9 @@ function tripwireVEvent(pm: Premortem, r: PremortemReason): string[] {
 }
 
 function buildTripwireICS(pm: Premortem): string {
-  const armed = tripwires(pm).filter((r) => r.checkOn);
+  // Only still-armed checks get reminders — an answered check is history, and
+  // stable UIDs mean a re-imported file updates rather than duplicates.
+  const armed = tripwires(pm).filter((r) => r.checkOn && !r.checkedOn);
   return wrapCalendar(
     armed.map((r) => tripwireVEvent(pm, r)),
     "Pre-mortem Tripwires"
@@ -352,6 +337,8 @@ export default function PremortemClient() {
                 detail: "",
                 signal: "",
                 checkOn: "",
+                checkedOn: "",
+                fired: null,
               },
             ],
           }
@@ -419,6 +406,25 @@ export default function PremortemClient() {
     setDraft(null);
     openView(pm.id);
   }, [draft, untriaged, unsignaled, openView]);
+
+  // Record a tripwire check's answer (or re-arm it) on a saved pre-mortem.
+  // The one mutation the artifact view is allowed: the record of the plan
+  // stays read-only, but the checks are events that happen after saving.
+  const updateSavedReason = useCallback(
+    (pmId: string, reasonId: string, fn: (r: PremortemReason) => PremortemReason) => {
+      setSaved((prev) =>
+        prev.map((pm) =>
+          pm.id === pmId
+            ? {
+                ...pm,
+                reasons: pm.reasons.map((r) => (r.id === reasonId ? fn(r) : r)),
+              }
+            : pm
+        )
+      );
+    },
+    []
+  );
 
   const deletePremortem = useCallback(
     (id: string) => {
@@ -492,6 +498,7 @@ export default function PremortemClient() {
           onCopy={() => copy(buildPremortemMemo(pm))}
           onICS={() => downloadICS(pm)}
           onDelete={() => deletePremortem(pm.id)}
+          onUpdateReason={(reasonId, fn) => updateSavedReason(pm.id, reasonId, fn)}
           copied={copied}
         />
       );
@@ -915,7 +922,9 @@ export default function PremortemClient() {
           <ul className="space-y-3">
             {saved.map((pm) => {
               const tw = tripwires(pm);
+              const due = dueTripwireChecks(pm).length;
               const nextCheck = tw
+                .filter((r) => !r.checkedOn)
                 .map((r) => r.checkOn)
                 .filter(Boolean)
                 .sort()[0];
@@ -926,9 +935,16 @@ export default function PremortemClient() {
                     onClick={() => openView(pm.id)}
                     className="w-full text-left rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 py-3 hover:border-[var(--accent)] transition-colors"
                   >
-                    <span className="text-sm font-semibold text-[var(--foreground)] leading-snug">
-                      {pm.plan}
-                    </span>
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="text-sm font-semibold text-[var(--foreground)] leading-snug">
+                        {pm.plan}
+                      </span>
+                      {due > 0 && (
+                        <span className="shrink-0 text-[10px] font-semibold uppercase tracking-widest text-[var(--accent)] mt-0.5">
+                          {due} check{due === 1 ? "" : "s"} due
+                        </span>
+                      )}
+                    </div>
                     <span className="mt-1.5 block text-xs text-[var(--muted)]">
                       {formatHuman(pm.createdOn)} · {pm.reasons.length} reason
                       {pm.reasons.length === 1 ? "" : "s"}
@@ -961,7 +977,8 @@ export default function PremortemClient() {
         Everything you write stays in this browser — it&rsquo;s saved locally and
         never sent anywhere. An unfinished pre-mortem keeps until you come back;
         finished ones are listed here, with their tripwire dates ready to drop
-        into your calendar.
+        into your calendar. When a check date arrives, the pre-mortem asks for
+        the answer — fired, or all clear — and keeps it on the record.
       </p>
     </div>
   );
@@ -1001,6 +1018,7 @@ function PremortemView({
   onCopy,
   onICS,
   onDelete,
+  onUpdateReason,
   copied,
 }: {
   pm: Premortem;
@@ -1009,11 +1027,14 @@ function PremortemView({
   onCopy: () => void;
   onICS: () => void;
   onDelete: () => void;
+  onUpdateReason: (reasonId: string, fn: (r: PremortemReason) => PremortemReason) => void;
   copied: boolean;
 }) {
   const tw = tripwires(pm);
+  const armedTw = tw.filter((r) => r.checkOn && !r.checkedOn);
   const changes = pm.reasons.filter((r) => r.triage === "change").length;
   const accepted = pm.reasons.filter((r) => r.triage === "accept").length;
+  const dueChecks = dueTripwireChecks(pm).length;
 
   return (
     <div>
@@ -1040,6 +1061,12 @@ function PremortemView({
         {tw.length} tripwire{tw.length === 1 ? "" : "s"} · {accepted} accepted risk
         {accepted === 1 ? "" : "s"}
       </p>
+      {dueChecks > 0 && !isSample && (
+        <p className="mt-3 text-sm font-medium text-[var(--accent)]">
+          {dueChecks} tripwire check{dueChecks === 1 ? "" : "s"} due — the
+          signal{dueChecks === 1 ? " is" : "s are"} waiting for an answer below.
+        </p>
+      )}
 
       <h3 className="mt-8 text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
         It failed because…
@@ -1062,10 +1089,19 @@ function PremortemView({
                   {TRIAGE_LABELS[r.triage]}
                 </p>
                 {r.triage === "tripwire" ? (
-                  <p className="mt-1 text-sm text-[var(--muted)] leading-relaxed">
-                    If {r.signal.trim()} — stop and reconsider.
-                    {r.checkOn ? ` Check on ${formatHuman(r.checkOn)}.` : ""}
-                  </p>
+                  <>
+                    <p className="mt-1 text-sm text-[var(--muted)] leading-relaxed">
+                      If {r.signal.trim()} — stop and reconsider.
+                      {r.checkOn && !r.checkedOn
+                        ? ` Check on ${formatHuman(r.checkOn)}.`
+                        : ""}
+                    </p>
+                    <TripwireCheck
+                      reason={r}
+                      isSample={isSample}
+                      onUpdate={(fn) => onUpdateReason(r.id, fn)}
+                    />
+                  </>
                 ) : r.detail.trim() ? (
                   <p className="mt-1 text-sm text-[var(--muted)] leading-relaxed">
                     {r.detail.trim()}
@@ -1085,7 +1121,7 @@ function PremortemView({
         >
           {copied ? "Copied ✓" : "Copy as a memo"}
         </button>
-        {tw.length > 0 && (
+        {armedTw.length > 0 && (
           <button
             type="button"
             onClick={onICS}
@@ -1128,6 +1164,154 @@ function PremortemView({
           that when {formatHuman(pm.judgeOn) || "the day"} arrives, you can grade
           the forecast — not just the outcome.
         </p>
+      </div>
+    </div>
+  );
+}
+
+// =========================================================================
+// The tripwire check, answered. A calendar reminder you swipe away is not a
+// check — aviation checklists demand the actual status spoken back ("flaps
+// 20"), never a bare "checked", because an acknowledgement carries no
+// information. So a check here produces one of two recorded answers: the
+// signal appeared (the tripwire fired), or it didn't (all clear, re-arm if
+// the risk is still live). If it fired, the response was decided the day the
+// tripwire was set: the plan doesn't get the benefit of the doubt.
+
+function TripwireCheck({
+  reason,
+  isSample,
+  onUpdate,
+}: {
+  reason: PremortemReason;
+  isSample: boolean;
+  onUpdate: (fn: (r: PremortemReason) => PremortemReason) => void;
+}) {
+  const [rearmOn, setRearmOn] = useState(() =>
+    addDaysISO(todayISO(), TRIPWIRE_DEFAULT_DAYS)
+  );
+
+  // Still armed. The sample's armed tripwire stays a plain record — the
+  // interactive check belongs to real plans only.
+  if (!reason.checkedOn) {
+    if (isSample) return null;
+    const due = isDueTripwireCheck(reason);
+    return (
+      <div className="mt-3">
+        <p
+          className={`text-sm leading-relaxed ${
+            due ? "font-medium text-[var(--accent)]" : "text-[var(--muted)]"
+          }`}
+        >
+          {due
+            ? "This check is due. Has the signal appeared?"
+            : "Already know the answer? A check doesn't have to wait for its date."}
+        </p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() =>
+              onUpdate((prev) => ({ ...prev, checkedOn: todayISO(), fired: true }))
+            }
+            className="px-3 py-1.5 text-sm rounded-lg border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-[var(--background)] transition-colors"
+          >
+            It fired — the signal appeared
+          </button>
+          <button
+            type="button"
+            onClick={() =>
+              onUpdate((prev) => ({ ...prev, checkedOn: todayISO(), fired: false }))
+            }
+            className="px-3 py-1.5 text-sm rounded-lg border border-[var(--border)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+          >
+            All clear
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Answered: all clear.
+  if (reason.fired === false) {
+    return (
+      <div className="mt-3">
+        <p className="text-sm text-[var(--muted)] leading-relaxed">
+          Checked {formatHuman(reason.checkedOn)} — all clear.
+        </p>
+        {!isSample && (
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            <label
+              htmlFor={`rearm-${reason.id}`}
+              className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]"
+            >
+              Still a live risk? Re-arm for
+            </label>
+            <input
+              id={`rearm-${reason.id}`}
+              type="date"
+              value={rearmOn}
+              min={todayISO()}
+              onChange={(e) => setRearmOn(e.target.value)}
+              className={inputClass}
+            />
+            <button
+              type="button"
+              onClick={() =>
+                onUpdate((prev) => ({
+                  ...prev,
+                  checkOn: rearmOn || addDaysISO(todayISO(), TRIPWIRE_DEFAULT_DAYS),
+                  checkedOn: "",
+                  fired: null,
+                }))
+              }
+              className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+            >
+              Re-arm ↻
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                onUpdate((prev) => ({ ...prev, checkedOn: "", fired: null }))
+              }
+              className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+            >
+              undo
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // Answered: it fired. The pre-committed response, held to.
+  return (
+    <div className="mt-3 rounded-lg border border-[var(--accent)] bg-[var(--card)] px-4 py-3">
+      <p className="text-sm text-[var(--foreground)] leading-relaxed">
+        <span className="font-semibold">
+          Fired {formatHuman(reason.checkedOn)}.
+        </span>{" "}
+        The plan doesn&rsquo;t get the benefit of the doubt — you decided that
+        the day you set this tripwire, while you were calm. Stop and
+        reconsider on purpose, before momentum votes for you.
+      </p>
+      <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
+        <Link
+          href="/decide?s=time-to-quit"
+          className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          Work the quitting question through →
+        </Link>
+        {!isSample && (
+          <button
+            type="button"
+            onClick={() =>
+              onUpdate((prev) => ({ ...prev, checkedOn: "", fired: null }))
+            }
+            className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+          >
+            recorded by mistake?
+          </button>
+        )}
       </div>
     </div>
   );

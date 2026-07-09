@@ -29,6 +29,16 @@ export type PremortemReason = {
   signal: string;
   /** tripwire only: ISO date you'll check for the signal. */
   checkOn: string;
+  /**
+   * tripwire only: the check, answered. A tripwire check has to produce an
+   * answer, not an acknowledgement — aviation checklists demand the actual
+   * status spoken back ("flaps 20"), never a bare "checked", because a check
+   * that doesn't record its answer quietly becomes a reminder you swiped away.
+   * checkedOn is the ISO date the answer was recorded ("" = still armed);
+   * fired is that answer (true = the signal appeared; null = unanswered).
+   */
+  checkedOn: string;
+  fired: boolean | null;
 };
 
 export type Premortem = {
@@ -40,6 +50,110 @@ export type Premortem = {
   reasons: PremortemReason[];
   createdOn: string; // ISO yyyy-mm-dd
 };
+
+export const PREMORTEM_SAVED_KEY = "premortem:v1";
+
+/**
+ * Defensive normalization, shared by the pre-mortem room and every read-side
+ * consumer (the site-wide due badge, the journal's cross-link). Saved
+ * pre-mortems are the user's thinking; like the decision log, they have to
+ * survive shape drift and hand-edited JSON. Anything missing gets a safe
+ * default; anything malformed degrades instead of throwing. Records saved
+ * before the check fields existed load as still-armed tripwires.
+ */
+export function mergeReason(
+  raw: Partial<PremortemReason> | null | undefined
+): PremortemReason {
+  const r = raw ?? {};
+  const triage: TriageKind | null =
+    r.triage === "change" || r.triage === "tripwire" || r.triage === "accept"
+      ? r.triage
+      : null;
+  return {
+    id:
+      typeof r.id === "string" && r.id
+        ? r.id
+        : `r-${Math.random().toString(36).slice(2, 10)}`,
+    text: typeof r.text === "string" ? r.text : "",
+    triage,
+    detail: typeof r.detail === "string" ? r.detail : "",
+    signal: typeof r.signal === "string" ? r.signal : "",
+    checkOn: typeof r.checkOn === "string" ? r.checkOn : "",
+    checkedOn: typeof r.checkedOn === "string" ? r.checkedOn : "",
+    fired: typeof r.fired === "boolean" ? r.fired : null,
+  };
+}
+
+export function mergePremortem(
+  raw: Partial<Premortem> | null | undefined
+): Premortem {
+  const r = raw ?? {};
+  return {
+    id:
+      typeof r.id === "string" && r.id
+        ? r.id
+        : `pm-${Math.random().toString(36).slice(2, 10)}`,
+    plan: typeof r.plan === "string" && r.plan ? r.plan : "A plan",
+    judgeOn: typeof r.judgeOn === "string" ? r.judgeOn : "",
+    reasons: Array.isArray(r.reasons)
+      ? r.reasons.map(mergeReason).filter((x) => x.text.trim())
+      : [],
+    createdOn:
+      typeof r.createdOn === "string" && r.createdOn ? r.createdOn : todayISO(),
+  };
+}
+
+function todayISO(): string {
+  const d = new Date();
+  const p = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
+
+/** An armed tripwire whose check date has arrived and whose answer hasn't
+ *  been recorded — the pre-mortem's equivalent of a review coming due. */
+export function isDueTripwireCheck(r: PremortemReason, today = todayISO()): boolean {
+  return (
+    r.triage === "tripwire" &&
+    !!r.signal.trim() &&
+    !!r.checkOn &&
+    r.checkOn <= today &&
+    !r.checkedOn
+  );
+}
+
+export function dueTripwireChecks(pm: Premortem, today = todayISO()): PremortemReason[] {
+  return pm.reasons.filter((r) => isDueTripwireCheck(r, today));
+}
+
+/**
+ * Read the saved pre-mortems from the browser. Read-only, like
+ * app/data/journal.ts — the pre-mortem room owns its storage; this exists so
+ * the due badge and the journal can count checks without duplicating the
+ * merge discipline. Returns [] on the server and on any malformed storage.
+ */
+export function loadSavedPremortems(): Premortem[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(PREMORTEM_SAVED_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed)
+      ? parsed.filter((p) => p && typeof p === "object").map(mergePremortem)
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+/** Armed tripwire checks whose date has arrived, across every saved
+ *  pre-mortem — the one pre-mortem number worth chasing you around the site. */
+export function countDueTripwireChecks(): number {
+  const today = todayISO();
+  return loadSavedPremortems().reduce(
+    (n, pm) => n + dueTripwireChecks(pm, today).length,
+    0
+  );
+}
 
 /**
  * Lenses for when the list stalls. Klein's teams get their breadth from the
@@ -104,6 +218,8 @@ export const SAMPLE_PREMORTEM: Premortem = {
         "Reverse the order: before writing any code, get ten current users on calls and ask what they'd pay for this month. Build the tier around the most common answer — or, if there isn't one, don't build it.",
       signal: "",
       checkOn: "",
+      checkedOn: "",
+      fired: null,
     },
     {
       id: "s2",
@@ -114,6 +230,8 @@ export const SAMPLE_PREMORTEM: Premortem = {
       signal:
         "Billing isn't demoably working end-to-end (checkout → paid → refund) by September 1",
       checkOn: "2026-09-01",
+      checkedOn: "",
+      fired: null,
     },
     {
       id: "s3",
@@ -124,6 +242,8 @@ export const SAMPLE_PREMORTEM: Premortem = {
         "Grandfather everything existing users already use. The paid tier is new value only — nobody wakes up to find yesterday's tool behind a gate.",
       signal: "",
       checkOn: "",
+      checkedOn: "",
+      fired: null,
     },
     {
       id: "s4",
@@ -132,7 +252,9 @@ export const SAMPLE_PREMORTEM: Premortem = {
       triage: "tripwire",
       detail: "",
       signal: "A full week with zero commits while the launch is supposedly on",
-      checkOn: "2026-08-17",
+      checkOn: "2026-06-15",
+      checkedOn: "2026-06-15",
+      fired: false,
     },
     {
       id: "s5",
@@ -143,6 +265,8 @@ export const SAMPLE_PREMORTEM: Premortem = {
         "I can't control it and won't try to outrun it. The niche is small enough that support and taste are the moat, not the feature list — and if it happens, the plan changes anyway, on that day and not before.",
       signal: "",
       checkOn: "",
+      checkedOn: "",
+      fired: null,
     },
     {
       id: "s6",
@@ -153,6 +277,8 @@ export const SAMPLE_PREMORTEM: Premortem = {
         "Show the price page to five trusted users before launch and ask each one: too high, too low, or shrug? Three shrugs means ship it.",
       signal: "",
       checkOn: "",
+      checkedOn: "",
+      fired: null,
     },
   ],
 };

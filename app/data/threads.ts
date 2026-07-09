@@ -117,6 +117,11 @@ export const threads: Thread[] = [
         why: "And the guard it leaves behind: a state and a date, set while you're calm, that outranks your future self.",
       },
       {
+        kind: "essay",
+        slug: "the-plan-was-never-tried",
+        why: "Then, on review day, the question that has to come before any verdict on your judgement: did the plan ever actually get tried?",
+      },
+      {
         kind: "model",
         id: "reversibility",
         why: "Spend your deliberation where the door only swings one way.",
