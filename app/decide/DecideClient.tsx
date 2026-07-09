@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { SITE_URL, icsEscape, icsStamp, wrapCalendar } from "../data/ics";
+import { countDueTripwireChecks } from "../data/premortem";
 
 /**
  * Plain, serializable shapes passed down from the server page. These mirror the
@@ -57,6 +58,9 @@ type Store = Record<string, SituationEntry>;
 /** whether the decision itself was good given only what you knew at the time. */
 type OutcomeQuality = "good" | "bad" | "tbd";
 type DecisionQuality = "again" | "different";
+/** The third axis, asked only when a first move was written: did the plan
+ *  actually get tried? An untried plan's outcome can't grade the call. */
+type FirstMoveTaken = "yes" | "partly" | "no";
 
 /**
  * A committed entry in the decision log. Snapshotted from a worksheet at the
@@ -82,6 +86,7 @@ type LogEntry = {
   outcome: string;
   outcomeQuality: OutcomeQuality | null;
   decisionQuality: DecisionQuality | null;
+  firstMoveTaken: FirstMoveTaken | null;
   lessons: string;
 };
 
@@ -190,6 +195,10 @@ function mergeLogEntry(raw: Partial<LogEntry> | null | undefined): LogEntry {
     r.decisionQuality === "again" || r.decisionQuality === "different"
       ? r.decisionQuality
       : null;
+  const fm: FirstMoveTaken | null =
+    r.firstMoveTaken === "yes" || r.firstMoveTaken === "partly" || r.firstMoveTaken === "no"
+      ? r.firstMoveTaken
+      : null;
   return {
     id: typeof r.id === "string" && r.id ? r.id : newId(),
     situationId: typeof r.situationId === "string" ? r.situationId : "",
@@ -207,6 +216,7 @@ function mergeLogEntry(raw: Partial<LogEntry> | null | undefined): LogEntry {
     outcome: typeof r.outcome === "string" ? r.outcome : "",
     outcomeQuality: oq,
     decisionQuality: dq,
+    firstMoveTaken: fm,
     lessons: typeof r.lessons === "string" ? r.lessons : "",
   };
 }
@@ -305,6 +315,8 @@ function buildLogMemo(e: LogEntry): string {
     lines.push(`REVIEWED ${formatHuman(e.reviewedOn)}`);
     lines.push("What actually happened:");
     lines.push(e.outcome.trim() || "(not recorded)");
+    if (e.firstMoveTaken && e.firstStep.trim())
+      lines.push(`The first move: ${FIRST_MOVE_LABELS[e.firstMoveTaken]}`);
     if (e.outcomeQuality) lines.push(`Outcome: ${OUTCOME_LABELS[e.outcomeQuality]}`);
     if (e.decisionQuality)
       lines.push(`The decision itself, ignoring the result: ${DECISION_LABELS[e.decisionQuality]}`);
@@ -395,6 +407,12 @@ const DECISION_LABELS: Record<DecisionQuality, string> = {
   different: "I'd decide differently",
 };
 
+const FIRST_MOVE_LABELS: Record<FirstMoveTaken, string> = {
+  yes: "Took it",
+  partly: "Partly, or late",
+  no: "Never took it",
+};
+
 /**
  * A worked example — one fully-filled, already-reviewed entry shown read-only so
  * a first-timer can see what a good forecast and an honest review look like
@@ -443,6 +461,7 @@ const SAMPLE_ENTRY: LogEntry = {
     "The company didn't make it — we wound down at month nine after the next round fell through. So the thing I was 70% unsure about happened. But I shipped the payments rewrite end to end, ran a team for the first time, and landed a better role within five weeks of the wind-down.",
   outcomeQuality: "bad",
   decisionQuality: "again",
+  firstMoveTaken: "yes",
   lessons:
     "Grade the bet, not the result: the company folding was inside the 60% I'd priced in, and everything I decided on still held. What I'd carry forward is that my real floor was higher than my gut's floor — I'd weighted the vivid disaster more than its actual probability. Next time, write the floor down in numbers before deciding, like I did here.",
 };
@@ -544,6 +563,40 @@ function computeResulting(log: LogEntry[]): {
 
 const RESULTING_MIN = 3; // one or two reviews isn't a pattern, but counts never lie
 
+/**
+ * Follow-through: of the reviewed decisions that had a first move written
+ * down, how many were actually taken? Roughly half of everyone's sincere
+ * intentions die unexecuted (Sheeran's meta-analyses; the people responsible
+ * are "inclined abstainers" — they didn't change their minds, they just never
+ * started), so this is the modal way a decision fails — and it confounds the
+ * whole review if it goes unasked: an untried plan's bad outcome gets filed
+ * as bad judgement, and the lesson learned fixes the wrong thing. The
+ * untriedBad count is those entries — outcomes that grade your follow-through
+ * and got recorded, at review, as if they graded the call.
+ */
+function computeFollowThrough(log: LogEntry[]): {
+  scored: number;
+  took: number;
+  partly: number;
+  never: number;
+  untriedBad: number;
+} {
+  const scorable = log.filter(
+    (e) => e.reviewedOn && e.firstStep.trim() && e.firstMoveTaken !== null
+  );
+  return {
+    scored: scorable.length,
+    took: scorable.filter((e) => e.firstMoveTaken === "yes").length,
+    partly: scorable.filter((e) => e.firstMoveTaken === "partly").length,
+    never: scorable.filter((e) => e.firstMoveTaken === "no").length,
+    untriedBad: scorable.filter(
+      (e) => e.firstMoveTaken === "no" && e.outcomeQuality === "bad"
+    ).length,
+  };
+}
+
+const FOLLOW_MIN = 3; // same bar as resulting: counts, not patterns, below this
+
 const textareaClass =
   "w-full px-3 py-2 text-sm rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--accent)] transition-colors resize-y leading-relaxed";
 
@@ -565,6 +618,7 @@ export default function DecideClient({
   const [justLogged, setJustLogged] = useState(false);
   const [loggedEntry, setLoggedEntry] = useState<LogEntry | null>(null);
   const [importNote, setImportNote] = useState<string | null>(null);
+  const [dueTripwires, setDueTripwires] = useState(0);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Load saved work + the log, and honor a ?s=<id> deep link from the playbook.
@@ -581,6 +635,9 @@ export default function DecideClient({
        browser storage; intentionally synchronous on mount, can't run in render. */
     setStore(savedStore && typeof savedStore === "object" ? savedStore : {});
     setLog(Array.isArray(savedLog) ? savedLog.map(mergeLogEntry) : []);
+    // The journal knows about the funeral: due tripwire checks from the
+    // pre-mortem room surface here too, read-only (data/premortem.ts).
+    setDueTripwires(countDueTripwireChecks());
     if (requested && situations.some((s) => s.id === requested)) {
       setActiveId(requested);
     } else if (wantsLog) {
@@ -801,6 +858,7 @@ export default function DecideClient({
       outcome: "",
       outcomeQuality: null,
       decisionQuality: null,
+      firstMoveTaken: null,
       lessons: "",
     };
     setLog((prev) => [newEntry, ...prev]);
@@ -878,6 +936,7 @@ export default function DecideClient({
     return (
       <LogList
         log={log}
+        dueTripwires={dueTripwires}
         onOpen={(id) => {
           setReviewId(id);
           if (typeof window !== "undefined") window.scrollTo({ top: 0 });
@@ -1286,6 +1345,7 @@ export default function DecideClient({
 
 function LogList({
   log,
+  dueTripwires,
   onOpen,
   onBack,
   onExport,
@@ -1295,6 +1355,7 @@ function LogList({
   importNote,
 }: {
   log: LogEntry[];
+  dueTripwires: number;
   onOpen: (id: string) => void;
   onBack: () => void;
   onExport: () => void;
@@ -1339,6 +1400,19 @@ function LogList({
         you expected at the time.
       </p>
 
+      {dueTripwires > 0 && (
+        <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
+          Also waiting on an answer:{" "}
+          <Link
+            href="/premortem"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity font-medium"
+          >
+            {dueTripwires} tripwire check{dueTripwires === 1 ? "" : "s"} due in
+            your pre-mortems →
+          </Link>
+        </p>
+      )}
+
       {pendingCount > 1 && (
         <button
           type="button"
@@ -1350,6 +1424,7 @@ function LogList({
       )}
 
       <Resulting log={log} />
+      <FollowThrough log={log} />
       <Calibration log={log} />
 
       {log.length === 0 ? (
@@ -1665,6 +1740,83 @@ function Resulting({ log }: { log: LogEntry[] }) {
 }
 
 // =========================================================================
+// Follow-through: the third axis the review now asks about. Resulting
+// separates your judgement from the dice; this separates both from whether
+// the plan was ever executed at all — the modal failure, and the one that
+// makes every other grade unreadable if it goes unasked.
+
+function FollowThrough({ log }: { log: LogEntry[] }) {
+  const { scored, took, partly, never, untriedBad } = computeFollowThrough(log);
+  if (scored === 0) return null;
+
+  if (scored < FOLLOW_MIN) {
+    const left = FOLLOW_MIN - scored;
+    return (
+      <div className="mt-6 rounded-lg border border-dashed border-[var(--border)] px-4 py-3">
+        <p className="text-sm text-[var(--muted)] leading-relaxed">
+          <span className="font-semibold text-[var(--foreground)]">
+            Follow-through
+          </span>{" "}
+          starts reading once you&rsquo;ve reviewed a few decisions that had a
+          first move written down. {scored} so far — about {left} more and
+          you&rsquo;ll have the number almost nobody knows about themselves:
+          how often your decisions actually happen.
+        </p>
+      </div>
+    );
+  }
+
+  const neverShare = never / scored;
+  const verdict =
+    never === 0
+      ? "Every plan here got tried. Roughly half of everyone's sincere intentions never turn into action — so whatever the grades above say, they're at least grading real decisions."
+      : neverShare >= 0.4
+        ? "A big share of your decisions are dying between deciding and doing — not changed minds, just never started. That's the most common way plans fail, and the fix is mechanical, not motivational: a sharper if-then on the first move."
+        : "Most of your plans get tried — the untried ones are worth a second look: was the first move concrete enough to fire, or was your gut quietly voting against the call?";
+
+  return (
+    <div className="mt-6 rounded-lg border border-[var(--border)] bg-[var(--card)] p-4">
+      <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+        Follow-through
+      </h3>
+      <p className="mt-1.5 text-sm text-[var(--muted)] leading-relaxed">
+        Of {scored} reviewed decision{scored === 1 ? "" : "s"} with a first
+        move written down, you took it in{" "}
+        <span className="text-[var(--foreground)] font-medium">{took}</span>
+        {partly > 0 ? (
+          <>
+            , partly or late in{" "}
+            <span className="text-[var(--foreground)] font-medium">{partly}</span>
+          </>
+        ) : null}
+        , and never took it in{" "}
+        <span className="text-[var(--foreground)] font-medium">{never}</span>.{" "}
+        {verdict}
+      </p>
+      {untriedBad > 0 && (
+        <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
+          And {untriedBad} of the &ldquo;turned out badly&rdquo; entries{" "}
+          {untriedBad === 1 ? "was" : "were"} never tried — {untriedBad === 1 ? "that outcome grades" : "those outcomes grade"}{" "}
+          your follow-through, not your judgement. Before banking a lesson
+          about how you decide, check it isn&rsquo;t a lesson about how you
+          start.
+        </p>
+      )}
+      <p className="mt-3 text-xs text-[var(--muted)] leading-relaxed">
+        Why this is the review&rsquo;s third question:{" "}
+        <Link
+          href="/writing/the-plan-was-never-tried"
+          className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          The Plan Was Never Tried
+        </Link>
+        .
+      </p>
+    </div>
+  );
+}
+
+// =========================================================================
 // Reviewing one logged decision. The snapshot is read-only — that's the point,
 // it's the contemporaneous record. The review fields below it are where you
 // grade what happened, keeping the outcome and the decision-quality questions
@@ -1766,6 +1918,61 @@ function ReviewDetail({
           className={textareaClass}
         />
       </div>
+
+      {/* The follow-through question — asked only when a first move was
+          written at decision time. It comes before the outcome grades on
+          purpose: whether the plan was ever tried changes what the outcome
+          is evidence of. */}
+      {entry.firstStep.trim() && (
+        <div className="mt-6">
+          <span className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+            Did you take the first move?
+          </span>
+          <p className="text-sm text-[var(--muted)] leading-relaxed mb-2">
+            You wrote one down:{" "}
+            <span className="text-[var(--foreground)]">
+              &ldquo;{entry.firstStep.trim()}&rdquo;
+            </span>
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {(Object.keys(FIRST_MOVE_LABELS) as FirstMoveTaken[]).map((k) => {
+              const selected = entry.firstMoveTaken === k;
+              return (
+                <button
+                  key={k}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() =>
+                    onChange((prev) => ({
+                      ...prev,
+                      firstMoveTaken: prev.firstMoveTaken === k ? null : k,
+                    }))
+                  }
+                  className={`px-3 py-1.5 text-sm rounded-lg border transition-colors ${
+                    selected
+                      ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--background)]"
+                      : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--accent)]"
+                  }`}
+                >
+                  {FIRST_MOVE_LABELS[k]}
+                </button>
+              );
+            })}
+          </div>
+          {entry.firstMoveTaken === "no" && (
+            <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed pl-4 border-l-2 border-[var(--accent)]">
+              Then grade what follows carefully. A plan that was never tried
+              can&rsquo;t be graded on its outcome — whatever happened, it
+              isn&rsquo;t evidence about the call, because the call was never
+              tested. It <em>does</em> still count against your forecast:
+              you were part of what you were forecasting, and the miss you
+              just recorded is a measurement of your own follow-through. Both
+              lessons are real; don&rsquo;t write the first when the data
+              only supports the second.
+            </p>
+          )}
+        </div>
+      )}
 
       <div className="mt-6">
         <span className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
@@ -1973,7 +2180,15 @@ function SampleEntry({ onBack }: { onBack: () => void }) {
           <p className="text-sm text-[var(--muted)] leading-relaxed">{e.outcome}</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-3 gap-4">
+          <div className="rounded-lg border border-[var(--border)] p-3">
+            <span className="block text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+              The first move
+            </span>
+            <span className="mt-1 block text-sm font-medium text-[var(--foreground)]">
+              {FIRST_MOVE_LABELS[e.firstMoveTaken as FirstMoveTaken]}
+            </span>
+          </div>
           <div className="rounded-lg border border-[var(--border)] p-3">
             <span className="block text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)]">
               How it turned out
@@ -1993,11 +2208,14 @@ function SampleEntry({ onBack }: { onBack: () => void }) {
         </div>
 
         <p className="text-sm text-[var(--muted)] leading-relaxed pl-4 border-l-2 border-[var(--accent)]">
-          This is the whole point of grading two things at once: it{" "}
+          This is the whole point of grading these separately: the plan{" "}
+          <span className="text-[var(--foreground)]">was actually tried</span>, it{" "}
           <span className="text-[var(--foreground)]">turned out badly</span>, and it
           was still <span className="text-[var(--foreground)]">the right call</span>.
           A journal that only asked &ldquo;did it work?&rdquo; would file this as a
-          mistake and teach you to make worse decisions that happen to get luckier.
+          mistake and teach you to make worse decisions that happen to get luckier —
+          and a journal that never asked whether the first move happened couldn&rsquo;t
+          tell a bad call from a plan that died in the drawer.
         </p>
 
         <div>
