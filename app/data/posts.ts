@@ -1097,6 +1097,50 @@ export const posts: Post[] = [
 
 <p>The journal's founding promise was to grade the bet, not the result. The quiet corollary took a month to surface: a bet you never placed can't be graded at all — except on the one thing every plan you will ever make is also, always, a bet on. You. That number is on the page now. For about half of us, if the research is right, it's the number doing the most work.</p>`,
   },
+  {
+    slug: "the-honest-number-comes-after",
+    title: "The Honest Number Comes After",
+    date: "2026-07-10",
+    excerpt:
+      "A pre-mortem doesn't just find the ways a plan could fail — it drags your inflated confidence in the plan back toward the truth, about twice as hard as a pro-and-con list. That de-biased number is worth capturing. But only if you record it before it evaporates.",
+    readTime: 7,
+    tags: ["decisions"],
+    content: `<p>You&rsquo;ve just spent twenty minutes at your own funeral. You named the plan, moved the calendar forward to the day you&rsquo;d know it had failed, and wrote the history of the failure in the past tense — the key person who left, the month that ate three, the competitor who shipped first. Then you triaged: this cause you fixed on paper today, this one you&rsquo;ll watch for with a tripwire, this one you&rsquo;ll accept and stop dreading. You feel prepared. You should. But notice the other thing that happened, the one nobody warns you about: you are <em>less sure the plan will work</em> than you were when you sat down. That isn&rsquo;t the exercise misfiring. That is the exercise working.</p>
+
+<h2>What the funeral does to a number</h2>
+
+<p>The <a href="/models#pre-mortem">pre-mortem</a> is usually sold on the reasons it surfaces, and surface them it does: Deborah Mitchell, J. Edward Russo, and Nancy Pennington found in 1989 that imagining an outcome as already-happened — &ldquo;prospective hindsight&rdquo; — raises the number of correct causes people can name for it by about 30%. But there is a second effect, less advertised and more useful for what follows. In 2010, Elizabeth Veinott, Gary Klein, and a colleague ran 178 people through an H1N1 response plan under five conditions — critique it, list its pros and cons, list only the cons, run a full pre-mortem, or nothing — and measured what each did to the participants&rsquo; confidence in the plan. Everything that made people hunt for trouble lowered their confidence. The pre-mortem lowered it about <strong>twice as much</strong> as a pro-and-con list did.</p>
+
+<p>Twice, for roughly the same effort, is a large multiplier for a psychological intervention, and it points straight at the mechanism. A pro-and-con list keeps failure hypothetical — a column of things that <em>might</em> go wrong, each easy to wave off. The pre-mortem&rsquo;s grammar makes failure a fact you&rsquo;re explaining, and a fact you can explain is a fact you half-believe. The vivid, specific, already-happened disaster does to your optimism what no abstract risk register can.</p>
+
+<h2>Why a deflated number is the honest one</h2>
+
+<p>Here is why that matters well past the meeting. Left alone, your confidence in your own plans runs high — not a little high, reliably high. It&rsquo;s the <a href="/writing/nobody-thinks-theyre-the-base-rate">inside view</a>: from inside the story you see the plan&rsquo;s logic and your own resolve, and you don&rsquo;t see the thousand frictions that sink most plans like it. Almost nothing you can do to yourself in twenty minutes moves that inflation. The pre-mortem is one of the few things that does. So the confidence you&rsquo;re holding right now, standing in the wreckage, isn&rsquo;t pessimism — it&rsquo;s the number with some of the standard overshoot squeezed out. For once, your gut has been argued down to something nearer the truth.</p>
+
+<p>And it won&rsquo;t last. The same study caught the tail of this: after people generated fixes for the failures they&rsquo;d imagined, their confidence climbed back up — highest, in fact, in the group that had run the pre-mortem. Which is both right and a trap. You <em>should</em> feel better once you&rsquo;ve changed the plan and armed the tripwires; you genuinely made it safer. But the rebound overshoots, the way these things do, and give it a week and the plan is bulletproof again in memory, the failures you imagined quietly refiled under &ldquo;handled.&rdquo; The deflated number is a reading taken at one specific moment — the moment just after the triage, when you can still see both the risks and what you did about them. If you want it, you have to write it down before it evaporates.</p>
+
+<h2>Write it where reality can reach it</h2>
+
+<p>Down the hall is the one instrument built to hold a number until reality can grade it. The <a href="/decide">decision journal</a> asks for exactly what you have in hand: what you expect to happen, how sure you are, and the day to come back and check. Log the plan there, at the confidence that survived its funeral, with the review set for the day you already named as the one you&rsquo;d know by. From that moment it stops being a pre-mortem and becomes an ordinary line in the ledger — it comes due, you grade it against what actually happened, and it joins your real-world calibration like any other bet.</p>
+
+<p>The strange part is that these are precisely the decisions your journal was missing. The commitments big enough to be worth a pre-mortem — the move, the launch, the hire, a year of your life — are the ones that felt too important, or too obvious, to bother journaling. So the log fills with medium-sized calls while the genuinely large ones go ungraded, which is backwards: the large ones are where being wrong costs the most, and where a decade of unchecked confidence does the most silent damage. A forecast captured at the end of a pre-mortem fixes that in a single motion. It puts your highest-stakes bet on the same scoreboard as the rest — and records it at the one moment your estimate is least likely to be flattering itself.</p>
+
+<h2>What it will teach you that trivia can&rsquo;t</h2>
+
+<p>Two things, when the day comes. First, calibration on the bets that count. The <a href="/calibrate">calibration trainer</a> can tell you whether your &ldquo;90%&rdquo; means 90% on quiz questions with answer keys; only the journal can tell you whether the confidence you attach to your own plans — the ones you cared enough to hold a funeral for — is worth anything. The pre-mortem&rsquo;d forecast is the sharpest version of that test, because it logs the confidence at its most honest and then waits to see whether even that was too high.</p>
+
+<p>Second, it keeps the <a href="/writing/decision-quality">resulting</a> question honest on the decisions where honesty is hardest. When something you deliberated this carefully turns out badly, the pull is to indict the whole enterprise — the analysis, the pre-mortem, your judgement. When it turns out well, the pull is to credit your brilliance. The review makes you grade the two axes apart: did it work, and — separately — given what you knew and the failures you&rsquo;d already imagined, was it the right call? A plan that failed for a reason you named and accepted at the funeral is a bet you shouldn&rsquo;t regret. A plan that worked in spite of a tripwire you ignored is luck you shouldn&rsquo;t bank. You see either one clearly only if the forecast was written down first.</p>
+
+<h2>The honest limits</h2>
+
+<p>Three. First, the number is a better starting point, not gospel. A pre-mortem can overcorrect — spend twenty minutes vividly imagining catastrophe and the catastrophe starts to feel likelier than it is, the same <a href="/writing/availability-heuristic">availability</a> effect running in reverse. Trust the direction of the correction more than its exact size: a confidence dragged from a smug 90 to a wary 65 is almost certainly closer to true, even if 65 isn&rsquo;t precisely it.</p>
+
+<p>Second, &ldquo;how sure am I the plan works&rdquo; bundles two things — whether the world cooperates and whether <em>you</em> execute — and they fail differently. That&rsquo;s fine, as long as the review pulls them apart, which is the whole job of its <a href="/writing/the-plan-was-never-tried">third question</a>: before the outcome is allowed to grade your judgement, it asks whether the plan was ever actually tried. Keep the two separate on the way out and on the way back.</p>
+
+<p>Third, and most important: the number is a byproduct, not the point. The reason to run a pre-mortem is the triage — the plan you changed while it was cheap, the tripwire you armed, the risk you chose to carry with open eyes. If you logged the forecast and skipped the fixes, you did the exercise backwards. The forecast is only what you&rsquo;d otherwise have thrown away: a clean reading of your own confidence, taken at the one moment it isn&rsquo;t lying to you, on a decision important enough that you&rsquo;ll want to know, later, whether your gut was any good.</p>
+
+<p>The pre-mortem asks you to imagine the future to improve the present. The forecast asks the present to leave a note for the future. It&rsquo;s the same motion run in opposite directions — and between them, a plan stops being something you merely hoped would work and becomes something you&rsquo;ll actually find out about.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
