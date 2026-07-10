@@ -49,6 +49,14 @@ export type Premortem = {
   judgeOn: string;
   reasons: PremortemReason[];
   createdOn: string; // ISO yyyy-mm-dd
+  /**
+   * ISO date this plan was logged to the decision journal as a tracked
+   * forecast ("" = not logged). The pre-mortem strengthens the plan and pulls
+   * an inflated confidence back toward honesty; this records that the honest
+   * number was captured, so the handoff can't be run twice by accident. Absent
+   * in records saved before the handoff existed — they load as un-logged.
+   */
+  loggedOn: string;
 };
 
 export const PREMORTEM_SAVED_KEY = "premortem:v1";
@@ -100,6 +108,7 @@ export function mergePremortem(
       : [],
     createdOn:
       typeof r.createdOn === "string" && r.createdOn ? r.createdOn : todayISO(),
+    loggedOn: typeof r.loggedOn === "string" ? r.loggedOn : "",
   };
 }
 
@@ -208,6 +217,7 @@ export const SAMPLE_PREMORTEM: Premortem = {
   plan: "Launch a paid tier for my side project by the end of October.",
   judgeOn: "2026-10-31",
   createdOn: "2026-04-06",
+  loggedOn: "",
   reasons: [
     {
       id: "s1",

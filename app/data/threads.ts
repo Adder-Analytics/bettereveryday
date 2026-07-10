@@ -118,6 +118,11 @@ export const threads: Thread[] = [
       },
       {
         kind: "essay",
+        slug: "the-honest-number-comes-after",
+        why: "The funeral quietly deflates your confidence toward the truth — so log the plan as a forecast now, while the number is honest, and let the journal grade it later.",
+      },
+      {
+        kind: "essay",
         slug: "the-plan-was-never-tried",
         why: "Then, on review day, the question that has to come before any verdict on your judgement: did the plan ever actually get tried?",
       },

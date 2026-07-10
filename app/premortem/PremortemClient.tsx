@@ -15,6 +15,7 @@ import {
   type PremortemReason,
   type TriageKind,
 } from "../data/premortem";
+import { appendDecisionEntry, CONFIDENCE_OPTIONS } from "../data/decisionLog";
 
 /**
  * The pre-mortem room. Four screens, in the order Klein's exercise runs:
@@ -126,6 +127,50 @@ const TRIAGE_LABELS: Record<TriageKind, string> = {
 
 function tripwires(pm: Premortem): PremortemReason[] {
   return pm.reasons.filter((r) => r.triage === "tripwire" && r.signal.trim());
+}
+
+/**
+ * The review date for a plan logged to the journal: the day you said you'd
+ * know whether it worked. If that day has already passed (an old pre-mortem),
+ * fall back to a sensible window out rather than logging a review that's
+ * instantly overdue.
+ */
+function reviewDateFor(pm: Premortem): string {
+  const today = todayISO();
+  return pm.judgeOn && pm.judgeOn > today ? pm.judgeOn : addDaysISO(today, 90);
+}
+
+/**
+ * Fold a saved pre-mortem's triaged reasons into the journal's reasoning shape,
+ * so the logged decision carries *why you were confident despite the risks* —
+ * the imagined failure and the move you made about it (a plan change, a
+ * tripwire, or an accepted risk). This is the contemporaneous record the review
+ * will read back to you on the judge date.
+ */
+function buildPremortemReasoning(
+  pm: Premortem
+): { name: string; move: string; text: string }[] {
+  return pm.reasons
+    .filter((r) => r.triage)
+    .map((r) => {
+      const failure = r.text.trim();
+      let text = `Imagined failure — ${failure}`;
+      if (r.triage === "change") {
+        text += r.detail.trim()
+          ? ` Changed the plan: ${r.detail.trim()}`
+          : " Changed the plan.";
+      } else if (r.triage === "tripwire") {
+        text += r.signal.trim()
+          ? ` Tripwire: if ${r.signal.trim()}, stop and reconsider`
+          : " Tripwire set";
+        text += r.checkOn ? ` (check ${formatHuman(r.checkOn)}).` : ".";
+      } else if (r.triage === "accept") {
+        text += r.detail.trim()
+          ? ` Accepted the risk: ${r.detail.trim()}`
+          : " Accepted the risk with open eyes.";
+      }
+      return { name: TRIAGE_LABELS[r.triage as TriageKind], move: failure, text };
+    });
 }
 
 function buildPremortemMemo(pm: Premortem): string {
@@ -401,6 +446,7 @@ export default function PremortemClient() {
             : r.checkOn,
       })),
       createdOn: todayISO(),
+      loggedOn: "",
     };
     setSaved((prev) => [pm, ...prev]);
     setDraft(null);
@@ -421,6 +467,36 @@ export default function PremortemClient() {
               }
             : pm
         )
+      );
+    },
+    []
+  );
+
+  // Hand a saved plan to the decision journal: capture the honest, de-biased
+  // confidence now that the funeral is fresh, write it as a tracked forecast
+  // due on the judge date, and mark the pre-mortem logged so it can't be
+  // double-filed. The journal owns the log; this appends through the shared
+  // write module (data/decisionLog.ts), then records loggedOn locally.
+  const logPremortemDecision = useCallback(
+    (pm: Premortem, confidence: number, expectation: string) => {
+      if (pm.loggedOn) return;
+      const reviewOn = reviewDateFor(pm);
+      appendDecisionEntry({
+        situationId: "premortem",
+        situationTitle: "A plan you ran a pre-mortem on",
+        question:
+          "Given the failure I already imagined, does the plan still convince me — and how sure am I now?",
+        decision: pm.plan.trim(),
+        reasoning: buildPremortemReasoning(pm),
+        call: "Proceed — the plan survived its pre-mortem, strengthened.",
+        firstStep: "",
+        expectation:
+          expectation.trim() || `The plan works out by ${formatHuman(reviewOn)}.`,
+        confidence,
+        reviewOn,
+      });
+      setSaved((prev) =>
+        prev.map((p) => (p.id === pm.id ? { ...p, loggedOn: todayISO() } : p))
       );
     },
     []
@@ -499,6 +575,9 @@ export default function PremortemClient() {
           onICS={() => downloadICS(pm)}
           onDelete={() => deletePremortem(pm.id)}
           onUpdateReason={(reasonId, fn) => updateSavedReason(pm.id, reasonId, fn)}
+          onLogDecision={(confidence, expectation) =>
+            logPremortemDecision(pm, confidence, expectation)
+          }
           copied={copied}
         />
       );
@@ -953,6 +1032,7 @@ export default function PremortemClient() {
                             nextCheck ? ` · next check ${formatHuman(nextCheck)}` : ""
                           }`
                         : ""}
+                      {pm.loggedOn ? " · logged to journal" : ""}
                     </span>
                   </button>
                 </li>
@@ -1019,6 +1099,7 @@ function PremortemView({
   onICS,
   onDelete,
   onUpdateReason,
+  onLogDecision,
   copied,
 }: {
   pm: Premortem;
@@ -1028,6 +1109,7 @@ function PremortemView({
   onICS: () => void;
   onDelete: () => void;
   onUpdateReason: (reasonId: string, fn: (r: PremortemReason) => PremortemReason) => void;
+  onLogDecision: (confidence: number, expectation: string) => void;
   copied: boolean;
 }) {
   const tw = tripwires(pm);
@@ -1151,19 +1233,165 @@ function PremortemView({
       )}
 
       <div className="mt-10 pt-6 border-t border-[var(--border)]">
-        <p className="text-sm text-[var(--muted)] leading-relaxed">
-          The plan survived its funeral — now put the decision itself on the
-          record. The{" "}
+        <LogToJournal pm={pm} isSample={isSample} onLog={onLogDecision} />
+      </div>
+    </div>
+  );
+}
+
+// =========================================================================
+// The handoff to the decision journal. A pre-mortem does two things to a plan:
+// it strengthens it, and — more quietly — it drags an inflated confidence back
+// toward honesty. Veinott, Klein & Wright (2010) measured it: imagining the
+// plan already failed lowered people's confidence in it about twice as much as
+// a pro/con list did. That de-biased number is the one worth recording — but
+// only if it's captured now, while the funeral is fresh, before optimism seeps
+// back. So the room offers to log the plan as a tracked forecast: what you
+// expect, how sure you are, reviewed on the day you said you'd know. From then
+// on it's an ordinary journal entry — it comes due, gets graded against what
+// actually happened, and feeds your real-world calibration like any other bet.
+
+function LogToJournal({
+  pm,
+  isSample,
+  onLog,
+}: {
+  pm: Premortem;
+  isSample: boolean;
+  onLog: (confidence: number, expectation: string) => void;
+}) {
+  const reviewOn = reviewDateFor(pm);
+  const [confidence, setConfidence] = useState<number | null>(null);
+  const [expectation, setExpectation] = useState(
+    `The plan works out — I'll know by ${formatHuman(reviewOn)}.`
+  );
+
+  // The worked example only demonstrates the shape; it never writes anything.
+  if (isSample) {
+    return (
+      <p className="text-sm text-[var(--muted)] leading-relaxed">
+        The plan survived its funeral — the last move is to put the forecast on
+        the record. On a real pre-mortem, this is where you&rsquo;d log the plan
+        to your{" "}
+        <Link
+          href="/decide"
+          className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          decision journal
+        </Link>{" "}
+        with the honest, de-biased confidence the exercise just gave you — so
+        that when the judge date arrives, reality grades the forecast, not just
+        the outcome.
+      </p>
+    );
+  }
+
+  // Already logged: the record is in the journal, waiting for its review date.
+  if (pm.loggedOn) {
+    return (
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+          Logged to your journal
+        </p>
+        <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+          This plan is now a tracked forecast, filed {formatHuman(pm.loggedOn)}{" "}
+          with a review set for {formatHuman(reviewOn)}. When the day comes, the{" "}
           <Link
-            href="/decide"
+            href="/decide?log=1"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             decision journal
           </Link>{" "}
-          is where you log what you expect to happen and how sure you are, so
-          that when {formatHuman(pm.judgeOn) || "the day"} arrives, you can grade
-          the forecast — not just the outcome.
+          will ask what actually happened and grade it against what you expected
+          — the funeral&rsquo;s forecast, kept honest by reality.
         </p>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+        Now record the honest number
+      </p>
+      <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+        Imagining this plan already dead does something a pro-and-con list
+        doesn&rsquo;t: it pulls an inflated confidence back toward the truth —
+        about twice as far, when it was measured. Capture that de-biased number
+        now, while the funeral is fresh, and the{" "}
+        <Link
+          href="/decide"
+          className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          decision journal
+        </Link>{" "}
+        will bring the plan back to you on {formatHuman(reviewOn)} to grade the
+        forecast, not just the outcome.{" "}
+        <Link
+          href="/writing/the-honest-number-comes-after"
+          className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          Why the number after is the honest one →
+        </Link>
+      </p>
+
+      <div className="mt-5">
+        <label
+          htmlFor={`pm-expect-${pm.id}`}
+          className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2"
+        >
+          What I expect to happen
+        </label>
+        <textarea
+          id={`pm-expect-${pm.id}`}
+          rows={2}
+          value={expectation}
+          onChange={(e) => setExpectation(e.target.value)}
+          placeholder="The specific outcome you're predicting — concrete enough that you'll know whether it came true."
+          className={textareaClass}
+        />
+      </div>
+
+      <div className="mt-5">
+        <span className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+          How confident — now, that the plan works out
+        </span>
+        <div className="flex flex-wrap gap-2">
+          {CONFIDENCE_OPTIONS.map((c) => {
+            const selected = confidence === c;
+            return (
+              <button
+                key={c}
+                type="button"
+                aria-pressed={selected}
+                onClick={() => setConfidence(selected ? null : c)}
+                className={`px-3 py-1.5 text-sm rounded-lg border transition-colors ${
+                  selected
+                    ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--background)]"
+                    : "border-[var(--border)] text-[var(--muted)] hover:border-[var(--accent)]"
+                }`}
+              >
+                {c}%
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="mt-6 flex flex-wrap items-center gap-3">
+        <button
+          type="button"
+          onClick={() => confidence != null && onLog(confidence, expectation)}
+          disabled={confidence == null}
+          className="text-sm font-medium px-4 py-2 rounded-lg bg-[var(--accent)] text-[var(--background)] hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          Log this plan to my decision journal
+        </button>
+        {confidence == null && (
+          <span className="text-xs text-[var(--muted)]">
+            Pick the confidence that survived the pre-mortem.
+          </span>
+        )}
       </div>
     </div>
   );
