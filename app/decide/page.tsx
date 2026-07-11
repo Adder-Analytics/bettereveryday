@@ -55,7 +55,15 @@ export default function DecidePage() {
           reasoning — so a good call that got unlucky gets filed as a mistake. A
           record you wrote <em>before</em> the result is the only thing the result
           can&rsquo;t edit. That&rsquo;s what makes a decision journal the cheapest
-          known way to actually get better at deciding.
+          known way to actually get better at deciding. Still torn on which way an
+          either/or should go? Find its{" "}
+          <Link
+            href="/weigh"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            flip point
+          </Link>{" "}
+          first — the threshold where the choice turns — then log the call here.
         </p>
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
           It only works if you keep it, so the log is yours to keep: everything
