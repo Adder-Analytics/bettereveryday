@@ -127,6 +127,11 @@ export const threads: Thread[] = [
         why: "Then, on review day, the question that has to come before any verdict on your judgement: did the plan ever actually get tried?",
       },
       {
+        kind: "essay",
+        slug: "the-flip-point",
+        why: "And the mechanic for the either/or call itself: stop arguing the exact odds, find the probability where the choice flips, and just ask which side you're on — where your calibration finally buys you something.",
+      },
+      {
         kind: "model",
         id: "reversibility",
         why: "Spend your deliberation where the door only swings one way.",

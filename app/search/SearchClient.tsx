@@ -133,6 +133,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "The flip point",
+    href: "/weigh",
+    snippet:
+      "Stop arguing whether the odds are 60% or 70% when the decision flips at 40%. Find the threshold where acting and not acting break even — p* = R/(B+R) — and just ask which side you're on. The honest form of expected value, for any either/or call.",
+    meta: "Flip point — the decision threshold tool",
+    titleText:
+      "weigh flip point decision threshold tool expected value ev breakeven break-even indifference probability p-star treatment threshold pauker kassirer either or should i cost benefit payoff upside downside odds act stakes margin of safety ruin value of information hubbard sensitivity".toLowerCase(),
+    bodyText:
+      "the flip point, a decision-threshold tool for either/or calls. two people argue whether the odds are sixty or seventy percent and never notice the decision flips at forty, where they both clearly sit — the argument is about the wrong number. this tool finds the right one: the threshold probability at which acting and not acting break even, so instead of pinning down an exact probability you can't know, you only have to judge which side of a line you're on. it comes from medicine — pauker and kassirer's threshold approach to clinical decision making (new england journal of medicine, 1980): rather than the exact probability a patient is sick, find the treatment threshold and ask whether they're above or below it. frame any decision against the alternative and there are three numbers: the upside if acting works (b), the downside if it doesn't (r), and your honest probability. the flip point is p* = r/(b+r) — equal stakes put the line at fifty percent, a big upside drops it so you should act even on a long shot, a lopsided downside pushes it toward near-certainty. how sure you need to be depends entirely on what's at stake. three dividends: it tells you when to stop gathering information (hubbard's value of information — only a fact that could move you across the line is worth knowing); it makes overconfidence concrete by shaving your measured calibration gap off your probability to see whether you're still on the same side of the line, the point where the calibration trainer finally pays off; and it flags when a decision is too close to call, handing it back to what you couldn't quantify — reversibility, opportunity cost, regret. the one override: a downside you can't recover from (ruin), where expected value's assumption that you keep playing fails and margin of safety takes over. nothing leaves your browser; a call you commit to can be logged straight to the decision journal as a tracked forecast. paired with the essay the flip point and the models expected value and the decision threshold.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Decision journal",
     href: "/decide",
     snippet:

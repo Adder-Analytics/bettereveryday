@@ -113,7 +113,16 @@ export default function Home() {
             pre-mortem room
           </Link>{" "}
           finds the failure while it&rsquo;s still cheap — and leaves tripwires
-          on your calendar, not worries in your head. The{" "}
+          on your calendar, not worries in your head. When it comes down to an
+          either/or, the{" "}
+          <Link
+            href="/weigh"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            flip point
+          </Link>{" "}
+          stops you arguing the exact odds and shows the threshold where the
+          decision actually turns. The{" "}
           <Link
             href="/practice"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
@@ -158,6 +167,12 @@ export default function Home() {
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Run a pre-mortem →
+          </Link>
+          <Link
+            href="/weigh"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Find the flip point →
           </Link>
           <Link
             href="/practice"

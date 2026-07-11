@@ -1141,6 +1141,52 @@ export const posts: Post[] = [
 
 <p>The pre-mortem asks you to imagine the future to improve the present. The forecast asks the present to leave a note for the future. It&rsquo;s the same motion run in opposite directions — and between them, a plan stops being something you merely hoped would work and becomes something you&rsquo;ll actually find out about.</p>`,
   },
+  {
+    slug: "the-flip-point",
+    title: "The Flip Point",
+    date: "2026-07-11",
+    excerpt:
+      "Two people argue whether the odds are 60% or 70% and never notice they agree on the decision — because it flips at 40%. The argument is about the wrong number. There's a better one: the threshold where the choice breaks even, and which side of it you're on.",
+    readTime: 7,
+    tags: ["decisions"],
+    content: `<p>Two people are deciding whether to take a bet, and they&rsquo;re stuck on the odds. One says it&rsquo;s a 60% chance of working. The other holds out for 70%. They go back and forth, marshalling arguments, feeling the stakes rise with the disagreement — and they never notice the thing that would end the fight in a sentence: the decision flips at 40%. Both of their numbers are comfortably above it. They agree on what to do. They&rsquo;ve spent an afternoon arguing about a number that can&rsquo;t change the answer.</p>
+
+<p>This is the ordinary shape of a hard decision, and it&rsquo;s why so many of them feel harder than they are. We argue about the probability — the one input we can never actually pin down — when the question that decides the matter is a different one, and an easier one.</p>
+
+<h2>The trick doctors already use</h2>
+
+<p>Medicine ran into this problem first, because a doctor cannot wait for certainty and cannot manufacture it either. In 1980, Stephen Pauker and Jerome Kassirer wrote it up in the <em>New England Journal of Medicine</em> as <a href="/models#expected-value">the threshold approach to clinical decision making</a>, and the move is quietly radical. Instead of asking &ldquo;what is the probability this patient has the disease?&rdquo; — a number no one can know exactly — you ask a different question first: at <em>what</em> probability would treating and not treating come out even? That number, the <strong>treatment threshold</strong>, you can actually compute, because it depends only on the stakes: how much the treatment helps someone who has the disease, versus how much it harms someone who doesn&rsquo;t. Find the threshold, then all the clinician has to do is judge whether the patient sits above it or below it. Treat above, wait below.</p>
+
+<p>The genius is in what it demands of the hard, unknowable estimate: much less. You no longer need the exact probability. You need only to know which side of a line it&rsquo;s on — and being roughly right about that is a task a human can do. An unanswerable question has been traded for a bearable one.</p>
+
+<h2>Where the line is</h2>
+
+<p>The same line exists for any either/or decision, not just medical ones. Frame it against the alternative — staying put, doing nothing, the status quo — and there are only three numbers. How much <em>better</em> off you are if you act and it works out (call it the upside, <strong>B</strong>). How much <em>worse</em> off if you act and it doesn&rsquo;t (the downside, <strong>R</strong>). And your honest probability that it works. Acting beats the alternative exactly when the expected upside outweighs the expected downside — and the probability where those two are equal, the flip point, falls out as a fraction of the stakes:</p>
+
+<p><strong>p* = R / (B + R)</strong></p>
+
+<p>If the downside and the upside are the same size, the line sits at 50% — a coin you should only flip if you think it lands your way more than half the time. If the upside is four times the downside, the line drops to 20%: now you should act even when you think it probably won&rsquo;t work, because the times it does more than pay for the times it doesn&rsquo;t. If the downside dwarfs the upside, the line climbs toward 90-something, and you should hold out for near-certainty before you move. The threshold encodes something your gut keeps forgetting: <em>how sure you need to be depends entirely on what&rsquo;s at stake</em>, and a favorable enough payoff makes a long shot worth taking while a lopsided enough downside makes even a probable win a bad idea.</p>
+
+<h2>When to stop thinking</h2>
+
+<p>The threshold also answers a question people almost never ask out loud: when have I gathered enough? Douglas Hubbard, whose whole method for measuring intangibles rests on it, puts the rule plainly — the only thing worth measuring is a number that could <em>change the decision</em>. Information that can&rsquo;t move you across the line is worth nothing, however interesting it is. So once you know the flip point, you know where to spend your remaining worry: on the input nearest the line, and nowhere else. If you&rsquo;re at 70% and the line is at 40%, another week of research to decide whether you&rsquo;re &ldquo;really&rdquo; at 68% or 72% is a week wasted — you were going to act either way. The threshold turns &ldquo;have I thought about this enough?&rdquo; from a feeling into a test.</p>
+
+<h2>Where the practice pays off</h2>
+
+<p>There&rsquo;s a catch hiding in the word &ldquo;honest,&rdquo; and it&rsquo;s where the rest of this site turns out to have been preparation. The threshold tells you to act when your probability clears the line — but that&rsquo;s only sound if your probabilities mean what they say. A &ldquo;70%&rdquo; is worth acting on only if the things you call 70% likely happen about 70% of the time. Most people&rsquo;s don&rsquo;t: their <a href="/writing/your-ninety-percent">90% is really more like 60%</a>, and the gap is largest on their own plans, seen from the flattering <a href="/writing/nobody-thinks-theyre-the-base-rate">inside</a>. Which means the flip point makes overconfidence <em>concrete</em> in a way a trivia score never could. It&rsquo;s no longer &ldquo;you tend to run twelve points hot&rdquo; in the abstract. It&rsquo;s: shave your measured twelve points off this call, and watch your 70% become a 58% — and drop below the very line you were about to clear. The <a href="/calibrate">calibration trainer</a> teaches you to make the number honest; the flip point is where an honest number finally buys you something, and a dishonest one costs you.</p>
+
+<h2>The one place the whole frame breaks</h2>
+
+<p>Expected value has a failure mode, and it&rsquo;s important enough that the tool refuses to average past it. The arithmetic quietly assumes you get to keep playing — that a loss today is a number you subtract and then carry on. Some losses aren&rsquo;t like that. Ruin — the injury you don&rsquo;t recover from, the money you can&rsquo;t afford to lose, the reputation that doesn&rsquo;t come back — ends the game, and there is no long run in which a favorable average bails you out, because you&rsquo;re not there for it. Against a downside like that, the flip point is the wrong question. The right one is the oldest rule in finance: don&rsquo;t stake what you can&rsquo;t afford to lose, and build a <a href="/models#margin-of-safety">margin of safety</a> so wide that being wrong is survivable. A strong bet on ruin is still ruin. Good expected-value thinking includes knowing the one situation where you throw expected value out.</p>
+
+<h2>The honest limits</h2>
+
+<p>Three, and they matter, because a tool that turns feelings into a crisp number can launder a bad decision as easily as sharpen a good one. First: the payoffs are made up. You did not measure that the upside is &ldquo;7&rdquo; and the downside &ldquo;5&rdquo;; you felt it and wrote a number. That&rsquo;s allowed — the point was never the decimal — but it&rsquo;s exactly why the <em>threshold</em> is the output, not a verdict. If the decision only comes out &ldquo;act&rdquo; on precisely the numbers you chose and flips the moment you nudge them, the tool is telling you the truth: this is too close to call, and the numbers are casting a vote they haven&rsquo;t earned. An honest close call should be <em>felt</em> as close, then decided on what you couldn&rsquo;t quantify — reversibility, opportunity cost, who you become, which regret you can live with.</p>
+
+<p>Second: one hinge is a simplification. Real decisions turn on several uncertain things at once, and collapsing them to a single probability is a lie of convenience. But it&rsquo;s a productive one — if you genuinely can&rsquo;t name the one thing the decision most turns on, that&rsquo;s not a flaw in the tool, it&rsquo;s a sign you&rsquo;re not ready to decide and should still be reading. And third, the reminder underneath the other two: the flip point is a starting line for judgement, not a substitute for it. It tells you how much certainty the stakes demand and whether you plausibly have it. It cannot tell you that your upside is a fantasy or your probability a wish. It just makes those the questions you have to answer — which is the most any honest tool can do.</p>
+
+<p>What it does do, reliably, is end the argument about the wrong number. Once you can see the line, most decisions turn out not to be close at all; you were simply staring at the one figure that couldn&rsquo;t settle them. And for the genuine coin-flips it hands you back to yourself, un-laundered, with the honest verdict that the math won&rsquo;t decide this one. There&rsquo;s a <a href="/weigh">room for this</a> on the site now — give it the stakes and your honest odds, and it draws the line, checks it against your own calibration record, and, if you&rsquo;re going ahead, hands the call to the <a href="/decide">journal</a> so reality can grade it later. The decision was never &ldquo;are the odds 60 or 70.&rdquo; It was always: where&rsquo;s the line, and am I clearly past it?</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
