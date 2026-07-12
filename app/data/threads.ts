@@ -132,6 +132,11 @@ export const threads: Thread[] = [
         why: "And the mechanic for the either/or call itself: stop arguing the exact odds, find the probability where the choice flips, and just ask which side you're on — where your calibration finally buys you something.",
       },
       {
+        kind: "essay",
+        slug: "the-option-to-wait",
+        why: "The precondition under all of it: none of this careful reasoning survives a hot state, and the calls you most regret are made in one. The reframe that saves you — when you're hot, the real decision is whether to decide at all, and a reversible door makes waiting nearly free.",
+      },
+      {
         kind: "model",
         id: "reversibility",
         why: "Spend your deliberation where the door only swings one way.",

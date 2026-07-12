@@ -145,6 +145,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Cool the call",
+    href: "/cool",
+    snippet:
+      "For the decision made hot — the email fired in anger, the panic-sell, the leap made while infatuated. When you're hot, the real choice isn't act-or-don't, it's decide-now-or-once-you're-cool. Reversibility and a real deadline settle that; then it helps you get distance — answer it in a friend's name, run 10/10/10.",
+    meta: "Cooling-off — deciding while hot",
+    titleText:
+      "cool cooling off tool decide hot emotion anger fear panic infatuation fomo sunk cost impulse angry email panic sell wait sleep on it self-distancing solomon's paradox hot cold empathy gap loewenstein grossmann kross 10/10/10 ten ten ten suzy welch reversible irreversible one-way door cooling-off period regret".toLowerCase(),
+    bodyText:
+      "the cooling-off tool, for deciding while hot. every other instrument on the site assumes a calm person reasoning; this one meets the person the others can't reach — the one with their pulse up, when reasoning is the faculty that's compromised. the decisions people most regret are made hot: the email fired off in anger, the panic-sell after bad news, the leap made while infatuated, the sunk cost you can't stand to write off. it isn't a feelings worksheet — its output is a decision, and a narrow one the research hands us: when you're hot, the real choice isn't act or don't, it's decide now or once you're cool. two facts you can still judge settle it — is the door reversible, and is something outside you genuinely forcing the clock (fomo and sunk cost manufacture a now-or-never that isn't real). reversible and nothing forcing it: sleep on it, waiting is nearly free. irreversible and nothing forcing it: the one combination you never act on hot. forced to make a one-way call while hot: the hardest case — look for a reversible version, buy time, make the smallest undoable piece. then the two research-backed moves for manufacturing distance: across person, answer the decision in someone else's name (solomon's paradox — grossmann and kross found people reason more wisely about a friend's identical dilemma, and the gap closes with a distanced view); across time, suzy welch's 10/10/10, how will this look in ten minutes, ten months, ten years, because a hot state (loewenstein's hot–cold empathy gap) collapses the horizons into one loud now. the honest caveat is kept in view: distance is for stripping the overweighting, not for numbing a feeling that's real information — some feelings are data. nothing is sent anywhere; inputs persist in your browser so a decision you slept on is still here, unchanged, when you come back cold. pairs with the essay you give better advice than you take, the self-distancing model, and — once you've cooled off — the flip point and the decision journal.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Decision journal",
     href: "/decide",
     snippet:
