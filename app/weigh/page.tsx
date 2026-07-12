@@ -83,7 +83,15 @@ export default function WeighPage() {
           >
             The Decision Threshold
           </Link>
-          . Facing something bigger than an either/or? Run a{" "}
+          . Feeling the pull to decide right now, in the heat of it? The numbers
+          can wait —{" "}
+          <Link
+            href="/cool"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            cool the call
+          </Link>{" "}
+          first. Facing something bigger than an either/or? Run a{" "}
           <Link
             href="/premortem"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"

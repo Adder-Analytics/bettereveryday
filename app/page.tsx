@@ -122,7 +122,16 @@ export default function Home() {
             flip point
           </Link>{" "}
           stops you arguing the exact odds and shows the threshold where the
-          decision actually turns. The{" "}
+          decision actually turns. When the call is being made hot — in anger,
+          panic, or FOMO — the{" "}
+          <Link
+            href="/cool"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            cooling-off tool
+          </Link>{" "}
+          settles whether to decide now at all, then helps you get the distance
+          to see it straight. The{" "}
           <Link
             href="/practice"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
@@ -173,6 +182,12 @@ export default function Home() {
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Find the flip point →
+          </Link>
+          <Link
+            href="/cool"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Cool a hot decision →
           </Link>
           <Link
             href="/practice"

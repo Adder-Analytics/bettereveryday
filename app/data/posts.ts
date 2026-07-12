@@ -618,6 +618,46 @@ export const posts: Post[] = [
 <p>The next time you catch yourself asking whether or not to do something, stop at the word "whether." Write the question again with an "or" in it and at least two real options after it. It costs a few minutes, it requires no special insight, and it routinely changes the answer — not because you reasoned better, but because you finally let yourself reason about the right thing. The worksheet on this site opens every general decision with exactly this move, because it's the one step that, skipped, makes all the careful thinking that follows quietly beside the point.</p>`,
   },
   {
+    slug: "the-option-to-wait",
+    title: "The Option to Wait",
+    date: "2026-07-12",
+    excerpt:
+      "When a decision feels urgent and your pulse is up, the real choice usually isn't the one in front of you. It's whether to decide it now at all — and if the door swings both ways, waiting is nearly free.",
+    readTime: 6,
+    tags: ["decisions", "psychology"],
+    content: `<p>Here is the thing about the worst decisions you've made in a hot state: at the time, they didn't feel like a choice between acting and waiting. They felt like a choice between acting and <em>losing</em>. Send the email now or let them get away with it. Sell now or watch it all evaporate. Say yes now or miss the one chance. The urgency wasn't a feeling you noticed and weighed — it was the frame the whole decision arrived in. And the frame had already deleted the option that would have saved you: the option to wait.</p>
+
+<p>Almost every regretted hot decision shares that shape. Not a bad answer to the question, but a failure to notice there was a prior question. Before "should I do this?" sits "do I have to decide this <em>right now</em>?" — and in a hot state, the honest answer is almost always no, disguised as an emphatic yes.</p>
+
+<h2>Why waiting is worth so much when you're hot</h2>
+
+<p>There's a reason to wait that has nothing to do with willpower or wisdom, and it's the one worth internalizing because it's just arithmetic. George Loewenstein called it the hot–cold empathy gap: in a visceral state — anger, fear, infatuation, the sting of a loss — you systematically overweight what you feel right now, and you lose the ability to model the calm version of yourself who has to live with the choice. The two of you genuinely can't see eye to eye. The hot self can't believe the cold self won't care; the cold self can't reconstruct why the hot self was so sure.</p>
+
+<p>Which means the decision you'd make in the next ten minutes and the one you'd make tomorrow morning are being made by two different people with two different sets of weights — and only one of them has to live with the result. Waiting isn't stalling. It's routing the decision to the self who's actually qualified to make it. The cost of waiting is whatever the delay actually forfeits; the benefit is a decision made with your real preferences instead of your temporary ones. When you're on fire, that trade is lopsided in favor of waiting almost every time.</p>
+
+<p>Finance has a clean name for the thing you're holding here: an option. The right, but not the obligation, to act later — once you know more, once the noise clears, once you've cooled off — is worth money precisely <em>because</em> the future is uncertain and you might learn something. Deciding now throws that option away to buy a certainty you don't need. In a calm state the option is worth a little. In a hot state, when you know your own judgement is temporarily compromised and about to un-compromise itself for free by morning, it's worth a great deal. Acting now spends it for nothing.</p>
+
+<h2>The gate is reversibility</h2>
+
+<p>So when is it safe to spend the option and just decide? The gate turns out to be a single question, and it's not "how sure am I" — it's "can I undo it?"</p>
+
+<p>Jeff Bezos's framing is the useful one: some doors are two-way and some are one-way. A two-way door you can walk back through — return the thing, unsend within the window, quit the plan you started, apologize and mean it. A one-way door doesn't swing back. The mistake most people make is treating too many decisions as one-way and agonizing over choices they could simply reverse. But in a hot state the error runs the other way and it's more dangerous: you treat a one-way door as if the consequences were as recoverable as your mood.</p>
+
+<p>Line the two facts up and the whole decision resolves almost mechanically. <strong>Reversible, and nothing external forcing the clock:</strong> wait — the option is nearly free and the version of you that collects on it is better. <strong>Irreversible, and nothing forcing the clock:</strong> this is the one combination you never act on hot, because you'd be spending a permanent consequence to relieve a temporary feeling. <strong>Reversible, but the window really is closing:</strong> go ahead — if you're wrong you can undo it, so the stakes of deciding warm are low, and you'll learn more by moving than by freezing. The genuinely hard case is the last one — <strong>irreversible and truly time-boxed</strong> — and it's rarer than it feels, because the clock is usually part of the heat.</p>
+
+<h2>Most deadlines are the feeling talking</h2>
+
+<p>That's the move the hot frame pulls hardest: it manufactures a deadline. "Now or never" is the native tongue of FOMO, and sunk cost speaks it too — the sense that if you don't act this instant, everything already invested is lost. Almost none of these deadlines survive contact with a plain question: <em>who, exactly, outside of me, is imposing this cutoff, and what actually happens at it?</em> The runaway price, the person who might say no if you wait, the opportunity that feels like it's evaporating — a few of these are real external deadlines. Most are the urgency generating its own justification.</p>
+
+<p>So before you count a decision as forced, make the deadline prove itself. And even when it's real, there's usually a move between "decide the whole thing now" and "miss it": buy time explicitly (ask for a day — people grant it far more often than the panic predicts), make the smallest reversible piece of the decision instead of the irreversible whole, or take the action that keeps the most options open. A forced one-way call is the worst spot to be in; the way out is rarely to decide faster and usually to shrink the irreversible part until it fits inside your calm.</p>
+
+<h2>The honest limit</h2>
+
+<p>"Wait" is not free advice, and it can be abused in two directions. The first: waiting has costs, and for a genuinely reversible, genuinely time-boxed choice, endless deliberation is its own mistake — you can dither away an option just as surely as you can spend it rashly. The gate cuts both ways. If the door swings back, a slow decision is as much a waste as a hot one.</p>
+
+<p>The second is subtler and worth more. "I'll feel differently in a week" is true of most hot feelings and is exactly how you talk yourself out of the ones that aren't heat but signal — the dread that's data, the quiet wrongness of a deal that pencils out fine, the relationship you keep flinching from. Cooling off is for stripping the visceral overweighting, not for numbing a feeling that's carrying real information. The test is whether the feeling <em>survives</em> the distance. Heat evaporates against the ten-year view; a true signal is still standing there when you're calm, which is a reason to act, not a reason to have waited it out. Waiting doesn't decide for you. It just hands the decision to the one person who should have had it all along — and who, conveniently, shows up for free if you let the night pass. The <a href="/cool">cooling-off tool</a> on this site is built around exactly this: it settles decide-now-versus-later on the two facts above, then helps you get the distance to see the rest. Its companion is <a href="/writing/advice-you-dont-take">the piece on why you see other people's dilemmas so much more clearly than your own</a>.</p>`,
+  },
+  {
     slug: "advice-you-dont-take",
     title: "You Give Better Advice Than You Take",
     date: "2026-06-23",
