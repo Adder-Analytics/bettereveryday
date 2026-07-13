@@ -98,6 +98,11 @@ export const threads: Thread[] = [
       },
       {
         kind: "essay",
+        slug: "the-bill-comes-later",
+        why: "Why that question is hard to ask honestly — present bias shrinks the later cost to nothing — and the filter that beats it: find the sign flip, and ask when the bill comes.",
+      },
+      {
+        kind: "essay",
         slug: "metric-not-the-mission",
         why: "What happens when the measure you chose quietly becomes the goal.",
       },

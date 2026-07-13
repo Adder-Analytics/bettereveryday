@@ -232,10 +232,10 @@ export const situations: Situation[] = [
       },
       {
         id: "second-order-effects",
-        move: "Before you intervene, ask 'and then what?' The thing you change will provoke a response, and the response is often the part that actually matters.",
+        move: "Before you intervene, ask 'and then what?' The thing you change will provoke a response, and the response is often the part that actually matters. Trace it a few steps at /trace.",
       },
     ],
-    essays: ["second-order-thinking"],
+    essays: ["second-order-thinking", "the-bill-comes-later"],
   },
   {
     id: "long-haul",
