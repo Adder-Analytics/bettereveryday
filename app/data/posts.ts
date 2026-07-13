@@ -1227,6 +1227,48 @@ export const posts: Post[] = [
 
 <p>What it does do, reliably, is end the argument about the wrong number. Once you can see the line, most decisions turn out not to be close at all; you were simply staring at the one figure that couldn&rsquo;t settle them. And for the genuine coin-flips it hands you back to yourself, un-laundered, with the honest verdict that the math won&rsquo;t decide this one. There&rsquo;s a <a href="/weigh">room for this</a> on the site now — give it the stakes and your honest odds, and it draws the line, checks it against your own calibration record, and, if you&rsquo;re going ahead, hands the call to the <a href="/decide">journal</a> so reality can grade it later. The decision was never &ldquo;are the odds 60 or 70.&rdquo; It was always: where&rsquo;s the line, and am I clearly past it?</p>`,
   },
+  {
+    slug: "the-bill-comes-later",
+    title: "The Bill Comes Later",
+    date: "2026-07-13",
+    excerpt:
+      "Ask someone to choose $100 today or $110 next week and most take the hundred. Ask them to choose the same two, a year out, and they flip. That reversal is the engine behind almost every decision you regret — and it points at a filter for catching them.",
+    readTime: 6,
+    tags: ["decisions", "thinking"],
+    content: `<p>Here is a choice: $100 handed to you right now, or $110 a week from now. Most people take the hundred. A week isn&rsquo;t long, but <em>now</em> is now, and the extra ten dollars isn&rsquo;t enough to wait for. Now here is the same choice pushed into the future: $100 in a year, or $110 in a year and a week. Almost everyone flips and takes the hundred-and-ten. Same week of waiting, same ten dollars for it — but this time the wait costs nothing, because both rewards are far away and a week barely registers against a year.</p>
+
+<p>Nothing about the money changed. What changed was where the choice sat relative to <em>now</em>. And that single, strange reversal — patient about the far-off version, impatient about the near one — is one of the most reliably documented facts in the study of how people decide, and quietly the engine behind a startling share of the decisions we come to regret.</p>
+
+<h2>Why the near reward looms</h2>
+
+<p>The name for it is present bias, and the mechanism is that we don&rsquo;t discount the future at a steady rate. A rational discounter would treat every week of delay the same — a week is a week. We don&rsquo;t. We discount steeply between <em>now</em> and <em>soon</em>, and then gently between <em>soon</em> and <em>later</em>. George Ainslie mapped the shape of it in the 1970s; David Laibson gave it its standard modern form in 1997; Frederick, Loewenstein, and O&rsquo;Donoghue reviewed three decades of the evidence in 2002 and found the same anomaly staring out of study after study. The curve isn&rsquo;t a personal failing. It appears to be how the machinery is built.</p>
+
+<p>The consequence that matters here isn&rsquo;t about money at all. It&rsquo;s that any consequence far enough down the chain gets shrunk — not proportionally, but savagely — by the very discounting that leaves the immediate effect at full size. The reward you get now arrives vivid and whole. The cost you pay later arrives faded, abstract, easy to wave off. So a chain of events that ends badly can still feel good at the top, because you are feeling the beginning of it at full volume and the end of it through a wall.</p>
+
+<h2>The signature of a trap</h2>
+
+<p>Put that together with a fact about consequences, and a filter falls out. For a large class of decisions, the first-order effect and the later effects have <em>opposite signs</em>. The dessert is pleasant now and a cost later. The debt buys the thing now and takes it back later, with interest. The shortcut saves time now and creates the mess that eats it later. The soothing lie keeps the peace now and detonates later. The bounty on rat tails looks like pest control now and becomes a rat-breeding industry later. In each case the part you can feel is positive and the part that decides the outcome is negative — and present bias is standing right there making sure you weight them exactly wrong.</p>
+
+<p>This is what makes <em>first-order positive, later negative</em> not just one bad pattern among many but the actual signature of a trap. It is the shape of nearly everything that fools people, and it fools them through the same mechanism every time: the sweet part is now, the bill is later, and later is discounted into near-invisibility at the moment of choosing.</p>
+
+<p>The mirror image is just as useful, and just as counterintuitive. Almost everything genuinely worth doing has the opposite shape — <em>first-order negative, later positive</em>. Exercise, the hard conversation, saving instead of spending, asking the question that exposes what you don&rsquo;t know, doing the unglamorous version of the work. Cost up front, payoff deferred. And the reason these opportunities keep lying around unclaimed is precisely that most people read only the first line of the chain, feel the up-front cost at full size, and stop. The good things stay available because present bias is quietly warning everyone else off them.</p>
+
+<h2>The move is to find the flip, not to think harder</h2>
+
+<p>The ordinary advice — &ldquo;consider the consequences&rdquo; — is true and nearly useless, because the problem was never that you don&rsquo;t know consequences exist. It&rsquo;s that the discount curve hides the ones that count, and it does that even when you know it&rsquo;s happening. The reversal at the top of this essay happens to economists who study the reversal. Knowing about present bias buys you almost nothing on its own.</p>
+
+<p>What does buy you something is a specific, mechanical move: instead of asking &ldquo;is this a good idea,&rdquo; ask <em>when does the bill come</em> — and then find the point in the chain where the sign flips. Follow the move one step past the effect you want. And then what? And then what after that? Mark each effect for what it actually does to what you care about — better, or worse — and watch for the place where a run of pluses turns to a minus, or a minus turns to a plus. That flip is the whole decision. Everything before it is the part you could already feel; everything you learn is on the far side of it.</p>
+
+<p>The reason to do this on paper, or in a tool, rather than in your head is the same reason the bias is hard to beat from the inside: the trick is to drag the later cost out of the abstract and set it down next to the immediate reward, at the same size, where you have to look at both at once. That&rsquo;s a thing a procedure can do and a good intention can&rsquo;t. There&rsquo;s a <a href="/trace">room for it</a> on the site now — name the move, trace it down a few orders, tag each effect better or worse, and it reads the pattern back to you and points at the flip.</p>
+
+<h2>The honest limits</h2>
+
+<p>The filter flags; it doesn&rsquo;t forbid. Three things keep it honest. First, not everything pleasant now is a trap — some good things are good now <em>and</em> later, and the filter is there to earn them a second look, not to make you suspicious of joy. The tell of a trap isn&rsquo;t that the first order is positive; it&rsquo;s that the first order is positive and the later orders aren&rsquo;t. Watch the flip, not the pleasure.</p>
+
+<p>Second, the mirror error is real: turn this into a blanket rule that anything enjoyable must be secretly ruinous and anything painful secretly virtuous, and you&rsquo;ve just swapped one lazy heuristic for another. The sign of the <em>later</em> effect is the data. A cost up front with nothing on the far side of the flip is simply a cost.</p>
+
+<p>And third, a sign is not a size. This tells you which direction an effect points, not how much it weighs, and a small later minus doesn&rsquo;t cancel a large first-order plus. Finding the flip is what turns a vague unease into a specific tradeoff you can actually weigh — but weighing it is the next move, and it belongs to a <a href="/weigh">different tool</a>. What the sign flip does, reliably, is make sure the thing you weigh is the whole chain, and not just the part that shouts.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

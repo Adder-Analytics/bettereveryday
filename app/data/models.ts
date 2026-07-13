@@ -143,8 +143,8 @@ export const models: Model[] = [
     domain: "Systems",
     tagline: "The consequences of consequences are often more important than first-order effects.",
     explanation:
-      "Rent control lowers rents in the short term (first order) while reducing housing supply and raising rents in the long term (second order). Antibiotics kill bacteria immediately (first order) while selecting for resistant strains over time (second order). Most policy failures and unintended consequences come from acting on first-order effects without modeling the second. The question to always ask: 'And then what?'",
-    essays: ["second-order-thinking"],
+      "Rent control lowers rents in the short term (first order) while reducing housing supply and raising rents in the long term (second order). Antibiotics kill bacteria immediately (first order) while selecting for resistant strains over time (second order). Most policy failures and unintended consequences come from acting on first-order effects without modeling the second. The question to always ask: 'And then what?' — and the most useful thing that question reveals is the sign flip, where the effect you intended reverses into the one that lasts (the trap is almost always first-order positive; the things worth doing cost you up front). There's a tool for tracing it: /trace walks a move down a few orders, has you tag each effect better or worse, and reads the pattern.",
+    essays: ["second-order-thinking", "the-bill-comes-later"],
   },
   {
     id: "goodharts-law",

@@ -131,7 +131,16 @@ export default function Home() {
             cooling-off tool
           </Link>{" "}
           settles whether to decide now at all, then helps you get the distance
-          to see it straight. The{" "}
+          to see it straight. When a move looks good but you suspect the bill
+          comes later,{" "}
+          <Link
+            href="/trace"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            and then what?
+          </Link>{" "}
+          follows it down its chain of consequences and finds the point where the
+          effect you intended reverses into the one you have to live with. The{" "}
           <Link
             href="/practice"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
@@ -188,6 +197,12 @@ export default function Home() {
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Cool a hot decision →
+          </Link>
+          <Link
+            href="/trace"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Trace the consequences →
           </Link>
           <Link
             href="/practice"

@@ -157,6 +157,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "And then what?",
+    href: "/trace",
+    snippet:
+      "Most bad decisions come from stopping the analysis one step too early, at the first-order effect. Trace a move past it — and then what, and then what — tag each effect better or worse for what you want, and read the sign pattern. The trap is always first-order positive; the treasure's cost is always up front.",
+    meta: "Second-order thinking — trace the consequences",
+    titleText:
+      "trace and then what second order effects second-level thinking consequences downstream ripple unintended cane toad cobra effect bastiat seen unseen howard marks first-order later reversal sign flip present bias hyperbolic discounting bill comes later trap tool".toLowerCase(),
+    bodyText:
+      "and then what, a consequence-tracing tool for second-order thinking. almost every avoidable mistake is the same mistake: the analysis stopped one step too early, at the first-order effect — the immediate, visible, intended result that's the reason the move is tempting. the cane toads were imported to eat the beetles; the reasoning about the first link was fine (toads eat insects) and nobody asked and then what. first-order effects are immediate and visible; the second and third orders are delayed, diffuse, and often pointed the other way. this tool makes you keep asking. name the move, then trace it: the effect you want, and then what follows, and then what follows that — especially how the people affected adapt, because second-order effects live wherever people respond. tag each effect better or worse for what you actually want, and it reads the pattern, because the single most useful thing a trace reveals is the sign flip: where the effect you're doing it for turns into the one you live with. the trap is always first-order positive and later negative — the dessert, the debt, the shortcut, the rat bounty — and it fools us through present bias (hyperbolic discounting, ainslie, laibson, frederick loewenstein o'donoghue): we discount the future steeply so the near reward looms and the later cost fades. the mirror is the treasure: first-order negative and later positive, the shape of nearly everything worth doing (exercise, the hard conversation, saving), which stays available because most people quit at the up-front cost. two lenses: systems with people who adapt (a rule that assumes everyone keeps behaving as before has already failed — the cobra effect, goodhart's law) and competitive arenas where the first-order conclusion is already priced in (howard marks's second-level thinking, the opportunity lives only in the gap between what's true and what everyone believes). nothing is sent anywhere; inputs persist in your browser. no journal write — a consequence trace isn't a forecast — only links onward: guard the later effect as a tripwire in the pre-mortem, take the either/or to the flip point, or log the call in the decision journal. paired with the essays the bill comes later and and then what, and the second-order effects model.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Decision journal",
     href: "/decide",
     snippet:
