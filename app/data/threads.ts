@@ -146,6 +146,11 @@ export const threads: Thread[] = [
         id: "reversibility",
         why: "Spend your deliberation where the door only swings one way.",
       },
+      {
+        kind: "essay",
+        slug: "a-record-you-can-hold",
+        why: "The precondition under this entire thread: every tool above logs a forecast now to be graded months later — which only works if the record survives the wait. Why durability is part of what makes a record worth keeping, and the one-file backup that provides it.",
+      },
     ],
   },
   {

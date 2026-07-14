@@ -154,7 +154,16 @@ export default function Home() {
           time, it answers the question in the site&rsquo;s name — your first
           rounds beside your latest, whether you&rsquo;re actually getting
           better. Reading notes capture what specific
-          books did to my thinking.
+          books did to my thinking. Everything you log stays in your browser and
+          is sent nowhere — so when you&rsquo;re ready to trust it with months of
+          decisions, the{" "}
+          <Link
+            href="/data"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            your-data page
+          </Link>{" "}
+          backs it all up to a file you own, and restores it on any device.
           Everything cross-references, and everything is searchable (press{" "}
           <kbd className="px-1 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
             /
