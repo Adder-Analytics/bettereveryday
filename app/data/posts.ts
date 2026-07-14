@@ -1269,6 +1269,52 @@ export const posts: Post[] = [
 
 <p>And third, a sign is not a size. This tells you which direction an effect points, not how much it weighs, and a small later minus doesn&rsquo;t cancel a large first-order plus. Finding the flip is what turns a vague unease into a specific tradeoff you can actually weigh — but weighing it is the next move, and it belongs to a <a href="/weigh">different tool</a>. What the sign flip does, reliably, is make sure the thing you weigh is the whole chain, and not just the part that shouts.</p>`,
   },
+  {
+    slug: "a-record-you-can-hold",
+    title: "A Record You Can Hold",
+    date: "2026-07-14",
+    excerpt:
+      "This site keeps everything you write in your browser and sends nothing anywhere. That's the privacy story. The part no one tells you: browser storage isn't durable, and a record you'll lose is a review you'll never do. Durability isn't a feature bolted onto a record — it's part of what makes the record worth keeping.",
+    readTime: 6,
+    tags: ["decisions", "systems", "craft"],
+    content: `<p>Every tool on this site makes the same quiet promise. Log the decision now, at its honest confidence, and come back when the outcome is in to see whether your &ldquo;seventy percent&rdquo; was worth anything. Arm the tripwire today; the site will hold it until the date you set. Take a round in the trainers this week and another next month, and it will tell you whether your typical miss is shrinking. Every one of these is a bet that a thing you write today will still be here, unchanged, when the future it&rsquo;s about finally arrives.</p>
+
+<p>And all of it lives in your browser. Nothing is uploaded, there is no account, no server holds a copy — which is the honest privacy story, and a rare one. No one but you can read your decisions because there is no one else who <em>could</em>. But that same fact carries a cost the site spent a month quietly accumulating without ever naming: the browser is not a safe. It&rsquo;s a coat pocket.</p>
+
+<h2>What browser storage actually is</h2>
+
+<p>The data these tools keep sits in something called localStorage — a small key-value store the browser gives each site. It is genuinely useful and genuinely not durable, and the gap between those two is where records go to die. &ldquo;Clear browsing data,&rdquo; the button people press when a site misbehaves, erases it. So does clearing cookies for the site, because most browsers file the two together. It doesn&rsquo;t exist in a private window past the moment you close it. Under storage pressure, some browsers evict it from sites you haven&rsquo;t visited lately — and a decision journal you check quarterly is, by design, a site you don&rsquo;t visit lately. And it never leaves the one browser on the one device: log a decision on your laptop and it simply isn&rsquo;t on your phone, or on the laptop you buy next year.</p>
+
+<p>None of that is a malfunction. That is what browser storage <em>is</em>. It was built to make web pages faster and to remember small preferences, not to be the sole copy of a record you&rsquo;re counting on for years. Treating it as permanent is the mistake, and it&rsquo;s an easy one to make, because for weeks it behaves exactly like permanence. Right up until the afternoon it doesn&rsquo;t.</p>
+
+<h2>The hidden dependency in the review loop</h2>
+
+<p>This site is, underneath all its tools, one idea: the review loop. You can&rsquo;t tell a good decision from a lucky one in the moment, so you write down what you expect, and you go back later to check it against what happened. Calibration works the same way — the whole reason to record a forecast is to be scored by it once reality settles. The loop is the engine, and the loop has a term nobody writes into the equation: the record has to survive the wait.</p>
+
+<p>Notice how long these particular waits are. A calibration curve worth trusting takes dozens of forecasts, which is months. The trend that answers the question in this site&rsquo;s name compares your first rounds to your latest, which is longer still. A tripwire on a big commitment might sit armed for half a year. These aren&rsquo;t incidental delays; the delay <em>is</em> the mechanism — it&rsquo;s the gap in which luck and skill finally separate. Which means the substrate holding the record has to be at least as durable as the loop is long. A record that can&rsquo;t survive three months cannot calibrate you over three months. It isn&rsquo;t a weaker record. It&rsquo;s not a record at all — it&rsquo;s a note you happened to write to a version of yourself the browser will have deleted before it&rsquo;s read.</p>
+
+<p>So durability isn&rsquo;t a nice-to-have stapled onto the side of these tools. It&rsquo;s load-bearing. A forecast you&rsquo;ll lose and a forecast you never made come to exactly the same thing on review day: nothing to check.</p>
+
+<h2>You own your data, in spite of the browser</h2>
+
+<p>In 2019 a group of researchers at Ink &amp; Switch wrote down what they called the seven ideals of <em>local-first</em> software — software that keeps your data on your own device instead of on someone&rsquo;s server. Two of the seven are the ones this site keeps bumping into. One they call <em>longevity</em>: your data should outlive the app, still readable when the tool that made it is gone. The other is the plain one — <em>you own your data</em>: the software shouldn&rsquo;t be able to hold your information hostage, or lock it inside a format only it can open.</p>
+
+<p>Here is the uncomfortable part. A site that keeps your data only in your browser has nailed the privacy ideal and quietly failed both of these. If the single copy of your record can be wiped by a button you press for unrelated reasons, you don&rsquo;t really own it — you&rsquo;re renting it, on terms set by a cache-eviction heuristic you&rsquo;ll never see. Ownership isn&rsquo;t just &ldquo;no one else can read it.&rdquo; It&rsquo;s &ldquo;you can hold it, move it, and keep it, and nothing short of you decides when it&rsquo;s gone.&rdquo; A tool you can&rsquo;t get your data <em>out</em> of isn&rsquo;t really yours, however private it is while you have it.</p>
+
+<h2>The smallest honest fix: a file</h2>
+
+<p>A site with no backend can&rsquo;t solve this the way a cloud app does, by keeping the real copy on a server and syncing it down — and it shouldn&rsquo;t want to, because that server is exactly what the privacy story traded away. But it doesn&rsquo;t have to. There is an older, humbler form of ownership that asks for no account and leaks nothing: a file you hold. Export the whole record to a plain file on your own machine, and you can keep it, copy it, drop it in whatever you already trust to not lose things, and read it back into any browser you like. Nothing was uploaded. The privacy story is intact. The record is now yours in the full sense — portable and durable — because it lives somewhere you control instead of somewhere the browser controls.</p>
+
+<p>The decision journal on this site figured this out early and only for itself: it has long been able to export its log and merge one back in — &ldquo;the escape hatch,&rdquo; its own code says, &ldquo;that makes browser-only storage defensible.&rdquo; The mistake was leaving the hatch cut for one tool out of ten while the pre-mortem&rsquo;s armed tripwires and the trainers&rsquo; month-spanning records — the things that most need to survive — had none. The <a href="/data">your-data page</a> is that same escape hatch, widened to the whole site: one file, everything in it, restored anywhere.</p>
+
+<h2>What a file can&rsquo;t do, and why it&rsquo;s still the right floor</h2>
+
+<p>Honesty about the fix, the way the tools try to be honest about everything else. A file backup is manual — it protects you only as often as you remember to make one, which means the discipline it asks for is small but real: back up after a session that mattered, the way you&rsquo;d save a document you&rsquo;d hate to retype. It&rsquo;s a snapshot, not a live mirror, so it&rsquo;s worth exactly as much as its date. And restoring one replaces what&rsquo;s in the browser rather than merging two histories, so it&rsquo;s a way to <em>move</em> or <em>recover</em> a record, not yet a way to keep a laptop and a phone in sync. Real multi-device sync without a server is a harder problem, and the local-first researchers spent years on it; this isn&rsquo;t that.</p>
+
+<p>But a floor doesn&rsquo;t have to be a ceiling to be worth pouring. The failure this prevents isn&rsquo;t &ldquo;my two devices drifted a little out of sync.&rdquo; It&rsquo;s &ldquo;I cleared my browser and a year of my own decisions is gone, and the review I was building toward can never happen.&rdquo; That one is catastrophic and permanent, and a thirty-second file export takes it off the table completely. The best durability you&rsquo;ll actually use beats the perfect sync you won&rsquo;t.</p>
+
+<p>There&rsquo;s a small lesson in here that reaches past this website. We spend our attention on the quality of a record — is the forecast honest, is the reasoning sound, did I name the real failure — and almost none on whether the record will still exist when it&rsquo;s time to read it. But a judgement you can&rsquo;t retrieve is worth the same as one you never formed. The care you put into writing something down is capped by the odds it survives to be read. Which makes &ldquo;can I get this out and keep it&rdquo; not a technicality to sort out later, but part of the same question as &ldquo;is this any good&rdquo; — and the cheapest half of it to answer. So answer it. <a href="/data">Back the thing up.</a></p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

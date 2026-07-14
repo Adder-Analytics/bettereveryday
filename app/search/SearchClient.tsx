@@ -181,6 +181,18 @@ const docs: SearchDoc[] = [
         .map((s) => s.title)
         .join(" ")}`.toLowerCase(),
   },
+  {
+    type: "Tool",
+    title: "Your data",
+    href: "/data",
+    snippet:
+      "Everything the tools here keep lives only in your browser — nothing is uploaded. Good for privacy, bad for durability: clear your cache or switch devices and it's gone. Back up all of it to one file you own, and restore it anywhere.",
+    meta: "Back up and restore everything",
+    titleText:
+      "your data backup back up export import restore download file portability durability local-first local first localstorage browser storage privacy own your data longevity move devices new laptop phone clear cache lose data escape hatch".toLowerCase(),
+    bodyText:
+      "the your-data page: back up everything this site keeps for you, and restore it anywhere. every tool here — the decision journal, the pre-mortem room and its armed tripwires, the flip point, the cooling-off tool, the consequence trace, and the calibration, estimation, and base-rate trainers — keeps what you write in your browser and sends nothing to any server. that is the privacy story and a real one: no account, nothing to breach. but browser storage (localstorage) is not durable. clearing your browsing data erases it, it doesn't survive a private window, some browsers evict it under storage pressure from sites you visit rarely — which a quarterly decision journal is by design — and it never leaves the one device. and this whole site runs on the review loop: log a forecast now, come back in months to see what happened. a record you'll lose is a review you'll never do, so durability is load-bearing, not a nice-to-have. this page is the fix: export writes one json file that is a faithful snapshot of all your stored data; restore reads such a file back, and because restore replaces what's in the browser it first auto-downloads a safety copy of your current state and shows you exactly what the incoming file contains before it writes. nothing is ever uploaded — the file only leaves your machine if you move it yourself, which is the point: a backup you own and can carry. this is the local-first ideal (ink and switch, 2019: you own your data, longevity) done the only honest way a zero-backend site can — a file you hold. the decision journal keeps its own per-tool export too; this page backs up everything at once, and can also read the journal's older log export. paired with the essay a record you can hold.".toLowerCase(),
+  },
 ];
 
 function search(query: string): SearchDoc[] {
