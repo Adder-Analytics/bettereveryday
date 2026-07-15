@@ -98,6 +98,11 @@ export const threads: Thread[] = [
       },
       {
         kind: "essay",
+        slug: "the-bill-comes-later",
+        why: "Why that question is hard to ask honestly — present bias shrinks the later cost to nothing — and the filter that beats it: find the sign flip, and ask when the bill comes.",
+      },
+      {
+        kind: "essay",
         slug: "metric-not-the-mission",
         why: "What happens when the measure you chose quietly becomes the goal.",
       },
@@ -127,9 +132,29 @@ export const threads: Thread[] = [
         why: "Then, on review day, the question that has to come before any verdict on your judgement: did the plan ever actually get tried?",
       },
       {
+        kind: "essay",
+        slug: "the-flip-point",
+        why: "And the mechanic for the either/or call itself: stop arguing the exact odds, find the probability where the choice flips, and just ask which side you're on — where your calibration finally buys you something.",
+      },
+      {
+        kind: "essay",
+        slug: "the-option-to-wait",
+        why: "The precondition under all of it: none of this careful reasoning survives a hot state, and the calls you most regret are made in one. The reframe that saves you — when you're hot, the real decision is whether to decide at all, and a reversible door makes waiting nearly free.",
+      },
+      {
         kind: "model",
         id: "reversibility",
         why: "Spend your deliberation where the door only swings one way.",
+      },
+      {
+        kind: "essay",
+        slug: "a-record-you-can-hold",
+        why: "The precondition under this entire thread: every tool above logs a forecast now to be graded months later — which only works if the record survives the wait. Why durability is part of what makes a record worth keeping, and the one-file backup that provides it.",
+      },
+      {
+        kind: "essay",
+        slug: "the-return",
+        why: "And the other precondition: the record only teaches you if you go back to it. Why the return — the coming-back, months later, to find out whether you were right — is the half of the loop almost everyone skips, and the one desk that gathers everything you scheduled so it stops depending on memory.",
       },
     ],
   },

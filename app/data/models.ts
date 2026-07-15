@@ -52,8 +52,8 @@ export const models: Model[] = [
     domain: "Decisions",
     tagline: "Multiply probability by magnitude for each outcome, then sum — the result is what a decision is worth in expectation.",
     explanation:
-      "A 10% chance of winning $1,000 has the same expected value as a 100% chance of winning $100. Thinking in expected value makes you systematically better at trade-offs involving risk and uncertainty — you stop treating unlikely bad outcomes as reasons to avoid favorable bets, and stop treating unlikely good outcomes as justification for bad ones. The challenge: human intuition about probability is poorly calibrated, especially for small or large probabilities.",
-    essays: ["decision-quality"],
+      "A 10% chance of winning $1,000 has the same expected value as a 100% chance of winning $100. Thinking in expected value makes you systematically better at trade-offs involving risk and uncertainty — you stop treating unlikely bad outcomes as reasons to avoid favorable bets, and stop treating unlikely good outcomes as justification for bad ones. The challenge: human intuition about probability is poorly calibrated, especially for small or large probabilities. The most useful everyday form isn't the raw sum but its threshold: for an either/or call, the probability at which acting and not acting break even is p* = R/(B+R), where B is how much better acting is if it works and R how much worse if it doesn't — so instead of arguing the exact odds you only have to judge which side of that line you're on. One caveat overrides the whole calculation: expected value assumes you survive to keep playing, so against a downside you can't recover from, the average is a lie and margin of safety wins.",
+    essays: ["decision-quality", "the-flip-point"],
   },
   {
     id: "inversion",
@@ -82,13 +82,22 @@ export const models: Model[] = [
     essays: ["hold-the-funeral-first", "the-plan-was-never-tried"],
   },
   {
+    id: "decision-threshold",
+    name: "The Decision Threshold",
+    domain: "Decisions",
+    tagline: "Don't argue the exact probability — find the one at which the choice flips, and just ask which side you're on.",
+    explanation:
+      "Stephen Pauker and Jerome Kassirer's 'threshold approach to clinical decision making' (NEJM, 1980) solved a problem every hard decision has: you can never pin down the exact probability, so stop trying to. Instead of 'how likely is the disease?', ask 'at what probability would treating and not treating come out even?' — the treatment threshold — and then judge only whether you sit above or below it. That flips an unanswerable question into a bearable one, because being roughly right about which side of a line you're on is something a human can do. The threshold depends only on the stakes: for an either/or call framed against the alternative, with upside B if acting works and downside R if it doesn't, the line sits at p* = R/(B+R). Equal stakes put it at 50%; a fourfold upside drops it to 20% (act even when it probably won't work — the wins more than pay for the losses); a lopsided downside pushes it past 90% (hold out for near-certainty). Two practical dividends follow. It tells you when to stop gathering information — Hubbard's rule, only a fact that could move you across the line is worth knowing — and it makes overconfidence concrete, because shaving your measured calibration gap off your probability can drop you below a line you thought you'd cleared. The one case where the threshold is the wrong question: a downside you can't recover from, where expected value's assumption that you keep playing fails and margin of safety takes over.",
+    essays: ["the-flip-point", "decision-quality"],
+  },
+  {
     id: "reversibility",
     name: "Reversibility",
     domain: "Decisions",
     tagline: "Separate one-way decisions from two-way decisions — and treat them very differently.",
     explanation:
-      "Jeff Bezos's 'Type 1 and Type 2' framework: one-way doors require extensive deliberation because you can't undo them; two-way doors should be decided quickly because the cost of being wrong is low and you learn more by moving. The error most organizations make is treating too many decisions like one-way doors, which makes them slow when they should be fast. The genuinely one-way doors — hiring, culture, irreversible commitments — deserve the slowness. Most decisions don't.",
-    essays: ["decision-quality"],
+      "Jeff Bezos's 'Type 1 and Type 2' framework: one-way doors require extensive deliberation because you can't undo them; two-way doors should be decided quickly because the cost of being wrong is low and you learn more by moving. The error most organizations make is treating too many decisions like one-way doors, which makes them slow when they should be fast. The genuinely one-way doors — hiring, culture, irreversible commitments — deserve the slowness. Most decisions don't. Reversibility also does quiet work in the heat of the moment: it's the gate that decides whether it's safe to make a call while you're hot at all — a two-way door makes waiting nearly free, so you spend it; a one-way door in a hot state is the one you never walk through tonight.",
+    essays: ["decision-quality", "the-option-to-wait"],
   },
   {
     id: "narrow-framing",
@@ -105,8 +114,8 @@ export const models: Model[] = [
     domain: "Decisions",
     tagline: "You reason more wisely about other people's problems than your own — so step outside your own to decide.",
     explanation:
-      "Two findings, pointing the same way. George Loewenstein's hot–cold empathy gap: in a 'hot' visceral state — fear, anger, infatuation, the panic after bad news — we systematically overweight the present feeling and can't model the calm self who has to live with the choice (and, once calm, can't quite believe we felt that way). And Solomon's paradox, named for the wise king who ruined his own house: Igor Grossmann and Ethan Kross found people reason more wisely about a friend's dilemma than an identical one of their own — and that the gap closes when they take distance from themselves. The practical tools are just ways to manufacture that distance. Temporal distance: how will this look in ten minutes, ten months, ten years? (Suzy Welch's 10/10/10 — the ten-minute pang usually shrinks against the ten-year view, which is exactly the recalibration a hot state blocks.) Social distance: what would I tell a friend in this spot, or what would the person I want to be do here? A simple cooling-off period does the same work by letting the hot state pass. The honest caveat runs the other way, though: distance is for stripping the visceral *overweighting*, not for numbing a feeling that is real information. 'It won't matter in ten years' flattens almost everything, and can become a way to talk yourself out of a problem worth acting on now. Use it on choices you'll have to live with once you're calm; don't use it to explain away the calm signal itself.",
-    essays: ["advice-you-dont-take"],
+      "Two findings, pointing the same way. George Loewenstein's hot–cold empathy gap: in a 'hot' visceral state — fear, anger, infatuation, the panic after bad news — we systematically overweight the present feeling and can't model the calm self who has to live with the choice (and, once calm, can't quite believe we felt that way). And Solomon's paradox, named for the wise king who ruined his own house: Igor Grossmann and Ethan Kross found people reason more wisely about a friend's dilemma than an identical one of their own — and that the gap closes when they take distance from themselves. The practical tools are just ways to manufacture that distance. Temporal distance: how will this look in ten minutes, ten months, ten years? (Suzy Welch's 10/10/10 — the ten-minute pang usually shrinks against the ten-year view, which is exactly the recalibration a hot state blocks.) Social distance: what would I tell a friend in this spot, or what would the person I want to be do here? A simple cooling-off period does the same work by letting the hot state pass. The honest caveat runs the other way, though: distance is for stripping the visceral *overweighting*, not for numbing a feeling that is real information. 'It won't matter in ten years' flattens almost everything, and can become a way to talk yourself out of a problem worth acting on now. Use it on choices you'll have to live with once you're calm; don't use it to explain away the calm signal itself. The cooling-off tool on this site runs the whole thing as a procedure: it settles decide-now-versus-wait on the two facts a hot state can still judge — is it reversible, is a real deadline closing — then walks the across-person and across-time moves and keeps the signal-versus-heat caveat in front of you.",
+    essays: ["advice-you-dont-take", "the-option-to-wait"],
   },
   {
     id: "implementation-intentions",
@@ -134,8 +143,8 @@ export const models: Model[] = [
     domain: "Systems",
     tagline: "The consequences of consequences are often more important than first-order effects.",
     explanation:
-      "Rent control lowers rents in the short term (first order) while reducing housing supply and raising rents in the long term (second order). Antibiotics kill bacteria immediately (first order) while selecting for resistant strains over time (second order). Most policy failures and unintended consequences come from acting on first-order effects without modeling the second. The question to always ask: 'And then what?'",
-    essays: ["second-order-thinking"],
+      "Rent control lowers rents in the short term (first order) while reducing housing supply and raising rents in the long term (second order). Antibiotics kill bacteria immediately (first order) while selecting for resistant strains over time (second order). Most policy failures and unintended consequences come from acting on first-order effects without modeling the second. The question to always ask: 'And then what?' — and the most useful thing that question reveals is the sign flip, where the effect you intended reverses into the one that lasts (the trap is almost always first-order positive; the things worth doing cost you up front). There's a tool for tracing it: /trace walks a move down a few orders, has you tag each effect better or worse, and reads the pattern.",
+    essays: ["second-order-thinking", "the-bill-comes-later"],
   },
   {
     id: "goodharts-law",

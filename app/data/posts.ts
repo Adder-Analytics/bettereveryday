@@ -618,6 +618,46 @@ export const posts: Post[] = [
 <p>The next time you catch yourself asking whether or not to do something, stop at the word "whether." Write the question again with an "or" in it and at least two real options after it. It costs a few minutes, it requires no special insight, and it routinely changes the answer — not because you reasoned better, but because you finally let yourself reason about the right thing. The worksheet on this site opens every general decision with exactly this move, because it's the one step that, skipped, makes all the careful thinking that follows quietly beside the point.</p>`,
   },
   {
+    slug: "the-option-to-wait",
+    title: "The Option to Wait",
+    date: "2026-07-12",
+    excerpt:
+      "When a decision feels urgent and your pulse is up, the real choice usually isn't the one in front of you. It's whether to decide it now at all — and if the door swings both ways, waiting is nearly free.",
+    readTime: 6,
+    tags: ["decisions", "psychology"],
+    content: `<p>Here is the thing about the worst decisions you've made in a hot state: at the time, they didn't feel like a choice between acting and waiting. They felt like a choice between acting and <em>losing</em>. Send the email now or let them get away with it. Sell now or watch it all evaporate. Say yes now or miss the one chance. The urgency wasn't a feeling you noticed and weighed — it was the frame the whole decision arrived in. And the frame had already deleted the option that would have saved you: the option to wait.</p>
+
+<p>Almost every regretted hot decision shares that shape. Not a bad answer to the question, but a failure to notice there was a prior question. Before "should I do this?" sits "do I have to decide this <em>right now</em>?" — and in a hot state, the honest answer is almost always no, disguised as an emphatic yes.</p>
+
+<h2>Why waiting is worth so much when you're hot</h2>
+
+<p>There's a reason to wait that has nothing to do with willpower or wisdom, and it's the one worth internalizing because it's just arithmetic. George Loewenstein called it the hot–cold empathy gap: in a visceral state — anger, fear, infatuation, the sting of a loss — you systematically overweight what you feel right now, and you lose the ability to model the calm version of yourself who has to live with the choice. The two of you genuinely can't see eye to eye. The hot self can't believe the cold self won't care; the cold self can't reconstruct why the hot self was so sure.</p>
+
+<p>Which means the decision you'd make in the next ten minutes and the one you'd make tomorrow morning are being made by two different people with two different sets of weights — and only one of them has to live with the result. Waiting isn't stalling. It's routing the decision to the self who's actually qualified to make it. The cost of waiting is whatever the delay actually forfeits; the benefit is a decision made with your real preferences instead of your temporary ones. When you're on fire, that trade is lopsided in favor of waiting almost every time.</p>
+
+<p>Finance has a clean name for the thing you're holding here: an option. The right, but not the obligation, to act later — once you know more, once the noise clears, once you've cooled off — is worth money precisely <em>because</em> the future is uncertain and you might learn something. Deciding now throws that option away to buy a certainty you don't need. In a calm state the option is worth a little. In a hot state, when you know your own judgement is temporarily compromised and about to un-compromise itself for free by morning, it's worth a great deal. Acting now spends it for nothing.</p>
+
+<h2>The gate is reversibility</h2>
+
+<p>So when is it safe to spend the option and just decide? The gate turns out to be a single question, and it's not "how sure am I" — it's "can I undo it?"</p>
+
+<p>Jeff Bezos's framing is the useful one: some doors are two-way and some are one-way. A two-way door you can walk back through — return the thing, unsend within the window, quit the plan you started, apologize and mean it. A one-way door doesn't swing back. The mistake most people make is treating too many decisions as one-way and agonizing over choices they could simply reverse. But in a hot state the error runs the other way and it's more dangerous: you treat a one-way door as if the consequences were as recoverable as your mood.</p>
+
+<p>Line the two facts up and the whole decision resolves almost mechanically. <strong>Reversible, and nothing external forcing the clock:</strong> wait — the option is nearly free and the version of you that collects on it is better. <strong>Irreversible, and nothing forcing the clock:</strong> this is the one combination you never act on hot, because you'd be spending a permanent consequence to relieve a temporary feeling. <strong>Reversible, but the window really is closing:</strong> go ahead — if you're wrong you can undo it, so the stakes of deciding warm are low, and you'll learn more by moving than by freezing. The genuinely hard case is the last one — <strong>irreversible and truly time-boxed</strong> — and it's rarer than it feels, because the clock is usually part of the heat.</p>
+
+<h2>Most deadlines are the feeling talking</h2>
+
+<p>That's the move the hot frame pulls hardest: it manufactures a deadline. "Now or never" is the native tongue of FOMO, and sunk cost speaks it too — the sense that if you don't act this instant, everything already invested is lost. Almost none of these deadlines survive contact with a plain question: <em>who, exactly, outside of me, is imposing this cutoff, and what actually happens at it?</em> The runaway price, the person who might say no if you wait, the opportunity that feels like it's evaporating — a few of these are real external deadlines. Most are the urgency generating its own justification.</p>
+
+<p>So before you count a decision as forced, make the deadline prove itself. And even when it's real, there's usually a move between "decide the whole thing now" and "miss it": buy time explicitly (ask for a day — people grant it far more often than the panic predicts), make the smallest reversible piece of the decision instead of the irreversible whole, or take the action that keeps the most options open. A forced one-way call is the worst spot to be in; the way out is rarely to decide faster and usually to shrink the irreversible part until it fits inside your calm.</p>
+
+<h2>The honest limit</h2>
+
+<p>"Wait" is not free advice, and it can be abused in two directions. The first: waiting has costs, and for a genuinely reversible, genuinely time-boxed choice, endless deliberation is its own mistake — you can dither away an option just as surely as you can spend it rashly. The gate cuts both ways. If the door swings back, a slow decision is as much a waste as a hot one.</p>
+
+<p>The second is subtler and worth more. "I'll feel differently in a week" is true of most hot feelings and is exactly how you talk yourself out of the ones that aren't heat but signal — the dread that's data, the quiet wrongness of a deal that pencils out fine, the relationship you keep flinching from. Cooling off is for stripping the visceral overweighting, not for numbing a feeling that's carrying real information. The test is whether the feeling <em>survives</em> the distance. Heat evaporates against the ten-year view; a true signal is still standing there when you're calm, which is a reason to act, not a reason to have waited it out. Waiting doesn't decide for you. It just hands the decision to the one person who should have had it all along — and who, conveniently, shows up for free if you let the night pass. The <a href="/cool">cooling-off tool</a> on this site is built around exactly this: it settles decide-now-versus-later on the two facts above, then helps you get the distance to see the rest. Its companion is <a href="/writing/advice-you-dont-take">the piece on why you see other people's dilemmas so much more clearly than your own</a>.</p>`,
+  },
+  {
     slug: "advice-you-dont-take",
     title: "You Give Better Advice Than You Take",
     date: "2026-06-23",
@@ -1140,6 +1180,186 @@ export const posts: Post[] = [
 <p>Third, and most important: the number is a byproduct, not the point. The reason to run a pre-mortem is the triage — the plan you changed while it was cheap, the tripwire you armed, the risk you chose to carry with open eyes. If you logged the forecast and skipped the fixes, you did the exercise backwards. The forecast is only what you&rsquo;d otherwise have thrown away: a clean reading of your own confidence, taken at the one moment it isn&rsquo;t lying to you, on a decision important enough that you&rsquo;ll want to know, later, whether your gut was any good.</p>
 
 <p>The pre-mortem asks you to imagine the future to improve the present. The forecast asks the present to leave a note for the future. It&rsquo;s the same motion run in opposite directions — and between them, a plan stops being something you merely hoped would work and becomes something you&rsquo;ll actually find out about.</p>`,
+  },
+  {
+    slug: "the-flip-point",
+    title: "The Flip Point",
+    date: "2026-07-11",
+    excerpt:
+      "Two people argue whether the odds are 60% or 70% and never notice they agree on the decision — because it flips at 40%. The argument is about the wrong number. There's a better one: the threshold where the choice breaks even, and which side of it you're on.",
+    readTime: 7,
+    tags: ["decisions"],
+    content: `<p>Two people are deciding whether to take a bet, and they&rsquo;re stuck on the odds. One says it&rsquo;s a 60% chance of working. The other holds out for 70%. They go back and forth, marshalling arguments, feeling the stakes rise with the disagreement — and they never notice the thing that would end the fight in a sentence: the decision flips at 40%. Both of their numbers are comfortably above it. They agree on what to do. They&rsquo;ve spent an afternoon arguing about a number that can&rsquo;t change the answer.</p>
+
+<p>This is the ordinary shape of a hard decision, and it&rsquo;s why so many of them feel harder than they are. We argue about the probability — the one input we can never actually pin down — when the question that decides the matter is a different one, and an easier one.</p>
+
+<h2>The trick doctors already use</h2>
+
+<p>Medicine ran into this problem first, because a doctor cannot wait for certainty and cannot manufacture it either. In 1980, Stephen Pauker and Jerome Kassirer wrote it up in the <em>New England Journal of Medicine</em> as <a href="/models#expected-value">the threshold approach to clinical decision making</a>, and the move is quietly radical. Instead of asking &ldquo;what is the probability this patient has the disease?&rdquo; — a number no one can know exactly — you ask a different question first: at <em>what</em> probability would treating and not treating come out even? That number, the <strong>treatment threshold</strong>, you can actually compute, because it depends only on the stakes: how much the treatment helps someone who has the disease, versus how much it harms someone who doesn&rsquo;t. Find the threshold, then all the clinician has to do is judge whether the patient sits above it or below it. Treat above, wait below.</p>
+
+<p>The genius is in what it demands of the hard, unknowable estimate: much less. You no longer need the exact probability. You need only to know which side of a line it&rsquo;s on — and being roughly right about that is a task a human can do. An unanswerable question has been traded for a bearable one.</p>
+
+<h2>Where the line is</h2>
+
+<p>The same line exists for any either/or decision, not just medical ones. Frame it against the alternative — staying put, doing nothing, the status quo — and there are only three numbers. How much <em>better</em> off you are if you act and it works out (call it the upside, <strong>B</strong>). How much <em>worse</em> off if you act and it doesn&rsquo;t (the downside, <strong>R</strong>). And your honest probability that it works. Acting beats the alternative exactly when the expected upside outweighs the expected downside — and the probability where those two are equal, the flip point, falls out as a fraction of the stakes:</p>
+
+<p><strong>p* = R / (B + R)</strong></p>
+
+<p>If the downside and the upside are the same size, the line sits at 50% — a coin you should only flip if you think it lands your way more than half the time. If the upside is four times the downside, the line drops to 20%: now you should act even when you think it probably won&rsquo;t work, because the times it does more than pay for the times it doesn&rsquo;t. If the downside dwarfs the upside, the line climbs toward 90-something, and you should hold out for near-certainty before you move. The threshold encodes something your gut keeps forgetting: <em>how sure you need to be depends entirely on what&rsquo;s at stake</em>, and a favorable enough payoff makes a long shot worth taking while a lopsided enough downside makes even a probable win a bad idea.</p>
+
+<h2>When to stop thinking</h2>
+
+<p>The threshold also answers a question people almost never ask out loud: when have I gathered enough? Douglas Hubbard, whose whole method for measuring intangibles rests on it, puts the rule plainly — the only thing worth measuring is a number that could <em>change the decision</em>. Information that can&rsquo;t move you across the line is worth nothing, however interesting it is. So once you know the flip point, you know where to spend your remaining worry: on the input nearest the line, and nowhere else. If you&rsquo;re at 70% and the line is at 40%, another week of research to decide whether you&rsquo;re &ldquo;really&rdquo; at 68% or 72% is a week wasted — you were going to act either way. The threshold turns &ldquo;have I thought about this enough?&rdquo; from a feeling into a test.</p>
+
+<h2>Where the practice pays off</h2>
+
+<p>There&rsquo;s a catch hiding in the word &ldquo;honest,&rdquo; and it&rsquo;s where the rest of this site turns out to have been preparation. The threshold tells you to act when your probability clears the line — but that&rsquo;s only sound if your probabilities mean what they say. A &ldquo;70%&rdquo; is worth acting on only if the things you call 70% likely happen about 70% of the time. Most people&rsquo;s don&rsquo;t: their <a href="/writing/your-ninety-percent">90% is really more like 60%</a>, and the gap is largest on their own plans, seen from the flattering <a href="/writing/nobody-thinks-theyre-the-base-rate">inside</a>. Which means the flip point makes overconfidence <em>concrete</em> in a way a trivia score never could. It&rsquo;s no longer &ldquo;you tend to run twelve points hot&rdquo; in the abstract. It&rsquo;s: shave your measured twelve points off this call, and watch your 70% become a 58% — and drop below the very line you were about to clear. The <a href="/calibrate">calibration trainer</a> teaches you to make the number honest; the flip point is where an honest number finally buys you something, and a dishonest one costs you.</p>
+
+<h2>The one place the whole frame breaks</h2>
+
+<p>Expected value has a failure mode, and it&rsquo;s important enough that the tool refuses to average past it. The arithmetic quietly assumes you get to keep playing — that a loss today is a number you subtract and then carry on. Some losses aren&rsquo;t like that. Ruin — the injury you don&rsquo;t recover from, the money you can&rsquo;t afford to lose, the reputation that doesn&rsquo;t come back — ends the game, and there is no long run in which a favorable average bails you out, because you&rsquo;re not there for it. Against a downside like that, the flip point is the wrong question. The right one is the oldest rule in finance: don&rsquo;t stake what you can&rsquo;t afford to lose, and build a <a href="/models#margin-of-safety">margin of safety</a> so wide that being wrong is survivable. A strong bet on ruin is still ruin. Good expected-value thinking includes knowing the one situation where you throw expected value out.</p>
+
+<h2>The honest limits</h2>
+
+<p>Three, and they matter, because a tool that turns feelings into a crisp number can launder a bad decision as easily as sharpen a good one. First: the payoffs are made up. You did not measure that the upside is &ldquo;7&rdquo; and the downside &ldquo;5&rdquo;; you felt it and wrote a number. That&rsquo;s allowed — the point was never the decimal — but it&rsquo;s exactly why the <em>threshold</em> is the output, not a verdict. If the decision only comes out &ldquo;act&rdquo; on precisely the numbers you chose and flips the moment you nudge them, the tool is telling you the truth: this is too close to call, and the numbers are casting a vote they haven&rsquo;t earned. An honest close call should be <em>felt</em> as close, then decided on what you couldn&rsquo;t quantify — reversibility, opportunity cost, who you become, which regret you can live with.</p>
+
+<p>Second: one hinge is a simplification. Real decisions turn on several uncertain things at once, and collapsing them to a single probability is a lie of convenience. But it&rsquo;s a productive one — if you genuinely can&rsquo;t name the one thing the decision most turns on, that&rsquo;s not a flaw in the tool, it&rsquo;s a sign you&rsquo;re not ready to decide and should still be reading. And third, the reminder underneath the other two: the flip point is a starting line for judgement, not a substitute for it. It tells you how much certainty the stakes demand and whether you plausibly have it. It cannot tell you that your upside is a fantasy or your probability a wish. It just makes those the questions you have to answer — which is the most any honest tool can do.</p>
+
+<p>What it does do, reliably, is end the argument about the wrong number. Once you can see the line, most decisions turn out not to be close at all; you were simply staring at the one figure that couldn&rsquo;t settle them. And for the genuine coin-flips it hands you back to yourself, un-laundered, with the honest verdict that the math won&rsquo;t decide this one. There&rsquo;s a <a href="/weigh">room for this</a> on the site now — give it the stakes and your honest odds, and it draws the line, checks it against your own calibration record, and, if you&rsquo;re going ahead, hands the call to the <a href="/decide">journal</a> so reality can grade it later. The decision was never &ldquo;are the odds 60 or 70.&rdquo; It was always: where&rsquo;s the line, and am I clearly past it?</p>`,
+  },
+  {
+    slug: "the-bill-comes-later",
+    title: "The Bill Comes Later",
+    date: "2026-07-13",
+    excerpt:
+      "Ask someone to choose $100 today or $110 next week and most take the hundred. Ask them to choose the same two, a year out, and they flip. That reversal is the engine behind almost every decision you regret — and it points at a filter for catching them.",
+    readTime: 6,
+    tags: ["decisions", "thinking"],
+    content: `<p>Here is a choice: $100 handed to you right now, or $110 a week from now. Most people take the hundred. A week isn&rsquo;t long, but <em>now</em> is now, and the extra ten dollars isn&rsquo;t enough to wait for. Now here is the same choice pushed into the future: $100 in a year, or $110 in a year and a week. Almost everyone flips and takes the hundred-and-ten. Same week of waiting, same ten dollars for it — but this time the wait costs nothing, because both rewards are far away and a week barely registers against a year.</p>
+
+<p>Nothing about the money changed. What changed was where the choice sat relative to <em>now</em>. And that single, strange reversal — patient about the far-off version, impatient about the near one — is one of the most reliably documented facts in the study of how people decide, and quietly the engine behind a startling share of the decisions we come to regret.</p>
+
+<h2>Why the near reward looms</h2>
+
+<p>The name for it is present bias, and the mechanism is that we don&rsquo;t discount the future at a steady rate. A rational discounter would treat every week of delay the same — a week is a week. We don&rsquo;t. We discount steeply between <em>now</em> and <em>soon</em>, and then gently between <em>soon</em> and <em>later</em>. George Ainslie mapped the shape of it in the 1970s; David Laibson gave it its standard modern form in 1997; Frederick, Loewenstein, and O&rsquo;Donoghue reviewed three decades of the evidence in 2002 and found the same anomaly staring out of study after study. The curve isn&rsquo;t a personal failing. It appears to be how the machinery is built.</p>
+
+<p>The consequence that matters here isn&rsquo;t about money at all. It&rsquo;s that any consequence far enough down the chain gets shrunk — not proportionally, but savagely — by the very discounting that leaves the immediate effect at full size. The reward you get now arrives vivid and whole. The cost you pay later arrives faded, abstract, easy to wave off. So a chain of events that ends badly can still feel good at the top, because you are feeling the beginning of it at full volume and the end of it through a wall.</p>
+
+<h2>The signature of a trap</h2>
+
+<p>Put that together with a fact about consequences, and a filter falls out. For a large class of decisions, the first-order effect and the later effects have <em>opposite signs</em>. The dessert is pleasant now and a cost later. The debt buys the thing now and takes it back later, with interest. The shortcut saves time now and creates the mess that eats it later. The soothing lie keeps the peace now and detonates later. The bounty on rat tails looks like pest control now and becomes a rat-breeding industry later. In each case the part you can feel is positive and the part that decides the outcome is negative — and present bias is standing right there making sure you weight them exactly wrong.</p>
+
+<p>This is what makes <em>first-order positive, later negative</em> not just one bad pattern among many but the actual signature of a trap. It is the shape of nearly everything that fools people, and it fools them through the same mechanism every time: the sweet part is now, the bill is later, and later is discounted into near-invisibility at the moment of choosing.</p>
+
+<p>The mirror image is just as useful, and just as counterintuitive. Almost everything genuinely worth doing has the opposite shape — <em>first-order negative, later positive</em>. Exercise, the hard conversation, saving instead of spending, asking the question that exposes what you don&rsquo;t know, doing the unglamorous version of the work. Cost up front, payoff deferred. And the reason these opportunities keep lying around unclaimed is precisely that most people read only the first line of the chain, feel the up-front cost at full size, and stop. The good things stay available because present bias is quietly warning everyone else off them.</p>
+
+<h2>The move is to find the flip, not to think harder</h2>
+
+<p>The ordinary advice — &ldquo;consider the consequences&rdquo; — is true and nearly useless, because the problem was never that you don&rsquo;t know consequences exist. It&rsquo;s that the discount curve hides the ones that count, and it does that even when you know it&rsquo;s happening. The reversal at the top of this essay happens to economists who study the reversal. Knowing about present bias buys you almost nothing on its own.</p>
+
+<p>What does buy you something is a specific, mechanical move: instead of asking &ldquo;is this a good idea,&rdquo; ask <em>when does the bill come</em> — and then find the point in the chain where the sign flips. Follow the move one step past the effect you want. And then what? And then what after that? Mark each effect for what it actually does to what you care about — better, or worse — and watch for the place where a run of pluses turns to a minus, or a minus turns to a plus. That flip is the whole decision. Everything before it is the part you could already feel; everything you learn is on the far side of it.</p>
+
+<p>The reason to do this on paper, or in a tool, rather than in your head is the same reason the bias is hard to beat from the inside: the trick is to drag the later cost out of the abstract and set it down next to the immediate reward, at the same size, where you have to look at both at once. That&rsquo;s a thing a procedure can do and a good intention can&rsquo;t. There&rsquo;s a <a href="/trace">room for it</a> on the site now — name the move, trace it down a few orders, tag each effect better or worse, and it reads the pattern back to you and points at the flip.</p>
+
+<h2>The honest limits</h2>
+
+<p>The filter flags; it doesn&rsquo;t forbid. Three things keep it honest. First, not everything pleasant now is a trap — some good things are good now <em>and</em> later, and the filter is there to earn them a second look, not to make you suspicious of joy. The tell of a trap isn&rsquo;t that the first order is positive; it&rsquo;s that the first order is positive and the later orders aren&rsquo;t. Watch the flip, not the pleasure.</p>
+
+<p>Second, the mirror error is real: turn this into a blanket rule that anything enjoyable must be secretly ruinous and anything painful secretly virtuous, and you&rsquo;ve just swapped one lazy heuristic for another. The sign of the <em>later</em> effect is the data. A cost up front with nothing on the far side of the flip is simply a cost.</p>
+
+<p>And third, a sign is not a size. This tells you which direction an effect points, not how much it weighs, and a small later minus doesn&rsquo;t cancel a large first-order plus. Finding the flip is what turns a vague unease into a specific tradeoff you can actually weigh — but weighing it is the next move, and it belongs to a <a href="/weigh">different tool</a>. What the sign flip does, reliably, is make sure the thing you weigh is the whole chain, and not just the part that shouts.</p>`,
+  },
+  {
+    slug: "a-record-you-can-hold",
+    title: "A Record You Can Hold",
+    date: "2026-07-14",
+    excerpt:
+      "This site keeps everything you write in your browser and sends nothing anywhere. That's the privacy story. The part no one tells you: browser storage isn't durable, and a record you'll lose is a review you'll never do. Durability isn't a feature bolted onto a record — it's part of what makes the record worth keeping.",
+    readTime: 6,
+    tags: ["decisions", "systems", "craft"],
+    content: `<p>Every tool on this site makes the same quiet promise. Log the decision now, at its honest confidence, and come back when the outcome is in to see whether your &ldquo;seventy percent&rdquo; was worth anything. Arm the tripwire today; the site will hold it until the date you set. Take a round in the trainers this week and another next month, and it will tell you whether your typical miss is shrinking. Every one of these is a bet that a thing you write today will still be here, unchanged, when the future it&rsquo;s about finally arrives.</p>
+
+<p>And all of it lives in your browser. Nothing is uploaded, there is no account, no server holds a copy — which is the honest privacy story, and a rare one. No one but you can read your decisions because there is no one else who <em>could</em>. But that same fact carries a cost the site spent a month quietly accumulating without ever naming: the browser is not a safe. It&rsquo;s a coat pocket.</p>
+
+<h2>What browser storage actually is</h2>
+
+<p>The data these tools keep sits in something called localStorage — a small key-value store the browser gives each site. It is genuinely useful and genuinely not durable, and the gap between those two is where records go to die. &ldquo;Clear browsing data,&rdquo; the button people press when a site misbehaves, erases it. So does clearing cookies for the site, because most browsers file the two together. It doesn&rsquo;t exist in a private window past the moment you close it. Under storage pressure, some browsers evict it from sites you haven&rsquo;t visited lately — and a decision journal you check quarterly is, by design, a site you don&rsquo;t visit lately. And it never leaves the one browser on the one device: log a decision on your laptop and it simply isn&rsquo;t on your phone, or on the laptop you buy next year.</p>
+
+<p>None of that is a malfunction. That is what browser storage <em>is</em>. It was built to make web pages faster and to remember small preferences, not to be the sole copy of a record you&rsquo;re counting on for years. Treating it as permanent is the mistake, and it&rsquo;s an easy one to make, because for weeks it behaves exactly like permanence. Right up until the afternoon it doesn&rsquo;t.</p>
+
+<h2>The hidden dependency in the review loop</h2>
+
+<p>This site is, underneath all its tools, one idea: the review loop. You can&rsquo;t tell a good decision from a lucky one in the moment, so you write down what you expect, and you go back later to check it against what happened. Calibration works the same way — the whole reason to record a forecast is to be scored by it once reality settles. The loop is the engine, and the loop has a term nobody writes into the equation: the record has to survive the wait.</p>
+
+<p>Notice how long these particular waits are. A calibration curve worth trusting takes dozens of forecasts, which is months. The trend that answers the question in this site&rsquo;s name compares your first rounds to your latest, which is longer still. A tripwire on a big commitment might sit armed for half a year. These aren&rsquo;t incidental delays; the delay <em>is</em> the mechanism — it&rsquo;s the gap in which luck and skill finally separate. Which means the substrate holding the record has to be at least as durable as the loop is long. A record that can&rsquo;t survive three months cannot calibrate you over three months. It isn&rsquo;t a weaker record. It&rsquo;s not a record at all — it&rsquo;s a note you happened to write to a version of yourself the browser will have deleted before it&rsquo;s read.</p>
+
+<p>So durability isn&rsquo;t a nice-to-have stapled onto the side of these tools. It&rsquo;s load-bearing. A forecast you&rsquo;ll lose and a forecast you never made come to exactly the same thing on review day: nothing to check.</p>
+
+<h2>You own your data, in spite of the browser</h2>
+
+<p>In 2019 a group of researchers at Ink &amp; Switch wrote down what they called the seven ideals of <em>local-first</em> software — software that keeps your data on your own device instead of on someone&rsquo;s server. Two of the seven are the ones this site keeps bumping into. One they call <em>longevity</em>: your data should outlive the app, still readable when the tool that made it is gone. The other is the plain one — <em>you own your data</em>: the software shouldn&rsquo;t be able to hold your information hostage, or lock it inside a format only it can open.</p>
+
+<p>Here is the uncomfortable part. A site that keeps your data only in your browser has nailed the privacy ideal and quietly failed both of these. If the single copy of your record can be wiped by a button you press for unrelated reasons, you don&rsquo;t really own it — you&rsquo;re renting it, on terms set by a cache-eviction heuristic you&rsquo;ll never see. Ownership isn&rsquo;t just &ldquo;no one else can read it.&rdquo; It&rsquo;s &ldquo;you can hold it, move it, and keep it, and nothing short of you decides when it&rsquo;s gone.&rdquo; A tool you can&rsquo;t get your data <em>out</em> of isn&rsquo;t really yours, however private it is while you have it.</p>
+
+<h2>The smallest honest fix: a file</h2>
+
+<p>A site with no backend can&rsquo;t solve this the way a cloud app does, by keeping the real copy on a server and syncing it down — and it shouldn&rsquo;t want to, because that server is exactly what the privacy story traded away. But it doesn&rsquo;t have to. There is an older, humbler form of ownership that asks for no account and leaks nothing: a file you hold. Export the whole record to a plain file on your own machine, and you can keep it, copy it, drop it in whatever you already trust to not lose things, and read it back into any browser you like. Nothing was uploaded. The privacy story is intact. The record is now yours in the full sense — portable and durable — because it lives somewhere you control instead of somewhere the browser controls.</p>
+
+<p>The decision journal on this site figured this out early and only for itself: it has long been able to export its log and merge one back in — &ldquo;the escape hatch,&rdquo; its own code says, &ldquo;that makes browser-only storage defensible.&rdquo; The mistake was leaving the hatch cut for one tool out of ten while the pre-mortem&rsquo;s armed tripwires and the trainers&rsquo; month-spanning records — the things that most need to survive — had none. The <a href="/data">your-data page</a> is that same escape hatch, widened to the whole site: one file, everything in it, restored anywhere.</p>
+
+<h2>What a file can&rsquo;t do, and why it&rsquo;s still the right floor</h2>
+
+<p>Honesty about the fix, the way the tools try to be honest about everything else. A file backup is manual — it protects you only as often as you remember to make one, which means the discipline it asks for is small but real: back up after a session that mattered, the way you&rsquo;d save a document you&rsquo;d hate to retype. It&rsquo;s a snapshot, not a live mirror, so it&rsquo;s worth exactly as much as its date. And restoring one replaces what&rsquo;s in the browser rather than merging two histories, so it&rsquo;s a way to <em>move</em> or <em>recover</em> a record, not yet a way to keep a laptop and a phone in sync. Real multi-device sync without a server is a harder problem, and the local-first researchers spent years on it; this isn&rsquo;t that.</p>
+
+<p>But a floor doesn&rsquo;t have to be a ceiling to be worth pouring. The failure this prevents isn&rsquo;t &ldquo;my two devices drifted a little out of sync.&rdquo; It&rsquo;s &ldquo;I cleared my browser and a year of my own decisions is gone, and the review I was building toward can never happen.&rdquo; That one is catastrophic and permanent, and a thirty-second file export takes it off the table completely. The best durability you&rsquo;ll actually use beats the perfect sync you won&rsquo;t.</p>
+
+<p>There&rsquo;s a small lesson in here that reaches past this website. We spend our attention on the quality of a record — is the forecast honest, is the reasoning sound, did I name the real failure — and almost none on whether the record will still exist when it&rsquo;s time to read it. But a judgement you can&rsquo;t retrieve is worth the same as one you never formed. The care you put into writing something down is capped by the odds it survives to be read. Which makes &ldquo;can I get this out and keep it&rdquo; not a technicality to sort out later, but part of the same question as &ldquo;is this any good&rdquo; — and the cheapest half of it to answer. So answer it. <a href="/data">Back the thing up.</a></p>`,
+  },
+  {
+    slug: "the-return",
+    title: "The Return",
+    date: "2026-07-15",
+    excerpt:
+      "Every decision tool here is built for the moment of deciding. But the moment of deciding is the easy half. The half that actually teaches you anything is the return — going back, months later, to see whether you were right — and it's the half almost everyone skips. Not because they forget. Because coming back is where you find out you were wrong.",
+    readTime: 6,
+    tags: ["decisions", "systems", "learning"],
+    content: `<p>Here is the uncomfortable thing about a decision journal, and it took this site a month of building tools before it was worth saying plainly. Writing down what you expect is the easy part. People will happily spend twenty minutes reasoning through a decision, naming their confidence, arming a tripwire. What they will not do — what almost no one does — is go back three months later and check. The record piles up, honest and unread. The single most common way a decision journal fails isn&rsquo;t a bad forecast. It&rsquo;s a good forecast nobody ever returns to grade.</p>
+
+<p>And that failure is quiet, because a journal you don&rsquo;t review still <em>feels</em> like a practice. You did the reflective, effortful thing at the front. You have the artifact. It&rsquo;s only when you notice that not one entry has a review written in it that you realize the loop was never closed — you built the first half of a bridge and stopped at the water.</p>
+
+<h2>The half that does the teaching</h2>
+
+<p>The reason the return matters more than the capture is the whole thesis of this site: in the moment, you cannot tell a good decision from a lucky one. They look identical from the inside. The only thing that separates them is time and a comparison — what you expected, set beside what happened. The forecast at the front is just the setup. The learning is entirely in the back half, the part where reality hands back its answer and you make yourself look at it. Skip the return and you haven&rsquo;t done a lightweight version of the practice. You&rsquo;ve done the part that doesn&rsquo;t work without the other part.</p>
+
+<p>This is exactly why some professions get sharper with experience and others just get more confident. The weather forecaster is told, every single morning, in writing, whether yesterday&rsquo;s &ldquo;70% chance of rain&rdquo; was any good. The return is automatic and unavoidable; the loop closes itself. Most of us don&rsquo;t get that courtesy. Our feedback is late, ambiguous, easy to reinterpret in our favor — and, crucially, <em>optional</em>. Nobody makes us go back. So we don&rsquo;t, and a decade of decisions teaches us less than a hundred scored forecasts would.</p>
+
+<h2>Why we don&rsquo;t come back</h2>
+
+<p>It&rsquo;s tempting to blame memory — we simply forget the review is due. That&rsquo;s part of it, and it&rsquo;s the part a reminder fixes. But it isn&rsquo;t the whole of it, because people skip reviews even when a calendar nudge is staring at them. The deeper reason is that the return is the one moment in the whole loop that can tell you something you don&rsquo;t want to hear.</p>
+
+<p>The capture is pleasant. You feel clever and deliberate. The return is an audit. It&rsquo;s where the confident call turns out to have been luck, where the plan you were sure of failed for a reason you&rsquo;d written down and ignored, where your &ldquo;90% sure&rdquo; meets a tally that says you&rsquo;re right about six times in ten. Hindsight bias stands ready to smooth it over — <em>I basically knew, the situation changed, it was mostly right</em> — and the easiest way to avoid the small sting of being wrong on the record is to never open the record. Avoidance doesn&rsquo;t feel like avoidance. It feels like being busy. The review was never <em>declined</em>; it just stayed perpetually not-yet-done.</p>
+
+<h2>A scheduled check is not a system</h2>
+
+<p>David Allen has a name for a commitment you&rsquo;ve made but haven&rsquo;t closed: an <em>open loop</em>. His whole method rests on a claim from the 1920s — Bluma Zeigarnik&rsquo;s finding that the mind keeps unfinished tasks half-loaded, quietly spending attention on them, in a way it stops doing the moment they&rsquo;re either done or parked somewhere trusted. The catch is that word, <em>trusted</em>. Writing a review date on an entry only discharges the open loop if it lands in a system you actually revisit. If it doesn&rsquo;t, you&rsquo;ve got the worst of both: the commitment is off your desk but not in any place that will ever hand it back, so it rots — and some part of you, not fooled, keeps carrying it anyway.</p>
+
+<p>The oldest fix for this is beautifully dumb. Allen calls it a tickler file; secretaries called it a follow-up file a century ago. Forty-three folders — thirty-one days, twelve months — and every future-dated thing goes into the folder for the day it comes due. You don&rsquo;t remember any of it. You just open today&rsquo;s folder, every day, and today&rsquo;s obligations are sitting in it. The genius isn&rsquo;t storage; it&rsquo;s <em>resurfacing</em>. The system remembers so you don&rsquo;t have to, and it brings each item back not constantly, nagging, but exactly once, on the day it&rsquo;s finally actionable.</p>
+
+<p>That is the piece this site had been missing. It could capture a decision beautifully. It could schedule the review, even drop it into your real calendar. But it had no folder to open — no single surface where the things whose day had come would simply be waiting. The reminder fires and vanishes; the entry sits buried in a log you&rsquo;d have to go spelunking for. A due review with nowhere to <em>land</em> is a reminder you swipe away.</p>
+
+<h2>A desk for the return</h2>
+
+<p>So now there&rsquo;s a folder you open: one page that reads everything the tools are holding for you and lays out what&rsquo;s due today, what&rsquo;s still coming, and a link from each item straight to the place you answer it. It doesn&rsquo;t nag and it doesn&rsquo;t gamify. It just makes the return the path of least resistance instead of a thing you&rsquo;d have to remember, locate, and steel yourself for. When the desk is empty, you&rsquo;re caught up. When it isn&rsquo;t, the work is right there, already gathered.</p>
+
+<p>The <em>coming up</em> section is there on purpose too, and it&rsquo;s not busywork. Seeing the wait laid out — this forecast grades in eleven weeks, that tripwire trips in March — is a quiet reminder that the delay is the mechanism, not a bug. The gap between deciding and knowing is exactly the interval in which luck and skill separate. Watching it shrink is watching the loop actually run.</p>
+
+<h2>What a desk can&rsquo;t do</h2>
+
+<p>The honest limits, in the spirit of every other tool here. A surface that gathers your reviews can make the return easy; it cannot make you willing. The willingness — to open the audit, to write &ldquo;this went worse than I said,&rdquo; to let the tally correct your sense of your own judgement — is yours to bring, and it&rsquo;s the actually hard part. The desk removes the friction and the forgetting. It can&rsquo;t remove the sting, and it shouldn&rsquo;t pretend to; the sting is the feedback doing its job.</p>
+
+<p>And it only knows what you told it. It can surface the reviews you scheduled and the tripwires you armed; it can&rsquo;t see the decision you made in your head and never wrote down, or notice that a forecast came true early. It&rsquo;s a folder, not an oracle. But a folder you open is worth more than an oracle you don&rsquo;t, and the whole point is that this one is cheap to open.</p>
+
+<p>There&rsquo;s a version of self-improvement that is all front-loading: new systems, fresh resolutions, elaborate capture. It feels productive and it teaches almost nothing, because learning doesn&rsquo;t live at the moment of commitment. It lives at the moment of return, when you find out. The commitment is a promise to your future self to look. Keeping that promise — going back, on the day, to see whether you were right — is the entire practice. The rest is just note-taking. <a href="/review">Go see what&rsquo;s due.</a></p>`,
   },
 ];
 

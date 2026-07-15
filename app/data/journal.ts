@@ -21,6 +21,11 @@ import type { Tone, Trend } from "./trainers";
    declared in DecideClient; the loader below tolerates missing or malformed
    fields so an older or hand-edited log degrades to "no data", not a throw. */
 type LogEntryish = {
+  id?: unknown;
+  situationTitle?: unknown;
+  question?: unknown;
+  decision?: unknown;
+  expectation?: unknown;
   decidedOn?: unknown;
   reviewOn?: unknown;
   reviewedOn?: unknown;
@@ -69,6 +74,72 @@ export function countDueReviews(): number {
   return readLog().filter(
     (e) => !e.reviewedOn && typeof e.reviewOn === "string" && e.reviewOn <= today
   ).length;
+}
+
+/** One scheduled review, flattened for the return desk (/review). Only the
+ *  fields that page needs — the question, what you expected, and the two dates
+ *  — read defensively so a hand-edited or older log degrades to blanks, not a
+ *  throw. The review desk owns none of this; the journal still owns the log. */
+export type ScheduledReview = {
+  id: string;
+  /** A one-line handle for the decision — its title, or the question, or a fallback. */
+  title: string;
+  /** What you wrote you expected to happen — the thing reality is about to grade. */
+  expectation: string;
+  confidence: number | null;
+  decidedOn: string;
+  reviewOn: string;
+};
+
+function toScheduledReview(e: LogEntryish): ScheduledReview {
+  const str = (v: unknown) => (typeof v === "string" ? v : "");
+  const title =
+    str(e.situationTitle).trim() ||
+    str(e.question).trim() ||
+    str(e.decision).trim() ||
+    "A logged decision";
+  return {
+    id: str(e.id) || `${str(e.reviewOn)}-${str(e.decidedOn)}`,
+    title,
+    expectation: str(e.expectation).trim(),
+    confidence: typeof e.confidence === "number" ? e.confidence : null,
+    decidedOn: str(e.decidedOn),
+    reviewOn: str(e.reviewOn),
+  };
+}
+
+/** Unreviewed entries whose review date has arrived — the reviews you owe,
+ *  newest-due last so the caller can sort by how overdue they are. */
+export function dueReviews(today = todayISO()): ScheduledReview[] {
+  return readLog()
+    .filter(
+      (e) => !e.reviewedOn && typeof e.reviewOn === "string" && e.reviewOn <= today
+    )
+    .map(toScheduledReview);
+}
+
+/** Unreviewed entries whose review date is still in the future — what's coming,
+ *  so the return desk can show the horizon as well as the debt. */
+export function upcomingReviews(today = todayISO()): ScheduledReview[] {
+  return readLog()
+    .filter(
+      (e) => !e.reviewedOn && typeof e.reviewOn === "string" && e.reviewOn > today
+    )
+    .map(toScheduledReview);
+}
+
+/** Decisions logged strictly after the given ISO date — for the backup nudge:
+ *  "N new decisions since your last backup". A blank/absent date counts nothing;
+ *  callers pass null to mean "no backup yet" and count differently. */
+export function countDecisionsLoggedAfter(iso: string): number {
+  return readLog().filter(
+    (e) => typeof e.decidedOn === "string" && e.decidedOn > iso
+  ).length;
+}
+
+/** Total decisions in the log — the "never backed up" denominator. */
+export function countDecisions(): number {
+  return readLog().length;
 }
 
 export type JournalProfile = {
