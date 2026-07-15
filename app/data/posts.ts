@@ -1315,6 +1315,52 @@ export const posts: Post[] = [
 
 <p>There&rsquo;s a small lesson in here that reaches past this website. We spend our attention on the quality of a record — is the forecast honest, is the reasoning sound, did I name the real failure — and almost none on whether the record will still exist when it&rsquo;s time to read it. But a judgement you can&rsquo;t retrieve is worth the same as one you never formed. The care you put into writing something down is capped by the odds it survives to be read. Which makes &ldquo;can I get this out and keep it&rdquo; not a technicality to sort out later, but part of the same question as &ldquo;is this any good&rdquo; — and the cheapest half of it to answer. So answer it. <a href="/data">Back the thing up.</a></p>`,
   },
+  {
+    slug: "the-return",
+    title: "The Return",
+    date: "2026-07-15",
+    excerpt:
+      "Every decision tool here is built for the moment of deciding. But the moment of deciding is the easy half. The half that actually teaches you anything is the return — going back, months later, to see whether you were right — and it's the half almost everyone skips. Not because they forget. Because coming back is where you find out you were wrong.",
+    readTime: 6,
+    tags: ["decisions", "systems", "learning"],
+    content: `<p>Here is the uncomfortable thing about a decision journal, and it took this site a month of building tools before it was worth saying plainly. Writing down what you expect is the easy part. People will happily spend twenty minutes reasoning through a decision, naming their confidence, arming a tripwire. What they will not do — what almost no one does — is go back three months later and check. The record piles up, honest and unread. The single most common way a decision journal fails isn&rsquo;t a bad forecast. It&rsquo;s a good forecast nobody ever returns to grade.</p>
+
+<p>And that failure is quiet, because a journal you don&rsquo;t review still <em>feels</em> like a practice. You did the reflective, effortful thing at the front. You have the artifact. It&rsquo;s only when you notice that not one entry has a review written in it that you realize the loop was never closed — you built the first half of a bridge and stopped at the water.</p>
+
+<h2>The half that does the teaching</h2>
+
+<p>The reason the return matters more than the capture is the whole thesis of this site: in the moment, you cannot tell a good decision from a lucky one. They look identical from the inside. The only thing that separates them is time and a comparison — what you expected, set beside what happened. The forecast at the front is just the setup. The learning is entirely in the back half, the part where reality hands back its answer and you make yourself look at it. Skip the return and you haven&rsquo;t done a lightweight version of the practice. You&rsquo;ve done the part that doesn&rsquo;t work without the other part.</p>
+
+<p>This is exactly why some professions get sharper with experience and others just get more confident. The weather forecaster is told, every single morning, in writing, whether yesterday&rsquo;s &ldquo;70% chance of rain&rdquo; was any good. The return is automatic and unavoidable; the loop closes itself. Most of us don&rsquo;t get that courtesy. Our feedback is late, ambiguous, easy to reinterpret in our favor — and, crucially, <em>optional</em>. Nobody makes us go back. So we don&rsquo;t, and a decade of decisions teaches us less than a hundred scored forecasts would.</p>
+
+<h2>Why we don&rsquo;t come back</h2>
+
+<p>It&rsquo;s tempting to blame memory — we simply forget the review is due. That&rsquo;s part of it, and it&rsquo;s the part a reminder fixes. But it isn&rsquo;t the whole of it, because people skip reviews even when a calendar nudge is staring at them. The deeper reason is that the return is the one moment in the whole loop that can tell you something you don&rsquo;t want to hear.</p>
+
+<p>The capture is pleasant. You feel clever and deliberate. The return is an audit. It&rsquo;s where the confident call turns out to have been luck, where the plan you were sure of failed for a reason you&rsquo;d written down and ignored, where your &ldquo;90% sure&rdquo; meets a tally that says you&rsquo;re right about six times in ten. Hindsight bias stands ready to smooth it over — <em>I basically knew, the situation changed, it was mostly right</em> — and the easiest way to avoid the small sting of being wrong on the record is to never open the record. Avoidance doesn&rsquo;t feel like avoidance. It feels like being busy. The review was never <em>declined</em>; it just stayed perpetually not-yet-done.</p>
+
+<h2>A scheduled check is not a system</h2>
+
+<p>David Allen has a name for a commitment you&rsquo;ve made but haven&rsquo;t closed: an <em>open loop</em>. His whole method rests on a claim from the 1920s — Bluma Zeigarnik&rsquo;s finding that the mind keeps unfinished tasks half-loaded, quietly spending attention on them, in a way it stops doing the moment they&rsquo;re either done or parked somewhere trusted. The catch is that word, <em>trusted</em>. Writing a review date on an entry only discharges the open loop if it lands in a system you actually revisit. If it doesn&rsquo;t, you&rsquo;ve got the worst of both: the commitment is off your desk but not in any place that will ever hand it back, so it rots — and some part of you, not fooled, keeps carrying it anyway.</p>
+
+<p>The oldest fix for this is beautifully dumb. Allen calls it a tickler file; secretaries called it a follow-up file a century ago. Forty-three folders — thirty-one days, twelve months — and every future-dated thing goes into the folder for the day it comes due. You don&rsquo;t remember any of it. You just open today&rsquo;s folder, every day, and today&rsquo;s obligations are sitting in it. The genius isn&rsquo;t storage; it&rsquo;s <em>resurfacing</em>. The system remembers so you don&rsquo;t have to, and it brings each item back not constantly, nagging, but exactly once, on the day it&rsquo;s finally actionable.</p>
+
+<p>That is the piece this site had been missing. It could capture a decision beautifully. It could schedule the review, even drop it into your real calendar. But it had no folder to open — no single surface where the things whose day had come would simply be waiting. The reminder fires and vanishes; the entry sits buried in a log you&rsquo;d have to go spelunking for. A due review with nowhere to <em>land</em> is a reminder you swipe away.</p>
+
+<h2>A desk for the return</h2>
+
+<p>So now there&rsquo;s a folder you open: one page that reads everything the tools are holding for you and lays out what&rsquo;s due today, what&rsquo;s still coming, and a link from each item straight to the place you answer it. It doesn&rsquo;t nag and it doesn&rsquo;t gamify. It just makes the return the path of least resistance instead of a thing you&rsquo;d have to remember, locate, and steel yourself for. When the desk is empty, you&rsquo;re caught up. When it isn&rsquo;t, the work is right there, already gathered.</p>
+
+<p>The <em>coming up</em> section is there on purpose too, and it&rsquo;s not busywork. Seeing the wait laid out — this forecast grades in eleven weeks, that tripwire trips in March — is a quiet reminder that the delay is the mechanism, not a bug. The gap between deciding and knowing is exactly the interval in which luck and skill separate. Watching it shrink is watching the loop actually run.</p>
+
+<h2>What a desk can&rsquo;t do</h2>
+
+<p>The honest limits, in the spirit of every other tool here. A surface that gathers your reviews can make the return easy; it cannot make you willing. The willingness — to open the audit, to write &ldquo;this went worse than I said,&rdquo; to let the tally correct your sense of your own judgement — is yours to bring, and it&rsquo;s the actually hard part. The desk removes the friction and the forgetting. It can&rsquo;t remove the sting, and it shouldn&rsquo;t pretend to; the sting is the feedback doing its job.</p>
+
+<p>And it only knows what you told it. It can surface the reviews you scheduled and the tripwires you armed; it can&rsquo;t see the decision you made in your head and never wrote down, or notice that a forecast came true early. It&rsquo;s a folder, not an oracle. But a folder you open is worth more than an oracle you don&rsquo;t, and the whole point is that this one is cheap to open.</p>
+
+<p>There&rsquo;s a version of self-improvement that is all front-loading: new systems, fresh resolutions, elaborate capture. It feels productive and it teaches almost nothing, because learning doesn&rsquo;t live at the moment of commitment. It lives at the moment of return, when you find out. The commitment is a promise to your future self to look. Keeping that promise — going back, on the day, to see whether you were right — is the entire practice. The rest is just note-taking. <a href="/review">Go see what&rsquo;s due.</a></p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

@@ -181,6 +181,38 @@ function describeTrainer(raw: string): string | null {
   return "practice recorded";
 }
 
+/**
+ * A device-local marker recording the last date a full backup was written from
+ * this browser. Deliberately NOT in the STORES registry: it is metadata about
+ * this device's backup habit, not part of the record itself, so it must never
+ * travel inside a bundle (a record restored onto a new device shouldn't inherit
+ * the old one's "last backed up" date and be told it's safe when it isn't).
+ * The return desk (/review) reads it to nudge; the /data page writes it on a
+ * successful export.
+ */
+export const LAST_BACKUP_KEY = "data:lastBackupOn:v1";
+
+/** Record that a backup was made today (ISO date). Never throws. */
+export function markBackedUp(iso: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(LAST_BACKUP_KEY, iso);
+  } catch {
+    /* a locked-down browser can refuse; the backup itself still succeeded */
+  }
+}
+
+/** The ISO date of the last backup written from this browser, or null. */
+export function readLastBackup(): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const v = window.localStorage.getItem(LAST_BACKUP_KEY);
+    return v && /^\d{4}-\d{2}-\d{2}$/.test(v) ? v : null;
+  } catch {
+    return null;
+  }
+}
+
 export type Bundle = {
   app: typeof BUNDLE_APP;
   kind: typeof BUNDLE_KIND;

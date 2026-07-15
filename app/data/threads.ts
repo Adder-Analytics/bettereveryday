@@ -151,6 +151,11 @@ export const threads: Thread[] = [
         slug: "a-record-you-can-hold",
         why: "The precondition under this entire thread: every tool above logs a forecast now to be graded months later — which only works if the record survives the wait. Why durability is part of what makes a record worth keeping, and the one-file backup that provides it.",
       },
+      {
+        kind: "essay",
+        slug: "the-return",
+        why: "And the other precondition: the record only teaches you if you go back to it. Why the return — the coming-back, months later, to find out whether you were right — is the half of the loop almost everyone skips, and the one desk that gathers everything you scheduled so it stops depending on memory.",
+      },
     ],
   },
   {

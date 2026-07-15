@@ -6,6 +6,7 @@ import {
   applyBundle,
   buildBundle,
   describeBundle,
+  markBackedUp,
   parseBundle,
   summarize,
   type StoreDescriptor,
@@ -94,6 +95,9 @@ export default function DataClient() {
         return;
       }
       download(`bettereveryday-backup-${todayISO()}.json`, JSON.stringify(bundle, null, 2));
+      // Record the backup so the return desk can stop nudging and start
+      // counting from here ("N new decisions since your last backup").
+      markBackedUp(todayISO());
       setNote({
         kind: "ok",
         text: `Backed up ${present === 1 ? "1 store" : `${present} stores`} to a file. Keep it somewhere you'll find it — that file is now the only copy that survives clearing this browser.`,

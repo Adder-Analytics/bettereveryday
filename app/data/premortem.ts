@@ -134,6 +134,66 @@ export function dueTripwireChecks(pm: Premortem, today = todayISO()): PremortemR
   return pm.reasons.filter((r) => isDueTripwireCheck(r, today));
 }
 
+/** An armed tripwire whose check date is still ahead — the pre-mortem's
+ *  equivalent of a review that hasn't come due yet. */
+export function isUpcomingTripwireCheck(r: PremortemReason, today = todayISO()): boolean {
+  return (
+    r.triage === "tripwire" &&
+    !!r.signal.trim() &&
+    !!r.checkOn &&
+    r.checkOn > today &&
+    !r.checkedOn
+  );
+}
+
+/** One tripwire check, flattened with its parent plan for the return desk
+ *  (/review) — everything that page needs to show a check and link to it. */
+export type ScheduledCheck = {
+  id: string;
+  /** The plan this tripwire guards, in one line. */
+  plan: string;
+  /** The observable signal that means "stop and reconsider". */
+  signal: string;
+  /** The failure the tripwire was set against. */
+  failure: string;
+  checkOn: string;
+};
+
+function toScheduledCheck(pm: Premortem, r: PremortemReason): ScheduledCheck {
+  return {
+    id: `${pm.id}:${r.id}`,
+    plan: pm.plan.trim() || "A plan",
+    signal: r.signal.trim(),
+    failure: r.text.trim(),
+    checkOn: r.checkOn,
+  };
+}
+
+/** Every armed tripwire check whose date has arrived, across all pre-mortems. */
+export function dueTripwireCheckItems(today = todayISO()): ScheduledCheck[] {
+  return loadSavedPremortems().flatMap((pm) =>
+    pm.reasons.filter((r) => isDueTripwireCheck(r, today)).map((r) => toScheduledCheck(pm, r))
+  );
+}
+
+/** Every armed tripwire check whose date is still ahead — the horizon. */
+export function upcomingTripwireCheckItems(today = todayISO()): ScheduledCheck[] {
+  return loadSavedPremortems().flatMap((pm) =>
+    pm.reasons.filter((r) => isUpcomingTripwireCheck(r, today)).map((r) => toScheduledCheck(pm, r))
+  );
+}
+
+/** Pre-mortems created strictly after the given ISO date — for the backup
+ *  nudge. A blank/absent createdOn counts nothing. */
+export function countPremortemsCreatedAfter(iso: string): number {
+  return loadSavedPremortems().filter((pm) => pm.createdOn && pm.createdOn > iso).length;
+}
+
+/** Total saved pre-mortems — the "never backed up" denominator. */
+export function countPremortems(): number {
+  return loadSavedPremortems().length;
+}
+
 /**
  * Read the saved pre-mortems from the browser. Read-only, like
  * app/data/journal.ts — the pre-mortem room owns its storage; this exists so

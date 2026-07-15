@@ -150,7 +150,17 @@ export default function Home() {
           trains the three skills underneath every forecast — how sure you should
           be, how to get to a number at all, and how much a new fact should move
           it — and shows those records beside the one that counts: how your real,
-          reviewed decisions actually went. And once your record spans enough
+          reviewed decisions actually went. When those reviews and the tripwire
+          checks you armed come due, the{" "}
+          <Link
+            href="/review"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            return desk
+          </Link>{" "}
+          gathers every one of them in one place, so the second half of the loop
+          — coming back to find out whether you were right — is the one page you
+          open, not a thing you have to remember. And once your record spans enough
           time, it answers the question in the site&rsquo;s name — your first
           rounds beside your latest, whether you&rsquo;re actually getting
           better. Reading notes capture what specific
@@ -188,6 +198,12 @@ export default function Home() {
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Decision journal →
+          </Link>
+          <Link
+            href="/review"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Due for review →
           </Link>
           <Link
             href="/premortem"
