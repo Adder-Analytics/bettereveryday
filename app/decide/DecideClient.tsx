@@ -628,18 +628,35 @@ export default function DecideClient({
   useEffect(() => {
     const savedStore = loadJSON<Store>(STORAGE_KEY, {});
     const savedLog = loadJSON<LogEntry[]>(LOG_KEY, []);
+    const mergedLog = Array.isArray(savedLog) ? savedLog.map(mergeLogEntry) : [];
     const params = new URLSearchParams(window.location.search);
     const requested = params.get("s");
     const wantsLog = params.get("log") === "1";
+    // The return desk deep-links here with ?review=<entry id> so a due review
+    // opens straight to its own review screen — no hunting through the log.
+    const reviewParam = params.get("review");
+    const reviewTarget =
+      reviewParam && mergedLog.some((e) => e.id === reviewParam)
+        ? reviewParam
+        : null;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setStore(savedStore && typeof savedStore === "object" ? savedStore : {});
-    setLog(Array.isArray(savedLog) ? savedLog.map(mergeLogEntry) : []);
+    setLog(mergedLog);
     // The journal knows about the funeral: due tripwire checks from the
     // pre-mortem room surface here too, read-only (data/premortem.ts).
     setDueTripwires(countDueTripwireChecks());
     if (requested && situations.some((s) => s.id === requested)) {
       setActiveId(requested);
+    } else if (reviewParam) {
+      // A ?review deep link from the return desk. Open the entry's own review
+      // screen when the id resolves; if it doesn't (a stale link, a hand-edited
+      // log), fall back to the log list — never worse than the old ?log=1.
+      setScreen("log");
+      if (reviewTarget) setReviewId(reviewTarget);
+      // Strip the param so a refresh or a later "mark reviewed" doesn't leave a
+      // dangling deep-link in the URL; the screen state carries it from here.
+      window.history.replaceState(null, "", window.location.pathname);
     } else if (wantsLog) {
       setScreen("log");
     }

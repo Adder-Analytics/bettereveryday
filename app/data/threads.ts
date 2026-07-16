@@ -156,6 +156,11 @@ export const threads: Thread[] = [
         slug: "the-return",
         why: "And the other precondition: the record only teaches you if you go back to it. Why the return — the coming-back, months later, to find out whether you were right — is the half of the loop almost everyone skips, and the one desk that gathers everything you scheduled so it stops depending on memory.",
       },
+      {
+        kind: "essay",
+        slug: "the-last-inch",
+        why: "The final polish on the loop: even for the willing, the return dies on the ten seconds of hunting between 'it's due' and answering it. Why friction, not motivation, is usually what stops us — and the discipline of sanding away the navigation friction while leaving the thinking friction, which is the review itself, exactly where it is.",
+      },
     ],
   },
   {
