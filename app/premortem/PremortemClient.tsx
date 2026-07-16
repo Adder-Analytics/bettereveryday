@@ -279,6 +279,9 @@ export default function PremortemClient() {
   const [draft, setDraft] = useState<Draft | null>(null);
   const [screen, setScreen] = useState<"home" | "work" | "view">("home");
   const [viewId, setViewId] = useState<string | null>(null); // "sample" allowed
+  // The return desk deep-links here with ?check=<pm id>:<reason id>; this is the
+  // reason to scroll to and highlight once the pre-mortem view opens.
+  const [focusReasonId, setFocusReasonId] = useState<string | null>(null);
   const [reasonInput, setReasonInput] = useState("");
   const [activeLens, setActiveLens] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -288,11 +291,28 @@ export default function PremortemClient() {
   useEffect(() => {
     const savedList = loadJSON<Premortem[]>(SAVED_KEY, []);
     const savedDraft = loadJSON<Draft | null>(DRAFT_KEY, null);
+    const merged = Array.isArray(savedList) ? savedList.map(mergePremortem) : [];
+    // Honor a ?check=<pm id>:<reason id> deep link from the return desk: open
+    // that pre-mortem's view straight to the tripwire whose check is due.
+    const checkParam = new URLSearchParams(window.location.search).get("check");
+    const [checkPmId, checkReasonId] = checkParam
+      ? checkParam.split(":")
+      : [null, null];
+    const targetPm =
+      checkPmId && merged.find((p) => p.id === checkPmId) ? checkPmId : null;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
-    setSaved(Array.isArray(savedList) ? savedList.map(mergePremortem) : []);
+    setSaved(merged);
     if (savedDraft && (savedDraft.plan || (savedDraft.reasons ?? []).length > 0)) {
       setDraft(mergeDraft(savedDraft));
+    }
+    if (targetPm) {
+      setViewId(targetPm);
+      setScreen("view");
+      if (checkReasonId) setFocusReasonId(checkReasonId);
+      // Strip the param so a refresh doesn't reopen it and the URL stays clean;
+      // the screen state carries the target from here.
+      window.history.replaceState(null, "", window.location.pathname);
     }
     setHydrated(true);
     /* eslint-enable react-hooks/set-state-in-effect */
@@ -344,6 +364,7 @@ export default function PremortemClient() {
   const goHome = useCallback(() => {
     setScreen("home");
     setViewId(null);
+    setFocusReasonId(null);
     setCopied(false);
     top();
   }, [top]);
@@ -352,6 +373,7 @@ export default function PremortemClient() {
     (id: string) => {
       setViewId(id);
       setScreen("view");
+      setFocusReasonId(null);
       setCopied(false);
       top();
     },
@@ -570,6 +592,7 @@ export default function PremortemClient() {
         <PremortemView
           pm={pm}
           isSample={viewId === "sample"}
+          focusReasonId={focusReasonId}
           onBack={goHome}
           onCopy={() => copy(buildPremortemMemo(pm))}
           onICS={() => downloadICS(pm)}
@@ -1094,6 +1117,7 @@ function StepHeader({
 function PremortemView({
   pm,
   isSample,
+  focusReasonId,
   onBack,
   onCopy,
   onICS,
@@ -1104,6 +1128,7 @@ function PremortemView({
 }: {
   pm: Premortem;
   isSample: boolean;
+  focusReasonId: string | null;
   onBack: () => void;
   onCopy: () => void;
   onICS: () => void;
@@ -1117,6 +1142,20 @@ function PremortemView({
   const changes = pm.reasons.filter((r) => r.triage === "change").length;
   const accepted = pm.reasons.filter((r) => r.triage === "accept").length;
   const dueChecks = dueTripwireChecks(pm).length;
+
+  // When the return desk deep-links to one tripwire, bring it to the middle of
+  // the screen and glow its card briefly, so the check that's due is the thing
+  // the eye lands on — then fade, so it reads as a highlight, not a permanent
+  // state. Only the navigation friction is removed; the answer is still yours.
+  const focusRef = useRef<HTMLLIElement | null>(null);
+  const [glow, setGlow] = useState(false);
+  useEffect(() => {
+    if (!focusReasonId || !focusRef.current) return;
+    focusRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    setGlow(true);
+    const t = setTimeout(() => setGlow(false), 2400);
+    return () => clearTimeout(t);
+  }, [focusReasonId]);
 
   return (
     <div>
@@ -1154,10 +1193,17 @@ function PremortemView({
         It failed because…
       </h3>
       <ol className="mt-4 space-y-4">
-        {pm.reasons.map((r, i) => (
+        {pm.reasons.map((r, i) => {
+          const focused = r.id === focusReasonId;
+          return (
           <li
             key={r.id}
-            className="rounded-lg border border-[var(--border)] bg-[var(--card)] p-4"
+            ref={focused ? focusRef : undefined}
+            className={`rounded-lg border bg-[var(--card)] p-4 transition-all duration-500 ${
+              focused && glow
+                ? "border-[var(--accent)] ring-2 ring-[var(--accent)] ring-offset-2 ring-offset-[var(--background)]"
+                : "border-[var(--border)]"
+            }`}
           >
             <p className="text-sm text-[var(--foreground)] leading-relaxed">
               <span className="text-xs font-semibold text-[var(--muted)] mr-2">
@@ -1192,7 +1238,8 @@ function PremortemView({
               </div>
             )}
           </li>
-        ))}
+          );
+        })}
       </ol>
 
       <div className="mt-8 flex flex-wrap items-center gap-3">

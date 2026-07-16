@@ -1361,6 +1361,48 @@ export const posts: Post[] = [
 
 <p>There&rsquo;s a version of self-improvement that is all front-loading: new systems, fresh resolutions, elaborate capture. It feels productive and it teaches almost nothing, because learning doesn&rsquo;t live at the moment of commitment. It lives at the moment of return, when you find out. The commitment is a promise to your future self to look. Keeping that promise — going back, on the day, to see whether you were right — is the entire practice. The rest is just note-taking. <a href="/review">Go see what&rsquo;s due.</a></p>`,
   },
+  {
+    slug: "the-last-inch",
+    title: "The Last Inch",
+    date: "2026-07-16",
+    excerpt:
+      "The return desk gathered every review you owe into one place and removed the excuse of forgetting. But it left one tax unpaid: the walk from the desk to the drawer. That last inch — the entry you still have to hunt for — is where the return dies for the people who actually meant to do it. Not motivation. Friction.",
+    readTime: 5,
+    tags: ["decisions", "systems", "habits"],
+    content: `<p>Yesterday this site built a desk for the return — one page that reads every review you owe and every tripwire you armed, and lays them out on the day they come due. It was the right thing to build, because the review is the half of the loop that does the teaching and the half almost everyone skips. But building it exposed a smaller failure hiding behind the big one, and this is about that.</p>
+
+<p>Here was the desk, working exactly as designed. It told you a decision was due for review. You clicked. And it dropped you at the front door of the journal — the whole log, every entry you&rsquo;d ever written — and left you to find the one that was actually due. Ten seconds of scanning. A scroll, a squint, a &ldquo;which one was it.&rdquo; Nothing, really. Except that ten seconds of friction, arriving at precisely the moment you were already reluctant, is often the whole difference between doing the review and deciding to do it later. Later never comes. The desk had removed the excuse of forgetting and quietly replaced it with the excuse of hassle.</p>
+
+<h2>The thing that actually stops people</h2>
+
+<p>We badly misjudge what blocks our own behavior. We assume the barrier is motivation — that if we just wanted it more, cared more, had more discipline, we&rsquo;d act. So we try to want it more. And the research on actually getting people to do things keeps finding that the binding constraint isn&rsquo;t wanting at all. It&rsquo;s friction.</p>
+
+<p>The cleanest demonstration is sixty years old. In 1965, Howard Leventhal and colleagues at Yale tried to get students to go get a tetanus shot. One group got a vivid, frightening pamphlet about tetanus; another got a mild one. The fear barely mattered — the terrified students were no more likely to show up at the health center than the calm ones. What moved the needle was absurdly small: a second group got a campus map with the health service circled and a nudge to look at their week and pick a time. That was it. No new information, no more fear. Shot rates went from around three percent to nearly thirty. The students had wanted the shot the whole time. What they lacked was not motivation but a greased path — what psychologists came to call a <em>channel factor</em>, a small feature of the situation that opens or blocks the road between intention and action.</p>
+
+<p>Once you&rsquo;ve seen that, you see it everywhere. The retirement plan people join at four times the rate when the box is pre-checked. The form abandoned because it asked for one detail you&rsquo;d have to go find. The habit that survives only after you set the running shoes by the door. None of these are motivation problems, and all of them get treated as such — with pep talks that do nothing, when a shove on the physical arrangement would do everything.</p>
+
+<h2>Why the return, of all things, cannot afford any friction</h2>
+
+<p>Every behavior needs three things to line up at once: some motivation, enough ability, and a prompt to do it now. That&rsquo;s BJ Fogg&rsquo;s model, and its useful consequence is a lever rule: when a behavior isn&rsquo;t happening, you can raise the motivation or you can make the thing easier — and motivation is the unreliable lever, expensive and prone to draining away right when you need it.</p>
+
+<p>Now recall what the last essay said about the return specifically: it is the one moment in the loop where motivation is not just low but actively negative. Going back to grade your own forecast is an audit that can tell you the confident call was luck, that your &ldquo;ninety percent&rdquo; hits six times in ten. Some part of you doesn&rsquo;t want to look. So the motivation lever, for this task, is not merely unreliable — it&rsquo;s pointed the wrong way. Which leaves exactly one lever that works: make it easier. If you cannot count on wanting to do the review, the only thing that saves the practice is that doing it costs almost nothing. Ten seconds of hunting, against a task you&rsquo;re already avoiding, is not a rounding error. It&rsquo;s the tax that closes the whole enterprise.</p>
+
+<p>So the desk changed. Now each due item links not to the journal but to <em>that entry&rsquo;s</em> review, already open. A due tripwire drops you inside its pre-mortem with the exact one lit up and centered on the screen, so your eye lands on the thing that&rsquo;s due before you&rsquo;ve even read the page. The distance from &ldquo;it&rsquo;s time&rdquo; to &ldquo;I&rsquo;m answering it&rdquo; is one click, and the click lands on the answer, not near it. That is the entire change. It sounds like nothing. It is the tetanus map.</p>
+
+<h2>The inch you must not remove</h2>
+
+<p>But there&rsquo;s a discipline in this that&rsquo;s easy to get wrong, and getting it wrong would ruin the tool. If a little less friction is good, why not none? Why make the return a click at all — why not a &ldquo;mark reviewed&rdquo; button right there on the desk, so you could clear an all-clear tripwire without leaving the page?</p>
+
+<p>Because there are two frictions in the way, and they are not the same. One is <em>navigation</em> friction: the hunting, the scrolling, the getting-there. That friction is pure tax — it protects nothing and it should be sanded to zero. The other is <em>thinking</em> friction: the cost of actually setting what you predicted beside what happened and letting the gap land. That friction is the point. It <em>is</em> the review. Remove it and you haven&rsquo;t made the return efficient; you&rsquo;ve replaced it with a reflex — a one-tap &ldquo;done&rdquo; that is indistinguishable from the calendar reminder you swipe away without reading. The whole reason the loop teaches is that, for a moment, you have to look.</p>
+
+<p>So the deep link stops at the form. It carries you the whole distance across the navigation friction and sets you down at the exact spot where the thinking friction begins — and there it leaves you, because that inch is the one you came for. Make the path to the work frictionless; never make the work frictionless. That line is most of the difference between a tool that builds judgement and one that just feels productive.</p>
+
+<h2>Find your own last inch</h2>
+
+<p>This generalizes past a decision journal, and probably past software. Most of what you keep meaning to do and don&rsquo;t is not waiting on a surge of will. It&rsquo;s waiting on a door nobody oiled — the report that lives three folders deep, the person whose number you&rsquo;d have to go dig up, the good habit with fifteen seconds of setup you never eliminated. We spend our energy trying to want these things more, which is the one approach that reliably fails. The move is smaller and almost embarrassing: find the exact step where the road narrows, and widen it. Put the shot map in the envelope. Pre-check the box. Link straight to the entry.</p>
+
+<p>And then leave the last inch alone — the one where the actual thing happens. The goal was never a life with no friction in it. It was to spend every bit of friction you can afford on the part that matters, and none on the part that doesn&rsquo;t. <a href="/review">See what&rsquo;s due</a> — it&rsquo;s one click from here to the answer now.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

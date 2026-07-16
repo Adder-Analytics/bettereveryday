@@ -93,7 +93,9 @@ function reviewToItem(r: ScheduledReview, today: string): ReviewItem {
         : "no confidence recorded",
     dateISO: r.reviewOn,
     relDays: daysBetween(r.reviewOn, today),
-    href: "/decide?log=1",
+    // Deep-link straight to this entry's review screen, not the whole log —
+    // the return only happens if it's one click from "it's due" to answering.
+    href: `/decide?review=${encodeURIComponent(r.id)}`,
   };
 }
 
@@ -109,7 +111,9 @@ function checkToItem(c: ScheduledCheck, today: string): ReviewItem {
     meta: c.failure ? `guards against: ${c.failure}` : "armed tripwire",
     dateISO: c.checkOn,
     relDays: daysBetween(c.checkOn, today),
-    href: "/premortem",
+    // Deep-link to the exact tripwire inside its pre-mortem (id is `pm:reason`),
+    // so the desk lands you on the check that's due, not the room's front door.
+    href: `/premortem?check=${encodeURIComponent(c.id)}`,
   };
 }
 
