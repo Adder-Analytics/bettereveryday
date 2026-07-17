@@ -36,10 +36,10 @@ export default function Home() {
             New here? Start with a reading path →
           </Link>
           <Link
-            href="/decide"
+            href="/tools"
             className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
-            Facing a decision now? Work it through →
+            Facing a decision now? Find the right tool →
           </Link>
           <span className="text-sm text-[var(--muted)]">Updated {lastUpdated}</span>
         </div>
@@ -95,92 +95,31 @@ export default function Home() {
           >
             playbook
           </Link>{" "}
-          flips them around so you can find the right one by the moment you&rsquo;re
-          in, and the{" "}
+          flips them around so you can find the right idea by the moment
+          you&rsquo;re in, and reading notes capture what specific books did to my
+          thinking.
+        </p>
+        <p className="text-sm text-[var(--muted)] leading-relaxed max-w-md mb-4">
+          Alongside the reading is a set of working instruments to think a real
+          decision through — weigh a close call, trace it past the first-order
+          effect, cool a hot one, run a pre-mortem, log a forecast and come back
+          to grade it. The{" "}
           <Link
-            href="/decide"
+            href="/tools"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
-            decision journal
+            toolkit
           </Link>{" "}
-          lets you think a real decision through, log what you expect to happen,
-          and come back later to check it against what actually did. Before a
-          big commitment, the{" "}
-          <Link
-            href="/premortem"
-            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            pre-mortem room
-          </Link>{" "}
-          finds the failure while it&rsquo;s still cheap — and leaves tripwires
-          on your calendar, not worries in your head. When it comes down to an
-          either/or, the{" "}
-          <Link
-            href="/weigh"
-            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            flip point
-          </Link>{" "}
-          stops you arguing the exact odds and shows the threshold where the
-          decision actually turns. When the call is being made hot — in anger,
-          panic, or FOMO — the{" "}
-          <Link
-            href="/cool"
-            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            cooling-off tool
-          </Link>{" "}
-          settles whether to decide now at all, then helps you get the distance
-          to see it straight. When a move looks good but you suspect the bill
-          comes later,{" "}
-          <Link
-            href="/trace"
-            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            and then what?
-          </Link>{" "}
-          follows it down its chain of consequences and finds the point where the
-          effect you intended reverses into the one you have to live with. The{" "}
-          <Link
-            href="/practice"
-            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            practice page
-          </Link>{" "}
-          trains the three skills underneath every forecast — how sure you should
-          be, how to get to a number at all, and how much a new fact should move
-          it — and shows those records beside the one that counts: how your real,
-          reviewed decisions actually went. When those reviews and the tripwire
-          checks you armed come due, the{" "}
-          <Link
-            href="/review"
-            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            return desk
-          </Link>{" "}
-          gathers every one of them in one place, so the second half of the loop
-          — coming back to find out whether you were right — is the one page you
-          open, not a thing you have to remember. And once your record spans enough
-          time, it answers the question in the site&rsquo;s name — your first
-          rounds beside your latest, whether you&rsquo;re actually getting
-          better. Reading notes capture what specific
-          books did to my thinking. Everything you log stays in your browser and
-          is sent nowhere — so when you&rsquo;re ready to trust it with months of
-          decisions, the{" "}
-          <Link
-            href="/data"
-            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            your-data page
-          </Link>{" "}
-          backs it all up to a file you own, and restores it on any device.
-          Everything cross-references, and everything is searchable (press{" "}
-          <kbd className="px-1 py-0.5 text-xs rounded border border-[var(--border)] bg-[var(--card)]">
-            /
-          </kbd>{" "}
-          anywhere).
+          hands you the right one by the moment you&rsquo;re in. Everything you
+          enter stays in your browser and is sent nowhere.
         </p>
         <div className="flex flex-wrap gap-6">
+          <Link
+            href="/tools"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            The toolkit →
+          </Link>
           <Link
             href="/models"
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
@@ -194,46 +133,10 @@ export default function Home() {
             The playbook →
           </Link>
           <Link
-            href="/decide"
-            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            Decision journal →
-          </Link>
-          <Link
             href="/review"
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Due for review →
-          </Link>
-          <Link
-            href="/premortem"
-            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            Run a pre-mortem →
-          </Link>
-          <Link
-            href="/weigh"
-            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            Find the flip point →
-          </Link>
-          <Link
-            href="/cool"
-            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            Cool a hot decision →
-          </Link>
-          <Link
-            href="/trace"
-            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            Trace the consequences →
-          </Link>
-          <Link
-            href="/practice"
-            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            Practice your judgement →
           </Link>
           <Link
             href="/notes"
