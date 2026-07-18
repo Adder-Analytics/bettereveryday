@@ -40,9 +40,17 @@ export default function PlaybookPage() {
             reference
           </Link>
           : instead of browsing ideas and hoping to remember them later, find the
-          moment you&rsquo;re in and see which few tools it calls for — and the one
-          concrete move each one prompts right here. Got a real decision in front
-          of you? Any situation below opens as a fill-in{" "}
+          moment you&rsquo;re in and see which few models it calls for — and the one
+          concrete move each one prompts right here. Where the site has built a{" "}
+          <Link
+            href="/tools"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            purpose-built instrument
+          </Link>{" "}
+          for the moment, it&rsquo;s handed to you right there — the idea and the
+          tool that does it, one click apart. And any situation below opens as a
+          fill-in{" "}
           <Link
             href="/decide"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
@@ -94,11 +102,29 @@ export default function PlaybookPage() {
               ))}
             </ul>
 
+            {s.tool && (
+              <div className="mt-8 rounded-lg border border-[var(--border)] bg-[var(--card)] p-5">
+                <p className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)] mb-2">
+                  The instrument for this moment
+                </p>
+                <Link href={s.tool.href} className="group inline-block">
+                  <span className="text-base font-semibold text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
+                    {s.tool.name} &rarr;
+                  </span>
+                </Link>
+                <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+                  {s.tool.move}
+                </p>
+              </div>
+            )}
+
             <Link
               href={`/decide?s=${s.id}`}
               className="mt-6 inline-block text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
             >
-              Work this through in the worksheet →
+              {s.tool
+                ? "Or work the whole call through in the journal →"
+                : "Work this through in the worksheet →"}
             </Link>
 
             {s.references.length > 0 && (
