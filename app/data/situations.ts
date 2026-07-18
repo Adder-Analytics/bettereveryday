@@ -1,6 +1,7 @@
 import { models } from "./models";
 import { posts } from "./posts";
 import { notes } from "./notes";
+import { getTool } from "./tools";
 
 /**
  * A "situation" is a moment in real life — a decision you're in, a number
@@ -22,6 +23,22 @@ export type SituationModel = {
   move: string;
 };
 
+/**
+ * The one working instrument built for *this* moment — the bridge from the
+ * idea to the thing that does it. The models tell you how to think here; a
+ * SituationTool hands you the purpose-built tool one click away, so the
+ * playbook stops leaving you at "now go do it yourself." Not every situation
+ * has a dedicated instrument (some are best worked through in the general
+ * journal, which every situation already links to); this is only set where a
+ * tool is genuinely *the* instrument for the moment.
+ */
+export type SituationTool = {
+  /** Must match an id in tools.ts. */
+  id: string;
+  /** What the instrument does specifically here — plain, second person. */
+  move: string;
+};
+
 export type Situation = {
   id: string;
   /** The moment, in the second person — "You're about to…". */
@@ -31,6 +48,8 @@ export type Situation = {
   /** The single operative question to ask yourself in this situation. */
   question: string;
   models: SituationModel[];
+  /** The purpose-built instrument for this moment, if one exists. */
+  tool?: SituationTool;
   /** Slugs of essays that go deeper on this situation. */
   essays?: string[];
   /** Slugs of reading notes worth pairing with it. */
@@ -66,6 +85,10 @@ export const situations: Situation[] = [
         move: "Play it two steps out, not one. The first-order effect is the obvious win; the second order is how everyone and everything around you adapts to it.",
       },
     ],
+    tool: {
+      id: "premortem",
+      move: "This is the exact moment the pre-mortem is built for. Assume it's a year later and this went badly, write the story of why, then turn each cause into a fix, an accepted risk, or a tripwire on your calendar — before you walk through the door.",
+    },
     essays: ["decision-quality"],
   },
   {
@@ -160,6 +183,10 @@ export const situations: Situation[] = [
         move: "Set the tripwire now: 'if the halfway milestone slips past its date, we re-plan the rest' — so the schedule gets revisited by trigger, not by hope.",
       },
     ],
+    tool: {
+      id: "premortem",
+      move: "Before you say the date out loud, hold its funeral. Imagine the deadline came and went and you missed by half — the pre-mortem walks you through writing what ate the time, then arms the halfway-milestone tripwire so a slipping schedule gets caught instead of hoped away.",
+    },
     essays: ["nobody-thinks-theyre-the-base-rate"],
     notes: ["kahneman-inside-view"],
   },
@@ -187,6 +214,10 @@ export const situations: Situation[] = [
         move: "A cheap-to-undo choice made fast isn't a mistake just because it missed. For a two-way door, speed was the right call and a wrong outcome is the cost of doing business.",
       },
     ],
+    tool: {
+      id: "decide",
+      move: "Grading your own past call? The decision journal keeps the honest version — what you actually predicted and how sure you were, written before you knew the answer — so you compare the forecast to what happened instead of the story hindsight rewrote. If it wasn't logged, log the next one, and this stops being guesswork.",
+    },
     essays: ["decision-quality"],
   },
   {
@@ -209,6 +240,10 @@ export const situations: Situation[] = [
         move: "The first-order effect is the metric moving. The second order is everything people quietly stop doing in order to move it.",
       },
     ],
+    tool: {
+      id: "trace",
+      move: "The gaming is a second-order effect, and those are exactly what and-then-what surfaces. Trace the metric past 'the number moves' — and then what do people do to move it, and then what stops getting done — until you find where the measure and the mission come apart.",
+    },
     essays: ["metric-not-the-mission"],
   },
   {
@@ -232,9 +267,13 @@ export const situations: Situation[] = [
       },
       {
         id: "second-order-effects",
-        move: "Before you intervene, ask 'and then what?' The thing you change will provoke a response, and the response is often the part that actually matters. Trace it a few steps at /trace.",
+        move: "Before you intervene, ask 'and then what?' The thing you change will provoke a response, and the response is often the part that actually matters.",
       },
     ],
+    tool: {
+      id: "trace",
+      move: "A stuck system pushes back, and the push-back is usually the whole story. Trace your intervention forward — and then what does the system do, and then what does that trigger — so you find the loop that will swallow the effort before you spend it.",
+    },
     essays: ["second-order-thinking", "the-bill-comes-later"],
   },
   {
@@ -285,6 +324,10 @@ export const situations: Situation[] = [
         move: "The feeling is telling you a vivid story about how this goes. Set it against what usually happens to people who make this move when they're this worked up. Go find the rate, or ask someone who's been here, before you trust the story.",
       },
     ],
+    tool: {
+      id: "cool",
+      move: "Don't work the decision yet — work whether to decide it now at all. Cool the call settles that first question, then hands you two research-backed ways to manufacture the distance to see it straight before you touch anything you can't take back.",
+    },
     essays: ["advice-you-dont-take", "decision-quality"],
     notes: ["kahneman-inside-view"],
   },
@@ -396,12 +439,23 @@ export type ResolvedReference = {
   href: string;
 };
 
+export type ResolvedSituationTool = {
+  id: string;
+  /** The tool's full name, e.g. "The Pre-mortem". */
+  name: string;
+  /** Short label, e.g. "Pre-mortem". */
+  short: string;
+  href: string;
+  move: string;
+};
+
 export type ResolvedSituation = {
   id: string;
   title: string;
   scene: string;
   question: string;
   models: ResolvedSituationModel[];
+  tool?: ResolvedSituationTool;
   references: ResolvedReference[];
 };
 
@@ -446,12 +500,26 @@ export function resolveSituation(situation: Situation): ResolvedSituation {
     });
   }
 
+  let resolvedTool: ResolvedSituationTool | undefined;
+  if (situation.tool) {
+    // getTool throws at build if the id is unknown — same discipline as models.
+    const t = getTool(situation.tool.id);
+    resolvedTool = {
+      id: t.id,
+      name: t.name,
+      short: t.short,
+      href: t.href,
+      move: situation.tool.move,
+    };
+  }
+
   return {
     id: situation.id,
     title: situation.title,
     scene: situation.scene,
     question: situation.question,
     models: resolvedModels,
+    tool: resolvedTool,
     references,
   };
 }
@@ -493,5 +561,17 @@ export function getWorksheetSituations() {
 export function getSituationsForModel(id: string): { id: string; title: string }[] {
   return situations
     .filter((s) => s.models.some((m) => m.id === id))
+    .map((s) => ({ id: s.id, title: s.title }));
+}
+
+/**
+ * Reverse lookup: which situations does this tool serve as the purpose-built
+ * instrument for. Declared once on the situation (`tool`), surfaced in both
+ * directions — the playbook hands you the instrument, and the toolkit names the
+ * moments it was built for — and the two can't drift.
+ */
+export function getSituationsForTool(id: string): { id: string; title: string }[] {
+  return situations
+    .filter((s) => s.tool?.id === id)
     .map((s) => ({ id: s.id, title: s.title }));
 }

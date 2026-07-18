@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { resolveToolGroups, payoffLabel, type Payoff } from "../data/tools";
+import { getSituationsForTool } from "../data/situations";
 
 export const metadata: Metadata = {
   title: "The Toolkit — Better Every Day",
@@ -73,6 +74,29 @@ export default function ToolsPage() {
                   <p className="mt-2 text-sm font-medium text-[var(--foreground)] pl-4 border-l-2 border-[var(--accent)] leading-relaxed">
                     Ask: {tool.ask}
                   </p>
+                  {(() => {
+                    const sits = getSituationsForTool(tool.id);
+                    if (sits.length === 0) return null;
+                    return (
+                      <div className="mt-3">
+                        <span className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+                          The moment it&rsquo;s built for
+                        </span>
+                        <ul className="mt-1.5 space-y-1">
+                          {sits.map((s) => (
+                            <li key={s.id}>
+                              <Link
+                                href={`/playbook#${s.id}`}
+                                className="text-sm text-[var(--accent)] hover:opacity-70 transition-opacity leading-snug"
+                              >
+                                {s.title} &rarr;
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    );
+                  })()}
                 </article>
               ))}
             </div>
