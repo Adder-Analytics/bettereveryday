@@ -54,7 +54,27 @@ type Inputs = {
   competitive: boolean;
 };
 
-const SEED: Inputs = {
+/**
+ * The blank the tool opens on: an empty move and three empty orders, no signs
+ * chosen. The read (verdict "need-more") stays a gentle "keep going" prompt
+ * until there's a real chain to score, so a newcomer with their own move to
+ * trace starts clean rather than deleting someone else's side-project story
+ * field by field. The illustrative scenario lives in EXAMPLE, shown read-only
+ * behind a toggle and never written to the live fields or to storage.
+ */
+const BLANK: Inputs = {
+  move: "",
+  first: "",
+  firstSign: null,
+  second: "",
+  secondSign: null,
+  third: "",
+  thirdSign: null,
+  peopleAdapt: false,
+  competitive: false,
+};
+
+const EXAMPLE: Inputs = {
   move: "Say yes to the side project for the extra income",
   first: "More money coming in, and it feels good to be wanted and busy",
   firstSign: "better",
@@ -69,24 +89,24 @@ const SEED: Inputs = {
 };
 
 function loadInputs(): Inputs {
-  if (typeof window === "undefined") return SEED;
+  if (typeof window === "undefined") return BLANK;
   try {
     const raw = window.localStorage.getItem(STORE_KEY);
-    if (!raw) return SEED;
+    if (!raw) return BLANK;
     const v = JSON.parse(raw) as Partial<Inputs>;
     return {
-      move: str(v.move, SEED.move),
-      first: str(v.first, SEED.first),
-      firstSign: sign(v.firstSign, SEED.firstSign),
-      second: str(v.second, SEED.second),
-      secondSign: sign(v.secondSign, SEED.secondSign),
-      third: str(v.third, SEED.third),
-      thirdSign: sign(v.thirdSign, SEED.thirdSign),
-      peopleAdapt: typeof v.peopleAdapt === "boolean" ? v.peopleAdapt : SEED.peopleAdapt,
-      competitive: typeof v.competitive === "boolean" ? v.competitive : SEED.competitive,
+      move: str(v.move, BLANK.move),
+      first: str(v.first, BLANK.first),
+      firstSign: sign(v.firstSign, BLANK.firstSign),
+      second: str(v.second, BLANK.second),
+      secondSign: sign(v.secondSign, BLANK.secondSign),
+      third: str(v.third, BLANK.third),
+      thirdSign: sign(v.thirdSign, BLANK.thirdSign),
+      peopleAdapt: typeof v.peopleAdapt === "boolean" ? v.peopleAdapt : BLANK.peopleAdapt,
+      competitive: typeof v.competitive === "boolean" ? v.competitive : BLANK.competitive,
     };
   } catch {
-    return SEED;
+    return BLANK;
   }
 }
 
@@ -109,8 +129,9 @@ type Verdict =
   | { kind: "all-bad" };
 
 export default function TraceClient() {
-  const [inp, setInp] = useState<Inputs>(SEED);
+  const [inp, setInp] = useState<Inputs>(BLANK);
   const [hydrated, setHydrated] = useState(false);
+  const [showExample, setShowExample] = useState(false);
 
   useEffect(() => {
     const loaded = loadInputs();
@@ -175,6 +196,20 @@ export default function TraceClient() {
 
   return (
     <div>
+      {/* ---- New here? A read-only worked example (never touches the fields) ---- */}
+      <div className="mb-5">
+        <button
+          type="button"
+          onClick={() => setShowExample((s) => !s)}
+          className="text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          {showExample
+            ? "Hide the worked example ↑"
+            : "New here? See a worked example ↓"}
+        </button>
+        {showExample ? <TraceExample /> : null}
+      </div>
+
       {/* ---- The move ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
         <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
@@ -478,6 +513,73 @@ export default function TraceClient() {
           </ul>
         </div>
       ) : null}
+    </div>
+  );
+}
+
+/**
+ * The worked example, rendered read-only. It shows a finished trace — the three
+ * effects, each tagged, the sign trail, and the reversal it exposes — for a
+ * fixed scenario, reusing SignTrail so it can't drift from the live drawing. It
+ * writes nothing: no state, no storage, no fields touched.
+ */
+function TraceExample() {
+  const chain = [
+    { order: 1, sign: "better" as Sign },
+    { order: 2, sign: "worse" as Sign },
+    { order: 3, sign: "worse" as Sign },
+  ];
+  const orders = [
+    { badge: "First-order", text: EXAMPLE.first, sign: "better" as const },
+    { badge: "And then what?", text: EXAMPLE.second, sign: "worse" as const },
+    { badge: "And then what, again?", text: EXAMPLE.third, sign: "worse" as const },
+  ];
+  return (
+    <div className="mt-4 rounded-xl border border-dashed border-[var(--accent)] bg-[var(--card)] p-5 sm:p-6">
+      <p className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+        A worked example — nothing here is saved
+      </p>
+      <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
+        <span className="font-medium">{EXAMPLE.move}</span>
+      </p>
+      <ol className="mt-4 space-y-3">
+        {orders.map((o) => (
+          <li key={o.badge} className="text-sm leading-relaxed">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+              {o.badge}
+            </span>
+            <span
+              className={`ml-2 inline-block rounded-full px-2 py-0.5 text-[10px] font-medium align-middle ${
+                o.sign === "better"
+                  ? "bg-[var(--accent)] text-[var(--background)]"
+                  : "bg-[var(--foreground)] text-[var(--background)]"
+              }`}
+            >
+              {o.sign}
+            </span>
+            <span className="mt-1 block text-[var(--muted)]">{o.text}</span>
+          </li>
+        ))}
+      </ol>
+      <div className="mt-4 rounded-lg border border-[var(--accent)] p-4">
+        <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+          The shape of this chain
+        </p>
+        <SignTrail chain={chain} />
+        <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+          The sign flips here
+        </p>
+        <p className="mt-1.5 text-sm text-[var(--foreground)] leading-relaxed">
+          The effect you&rsquo;re doing it for isn&rsquo;t the one that lasts: the
+          money and the buzz arrive first, the cost to everything the money was
+          for arrives later. First-order win, later loss — the trap. The part you
+          like is the part that reverses.
+        </p>
+      </div>
+      <p className="mt-4 text-xs text-[var(--muted)] leading-relaxed">
+        Your own trace below is blank — name the move you actually came here to
+        follow.
+      </p>
     </div>
   );
 }
