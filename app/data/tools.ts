@@ -54,6 +54,16 @@ export const tools: Tool[] = [
     payoff: "now",
   },
   {
+    id: "compare",
+    href: "/compare",
+    name: "The Halo Comes Off",
+    short: "Compare",
+    when: "You've got several real options — a few jobs, apartments, offers — and one keeps pulling ahead before you've fairly looked at the rest.",
+    ask: "Which one wins on the things that matter — not just the one that made the best first impression?",
+    does: "Scores every option one factor at a time, so a single strong impression can't halo the whole choice — then sets the tally against your gut and makes the disagreement the thing you examine.",
+    payoff: "now",
+  },
+  {
     id: "trace",
     href: "/trace",
     name: "And Then What?",
@@ -138,7 +148,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. These give you an answer in this one sitting.",
-    toolIds: ["weigh", "trace", "cool"],
+    toolIds: ["weigh", "compare", "trace", "cool"],
   },
   {
     id: "big-commitment",

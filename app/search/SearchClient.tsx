@@ -145,6 +145,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "The halo comes off",
+    href: "/compare",
+    snippet:
+      "Choosing among several options — two jobs, three apartments, a shortlist of offers? One strong first impression colours how you rate everything else. Score each option one factor at a time, keep your gut call separate and last, and examine the gap between them. Kahneman's Mediating Assessments Protocol, as a tool.",
+    meta: "Compare options — the anti-halo tool",
+    titleText:
+      "compare options choose choice which of these multi-option decision matrix job offers apartments shortlist halo effect nisbett wilson mediating assessments protocol kahneman sibony sunstein noise decision hygiene factors weight score gut instinct disciplined intuition delay judgment independent tool".toLowerCase(),
+    bodyText:
+      "the halo comes off, a tool for choosing among several options — the which-of-these decision the other instruments don't cover (they work act-or-don't). the trap in that shape is the halo effect (nisbett and wilson, 1977): one strong impression of an option — the salary, the founder's energy, the kitchen — bleeds into how you rate everything else about it, so the choice is quietly made in the first ten seconds and the comparison is a rationalisation, and knowing about it doesn't switch it off. the fix is structural: kahneman, sibony and sunstein's mediating assessments protocol (noise, 2021). break the choice into the few factors that matter, and score every option one factor at a time — across a row, not down a column — so you judge a single dimension before any overall impression can form. then the discipline that does the real work: keep the holistic gut call separate and last, disciplined intuition made to wait until it can't contaminate the inputs. the tally stays hidden until you've named which option your gut wants, so a running score can't anchor you. the output that matters isn't the winning number — it's the gap between what the factors say and what your gut wanted: when they disagree, either you're weighting a factor you didn't admit to, or there's one you never wrote down, and that gap is the most useful thing on the page. it also flags the hinge — the single factor the winner is riding on, where dropping it flips the ranking — so you know which score to be surest of, and warns when the top options are too close to separate. coarse weights on purpose (minor/normal/major); false precision is the enemy. nothing is sent anywhere; inputs persist in your browser, and a choice you commit to can be logged to the decision journal as a tracked forecast. pairs with the halo effect and mediating assessments protocol models, the essay whether-or-not is a trap, and — once it's down to a two-way call — the flip point.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Cool the call",
     href: "/cool",
     snippet:

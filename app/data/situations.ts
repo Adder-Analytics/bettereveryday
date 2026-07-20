@@ -395,6 +395,10 @@ export const situations: Situation[] = [
         move: "Ask whether this is a one-way or two-way door. If you can undo it cheaply, decide fast and learn by moving; agonizing over a reversible choice is its own kind of mistake. Save the slow, careful deliberation for the doors that don't swing back.",
       },
     ],
+    tool: {
+      id: "compare",
+      move: "Once you've named the real options — not just 'the thing' vs 'nothing' — this is the instrument for choosing among them. It scores each option one factor at a time so a single strong impression can't halo the whole choice, keeps your gut call separate and last, and hands you the gap between the two to examine.",
+    },
     essays: ["whether-or-not", "decision-quality"],
   },
   {

@@ -109,6 +109,15 @@ export const models: Model[] = [
     essays: ["whether-or-not"],
   },
   {
+    id: "mediating-assessments",
+    name: "Mediating Assessments Protocol",
+    domain: "Decisions",
+    tagline: "To choose among options, score each on a few factors independently — and hold the overall judgment until the end.",
+    explanation:
+      "Kahneman, Sibony and Sunstein's method in Noise (2021) for the decision that isn't act-or-don't but which-of-these. The failure it targets is the halo effect: faced with several options, you form a fast overall impression of each and then let it colour every detail, so the choice is really made in the first minute and the comparison is a rationalisation. The protocol is decision hygiene against that. Break the choice into a small set of factors — the 'mediating assessments' — and evaluate the options one factor at a time, keeping each assessment as independent of the others as you can, so a strong impression on one dimension can't bleed into the rest. Then the part that does the real work: delay the holistic, intuitive verdict until all the assessments are in. Intuition isn't banned — Kahneman's phrase is 'disciplined intuition' — it's just made to wait until it can't contaminate the inputs, and then it's used deliberately at the end. The most informative output is where the structured profile and the delayed gut disagree: that gap points either to a factor you're secretly overweighting or to one you never named. The compare tool on this site runs the whole protocol, solo, and keeps the tally hidden until you've committed a gut pick.",
+    essays: ["whether-or-not"],
+  },
+  {
     id: "self-distancing",
     name: "Self-Distancing",
     domain: "Decisions",
@@ -182,6 +191,15 @@ export const models: Model[] = [
     explanation:
       "Tell someone the Ganges River is 2,000 miles long before asking them to estimate the Nile's length, and their guess will be lower than if you'd said the Ganges is 5,000 miles — even though the Ganges has nothing to do with the Nile. Anchoring affects salary negotiations, price perception, and judicial sentencing. The counteraction: generate your own estimate before encountering external figures, and be especially suspicious of the first number offered in any negotiation.",
     essays: ["anchoring"],
+  },
+  {
+    id: "halo-effect",
+    name: "Halo Effect",
+    domain: "Psychology",
+    tagline: "One strong impression of a thing colours how you judge all its other, unrelated qualities.",
+    explanation:
+      "Nisbett and Wilson's 1977 experiment: students watched an instructor who was either warm or cold, then rated his appearance, mannerisms, and accent — traits that hadn't changed between the two versions. The warm instructor's unrelated features were rated far more appealing, and, tellingly, the students insisted their judgments of those features had been independent. That's the whole trap in one study: a single global impression radiates outward into specific assessments that should have been made on their own, and it does so below awareness, which is why simply knowing about the halo doesn't switch it off. It's why a confident candidate seems more competent, an attractive product seems more reliable, one great quarter makes a CEO seem visionary across the board. In a choice among options it's especially costly: the option that made the best first impression gets a quiet bonus on every factor, so the comparison confirms a decision you'd already made. The defenses are structural rather than attitudinal — judge one attribute across all options before moving to the next, keep the assessments independent, and delay the overall verdict until the parts are scored, which is exactly the discipline the Mediating Assessments Protocol builds a procedure around.",
+    essays: [],
   },
   {
     id: "loss-aversion",
