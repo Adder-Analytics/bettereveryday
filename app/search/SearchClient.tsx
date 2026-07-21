@@ -157,6 +157,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "You are not the exception",
+    href: "/outside",
+    snippet:
+      "About to promise how long something will take or how much it'll cost? Your plan is a best-case story; the reference class already counted the surprises. Seal your own estimate, then set it against what actually happened to comparable cases, and read the gap. Reference-class forecasting, as a tool.",
+    meta: "The outside view — reference-class forecasting",
+    titleText:
+      "outside view outside-view reference class reference-class forecasting planning fallacy tool estimate deadline schedule budget how long how much cost time overrun over budget inside view kahneman lovallo flyvbjerg megaproject base case base rate optimism bias inside-view premium seal anchor distribution median class of one".toLowerCase(),
+    bodyText:
+      "you are not the exception, a reference-class forecasting tool for the planning fallacy. the site had an instrument for every shape of decision except the one its own reference calls the most dangerous to get wrong from the inside. how long will it take, how much will it cost — the questions we answer from the plan in front of us, and a plan is a story about the best case, so the surprises that actually sink it are precisely the things not in the story. the measured gap is the planning fallacy: students who said 34 days took 55, nine in ten megaprojects run over budget, newlyweds who recite the divorce rate put their own odds at zero. kahneman and lovallo's fix is the outside view — ask what happened, on average, to everyone who attempted this class of thing, and start the forecast there, because that distribution has already counted every surprise the plan can't see. the mechanical form is reference-class forecasting (flyvbjerg's practice on real megaprojects): pick the class your case belongs to, take its actual outcome distribution as your starting point, then let the particulars argue for a modest, evidence-backed adjustment. the tool runs it as a procedure. one structural move it insists on: it takes your own estimate first and seals it, before you look at a single comparison — otherwise the cases you pick anchor your number and the gap disappears. then you build the class from cases that actually happened (not more guesses), and it reads the distribution — lowest, middle, highest — and names where your sealed plan lands: below the whole class, below the middle, near it, or above. the genuinely hard part is choosing the class, so it holds the discipline in front of you: start broad and narrow only as far as a measured difference takes you (never with adjectives), reject folklore rates you can't source, and remember a class of one is not a class (it refuses to compute under three cases). two guards: a spread guard, because a class that runs more than 3x can't honestly promise a point — the honest output is a range; and a re-import guard, because if you adjust back to your first optimistic instinct without a measured reason you've quietly slid back inside the plan, and knowing about the inside view doesn't protect you from it. the output that matters isn't the winning number, it's the gap between what your plan says and what the class actually did. nothing is sent anywhere; inputs persist in your browser, and a forecast you commit to logs to the decision journal so reality grades it on the day. pairs with the outside view and base rates models, the essay nobody thinks they're the base rate, the base-rate trainer's pick-the-prior mode, and — once you have a number — the pre-mortem and the decision journal.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Cool the call",
     href: "/cool",
     snippet:

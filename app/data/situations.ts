@@ -184,8 +184,8 @@ export const situations: Situation[] = [
       },
     ],
     tool: {
-      id: "premortem",
-      move: "Before you say the date out loud, hold its funeral. Imagine the deadline came and went and you missed by half — the pre-mortem walks you through writing what ate the time, then arms the halfway-milestone tripwire so a slipping schedule gets caught instead of hoped away.",
+      id: "outside",
+      move: "Before you say the date out loud, run the outside view on it. The tool takes your own estimate first and seals it, then has you list what actually happened to comparable efforts — and shows you the gap, which on a schedule is almost always the plan sitting under the whole class. Start from what the class really took, not from the plan.",
     },
     essays: ["nobody-thinks-theyre-the-base-rate"],
     notes: ["kahneman-inside-view"],
