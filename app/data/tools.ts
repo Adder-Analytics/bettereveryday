@@ -64,6 +64,16 @@ export const tools: Tool[] = [
     payoff: "now",
   },
   {
+    id: "outside",
+    href: "/outside",
+    name: "You Are Not the Exception",
+    short: "Outside view",
+    when: "You're about to promise how long something will take or how much it'll cost — and every step of the plan looks doable.",
+    ask: "What actually happened to everyone who tried something like this?",
+    does: "Seals your own estimate first, then sets it against the real distribution of comparable cases — reference-class forecasting — so the plan's best-case story meets the surprises the class already counted.",
+    payoff: "now",
+  },
+  {
     id: "trace",
     href: "/trace",
     name: "And Then What?",
@@ -148,7 +158,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. These give you an answer in this one sitting.",
-    toolIds: ["weigh", "compare", "trace", "cool"],
+    toolIds: ["weigh", "compare", "outside", "trace", "cool"],
   },
   {
     id: "big-commitment",
