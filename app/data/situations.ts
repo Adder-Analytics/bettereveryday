@@ -215,8 +215,8 @@ export const situations: Situation[] = [
       },
     ],
     tool: {
-      id: "decide",
-      move: "Grading your own past call? The decision journal keeps the honest version — what you actually predicted and how sure you were, written before you knew the answer — so you compare the forecast to what happened instead of the story hindsight rewrote. If it wasn't logged, log the next one, and this stops being guesswork.",
+      id: "debrief",
+      move: "This is the exact moment the debrief is built for. It reconstructs the call under a hindsight guard — what you knew then, not what you know now — grades the decision apart from the result, and lands it on the four cells, including the two everyone gets wrong: the win you should fix and the loss you should keep. (If you did log it in advance, grade it against your written forecast in the decision journal instead — that record can't be edited by hindsight.)",
     },
     essays: ["decision-quality"],
   },
