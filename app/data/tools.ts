@@ -114,6 +114,16 @@ export const tools: Tool[] = [
     payoff: "later",
   },
   {
+    id: "debrief",
+    href: "/debrief",
+    name: "The Outcome Isn't the Verdict",
+    short: "Debrief",
+    when: "Something already happened — a call that paid off or blew up — and you never logged it in advance. Now you're trying to work out what to actually learn from it.",
+    ask: "Am I grading the decision, or just the result it happened to get?",
+    does: "Reconstructs the call under a hindsight guard — what you knew then, not what you know now — grades it apart from the outcome, and lands it on the four cells: the win to bank, the win to fix, the loss to keep, the loss to fix.",
+    payoff: "now",
+  },
+  {
     id: "review",
     href: "/review",
     name: "The Return Desk",
@@ -169,10 +179,10 @@ export const toolGroups: ToolGroup[] = [
   },
   {
     id: "coming-back",
-    title: "You're coming back, or sharpening the blade",
+    title: "You're coming back to something already decided",
     blurb:
-      "The half of the loop that does the teaching — and the practice that keeps the judgment underneath it honest.",
-    toolIds: ["review", "practice"],
+      "The half of the loop that does the teaching — grading a call you scheduled a return on, or one that already resolved and you never logged — plus the practice that keeps the judgment underneath it honest.",
+    toolIds: ["review", "debrief", "practice"],
   },
 ];
 
