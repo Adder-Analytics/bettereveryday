@@ -184,8 +184,8 @@ export const situations: Situation[] = [
       },
     ],
     tool: {
-      id: "premortem",
-      move: "Before you say the date out loud, hold its funeral. Imagine the deadline came and went and you missed by half — the pre-mortem walks you through writing what ate the time, then arms the halfway-milestone tripwire so a slipping schedule gets caught instead of hoped away.",
+      id: "outside",
+      move: "Before you say the date out loud, run the outside view on it. The tool takes your own estimate first and seals it, then has you list what actually happened to comparable efforts — and shows you the gap, which on a schedule is almost always the plan sitting under the whole class. Start from what the class really took, not from the plan.",
     },
     essays: ["nobody-thinks-theyre-the-base-rate"],
     notes: ["kahneman-inside-view"],
@@ -215,8 +215,8 @@ export const situations: Situation[] = [
       },
     ],
     tool: {
-      id: "decide",
-      move: "Grading your own past call? The decision journal keeps the honest version — what you actually predicted and how sure you were, written before you knew the answer — so you compare the forecast to what happened instead of the story hindsight rewrote. If it wasn't logged, log the next one, and this stops being guesswork.",
+      id: "debrief",
+      move: "This is the exact moment the debrief is built for. It reconstructs the call under a hindsight guard — what you knew then, not what you know now — grades the decision apart from the result, and lands it on the four cells, including the two everyone gets wrong: the win you should fix and the loss you should keep. (If you did log it in advance, grade it against your written forecast in the decision journal instead — that record can't be edited by hindsight.)",
     },
     essays: ["decision-quality"],
   },
@@ -360,6 +360,10 @@ export const situations: Situation[] = [
         move: "If you can't make the call today, make the smaller one: set the kill criteria — a state and a date. 'If X isn't true by then, I stop.' Put the date in your calendar. Quitting on time will feel like quitting too early; that feeling is the bias, not the verdict.",
       },
     ],
+    tool: {
+      id: "quit",
+      move: "This is the exact moment the quit-or-stay tool is built for. It quarantines what you've already spent so it can't vote, then runs the two tests that survive the strip: would you begin this today from scratch, and does one more push beat the best other use of the same time and money? Where they disagree, that gap is the sunk cost hiding — and whatever you decide to keep doing, you leave with the kill criterion set.",
+    },
     essays: ["hold-the-funeral-first", "decision-quality"],
     notes: ["housel-tails"],
   },
@@ -395,6 +399,10 @@ export const situations: Situation[] = [
         move: "Ask whether this is a one-way or two-way door. If you can undo it cheaply, decide fast and learn by moving; agonizing over a reversible choice is its own kind of mistake. Save the slow, careful deliberation for the doors that don't swing back.",
       },
     ],
+    tool: {
+      id: "compare",
+      move: "Once you've named the real options — not just 'the thing' vs 'nothing' — this is the instrument for choosing among them. It scores each option one factor at a time so a single strong impression can't halo the whole choice, keeps your gut call separate and last, and hands you the gap between the two to examine.",
+    },
     essays: ["whether-or-not", "decision-quality"],
   },
   {

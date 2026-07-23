@@ -233,7 +233,10 @@ export const posts: Post[] = [
 
 <p>But the math eventually wins. Over enough decisions, the quality of your reasoning shows up in the quality of your outcomes. The poker player who makes correct expected-value decisions every hand will have terrible sessions, terrible months. Over years, the money flows toward them. The investor who makes structurally sound decisions will have ugly years. Over decades, the compound takes hold.</p>
 
-<p>The work isn't to get every outcome right. It's to get your process right, and then trust the process long enough for the math to show itself. That requires separating, in your own mind and in your own self-evaluation, the decisions from the outcomes. It's harder than it sounds. It's also more valuable than almost any other mental skill you could develop.</p>`,
+<p>The work isn't to get every outcome right. It's to get your process right, and then trust the process long enough for the math to show itself. That requires separating, in your own mind and in your own self-evaluation, the decisions from the outcomes. It's harder than it sounds. It's also more valuable than almost any other mental skill you could develop.</p>
+
+<p>Because it's hard to do by feel, there's a tool for it: <a href="/debrief">the debrief</a> takes a call that already resolved — one you never logged in advance — and walks the separation as a procedure. It makes you split what you knew then from what you only learned after, grades the decision on the first, and lands it on the four cells this essay implies: the two that are easy (a good call that won, a bad call that lost) and the two that mislead you for a living — the bad call the result rescued, which you should fix despite the win, and the good call that got unlucky, which you should keep despite the loss.</p>`,
+
   },
   {
     slug: "orders-of-magnitude",

@@ -54,6 +54,36 @@ export const tools: Tool[] = [
     payoff: "now",
   },
   {
+    id: "compare",
+    href: "/compare",
+    name: "The Halo Comes Off",
+    short: "Compare",
+    when: "You've got several real options — a few jobs, apartments, offers — and one keeps pulling ahead before you've fairly looked at the rest.",
+    ask: "Which one wins on the things that matter — not just the one that made the best first impression?",
+    does: "Scores every option one factor at a time, so a single strong impression can't halo the whole choice — then sets the tally against your gut and makes the disagreement the thing you examine.",
+    payoff: "now",
+  },
+  {
+    id: "outside",
+    href: "/outside",
+    name: "You Are Not the Exception",
+    short: "Outside view",
+    when: "You're about to promise how long something will take or how much it'll cost — and every step of the plan looks doable.",
+    ask: "What actually happened to everyone who tried something like this?",
+    does: "Seals your own estimate first, then sets it against the real distribution of comparable cases — reference-class forecasting — so the plan's best-case story meets the surprises the class already counted.",
+    payoff: "now",
+  },
+  {
+    id: "quit",
+    href: "/quit",
+    name: "Would You Start It Today?",
+    short: "Quit-or-stay",
+    when: "You can't tell if it's time to quit — the project, the job, the strategy, the thing with years and money already in it. Everything you've spent argues for one more push.",
+    ask: "Am I still here because it's the right call — or because I can't stand to walk away from what I've already put in?",
+    does: "Takes the sunk cost out of the vote: asks whether you'd start the thing fresh today, sets one more push against the best other use of the same time and money, and — if you carry on — makes you set the kill criterion in advance.",
+    payoff: "now",
+  },
+  {
     id: "trace",
     href: "/trace",
     name: "And Then What?",
@@ -92,6 +122,16 @@ export const tools: Tool[] = [
     ask: "What do I expect to happen, and how sure am I?",
     does: "A worksheet that walks the models, records your reasoning and your forecast, and schedules the one thing that teaches: coming back to compare it against what actually happened.",
     payoff: "later",
+  },
+  {
+    id: "debrief",
+    href: "/debrief",
+    name: "The Outcome Isn't the Verdict",
+    short: "Debrief",
+    when: "Something already happened — a call that paid off or blew up — and you never logged it in advance. Now you're trying to work out what to actually learn from it.",
+    ask: "Am I grading the decision, or just the result it happened to get?",
+    does: "Reconstructs the call under a hindsight guard — what you knew then, not what you know now — grades it apart from the outcome, and lands it on the four cells: the win to bank, the win to fix, the loss to keep, the loss to fix.",
+    payoff: "now",
   },
   {
     id: "review",
@@ -138,7 +178,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. These give you an answer in this one sitting.",
-    toolIds: ["weigh", "trace", "cool"],
+    toolIds: ["weigh", "compare", "outside", "trace", "cool", "quit"],
   },
   {
     id: "big-commitment",
@@ -149,10 +189,10 @@ export const toolGroups: ToolGroup[] = [
   },
   {
     id: "coming-back",
-    title: "You're coming back, or sharpening the blade",
+    title: "You're coming back to something already decided",
     blurb:
-      "The half of the loop that does the teaching — and the practice that keeps the judgment underneath it honest.",
-    toolIds: ["review", "practice"],
+      "The half of the loop that does the teaching — grading a call you scheduled a return on, or one that already resolved and you never logged — plus the practice that keeps the judgment underneath it honest.",
+    toolIds: ["review", "debrief", "practice"],
   },
 ];
 
