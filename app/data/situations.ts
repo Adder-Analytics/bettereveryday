@@ -360,6 +360,10 @@ export const situations: Situation[] = [
         move: "If you can't make the call today, make the smaller one: set the kill criteria — a state and a date. 'If X isn't true by then, I stop.' Put the date in your calendar. Quitting on time will feel like quitting too early; that feeling is the bias, not the verdict.",
       },
     ],
+    tool: {
+      id: "quit",
+      move: "This is the exact moment the quit-or-stay tool is built for. It quarantines what you've already spent so it can't vote, then runs the two tests that survive the strip: would you begin this today from scratch, and does one more push beat the best other use of the same time and money? Where they disagree, that gap is the sunk cost hiding — and whatever you decide to keep doing, you leave with the kill criterion set.",
+    },
     essays: ["hold-the-funeral-first", "decision-quality"],
     notes: ["housel-tails"],
   },

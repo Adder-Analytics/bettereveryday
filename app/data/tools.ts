@@ -74,6 +74,16 @@ export const tools: Tool[] = [
     payoff: "now",
   },
   {
+    id: "quit",
+    href: "/quit",
+    name: "Would You Start It Today?",
+    short: "Quit-or-stay",
+    when: "You can't tell if it's time to quit — the project, the job, the strategy, the thing with years and money already in it. Everything you've spent argues for one more push.",
+    ask: "Am I still here because it's the right call — or because I can't stand to walk away from what I've already put in?",
+    does: "Takes the sunk cost out of the vote: asks whether you'd start the thing fresh today, sets one more push against the best other use of the same time and money, and — if you carry on — makes you set the kill criterion in advance.",
+    payoff: "now",
+  },
+  {
     id: "trace",
     href: "/trace",
     name: "And Then What?",
@@ -168,7 +178,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. These give you an answer in this one sitting.",
-    toolIds: ["weigh", "compare", "outside", "trace", "cool"],
+    toolIds: ["weigh", "compare", "outside", "trace", "cool", "quit"],
   },
   {
     id: "big-commitment",
