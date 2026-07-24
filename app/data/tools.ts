@@ -84,6 +84,16 @@ export const tools: Tool[] = [
     payoff: "now",
   },
   {
+    id: "act",
+    href: "/act",
+    name: "Decided Isn't Done",
+    short: "Make it happen",
+    when: "You've made the call — and it was the right one — but a week later it's still just a call. Nothing has actually moved.",
+    ask: "What's the first concrete move, exactly when will I make it, and what would tell me to stop and reconsider?",
+    does: "Turns a decision into an if-then plan that fires on a cue — the smallest first move, a backup for the obstacle, and a tripwire to reconsider — after checking the plan is even the right tool and the problem isn't that you don't want it.",
+    payoff: "later",
+  },
+  {
     id: "trace",
     href: "/trace",
     name: "And Then What?",
@@ -186,6 +196,13 @@ export const toolGroups: ToolGroup[] = [
     blurb:
       "A choice worth slowing down for — and worth a record you can grade later, when you find out whether you were right.",
     toolIds: ["premortem", "decide"],
+  },
+  {
+    id: "making-it-happen",
+    title: "You've made the call — now make it happen",
+    blurb:
+      "The week after a decision is where most of them quietly die: never started, or never revisited when something changed. This closes both gaps.",
+    toolIds: ["act"],
   },
   {
     id: "coming-back",

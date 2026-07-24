@@ -426,6 +426,10 @@ export const situations: Situation[] = [
         move: "If the first step is cheap and easy to undo, take it now rather than planning it perfectly. Action creates information that no amount of deliberation can — and for a two-way door, starting is how you find out whether you were right.",
       },
     ],
+    tool: {
+      id: "act",
+      move: "This is the exact moment the make-it-happen tool is built for. It first checks the honest thing most planning skips — whether the trouble is the doing or the wanting, because no cue rescues a goal you don't actually want — then turns the call into an if-then plan that fires on a concrete cue: the smallest first move, a backup for the obstacle that would stop it, and a tripwire to reconsider. It refuses a vague cue and a first step too big to finish this week, and hands you a plan you can put where you'll see it.",
+    },
     essays: ["deciding-and-doing", "decision-quality"],
   },
 ];
