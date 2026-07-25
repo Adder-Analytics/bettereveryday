@@ -133,6 +133,10 @@ type AssembledPlan = {
   gaps: Gap[];
   /** The whole plan as plain text, for copying somewhere you'll see it. */
   plainText: string;
+  /** The reconsider tripwire's raw parts, when both exist — so the deliverable
+   *  can hand it straight to /tripwire (and thence the return desk) pre-filled,
+   *  instead of asking you to re-type the state and date somewhere else. */
+  tripwire: { state: string; date: string; guard: string } | null;
 };
 
 function trimmed(s: string): string {
@@ -208,7 +212,10 @@ export function assemblePlan(inp: Inputs): AssembledPlan {
   if (reconsider) lines.push(`• ${reconsider}.`);
   const plainText = lines.join("\n");
 
-  return { start, cope, reconsider, level, headline, gaps, plainText };
+  const tripwire =
+    state && date ? { state, date, guard: decision } : null;
+
+  return { start, cope, reconsider, level, headline, gaps, plainText, tripwire };
 }
 
 // ---- storage --------------------------------------------------------------
@@ -351,6 +358,20 @@ function PlanBlock({ plan }: { plan: AssembledPlan }) {
                 <span className="mt-1 block text-[var(--foreground)]">
                   {plan.reconsider}.
                 </span>
+                {plan.tripwire ? (
+                  <Link
+                    href={`/tripwire?signal=${encodeURIComponent(
+                      plan.tripwire.state
+                    )}&on=${encodeURIComponent(
+                      plan.tripwire.date
+                    )}&guard=${encodeURIComponent(
+                      plan.tripwire.guard
+                    )}&from=${encodeURIComponent("/act")}`}
+                    className="mt-1.5 inline-block text-xs font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+                  >
+                    Arm it as a tripwire →
+                  </Link>
+                ) : null}
               </li>
             ) : null}
           </ul>
@@ -383,20 +404,14 @@ function PlanBlock({ plan }: { plan: AssembledPlan }) {
             All three if-thens are in place: a concrete cue to start, a plan for
             the obstacle, and a tripwire to stop and rethink. Put it where the cue
             lives — a calendar entry, a phone reminder, a note by the door — so it
-            outranks the version of you that's tired and running late. To land the
-            reconsider date in your{" "}
+            outranks the version of you that&rsquo;s tired and running late. Arm
+            the reconsider line above as a tripwire and it comes back to you on
+            its day at the{" "}
             <Link
               href="/review"
               className="text-[var(--accent)] hover:opacity-70 transition-opacity"
             >
               return desk
-            </Link>{" "}
-            automatically, arm it as a{" "}
-            <Link
-              href="/premortem"
-              className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-            >
-              tripwire
             </Link>
             .
           </p>

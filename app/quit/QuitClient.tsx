@@ -397,9 +397,16 @@ function VerdictBlock({
           <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
             …I stop and re-decide. Quitting on time will feel like quitting too early — that
             feeling is the bias, not the verdict. Put the date somewhere that outranks your future
-            self: arm it as a{" "}
-            <Link href="/premortem" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
-              tripwire
+            self:{" "}
+            <Link
+              href={`/tripwire?signal=${encodeURIComponent(
+                killState.trim()
+              )}&on=${encodeURIComponent(killDate)}&from=${encodeURIComponent(
+                "/quit"
+              )}`}
+              className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+            >
+              arm it as a tripwire
             </Link>{" "}
             so it lands in your{" "}
             <Link href="/review" className="text-[var(--accent)] hover:opacity-70 transition-opacity">

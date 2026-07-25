@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { countDueReviews } from "../data/journal";
 import { countDueTripwireChecks } from "../data/premortem";
+import { countDueTripwires } from "../data/tripwires";
 
 /**
  * A tiny client island that surfaces the site's "something is waiting for an
@@ -23,7 +24,8 @@ export default function ReviewDueBadge() {
   const [due, setDue] = useState(0);
 
   useEffect(() => {
-    const total = countDueReviews() + countDueTripwireChecks();
+    const total =
+      countDueReviews() + countDueTripwireChecks() + countDueTripwires();
     /* eslint-disable react-hooks/set-state-in-effect -- one-time read from
        browser storage after mount; intentional, can't run in render */
     if (total > 0) setDue(total);

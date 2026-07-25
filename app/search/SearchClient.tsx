@@ -121,6 +121,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Set a tripwire",
+    href: "/tripwire",
+    snippet:
+      "A tripwire is a state and a date, decided while you're calm, that mean stop and reconsider — an observable signal you can't argue with, and a real day you're obligated to look. Arm one here, or hand one over from any tool, and it comes back to you on its day at the return desk. Add it to your real calendar too.",
+    meta: "Tripwire — arm one from anywhere",
+    titleText:
+      "tripwire tripwires set arm kill criteria reconsider re-decide stop signal state and a date van halen brown m&ms everest turnaround heath decisive annie duke fuel light threshold calendar reminder ics return desk review reconsider line standalone".toLowerCase(),
+    bodyText:
+      "the standalone tripwire tool. a tripwire is chip and dan heath's device and annie duke's kill criteria: a cheap, observable signal chosen in advance that means stop and reconsider — the fuel light that interrupts you at a threshold you set while calm, so you don't have to monitor the gauge or trust the moment's judgement. the recipe is a state and a date: not 'if it isn't working we'll rethink' — 'working' renegotiates itself in the moment and that clause has never fired — but 'if we're under 100 paying users on march 1, we stop.' the state must be observable enough that you can't argue with it; the date must be a real day you're obligated to look, which means it belongs in a calendar, not a memory. the pre-mortem room grows tripwires out of a full failure analysis, but nearly every tool on the site ends by finding one and had nowhere to put it: the make-it-happen tool computes a perfect reconsider line (a state and a date) and could only tell you to re-type it; the consequence trace turns up the later cost that will sour the win; the quit-or-stay tool makes you set a kill criterion for anything you keep going on. this is where all of those land. arm one here or arrive pre-filled from another tool, and it's held for you and handed back on its day at the return desk beside your journal reviews and pre-mortem checks — the one place you look — and every check ends in a recorded answer: fired (stop and reconsider) or all clear, the way aviation checklists demand the actual status spoken back, never a bare 'checked', because a reminder you swipe away is an acknowledgement, not a check. drop the check into your real calendar as an ics reminder if you want a second net. the cautionary tale is the 1996 everest disaster: the turnaround time was a textbook tripwire, and the man who set it crossed his own line under summit fever and died, while the clients who turned around on schedule survived — the person crossing a tripwire is never the person who set it, so build it to outrank your future self. structurally it's an implementation intention pointed at reconsidering rather than doing. nothing is sent anywhere; it lives in your browser. paired with the tripwires and implementation intentions models and the essays hold the funeral first and the plan was never tried.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Pre-mortem",
     href: "/premortem",
     snippet:

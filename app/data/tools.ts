@@ -114,6 +114,16 @@ export const tools: Tool[] = [
     payoff: "now",
   },
   {
+    id: "tripwire",
+    href: "/tripwire",
+    name: "Set a Tripwire",
+    short: "Tripwire",
+    when: "You've made a call, or seen where one could quietly go wrong later — and you don't want to be the one deciding whether to reconsider once you're in the thick of it.",
+    ask: "What signal, on what date, would tell me to stop and re-decide?",
+    does: "Turns a decision into a state and a date — an observable signal you can't argue with, set while you're calm — and hands it back to you on that day at the return desk, so a call going wrong can't coast past the point it stopped being right.",
+    payoff: "later",
+  },
+  {
     id: "premortem",
     href: "/premortem",
     name: "The Pre-mortem",
@@ -201,8 +211,8 @@ export const toolGroups: ToolGroup[] = [
     id: "making-it-happen",
     title: "You've made the call — now make it happen",
     blurb:
-      "The week after a decision is where most of them quietly die: never started, or never revisited when something changed. This closes both gaps.",
-    toolIds: ["act"],
+      "The week after a decision is where most of them quietly die: never started, or never revisited when something changed. These close both gaps — one turns the call into a first move, the other sets the signal that says stop and rethink.",
+    toolIds: ["act", "tripwire"],
   },
   {
     id: "coming-back",

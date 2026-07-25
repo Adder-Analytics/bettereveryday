@@ -193,6 +193,19 @@ export default function TraceClient() {
   }, [chain]);
 
   const laterHasDownside = chain.slice(1).some((o) => o.sign === "worse");
+  // The later cost worth guarding: the first downstream effect that turned
+  // against you — the signal a tripwire would watch for. Feeds the /tripwire
+  // hand-off below so the effect you almost missed lands, pre-filled, in a
+  // watch-for-it-on-a-date you'll actually see again.
+  const laterDownEffect =
+    chain.slice(1).find((o) => o.sign === "worse")?.text.trim() ?? "";
+  const tripwireHref = laterDownEffect
+    ? `/tripwire?signal=${encodeURIComponent(
+        laterDownEffect
+      )}&guard=${encodeURIComponent(inp.move.trim())}&from=${encodeURIComponent(
+        "/trace"
+      )}`
+    : "/tripwire";
 
   return (
     <div>
@@ -474,16 +487,25 @@ export default function TraceClient() {
           <ul className="mt-3 space-y-2.5 text-sm text-[var(--muted)] leading-relaxed">
             <li>
               <span className="text-[var(--foreground)]">Guard the effect you almost missed.</span>{" "}
-              A later consequence you can name is something you can watch for. Set
-              it as a tripwire — a signal and a date — in the{" "}
+              A later consequence you can name is something you can watch for.{" "}
+              <Link
+                href={tripwireHref}
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Set it as a tripwire
+              </Link>{" "}
+              — a signal and a date, pre-filled with the later cost you just
+              traced — so the version of you who crosses the line is warned by the
+              version who saw it coming, and it comes back to you on its day at the
+              return desk. To arm it out of a fuller failure analysis instead, use
+              the{" "}
               <Link
                 href="/premortem"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 pre-mortem room
               </Link>
-              , so the version of you who crosses the line is warned by the version
-              who saw it coming.
+              .
             </li>
             {laterHasDownside ? (
               <li>
