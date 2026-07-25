@@ -166,6 +166,26 @@ export const STORES: StoreDescriptor[] = [
     label: "The consequence chain you last traced",
     describe: (raw) => (parse(raw) ? "a trace in progress" : null),
   },
+  {
+    key: "tripwires:v1",
+    tool: "Tripwires",
+    href: "/tripwire",
+    label: "The tripwires you've armed across the tools",
+    describe: (raw) => {
+      const v = parse(raw);
+      if (!Array.isArray(v)) return null;
+      if (v.length === 0) return "no tripwires yet";
+      const armed = v.filter(
+        (t) =>
+          t &&
+          typeof t === "object" &&
+          !(t as { checkedOn?: unknown }).checkedOn
+      ).length;
+      return armed > 0
+        ? `${count(v.length, "tripwire")}, ${armed} still armed`
+        : `${count(v.length, "tripwire")}, all answered`;
+    },
+  },
 ];
 
 /** Every trainer folds each answer into a per-day bucket (see history.ts), so

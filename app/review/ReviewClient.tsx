@@ -60,7 +60,7 @@ function ItemCard({ item, due }: { item: ReviewItem; due: boolean }) {
             href={item.href}
             className="shrink-0 text-xs font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
-            {item.kind === "decision" ? "Answer in the journal →" : "Answer in the room →"}
+            {item.answerLabel}
           </Link>
         )}
       </div>
@@ -121,11 +121,16 @@ export default function ReviewClient() {
             <Link href="/decide" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
               journal
             </Link>
-            , or arm a tripwire with a check date in the{" "}
+            , or arm a tripwire with a check date — in the{" "}
             <Link href="/premortem" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
               pre-mortem room
             </Link>
-            , it schedules a return here for the day it comes due. Come back —
+            , on its{" "}
+            <Link href="/tripwire" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+              own page
+            </Link>
+            , or handed over from another tool — it schedules a return here for
+            the day it comes due. Come back —
             or bookmark this page — and it&rsquo;ll be the one place that tells
             you what you promised to check, and when.
           </p>

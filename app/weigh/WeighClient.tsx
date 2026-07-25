@@ -52,7 +52,28 @@ type Inputs = {
   ruin: boolean;
 };
 
-const SEED: Inputs = {
+/**
+ * The blank the tool opens on: no decision, no magnitudes, a mid-point
+ * probability. With the upside and downside at zero the flip point simply
+ * doesn't compute yet (calc is null), so the verdict — and the "log this as a
+ * forecast" button — stay hidden until there's a real decision in the fields.
+ * That closes the old hazard where a hurried visitor could file the demo's
+ * "Take the new job" into their permanent journal. The illustrative scenario
+ * lives in EXAMPLE, shown read-only behind a toggle and never written to the
+ * live fields or to storage.
+ */
+const BLANK: Inputs = {
+  decision: "",
+  actLabel: "",
+  altLabel: "",
+  hinge: "",
+  p: 50,
+  upside: 0,
+  downside: 0,
+  ruin: false,
+};
+
+const EXAMPLE: Inputs = {
   decision: "Take the new job",
   actLabel: "Take it",
   altLabel: "Stay",
@@ -64,23 +85,23 @@ const SEED: Inputs = {
 };
 
 function loadInputs(): Inputs {
-  if (typeof window === "undefined") return SEED;
+  if (typeof window === "undefined") return BLANK;
   try {
     const raw = window.localStorage.getItem(STORE_KEY);
-    if (!raw) return SEED;
+    if (!raw) return BLANK;
     const v = JSON.parse(raw) as Partial<Inputs>;
     return {
-      decision: typeof v.decision === "string" ? v.decision : SEED.decision,
-      actLabel: typeof v.actLabel === "string" ? v.actLabel : SEED.actLabel,
-      altLabel: typeof v.altLabel === "string" ? v.altLabel : SEED.altLabel,
-      hinge: typeof v.hinge === "string" ? v.hinge : SEED.hinge,
-      p: clampP(typeof v.p === "number" ? v.p : SEED.p),
-      upside: nonNeg(typeof v.upside === "number" ? v.upside : SEED.upside),
-      downside: nonNeg(typeof v.downside === "number" ? v.downside : SEED.downside),
-      ruin: typeof v.ruin === "boolean" ? v.ruin : SEED.ruin,
+      decision: typeof v.decision === "string" ? v.decision : BLANK.decision,
+      actLabel: typeof v.actLabel === "string" ? v.actLabel : BLANK.actLabel,
+      altLabel: typeof v.altLabel === "string" ? v.altLabel : BLANK.altLabel,
+      hinge: typeof v.hinge === "string" ? v.hinge : BLANK.hinge,
+      p: clampP(typeof v.p === "number" ? v.p : BLANK.p),
+      upside: nonNeg(typeof v.upside === "number" ? v.upside : BLANK.upside),
+      downside: nonNeg(typeof v.downside === "number" ? v.downside : BLANK.downside),
+      ruin: typeof v.ruin === "boolean" ? v.ruin : BLANK.ruin,
     };
   } catch {
-    return SEED;
+    return BLANK;
   }
 }
 
@@ -121,11 +142,12 @@ const inputClass =
   "w-full px-3 py-2 text-base rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--accent)] transition-colors";
 
 export default function WeighClient() {
-  const [inp, setInp] = useState<Inputs>(SEED);
+  const [inp, setInp] = useState<Inputs>(BLANK);
   const [hydrated, setHydrated] = useState(false);
   const [gap, setGap] = useState<number | null>(null);
   const [scored, setScored] = useState(0);
   const [logged, setLogged] = useState<null | { conf: number; reviewOn: string }>(null);
+  const [showExample, setShowExample] = useState(false);
 
   // Load persisted inputs and the real-world calibration signal on mount.
   useEffect(() => {
@@ -213,6 +235,20 @@ export default function WeighClient() {
 
   return (
     <div>
+      {/* ---- New here? A read-only worked example (never touches the fields) ---- */}
+      <div className="mb-5">
+        <button
+          type="button"
+          onClick={() => setShowExample((s) => !s)}
+          className="text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          {showExample
+            ? "Hide the worked example ↑"
+            : "New here? See a worked example ↓"}
+        </button>
+        {showExample ? <WeighExample /> : null}
+      </div>
+
       {/* ---- The frame ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
         <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
@@ -546,6 +582,64 @@ export default function WeighClient() {
           )}
         </div>
       ) : null}
+    </div>
+  );
+}
+
+/**
+ * The worked example, rendered read-only. It runs the same p* = R/(B+R) the live
+ * tool does, for a fixed scenario, and reuses the FlipTrack drawing — so a
+ * newcomer sees exactly what a finished pass produces without a blank page, and
+ * without a single character landing in their own fields or storage.
+ */
+function WeighExample() {
+  const B = EXAMPLE.upside;
+  const R = EXAMPLE.downside;
+  const flip = R / (B + R);
+  const flipPct = Math.round(flip * 100);
+  const p = EXAMPLE.p / 100;
+  const marginPts = Math.round(Math.abs(p - flip) * 100);
+  return (
+    <div className="mt-4 rounded-xl border border-dashed border-[var(--accent)] bg-[var(--card)] p-5 sm:p-6">
+      <p className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+        A worked example — nothing here is saved
+      </p>
+      <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
+        <span className="font-medium">{EXAMPLE.decision}</span> —{" "}
+        {EXAMPLE.actLabel.toLowerCase()} vs {EXAMPLE.altLabel.toLowerCase()},
+        turning on whether a year from now you&rsquo;re happier and growing
+        faster than you would have been.
+      </p>
+      <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+        Upside if it works out:{" "}
+        <span className="font-medium text-[var(--foreground)]">7</span>. Downside
+        if it doesn&rsquo;t:{" "}
+        <span className="font-medium text-[var(--foreground)]">5</span>. Honest
+        odds it works out:{" "}
+        <span className="font-medium text-[var(--foreground)]">65%</span>.
+      </p>
+      <div className="mt-4 rounded-lg border border-[var(--accent)] p-4">
+        <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+          The flip point
+        </p>
+        <p className="mt-1 text-3xl font-semibold tracking-tight text-[var(--foreground)] tabular-nums">
+          {flipPct}%
+        </p>
+        <p className="mt-2 text-sm text-[var(--foreground)] leading-relaxed">
+          Above {flipPct}% sure, taking it beats staying on the numbers; below it,
+          staying wins. You put yourself at 65% — {marginPts} points above the
+          line.
+        </p>
+        <FlipTrack flip={flip} you={p} adj={null} />
+        <p className="mt-3 text-sm font-semibold text-[var(--foreground)]">
+          Clear enough: take it. You&rsquo;d have to be badly wrong about your own
+          odds for the call to flip.
+        </p>
+      </div>
+      <p className="mt-4 text-xs text-[var(--muted)] leading-relaxed">
+        Your own form below is blank — enter the call you actually came here to
+        weigh.
+      </p>
     </div>
   );
 }

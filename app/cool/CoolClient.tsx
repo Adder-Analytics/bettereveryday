@@ -32,9 +32,9 @@ import Link from "next/link";
 
 const STORE_KEY = "cool:v1";
 
-type Feeling = "anger" | "fear" | "fomo" | "sunk" | "other";
-type Reversible = "two-way" | "one-way" | "unsure";
-type Forced = "no" | "yes";
+type Feeling = "" | "anger" | "fear" | "fomo" | "sunk" | "other";
+type Reversible = "" | "two-way" | "one-way" | "unsure";
+type Forced = "" | "no" | "yes";
 
 type Inputs = {
   decision: string;
@@ -49,7 +49,28 @@ type Inputs = {
   signal: "" | "signal" | "heat";
 };
 
-const SEED: Inputs = {
+/**
+ * The blank the tool actually opens on. This tool's users arrive hot — angry,
+ * panicked, rushed — and want to type their own situation immediately; the last
+ * thing to greet them is someone else's pre-filled dilemma. So the form starts
+ * empty and the verdict stays quiet until the two facts that settle it are
+ * chosen. The illustrative scenario lives in EXAMPLE, shown read-only behind a
+ * "worked example" toggle and never written to the live fields or to storage —
+ * the same discipline the decision journal and pre-mortem room already use.
+ */
+const BLANK: Inputs = {
+  decision: "",
+  feeling: "",
+  reversible: "",
+  forced: "",
+  name: "",
+  tenMin: "",
+  tenMonth: "",
+  tenYear: "",
+  signal: "",
+};
+
+const EXAMPLE: Inputs = {
   decision: "Send the angry email to my boss tonight",
   feeling: "anger",
   reversible: "one-way",
@@ -70,33 +91,33 @@ const FEELINGS: { id: Feeling; label: string }[] = [
 ];
 
 function loadInputs(): Inputs {
-  if (typeof window === "undefined") return SEED;
+  if (typeof window === "undefined") return BLANK;
   try {
     const raw = window.localStorage.getItem(STORE_KEY);
-    if (!raw) return SEED;
+    if (!raw) return BLANK;
     const v = JSON.parse(raw) as Partial<Inputs>;
     const feeling = FEELINGS.some((f) => f.id === v.feeling)
       ? (v.feeling as Feeling)
-      : SEED.feeling;
+      : "";
     const reversible: Reversible =
       v.reversible === "two-way" || v.reversible === "one-way" || v.reversible === "unsure"
         ? v.reversible
-        : SEED.reversible;
-    const forced: Forced = v.forced === "yes" || v.forced === "no" ? v.forced : SEED.forced;
+        : "";
+    const forced: Forced = v.forced === "yes" || v.forced === "no" ? v.forced : "";
     const signal = v.signal === "signal" || v.signal === "heat" ? v.signal : "";
     return {
-      decision: typeof v.decision === "string" ? v.decision : SEED.decision,
+      decision: typeof v.decision === "string" ? v.decision : "",
       feeling,
       reversible,
       forced,
-      name: typeof v.name === "string" ? v.name : SEED.name,
+      name: typeof v.name === "string" ? v.name : "",
       tenMin: typeof v.tenMin === "string" ? v.tenMin : "",
       tenMonth: typeof v.tenMonth === "string" ? v.tenMonth : "",
       tenYear: typeof v.tenYear === "string" ? v.tenYear : "",
       signal,
     };
   } catch {
-    return SEED;
+    return BLANK;
   }
 }
 
@@ -153,9 +174,56 @@ type Verdict = {
   body: string;
 };
 
+/**
+ * The verdict, from the only two facts a hot person can still judge. Returns
+ * null until both are chosen — the call stays quiet rather than answering a
+ * question you haven't asked yet. Pure, so the live tool and the read-only
+ * worked example run the identical logic.
+ */
+function computeVerdict(reversible: Reversible, forced: Forced): Verdict | null {
+  if (reversible === "" || forced === "") return null;
+  const oneWay = reversible === "one-way" || reversible === "unsure";
+  const isForced = forced === "yes";
+  if (!oneWay && !isForced) {
+    return {
+      key: "wait",
+      tone: "hold",
+      headline: "Sleep on it.",
+      body:
+        "This one is reversible and nothing outside you is forcing the clock — so waiting costs almost nothing, and it buys the one thing a hot state can't give you: the calm version of you who has to live with the call. Most hot decisions have a fuse far shorter than the choice itself. Close this and come back to it cold; if it still looks the same tomorrow, it wasn't the heat talking.",
+    };
+  }
+  if (!oneWay && isForced) {
+    return {
+      key: "reversible-go",
+      tone: "go",
+      headline: "You can move — the door swings back.",
+      body:
+        "The window's closing, but this is reversible: if you get it wrong you can undo it, so the stakes of deciding while hot are low. Do the two-minute distance pass below — answer it in someone else's name, run the three horizons — then decide and move. A cheap-to-undo choice doesn't deserve agonizing, and you'll learn more by acting than by stalling.",
+    };
+  }
+  if (oneWay && !isForced) {
+    return {
+      key: "wait-strong",
+      tone: "hold",
+      headline: "Don't decide this tonight.",
+      body:
+        "This is the one combination you never act on hot: a door that only swings one way, and nothing external actually forcing you to walk through it now. The urgency is coming from the feeling, not the calendar. Whatever you'd lose by waiting a day is almost always smaller than what you'd lose by getting an irreversible call wrong while your pulse is up. The door will still be there tomorrow. Decide then.",
+    };
+  }
+  return {
+    key: "forced",
+    tone: "hold",
+    headline: "Forced to make a one-way call while hot — the worst spot to be in.",
+    body:
+      "An irreversible decision with a real, closing window is the hardest case there is, so don't skip straight to it. First: is there a reversible version? Buy time (ask for 24 hours — people grant it far more often than the panic expects), make the smallest undoable piece instead of the whole thing, or take the move that keeps your options open. If there is genuinely no way to wait and no smaller version, then decide — but decide from the cold frame below, not the hot one: answer it in someone else's name, and only trust the answer that survives all three horizons.",
+  };
+}
+
 export default function CoolClient() {
-  const [inp, setInp] = useState<Inputs>(SEED);
+  const [inp, setInp] = useState<Inputs>(BLANK);
   const [hydrated, setHydrated] = useState(false);
+  const [showExample, setShowExample] = useState(false);
 
   useEffect(() => {
     const loaded = loadInputs();
@@ -178,45 +246,12 @@ export default function CoolClient() {
   const set = <K extends keyof Inputs>(k: K, v: Inputs[K]) =>
     setInp((prev) => ({ ...prev, [k]: v }));
 
-  const oneWay = inp.reversible === "one-way" || inp.reversible === "unsure";
   const forced = inp.forced === "yes";
 
-  const verdict: Verdict = useMemo(() => {
-    if (!oneWay && !forced) {
-      return {
-        key: "wait",
-        tone: "hold",
-        headline: "Sleep on it.",
-        body:
-          "This one is reversible and nothing outside you is forcing the clock — so waiting costs almost nothing, and it buys the one thing a hot state can't give you: the calm version of you who has to live with the call. Most hot decisions have a fuse far shorter than the choice itself. Close this and come back to it cold; if it still looks the same tomorrow, it wasn't the heat talking.",
-      };
-    }
-    if (!oneWay && forced) {
-      return {
-        key: "reversible-go",
-        tone: "go",
-        headline: "You can move — the door swings back.",
-        body:
-          "The window's closing, but this is reversible: if you get it wrong you can undo it, so the stakes of deciding while hot are low. Do the two-minute distance pass below — answer it in someone else's name, run the three horizons — then decide and move. A cheap-to-undo choice doesn't deserve agonizing, and you'll learn more by acting than by stalling.",
-      };
-    }
-    if (oneWay && !forced) {
-      return {
-        key: "wait-strong",
-        tone: "hold",
-        headline: "Don't decide this tonight.",
-        body:
-          "This is the one combination you never act on hot: a door that only swings one way, and nothing external actually forcing you to walk through it now. The urgency is coming from the feeling, not the calendar. Whatever you'd lose by waiting a day is almost always smaller than what you'd lose by getting an irreversible call wrong while your pulse is up. The door will still be there tomorrow. Decide then.",
-      };
-    }
-    return {
-      key: "forced",
-      tone: "hold",
-      headline: "Forced to make a one-way call while hot — the worst spot to be in.",
-      body:
-        "An irreversible decision with a real, closing window is the hardest case there is, so don't skip straight to it. First: is there a reversible version? Buy time (ask for 24 hours — people grant it far more often than the panic expects), make the smallest undoable piece instead of the whole thing, or take the move that keeps your options open. If there is genuinely no way to wait and no smaller version, then decide — but decide from the cold frame below, not the hot one: answer it in someone else's name, and only trust the answer that survives all three horizons.",
-    };
-  }, [oneWay, forced]);
+  const verdict = useMemo(
+    () => computeVerdict(inp.reversible, inp.forced),
+    [inp.reversible, inp.forced]
+  );
 
   const thirdPerson = toThirdPerson(inp.decision.trim() || "my decision", inp.name);
   const horizonsFilled =
@@ -224,6 +259,20 @@ export default function CoolClient() {
 
   return (
     <div>
+      {/* ---- New here? A read-only worked example (never touches the fields) ---- */}
+      <div className="mb-5">
+        <button
+          type="button"
+          onClick={() => setShowExample((s) => !s)}
+          className="text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          {showExample
+            ? "Hide the worked example ↑"
+            : "New here? See a worked example ↓"}
+        </button>
+        {showExample ? <CoolExample /> : null}
+      </div>
+
       {/* ---- The call ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
         <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
@@ -337,23 +386,36 @@ export default function CoolClient() {
       </div>
 
       {/* ---- The verdict ---- */}
-      <div
-        className={`mt-5 rounded-xl border p-5 sm:p-6 ${
-          verdict.tone === "hold"
-            ? "border-[var(--accent)] bg-[var(--card)]"
-            : "border-[var(--border)] bg-[var(--card)]"
-        }`}
-      >
-        <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
-          The call
-        </p>
-        <p className="mt-2 text-2xl font-semibold tracking-tight text-[var(--foreground)] leading-snug">
-          {verdict.headline}
-        </p>
-        <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
-          {verdict.body}
-        </p>
-      </div>
+      {verdict ? (
+        <div
+          className={`mt-5 rounded-xl border p-5 sm:p-6 ${
+            verdict.tone === "hold"
+              ? "border-[var(--accent)] bg-[var(--card)]"
+              : "border-[var(--border)] bg-[var(--card)]"
+          }`}
+        >
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            The call
+          </p>
+          <p className="mt-2 text-2xl font-semibold tracking-tight text-[var(--foreground)] leading-snug">
+            {verdict.headline}
+          </p>
+          <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
+            {verdict.body}
+          </p>
+        </div>
+      ) : (
+        <div className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            The call
+          </p>
+          <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            Answer the two questions above — can you undo it, and is something
+            outside you really forcing the clock — and the call appears here. They
+            settle it even while you&rsquo;re hot.
+          </p>
+        </div>
+      )}
 
       {/* ---- Manufacturing distance ---- */}
       <div className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
@@ -520,6 +582,55 @@ export default function CoolClient() {
           has the version of this built for the long haul.
         </p>
       </div>
+    </div>
+  );
+}
+
+/**
+ * The worked example, rendered read-only. It shows what a completed pass looks
+ * like — the two facts, the call they produce, and the across-person reframe —
+ * for a fixed scenario, running the same computeVerdict the live tool does so it
+ * can't drift. It writes nothing: no state, no storage, no fields touched.
+ */
+function CoolExample() {
+  const verdict = computeVerdict(EXAMPLE.reversible, EXAMPLE.forced);
+  const thirdPerson = toThirdPerson(EXAMPLE.decision, "a friend");
+  return (
+    <div className="mt-4 rounded-xl border border-dashed border-[var(--accent)] bg-[var(--card)] p-5 sm:p-6">
+      <p className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+        A worked example — nothing here is saved
+      </p>
+      <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
+        <span className="font-medium">The call:</span> &ldquo;
+        {EXAMPLE.decision}&rdquo; — driven by anger.
+      </p>
+      <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+        <span className="font-medium text-[var(--foreground)]">The two facts:</span>{" "}
+        one-way (you can&rsquo;t un-send it) · not forced (no external cutoff — the
+        urgency is the feeling).
+      </p>
+      {verdict ? (
+        <div className="mt-4 rounded-lg border border-[var(--accent)] p-4">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            The call
+          </p>
+          <p className="mt-1.5 text-lg font-semibold tracking-tight text-[var(--foreground)] leading-snug">
+            {verdict.headline}
+          </p>
+          <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            {verdict.body}
+          </p>
+        </div>
+      ) : null}
+      <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
+        <span className="font-medium text-[var(--foreground)]">Across person,</span>{" "}
+        the same dilemma reads: &ldquo;{thirdPerson}?&rdquo; — the advice you&rsquo;d
+        give a friend is usually the one you can&rsquo;t hear yourself giving.
+      </p>
+      <p className="mt-4 text-xs text-[var(--muted)] leading-relaxed">
+        Your own form below is blank — close this and type the thing you actually
+        came here about.
+      </p>
     </div>
   );
 }

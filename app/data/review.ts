@@ -38,6 +38,13 @@ import {
   countPremortemsCreatedAfter,
   type ScheduledCheck,
 } from "./premortem";
+import {
+  dueTripwireItems,
+  upcomingTripwireItems,
+  countTripwires,
+  countTripwiresCreatedAfter,
+  type ScheduledTripwire,
+} from "./tripwires";
 import { readLastBackup } from "./portable";
 
 function todayISO(): string {
@@ -76,6 +83,8 @@ export type ReviewItem = {
   relDays: number;
   /** Where you go to answer it. */
   href: string;
+  /** The link text for answering it — differs by where it lives. */
+  answerLabel: string;
 };
 
 function reviewToItem(r: ScheduledReview, today: string): ReviewItem {
@@ -96,6 +105,7 @@ function reviewToItem(r: ScheduledReview, today: string): ReviewItem {
     // Deep-link straight to this entry's review screen, not the whole log —
     // the return only happens if it's one click from "it's due" to answering.
     href: `/decide?review=${encodeURIComponent(r.id)}`,
+    answerLabel: "Answer in the journal →",
   };
 }
 
@@ -114,6 +124,30 @@ function checkToItem(c: ScheduledCheck, today: string): ReviewItem {
     // Deep-link to the exact tripwire inside its pre-mortem (id is `pm:reason`),
     // so the desk lands you on the check that's due, not the room's front door.
     href: `/premortem?check=${encodeURIComponent(c.id)}`,
+    answerLabel: "Answer in the room →",
+  };
+}
+
+function tripwireToItem(t: ScheduledTripwire, today: string): ReviewItem {
+  return {
+    id: `standalone-tripwire:${t.id}`,
+    kind: "tripwire",
+    tool: "Tripwire",
+    title: t.guard || "A tripwire you set",
+    detail: t.signal
+      ? `Watch for: ${t.signal}`
+      : "Check whether the tripwire signal has appeared.",
+    meta: t.failure
+      ? `guards against: ${t.failure}`
+      : t.source
+        ? `set from ${t.source}`
+        : "armed tripwire",
+    dateISO: t.checkOn,
+    relDays: daysBetween(t.checkOn, today),
+    // Deep-link to the exact tripwire on its own page, so the desk lands you on
+    // the check that's due, ready to answer — fired or all-clear.
+    href: `/tripwire?check=${encodeURIComponent(t.id)}`,
+    answerLabel: "Answer the tripwire →",
   };
 }
 
@@ -130,7 +164,7 @@ export type BackupStatus = {
 
 function backupStatus(): BackupStatus {
   const last = readLastBackup();
-  const totalRecord = countDecisions() + countPremortems();
+  const totalRecord = countDecisions() + countPremortems() + countTripwires();
   if (totalRecord === 0) {
     return { hasRecord: false, lastBackupOn: last, newSince: 0 };
   }
@@ -138,7 +172,9 @@ function backupStatus(): BackupStatus {
     return { hasRecord: true, lastBackupOn: null, newSince: totalRecord };
   }
   const newSince =
-    countDecisionsLoggedAfter(last) + countPremortemsCreatedAfter(last);
+    countDecisionsLoggedAfter(last) +
+    countPremortemsCreatedAfter(last) +
+    countTripwiresCreatedAfter(last);
   // Guard against a marker dated in the future (clock skew / hand-editing):
   // never report negative or absurd counts.
   return { hasRecord: true, lastBackupOn: last, newSince: Math.max(0, newSince) };
@@ -165,11 +201,13 @@ export function loadReviewQueue(): ReviewQueue {
   const due: ReviewItem[] = [
     ...dueReviews(today).map((r) => reviewToItem(r, today)),
     ...dueTripwireCheckItems(today).map((c) => checkToItem(c, today)),
+    ...dueTripwireItems(today).map((t) => tripwireToItem(t, today)),
   ].sort((a, b) => b.relDays - a.relDays); // most overdue first
 
   const upcoming: ReviewItem[] = [
     ...upcomingReviews(today).map((r) => reviewToItem(r, today)),
     ...upcomingTripwireCheckItems(today).map((c) => checkToItem(c, today)),
+    ...upcomingTripwireItems(today).map((t) => tripwireToItem(t, today)),
   ].sort((a, b) => a.dateISO.localeCompare(b.dateISO)); // soonest first
 
   return { due, upcoming, backup: backupStatus(), today };
