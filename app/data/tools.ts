@@ -44,6 +44,16 @@ export type Tool = {
 
 export const tools: Tool[] = [
   {
+    id: "doors",
+    href: "/doors",
+    name: "Which Door Is This?",
+    short: "Which door",
+    when: "You're giving a decision real weight — but you haven't asked whether it's even the kind of decision that deserves it. You might be agonizing for weeks over something you could undo in an afternoon.",
+    ask: "Can I walk back through this door — and am I spending the right amount of deliberation for it?",
+    does: "Sorts the call into a one-way or two-way door by how reversible it really is — so you spend slow, careful thought only where reversal won't save you, and give a fast, undoable call the permission to move it's usually denied.",
+    payoff: "now",
+  },
+  {
     id: "weigh",
     href: "/weigh",
     name: "The Flip Point",
@@ -197,8 +207,8 @@ export const toolGroups: ToolGroup[] = [
     id: "deciding-now",
     title: "You're facing a decision right now",
     blurb:
-      "Something's in front of you today. These give you an answer in this one sitting.",
-    toolIds: ["weigh", "compare", "outside", "trace", "cool", "quit"],
+      "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
+    toolIds: ["doors", "weigh", "compare", "outside", "trace", "cool", "quit"],
   },
   {
     id: "big-commitment",
