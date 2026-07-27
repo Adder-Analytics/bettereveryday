@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import Link from "next/link";
 import {
   appendDecisionEntry,
@@ -192,11 +193,19 @@ export default function OutsideClient() {
 
   useEffect(() => {
     const loaded = loadInputs();
+    // Carry the decision in from another tool's handoff, but never over saved
+    // work: pre-fill the subject only when this tool's own field is still blank.
+    const carried = readCarriedSubject();
+    const next =
+      carried && !loaded.question.trim()
+        ? { ...loaded, question: carried }
+        : loaded;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
-    setInp(loaded);
+    setInp(next);
     setHydrated(true);
     /* eslint-enable react-hooks/set-state-in-effect */
+    if (carried) clearCarriedSubject();
   }, []);
 
   useEffect(() => {
@@ -493,7 +502,7 @@ export default function OutsideClient() {
                 review set for {formatHuman(logged.reviewOn)}. When the day comes,
                 the{" "}
                 <Link
-                  href="/decide?log=1"
+                  href={withSubject("/decide?log=1", inp.question)}
                   className="text-[var(--accent)] hover:opacity-70 transition-opacity"
                 >
                   decision journal
@@ -515,7 +524,7 @@ export default function OutsideClient() {
                 </span>{" "}
                 — to the{" "}
                 <Link
-                  href="/decide"
+                  href={withSubject("/decide", inp.question)}
                   className="text-[var(--accent)] hover:opacity-70 transition-opacity"
                 >
                   decision journal

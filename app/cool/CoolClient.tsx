@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import Link from "next/link";
 
 /**
@@ -227,11 +228,19 @@ export default function CoolClient() {
 
   useEffect(() => {
     const loaded = loadInputs();
+    // Carry the decision in from another tool's handoff, but never over saved
+    // work: pre-fill the subject only when this tool's own field is still blank.
+    const carried = readCarriedSubject();
+    const next =
+      carried && !loaded.decision.trim()
+        ? { ...loaded, decision: carried }
+        : loaded;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
-    setInp(loaded);
+    setInp(next);
     setHydrated(true);
     /* eslint-enable react-hooks/set-state-in-effect */
+    if (carried) clearCarriedSubject();
   }, []);
 
   useEffect(() => {
@@ -566,12 +575,12 @@ export default function CoolClient() {
           This page keeps what you wrote, so a decision you slept on is still
           here — unchanged — when you come back cold. If the call still stands
           then, weigh it properly rather than on a feeling: find its{" "}
-          <Link href="/weigh" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+          <Link href={withSubject("/weigh", inp.decision)} className="text-[var(--accent)] hover:opacity-70 transition-opacity">
             flip point
           </Link>{" "}
           to see which side of the line it&rsquo;s really on, or work it through
           and log it in the{" "}
-          <Link href="/decide" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+          <Link href={withSubject("/decide", inp.decision)} className="text-[var(--accent)] hover:opacity-70 transition-opacity">
             decision journal
           </Link>
           . If it&rsquo;s a &ldquo;should I quit&rdquo; that keeps coming back,

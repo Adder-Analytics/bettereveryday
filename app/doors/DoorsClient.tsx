@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 
 /**
  * Which door is this? (/doors)
@@ -166,11 +167,19 @@ export default function DoorsClient() {
 
   useEffect(() => {
     const loaded = loadInputs();
+    // Carry the decision in from another tool's handoff, but never over saved
+    // work: pre-fill the subject only when this tool's own field is still blank.
+    const carried = readCarriedSubject();
+    const next =
+      carried && !loaded.decision.trim()
+        ? { ...loaded, decision: carried }
+        : loaded;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
-    setInp(loaded);
+    setInp(next);
     setHydrated(true);
     /* eslint-enable react-hooks/set-state-in-effect */
+    if (carried) clearCarriedSubject();
   }, []);
 
   useEffect(() => {
@@ -497,7 +506,7 @@ function TwoWayBody({ inp, it }: { inp: Inputs; it: string }) {
           first. You lose almost nothing, and you get back the calm version of
           you.{" "}
           <Link
-            href="/cool"
+            href={withSubject("/cool", inp.decision)}
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Cool the call
@@ -508,7 +517,7 @@ function TwoWayBody({ inp, it }: { inp: Inputs; it: string }) {
         <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
           Still want to sanity-check the numbers before you move? Take it to the{" "}
           <Link
-            href="/weigh"
+            href={withSubject("/weigh", inp.decision)}
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             flip point
@@ -546,7 +555,7 @@ function OneWayBody({
         <ul className="mt-3 space-y-2.5 text-sm text-[var(--muted)] leading-relaxed">
           <li>
             <Link
-              href="/premortem"
+              href={withSubject("/premortem", inp.decision)}
               className="text-[var(--accent)] hover:opacity-70 transition-opacity font-medium"
             >
               Run a pre-mortem →
@@ -557,7 +566,7 @@ function OneWayBody({
           </li>
           <li>
             <Link
-              href="/decide"
+              href={withSubject("/decide", inp.decision)}
               className="text-[var(--accent)] hover:opacity-70 transition-opacity font-medium"
             >
               Log it in the decision journal →
@@ -568,7 +577,7 @@ function OneWayBody({
           </li>
           <li>
             <Link
-              href="/outside"
+              href={withSubject("/outside", inp.decision)}
               className="text-[var(--accent)] hover:opacity-70 transition-opacity font-medium"
             >
               Check the outside view →
@@ -579,7 +588,7 @@ function OneWayBody({
           {ruin ? (
             <li>
               <Link
-                href="/weigh"
+                href={withSubject("/weigh", inp.decision)}
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity font-medium"
               >
                 Weigh the stakes →
@@ -597,7 +606,7 @@ function OneWayBody({
           never act on: a door that only swings one way, decided while the pulse
           is up. It&rsquo;ll still be there tomorrow.{" "}
           <Link
-            href="/cool"
+            href={withSubject("/cool", inp.decision)}
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             Cool the call
@@ -628,7 +637,7 @@ function MiddleBody({ inp, it }: { inp: Inputs; it: string }) {
         <ul className="mt-3 space-y-2.5 text-sm text-[var(--muted)] leading-relaxed">
           <li>
             <Link
-              href="/weigh"
+              href={withSubject("/weigh", inp.decision)}
               className="text-[var(--accent)] hover:opacity-70 transition-opacity font-medium"
             >
               Find the flip point →
@@ -638,7 +647,7 @@ function MiddleBody({ inp, it }: { inp: Inputs; it: string }) {
           </li>
           <li>
             <Link
-              href="/trace"
+              href={withSubject("/trace", inp.decision)}
               className="text-[var(--accent)] hover:opacity-70 transition-opacity font-medium"
             >
               Trace it forward →
@@ -648,7 +657,7 @@ function MiddleBody({ inp, it }: { inp: Inputs; it: string }) {
           </li>
           <li>
             <Link
-              href="/decide"
+              href={withSubject("/decide", inp.decision)}
               className="text-[var(--accent)] hover:opacity-70 transition-opacity font-medium"
             >
               Log the call →
@@ -662,7 +671,7 @@ function MiddleBody({ inp, it }: { inp: Inputs; it: string }) {
         <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
           Deciding it hot? Buy the distance first —{" "}
           <Link
-            href="/cool"
+            href={withSubject("/cool", inp.decision)}
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             cool the call
