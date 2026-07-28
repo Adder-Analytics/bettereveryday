@@ -2,6 +2,13 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import {
+  parkDecision,
+  findParked,
+  resolveParked,
+  type Parked,
+} from "../data/parked";
+import { icsEscape, icsStamp, wrapCalendar, SITE_URL } from "../data/ics";
 import Link from "next/link";
 
 /**
@@ -29,6 +36,14 @@ import Link from "next/link";
  * Nothing is sent anywhere. Inputs persist in your browser under `cool:v1` — on
  * purpose, because the tool's most common verdict is "sleep on it," and the
  * decision should still be here, unchanged, when you come back cold.
+ *
+ * But keeping the draft here isn't the same as bringing you *back*. That rested
+ * on remembering to return — the one thing the return desk exists to replace. So
+ * a wait verdict can now *park* the decision: it schedules a dated return under
+ * `cool:parked:v1` (see app/data/parked.ts) that surfaces at /review on its day,
+ * and a deep link back here (`?resume=…`) reopens it cold. The park is the honest
+ * completion of the tool's own promise — an appointment to finish deciding, not a
+ * note-to-self you have to remember to reread.
  */
 
 const STORE_KEY = "cool:v1";
@@ -90,6 +105,90 @@ const FEELINGS: { id: Feeling; label: string }[] = [
   { id: "sunk", label: "Sunk cost" },
   { id: "other", label: "Something else" },
 ];
+
+/** A short, human label for the driving feeling — for the parked-return copy
+ *  ("parked while anger"). Falls back to "" for none/unknown. */
+function feelingLabel(f: Feeling): string {
+  switch (f) {
+    case "anger":
+      return "angry";
+    case "fear":
+      return "in fear";
+    case "fomo":
+      return "in FOMO";
+    case "sunk":
+      return "on sunk cost";
+    case "other":
+      return "hot";
+    default:
+      return "";
+  }
+}
+
+function todayISO(): string {
+  const d = new Date();
+  const p = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
+
+function addDaysISO(iso: string, days: number): string {
+  const d = new Date(`${iso}T00:00:00`);
+  d.setDate(d.getDate() + days);
+  const p = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
+
+/** A friendly rendering of an ISO date for confirmation copy. Local-time. */
+function prettyDate(iso: string): string {
+  const d = new Date(`${iso}T00:00:00`);
+  if (!Number.isFinite(d.getTime())) return iso;
+  return d.toLocaleDateString(undefined, {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+  });
+}
+
+/**
+ * An all-day calendar reminder to come back and decide a parked call cold —
+ * so the return lands where you'll actually see it, not only on a page you have
+ * to remember to open. Built entirely in the browser with the shared ics.ts
+ * plumbing; nothing is sent anywhere. Mirrors the tripwire page's own .ics.
+ */
+function downloadParkedIcs(p: Parked): void {
+  const day = p.decideOn.replace(/-/g, "");
+  if (day.length !== 8) return;
+  // DTEND is the exclusive end of an all-day event — the day after.
+  const end = addDaysISO(p.decideOn, 1).replace(/-/g, "");
+  const summary = `Decide it cold: ${p.decision}`;
+  const desc = [
+    p.feeling ? `You parked this on ${p.parkedOn} while ${p.feeling}.` : `You parked this on ${p.parkedOn}.`,
+    p.note ? `\nYour note: ${p.note}` : "",
+    "\nYou chose to sleep on it rather than decide it hot. You're cool now — make the call.",
+    `\nReopen it: ${SITE_URL}/cool?resume=${p.id}`,
+  ].join("");
+  const event = [
+    "BEGIN:VEVENT",
+    `UID:parked-${p.id}@bettereveryday`,
+    `DTSTAMP:${icsStamp()}`,
+    `DTSTART;VALUE=DATE:${day}`,
+    `DTEND;VALUE=DATE:${end}`,
+    `SUMMARY:${icsEscape(summary)}`,
+    `DESCRIPTION:${icsEscape(desc)}`,
+    "END:VEVENT",
+  ];
+  const blob = new Blob([wrapCalendar([event], "Cool")], {
+    type: "text/calendar;charset=utf-8",
+  });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `decide-cold-${p.decideOn || "return"}.ics`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
 
 function loadInputs(): Inputs {
   if (typeof window === "undefined") return BLANK;
@@ -226,18 +325,39 @@ export default function CoolClient() {
   const [hydrated, setHydrated] = useState(false);
   const [showExample, setShowExample] = useState(false);
 
+  // The return: a decision parked earlier that came back due, reopened cold via
+  // /review's ?resume=<id> deep link. Null in the normal (fresh) case.
+  const [resumed, setResumed] = useState<Parked | null>(null);
+  const [resolvedNow, setResolvedNow] = useState(false);
+
+  // The park control's own state: the date to come back, an optional note to
+  // hand your cold self, and the record once it's parked (for confirmation).
+  const [parkDate, setParkDate] = useState("");
+  const [parkNote, setParkNote] = useState("");
+  const [parked, setParked] = useState<Parked | null>(null);
+
   useEffect(() => {
     const loaded = loadInputs();
+
+    // A cold return: /review deep-links back here with the parked decision's id.
+    // Reopen it — pre-fill the field from what was parked (the whole point is to
+    // decide *this* call), and surface the return banner.
+    const params = new URLSearchParams(window.location.search);
+    const resumeId = params.get("resume");
+    const back = resumeId ? findParked(resumeId) : null;
+
     // Carry the decision in from another tool's handoff, but never over saved
     // work: pre-fill the subject only when this tool's own field is still blank.
     const carried = readCarriedSubject();
-    const next =
-      carried && !loaded.decision.trim()
-        ? { ...loaded, decision: carried }
-        : loaded;
-    /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
-       browser storage; intentionally synchronous on mount, can't run in render. */
+    const seed =
+      back && back.decision.trim() ? back.decision : carried && !loaded.decision.trim() ? carried : "";
+    const next = seed && !loaded.decision.trim() ? { ...loaded, decision: seed } : loaded;
+
+    /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration and
+       deep-link read from browser storage on mount; can't run in render. */
     setInp(next);
+    if (back && !back.resolvedOn) setResumed(back);
+    setParkDate(addDaysISO(todayISO(), 1)); // default: come back tomorrow
     setHydrated(true);
     /* eslint-enable react-hooks/set-state-in-effect */
     if (carried) clearCarriedSubject();
@@ -262,12 +382,94 @@ export default function CoolClient() {
     [inp.reversible, inp.forced]
   );
 
+  // Park the decision: schedule a dated return at /review and reopen it here
+  // cold. Only offered on a "wait" verdict — the whole point is deferral.
+  const canPark = inp.decision.trim().length > 0 && !!parkDate;
+  function park() {
+    if (!canPark) return;
+    const rec = parkDecision({
+      decision: inp.decision,
+      feeling: feelingLabel(inp.feeling),
+      note: parkNote,
+      verdict: verdict?.headline ?? "",
+      decideOn: parkDate,
+    });
+    setParked(rec);
+    setParkNote("");
+  }
+
+  // On a cold return, mark the parked decision handled so it leaves the desk.
+  function markResumedDecided() {
+    if (!resumed) return;
+    resolveParked(resumed.id);
+    setResolvedNow(true);
+  }
+
   const thirdPerson = toThirdPerson(inp.decision.trim() || "my decision", inp.name);
   const horizonsFilled =
     inp.tenMin.trim() !== "" || inp.tenMonth.trim() !== "" || inp.tenYear.trim() !== "";
 
   return (
     <div>
+      {/* ---- The cold return: you parked this, and it's back ---- */}
+      {resumed ? (
+        <div className="mb-6 rounded-xl border border-[var(--accent)] bg-[var(--card)] p-5 sm:p-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+            You&rsquo;re back — and cold
+          </p>
+          {resolvedNow ? (
+            <>
+              <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
+                Marked decided. It&rsquo;s off your return desk. The heat had its
+                say {resumed.feeling ? `— you parked this ${resumed.feeling} — ` : ""}
+                and this time the calm version of you made the call.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-4">
+                <Link
+                  href={withSubject("/weigh", inp.decision)}
+                  className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+                >
+                  Weigh it at the flip point →
+                </Link>
+                <Link
+                  href={withSubject("/decide", inp.decision)}
+                  className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+                >
+                  Log it in the journal →
+                </Link>
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
+                On {prettyDate(resumed.parkedOn)} you were{" "}
+                {resumed.feeling || "hot"} and chose to sleep on this rather than
+                decide it then. Here it is again, unchanged — now judge it with the
+                calm you didn&rsquo;t have.
+              </p>
+              <p className="mt-3 rounded-lg border border-[var(--border)] px-4 py-3 text-base font-medium text-[var(--foreground)] leading-snug">
+                &ldquo;{resumed.decision}&rdquo;
+              </p>
+              {resumed.note ? (
+                <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+                  You left yourself a note: {resumed.note}
+                </p>
+              ) : null}
+              <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
+                Weigh it with the tools below, then close the loop:
+              </p>
+              <button
+                type="button"
+                onClick={markResumedDecided}
+                className="mt-3 rounded-lg border border-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity cursor-pointer"
+              >
+                I&rsquo;ve decided it — clear it from my desk
+              </button>
+            </>
+          )}
+        </div>
+      ) : null}
+
       {/* ---- New here? A read-only worked example (never touches the fields) ---- */}
       <div className="mb-5">
         <button
@@ -426,6 +628,127 @@ export default function CoolClient() {
         </div>
       )}
 
+      {/* ---- Park it: schedule the return the "wait" verdict just prescribed ---- */}
+      {verdict && (verdict.key === "wait" || verdict.key === "wait-strong") ? (
+        <div className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            Don&rsquo;t just close the tab — schedule the return
+          </p>
+          {parked ? (
+            <div className="mt-3">
+              <p className="text-sm text-[var(--foreground)] leading-relaxed">
+                Parked. This exact decision is on your{" "}
+                <Link
+                  href="/review"
+                  className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+                >
+                  return desk
+                </Link>{" "}
+                for <span className="font-medium">{prettyDate(parked.decideOn)}</span> —
+                it&rsquo;ll come back to you cold on that day, unchanged, so the
+                heat can&rsquo;t win by default.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-4">
+                <button
+                  type="button"
+                  onClick={() => downloadParkedIcs(parked)}
+                  className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity cursor-pointer"
+                >
+                  Add it to your calendar too →
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setParked(null)}
+                  className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors cursor-pointer"
+                >
+                  Park another date
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+              <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+                &ldquo;Come back to it cold&rdquo; only works if something brings
+                you back. Set the day now, while you&rsquo;re deciding to wait, and
+                the site will hand this decision back to you then — at the{" "}
+                <Link
+                  href="/review"
+                  className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+                >
+                  return desk
+                </Link>
+                , not from memory.
+              </p>
+
+              <div className="mt-4">
+                <p className="block text-sm font-medium text-[var(--foreground)] mb-2">
+                  Bring it back&hellip;
+                </p>
+                <div className="flex flex-wrap items-center gap-2">
+                  {[
+                    { label: "Tomorrow", days: 1 },
+                    { label: "In 3 days", days: 3 },
+                    { label: "In a week", days: 7 },
+                  ].map(({ label, days }) => {
+                    const iso = addDaysISO(todayISO(), days);
+                    return (
+                      <button
+                        key={label}
+                        type="button"
+                        onClick={() => setParkDate(iso)}
+                        className={`${chipBase} ${parkDate === iso ? chipOn : chipOff}`}
+                      >
+                        {label}
+                      </button>
+                    );
+                  })}
+                  <input
+                    type="date"
+                    value={parkDate}
+                    min={todayISO()}
+                    onChange={(e) => setParkDate(e.target.value)}
+                    className="text-sm px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] focus:outline-none focus:border-[var(--accent)] transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+                  A note for your cold self{" "}
+                  <span className="font-normal text-[var(--muted)]">(optional)</span>
+                </label>
+                <input
+                  type="text"
+                  value={parkNote}
+                  onChange={(e) => setParkNote(e.target.value)}
+                  placeholder="what's making this feel urgent — so you can check if it still is"
+                  className={inputClass}
+                />
+              </div>
+
+              <button
+                type="button"
+                onClick={park}
+                disabled={!canPark}
+                className={`mt-4 rounded-lg px-4 py-2 text-sm font-medium transition-opacity ${
+                  canPark
+                    ? "bg-[var(--accent)] text-[var(--background)] hover:opacity-80 cursor-pointer"
+                    : "border border-[var(--border)] text-[var(--muted)] cursor-not-allowed"
+                }`}
+              >
+                Park it — bring it back cold
+              </button>
+              {!inp.decision.trim() ? (
+                <p className="mt-2 text-xs text-[var(--muted)]">
+                  Name the decision up top first, so there&rsquo;s something to
+                  bring back.
+                </p>
+              ) : null}
+            </>
+          )}
+        </div>
+      ) : null}
+
       {/* ---- Manufacturing distance ---- */}
       <div className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
         <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
@@ -573,8 +896,10 @@ export default function CoolClient() {
         </p>
         <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
           This page keeps what you wrote, so a decision you slept on is still
-          here — unchanged — when you come back cold. If the call still stands
-          then, weigh it properly rather than on a feeling: find its{" "}
+          here — unchanged — when you come back cold (and if you parked it above,
+          the return desk brings it back to you on its day, so you don&rsquo;t
+          have to remember to). When the call still stands, weigh it properly
+          rather than on a feeling: find its{" "}
           <Link href={withSubject("/weigh", inp.decision)} className="text-[var(--accent)] hover:opacity-70 transition-opacity">
             flip point
           </Link>{" "}
