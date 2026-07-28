@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import Link from "next/link";
 import {
   appendDecisionEntry,
@@ -340,11 +341,19 @@ export default function CompareClient() {
 
   useEffect(() => {
     const loaded = loadState();
+    // Carry the decision in from another tool's handoff, but never over saved
+    // work: pre-fill the subject only when this tool's own field is still blank.
+    const carried = readCarriedSubject();
+    const next =
+      carried && !loaded.decision.trim()
+        ? { ...loaded, decision: carried }
+        : loaded;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
-    setState(loaded);
+    setState(next);
     setHydrated(true);
     /* eslint-enable react-hooks/set-state-in-effect */
+    if (carried) clearCarriedSubject();
   }, []);
 
   useEffect(() => {
@@ -924,7 +933,7 @@ export default function CompareClient() {
                 as a tracked forecast at {logged.conf}% confidence, with a review
                 set for {formatHuman(logged.reviewOn)}. When the day comes, the{" "}
                 <Link
-                  href="/decide?log=1"
+                  href={withSubject("/decide?log=1", state.decision)}
                   className="text-[var(--accent)] hover:opacity-70 transition-opacity"
                 >
                   decision journal
@@ -940,7 +949,7 @@ export default function CompareClient() {
               <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
                 A choice worth scoring is a forecast worth grading. Log it to your{" "}
                 <Link
-                  href="/decide"
+                  href={withSubject("/decide", state.decision)}
                   className="text-[var(--accent)] hover:opacity-70 transition-opacity"
                 >
                   decision journal

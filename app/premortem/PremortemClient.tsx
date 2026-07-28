@@ -16,6 +16,7 @@ import {
   type TriageKind,
 } from "../data/premortem";
 import { appendDecisionEntry, CONFIDENCE_OPTIONS } from "../data/decisionLog";
+import { readCarriedSubject, clearCarriedSubject } from "../data/carry";
 
 /**
  * The pre-mortem room. Four screens, in the order Klein's exercise runs:
@@ -287,6 +288,9 @@ export default function PremortemClient() {
   const [copied, setCopied] = useState(false);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const reasonRef = useRef<HTMLTextAreaElement | null>(null);
+  // A decision carried in from another tool's handoff, kept so "start fresh"
+  // can seed the plan even after the landing auto-open has consumed it once.
+  const carriedSubjectRef = useRef("");
 
   useEffect(() => {
     const savedList = loadJSON<Premortem[]>(SAVED_KEY, []);
@@ -300,11 +304,24 @@ export default function PremortemClient() {
       : [null, null];
     const targetPm =
       checkPmId && merged.find((p) => p.id === checkPmId) ? checkPmId : null;
+    // A decision handed over from another tool (?subject=…). Kept for startFresh.
+    const carried = readCarriedSubject();
+    carriedSubjectRef.current = carried;
+    const hasDraft = !!(
+      savedDraft &&
+      (savedDraft.plan || (savedDraft.reasons ?? []).length > 0)
+    );
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setSaved(merged);
-    if (savedDraft && (savedDraft.plan || (savedDraft.reasons ?? []).length > 0)) {
+    if (hasDraft) {
       setDraft(mergeDraft(savedDraft));
+    } else if (carried && !targetPm) {
+      // Seamless handoff: another tool sent a decision here. Open a fresh draft
+      // with the plan already filled, rather than a cold home screen — but only
+      // when there's no in-progress draft to respect and no return-desk deep link.
+      setDraft({ ...emptyDraft(), plan: carried });
+      setScreen("work");
     }
     if (targetPm) {
       setViewId(targetPm);
@@ -316,6 +333,7 @@ export default function PremortemClient() {
     }
     setHydrated(true);
     /* eslint-enable react-hooks/set-state-in-effect */
+    if (carried) clearCarriedSubject();
   }, []);
 
   useEffect(() => {
@@ -349,7 +367,10 @@ export default function PremortemClient() {
   }, []);
 
   const startNew = useCallback(() => {
-    setDraft(emptyDraft());
+    // If a decision was carried in from another tool, seed the plan with it.
+    const seed = carriedSubjectRef.current;
+    carriedSubjectRef.current = "";
+    setDraft(seed ? { ...emptyDraft(), plan: seed } : emptyDraft());
     setScreen("work");
     setReasonInput("");
     setActiveLens(null);

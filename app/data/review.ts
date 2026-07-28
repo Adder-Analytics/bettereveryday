@@ -13,11 +13,14 @@
  *
  * This module is the review surface. It reads — never writes — every dated
  * thing the site is holding for you and folds it into one queue: the journal's
- * decisions due for review and the pre-mortems' armed tripwire checks, split
- * into what's due now and what's coming. Each tool still owns its own storage
- * and its own read side (journal.ts, premortem.ts); this file only composes
- * their flattened items into a single, sortable list. Like the due badge, it
- * borrows their counters so the desk and the tools can never disagree.
+ * decisions due for review, the pre-mortems' and standalone tripwires' armed
+ * checks, and the cooling-off tool's parked decisions waiting to be decided
+ * cold — split into what's due now and what's coming. The three are genuinely
+ * different returns: a forecast to grade, a signal to watch, and an appointment
+ * to finish deciding. Each tool still owns its own storage and its own read
+ * side (journal.ts, premortem.ts, tripwires.ts, parked.ts); this file only
+ * composes their flattened items into a single, sortable list. Like the due
+ * badge, it borrows their counters so the desk and the tools can never disagree.
  *
  * It also carries the one nudge that keeps the durable record actually durable:
  * a plain reading of how much you've logged since your last backup, so the
@@ -45,6 +48,13 @@ import {
   countTripwiresCreatedAfter,
   type ScheduledTripwire,
 } from "./tripwires";
+import {
+  dueParkedItems,
+  upcomingParkedItems,
+  countParked,
+  countParkedCreatedAfter,
+  type ScheduledParked,
+} from "./parked";
 import { readLastBackup } from "./portable";
 
 function todayISO(): string {
@@ -63,7 +73,7 @@ export function daysBetween(fromISO: string, toISO: string): number {
   return Math.round((b - a) / 86_400_000);
 }
 
-export type ReviewKind = "decision" | "tripwire";
+export type ReviewKind = "decision" | "tripwire" | "revisit";
 
 /** One thing waiting for an answer, normalized across tools. */
 export type ReviewItem = {
@@ -151,6 +161,28 @@ function tripwireToItem(t: ScheduledTripwire, today: string): ReviewItem {
   };
 }
 
+function parkedToItem(p: ScheduledParked, today: string): ReviewItem {
+  return {
+    id: `parked:${p.id}`,
+    kind: "revisit",
+    tool: "Cooling-off",
+    title: p.decision || "A decision you're sleeping on",
+    // The point isn't to grade or to watch — it's to finish deciding, cold.
+    detail: p.note
+      ? `Decide it cold. You noted: ${p.note}`
+      : "You parked this while hot. You're cool now — decide it cold.",
+    meta: p.feeling
+      ? `parked while ${p.feeling}`
+      : "parked to sleep on",
+    dateISO: p.decideOn,
+    relDays: daysBetween(p.decideOn, today),
+    // Deep-link back to the cooling-off tool's cold return, which reloads the
+    // parked decision and hands it to the tools you'd weigh it with now.
+    href: `/cool?resume=${encodeURIComponent(p.id)}`,
+    answerLabel: "Decide it now →",
+  };
+}
+
 /** How the record stands against its last saved copy — the durability nudge. */
 export type BackupStatus = {
   /** Anything logged at all worth backing up? */
@@ -164,7 +196,8 @@ export type BackupStatus = {
 
 function backupStatus(): BackupStatus {
   const last = readLastBackup();
-  const totalRecord = countDecisions() + countPremortems() + countTripwires();
+  const totalRecord =
+    countDecisions() + countPremortems() + countTripwires() + countParked();
   if (totalRecord === 0) {
     return { hasRecord: false, lastBackupOn: last, newSince: 0 };
   }
@@ -174,7 +207,8 @@ function backupStatus(): BackupStatus {
   const newSince =
     countDecisionsLoggedAfter(last) +
     countPremortemsCreatedAfter(last) +
-    countTripwiresCreatedAfter(last);
+    countTripwiresCreatedAfter(last) +
+    countParkedCreatedAfter(last);
   // Guard against a marker dated in the future (clock skew / hand-editing):
   // never report negative or absurd counts.
   return { hasRecord: true, lastBackupOn: last, newSince: Math.max(0, newSince) };
@@ -202,12 +236,14 @@ export function loadReviewQueue(): ReviewQueue {
     ...dueReviews(today).map((r) => reviewToItem(r, today)),
     ...dueTripwireCheckItems(today).map((c) => checkToItem(c, today)),
     ...dueTripwireItems(today).map((t) => tripwireToItem(t, today)),
+    ...dueParkedItems(today).map((p) => parkedToItem(p, today)),
   ].sort((a, b) => b.relDays - a.relDays); // most overdue first
 
   const upcoming: ReviewItem[] = [
     ...upcomingReviews(today).map((r) => reviewToItem(r, today)),
     ...upcomingTripwireCheckItems(today).map((c) => checkToItem(c, today)),
     ...upcomingTripwireItems(today).map((t) => tripwireToItem(t, today)),
+    ...upcomingParkedItems(today).map((p) => parkedToItem(p, today)),
   ].sort((a, b) => a.dateISO.localeCompare(b.dateISO)); // soonest first
 
   return { due, upcoming, backup: backupStatus(), today };
