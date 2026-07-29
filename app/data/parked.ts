@@ -29,6 +29,16 @@
 
 export const PARKED_KEY = "cool:parked:v1";
 
+/**
+ * When you come back cold and decide a parked call, the one thing worth
+ * recording is whether cooling actually changed anything: `"same"` — the cold
+ * call matched the hot one, the heat wasn't talking — or `"changed"` — waiting
+ * moved you. `""` means you resolved it without saying (or haven't resolved it).
+ * This is the empirical answer to the question the whole tool rests on: *does
+ * sleeping on it actually change my mind?* Graded on return, never forced.
+ */
+export type WaitGrade = "" | "same" | "changed";
+
 export type Parked = {
   id: string;
   /** The call you were about to make, one line — what you'll decide when cool. */
@@ -48,6 +58,9 @@ export type Parked = {
   /** ISO date you resolved it ("" = still waiting to be decided). A parked
    *  decision ends in a deliberate answer — decided or let go — not by fading. */
   resolvedOn: string;
+  /** Whether cooling changed the call, recorded on the cold return. See
+   *  WaitGrade. "" until you say — grading is always optional. */
+  cooledMatch: WaitGrade;
 };
 
 function todayISO(): string {
@@ -65,6 +78,8 @@ function todayISO(): string {
 export function mergeParked(raw: Partial<Parked> | null | undefined): Parked {
   const r = raw ?? {};
   const str = (v: unknown) => (typeof v === "string" ? v : "");
+  const grade = (v: unknown): WaitGrade =>
+    v === "same" || v === "changed" ? v : "";
   return {
     id:
       typeof r.id === "string" && r.id
@@ -77,6 +92,7 @@ export function mergeParked(raw: Partial<Parked> | null | undefined): Parked {
     parkedOn: typeof r.parkedOn === "string" && r.parkedOn ? r.parkedOn : todayISO(),
     decideOn: str(r.decideOn),
     resolvedOn: str(r.resolvedOn),
+    cooledMatch: grade(r.cooledMatch),
   };
 }
 
@@ -137,19 +153,24 @@ export function parkDecision(input: NewParked): Parked {
 }
 
 /** Mark a parked decision resolved — you came back and decided it (or let it
- *  go). Idempotent by id; a no-op if the id is gone. */
-export function resolveParked(id: string): void {
+ *  go). Optionally record whether cooling changed the call (the wait grade);
+ *  omit it to resolve without saying. Idempotent by id; a no-op if the id is
+ *  gone. */
+export function resolveParked(id: string, cooledMatch: WaitGrade = ""): void {
   saveParked(
     loadParked().map((p) =>
-      p.id === id ? { ...p, resolvedOn: todayISO() } : p
+      p.id === id ? { ...p, resolvedOn: todayISO(), cooledMatch } : p
     )
   );
 }
 
-/** Send a resolved parked decision back to waiting — for one closed by mistake. */
+/** Send a resolved parked decision back to waiting — for one closed by mistake.
+ *  Clears the wait grade too, since it's no longer decided. */
 export function reopenParked(id: string): void {
   saveParked(
-    loadParked().map((p) => (p.id === id ? { ...p, resolvedOn: "" } : p))
+    loadParked().map((p) =>
+      p.id === id ? { ...p, resolvedOn: "", cooledMatch: "" as WaitGrade } : p
+    )
   );
 }
 
@@ -225,4 +246,63 @@ export function countParked(): number {
  *  nudge. */
 export function countParkedCreatedAfter(iso: string): number {
   return loadParked().filter((p) => p.parkedOn && p.parkedOn > iso).length;
+}
+
+/** One open parked decision, flattened for the cooling-off tool's own list of
+ *  what it's still holding for you — decision, when it comes back, and whether
+ *  that day has arrived. */
+export type OpenParked = {
+  id: string;
+  decision: string;
+  feeling: string;
+  decideOn: string;
+  due: boolean;
+};
+
+/**
+ * Every parked decision still waiting to be decided cold, soonest-return first,
+ * with a `due` flag for the ones whose day has come. This is what /cool shows on
+ * its own page — the tripwire tool lists its armed set; the cooling-off tool
+ * should list the calls it's holding for you, so you can manage them without a
+ * trip to the return desk.
+ */
+export function openParked(today = todayISO()): OpenParked[] {
+  return loadParked()
+    .filter((p) => !p.resolvedOn && !!p.decision.trim() && !!p.decideOn)
+    .sort((a, b) => (a.decideOn < b.decideOn ? -1 : a.decideOn > b.decideOn ? 1 : 0))
+    .map((p) => ({
+      id: p.id,
+      decision: p.decision.trim(),
+      feeling: p.feeling.trim(),
+      decideOn: p.decideOn,
+      due: p.decideOn <= today,
+    }));
+}
+
+/** The tally behind the cooling-off tool's own reading of itself: of the parked
+ *  calls you came back and decided, how often waiting actually moved you. The
+ *  empirical answer to "does sleeping on it change my mind?" */
+export type WaitRecord = {
+  /** Parked calls you resolved (decided cold or let go). */
+  resolved: number;
+  /** Of those, how many you graded (said same/changed) — the denominator that
+   *  means something. */
+  graded: number;
+  /** Graded ones where cooling changed the call. */
+  changed: number;
+  /** Graded ones where the cold call matched the hot one. */
+  same: number;
+};
+
+export function parkedWaitRecord(): WaitRecord {
+  const resolvedList = loadParked().filter((p) => !!p.resolvedOn);
+  const graded = resolvedList.filter(
+    (p) => p.cooledMatch === "same" || p.cooledMatch === "changed"
+  );
+  return {
+    resolved: resolvedList.length,
+    graded: graded.length,
+    changed: graded.filter((p) => p.cooledMatch === "changed").length,
+    same: graded.filter((p) => p.cooledMatch === "same").length,
+  };
 }

@@ -6,7 +6,12 @@ import {
   parkDecision,
   findParked,
   resolveParked,
+  openParked,
+  parkedWaitRecord,
   type Parked,
+  type WaitGrade,
+  type OpenParked,
+  type WaitRecord,
 } from "../data/parked";
 import { icsEscape, icsStamp, wrapCalendar, SITE_URL } from "../data/ics";
 import Link from "next/link";
@@ -328,7 +333,17 @@ export default function CoolClient() {
   // The return: a decision parked earlier that came back due, reopened cold via
   // /review's ?resume=<id> deep link. Null in the normal (fresh) case.
   const [resumed, setResumed] = useState<Parked | null>(null);
-  const [resolvedNow, setResolvedNow] = useState(false);
+  // The cold return runs in three beats: read the call again, grade whether
+  // cooling moved you, then the close. "grade" is where the tool's own premise
+  // gets checked — did sleeping on it actually change the answer?
+  const [coldPhase, setColdPhase] = useState<"decide" | "grade" | "done">("decide");
+  const [coldGrade, setColdGrade] = useState<WaitGrade>("");
+
+  // The tool's reading of its own history: what it's still holding for you, and
+  // how often the wait has actually changed a call. Loaded from the browser on
+  // mount, refreshed whenever a park or a cold return moves the numbers.
+  const [openList, setOpenList] = useState<OpenParked[]>([]);
+  const [record, setRecord] = useState<WaitRecord | null>(null);
 
   // The park control's own state: the date to come back, an optional note to
   // hand your cold self, and the record once it's parked (for confirmation).
@@ -358,6 +373,8 @@ export default function CoolClient() {
     setInp(next);
     if (back && !back.resolvedOn) setResumed(back);
     setParkDate(addDaysISO(todayISO(), 1)); // default: come back tomorrow
+    setOpenList(openParked());
+    setRecord(parkedWaitRecord());
     setHydrated(true);
     /* eslint-enable react-hooks/set-state-in-effect */
     if (carried) clearCarriedSubject();
@@ -396,13 +413,21 @@ export default function CoolClient() {
     });
     setParked(rec);
     setParkNote("");
+    setOpenList(openParked());
+    setRecord(parkedWaitRecord());
   }
 
-  // On a cold return, mark the parked decision handled so it leaves the desk.
-  function markResumedDecided() {
+  // On a cold return, close the loop: record whether cooling changed the call
+  // (the one datum worth keeping — it's what answers the tool's own question),
+  // mark the parked decision handled so it leaves the desk, and refresh the
+  // on-page record. Grading is optional — `grade` is "" when you just clear it.
+  function finishResumed(grade: WaitGrade) {
     if (!resumed) return;
-    resolveParked(resumed.id);
-    setResolvedNow(true);
+    resolveParked(resumed.id, grade);
+    setColdGrade(grade);
+    setColdPhase("done");
+    setOpenList(openParked());
+    setRecord(parkedWaitRecord());
   }
 
   const thirdPerson = toThirdPerson(inp.decision.trim() || "my decision", inp.name);
@@ -417,12 +442,14 @@ export default function CoolClient() {
           <p className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
             You&rsquo;re back — and cold
           </p>
-          {resolvedNow ? (
+          {coldPhase === "done" ? (
             <>
               <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
-                Marked decided. It&rsquo;s off your return desk. The heat had its
-                say {resumed.feeling ? `— you parked this ${resumed.feeling} — ` : ""}
-                and this time the calm version of you made the call.
+                {coldGrade === "changed"
+                  ? "Good thing you waited. Cold, the call came out different from the hot one — that’s the wait doing exactly what it’s for, and now you have the proof."
+                  : coldGrade === "same"
+                    ? "It held. Cold, you’d make the same call — so the heat wasn’t talking after all. That’s worth knowing for sure instead of guessing."
+                    : `Marked decided. It’s off your return desk${resumed.feeling ? ` — you parked this ${resumed.feeling}, and` : " —"} this time the calm version of you made the call.`}
               </p>
               <div className="mt-4 flex flex-wrap gap-4">
                 <Link
@@ -438,6 +465,41 @@ export default function CoolClient() {
                   Log it in the journal →
                 </Link>
               </div>
+            </>
+          ) : coldPhase === "grade" ? (
+            <>
+              <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
+                One question before it leaves your desk — the only one worth
+                keeping. Cooling off is a bet that the calm call beats the hot
+                one; this is how you find out whether it does.
+              </p>
+              <p className="mt-3 text-base font-medium text-[var(--foreground)] leading-snug">
+                Now that you&rsquo;re cold, is it the same call you&rsquo;d have
+                made {resumed.feeling ? `${resumed.feeling}` : "hot"}?
+              </p>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={() => finishResumed("same")}
+                  className="rounded-lg border border-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity cursor-pointer"
+                >
+                  Same call — the heat wasn&rsquo;t talking
+                </button>
+                <button
+                  type="button"
+                  onClick={() => finishResumed("changed")}
+                  className="rounded-lg border border-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity cursor-pointer"
+                >
+                  Different — cooling changed it
+                </button>
+              </div>
+              <button
+                type="button"
+                onClick={() => finishResumed("")}
+                className="mt-3 text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors cursor-pointer"
+              >
+                Skip — just clear it from my desk
+              </button>
             </>
           ) : (
             <>
@@ -460,10 +522,10 @@ export default function CoolClient() {
               </p>
               <button
                 type="button"
-                onClick={markResumedDecided}
+                onClick={() => setColdPhase("grade")}
                 className="mt-3 rounded-lg border border-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity cursor-pointer"
               >
-                I&rsquo;ve decided it — clear it from my desk
+                I&rsquo;ve decided it →
               </button>
             </>
           )}
@@ -916,8 +978,116 @@ export default function CoolClient() {
           has the version of this built for the long haul.
         </p>
       </div>
+
+      {/* ---- Your cooling-off record: what it's holding, and what the wait taught ---- */}
+      <CoolingRecord record={record} openList={openList} resumedId={resumed?.id ?? null} />
     </div>
   );
+}
+
+/**
+ * The tool reading itself back to you. Two honest things, both drawn only from
+ * what's in your browser: the calls it's still holding for you (so you can
+ * decide one cold without a trip to the return desk), and — once you've graded
+ * a few returns — how often waiting actually changed the call. That last line is
+ * the tool's own premise put to the test: sleeping on it is a bet that the calm
+ * call beats the hot one, and this is the only place that bet gets settled with
+ * your data instead of a maxim. Renders nothing until there's something true to
+ * say.
+ */
+function CoolingRecord({
+  record,
+  openList,
+  resumedId,
+}: {
+  record: WaitRecord | null;
+  openList: OpenParked[];
+  resumedId: string | null;
+}) {
+  // Don't list the one you're deciding right now — it's already the banner above.
+  const waiting = openList.filter((p) => p.id !== resumedId);
+  const graded = record?.graded ?? 0;
+  const hasReading = graded > 0;
+  if (waiting.length === 0 && !hasReading) return null;
+
+  return (
+    <div className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
+      <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+        Your cooling-off record
+      </p>
+
+      {waiting.length > 0 ? (
+        <div className="mt-3">
+          <p className="text-sm text-[var(--muted)] leading-relaxed">
+            Waiting to be decided cold — the calls this tool is holding for you:
+          </p>
+          <ul className="mt-3 space-y-2">
+            {waiting.map((p) => (
+              <li
+                key={p.id}
+                className="flex items-baseline justify-between gap-4 border-l-2 pl-3 leading-snug"
+                style={{
+                  borderColor: p.due ? "var(--accent)" : "var(--border)",
+                }}
+              >
+                <span className="min-w-0">
+                  <Link
+                    href={`/cool?resume=${p.id}`}
+                    className="text-sm font-medium text-[var(--foreground)] hover:text-[var(--accent)] transition-colors"
+                  >
+                    {p.decision}
+                  </Link>
+                  <span className="block text-xs text-[var(--muted)]">
+                    {p.due ? (
+                      <span className="font-medium text-[var(--accent)]">
+                        due now
+                      </span>
+                    ) : (
+                      `back ${prettyDate(p.decideOn)}`
+                    )}
+                    {p.feeling ? ` · parked ${p.feeling}` : ""}
+                  </span>
+                </span>
+                <Link
+                  href={`/cool?resume=${p.id}`}
+                  className="shrink-0 text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+                >
+                  Decide it cold →
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      {hasReading && record ? (
+        <div className={waiting.length > 0 ? "mt-4 pt-4 border-t border-[var(--border)]" : "mt-3"}>
+          <p className="text-sm text-[var(--foreground)] leading-relaxed">
+            {waitReading(record)}
+          </p>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+/**
+ * The one-line reading of the wait, in plain language. It answers the empirical
+ * question the whole tool is built on — *does sleeping on it change my mind?* —
+ * from the calls you've come back and graded, and it doesn't editorialize past
+ * what the counts support.
+ */
+function waitReading(r: WaitRecord): string {
+  const { graded, changed, same } = r;
+  const call = (n: number) => `${n} call${n === 1 ? "" : "s"}`;
+  if (changed === 0) {
+    return `Of the ${call(graded)} you’ve come back and decided cold, the wait changed none of them — the calm you keeps agreeing with the hot you. Either your gut runs cooler than it feels, or the graded set is still small.`;
+  }
+  if (same === 0) {
+    return `Every one of the ${call(graded)} you’ve decided cold came out different from the hot version. On your record so far, waiting earns its keep — the heat was doing your arithmetic.`;
+  }
+  const pct = Math.round((changed / graded) * 100);
+  return `Across the ${call(graded)} you’ve decided cold, sleeping on it changed the call ${changed === 1 ? "once" : `${changed} times`} and left it the same ${same === 1 ? "once" : `${same} times`} — about ${pct}% of the time, the wait moved the answer. That’s the share of hot calls you’d have gotten wrong on the spot.`;
 }
 
 /**
