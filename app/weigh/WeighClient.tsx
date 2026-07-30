@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import Link from "next/link";
 import {
   appendDecisionEntry,
@@ -152,6 +153,13 @@ export default function WeighClient() {
   // Load persisted inputs and the real-world calibration signal on mount.
   useEffect(() => {
     const loaded = loadInputs();
+    // Carry the decision in from another tool's handoff, but never over saved
+    // work: pre-fill the subject only when this tool's own field is still blank.
+    const carried = readCarriedSubject();
+    const next =
+      carried && !loaded.decision.trim()
+        ? { ...loaded, decision: carried }
+        : loaded;
     let g: number | null = null;
     let s = 0;
     try {
@@ -163,11 +171,12 @@ export default function WeighClient() {
     }
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
-    setInp(loaded);
+    setInp(next);
     setGap(g);
     setScored(s);
     setHydrated(true);
     /* eslint-enable react-hooks/set-state-in-effect */
+    if (carried) clearCarriedSubject();
   }, []);
 
   // Persist on every change, once hydrated (so we don't clobber saved inputs
@@ -548,7 +557,7 @@ export default function WeighClient() {
                 Filed as a tracked forecast at {logged.conf}% confidence, with a
                 review set for {formatHuman(logged.reviewOn)}. When the day comes,
                 the{" "}
-                <Link href="/decide?log=1" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+                <Link href={withSubject("/decide?log=1", inp.decision)} className="text-[var(--accent)] hover:opacity-70 transition-opacity">
                   decision journal
                 </Link>{" "}
                 will ask what actually happened and grade this call against what
@@ -563,7 +572,7 @@ export default function WeighClient() {
               <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
                 A decision worth working through the numbers is a forecast worth
                 grading. Log it to your{" "}
-                <Link href="/decide" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+                <Link href={withSubject("/decide", inp.decision)} className="text-[var(--accent)] hover:opacity-70 transition-opacity">
                   decision journal
                 </Link>{" "}
                 — the hinge as what you expect, your {inp.p}% (rounded to{" "}

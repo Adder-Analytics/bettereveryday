@@ -5,7 +5,7 @@ import PracticeClient from "./PracticeClient";
 export const metadata: Metadata = {
   title: "Practice — Better Every Day",
   description:
-    "Three short trainers for the three numbers under every decision — how sure you are, how to get to a number at all, and how much a new fact should change your mind — plus your real record from the decision journal, side by side. And once your record spans enough time, the trend: your first rounds beside your latest.",
+    "Three short trainers for the three numbers under every decision — how sure you are, how to get to a number at all, and how much a new fact should change your mind — plus your real record from the decision journal and the cooling-off tool's wait payoff, side by side. And once your record spans enough time, the trend: your first rounds beside your latest.",
   openGraph: {
     title: "Practice — Better Every Day",
     description:
@@ -46,8 +46,18 @@ export default function PracticePage() {
           . The trainers are a kind world on purpose — answer keys, feedback in
           seconds. Your actual decisions get graded slowly and ambiguously, which
           is why the journal writes the forecast down first and scores it when
-          reality reports back. This page reads all of it — kept privately in
-          your browser — and shows the warm-up and the real game together. And
+          reality reports back. And below both sits a third reading of the same
+          kind — the{" "}
+          <Link
+            href="/cool"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            cooling-off tool
+          </Link>
+          &rsquo;s own bet, settled with your data: of the hot calls you parked
+          and came back to decide cold, how often did the wait actually change
+          your mind? This page reads all of it — kept privately in your browser —
+          and shows the warm-up, the real game, and the wait together. And
           because a day&rsquo;s score is mostly noise, it also keeps the number
           this site is named after: once your record spans enough time, each
           card shows your first rounds beside your latest — whether you&rsquo;re

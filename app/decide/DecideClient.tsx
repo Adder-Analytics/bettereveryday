@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { SITE_URL, icsEscape, icsStamp, wrapCalendar } from "../data/ics";
 import { countDueTripwireChecks } from "../data/premortem";
+import { readCarriedSubject, clearCarriedSubject } from "../data/carry";
 
 /**
  * Plain, serializable shapes passed down from the server page. These mirror the
@@ -620,6 +621,10 @@ export default function DecideClient({
   const [importNote, setImportNote] = useState<string | null>(null);
   const [dueTripwires, setDueTripwires] = useState(0);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // A decision carried in from another tool (?subject=…). The journal is
+  // situation-first, so there's no single top field to pre-fill; instead we hold
+  // it and seed the "what are you deciding?" context the moment a situation opens.
+  const carriedSubjectRef = useRef("");
 
   // Load saved work + the log, and honor a ?s=<id> deep link from the playbook.
   // This reads localStorage, which only exists on the client, so it must run
@@ -639,9 +644,24 @@ export default function DecideClient({
       reviewParam && mergedLog.some((e) => e.id === reviewParam)
         ? reviewParam
         : null;
+    // A decision handed over from another tool. Held for the first situation the
+    // user opens (see selectSituation); if they arrived deep-linked straight to a
+    // situation (?s=…), seed that one's context now, but never over saved work.
+    const carried = readCarriedSubject();
+    carriedSubjectRef.current = carried;
+    let seededStore = savedStore && typeof savedStore === "object" ? savedStore : {};
+    const willOpen =
+      requested && situations.some((s) => s.id === requested) ? requested : null;
+    if (carried && willOpen && !mergeEntry(seededStore[willOpen]).context.trim()) {
+      seededStore = {
+        ...seededStore,
+        [willOpen]: { ...mergeEntry(seededStore[willOpen]), context: carried },
+      };
+      carriedSubjectRef.current = "";
+    }
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
-    setStore(savedStore && typeof savedStore === "object" ? savedStore : {});
+    setStore(seededStore);
     setLog(mergedLog);
     // The journal knows about the funeral: due tripwire checks from the
     // pre-mortem room surface here too, read-only (data/premortem.ts).
@@ -662,6 +682,7 @@ export default function DecideClient({
     }
     setHydrated(true);
     /* eslint-enable react-hooks/set-state-in-effect */
+    if (carried) clearCarriedSubject();
   }, [situations]);
 
   // Persist the worksheet store after hydration (so we never clobber saved work
@@ -705,6 +726,18 @@ export default function DecideClient({
 
   const selectSituation = useCallback((id: string) => {
     setActiveId(id || null);
+    // Seed the context with a decision carried in from another tool, the first
+    // time a situation opens — but only when its context is still blank, so an
+    // incoming handoff never overwrites work already in this worksheet.
+    const carried = carriedSubjectRef.current;
+    if (id && carried) {
+      carriedSubjectRef.current = "";
+      setStore((prev) => {
+        const cur = mergeEntry(prev[id]);
+        if (cur.context.trim()) return prev;
+        return { ...prev, [id]: { ...cur, context: carried } };
+      });
+    }
     setScreen("work");
     setCopied(false);
     setJustLogged(false);

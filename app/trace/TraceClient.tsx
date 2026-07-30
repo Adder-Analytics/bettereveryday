@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import Link from "next/link";
 
 /**
@@ -135,11 +136,17 @@ export default function TraceClient() {
 
   useEffect(() => {
     const loaded = loadInputs();
+    // Carry the decision in from another tool's handoff, but never over saved
+    // work: pre-fill the subject only when this tool's own field is still blank.
+    const carried = readCarriedSubject();
+    const next =
+      carried && !loaded.move.trim() ? { ...loaded, move: carried } : loaded;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
-    setInp(loaded);
+    setInp(next);
     setHydrated(true);
     /* eslint-enable react-hooks/set-state-in-effect */
+    if (carried) clearCarriedSubject();
   }, []);
 
   useEffect(() => {
@@ -500,7 +507,7 @@ export default function TraceClient() {
               return desk. To arm it out of a fuller failure analysis instead, use
               the{" "}
               <Link
-                href="/premortem"
+                href={withSubject("/premortem", inp.move)}
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 pre-mortem room
@@ -512,7 +519,7 @@ export default function TraceClient() {
                 <span className="text-[var(--foreground)]">If it&rsquo;s an either/or, that later cost is your downside.</span>{" "}
                 Take the first-order gain and the later cost to the{" "}
                 <Link
-                  href="/weigh"
+                  href={withSubject("/weigh", inp.move)}
                   className="text-[var(--accent)] hover:opacity-70 transition-opacity"
                 >
                   flip point
@@ -524,7 +531,7 @@ export default function TraceClient() {
               <span className="text-[var(--foreground)]">Put the call on the record.</span>{" "}
               If you go ahead, log what you expect in the{" "}
               <Link
-                href="/decide"
+                href={withSubject("/decide", inp.move)}
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 decision journal
