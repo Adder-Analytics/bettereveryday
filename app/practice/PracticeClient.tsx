@@ -11,6 +11,7 @@ import {
   type Trend,
 } from "../data/trainers";
 import { loadJournalProfile, type JournalProfile } from "../data/journal";
+import { loadWaitProfile, type WaitProfile } from "../data/wait";
 
 /**
  * The Practice hub. Calibration, estimation, and base-rate updating are three
@@ -41,29 +42,33 @@ export default function PracticeClient() {
   const [mounted, setMounted] = useState(false);
   const [profiles, setProfiles] = useState<TrainerProfile[]>([]);
   const [journal, setJournal] = useState<JournalProfile | null>(null);
+  const [wait, setWait] = useState<WaitProfile | null>(null);
 
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setProfiles(loadProfiles());
     setJournal(loadJournalProfile());
+    setWait(loadWaitProfile());
     setMounted(true);
     /* eslint-enable react-hooks/set-state-in-effect */
   }, []);
 
   if (!mounted) {
-    return <Shell profiles={null} journal={null} />;
+    return <Shell profiles={null} journal={null} wait={null} />;
   }
 
-  return <Shell profiles={profiles} journal={journal} />;
+  return <Shell profiles={profiles} journal={journal} wait={wait} />;
 }
 
 function Shell({
   profiles,
   journal,
+  wait,
 }: {
   profiles: TrainerProfile[] | null;
   journal: JournalProfile | null;
+  wait: WaitProfile | null;
 }) {
   const anyTrainerData = !!profiles?.some((p) => p.hasData);
   const due = journal?.due ?? 0;
@@ -99,6 +104,13 @@ function Shell({
           The real game — bets reality grades
         </p>
         <JournalCard journal={journal} />
+      </section>
+
+      <section className="mt-10">
+        <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+          The wait — does sleeping on it change your mind?
+        </p>
+        <WaitCard wait={wait} />
       </section>
 
       <p className="mt-8 text-xs text-[var(--muted)] leading-relaxed">
@@ -325,6 +337,87 @@ function JournalCard({ journal }: { journal: JournalProfile | null }) {
         {journal.scored > 0 ? ` · ${journal.scored} scored` : ""}
         {journal.due > 0 ? ` · ${journal.due} due for review` : ""}
         {" · open the journal →"}
+      </span>
+    </Link>
+  );
+}
+
+/**
+ * The cooling-off tool's row on the hub — the third face of one skill. The
+ * trainers ask how sure you are; the journal asks whether you're right; this
+ * asks whether waiting is worth it. All three are readings of the same private
+ * records, and the wording comes from the shared profile (data/wait.ts) so this
+ * card and the cooling-off tool never disagree about the same record.
+ */
+function WaitCard({ wait }: { wait: WaitProfile | null }) {
+  // Pre-hydration and anyone who's never parked a call get the invitation shell.
+  if (!wait || !wait.hasData) {
+    return (
+      <Link
+        href="/cool"
+        className="group mt-3 flex flex-col sm:flex-row sm:items-center gap-4 rounded-lg border border-[var(--border)] bg-[var(--card)] p-5 hover:border-[var(--accent)] transition-colors"
+      >
+        <div className="flex-1">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+            Your cooling-off record
+          </p>
+          <p className="mt-2 text-sm text-[var(--foreground)] leading-relaxed">
+            The{" "}
+            <span className="font-medium text-[var(--accent)]">cooling-off tool</span>{" "}
+            rests on one bet: on a reversible call with no real clock, the calm
+            version of you is worth waiting for. Park a hot decision there, decide
+            it cold, and grade whether the wait moved you — and the answer to{" "}
+            <em>does sleeping on it actually change my mind?</em> accumulates here.
+          </p>
+        </div>
+        <span className="shrink-0 text-sm font-medium text-[var(--accent)] group-hover:opacity-70 transition-opacity">
+          Cool a call →
+        </span>
+      </Link>
+    );
+  }
+
+  return (
+    <Link
+      href="/cool"
+      className="group mt-3 flex flex-col rounded-lg border border-[var(--border)] bg-[var(--card)] p-5 hover:border-[var(--accent)] transition-colors"
+    >
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+            Your cooling-off record
+          </p>
+          <p className="mt-1 text-xs text-[var(--muted)] leading-snug">
+            Is the calm call worth waiting for?
+          </p>
+        </div>
+        {wait.headline && (
+          <div className="text-right">
+            <span
+              className={`text-3xl font-semibold tracking-tight tabular-nums ${toneText[wait.tone]}`}
+            >
+              {wait.headline}
+            </span>
+            <p className="mt-1 text-xs text-[var(--muted)] leading-snug max-w-[12rem]">
+              {wait.headlineLabel}
+            </p>
+          </div>
+        )}
+      </div>
+
+      <p className="mt-4 text-sm text-[var(--foreground)] leading-relaxed">
+        {wait.verdict}
+      </p>
+
+      <span className="mt-4 text-xs text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">
+        {[
+          wait.waiting > 0 ? `${wait.waiting} waiting` : null,
+          wait.resolved > 0 ? `${wait.resolved} decided cold` : null,
+          wait.graded > 0 ? `${wait.graded} graded` : null,
+          "open the cooling-off tool →",
+        ]
+          .filter(Boolean)
+          .join(" · ")}
       </span>
     </Link>
   );

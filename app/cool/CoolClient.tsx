@@ -14,6 +14,7 @@ import {
   type WaitRecord,
 } from "../data/parked";
 import { icsEscape, icsStamp, wrapCalendar, SITE_URL } from "../data/ics";
+import { waitReadingText } from "../data/wait";
 import Link from "next/link";
 
 /**
@@ -1063,31 +1064,12 @@ function CoolingRecord({
       {hasReading && record ? (
         <div className={waiting.length > 0 ? "mt-4 pt-4 border-t border-[var(--border)]" : "mt-3"}>
           <p className="text-sm text-[var(--foreground)] leading-relaxed">
-            {waitReading(record)}
+            {waitReadingText(record)}
           </p>
         </div>
       ) : null}
     </div>
   );
-}
-
-/**
- * The one-line reading of the wait, in plain language. It answers the empirical
- * question the whole tool is built on — *does sleeping on it change my mind?* —
- * from the calls you've come back and graded, and it doesn't editorialize past
- * what the counts support.
- */
-function waitReading(r: WaitRecord): string {
-  const { graded, changed, same } = r;
-  const call = (n: number) => `${n} call${n === 1 ? "" : "s"}`;
-  if (changed === 0) {
-    return `Of the ${call(graded)} you’ve come back and decided cold, the wait changed none of them — the calm you keeps agreeing with the hot you. Either your gut runs cooler than it feels, or the graded set is still small.`;
-  }
-  if (same === 0) {
-    return `Every one of the ${call(graded)} you’ve decided cold came out different from the hot version. On your record so far, waiting earns its keep — the heat was doing your arithmetic.`;
-  }
-  const pct = Math.round((changed / graded) * 100);
-  return `Across the ${call(graded)} you’ve decided cold, sleeping on it changed the call ${changed === 1 ? "once" : `${changed} times`} and left it the same ${same === 1 ? "once" : `${same} times`} — about ${pct}% of the time, the wait moved the answer. That’s the share of hot calls you’d have gotten wrong on the spot.`;
 }
 
 /**
