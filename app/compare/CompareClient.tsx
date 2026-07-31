@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 import {
   appendDecisionEntry,
@@ -333,6 +334,7 @@ const SCALE = [1, 2, 3, 4, 5];
 export default function CompareClient() {
   const [state, setState] = useState<State>(BLANK);
   const [hydrated, setHydrated] = useState(false);
+  const [carriedSeed, setCarriedSeed] = useState("");
   const [showExample, setShowExample] = useState(false);
   const [conf, setConf] = useState<number>(70);
   const [logged, setLogged] = useState<null | { conf: number; reviewOn: string; label: string }>(
@@ -344,14 +346,13 @@ export default function CompareClient() {
     // Carry the decision in from another tool's handoff, but never over saved
     // work: pre-fill the subject only when this tool's own field is still blank.
     const carried = readCarriedSubject();
-    const next =
-      carried && !loaded.decision.trim()
-        ? { ...loaded, decision: carried }
-        : loaded;
+    const seeded = Boolean(carried) && !loaded.decision.trim();
+    const next = seeded ? { ...loaded, decision: carried } : loaded;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setState(next);
     setHydrated(true);
+    if (seeded) setCarriedSeed(carried);
     /* eslint-enable react-hooks/set-state-in-effect */
     if (carried) clearCarriedSubject();
   }, []);
@@ -509,6 +510,13 @@ export default function CompareClient() {
           onChange={(e) => setDecision(e.target.value)}
           placeholder="e.g. Which job offer to take"
           className={inputClass}
+        />
+        <CarriedNote
+          show={carriedSeed !== "" && state.decision.trim() === carriedSeed}
+          onClear={() => {
+            setDecision("");
+            setCarriedSeed("");
+          }}
         />
 
         <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">

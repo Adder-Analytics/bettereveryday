@@ -17,6 +17,7 @@ import {
 } from "../data/premortem";
 import { appendDecisionEntry, CONFIDENCE_OPTIONS } from "../data/decisionLog";
 import { readCarriedSubject, clearCarriedSubject } from "../data/carry";
+import CarriedNote from "../components/CarriedNote";
 
 /**
  * The pre-mortem room. Four screens, in the order Klein's exercise runs:
@@ -276,6 +277,7 @@ const inputClass =
 
 export default function PremortemClient() {
   const [hydrated, setHydrated] = useState(false);
+  const [carriedSeed, setCarriedSeed] = useState("");
   const [saved, setSaved] = useState<Premortem[]>([]);
   const [draft, setDraft] = useState<Draft | null>(null);
   const [screen, setScreen] = useState<"home" | "work" | "view">("home");
@@ -322,6 +324,7 @@ export default function PremortemClient() {
       // when there's no in-progress draft to respect and no return-desk deep link.
       setDraft({ ...emptyDraft(), plan: carried });
       setScreen("work");
+      setCarriedSeed(carried);
     }
     if (targetPm) {
       setViewId(targetPm);
@@ -371,6 +374,7 @@ export default function PremortemClient() {
     const seed = carriedSubjectRef.current;
     carriedSubjectRef.current = "";
     setDraft(seed ? { ...emptyDraft(), plan: seed } : emptyDraft());
+    setCarriedSeed(seed);
     setScreen("work");
     setReasonInput("");
     setActiveLens(null);
@@ -649,6 +653,13 @@ export default function PremortemClient() {
               placeholder="e.g. Rebuild the onboarding flow this quarter. Launch the paid tier by October. Move to Lisbon in the spring."
               className={textareaClass}
               autoFocus
+            />
+            <CarriedNote
+              show={carriedSeed !== "" && draft.plan.trim() === carriedSeed}
+              onClear={() => {
+                setDraft((d) => (d ? { ...d, plan: "" } : d));
+                setCarriedSeed("");
+              }}
             />
             <p className="mt-2 text-xs text-[var(--muted)] leading-relaxed">
               A commitment you&rsquo;re about to make or have just made — concrete

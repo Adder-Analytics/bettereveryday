@@ -5,6 +5,7 @@ import Link from "next/link";
 import { SITE_URL, icsEscape, icsStamp, wrapCalendar } from "../data/ics";
 import { countDueTripwireChecks } from "../data/premortem";
 import { readCarriedSubject, clearCarriedSubject } from "../data/carry";
+import CarriedNote from "../components/CarriedNote";
 
 /**
  * Plain, serializable shapes passed down from the server page. These mirror the
@@ -609,6 +610,7 @@ export default function DecideClient({
   situations: WorksheetSituation[];
 }) {
   const [hydrated, setHydrated] = useState(false);
+  const [carriedSeed, setCarriedSeed] = useState("");
   const [store, setStore] = useState<Store>({});
   const [log, setLog] = useState<LogEntry[]>([]);
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -652,16 +654,19 @@ export default function DecideClient({
     let seededStore = savedStore && typeof savedStore === "object" ? savedStore : {};
     const willOpen =
       requested && situations.some((s) => s.id === requested) ? requested : null;
+    let mountSeed = "";
     if (carried && willOpen && !mergeEntry(seededStore[willOpen]).context.trim()) {
       seededStore = {
         ...seededStore,
         [willOpen]: { ...mergeEntry(seededStore[willOpen]), context: carried },
       };
       carriedSubjectRef.current = "";
+      mountSeed = carried;
     }
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setStore(seededStore);
+    if (mountSeed) setCarriedSeed(mountSeed);
     setLog(mergedLog);
     // The journal knows about the funeral: due tripwire checks from the
     // pre-mortem room surface here too, read-only (data/premortem.ts).
@@ -737,6 +742,7 @@ export default function DecideClient({
         if (cur.context.trim()) return prev;
         return { ...prev, [id]: { ...cur, context: carried } };
       });
+      setCarriedSeed(carried);
     }
     setScreen("work");
     setCopied(false);
@@ -1111,6 +1117,13 @@ export default function DecideClient({
           }
           placeholder="e.g. Take the offer in Berlin, or stay and wait for the promotion?"
           className={textareaClass}
+        />
+        <CarriedNote
+          show={carriedSeed !== "" && entry.context.trim() === carriedSeed}
+          onClear={() => {
+            update(active.id, (prev) => ({ ...prev, context: "" }));
+            setCarriedSeed("");
+          }}
         />
       </div>
 

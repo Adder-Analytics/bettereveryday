@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import CarriedNote from "../components/CarriedNote";
 import {
   parkDecision,
   findParked,
@@ -329,6 +330,7 @@ function computeVerdict(reversible: Reversible, forced: Forced): Verdict | null 
 export default function CoolClient() {
   const [inp, setInp] = useState<Inputs>(BLANK);
   const [hydrated, setHydrated] = useState(false);
+  const [carriedSeed, setCarriedSeed] = useState("");
   const [showExample, setShowExample] = useState(false);
 
   // The return: a decision parked earlier that came back due, reopened cold via
@@ -368,10 +370,16 @@ export default function CoolClient() {
     const seed =
       back && back.decision.trim() ? back.decision : carried && !loaded.decision.trim() ? carried : "";
     const next = seed && !loaded.decision.trim() ? { ...loaded, decision: seed } : loaded;
+    // The "carried from your last step" cue belongs only to a through-line
+    // handoff — not to a decision resumed from the return desk, which is your
+    // own parked call coming back, not a fresh hand-off from another tool.
+    const carriedSeeded =
+      Boolean(carried) && !(back && back.decision.trim()) && !loaded.decision.trim();
 
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration and
        deep-link read from browser storage on mount; can't run in render. */
     setInp(next);
+    if (carriedSeeded) setCarriedSeed(carried);
     if (back && !back.resolvedOn) setResumed(back);
     setParkDate(addDaysISO(todayISO(), 1)); // default: come back tomorrow
     setOpenList(openParked());
@@ -558,6 +566,13 @@ export default function CoolClient() {
           onChange={(e) => set("decision", e.target.value)}
           placeholder="e.g. Send the angry email"
           className={inputClass}
+        />
+        <CarriedNote
+          show={carriedSeed !== "" && inp.decision.trim() === carriedSeed}
+          onClear={() => {
+            set("decision", "");
+            setCarriedSeed("");
+          }}
         />
 
         <div className="mt-4">
