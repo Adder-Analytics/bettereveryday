@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 import {
   appendDecisionEntry,
@@ -187,6 +188,7 @@ function formatHuman(iso: string): string {
 export default function OutsideClient() {
   const [inp, setInp] = useState<Inputs>(BLANK);
   const [hydrated, setHydrated] = useState(false);
+  const [carriedSeed, setCarriedSeed] = useState("");
   const [showExample, setShowExample] = useState(false);
   const [conf, setConf] = useState<number>(70);
   const [logged, setLogged] = useState<null | { conf: number; reviewOn: string; n: number }>(null);
@@ -196,14 +198,13 @@ export default function OutsideClient() {
     // Carry the decision in from another tool's handoff, but never over saved
     // work: pre-fill the subject only when this tool's own field is still blank.
     const carried = readCarriedSubject();
-    const next =
-      carried && !loaded.question.trim()
-        ? { ...loaded, question: carried }
-        : loaded;
+    const seeded = Boolean(carried) && !loaded.question.trim();
+    const next = seeded ? { ...loaded, question: carried } : loaded;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setInp(next);
     setHydrated(true);
+    if (seeded) setCarriedSeed(carried);
     /* eslint-enable react-hooks/set-state-in-effect */
     if (carried) clearCarriedSubject();
   }, []);
@@ -290,6 +291,13 @@ export default function OutsideClient() {
             onChange={(e) => set("question", e.target.value)}
             placeholder="e.g. How long will the kitchen renovation take?"
             className={inputClass}
+          />
+          <CarriedNote
+            show={carriedSeed !== "" && inp.question.trim() === carriedSeed}
+            onClear={() => {
+              set("question", "");
+              setCarriedSeed("");
+            }}
           />
         </div>
         <div className="mt-3 max-w-[10rem]">

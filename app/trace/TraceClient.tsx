@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 
 /**
@@ -133,18 +134,20 @@ export default function TraceClient() {
   const [inp, setInp] = useState<Inputs>(BLANK);
   const [hydrated, setHydrated] = useState(false);
   const [showExample, setShowExample] = useState(false);
+  const [carriedSeed, setCarriedSeed] = useState("");
 
   useEffect(() => {
     const loaded = loadInputs();
     // Carry the decision in from another tool's handoff, but never over saved
     // work: pre-fill the subject only when this tool's own field is still blank.
     const carried = readCarriedSubject();
-    const next =
-      carried && !loaded.move.trim() ? { ...loaded, move: carried } : loaded;
+    const seeded = Boolean(carried) && !loaded.move.trim();
+    const next = seeded ? { ...loaded, move: carried } : loaded;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setInp(next);
     setHydrated(true);
+    if (seeded) setCarriedSeed(carried);
     /* eslint-enable react-hooks/set-state-in-effect */
     if (carried) clearCarriedSubject();
   }, []);
@@ -241,6 +244,13 @@ export default function TraceClient() {
           onChange={(e) => set("move", e.target.value)}
           placeholder="e.g. Cut the price to win the deal"
           className={inputClass}
+        />
+        <CarriedNote
+          show={carriedSeed !== "" && inp.move.trim() === carriedSeed}
+          onClear={() => {
+            set("move", "");
+            setCarriedSeed("");
+          }}
         />
         <p className="mt-1.5 text-xs text-[var(--muted)] leading-relaxed">
           A move, a policy, a purchase, a habit, a rule you&rsquo;re about to set —

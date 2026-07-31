@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 
 /**
@@ -403,6 +404,7 @@ function DebriefExample() {
 export default function DebriefClient() {
   const [inp, setInp] = useState<Inputs>(BLANK);
   const [hydrated, setHydrated] = useState(false);
+  const [carriedSeed, setCarriedSeed] = useState("");
   const [showExample, setShowExample] = useState(false);
 
   useEffect(() => {
@@ -410,14 +412,13 @@ export default function DebriefClient() {
     // Carry the decision in from another tool's handoff, but never over saved
     // work: pre-fill the subject only when this tool's own field is still blank.
     const carried = readCarriedSubject();
-    const next =
-      carried && !loaded.decision.trim()
-        ? { ...loaded, decision: carried }
-        : loaded;
+    const seeded = Boolean(carried) && !loaded.decision.trim();
+    const next = seeded ? { ...loaded, decision: carried } : loaded;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setInp(next);
     setHydrated(true);
+    if (seeded) setCarriedSeed(carried);
     /* eslint-enable react-hooks/set-state-in-effect */
     if (carried) clearCarriedSubject();
   }, []);
@@ -470,6 +471,13 @@ export default function DebriefClient() {
               onChange={(e) => set("decision", e.target.value)}
               placeholder="e.g. Took the bigger role at the smaller company"
               className={inputClass}
+            />
+            <CarriedNote
+              show={carriedSeed !== "" && inp.decision.trim() === carriedSeed}
+              onClear={() => {
+                set("decision", "");
+                setCarriedSeed("");
+              }}
             />
           </div>
           <div className="max-w-[16rem]">

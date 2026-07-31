@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 import {
   appendDecisionEntry,
@@ -149,6 +150,7 @@ export default function WeighClient() {
   const [scored, setScored] = useState(0);
   const [logged, setLogged] = useState<null | { conf: number; reviewOn: string }>(null);
   const [showExample, setShowExample] = useState(false);
+  const [carriedSeed, setCarriedSeed] = useState("");
 
   // Load persisted inputs and the real-world calibration signal on mount.
   useEffect(() => {
@@ -156,10 +158,8 @@ export default function WeighClient() {
     // Carry the decision in from another tool's handoff, but never over saved
     // work: pre-fill the subject only when this tool's own field is still blank.
     const carried = readCarriedSubject();
-    const next =
-      carried && !loaded.decision.trim()
-        ? { ...loaded, decision: carried }
-        : loaded;
+    const seeded = Boolean(carried) && !loaded.decision.trim();
+    const next = seeded ? { ...loaded, decision: carried } : loaded;
     let g: number | null = null;
     let s = 0;
     try {
@@ -175,6 +175,7 @@ export default function WeighClient() {
     setGap(g);
     setScored(s);
     setHydrated(true);
+    if (seeded) setCarriedSeed(carried);
     /* eslint-enable react-hooks/set-state-in-effect */
     if (carried) clearCarriedSubject();
   }, []);
@@ -269,6 +270,13 @@ export default function WeighClient() {
           onChange={(e) => set("decision", e.target.value)}
           placeholder="e.g. Take the new job"
           className={inputClass}
+        />
+        <CarriedNote
+          show={carriedSeed !== "" && inp.decision.trim() === carriedSeed}
+          onClear={() => {
+            set("decision", "");
+            setCarriedSeed("");
+          }}
         />
 
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
