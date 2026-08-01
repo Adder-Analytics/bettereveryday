@@ -110,8 +110,14 @@ export default function Home() {
           >
             toolkit
           </Link>{" "}
-          hands you the right one by the moment you&rsquo;re in. Everything you
-          enter stays in your browser and is sent nowhere.
+          hands you the right one by the moment you&rsquo;re in, or you can{" "}
+          <Link
+            href="/example"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            watch one decision go through the whole kit
+          </Link>{" "}
+          first. Everything you enter stays in your browser and is sent nowhere.
         </p>
         <div className="flex flex-wrap gap-6">
           <Link
