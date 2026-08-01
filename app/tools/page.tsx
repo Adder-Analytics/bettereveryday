@@ -38,6 +38,15 @@ export default function ToolsPage() {
           where you are, and it hands you the instrument and the one thing it does
           there. Everything you enter stays in your browser and is sent nowhere.
         </p>
+        <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
+          New here, or want to see how these fit together first?{" "}
+          <Link
+            href="/example"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Watch one real decision go through the whole kit →
+          </Link>
+        </p>
       </header>
 
       <div className="space-y-16">
