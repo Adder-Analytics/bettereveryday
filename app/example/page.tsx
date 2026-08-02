@@ -134,6 +134,16 @@ export default function ExamplePage() {
           loaded &mdash; so you can pick up exactly where the example left off, or
           clear it and drop in the decision actually in front of you.
         </p>
+        <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
+          This is the <em>cold</em> spine &mdash; a call you get to weigh at
+          leisure. The decisions people most regret are the opposite:{" "}
+          <Link
+            href="/example/hot"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            see the same kit walk a hot one &rarr;
+          </Link>
+        </p>
       </header>
 
       {/* The subject that rides the through-line, shown once so the reader can
@@ -230,8 +240,14 @@ export default function ExamplePage() {
           >
             cool the call
           </Link>{" "}
-          &mdash; if the offer came with an exploding deadline and you were
-          deciding hot &mdash; or the{" "}
+          &mdash; if the offer came with an exploding deadline and you were{" "}
+          <Link
+            href="/example/hot"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            deciding hot
+          </Link>{" "}
+          &mdash; or the{" "}
           <Link
             href="/trace"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
