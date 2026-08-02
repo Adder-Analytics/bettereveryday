@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 
 /**
@@ -275,11 +277,15 @@ function VerdictBlock({
   control,
   extreme,
   redo,
+  subject,
 }: {
   cell: Cell;
   control: Control;
   extreme: boolean;
   redo: Redo;
+  /** The decision being debriefed, carried onto the handoff links (empty for
+   *  the read-only worked example, whose sample decision shouldn't travel). */
+  subject: string;
 }) {
   const control_read = controlRead(control, extreme);
   return (
@@ -320,11 +326,11 @@ function VerdictBlock({
             Change <em>one</em>{" "}concrete thing in how you&rsquo;ll decide this next time —
             and only for what was knowable then and ignored, not for the roll. Then put it
             where you&rsquo;ll actually meet it again: arm it as a{" "}
-            <Link href="/premortem" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+            <Link href={withSubject("/premortem", subject)} className="text-[var(--accent)] hover:opacity-70 transition-opacity">
               tripwire
             </Link>{" "}
             or write it as a rule when you{" "}
-            <Link href="/decide" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+            <Link href={withSubject("/decide", subject)} className="text-[var(--accent)] hover:opacity-70 transition-opacity">
               log the next call
             </Link>
             .{" "}
@@ -383,7 +389,7 @@ function DebriefExample() {
         </div>
       </dl>
       <div className="mt-5">
-        <VerdictBlock cell={cell} control={EXAMPLE.control} extreme={EXAMPLE.extreme} redo={EXAMPLE.redo} />
+        <VerdictBlock cell={cell} control={EXAMPLE.control} extreme={EXAMPLE.extreme} redo={EXAMPLE.redo} subject="" />
       </div>
       <p className="mt-4 text-xs text-[var(--muted)] leading-relaxed">
         Note what just happened: a <em>win</em> came out the other side with a{" "}
@@ -398,15 +404,23 @@ function DebriefExample() {
 export default function DebriefClient() {
   const [inp, setInp] = useState<Inputs>(BLANK);
   const [hydrated, setHydrated] = useState(false);
+  const [carriedSeed, setCarriedSeed] = useState("");
   const [showExample, setShowExample] = useState(false);
 
   useEffect(() => {
     const loaded = loadInputs();
+    // Carry the decision in from another tool's handoff, but never over saved
+    // work: pre-fill the subject only when this tool's own field is still blank.
+    const carried = readCarriedSubject();
+    const seeded = Boolean(carried) && !loaded.decision.trim();
+    const next = seeded ? { ...loaded, decision: carried } : loaded;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
-    setInp(loaded);
+    setInp(next);
     setHydrated(true);
+    if (seeded) setCarriedSeed(carried);
     /* eslint-enable react-hooks/set-state-in-effect */
+    if (carried) clearCarriedSubject();
   }, []);
 
   useEffect(() => {
@@ -457,6 +471,13 @@ export default function DebriefClient() {
               onChange={(e) => set("decision", e.target.value)}
               placeholder="e.g. Took the bigger role at the smaller company"
               className={inputClass}
+            />
+            <CarriedNote
+              show={carriedSeed !== "" && inp.decision.trim() === carriedSeed}
+              onClear={() => {
+                set("decision", "");
+                setCarriedSeed("");
+              }}
             />
           </div>
           <div className="max-w-[16rem]">
@@ -623,7 +644,7 @@ export default function DebriefClient() {
       {/* ---- The verdict ---- */}
       {cell ? (
         <div className="mt-5">
-          <VerdictBlock cell={cell} control={inp.control} extreme={inp.extreme} redo={inp.redo} />
+          <VerdictBlock cell={cell} control={inp.control} extreme={inp.extreme} redo={inp.redo} subject={inp.decision} />
 
           {/* the guarded lesson */}
           <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">

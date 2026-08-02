@@ -160,6 +160,26 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a decision in progress" : null),
   },
   {
+    key: "cool:parked:v1",
+    tool: "Cooling-off tool",
+    href: "/cool",
+    label: "Decisions you parked to decide cold, and their return dates",
+    describe: (raw) => {
+      const v = parse(raw);
+      if (!Array.isArray(v)) return null;
+      if (v.length === 0) return "nothing parked";
+      const waiting = v.filter(
+        (p) =>
+          p &&
+          typeof p === "object" &&
+          !(p as { resolvedOn?: unknown }).resolvedOn
+      ).length;
+      return waiting > 0
+        ? `${count(v.length, "parked decision")}, ${waiting} still waiting`
+        : `${count(v.length, "parked decision")}, all decided`;
+    },
+  },
+  {
     key: "trace:v1",
     tool: "Consequence trace",
     href: "/trace",

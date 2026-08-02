@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { readCarriedSubject, clearCarriedSubject } from "../data/carry";
+import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 
 /**
@@ -485,15 +487,23 @@ function QuitExample() {
 export default function QuitClient() {
   const [inp, setInp] = useState<Inputs>(BLANK);
   const [hydrated, setHydrated] = useState(false);
+  const [carriedSeed, setCarriedSeed] = useState("");
   const [showExample, setShowExample] = useState(false);
 
   useEffect(() => {
     const loaded = loadInputs();
+    // Carry the decision in from another tool's handoff, but never over saved
+    // work: pre-fill the subject only when this tool's own field is still blank.
+    const carried = readCarriedSubject();
+    const seeded = Boolean(carried) && !loaded.thing.trim();
+    const next = seeded ? { ...loaded, thing: carried } : loaded;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
-    setInp(loaded);
+    setInp(next);
     setHydrated(true);
+    if (seeded) setCarriedSeed(carried);
     /* eslint-enable react-hooks/set-state-in-effect */
+    if (carried) clearCarriedSubject();
   }, []);
 
   useEffect(() => {
@@ -544,6 +554,13 @@ export default function QuitClient() {
               onChange={(e) => set("thing", e.target.value)}
               placeholder="e.g. The startup. The PhD. The manuscript. The relationship."
               className={inputClass}
+            />
+            <CarriedNote
+              show={carriedSeed !== "" && inp.thing.trim() === carriedSeed}
+              onClear={() => {
+                set("thing", "");
+                setCarriedSeed("");
+              }}
             />
           </div>
           <div>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 import {
   appendDecisionEntry,
@@ -186,17 +188,25 @@ function formatHuman(iso: string): string {
 export default function OutsideClient() {
   const [inp, setInp] = useState<Inputs>(BLANK);
   const [hydrated, setHydrated] = useState(false);
+  const [carriedSeed, setCarriedSeed] = useState("");
   const [showExample, setShowExample] = useState(false);
   const [conf, setConf] = useState<number>(70);
   const [logged, setLogged] = useState<null | { conf: number; reviewOn: string; n: number }>(null);
 
   useEffect(() => {
     const loaded = loadInputs();
+    // Carry the decision in from another tool's handoff, but never over saved
+    // work: pre-fill the subject only when this tool's own field is still blank.
+    const carried = readCarriedSubject();
+    const seeded = Boolean(carried) && !loaded.question.trim();
+    const next = seeded ? { ...loaded, question: carried } : loaded;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
-    setInp(loaded);
+    setInp(next);
     setHydrated(true);
+    if (seeded) setCarriedSeed(carried);
     /* eslint-enable react-hooks/set-state-in-effect */
+    if (carried) clearCarriedSubject();
   }, []);
 
   useEffect(() => {
@@ -281,6 +291,13 @@ export default function OutsideClient() {
             onChange={(e) => set("question", e.target.value)}
             placeholder="e.g. How long will the kitchen renovation take?"
             className={inputClass}
+          />
+          <CarriedNote
+            show={carriedSeed !== "" && inp.question.trim() === carriedSeed}
+            onClear={() => {
+              set("question", "");
+              setCarriedSeed("");
+            }}
           />
         </div>
         <div className="mt-3 max-w-[10rem]">
@@ -493,7 +510,7 @@ export default function OutsideClient() {
                 review set for {formatHuman(logged.reviewOn)}. When the day comes,
                 the{" "}
                 <Link
-                  href="/decide?log=1"
+                  href={withSubject("/decide?log=1", inp.question)}
                   className="text-[var(--accent)] hover:opacity-70 transition-opacity"
                 >
                   decision journal
@@ -515,7 +532,7 @@ export default function OutsideClient() {
                 </span>{" "}
                 — to the{" "}
                 <Link
-                  href="/decide"
+                  href={withSubject("/decide", inp.question)}
                   className="text-[var(--accent)] hover:opacity-70 transition-opacity"
                 >
                   decision journal

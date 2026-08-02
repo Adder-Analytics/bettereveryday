@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 
 /**
@@ -477,15 +479,23 @@ function ActExample() {
 export default function ActClient() {
   const [inp, setInp] = useState<Inputs>(BLANK);
   const [hydrated, setHydrated] = useState(false);
+  const [carriedSeed, setCarriedSeed] = useState("");
   const [showExample, setShowExample] = useState(false);
 
   useEffect(() => {
     const loaded = loadInputs();
+    // Carry the decision in from another tool's handoff, but never over saved
+    // work: pre-fill the subject only when this tool's own field is still blank.
+    const carried = readCarriedSubject();
+    const seeded = Boolean(carried) && !loaded.decision.trim();
+    const next = seeded ? { ...loaded, decision: carried } : loaded;
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
-    setInp(loaded);
+    setInp(next);
     setHydrated(true);
+    if (seeded) setCarriedSeed(carried);
     /* eslint-enable react-hooks/set-state-in-effect */
+    if (carried) clearCarriedSubject();
   }, []);
 
   useEffect(() => {
@@ -539,6 +549,13 @@ export default function ActClient() {
             placeholder="e.g. Start saving for retirement. Have the conversation with my manager. See the doctor."
             className={inputClass}
           />
+          <CarriedNote
+            show={carriedSeed !== "" && inp.decision.trim() === carriedSeed}
+            onClear={() => {
+              set("decision", "");
+              setCarriedSeed("");
+            }}
+          />
         </div>
         <p className="mt-4 text-base font-medium text-[var(--foreground)] leading-relaxed">
           Before you build a plan, one honest question: is the hard part the{" "}
@@ -589,16 +606,16 @@ export default function ActClient() {
           <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
             So back up one step and settle whether to do the thing at all. If
             it&rsquo;s a fresh choice between options, weigh it at the{" "}
-            <Link href="/weigh" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+            <Link href={withSubject("/weigh", inp.decision)} className="text-[var(--accent)] hover:opacity-70 transition-opacity">
               flip point
             </Link>{" "}
             or line them up in{" "}
-            <Link href="/compare" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+            <Link href={withSubject("/compare", inp.decision)} className="text-[var(--accent)] hover:opacity-70 transition-opacity">
               compare
             </Link>
             . If it&rsquo;s a thing you&rsquo;re already in and can&rsquo;t tell
             whether to keep at, run{" "}
-            <Link href="/quit" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+            <Link href={withSubject("/quit", inp.decision)} className="text-[var(--accent)] hover:opacity-70 transition-opacity">
               would you start it today?
             </Link>{" "}
             Come back here once it&rsquo;s a real <em>want</em> — then a plan is
