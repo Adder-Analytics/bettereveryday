@@ -5,11 +5,11 @@ import WeighClient from "./WeighClient";
 export const metadata: Metadata = {
   title: "The Flip Point — Better Every Day",
   description:
-    "Stop arguing about the exact probability. Find the threshold where a decision flips — p* = R/(B+R) — and just ask which side you're on. Pauker & Kassirer's treatment-threshold approach, turned into a tool for any either/or call.",
+    "Stop arguing about the exact probability. Find the threshold where a decision flips and just ask which side you're on — for a single move you can take or skip, or a straight choice between two live options. Pauker & Kassirer's treatment-threshold approach, turned into a tool for any either/or call.",
   openGraph: {
     title: "The Flip Point — Better Every Day",
     description:
-      "The honest form of expected value: not 'act' or 'don't,' but the probability at which the two break even — and whether you're clearly on one side of it.",
+      "The honest form of expected value: not 'act' or 'don't,' but the probability at which the two break even — and whether you're clearly on one side of it. Works for a move against the status quo, or a choice between two live options.",
     type: "website",
   },
 };
@@ -46,6 +46,14 @@ export default function WeighPage() {
           are the exact odds?&rdquo;) becomes an easy one (&ldquo;which side of
           the line?&rdquo;). Give the tool the stakes and your honest
           probability; it draws the line and shows you where you stand.
+        </p>
+        <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
+          It draws that line two ways. Reach for the first frame — <em>do this,
+          or don&rsquo;t</em>{" "}— when there&rsquo;s one move you could make or
+          skip, weighed against staying put. Reach for the second — <em>A, or
+          B</em>{" "}— when neither option is the status quo: two live choices,
+          both uncertain, and you just have to pick. Same threshold; the honest
+          shape for the call you&rsquo;re actually facing.
         </p>
       </header>
 
