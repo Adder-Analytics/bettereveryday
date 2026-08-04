@@ -23,22 +23,33 @@
 export default function CarriedNote({
   show,
   onClear,
+  lead = "Carried over from your last step — edit it above, or",
+  clearLabel = "clear it",
 }: {
   /** True while the field still holds exactly what was carried in, untouched. */
   show: boolean;
   /** Empty the field and dismiss the note. */
   onClear: () => void;
+  /**
+   * The sentence before the clear button. Defaults to the generic "your last
+   * step"; a handoff that knows its source names it ("Carried from your
+   * comparison …"), and one that carried two option labels can speak in the
+   * plural. End it so the clear button reads as its final clause.
+   */
+  lead?: string;
+  /** The clear button's label — "clear it" for one field, "clear both" for two. */
+  clearLabel?: string;
 }) {
   if (!show) return null;
   return (
     <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 pl-3 border-l-2 border-[var(--accent)] text-xs text-[var(--muted)] leading-relaxed">
-      <span>Carried over from your last step — edit it above, or</span>
+      <span>{lead}</span>
       <button
         type="button"
         onClick={onClear}
         className="font-medium text-[var(--accent)] hover:opacity-70 transition-opacity underline underline-offset-2"
       >
-        clear it
+        {clearLabel}
       </button>
     </p>
   );

@@ -35,6 +35,31 @@
 /** The query key the subject rides in. Short, human-legible in a URL. */
 export const SUBJECT_PARAM = "subject";
 
+/**
+ * A handoff can carry more than the one-liner. When a tool already holds a
+ * *two-option* decision — the halo-off comparison narrowed to two finalists it
+ * can't separate — it can hand both option labels to the flip point's "A, or B"
+ * frame, which is built for exactly that call. Same discipline as the subject:
+ * carried in the URL only, normalized and capped, read only by a destination
+ * that actually consumes it (today just /weigh), and never allowed to clobber a
+ * field the receiver already has filled.
+ */
+export const OPTION_A_PARAM = "a";
+export const OPTION_B_PARAM = "b";
+
+/**
+ * The source a decision was carried *from*, so the "carried over" cue can name
+ * it ("carried from your comparison") instead of the generic "your last step."
+ * A controlled vocabulary, not free text: the receiver only honors a token it
+ * knows, so an arbitrary URL can never inject a phrase into the UI. Add a source
+ * here when a new handoff wants to name itself.
+ */
+export const FROM_PARAM = "from";
+export const CARRY_SOURCES = {
+  compare: "your comparison",
+} as const;
+export type CarrySource = keyof typeof CARRY_SOURCES;
+
 /** A one-liner, not an essay: cap the carried subject so a URL stays a URL. */
 const MAX_SUBJECT = 240;
 
@@ -57,6 +82,12 @@ export function readCarriedSubject(): string {
   }
 }
 
+/** Append one `key=value` to an href, preserving any params already on it. */
+function appendParam(href: string, key: string, value: string): string {
+  const sep = href.includes("?") ? "&" : "?";
+  return `${href}${sep}${key}=${encodeURIComponent(value)}`;
+}
+
 /**
  * Append the subject to a handoff href when there is one to carry. Preserves any
  * params the href already has (e.g. `/decide?log=1`), URL-encodes the value, and
@@ -66,22 +97,84 @@ export function readCarriedSubject(): string {
 export function withSubject(href: string, subject: string): string {
   const s = normalize(subject);
   if (!s) return href;
-  const sep = href.includes("?") ? "&" : "?";
-  return `${href}${sep}${SUBJECT_PARAM}=${encodeURIComponent(s)}`;
+  return appendParam(href, SUBJECT_PARAM, s);
 }
 
 /**
- * Strip the subject param from the URL after a receiver has applied it, so a
- * refresh doesn't re-apply it and the address bar stays clean. Client-only and
- * defensive — keeps the rest of the query intact. Mirrors the `replaceState`
- * the journal and pre-mortem already use for their own deep links.
+ * Carry a two-option decision on a handoff link: the subject (optional) plus the
+ * two option labels, and the source that's handing off so the destination can
+ * name it. Every part is optional and each is added only when non-empty — so a
+ * blank field never puts a dead param on the link, the same no-dead-param rule
+ * `withSubject` follows. Used by the halo-off comparison to hand its two
+ * finalists to the flip point's A/B frame.
+ */
+export function withOptions(
+  href: string,
+  carry: {
+    subject?: string;
+    optionA?: string;
+    optionB?: string;
+    from?: CarrySource;
+  }
+): string {
+  let out = carry.subject ? withSubject(href, carry.subject) : href;
+  const a = carry.optionA ? normalize(carry.optionA) : "";
+  const b = carry.optionB ? normalize(carry.optionB) : "";
+  if (a) out = appendParam(out, OPTION_A_PARAM, a);
+  if (b) out = appendParam(out, OPTION_B_PARAM, b);
+  if (carry.from) out = appendParam(out, FROM_PARAM, carry.from);
+  return out;
+}
+
+/**
+ * Read the two carried option labels from the current URL. Client-only; returns
+ * empty strings when there's nothing to carry. The receiver decides whether to
+ * apply them (only into blank fields — never over saved work).
+ */
+export function readCarriedOptions(): { optionA: string; optionB: string } {
+  if (typeof window === "undefined") return { optionA: "", optionB: "" };
+  try {
+    const p = new URLSearchParams(window.location.search);
+    return {
+      optionA: normalize(p.get(OPTION_A_PARAM) ?? ""),
+      optionB: normalize(p.get(OPTION_B_PARAM) ?? ""),
+    };
+  } catch {
+    return { optionA: "", optionB: "" };
+  }
+}
+
+/**
+ * Read the source that handed off, but only if it's a token we recognize —
+ * anything else reads as "no named source" so the cue falls back to its generic
+ * wording rather than trusting an arbitrary URL string.
+ */
+export function readCarriedFrom(): CarrySource | "" {
+  if (typeof window === "undefined") return "";
+  try {
+    const raw = new URLSearchParams(window.location.search).get(FROM_PARAM);
+    return raw && raw in CARRY_SOURCES ? (raw as CarrySource) : "";
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Strip every carry param (subject, the two option labels, the source) from the
+ * URL after a receiver has applied them, so a refresh doesn't re-apply them and
+ * the address bar stays clean. Client-only and defensive — keeps the rest of the
+ * query intact. Mirrors the `replaceState` the journal and pre-mortem already
+ * use for their own deep links. Named for the subject it originally cleared;
+ * every caller that only ever carried a subject is unaffected, since deleting an
+ * absent param is a no-op.
  */
 export function clearCarriedSubject(): void {
   if (typeof window === "undefined") return;
   try {
     const url = new URL(window.location.href);
-    if (!url.searchParams.has(SUBJECT_PARAM)) return;
-    url.searchParams.delete(SUBJECT_PARAM);
+    const keys = [SUBJECT_PARAM, OPTION_A_PARAM, OPTION_B_PARAM, FROM_PARAM];
+    if (!keys.some((k) => url.searchParams.has(k))) return;
+    for (const k of keys) url.searchParams.delete(k);
     const qs = url.searchParams.toString();
     window.history.replaceState(
       null,
