@@ -1,7 +1,15 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import {
+  readCarriedSubject,
+  clearCarriedSubject,
+  withSubject,
+  readCarriedOptions,
+  readCarriedFrom,
+  CARRY_SOURCES,
+  type CarrySource,
+} from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 import {
@@ -207,6 +215,11 @@ export default function WeighClient() {
   const [logged, setLogged] = useState<null | { conf: number; reviewOn: string }>(null);
   const [showExample, setShowExample] = useState(false);
   const [carriedSeed, setCarriedSeed] = useState("");
+  const [carriedFrom, setCarriedFrom] = useState<CarrySource | "">("");
+  // The two option labels carried in from a two-option handoff (the halo-off
+  // comparison's finalists), tracked so the A/B "carried over" cue can show
+  // while they're untouched and name where they came from.
+  const [optSeed, setOptSeed] = useState<{ a: string; b: string } | null>(null);
 
   // Load persisted inputs and the real-world calibration signal on mount.
   useEffect(() => {
@@ -215,7 +228,28 @@ export default function WeighClient() {
     // work: pre-fill the subject only when this tool's own field is still blank.
     const carried = readCarriedSubject();
     const seeded = Boolean(carried) && !loaded.decision.trim();
-    const next = seeded ? { ...loaded, decision: carried } : loaded;
+    let next = seeded ? { ...loaded, decision: carried } : loaded;
+
+    // A two-option handoff also carries both finalists. Seed them into the A/B
+    // frame — and switch to that frame — but only when this tool's own option
+    // fields are blank, so an incoming link can never clobber a call in
+    // progress. Same never-clobber rule the subject seed follows.
+    const carriedOpts = readCarriedOptions();
+    const from = readCarriedFrom();
+    const seedOpts =
+      Boolean(carriedOpts.optionA) &&
+      Boolean(carriedOpts.optionB) &&
+      !next.optionA.trim() &&
+      !next.optionB.trim();
+    if (seedOpts) {
+      next = {
+        ...next,
+        mode: "ab",
+        optionA: carriedOpts.optionA,
+        optionB: carriedOpts.optionB,
+      };
+    }
+
     let g: number | null = null;
     let s = 0;
     try {
@@ -232,8 +266,10 @@ export default function WeighClient() {
     setScored(s);
     setHydrated(true);
     if (seeded) setCarriedSeed(carried);
+    if (seedOpts) setOptSeed({ a: carriedOpts.optionA, b: carriedOpts.optionB });
+    if ((seeded || seedOpts) && from) setCarriedFrom(from);
     /* eslint-enable react-hooks/set-state-in-effect */
-    if (carried) clearCarriedSubject();
+    if (carried || seedOpts || from) clearCarriedSubject();
   }, []);
 
   // Persist on every change, once hydrated (so we don't clobber saved inputs
@@ -255,6 +291,14 @@ export default function WeighClient() {
   // decision half-entered in one frame is still there if you switch back.
   const setMode = (m: Mode) =>
     setInp((prev) => (prev.mode === m ? prev : { ...prev, mode: m }));
+
+  // Name the source in the "carried over" cue when a handoff told us where it
+  // came from ("carried from your comparison" beats the generic "your last
+  // step"). Falls back to undefined so CarriedNote uses its default wording.
+  const sourceLabel = carriedFrom ? CARRY_SOURCES[carriedFrom] : "";
+  const subjectLead = sourceLabel
+    ? `Carried from ${sourceLabel} — edit it above, or`
+    : undefined;
 
   // ---- "act or hold" compute --------------------------------------------
   const calc = useMemo(() => {
@@ -437,6 +481,7 @@ export default function WeighClient() {
             />
             <CarriedNote
               show={carriedSeed !== "" && inp.decision.trim() === carriedSeed}
+              lead={subjectLead}
               onClear={() => {
                 set("decision", "");
                 setCarriedSeed("");
@@ -736,6 +781,7 @@ export default function WeighClient() {
             />
             <CarriedNote
               show={carriedSeed !== "" && inp.decision.trim() === carriedSeed}
+              lead={subjectLead}
               onClear={() => {
                 set("decision", "");
                 setCarriedSeed("");
@@ -768,6 +814,22 @@ export default function WeighClient() {
                 />
               </div>
             </div>
+            <CarriedNote
+              show={
+                optSeed !== null &&
+                inp.optionA.trim() === optSeed.a &&
+                inp.optionB.trim() === optSeed.b
+              }
+              lead={`The two you couldn't separate${
+                sourceLabel ? `, carried from ${sourceLabel}` : ", carried over"
+              } — edit either, or`}
+              clearLabel="clear both"
+              onClear={() => {
+                set("optionA", "");
+                set("optionB", "");
+                setOptSeed(null);
+              }}
+            />
 
             <div className="mt-4">
               <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
