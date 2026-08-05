@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import {
+  readCarriedSubject,
+  clearCarriedSubject,
+  withSubject,
+  withOptions,
+} from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 import {
@@ -795,7 +800,9 @@ export default function CompareClient() {
                   <span className="font-medium text-[var(--foreground)]">
                     {gutOption ? optionName(gutOption, 0) : "one of them"}
                   </span>
-                  ; on a genuine tie, that&rsquo;s a fine place to let it decide.
+                  ; on a genuine tie that&rsquo;s a fine place to let it decide —
+                  but first see whether a single unknown actually separates the
+                  two, below.
                 </p>
               </>
             ) : gutAgrees ? (
@@ -927,6 +934,48 @@ export default function CompareClient() {
           </p>
         </div>
       )}
+
+      {/* ---- Two finalists, too close to separate: hand them to the flip point ----
+          When the tally can't tell the top two apart, scoring them more finely
+          won't help — that's what "too close" *means*. The honest next move isn't
+          a better average; it's to name the single thing you don't yet know that
+          decides between them and which way you'd regret being wrong. That's the
+          flip point's A/B frame, and it's built for exactly two options. This card
+          takes the place of the journal handoff in the too-close case (they're
+          mutually exclusive), turning a former dead-end into a live next step. */}
+      {revealed && calc && winner && calc.tooClose && calc.ranked.length >= 2 ? (() => {
+        const fA = calc.ranked[0];
+        const fB = calc.ranked[1];
+        const labelA = optionName(fA, state.options.findIndex((x) => x.id === fA.id));
+        const labelB = optionName(fB, state.options.findIndex((x) => x.id === fB.id));
+        return (
+          <div className="mt-5 rounded-xl border border-[var(--accent)] bg-[var(--card)] p-5 sm:p-6">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+              Two finalists, too close to score — sharpen the one call between them
+            </p>
+            <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+              A tally this even isn&rsquo;t asking for finer scores — it&rsquo;s
+              telling you the two are matched on everything you could put a number
+              on. What&rsquo;s left is the thing you <em>couldn&rsquo;t</em>: the one
+              uncertain fact that decides which is right, and which way you&rsquo;d
+              regret being wrong. That&rsquo;s the question the flip point&rsquo;s
+              &ldquo;A, or B&rdquo; frame is built for — it won&rsquo;t re-score{" "}
+              {labelA} and {labelB}, it&rsquo;ll draw the single line between them.
+            </p>
+            <Link
+              href={withOptions("/weigh", {
+                subject: state.decision,
+                optionA: labelA,
+                optionB: labelB,
+                from: "compare",
+              })}
+              className="mt-4 inline-block text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+            >
+              Take {labelA} and {labelB}{" "}to the flip point &rarr;
+            </Link>
+          </div>
+        );
+      })() : null}
 
       {/* ---- The handoff ---- */}
       {revealed && calc && winner && !calc.tooClose ? (

@@ -5,7 +5,7 @@ import WeighClient from "./WeighClient";
 export const metadata: Metadata = {
   title: "The Flip Point — Better Every Day",
   description:
-    "Stop arguing about the exact probability. Find the threshold where a decision flips and just ask which side you're on — for a single move you can take or skip, or a straight choice between two live options. Pauker & Kassirer's treatment-threshold approach, turned into a tool for any either/or call.",
+    "Stop arguing about the exact probability. Find the threshold where a decision flips and just ask which side you're on — for a single move you can take or skip, or a straight choice between two live options. Pauker & Kassirer's treatment-threshold approach, turned into a tool for any either/or call. Hand the worked call to someone with a link — the numbers ride in the link itself, sent to no server.",
   openGraph: {
     title: "The Flip Point — Better Every Day",
     description:
@@ -61,8 +61,11 @@ export default function WeighPage() {
 
       <div className="mt-16 pt-8 border-t border-[var(--border)]">
         <p className="text-sm text-[var(--muted)] leading-relaxed">
-          Nothing you enter here leaves your browser. The thinking behind the
-          tool — why the threshold beats the estimate, when expected value is the
+          Nothing you enter here is sent anywhere. When you want a second opinion,
+          the copy-a-link button under the verdict packs the whole call into the
+          link itself — it reaches no server, only whoever you hand it to. The
+          thinking behind the tool — why the threshold beats the estimate, when
+          expected value is the
           wrong frame entirely, and how your{" "}
           <Link
             href="/calibrate"
