@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   readCarriedSubject,
   clearCarriedSubject,
@@ -10,6 +10,7 @@ import {
   CARRY_SOURCES,
   type CarrySource,
 } from "../data/carry";
+import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 import {
@@ -57,6 +58,17 @@ import { loadJournalProfile } from "../data/journal";
  * tracked forecast through the shared decisionLog appender — the same front door
  * the pre-mortem room uses. The mode you last used persists too, so the frame
  * you think in is the one waiting when you come back.
+ *
+ * SHARING, PERSON TO PERSON. The through-line (`carry.ts`) hands a decision from
+ * one tool to the next; this tool can now hand the whole worked call from one
+ * *person* to the next, because the calls people bring here — two offers, a
+ * move, a quit — get made with someone else. A "copy a link" affordance encodes
+ * the active frame's decision into the URL *fragment* (see `share.ts`), which is
+ * never sent to any server, so "share this" and "sent nowhere" stay true at
+ * once. A recipient opening the link adopts the whole call into a blank tool
+ * (all-or-nothing, so two people's numbers can't blend into a hybrid); if they
+ * already have work here, the shared call waits in a card they can open or
+ * dismiss — the same never-clobber discipline the carry layer follows.
  */
 
 const STORE_KEY = "weigh:v1";
@@ -177,6 +189,127 @@ function nonNeg(n: number): number {
   return n;
 }
 
+/** Collapse whitespace and cap a shared string, so a link stays a link. Mirrors
+ *  the normalization the through-line applies to a carried subject. */
+function capStr(s: string, n = 240): string {
+  return s.replace(/\s+/g, " ").trim().slice(0, n);
+}
+
+/** True when the tool holds no real work — nothing typed, no magnitudes, the
+ *  default probability. A share link adopts a whole decision ONLY into a blank
+ *  tool, so this is the gate that protects a call in progress. Mode is ignored:
+ *  a blank tool in either frame is still blank. */
+function isBlankInputs(i: Inputs): boolean {
+  return (
+    !i.decision.trim() &&
+    !i.hinge.trim() &&
+    !i.actLabel.trim() &&
+    !i.altLabel.trim() &&
+    !i.optionA.trim() &&
+    !i.optionB.trim() &&
+    i.upside === 0 &&
+    i.downside === 0 &&
+    i.regretA === 0 &&
+    i.regretB === 0 &&
+    i.p === 50 &&
+    !i.ruin
+  );
+}
+
+/** The encodable subset of a flip-point call: the common fields plus ONLY the
+ *  active frame's magnitudes, so a stale hidden frame's numbers never ride along
+ *  in the link. */
+function sharePayload(inp: Inputs): Record<string, unknown> {
+  const common = {
+    mode: inp.mode,
+    decision: capStr(inp.decision),
+    p: inp.p,
+    hinge: capStr(inp.hinge),
+    ruin: inp.ruin,
+  };
+  if (inp.mode === "ab") {
+    return {
+      ...common,
+      optionA: capStr(inp.optionA),
+      optionB: capStr(inp.optionB),
+      regretA: inp.regretA,
+      regretB: inp.regretB,
+    };
+  }
+  return {
+    ...common,
+    actLabel: capStr(inp.actLabel),
+    altLabel: capStr(inp.altLabel),
+    upside: inp.upside,
+    downside: inp.downside,
+  };
+}
+
+/** Rebuild a full Inputs from a decoded share payload, defensively — the same
+ *  field-by-field coercion `loadInputs` uses for localStorage, so a truncated or
+ *  hand-edited link degrades to blank fields, never a throw. Returns null when
+ *  nothing meaningful decoded, so a blank payload can't seed a blank tool. */
+function coerceSharedWeigh(data: unknown): Inputs | null {
+  if (!data || typeof data !== "object") return null;
+  const v = data as Partial<Inputs>;
+  const out: Inputs = {
+    ...BLANK,
+    mode: v.mode === "ab" ? "ab" : "act",
+    decision: typeof v.decision === "string" ? capStr(v.decision) : BLANK.decision,
+    p: clampP(typeof v.p === "number" ? v.p : BLANK.p),
+    hinge: typeof v.hinge === "string" ? capStr(v.hinge) : BLANK.hinge,
+    ruin: typeof v.ruin === "boolean" ? v.ruin : BLANK.ruin,
+    actLabel: typeof v.actLabel === "string" ? capStr(v.actLabel) : BLANK.actLabel,
+    altLabel: typeof v.altLabel === "string" ? capStr(v.altLabel) : BLANK.altLabel,
+    upside: nonNeg(typeof v.upside === "number" ? v.upside : BLANK.upside),
+    downside: nonNeg(typeof v.downside === "number" ? v.downside : BLANK.downside),
+    optionA: typeof v.optionA === "string" ? capStr(v.optionA) : BLANK.optionA,
+    optionB: typeof v.optionB === "string" ? capStr(v.optionB) : BLANK.optionB,
+    regretA: nonNeg(typeof v.regretA === "number" ? v.regretA : BLANK.regretA),
+    regretB: nonNeg(typeof v.regretB === "number" ? v.regretB : BLANK.regretB),
+  };
+  return isBlankInputs(out) ? null : out;
+}
+
+/** A short, honest read of a shared decision for the "someone shared this" card:
+ *  its subject and one line naming the flip point, the sender's read, and which
+ *  way it leans — recomputed from the shared numbers so the card can't claim a
+ *  verdict the numbers don't support. */
+function describeShared(i: Inputs): { subject: string; line: string } {
+  const subject =
+    i.decision.trim() || (i.mode === "ab" ? "A two-option call" : "A decision");
+  let line = "";
+  if (i.mode === "ab") {
+    const total = i.regretA + i.regretB;
+    if (total > 0) {
+      const flip = Math.round((i.regretA / total) * 100);
+      const margin = i.p / 100 - i.regretA / total;
+      const lean =
+        Math.abs(margin) < CLOSE
+          ? "too close to call"
+          : margin >= 0
+            ? i.optionA.trim() || "Option A"
+            : i.optionB.trim() || "Option B";
+      const aLabel = i.optionA.trim() || "A";
+      line = `Flip point ${flip}% (odds the call favors ${aLabel}) · their read ${i.p}% — leaning ${lean}`;
+    }
+  } else {
+    const total = i.upside + i.downside;
+    if (total > 0) {
+      const flip = Math.round((i.downside / total) * 100);
+      const margin = i.p / 100 - i.downside / total;
+      const lean =
+        Math.abs(margin) < CLOSE
+          ? "too close to call"
+          : margin >= 0
+            ? i.actLabel.trim() || "act"
+            : i.altLabel.trim() || "hold";
+      line = `Flip point ${flip}% · their read ${i.p}% — leaning ${lean}`;
+    }
+  }
+  return { subject, line };
+}
+
 /** Snap a 1–99 probability to the nearest journal confidence option (50–90). */
 function snapConfidence(p: number): number {
   let best = CONFIDENCE_OPTIONS[0] as number;
@@ -220,6 +353,14 @@ export default function WeighClient() {
   // comparison's finalists), tracked so the A/B "carried over" cue can show
   // while they're untouched and name where they came from.
   const [optSeed, setOptSeed] = useState<{ a: string; b: string } | null>(null);
+  // A decision handed in by a share link. `adoptedShare` — it was adopted whole
+  // into a blank tool (banner). `pendingShare` — the tool already held work, so
+  // the shared call waits in a card the person can open (replacing their draft)
+  // or dismiss. `copied` — the "copy a link" affordance's transient confirmation.
+  const [adoptedShare, setAdoptedShare] = useState(false);
+  const [pendingShare, setPendingShare] = useState<Inputs | null>(null);
+  const [copied, setCopied] = useState(false);
+  const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Load persisted inputs and the real-world calibration signal on mount.
   useEffect(() => {
@@ -250,6 +391,24 @@ export default function WeighClient() {
       };
     }
 
+    // A share link hands a WHOLE decision in from another person. It's
+    // all-or-nothing, never field-by-field: adopting the entire call only into a
+    // blank tool keeps two people's numbers from blending into a nonsense
+    // hybrid. If this tool already holds work (its own, or a carry seed above),
+    // don't touch it — surface the shared call as a card the person can open
+    // (replacing their draft) or dismiss.
+    const shared = coerceSharedWeigh(readShare("weigh"));
+    let adopted = false;
+    let pending: Inputs | null = null;
+    if (shared) {
+      if (isBlankInputs(next)) {
+        next = shared;
+        adopted = true;
+      } else {
+        pending = shared;
+      }
+    }
+
     let g: number | null = null;
     let s = 0;
     try {
@@ -268,8 +427,14 @@ export default function WeighClient() {
     if (seeded) setCarriedSeed(carried);
     if (seedOpts) setOptSeed({ a: carriedOpts.optionA, b: carriedOpts.optionB });
     if ((seeded || seedOpts) && from) setCarriedFrom(from);
+    if (adopted) setAdoptedShare(true);
+    if (pending) setPendingShare(pending);
     /* eslint-enable react-hooks/set-state-in-effect */
     if (carried || seedOpts || from) clearCarriedSubject();
+    // Strip the share fragment once read, whether adopted or held pending, so a
+    // refresh doesn't re-apply it and the address bar stops carrying someone
+    // else's decision. The pending card lives in state, not the URL, from here.
+    if (shared) clearShare();
   }, []);
 
   // Persist on every change, once hydrated (so we don't clobber saved inputs
@@ -283,8 +448,51 @@ export default function WeighClient() {
     }
   }, [inp, hydrated]);
 
+  // Clear the copy-confirmation timer on unmount so it can't fire into a gone
+  // component.
+  useEffect(
+    () => () => {
+      if (copyTimer.current) clearTimeout(copyTimer.current);
+    },
+    []
+  );
+
   const set = <K extends keyof Inputs>(k: K, v: Inputs[K]) =>
     setInp((prev) => ({ ...prev, [k]: v }));
+
+  // Build the share link and put it on the clipboard. Encodes only the active
+  // frame's fields into the URL fragment (never a server), with the same
+  // clipboard-then-execCommand fallback the journal and pre-mortem use.
+  const copyShareLink = useCallback(async () => {
+    if (typeof window === "undefined") return;
+    const token = encodeShare("weigh", sharePayload(inp));
+    if (!token) return;
+    const link = `${window.location.origin}/weigh#${SHARE_PARAM}=${token}`;
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(link);
+      ok = true;
+    } catch {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = link;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+      } catch {
+        ok = false;
+      }
+    }
+    if (ok) {
+      setCopied(true);
+      if (copyTimer.current) clearTimeout(copyTimer.current);
+      copyTimer.current = setTimeout(() => setCopied(false), 2000);
+    }
+  }, [inp]);
 
   // Switching frames resets the "logged" confirmation (a call logged in one
   // frame shouldn't read as logged in the other) but keeps every field, so a
@@ -397,8 +605,81 @@ export default function WeighClient() {
   const marginPts = calc ? Math.round(Math.abs(calc.margin) * 100) : 0;
   const marginPtsAB = calcAB ? Math.round(Math.abs(calcAB.margin) * 100) : 0;
 
+  // A real, computed decision exists in the active frame — the gate for offering
+  // to share it (shown even under the ruin guard: handing someone a "don't bet
+  // the farm" read is a valid thing to share).
+  const hasDecision = inp.mode === "ab" ? calcAB !== null : calc !== null;
+  // The one-line read of a shared decision waiting in the pending card.
+  const pendingDesc = pendingShare ? describeShared(pendingShare) : null;
+
   return (
     <div>
+      {/* ---- Shared with you: adopted whole into a blank tool ---- */}
+      {adoptedShare ? (
+        <div className="mb-5 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-4">
+          <p className="text-sm text-[var(--foreground)] leading-relaxed">
+            <span className="font-medium">
+              You&rsquo;re looking at a decision someone shared with you.
+            </span>{" "}
+            The numbers below are theirs — change anything to weigh it your own
+            way, or{" "}
+            <button
+              type="button"
+              onClick={() => {
+                setInp(BLANK);
+                setAdoptedShare(false);
+                setLogged(null);
+              }}
+              className="font-medium text-[var(--accent)] underline underline-offset-2 hover:opacity-70 transition-opacity"
+            >
+              start from a blank tool
+            </button>
+            .
+          </p>
+        </div>
+      ) : null}
+
+      {/* ---- Shared with you: held, because the tool already had work ---- */}
+      {pendingShare && pendingDesc ? (
+        <div className="mb-5 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            A decision was shared with you
+          </p>
+          <p className="mt-2 text-sm font-medium text-[var(--foreground)] leading-relaxed">
+            {pendingDesc.subject}
+          </p>
+          {pendingDesc.line ? (
+            <p className="mt-1 text-sm text-[var(--muted)] leading-relaxed">
+              {pendingDesc.line}
+            </p>
+          ) : null}
+          <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
+            You already have a call in progress here. Opening theirs replaces
+            what&rsquo;s in the tool now.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                setInp(pendingShare);
+                setPendingShare(null);
+                setLogged(null);
+              }}
+              className="text-sm font-medium px-4 py-2 rounded-lg bg-[var(--accent)] text-[var(--background)] hover:opacity-90 transition-opacity"
+            >
+              Open it in the tool
+            </button>
+            <button
+              type="button"
+              onClick={() => setPendingShare(null)}
+              className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+            >
+              Dismiss
+            </button>
+          </div>
+        </div>
+      ) : null}
+
       {/* ---- The frame toggle ---- */}
       <div className="mb-5">
         <div
@@ -548,7 +829,7 @@ export default function WeighClient() {
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
-                  If <span className="text-[var(--accent)]">{inp.actLabel.trim() || "you act"}</span> and it works out
+                  If <span className="text-[var(--accent)]">{inp.actLabel.trim() || "you act"}</span>{" "}and it works out
                 </label>
                 <p className="text-xs text-[var(--muted)] mb-2">
                   How much better than {inp.altLabel.trim() || "the alternative"}? (the upside)
@@ -564,7 +845,7 @@ export default function WeighClient() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
-                  If <span className="text-[var(--accent)]">{inp.actLabel.trim() || "you act"}</span> and it doesn&rsquo;t
+                  If <span className="text-[var(--accent)]">{inp.actLabel.trim() || "you act"}</span>{" "}and it doesn&rsquo;t
                 </label>
                 <p className="text-xs text-[var(--muted)] mb-2">
                   How much worse than {inp.altLabel.trim() || "the alternative"}? (the downside)
@@ -1058,6 +1339,29 @@ export default function WeighClient() {
           ) : null}
         </>
       )}
+
+      {/* ---- Hand it to someone: the same call, carried person to person ---- */}
+      {hasDecision ? (
+        <div className="mt-5 rounded-xl border border-[var(--border)] p-5 sm:p-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            Talk it over with someone
+          </p>
+          <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            Real calls get made with other people. Copy a link that carries this
+            whole decision — the frame, your numbers, and the line it draws — so a
+            partner or a cofounder can open exactly what you&rsquo;re weighing and
+            change the numbers to argue back. It rides inside the link itself and
+            is sent to no server; only whoever you hand it to can read it.
+          </p>
+          <button
+            type="button"
+            onClick={copyShareLink}
+            className="mt-4 text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+          >
+            {copied ? "Copied — the link is on your clipboard" : "Copy a link to this decision"}
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }
