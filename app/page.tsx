@@ -36,10 +36,10 @@ export default function Home() {
             New here? Start with a reading path →
           </Link>
           <Link
-            href="/tools"
+            href="/find"
             className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
-            Facing a decision now? Find the right tool →
+            Facing a decision now? Find your tool in a question or two →
           </Link>
           <span className="text-sm text-[var(--muted)]">Updated {lastUpdated}</span>
         </div>
