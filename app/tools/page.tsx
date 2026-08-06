@@ -39,6 +39,17 @@ export default function ToolsPage() {
           there. Everything you enter stays in your browser and is sent nowhere.
         </p>
         <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
+          Don&rsquo;t want to read all of them? Answer{" "}
+          <Link
+            href="/find"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            a question or two
+          </Link>{" "}
+          about the shape of your decision and be handed just the one, with your
+          decision carried into it.
+        </p>
+        <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
           New here, or want to see how these fit together first? Watch one real
           decision go through the whole kit — a{" "}
           <Link
