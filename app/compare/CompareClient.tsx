@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   readCarriedSubject,
   clearCarriedSubject,
   withSubject,
   withOptions,
 } from "../data/carry";
+import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 import {
@@ -193,6 +194,122 @@ function loadState(): State {
   }
 }
 
+// ---- handing the comparison to another person ----------------------------
+//
+// The halo-off comparison is, of every instrument here, the one people are most
+// likely to work *with* someone else: two job offers, three apartments, a
+// shortlist you and a partner keep reshuffling. Peer-sharing (see data/share.ts)
+// lets you hand the whole scored comparison to that person by link — the
+// options, the factors, and how you scored them — so they open exactly what you
+// weighed and can change the numbers to argue back. The payload rides in the URL
+// *fragment*, never the query string, so it reaches no server, only whoever you
+// send the link to.
+//
+// One deliberate omission: the gut is NOT shared. This tool's whole discipline
+// is that the tally stays hidden until *you* name which option your gut wants —
+// so adopting the sender's gut would hand the recipient a revealed answer and
+// spend the one thing the tool exists to protect. The recipient adopts the
+// scored structure and forms their *own* gut read, which is exactly the
+// productive disagreement (their gut vs. your factors) worth sharing for.
+
+/** Collapse whitespace and cap a shared string, so a link stays a link. Mirrors
+ *  the normalization the through-line and the flip point's share both apply. */
+function capStr(s: string, n = 120): string {
+  return s.replace(/\s+/g, " ").trim().slice(0, n);
+}
+
+/** A fresh blank state — cloned so a reset can never mutate the shared BLANK. */
+function blankState(): State {
+  return {
+    decision: "",
+    options: BLANK.options.map((o) => ({ ...o })),
+    factors: BLANK.factors.map((f) => ({ ...f })),
+    scores: {},
+    gut: "",
+  };
+}
+
+/** True when the tool holds no real work — nothing named, nothing scored. A
+ *  share link adopts a whole comparison ONLY into a blank tool, so this is the
+ *  gate that protects a comparison in progress. Array length is ignored: the
+ *  blank opens with two empty option slots and two empty factor slots. */
+function isBlankState(s: State): boolean {
+  return (
+    !s.decision.trim() &&
+    s.options.every((o) => !o.label.trim()) &&
+    s.factors.every((f) => !f.label.trim()) &&
+    Object.keys(s.scores).length === 0 &&
+    !s.gut
+  );
+}
+
+/** The encodable subset of a comparison: the structure and the scores, with
+ *  labels capped so a link stays a link — but never the gut (see the note
+ *  above). */
+function sharePayload(s: State): Record<string, unknown> {
+  return {
+    decision: capStr(s.decision),
+    options: s.options.map((o) => ({ id: o.id, label: capStr(o.label) })),
+    factors: s.factors.map((f) => ({
+      id: f.id,
+      label: capStr(f.label),
+      weight: f.weight,
+    })),
+    scores: s.scores,
+  };
+}
+
+/** Rebuild a full State from a decoded share payload, reusing the same
+ *  field-by-field cleaners loadState trusts for localStorage, so a truncated or
+ *  hand-edited link degrades to blank fields, never a throw. The gut is always
+ *  reset — the recipient names their own. Returns null when nothing meaningful
+ *  decoded, so a blank payload can't seed a blank tool. */
+function coerceSharedCompare(data: unknown): State | null {
+  if (!data || typeof data !== "object") return null;
+  const v = data as Partial<State>;
+  const options = cleanOptions(
+    Array.isArray(v.options)
+      ? v.options.map((o) =>
+          o && typeof o === "object"
+            ? { ...o, label: capStr(String((o as { label?: unknown }).label ?? "")) }
+            : o
+        )
+      : v.options
+  );
+  const factors = cleanFactors(
+    Array.isArray(v.factors)
+      ? v.factors.map((f) =>
+          f && typeof f === "object"
+            ? { ...f, label: capStr(String((f as { label?: unknown }).label ?? "")) }
+            : f
+        )
+      : v.factors
+  );
+  const out: State = {
+    decision: typeof v.decision === "string" ? capStr(v.decision) : "",
+    options,
+    factors,
+    scores: cleanScores(v.scores),
+    gut: "",
+  };
+  return isBlankState(out) ? null : out;
+}
+
+/** A short, honest read of a shared comparison for the "someone shared this"
+ *  card: its subject and one line naming the shape — deliberately NOT the
+ *  winner, so the pending preview can't pre-reveal the tally the gut gate
+ *  protects. */
+function describeSharedCompare(s: State): { subject: string; line: string } {
+  const subject = s.decision.trim() || "A comparison";
+  const opts = s.options.filter((o) => o.label.trim()).length;
+  const facs = s.factors.filter((f) => f.label.trim()).length;
+  const line =
+    opts >= 2 && facs >= 1
+      ? `${opts} options weighed on ${facs} factor${facs === 1 ? "" : "s"}`
+      : "";
+  return { subject, line };
+}
+
 // ---- id + label helpers --------------------------------------------------
 
 let idCounter = 0;
@@ -345,6 +462,15 @@ export default function CompareClient() {
   const [logged, setLogged] = useState<null | { conf: number; reviewOn: string; label: string }>(
     null
   );
+  // A comparison handed in by a share link. `adoptedShare` — it was adopted
+  // whole into a blank tool (banner). `pendingShare` — the tool already held a
+  // comparison, so the shared one waits in a card the person can open (replacing
+  // their draft) or dismiss. `copied` — the transient confirmation on the "copy
+  // a link" affordance.
+  const [adoptedShare, setAdoptedShare] = useState(false);
+  const [pendingShare, setPendingShare] = useState<State | null>(null);
+  const [copied, setCopied] = useState(false);
+  const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const loaded = loadState();
@@ -352,15 +478,81 @@ export default function CompareClient() {
     // work: pre-fill the subject only when this tool's own field is still blank.
     const carried = readCarriedSubject();
     const seeded = Boolean(carried) && !loaded.decision.trim();
-    const next = seeded ? { ...loaded, decision: carried } : loaded;
+    let next = seeded ? { ...loaded, decision: carried } : loaded;
+
+    // A share link hands a WHOLE comparison in from another person. It's
+    // all-or-nothing, never field-by-field: adopting the entire scored structure
+    // only into a blank tool keeps two people's numbers from blending into a
+    // nonsense hybrid. If this tool already holds work, don't touch it — surface
+    // the shared comparison as a card the person can open or dismiss.
+    const shared = coerceSharedCompare(readShare("compare"));
+    let adopted = false;
+    let pending: State | null = null;
+    if (shared) {
+      if (isBlankState(next)) {
+        next = shared;
+        adopted = true;
+      } else {
+        pending = shared;
+      }
+    }
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setState(next);
     setHydrated(true);
     if (seeded) setCarriedSeed(carried);
+    if (adopted) setAdoptedShare(true);
+    if (pending) setPendingShare(pending);
     /* eslint-enable react-hooks/set-state-in-effect */
     if (carried) clearCarriedSubject();
+    // Strip the share fragment once read, whether adopted or held pending, so a
+    // refresh doesn't re-apply it and the address bar stops carrying someone
+    // else's comparison. The pending card lives in state, not the URL, from here.
+    if (shared) clearShare();
   }, []);
+
+  // Clear the copy-confirmation timer on unmount so it can't fire into a gone
+  // component.
+  useEffect(
+    () => () => {
+      if (copyTimer.current) clearTimeout(copyTimer.current);
+    },
+    []
+  );
+
+  // Build the share link and put it on the clipboard. Encodes the scored
+  // comparison (never the gut) into the URL fragment — never a server — with the
+  // same clipboard-then-execCommand fallback the flip point and journal use.
+  const copyShareLink = useCallback(async () => {
+    if (typeof window === "undefined") return;
+    const token = encodeShare("compare", sharePayload(state));
+    if (!token) return;
+    const link = `${window.location.origin}/compare#${SHARE_PARAM}=${token}`;
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(link);
+      ok = true;
+    } catch {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = link;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+      } catch {
+        ok = false;
+      }
+    }
+    if (ok) {
+      setCopied(true);
+      if (copyTimer.current) clearTimeout(copyTimer.current);
+      copyTimer.current = setTimeout(() => setCopied(false), 2500);
+    }
+  }, [state]);
 
   useEffect(() => {
     if (!hydrated || typeof window === "undefined") return;
@@ -490,8 +682,76 @@ export default function CompareClient() {
 
   const reviewPreview = addDaysISO(todayISO(), REVIEW_DEFAULT_DAYS);
 
+  const pendingDesc = pendingShare ? describeSharedCompare(pendingShare) : null;
+
   return (
     <div>
+      {/* ---- Shared with you: adopted whole into a blank tool ---- */}
+      {adoptedShare ? (
+        <div className="mb-5 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-4">
+          <p className="text-sm text-[var(--foreground)] leading-relaxed">
+            <span className="font-medium">
+              You&rsquo;re looking at a comparison someone shared with you.
+            </span>{" "}
+            The options and scores below are theirs — name which one your own gut
+            wants to see how it lands, change any score to argue back, or{" "}
+            <button
+              type="button"
+              onClick={() => {
+                setState(blankState());
+                setAdoptedShare(false);
+                setLogged(null);
+              }}
+              className="font-medium text-[var(--accent)] underline underline-offset-2 hover:opacity-70 transition-opacity"
+            >
+              start from a blank tool
+            </button>
+            .
+          </p>
+        </div>
+      ) : null}
+
+      {/* ---- Shared with you: held, because the tool already had work ---- */}
+      {pendingShare && pendingDesc ? (
+        <div className="mb-5 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            A comparison was shared with you
+          </p>
+          <p className="mt-2 text-sm font-medium text-[var(--foreground)] leading-relaxed">
+            {pendingDesc.subject}
+          </p>
+          {pendingDesc.line ? (
+            <p className="mt-1 text-sm text-[var(--muted)] leading-relaxed">
+              {pendingDesc.line}
+            </p>
+          ) : null}
+          <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
+            You already have a comparison in progress here. Opening theirs
+            replaces what&rsquo;s in the tool now.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                setState(pendingShare);
+                setPendingShare(null);
+                setLogged(null);
+              }}
+              className="text-sm font-medium px-4 py-2 rounded-lg bg-[var(--accent)] text-[var(--background)] hover:opacity-90 transition-opacity"
+            >
+              Open it in the tool
+            </button>
+            <button
+              type="button"
+              onClick={() => setPendingShare(null)}
+              className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+            >
+              Dismiss
+            </button>
+          </div>
+        </div>
+      ) : null}
+
       {/* ---- New here? A read-only worked example (never touches the fields) ---- */}
       <div className="mb-5">
         <button
@@ -1043,6 +1303,31 @@ export default function CompareClient() {
               </button>
             </div>
           )}
+        </div>
+      ) : null}
+
+      {/* ---- Hand it to someone: the same comparison, carried person to person ---- */}
+      {calc ? (
+        <div className="mt-5 rounded-xl border border-[var(--border)] p-5 sm:p-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            Talk it over with someone
+          </p>
+          <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            Two offers, three apartments &mdash; the calls this tool is for are the
+            ones you make with someone else. Copy a link that carries this whole
+            comparison &mdash; the options, the factors, and how you scored them
+            &mdash; so a partner or a friend can open exactly what you weighed and
+            change a score to argue back. Their gut stays theirs to name. It rides
+            inside the link itself and is sent to no server; only whoever you hand
+            it to can read it.
+          </p>
+          <button
+            type="button"
+            onClick={copyShareLink}
+            className="mt-4 text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+          >
+            {copied ? "Copied — the link is on your clipboard" : "Copy a link to this comparison"}
+          </button>
         </div>
       ) : null}
     </div>

@@ -69,7 +69,10 @@ export default function ComparePage() {
 
       <div className="mt-16 pt-8 border-t border-[var(--border)]">
         <p className="text-sm text-[var(--muted)] leading-relaxed">
-          Nothing you enter here leaves your browser. If your list is really
+          Nothing you enter here is sent anywhere. Inputs stay in your browser;
+          if you copy a link to hand the comparison to someone, it rides inside
+          the link itself &mdash; it reaches no server, only whoever you hand it
+          to. If your list is really
           &ldquo;the thing&rdquo; versus &ldquo;nothing,&rdquo; the honest first
           move is to widen it &mdash; see{" "}
           <Link
