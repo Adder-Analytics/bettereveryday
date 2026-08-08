@@ -48,6 +48,10 @@ const TREND_MIN_PER_HALF = CALIBRATION_MIN;
  *  means anything here. The journal runs on review dates months out, so its
  *  eras are longer than the trainers'. */
 const TREND_MIN_SPAN = 28;
+/** Scored forecasts per sparkline window — coarser than the half-minimum, since
+ *  a window is one steadied point on a line, not a claim on its own. */
+const TREND_WINDOW_MIN = CALIBRATION_MIN;
+const TREND_MAX_WINDOWS = 8;
 
 function todayISO(): string {
   const d = new Date();
@@ -213,6 +217,20 @@ function journalTrend(scorable: LogEntryish[]): Trend | null {
   const earlyGap = gapOf(early);
   const lateGap = gapOf(late);
   const delta = Math.abs(earlyGap) - Math.abs(lateGap);
+
+  // The shape between the ends: divide the sorted forecasts into equal-count
+  // windows (no fewer than TREND_WINDOW_MIN each), each window's claimed-minus-
+  // actual gap one point on the line. Coarse at first, finer as reviews accrue.
+  const winCount = Math.max(
+    2,
+    Math.min(TREND_MAX_WINDOWS, Math.floor(sorted.length / TREND_WINDOW_MIN))
+  );
+  const per = sorted.length / winCount;
+  const points: number[] = [];
+  for (let w = 0; w < winCount; w++) {
+    const slice = sorted.slice(Math.round(w * per), Math.round((w + 1) * per));
+    if (slice.length > 0) points.push(gapOf(slice));
+  }
   const [reading, tone]: [string, Tone] =
     delta >= 8
       ? ["On the bets that count, your word is getting better — the gap between claimed and actual is closing.", "good"]
@@ -228,6 +246,8 @@ function journalTrend(scorable: LogEntryish[]): Trend | null {
     late: `${lateGap >= 0 ? "+" : ""}${lateGap} pt gap`,
     reading,
     tone,
+    series:
+      points.length >= 2 ? { points, target: 0, targetLabel: "no gap" } : undefined,
   };
 }
 

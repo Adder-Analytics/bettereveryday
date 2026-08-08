@@ -14,7 +14,12 @@
  * read side only, so adding it can't regress any existing tool.
  */
 
-import { MIN_TREND_SPAN_DAYS, spanDays, splitByWeight } from "./history";
+import {
+  MIN_TREND_SPAN_DAYS,
+  spanDays,
+  splitByWeight,
+  windowByWeight,
+} from "./history";
 
 /* ----------------------------- record shapes ----------------------------- */
 /* These mirror the types declared inside each trainer's client. They must stay
@@ -96,6 +101,28 @@ export type Tone = "good" | "mid" | "work" | "none";
  * and at least two weeks between the first and last practice day — because
  * a "trend" read off two noisy handfuls is worse than silence.
  */
+/**
+ * The trajectory *between* the two endpoints, for a sparkline. The same
+ * carrying buckets the early/late split runs on, divided into more windows of
+ * equal volume (see windowByWeight) so the shape of the climb — steady, a dip
+ * and recovery, a plateau — becomes visible, not just its two ends.
+ *
+ * `points` are in whatever unit reads honestly for the metric (a percentage, a
+ * point-gap, a log-factor); the sparkline has no axis labels, so the endpoint
+ * strings carry the real numbers and this carries only the shape. `target`, if
+ * present, is where an honest score sits on that same scale — drawn as a faint
+ * reference line so "moving toward it" reads correctly even on the calibration
+ * card, where higher is not simply better.
+ */
+export type TrendSeries = {
+  /** Metric value per equal-volume window, oldest → newest. */
+  points: number[];
+  /** Where an honest/ideal score sits on the same scale, if the metric has one. */
+  target?: number;
+  /** A few words naming the target line, e.g. "a true 90%" or "dead-on". */
+  targetLabel?: string;
+};
+
 export type Trend = {
   /** e.g. "first 30 ranges" */
   earlyLabel: string;
@@ -106,6 +133,8 @@ export type Trend = {
   /** One plain sentence on what the movement means — including "nothing yet". */
   reading: string;
   tone: Tone;
+  /** The shape between the endpoints, once the record can resolve it. */
+  series?: TrendSeries;
 };
 
 export type TrainerProfile = {
@@ -157,6 +186,16 @@ const TREND_MIN_BINARY = 20;
 const TREND_MIN_ONESHOT = 8;
 const TREND_MIN_UPDATES = 6;
 
+/* Minimum weight per sparkline window — below the per-half bar, because a window
+   is one point on a line whose neighbours steady it, not a claim standing alone.
+   The line starts coarse (two or three points, the moment the trend speaks) and
+   fills in as practice accumulates, capped so it never turns into per-day noise. */
+const WINDOW_MIN_RANGES = 10;
+const WINDOW_MIN_BINARY = 12;
+const WINDOW_MIN_ONESHOT = 5;
+const WINDOW_MIN_UPDATES = 4;
+const MAX_WINDOWS = 8;
+
 /** Keep only well-formed buckets, in date order. */
 function cleanDays<T extends { d: string }>(days: T[] | undefined): T[] {
   if (!Array.isArray(days)) return [];
@@ -200,6 +239,7 @@ function calibrateTrend(r: CalibrateRecord | null): Trend | null {
       );
     const earlyRate = rate(ranges.early);
     const lateRate = rate(ranges.late);
+    const win = windowByWeight(days, (b) => b.rangeN ?? 0, WINDOW_MIN_RANGES, MAX_WINDOWS);
     // Better = closer to an honest 90, from either side — not simply higher.
     const delta = Math.abs(90 - earlyRate) - Math.abs(90 - lateRate);
     const [reading, tone]: [string, Tone] =
@@ -217,6 +257,9 @@ function calibrateTrend(r: CalibrateRecord | null): Trend | null {
       late: `${lateRate}% held`,
       reading,
       tone,
+      series: win
+        ? { points: win.map((w) => rate(w)), target: 90, targetLabel: "a true 90%" }
+        : undefined,
     };
   }
 
@@ -231,6 +274,7 @@ function calibrateTrend(r: CalibrateRecord | null): Trend | null {
     };
     const earlyGap = gap(bin.early);
     const lateGap = gap(bin.late);
+    const win = windowByWeight(days, (b) => b.binaryN ?? 0, WINDOW_MIN_BINARY, MAX_WINDOWS);
     const delta = Math.abs(earlyGap) - Math.abs(lateGap);
     const [reading, tone]: [string, Tone] =
       delta >= 6
@@ -247,6 +291,9 @@ function calibrateTrend(r: CalibrateRecord | null): Trend | null {
       late: `${lateGap >= 0 ? "+" : ""}${lateGap} pt gap`,
       reading,
       tone,
+      series: win
+        ? { points: win.map((w) => gap(w)), target: 0, targetLabel: "no gap" }
+        : undefined,
     };
   }
 
@@ -262,6 +309,7 @@ function estimateTrend(r: EstimateRecord | null): Trend | null {
     half.reduce((s, b) => s + (b.oneshotN ?? 0), 0);
   const earlyLog = meanLog(halves.early);
   const lateLog = meanLog(halves.late);
+  const win = windowByWeight(days, (b) => b.oneshotN ?? 0, WINDOW_MIN_ONESHOT, MAX_WINDOWS);
   const delta = earlyLog - lateLog; // positive = tightening
   const [reading, tone]: [string, Tone] =
     delta >= 0.15
@@ -278,6 +326,11 @@ function estimateTrend(r: EstimateRecord | null): Trend | null {
     late: `${fmtFactor(Math.pow(10, lateLog))}× off`,
     reading,
     tone,
+    // Plotted in log units — where a ×2 and a ×4 miss are equal steps, the way
+    // the metric is judged. Target 0 is log10(1×): dead-on.
+    series: win
+      ? { points: win.map(meanLog), target: 0, targetLabel: "dead-on" }
+      : undefined,
   };
 }
 
@@ -292,6 +345,7 @@ function updateTrend(r: UpdateRecord | null): Trend | null {
     );
   const earlyMiss = miss(halves.early);
   const lateMiss = miss(halves.late);
+  const win = windowByWeight(days, (b) => b.n ?? 0, WINDOW_MIN_UPDATES, MAX_WINDOWS);
   const delta = earlyMiss - lateMiss;
   const [reading, tone]: [string, Tone] =
     delta >= 5
@@ -308,6 +362,9 @@ function updateTrend(r: UpdateRecord | null): Trend | null {
     late: `${lateMiss} pts off`,
     reading,
     tone,
+    series: win
+      ? { points: win.map(miss), target: 0, targetLabel: "dead-on" }
+      : undefined,
   };
 }
 

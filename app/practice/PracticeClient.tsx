@@ -9,6 +9,7 @@ import {
   type Suggestion,
   type Tone,
   type Trend,
+  type TrendSeries,
 } from "../data/trainers";
 import { loadJournalProfile, type JournalProfile } from "../data/journal";
 import { loadWaitProfile, type WaitProfile } from "../data/wait";
@@ -36,6 +37,15 @@ const toneText: Record<Tone, string> = {
   mid: "text-[var(--foreground)]",
   work: "text-[var(--foreground)]",
   none: "text-[var(--muted)]",
+};
+
+/** The stroke a tone draws its line in — the same restraint as the headline
+ *  colour: amber only when calibrated, ink otherwise. */
+const toneStroke: Record<Tone, string> = {
+  good: "var(--accent)",
+  mid: "var(--foreground)",
+  work: "var(--foreground)",
+  none: "var(--muted)",
 };
 
 export default function PracticeClient() {
@@ -238,6 +248,86 @@ function StatCard({ profile }: { profile: TrainerProfile }) {
 }
 
 /**
+ * The trajectory between the endpoints, drawn as a sparkline. The two-number
+ * read tells you where you started and where you are; this shows the *shape* of
+ * the road between — a steady climb, a dip and recovery, a plateau — off the
+ * per-window series data/trainers.ts and data/journal.ts already compute.
+ *
+ * Honest by construction: the line carries only shape (no axis labels), the
+ * endpoint numbers above carry the real values, and where a metric has a fixed
+ * ideal (a true 90%, no gap, dead-on) a faint dotted line marks it — so on the
+ * calibration card, where higher is not simply better, "toward the line" still
+ * reads as improvement. Decorative to a screen reader: the numbers and the
+ * plain-language reading beside it carry the same meaning in words.
+ */
+function Sparkline({ series, tone }: { series: TrendSeries; tone: Tone }) {
+  const { points, target } = series;
+  if (points.length < 2) return null;
+
+  const W = 100;
+  const H = 30;
+  const padY = 4;
+  const domain = target === undefined ? points : [...points, target];
+  let lo = Math.min(...domain);
+  let hi = Math.max(...domain);
+  if (hi - lo < 1e-9) {
+    // A perfectly flat run: centre it so the line sits mid-height, not on an edge.
+    lo -= 1;
+    hi += 1;
+  }
+  const x = (i: number) => (i / (points.length - 1)) * W;
+  const y = (v: number) => padY + (1 - (v - lo) / (hi - lo)) * (H - 2 * padY);
+
+  const line = points
+    .map((v, i) => `${i === 0 ? "M" : "L"} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`)
+    .join(" ");
+  const area = `${line} L ${W} ${H} L 0 ${H} Z`;
+  const lastX = x(points.length - 1).toFixed(1);
+  const lastY = y(points[points.length - 1]).toFixed(1);
+  const stroke = toneStroke[tone];
+
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      preserveAspectRatio="none"
+      className="mt-2 block h-8 w-full"
+      aria-hidden="true"
+    >
+      <path d={area} fill={stroke} fillOpacity={0.08} stroke="none" />
+      {target !== undefined && (
+        <path
+          d={`M 0 ${y(target).toFixed(1)} L ${W} ${y(target).toFixed(1)}`}
+          stroke="var(--muted)"
+          strokeWidth={1}
+          strokeDasharray="2 2"
+          strokeOpacity={0.7}
+          vectorEffect="non-scaling-stroke"
+          fill="none"
+        />
+      )}
+      <path
+        d={line}
+        stroke={stroke}
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        vectorEffect="non-scaling-stroke"
+        fill="none"
+      />
+      {/* "You are here": a degenerate round-capped segment renders as a crisp,
+          fixed-size dot even under the non-uniform x-scaling. */}
+      <path
+        d={`M ${lastX} ${lastY} L ${lastX} ${lastY}`}
+        stroke={stroke}
+        strokeWidth={4}
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
+    </svg>
+  );
+}
+
+/**
  * The answer to the site's own name: your first rounds beside your latest.
  * Only rendered when the halves can carry the claim — enough volume per half
  * and enough calendar between them (see the trend logic in data/trainers.ts
@@ -249,11 +339,21 @@ function TrendBlock({ trend }: { trend: Trend }) {
       <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--muted)]">
         Since you started
       </p>
+      {trend.series && <Sparkline series={trend.series} tone={trend.tone} />}
       <p className="mt-1.5 text-xs leading-relaxed text-[var(--foreground)] tabular-nums">
         <span className="text-[var(--muted)]">{trend.earlyLabel}:</span>{" "}
         <span className="font-medium">{trend.early}</span>
         <span className="text-[var(--muted)]"> · {trend.lateLabel}:</span>{" "}
         <span className="font-medium">{trend.late}</span>
+        {trend.series?.targetLabel && (
+          <>
+            <span className="text-[var(--muted)]">
+              {" "}
+              · <span className="tracking-[0.2em]">···</span>{" "}
+              {trend.series.targetLabel}
+            </span>
+          </>
+        )}
       </p>
       <p className={`mt-1 text-xs leading-relaxed ${toneText[trend.tone]}`}>
         {trend.reading}

@@ -87,3 +87,45 @@ export function splitByWeight<T extends DayStamped>(
   }
   return { early: list.slice(0, cut), late: list.slice(cut) };
 }
+
+/**
+ * The many-point generalization of splitByWeight, for a sparkline: divide the
+ * carrying buckets (weight > 0) into contiguous windows of roughly equal
+ * *volume*, oldest → newest, and return each window's buckets.
+ *
+ * The window count scales with how much you've actually done —
+ * floor(total / minPer), clamped to [2, max] and never more than there are
+ * buckets — so a thin record draws a coarse line and a thick one draws a
+ * resolved curve, and no window is asked to carry much less than `minPer`. Each
+ * bucket is placed by where its weight-midpoint falls, so one heavy day stays a
+ * single point instead of being split across windows. Empty windows (a bucket
+ * so heavy it spans several slots) collapse out, preserving order.
+ *
+ * Returns null when even two carrying windows can't be formed — the caller then
+ * shows the two-number early/late read alone, with no line.
+ */
+export function windowByWeight<T extends DayStamped>(
+  days: T[],
+  weight: (b: T) => number,
+  minPer: number,
+  max: number
+): T[][] | null {
+  const list = days.filter((b) => weight(b) > 0);
+  if (list.length < 2) return null;
+  const total = list.reduce((s, b) => s + weight(b), 0);
+  const count = Math.max(
+    2,
+    Math.min(max, list.length, Math.floor(total / minPer))
+  );
+  if (count < 2) return null;
+  const windows: T[][] = Array.from({ length: count }, () => []);
+  let acc = 0;
+  for (const b of list) {
+    const mid = acc + weight(b) / 2;
+    const idx = Math.min(count - 1, Math.floor((mid / total) * count));
+    windows[idx].push(b);
+    acc += weight(b);
+  }
+  const nonEmpty = windows.filter((w) => w.length > 0);
+  return nonEmpty.length >= 2 ? nonEmpty : null;
+}
