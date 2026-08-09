@@ -17,6 +17,7 @@ import {
 } from "../data/premortem";
 import { appendDecisionEntry, CONFIDENCE_OPTIONS } from "../data/decisionLog";
 import { readCarriedSubject, clearCarriedSubject } from "../data/carry";
+import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
 
 /**
@@ -84,6 +85,75 @@ function emptyDraft(): Draft {
     plan: "",
     judgeOn: addDaysISO(todayISO(), JUDGE_DEFAULT_DAYS),
     reasons: [],
+  };
+}
+
+// ---- handing the plan to another person (see data/share.ts) --------------
+// A pre-mortem was built for a room. Klein's exercise gets its breadth from ten
+// people around a table, each imagining the failure from where they sit; solo,
+// this tool substitutes the lenses for that room. Peer-sharing restores the
+// real thing across distance: a link that hands the plan to someone else so they
+// run their *own* pre-mortem on it, in their own browser, and hand the failures
+// back. The payload rides in the URL *fragment*, never the query string, so it
+// reaches no server — only whoever you send the link to.
+//
+// THE DELIBERATE OMISSION — the reasons do NOT ride along. A pre-mortem's power
+// is that each person imagines the failure *independently*, before anyone pools;
+// hand someone your finished list and you've anchored them onto it — they nod at
+// your six causes instead of surfacing the seventh only they can see. So the
+// share carries the *setup* — the plan and the date to imagine standing on — and
+// nothing else. What comes back is a genuinely independent pre-mortem, which is
+// the only kind worth asking a second person for. (Same discipline the
+// comparison uses when it refuses to share the gut.)
+
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+/** Collapse whitespace and cap the shared plan, so a link stays a link. Mirrors
+ *  the normalization the flip point's and comparison's shares apply. */
+function capStr(s: string, n = 160): string {
+  return s.replace(/\s+/g, " ").trim().slice(0, n);
+}
+
+/** The encodable subset of a saved pre-mortem: the plan and the judge date —
+ *  the setup a recipient needs to imagine the same failure, and never the
+ *  reasons (see the note above). */
+function premortemSharePayload(pm: Premortem): Record<string, unknown> {
+  return { plan: capStr(pm.plan), judgeOn: pm.judgeOn };
+}
+
+/** Rebuild a shareable setup from a decoded payload, defensively: a truncated or
+ *  hand-edited link degrades to null (nothing adopted), never a throw. The plan
+ *  is the one thing that must survive; a missing, malformed, or already-past
+ *  judge date falls back to the default window out, exactly as a fresh draft
+ *  would. */
+function coerceSharedPremortem(
+  data: unknown
+): { plan: string; judgeOn: string } | null {
+  if (!data || typeof data !== "object") return null;
+  const v = data as { plan?: unknown; judgeOn?: unknown };
+  const plan = typeof v.plan === "string" ? capStr(v.plan) : "";
+  if (!plan) return null;
+  let judgeOn =
+    typeof v.judgeOn === "string" && ISO_DATE.test(v.judgeOn) ? v.judgeOn : "";
+  if (judgeOn) {
+    const t = new Date(`${judgeOn}T00:00:00`);
+    // A date that won't parse, or one already in the past, is no use to a
+    // recipient standing in the future — push it to the default horizon.
+    if (Number.isNaN(t.getTime()) || judgeOn <= todayISO()) judgeOn = "";
+  }
+  if (!judgeOn) judgeOn = addDaysISO(todayISO(), JUDGE_DEFAULT_DAYS);
+  return { plan, judgeOn };
+}
+
+/** A short, honest read of a shared plan for the "someone handed you this" card
+ *  when the tool already holds a draft: the plan and the date to imagine on. */
+function describeSharedPremortem(s: { plan: string; judgeOn: string }): {
+  plan: string;
+  line: string;
+} {
+  return {
+    plan: s.plan.trim() || "A plan",
+    line: s.judgeOn ? `Imagine standing on ${formatHuman(s.judgeOn)}` : "",
   };
 }
 
@@ -289,6 +359,20 @@ export default function PremortemClient() {
   const [activeLens, setActiveLens] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // The current draft was seeded from a plan someone else shared — drives the
+  // "imagine independently" banner over the failure step. Session-only, like the
+  // comparison's adopted-share banner: the draft itself persists, this cue does
+  // not survive a refresh.
+  const [fromShare, setFromShare] = useState(false);
+  // A shared plan held because a draft was already in progress — surfaced on the
+  // home screen as a card the person can open (starting a fresh pre-mortem on
+  // it) or dismiss, never silently clobbering their unfinished work.
+  const [pendingShare, setPendingShare] = useState<{
+    plan: string;
+    judgeOn: string;
+  } | null>(null);
+  const [shareCopied, setShareCopied] = useState(false);
+  const shareTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const reasonRef = useRef<HTMLTextAreaElement | null>(null);
   // A decision carried in from another tool's handoff, kept so "start fresh"
   // can seed the plan even after the landing auto-open has consumed it once.
@@ -309,6 +393,9 @@ export default function PremortemClient() {
     // A decision handed over from another tool (?subject=…). Kept for startFresh.
     const carried = readCarriedSubject();
     carriedSubjectRef.current = carried;
+    // A plan handed over by another *person* to pre-mortem (#s=…). The setup
+    // only — the plan and the date — never their reasons (see share helpers).
+    const shared = coerceSharedPremortem(readShare("premortem"));
     const hasDraft = !!(
       savedDraft &&
       (savedDraft.plan || (savedDraft.reasons ?? []).length > 0)
@@ -318,6 +405,21 @@ export default function PremortemClient() {
     setSaved(merged);
     if (hasDraft) {
       setDraft(mergeDraft(savedDraft));
+      // A shared plan can't clobber an in-progress draft — hold it as a card the
+      // person can open (starting fresh on it) or dismiss.
+      if (shared && !targetPm) setPendingShare(shared);
+    } else if (shared && !targetPm) {
+      // A plan someone handed you to pre-mortem. Open a fresh draft straight at
+      // the *failure* step — the plan and the date are given, so the recipient's
+      // job is the one thing the share deliberately withheld: their own list.
+      setDraft({
+        ...emptyDraft(),
+        step: "imagine",
+        plan: shared.plan,
+        judgeOn: shared.judgeOn,
+      });
+      setScreen("work");
+      setFromShare(true);
     } else if (carried && !targetPm) {
       // Seamless handoff: another tool sent a decision here. Open a fresh draft
       // with the plan already filled, rather than a cold home screen — but only
@@ -337,6 +439,10 @@ export default function PremortemClient() {
     setHydrated(true);
     /* eslint-enable react-hooks/set-state-in-effect */
     if (carried) clearCarriedSubject();
+    // Strip the share fragment once read, whether adopted or held pending, so a
+    // refresh doesn't re-apply it and the address bar stops carrying someone
+    // else's plan. The pending card lives in state, not the URL, from here.
+    if (shared) clearShare();
   }, []);
 
   useEffect(() => {
@@ -361,9 +467,45 @@ export default function PremortemClient() {
   useEffect(
     () => () => {
       if (copyTimer.current) clearTimeout(copyTimer.current);
+      if (shareTimer.current) clearTimeout(shareTimer.current);
     },
     []
   );
+
+  // Build a share link for a saved plan and put it on the clipboard. Encodes the
+  // setup (plan + judge date, never the reasons) into the URL fragment — never a
+  // server — with the same clipboard-then-execCommand fallback the other shares
+  // and the memo copy use.
+  const copyShareLink = useCallback(async (pm: Premortem) => {
+    if (typeof window === "undefined") return;
+    const token = encodeShare("premortem", premortemSharePayload(pm));
+    if (!token) return;
+    const link = `${window.location.origin}/premortem#${SHARE_PARAM}=${token}`;
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(link);
+      ok = true;
+    } catch {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = link;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+      } catch {
+        ok = false;
+      }
+    }
+    if (ok) {
+      setShareCopied(true);
+      if (shareTimer.current) clearTimeout(shareTimer.current);
+      shareTimer.current = setTimeout(() => setShareCopied(false), 2500);
+    }
+  }, []);
 
   const top = useCallback(() => {
     if (typeof window !== "undefined") window.scrollTo({ top: 0 });
@@ -375,6 +517,7 @@ export default function PremortemClient() {
     carriedSubjectRef.current = "";
     setDraft(seed ? { ...emptyDraft(), plan: seed } : emptyDraft());
     setCarriedSeed(seed);
+    setFromShare(false);
     setScreen("work");
     setReasonInput("");
     setActiveLens(null);
@@ -391,6 +534,7 @@ export default function PremortemClient() {
     setViewId(null);
     setFocusReasonId(null);
     setCopied(false);
+    setShareCopied(false);
     top();
   }, [top]);
 
@@ -400,6 +544,7 @@ export default function PremortemClient() {
       setScreen("view");
       setFocusReasonId(null);
       setCopied(false);
+      setShareCopied(false);
       top();
     },
     [top]
@@ -621,12 +766,14 @@ export default function PremortemClient() {
           onBack={goHome}
           onCopy={() => copy(buildPremortemMemo(pm))}
           onICS={() => downloadICS(pm)}
+          onShare={() => copyShareLink(pm)}
           onDelete={() => deletePremortem(pm.id)}
           onUpdateReason={(reasonId, fn) => updateSavedReason(pm.id, reasonId, fn)}
           onLogDecision={(confidence, expectation) =>
             logPremortemDecision(pm, confidence, expectation)
           }
           copied={copied}
+          shareCopied={shareCopied}
         />
       );
     }
@@ -710,6 +857,21 @@ export default function PremortemClient() {
       return (
         <div>
           <StepHeader step={2} label="The failure" onExit={abandonDraft} />
+
+          {fromShare && (
+            <div className="mt-6 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-4">
+              <p className="text-sm text-[var(--foreground)] leading-relaxed">
+                <span className="font-medium">
+                  Someone handed you this plan to pre-mortem.
+                </span>{" "}
+                The plan and the date are theirs — the reasons should be yours.
+                They didn&rsquo;t send their own list on purpose: a pre-mortem
+                works because each person imagines the failure alone first, so an
+                unseen list can&rsquo;t anchor yours. Write what you think killed
+                it, then compare notes.
+              </p>
+            </div>
+          )}
 
           {/* The crystal ball. The tense is the technique: not "what could go
               wrong" (a debate) but "it went wrong" (a history to explain). */}
@@ -1013,8 +1175,63 @@ export default function PremortemClient() {
   }
 
   // ---- home ---------------------------------------------------------------
+  const pendingDesc = pendingShare ? describeSharedPremortem(pendingShare) : null;
   return (
     <div>
+      {/* ---- Shared with you: a plan to pre-mortem, held because a draft was
+             already in progress ---- */}
+      {hydrated && pendingShare && pendingDesc && (
+        <div className="mb-5 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            Someone handed you a plan to pre-mortem
+          </p>
+          <p className="mt-2 text-sm font-medium text-[var(--foreground)] leading-relaxed">
+            {pendingDesc.plan}
+          </p>
+          {pendingDesc.line && (
+            <p className="mt-1 text-sm text-[var(--muted)] leading-relaxed">
+              {pendingDesc.line}
+            </p>
+          )}
+          <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
+            You already have a pre-mortem in progress here. Opening theirs
+            replaces that unfinished draft. Dismiss this to keep working on
+            yours — the link stays good, so you can come back to their plan when
+            you&rsquo;re ready.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                const s = pendingShare;
+                setDraft({
+                  ...emptyDraft(),
+                  step: "imagine",
+                  plan: s.plan,
+                  judgeOn: s.judgeOn,
+                });
+                setFromShare(true);
+                setPendingShare(null);
+                setReasonInput("");
+                setActiveLens(null);
+                setScreen("work");
+                top();
+              }}
+              className="text-sm font-medium px-4 py-2 rounded-lg bg-[var(--accent)] text-[var(--background)] hover:opacity-90 transition-opacity"
+            >
+              Pre-mortem their plan
+            </button>
+            <button
+              type="button"
+              onClick={() => setPendingShare(null)}
+              className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+            >
+              Dismiss
+            </button>
+          </div>
+        </div>
+      )}
+
       <button
         type="button"
         onClick={startNew}
@@ -1153,10 +1370,12 @@ function PremortemView({
   onBack,
   onCopy,
   onICS,
+  onShare,
   onDelete,
   onUpdateReason,
   onLogDecision,
   copied,
+  shareCopied,
 }: {
   pm: Premortem;
   isSample: boolean;
@@ -1164,10 +1383,12 @@ function PremortemView({
   onBack: () => void;
   onCopy: () => void;
   onICS: () => void;
+  onShare: () => void;
   onDelete: () => void;
   onUpdateReason: (reasonId: string, fn: (r: PremortemReason) => PremortemReason) => void;
   onLogDecision: (confidence: number, expectation: string) => void;
   copied: boolean;
+  shareCopied: boolean;
 }) {
   const tw = tripwires(pm);
   const armedTw = tw.filter((r) => r.checkOn && !r.checkedOn);
@@ -1309,6 +1530,34 @@ function PremortemView({
           signal and the failure it guards, so you can act on it without coming
           back here.
         </p>
+      )}
+
+      {/* ---- Ask someone else to pre-mortem the same plan ---- */}
+      {!isSample && (
+        <div className="mt-8 rounded-xl border border-[var(--border)] p-5 sm:p-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            Get a second pre-mortem
+          </p>
+          <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            A pre-mortem was built for a room — several people each imagining the
+            failure from where they sit, then pooling what they found. Copy a
+            link that hands this plan and its date to a partner, a cofounder, an
+            advisor, and they&rsquo;ll run their own pre-mortem on it in their
+            browser. Your reasons don&rsquo;t ride along on purpose: the failures
+            you each picture alone are exactly what a second pair of eyes is for,
+            and an unseen list can&rsquo;t anchor theirs. It&rsquo;s sent to no
+            server; only whoever you hand the link to can open it.
+          </p>
+          <button
+            type="button"
+            onClick={onShare}
+            className="mt-4 text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+          >
+            {shareCopied
+              ? "Copied — the link is on your clipboard"
+              : "Copy a link to this plan"}
+          </button>
+        </div>
       )}
 
       <div className="mt-10 pt-6 border-t border-[var(--border)]">
