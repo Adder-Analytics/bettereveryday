@@ -157,6 +157,76 @@ function describeSharedPremortem(s: { plan: string; judgeOn: string }): {
   };
 }
 
+// ---- pooling a second person's pre-mortem back (see data/share.ts) -------
+// The setup-share above opens the loop: it hands someone the plan and the date
+// and withholds the reasons, so they imagine the failure independently. This
+// closes it. Once they've run their own pre-mortem, they hand their failure list
+// *back*, and the original author pools it into theirs — triaging each returned
+// cause the way they triaged their own. That's Klein's whole method: imagine
+// alone, then pool.
+//
+// THE MIRROR-IMAGE OMISSION — the triage does NOT ride back. The setup withheld
+// the reasons so the second person's list would be genuinely their own; the
+// return withholds the *response* so the author decides for themselves what to
+// do about each failure on their plan. A returned "accept it" or "change the
+// plan" would be a guess about a plan the author owns and the returner doesn't.
+// So each direction carries exactly what the other person is for — a fresh list
+// one way, the author's own call the other — and neither carries the part that
+// would anchor a judgment that isn't theirs to make.
+
+const POOL_TAG = "premortem-pool";
+const MAX_POOLED = 40; // a return is a list, not an archive
+const MAX_REASON_LEN = 400; // one failure, capped so the link stays a link
+
+/** Normalize a failure's text for de-dup and plan-matching: case-folded,
+ *  whitespace-collapsed, trailing sentence punctuation dropped. So "The key
+ *  hire left" and "the key hire left." never both survive a pool. */
+function reasonKey(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .replace(/[.!?]+$/, "")
+    .trim();
+}
+
+/** The encodable subset of a finished pre-mortem when handing it *back*: the
+ *  plan (to match the author's saved pre-mortem) and the bare failure texts,
+ *  never their triage (see the note above). */
+function poolReturnPayload(pm: Premortem): Record<string, unknown> {
+  const reasons = pm.reasons
+    .map((r) => capStr(r.text, MAX_REASON_LEN))
+    .filter(Boolean)
+    .slice(0, MAX_POOLED);
+  return { plan: capStr(pm.plan), reasons };
+}
+
+/** Rebuild a returned pre-mortem defensively: the plan and a de-duped list of
+ *  non-empty failure texts. A truncated or hand-edited link degrades to null
+ *  (nothing pooled), never a throw — exactly as the setup coerce does. */
+function coercePoolReturn(
+  data: unknown
+): { plan: string; reasons: string[] } | null {
+  if (!data || typeof data !== "object") return null;
+  const v = data as { plan?: unknown; reasons?: unknown };
+  const plan = typeof v.plan === "string" ? capStr(v.plan) : "";
+  if (!plan) return null;
+  const seen = new Set<string>();
+  const reasons: string[] = [];
+  if (Array.isArray(v.reasons)) {
+    for (const raw of v.reasons) {
+      if (typeof raw !== "string") continue;
+      const text = capStr(raw, MAX_REASON_LEN);
+      const key = reasonKey(text);
+      if (!text || seen.has(key)) continue;
+      seen.add(key);
+      reasons.push(text);
+      if (reasons.length >= MAX_POOLED) break;
+    }
+  }
+  if (reasons.length === 0) return null;
+  return { plan, reasons };
+}
+
 // ---- defensive load ------------------------------------------------------
 // The merge discipline for saved pre-mortems lives in data/premortem.ts now,
 // shared with the read side (the due badge, the journal's cross-link) so the
@@ -373,6 +443,22 @@ export default function PremortemClient() {
   } | null>(null);
   const [shareCopied, setShareCopied] = useState(false);
   const shareTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // A second person's pre-mortem, handed back (#s=… tagged premortem-pool) and
+  // waiting to be pooled into the author's saved plan. Held as a card, never
+  // auto-merged — pooling seeds a triage flow the author drives. matchId is the
+  // saved pre-mortem whose plan it belongs to, or null when nothing matches.
+  const [pendingReturn, setPendingReturn] = useState<{
+    plan: string;
+    reasons: string[];
+    matchId: string | null;
+  } | null>(null);
+  const [returnCopied, setReturnCopied] = useState(false);
+  const returnTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // While a draft is a pool-and-triage of a returned list: how many reasons came
+  // from the other person (they sit at the end, still untriaged), and — in the
+  // ref — the saved pre-mortem this draft replaces on finish (null = brand-new).
+  const [pooledCount, setPooledCount] = useState(0);
+  const poolBaseRef = useRef<string | null>(null);
   const reasonRef = useRef<HTMLTextAreaElement | null>(null);
   // A decision carried in from another tool's handoff, kept so "start fresh"
   // can seed the plan even after the landing auto-open has consumed it once.
@@ -396,6 +482,10 @@ export default function PremortemClient() {
     // A plan handed over by another *person* to pre-mortem (#s=…). The setup
     // only — the plan and the date — never their reasons (see share helpers).
     const shared = coerceSharedPremortem(readShare("premortem"));
+    // A finished pre-mortem handed *back* by the person you shared the plan with
+    // (tagged premortem-pool). Distinct tag, so a setup link and a return link
+    // can never be misread for one another. Their failures, never their triage.
+    const pooled = coercePoolReturn(readShare(POOL_TAG));
     const hasDraft = !!(
       savedDraft &&
       (savedDraft.plan || (savedDraft.reasons ?? []).length > 0)
@@ -420,13 +510,28 @@ export default function PremortemClient() {
       });
       setScreen("work");
       setFromShare(true);
-    } else if (carried && !targetPm) {
+    } else if (carried && !targetPm && !pooled) {
       // Seamless handoff: another tool sent a decision here. Open a fresh draft
       // with the plan already filled, rather than a cold home screen — but only
       // when there's no in-progress draft to respect and no return-desk deep link.
       setDraft({ ...emptyDraft(), plan: carried });
       setScreen("work");
       setCarriedSeed(carried);
+    }
+    if (pooled && !targetPm) {
+      // A pooled return never opens anything on its own — it waits as a card the
+      // author opens (into a triage flow) or dismisses, so it can't clobber a
+      // draft or silently mutate a saved plan. Match it to the saved pre-mortem
+      // it belongs to by plan (normalized the same way both links capped it); a
+      // no-match becomes a fresh pre-mortem seeded with their failures.
+      const match = merged.find(
+        (p) => reasonKey(capStr(p.plan)) === reasonKey(pooled.plan)
+      );
+      setPendingReturn({
+        plan: pooled.plan,
+        reasons: pooled.reasons,
+        matchId: match ? match.id : null,
+      });
     }
     if (targetPm) {
       setViewId(targetPm);
@@ -442,7 +547,7 @@ export default function PremortemClient() {
     // Strip the share fragment once read, whether adopted or held pending, so a
     // refresh doesn't re-apply it and the address bar stops carrying someone
     // else's plan. The pending card lives in state, not the URL, from here.
-    if (shared) clearShare();
+    if (shared || pooled) clearShare();
   }, []);
 
   useEffect(() => {
@@ -468,6 +573,7 @@ export default function PremortemClient() {
     () => () => {
       if (copyTimer.current) clearTimeout(copyTimer.current);
       if (shareTimer.current) clearTimeout(shareTimer.current);
+      if (returnTimer.current) clearTimeout(returnTimer.current);
     },
     []
   );
@@ -507,6 +613,41 @@ export default function PremortemClient() {
     }
   }, []);
 
+  // Build the *return* link — the other half of the loop. Encodes a finished
+  // pre-mortem's failure list (never its triage) under the premortem-pool tag,
+  // so whoever shared the plan can pool the failures into theirs. Same
+  // fragment-only, sent-nowhere encoding and clipboard fallback as the share.
+  const copyReturnLink = useCallback(async (pm: Premortem) => {
+    if (typeof window === "undefined") return;
+    const token = encodeShare(POOL_TAG, poolReturnPayload(pm));
+    if (!token) return;
+    const link = `${window.location.origin}/premortem#${SHARE_PARAM}=${token}`;
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(link);
+      ok = true;
+    } catch {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = link;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+      } catch {
+        ok = false;
+      }
+    }
+    if (ok) {
+      setReturnCopied(true);
+      if (returnTimer.current) clearTimeout(returnTimer.current);
+      returnTimer.current = setTimeout(() => setReturnCopied(false), 2500);
+    }
+  }, []);
+
   const top = useCallback(() => {
     if (typeof window !== "undefined") window.scrollTo({ top: 0 });
   }, []);
@@ -518,6 +659,8 @@ export default function PremortemClient() {
     setDraft(seed ? { ...emptyDraft(), plan: seed } : emptyDraft());
     setCarriedSeed(seed);
     setFromShare(false);
+    poolBaseRef.current = null;
+    setPooledCount(0);
     setScreen("work");
     setReasonInput("");
     setActiveLens(null);
@@ -535,6 +678,7 @@ export default function PremortemClient() {
     setFocusReasonId(null);
     setCopied(false);
     setShareCopied(false);
+    setReturnCopied(false);
     top();
   }, [top]);
 
@@ -545,9 +689,73 @@ export default function PremortemClient() {
       setFocusReasonId(null);
       setCopied(false);
       setShareCopied(false);
+      setReturnCopied(false);
       top();
     },
     [top]
+  );
+
+  // Pool a returned failure list into the author's plan. Rather than mutate the
+  // saved record silently, it opens a *triage* flow — the returned failures land
+  // at the end of the list, still untriaged, so the author decides what to do
+  // about each one (change / tripwire / accept) exactly as with their own, then
+  // saves. A match replaces the original pre-mortem in place (same id, so the
+  // journal link and creation date survive); a no-match becomes a fresh
+  // pre-mortem on that plan. Duplicates against what's already there are dropped.
+  const poolReturnIn = useCallback(
+    (ret: { plan: string; reasons: string[]; matchId: string | null }) => {
+      const base = ret.matchId ? saved.find((p) => p.id === ret.matchId) : null;
+      const existing: PremortemReason[] = base
+        ? base.reasons.map((r) => ({ ...r }))
+        : [];
+      const seen = new Set(existing.map((r) => reasonKey(r.text)));
+      const added: PremortemReason[] = [];
+      for (const text of ret.reasons) {
+        const key = reasonKey(text);
+        if (seen.has(key)) continue;
+        seen.add(key);
+        added.push({
+          id: newId(),
+          text,
+          triage: null,
+          detail: "",
+          signal: "",
+          checkOn: "",
+          checkedOn: "",
+          fired: null,
+        });
+      }
+      // Everything they sent was already in the plan: nothing to triage. Just
+      // clear the card and drop the author on the finished pre-mortem.
+      if (base && added.length === 0) {
+        setPendingReturn(null);
+        openView(base.id);
+        return;
+      }
+      poolBaseRef.current = base ? base.id : null;
+      setPooledCount(added.length);
+      setDraft({
+        // A match already has the author's own reasons triaged — drop straight
+        // onto triage for the new ones. A no-match is effectively a fresh
+        // pre-mortem on a plan the author didn't have saved, so land on the
+        // failure step: the crystal ball shows them the plan and date they're
+        // now standing in the wreckage of, and they can add their own causes
+        // before triaging.
+        step: base ? "triage" : "imagine",
+        plan: base ? base.plan : ret.plan,
+        judgeOn: base
+          ? base.judgeOn
+          : addDaysISO(todayISO(), JUDGE_DEFAULT_DAYS),
+        reasons: [...existing, ...added],
+      });
+      setPendingReturn(null);
+      setFromShare(false);
+      setReasonInput("");
+      setActiveLens(null);
+      setScreen("work");
+      top();
+    },
+    [saved, openView, top]
   );
 
   const setStep = useCallback(
@@ -611,6 +819,8 @@ export default function PremortemClient() {
     }
     setDraft(null);
     setScreen("home");
+    poolBaseRef.current = null;
+    setPooledCount(0);
     top();
   }, [top]);
 
@@ -623,8 +833,14 @@ export default function PremortemClient() {
   const finish = useCallback(() => {
     if (!draft || draft.reasons.length === 0) return;
     if (untriaged > 0 || unsignaled > 0) return;
+    // Pooling a returned list replaces the original pre-mortem in place, so its
+    // id, creation date, journal-logged flag, and received-provenance survive.
+    // Everything else — a normal draft, or a pool with no matching saved plan —
+    // is a brand-new record.
+    const baseId = poolBaseRef.current;
+    const base = baseId ? saved.find((p) => p.id === baseId) : null;
     const pm: Premortem = {
-      id: newId(),
+      id: base ? base.id : newId(),
       plan: draft.plan.trim(),
       judgeOn: draft.judgeOn,
       reasons: draft.reasons.map((r) => ({
@@ -637,13 +853,22 @@ export default function PremortemClient() {
             ? addDaysISO(todayISO(), TRIPWIRE_DEFAULT_DAYS)
             : r.checkOn,
       })),
-      createdOn: todayISO(),
-      loggedOn: "",
+      createdOn: base ? base.createdOn : todayISO(),
+      loggedOn: base ? base.loggedOn : "",
+      // A pre-mortem you were handed to run offers to send its failures back;
+      // pooling preserves whatever the base already was.
+      receivedShare: base ? base.receivedShare : fromShare,
     };
-    setSaved((prev) => [pm, ...prev]);
+    if (base) {
+      setSaved((prev) => prev.map((p) => (p.id === base.id ? pm : p)));
+    } else {
+      setSaved((prev) => [pm, ...prev]);
+    }
+    poolBaseRef.current = null;
+    setPooledCount(0);
     setDraft(null);
     openView(pm.id);
-  }, [draft, untriaged, unsignaled, openView]);
+  }, [draft, untriaged, unsignaled, openView, saved, fromShare]);
 
   // Record a tripwire check's answer (or re-arm it) on a saved pre-mortem.
   // The one mutation the artifact view is allowed: the record of the plan
@@ -767,6 +992,7 @@ export default function PremortemClient() {
           onCopy={() => copy(buildPremortemMemo(pm))}
           onICS={() => downloadICS(pm)}
           onShare={() => copyShareLink(pm)}
+          onReturn={() => copyReturnLink(pm)}
           onDelete={() => deletePremortem(pm.id)}
           onUpdateReason={(reasonId, fn) => updateSavedReason(pm.id, reasonId, fn)}
           onLogDecision={(confidence, expectation) =>
@@ -774,6 +1000,7 @@ export default function PremortemClient() {
           }
           copied={copied}
           shareCopied={shareCopied}
+          returnCopied={returnCopied}
         />
       );
     }
@@ -857,6 +1084,19 @@ export default function PremortemClient() {
       return (
         <div>
           <StepHeader step={2} label="The failure" onExit={abandonDraft} />
+
+          {pooledCount > 0 && (
+            <div className="mt-6 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-4">
+              <p className="text-sm text-[var(--foreground)] leading-relaxed">
+                <span className="font-medium">
+                  {pooledCount} failure{pooledCount === 1 ? "" : "s"} from a second
+                  pre-mortem are already listed below.
+                </span>{" "}
+                You don&rsquo;t have this plan saved, so it starts fresh with their
+                causes. Add any of your own, then decide what to do about each.
+              </p>
+            </div>
+          )}
 
           {fromShare && (
             <div className="mt-6 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-4">
@@ -1021,6 +1261,21 @@ export default function PremortemClient() {
       <div>
         <StepHeader step={3} label="The response" onExit={abandonDraft} />
 
+        {pooledCount > 0 && (
+          <div className="mt-6 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-4">
+            <p className="text-sm text-[var(--foreground)] leading-relaxed">
+              <span className="font-medium">
+                {pooledCount} failure{pooledCount === 1 ? "" : "s"} came back from
+                a second pre-mortem.
+              </span>{" "}
+              They&rsquo;re added to the end of your list, still untriaged — the
+              other person imagined them, but the response is yours to decide, the
+              same as your own. Triage each one below, then save to fold them into
+              this plan.
+            </p>
+          </div>
+        )}
+
         <p className="mt-8 text-sm text-[var(--muted)] leading-relaxed">
           A pre-mortem&rsquo;s output isn&rsquo;t a list of fears — it&rsquo;s
           decisions. For each cause of the imagined failure, pick one:{" "}
@@ -1176,8 +1431,59 @@ export default function PremortemClient() {
 
   // ---- home ---------------------------------------------------------------
   const pendingDesc = pendingShare ? describeSharedPremortem(pendingShare) : null;
+  const draftInProgress = !!(
+    draft &&
+    (draft.plan.trim() || draft.reasons.length > 0)
+  );
   return (
     <div>
+      {/* ---- Handed back: a second person's failure list, waiting to be pooled
+             into the author's plan ---- */}
+      {hydrated && pendingReturn && (
+        <div className="mb-5 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            A second pre-mortem came back
+          </p>
+          <p className="mt-2 text-sm font-medium text-[var(--foreground)] leading-relaxed">
+            {pendingReturn.plan}
+          </p>
+          <p className="mt-1 text-sm text-[var(--muted)] leading-relaxed">
+            {pendingReturn.reasons.length} failure
+            {pendingReturn.reasons.length === 1 ? "" : "s"} someone imagined for
+            this plan
+            {pendingReturn.matchId
+              ? "."
+              : " — which doesn't match one you have saved."}
+          </p>
+          <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
+            {pendingReturn.matchId
+              ? "Pool them in and you'll triage each returned failure the way you triaged your own — change the plan, set a tripwire, or accept it — then save to fold them into your pre-mortem."
+              : "Pool them in to start a pre-mortem on this plan with their failures already listed, ready to triage."}{" "}
+            Their triage didn&rsquo;t ride along on purpose: the response to a
+            failure on your plan is yours to decide.
+            {draftInProgress
+              ? " This opens a triage flow and will replace the draft you have in progress."
+              : ""}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => poolReturnIn(pendingReturn)}
+              className="text-sm font-medium px-4 py-2 rounded-lg bg-[var(--accent)] text-[var(--background)] hover:opacity-90 transition-opacity"
+            >
+              Pool them in
+            </button>
+            <button
+              type="button"
+              onClick={() => setPendingReturn(null)}
+              className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+            >
+              Dismiss
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* ---- Shared with you: a plan to pre-mortem, held because a draft was
              already in progress ---- */}
       {hydrated && pendingShare && pendingDesc && (
@@ -1371,11 +1677,13 @@ function PremortemView({
   onCopy,
   onICS,
   onShare,
+  onReturn,
   onDelete,
   onUpdateReason,
   onLogDecision,
   copied,
   shareCopied,
+  returnCopied,
 }: {
   pm: Premortem;
   isSample: boolean;
@@ -1384,11 +1692,13 @@ function PremortemView({
   onCopy: () => void;
   onICS: () => void;
   onShare: () => void;
+  onReturn: () => void;
   onDelete: () => void;
   onUpdateReason: (reasonId: string, fn: (r: PremortemReason) => PremortemReason) => void;
   onLogDecision: (confidence: number, expectation: string) => void;
   copied: boolean;
   shareCopied: boolean;
+  returnCopied: boolean;
 }) {
   const tw = tripwires(pm);
   const armedTw = tw.filter((r) => r.checkOn && !r.checkedOn);
@@ -1556,6 +1866,33 @@ function PremortemView({
             {shareCopied
               ? "Copied — the link is on your clipboard"
               : "Copy a link to this plan"}
+          </button>
+        </div>
+      )}
+
+      {/* ---- Hand it back: close the loop for a plan someone gave you to
+             pre-mortem ---- */}
+      {!isSample && pm.receivedShare && (
+        <div className="mt-6 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] p-5 sm:p-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            Hand it back
+          </p>
+          <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            Someone handed you this plan to pre-mortem. Send your failures back so
+            they can pool them into theirs — the cause you saw from where you sit
+            and they couldn&rsquo;t is exactly what asking a second person is for.
+            Only your failure list travels, not what you&rsquo;d do about each:
+            the response to a failure on their plan is theirs to decide. It&rsquo;s
+            sent to no server; only they can open it.
+          </p>
+          <button
+            type="button"
+            onClick={onReturn}
+            className="mt-4 text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+          >
+            {returnCopied
+              ? "Copied — the link is on your clipboard"
+              : "Copy a link that sends your failures back"}
           </button>
         </div>
       )}

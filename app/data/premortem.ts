@@ -57,6 +57,15 @@ export type Premortem = {
    * in records saved before the handoff existed — they load as un-logged.
    */
   loggedOn: string;
+  /**
+   * True when this pre-mortem was started from a plan someone shared to be
+   * pre-mortemed (a setup-share), not one you framed yourself. It's the cue for
+   * the "hand it back" affordance: only a pre-mortem you were *given* to run
+   * offers to send its failures back to whoever asked, closing Klein's loop —
+   * imagine alone, then pool. Absent in records saved before pooling existed;
+   * they load as not-received.
+   */
+  receivedShare: boolean;
 };
 
 export const PREMORTEM_SAVED_KEY = "premortem:v1";
@@ -109,6 +118,7 @@ export function mergePremortem(
     createdOn:
       typeof r.createdOn === "string" && r.createdOn ? r.createdOn : todayISO(),
     loggedOn: typeof r.loggedOn === "string" ? r.loggedOn : "",
+    receivedShare: typeof r.receivedShare === "boolean" ? r.receivedShare : false,
   };
 }
 
@@ -278,6 +288,7 @@ export const SAMPLE_PREMORTEM: Premortem = {
   judgeOn: "2026-10-31",
   createdOn: "2026-04-06",
   loggedOn: "",
+  receivedShare: false,
   reasons: [
     {
       id: "s1",
