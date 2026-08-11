@@ -919,6 +919,18 @@ export default function CoolClient() {
               deciding.
             </p>
           ) : null}
+          <p className="mt-3 text-xs text-[var(--muted)] leading-relaxed">
+            Not actually hot — just can&rsquo;t tell whether the pull lasts? This
+            horizon read is a passing move here; its own tool builds it out, and
+            weighs in the road you&rsquo;d give up:{" "}
+            <Link
+              href={withSubject("/regret", inp.decision)}
+              className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+            >
+              ask your older self
+            </Link>
+            .
+          </p>
         </div>
       </div>
 
