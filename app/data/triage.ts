@@ -160,6 +160,20 @@ const nodes: Record<string, TriageNode> = {
         },
       },
       {
+        id: "leaning-unsure",
+        label: "I keep leaning one way, but can't tell if it's the real call or just how I feel right now.",
+        detail: "Not hot exactly — a pull toward comfort, or a new thing's shine, that I can't tell is durable.",
+        rec: {
+          toolId: "regret",
+          because:
+            "Play the pull forward to ten minutes, ten months, ten years — a feeling that's loud now often lies about how long it lasts. Read whether it holds or evaporates, then weigh it against the regret you can't feel today: the road not taken.",
+          then: {
+            toolId: "act",
+            note: "If your older self endorses it, turn the call into the first concrete move before the moment passes.",
+          },
+        },
+      },
+      {
         id: "later-bill",
         label: "It looks good right now, but I suspect the bill comes later.",
         rec: {

@@ -124,6 +124,16 @@ export const tools: Tool[] = [
     payoff: "now",
   },
   {
+    id: "regret",
+    href: "/regret",
+    name: "Ask Your Older Self",
+    short: "Older self",
+    when: "You keep leaning one way, and you can't tell if that's the real call or just how you feel sitting here right now — not hot, exactly, just a pull you can't tell is durable.",
+    ask: "Which way will I be glad I went — ten minutes from now, ten months, ten years?",
+    does: "Plays the pull forward to three horizons — ten minutes, ten months, ten years — reads how it changes across them, and weighs it against the regret you can't feel now: the road not taken. So a feeling that won't last can't outvote the one that will.",
+    payoff: "now",
+  },
+  {
     id: "tripwire",
     href: "/tripwire",
     name: "Set a Tripwire",
@@ -208,7 +218,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "weigh", "compare", "outside", "trace", "cool", "quit"],
+    toolIds: ["doors", "weigh", "compare", "outside", "trace", "cool", "regret", "quit"],
   },
   {
     id: "big-commitment",
