@@ -54,6 +54,16 @@ export const tools: Tool[] = [
     payoff: "now",
   },
   {
+    id: "widen",
+    href: "/widen",
+    name: "What Else Could You Do?",
+    short: "Widen",
+    when: "You're weighing whether or not to do one thing — take the job, make the move, buy the house — yes or no. It feels like a decision, but there's really only one option on the table and its shadow.",
+    ask: "Is this a real choice between options, or one option dressed up as a decision?",
+    does: "Catches a 'whether-or-not' frame — the single most common decision mistake — and forces it open: the vanishing-options test and three more lenses to surface the alternatives nobody named, a guard against decoy options that only flatter the first, then hands the real slate on to be compared or weighed.",
+    payoff: "now",
+  },
+  {
     id: "weigh",
     href: "/weigh",
     name: "The Flip Point",
@@ -218,7 +228,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "weigh", "compare", "outside", "trace", "cool", "regret", "quit"],
+    toolIds: ["doors", "widen", "weigh", "compare", "outside", "trace", "cool", "regret", "quit"],
   },
   {
     id: "big-commitment",
