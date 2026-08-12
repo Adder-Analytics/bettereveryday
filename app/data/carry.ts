@@ -48,6 +48,25 @@ export const OPTION_A_PARAM = "a";
 export const OPTION_B_PARAM = "b";
 
 /**
+ * A handoff can also carry a *whole slate* of option labels, not just two. When
+ * a tool widens a one-option frame into three, four, or more real alternatives
+ * (see `/widen`), it can hand the entire list to the halo-off comparison, which
+ * is built to score several options at once. The two-label `a`/`b` params above
+ * are for the specific two-way call the flip point takes; this is for the
+ * three-or-more case the comparison takes. Same discipline: URL only, each label
+ * normalized and capped, the list length-capped so a link stays a link, read
+ * only by a destination that consumes it (today just /compare), and never
+ * allowed to clobber options the receiver already has filled.
+ *
+ * The labels are joined on the ASCII unit separator (U+001F) — a control
+ * character no one types, so it can't appear inside a normalized label and
+ * collide with the delimiter, and it survives URL-encoding cleanly.
+ */
+export const OPTIONS_PARAM = "opts";
+const OPTIONS_SEP = "\u001f";
+const MAX_OPTION_LIST = 6;
+
+/**
  * The source a decision was carried *from*, so the "carried over" cue can name
  * it ("carried from your comparison") instead of the generic "your last step."
  * A controlled vocabulary, not free text: the receiver only honors a token it
@@ -57,6 +76,7 @@ export const OPTION_B_PARAM = "b";
 export const FROM_PARAM = "from";
 export const CARRY_SOURCES = {
   compare: "your comparison",
+  widen: "widening your options",
 } as const;
 export type CarrySource = keyof typeof CARRY_SOURCES;
 
@@ -145,6 +165,56 @@ export function readCarriedOptions(): { optionA: string; optionB: string } {
 }
 
 /**
+ * Carry a whole slate of option labels on a handoff link: the subject (optional)
+ * plus the list, and the source that's handing off. The list is normalized,
+ * empties dropped, and capped at `MAX_OPTION_LIST` so a link stays a link; the
+ * param is added only when at least two survive, since a slate of one isn't a
+ * comparison. Used by the frame-widener to hand three-or-more real options to
+ * the halo-off comparison.
+ */
+export function withOptionList(
+  href: string,
+  carry: {
+    subject?: string;
+    options: string[];
+    from?: CarrySource;
+  }
+): string {
+  let out = carry.subject ? withSubject(href, carry.subject) : href;
+  const cleaned = carry.options
+    .map(normalize)
+    .filter(Boolean)
+    .slice(0, MAX_OPTION_LIST);
+  if (cleaned.length >= 2) {
+    out = appendParam(out, OPTIONS_PARAM, cleaned.join(OPTIONS_SEP));
+    if (carry.from) out = appendParam(out, FROM_PARAM, carry.from);
+  }
+  return out;
+}
+
+/**
+ * Read the carried option slate from the current URL. Client-only; returns an
+ * empty array when there's nothing to carry or the fragment is malformed. The
+ * receiver decides whether to apply it (only into blank options — never over
+ * saved work). Degrades to `[]`, never throws, so a truncated or hand-edited
+ * link reads as "nothing carried."
+ */
+export function readCarriedOptionList(): string[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = new URLSearchParams(window.location.search).get(OPTIONS_PARAM);
+    if (!raw) return [];
+    return raw
+      .split(OPTIONS_SEP)
+      .map(normalize)
+      .filter(Boolean)
+      .slice(0, MAX_OPTION_LIST);
+  } catch {
+    return [];
+  }
+}
+
+/**
  * Read the source that handed off, but only if it's a token we recognize —
  * anything else reads as "no named source" so the cue falls back to its generic
  * wording rather than trusting an arbitrary URL string.
@@ -172,7 +242,13 @@ export function clearCarriedSubject(): void {
   if (typeof window === "undefined") return;
   try {
     const url = new URL(window.location.href);
-    const keys = [SUBJECT_PARAM, OPTION_A_PARAM, OPTION_B_PARAM, FROM_PARAM];
+    const keys = [
+      SUBJECT_PARAM,
+      OPTION_A_PARAM,
+      OPTION_B_PARAM,
+      OPTIONS_PARAM,
+      FROM_PARAM,
+    ];
     if (!keys.some((k) => url.searchParams.has(k))) return;
     for (const k of keys) url.searchParams.delete(k);
     const qs = url.searchParams.toString();

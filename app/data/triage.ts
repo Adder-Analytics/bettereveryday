@@ -132,6 +132,20 @@ const nodes: Record<string, TriageNode> = {
         },
       },
       {
+        id: "whether-or-not",
+        label: "It's a yes-or-no — whether or not to do this one thing.",
+        detail: "Take the job or not, make the move or not. One option, weighed against nothing.",
+        rec: {
+          toolId: "widen",
+          because:
+            "A “whether or not” is the most common decision trap: it feels like a choice, but it’s one option and its shadow, and it quietly throws away every alternative nobody named. Force the frame open before you weigh a single thing — the vanishing-options test surfaces the real choices you already have.",
+          then: {
+            toolId: "compare",
+            note: "Once you’ve got a real slate, score them past the halo — or if it narrows to two, take those to the flip point.",
+          },
+        },
+      },
+      {
         id: "two-odds",
         label: "Two options, and I keep re-arguing the odds.",
         detail: "Is it 60% or 70%? I can't pin the number down.",
