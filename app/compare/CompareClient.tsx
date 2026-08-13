@@ -3,9 +3,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   readCarriedSubject,
+  readCarriedOptionList,
+  readCarriedFrom,
   clearCarriedSubject,
   withSubject,
   withOptions,
+  CARRY_SOURCES,
+  type CarrySource,
 } from "../data/carry";
 import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
@@ -457,6 +461,13 @@ export default function CompareClient() {
   const [state, setState] = useState<State>(BLANK);
   const [hydrated, setHydrated] = useState(false);
   const [carriedSeed, setCarriedSeed] = useState("");
+  // When a handoff named where it came from (the frame-widener hands a whole
+  // slate over), the carried-over cue names that source instead of the generic
+  // "your last step."
+  const [carriedFrom, setCarriedFrom] = useState<CarrySource | "">("");
+  // True when the options were seeded from a carried slate, so the cue's clear
+  // action knows to empty the option labels too, not just the subject.
+  const [seededOptions, setSeededOptions] = useState(false);
   const [showExample, setShowExample] = useState(false);
   const [conf, setConf] = useState<number>(70);
   const [logged, setLogged] = useState<null | { conf: number; reviewOn: string; label: string }>(
@@ -480,6 +491,22 @@ export default function CompareClient() {
     const seeded = Boolean(carried) && !loaded.decision.trim();
     let next = seeded ? { ...loaded, decision: carried } : loaded;
 
+    // A handoff can also carry a whole *slate* of option labels — the
+    // frame-widener turning a one-option frame into three or four real
+    // alternatives. Seed them only into blank option slots, the same
+    // never-clobber rule the subject seed follows, so an incoming link can't
+    // overwrite a comparison already in progress.
+    const carriedOptions = readCarriedOptionList();
+    const optionsBlank = next.options.every((o) => !o.label.trim());
+    const seedOpts = carriedOptions.length >= 2 && optionsBlank;
+    if (seedOpts) {
+      next = {
+        ...next,
+        options: carriedOptions.map((label, i) => ({ id: `oc${i + 1}`, label })),
+      };
+    }
+    const from = readCarriedFrom();
+
     // A share link hands a WHOLE comparison in from another person. It's
     // all-or-nothing, never field-by-field: adopting the entire scored structure
     // only into a blank tool keeps two people's numbers from blending into a
@@ -501,10 +528,12 @@ export default function CompareClient() {
     setState(next);
     setHydrated(true);
     if (seeded) setCarriedSeed(carried);
+    if (seedOpts) setSeededOptions(true);
+    if ((seeded || seedOpts) && from) setCarriedFrom(from);
     if (adopted) setAdoptedShare(true);
     if (pending) setPendingShare(pending);
     /* eslint-enable react-hooks/set-state-in-effect */
-    if (carried) clearCarriedSubject();
+    if (carried || seedOpts || from) clearCarriedSubject();
     // Strip the share fragment once read, whether adopted or held pending, so a
     // refresh doesn't re-apply it and the address bar stops carrying someone
     // else's comparison. The pending card lives in state, not the URL, from here.
@@ -778,9 +807,26 @@ export default function CompareClient() {
         />
         <CarriedNote
           show={carriedSeed !== "" && state.decision.trim() === carriedSeed}
+          lead={
+            carriedFrom
+              ? `Carried from ${CARRY_SOURCES[carriedFrom]} — edit ${
+                  seededOptions ? "the decision and options below, or" : "it above, or"
+                }`
+              : undefined
+          }
+          clearLabel={seededOptions ? "clear all" : undefined}
           onClear={() => {
             setDecision("");
             setCarriedSeed("");
+            if (seededOptions) {
+              setState((s) => ({
+                ...s,
+                options: blankState().options,
+                scores: {},
+                gut: "",
+              }));
+              setSeededOptions(false);
+            }
           }}
         />
 
@@ -791,7 +837,14 @@ export default function CompareClient() {
           Name the real ones — and if you&rsquo;ve framed this as{" "}
           <em>whether or not</em>, that&rsquo;s a warning: a two-option list that&rsquo;s
           really &ldquo;the thing&rdquo; vs &ldquo;nothing&rdquo; often hides the option
-          you didn&rsquo;t let yourself write down.
+          you didn&rsquo;t let yourself write down.{" "}
+          <Link
+            href={withSubject("/widen", state.decision)}
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Widen the frame first
+          </Link>{" "}
+          if you&rsquo;re not sure you&rsquo;ve got the whole set.
         </p>
         <div className="mt-3 space-y-2">
           {state.options.map((o, i) => (

@@ -54,6 +54,16 @@ export const tools: Tool[] = [
     payoff: "now",
   },
   {
+    id: "widen",
+    href: "/widen",
+    name: "What Else Could You Do?",
+    short: "Widen",
+    when: "You're weighing whether or not to do one thing — take the job, make the move, buy the house — yes or no. It feels like a decision, but there's really only one option on the table and its shadow.",
+    ask: "Is this a real choice between options, or one option dressed up as a decision?",
+    does: "Catches a 'whether-or-not' frame — the single most common decision mistake — and forces it open: the vanishing-options test and three more lenses to surface the alternatives nobody named, a guard against decoy options that only flatter the first, then hands the real slate on to be compared or weighed.",
+    payoff: "now",
+  },
+  {
     id: "weigh",
     href: "/weigh",
     name: "The Flip Point",
@@ -81,6 +91,16 @@ export const tools: Tool[] = [
     when: "You're about to promise how long something will take or how much it'll cost — and every step of the plan looks doable.",
     ask: "What actually happened to everyone who tried something like this?",
     does: "Seals your own estimate first, then sets it against the real distribution of comparable cases — reference-class forecasting — so the plan's best-case story meets the surprises the class already counted.",
+    payoff: "now",
+  },
+  {
+    id: "test",
+    href: "/test",
+    name: "Could You Be Wrong?",
+    short: "Reality-test",
+    when: "You're fairly sure this is the right call — but 'fairly sure' is exactly the state that stops you looking. You've been gathering reasons it'll work, not reasons it won't.",
+    ask: "What would prove me wrong — and have I actually gone looking for it, or can I just test it?",
+    does: "Names the one assumption the decision rests on, forces out what evidence would falsify it, and checks whether you've sought that or only its opposite — the antidote to confirmation bias. Then, where you can, turns a confident prediction into the cheapest real experiment that would settle it before you commit.",
     payoff: "now",
   },
   {
@@ -121,6 +141,16 @@ export const tools: Tool[] = [
     when: "You're about to decide while hot — angry, panicked, infatuated, or rushed by a clock.",
     ask: "Should I decide this now at all, or once I'm cool?",
     does: "Settles the real choice when you're hot — decide-now-or-later — then hands you two research-backed ways to manufacture the distance to see it straight.",
+    payoff: "now",
+  },
+  {
+    id: "regret",
+    href: "/regret",
+    name: "Ask Your Older Self",
+    short: "Older self",
+    when: "You keep leaning one way, and you can't tell if that's the real call or just how you feel sitting here right now — not hot, exactly, just a pull you can't tell is durable.",
+    ask: "Which way will I be glad I went — ten minutes from now, ten months, ten years?",
+    does: "Plays the pull forward to three horizons — ten minutes, ten months, ten years — reads how it changes across them, and weighs it against the regret you can't feel now: the road not taken. So a feeling that won't last can't outvote the one that will.",
     payoff: "now",
   },
   {
@@ -208,7 +238,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "weigh", "compare", "outside", "trace", "cool", "quit"],
+    toolIds: ["doors", "widen", "weigh", "compare", "outside", "test", "trace", "cool", "regret", "quit"],
   },
   {
     id: "big-commitment",

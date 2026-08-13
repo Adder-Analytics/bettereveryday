@@ -132,6 +132,20 @@ const nodes: Record<string, TriageNode> = {
         },
       },
       {
+        id: "whether-or-not",
+        label: "It's a yes-or-no — whether or not to do this one thing.",
+        detail: "Take the job or not, make the move or not. One option, weighed against nothing.",
+        rec: {
+          toolId: "widen",
+          because:
+            "A “whether or not” is the most common decision trap: it feels like a choice, but it’s one option and its shadow, and it quietly throws away every alternative nobody named. Force the frame open before you weigh a single thing — the vanishing-options test surfaces the real choices you already have.",
+          then: {
+            toolId: "compare",
+            note: "Once you’ve got a real slate, score them past the halo — or if it narrows to two, take those to the flip point.",
+          },
+        },
+      },
+      {
         id: "two-odds",
         label: "Two options, and I keep re-arguing the odds.",
         detail: "Is it 60% or 70%? I can't pin the number down.",
@@ -160,6 +174,20 @@ const nodes: Record<string, TriageNode> = {
         },
       },
       {
+        id: "leaning-unsure",
+        label: "I keep leaning one way, but can't tell if it's the real call or just how I feel right now.",
+        detail: "Not hot exactly — a pull toward comfort, or a new thing's shine, that I can't tell is durable.",
+        rec: {
+          toolId: "regret",
+          because:
+            "Play the pull forward to ten minutes, ten months, ten years — a feeling that's loud now often lies about how long it lasts. Read whether it holds or evaporates, then weigh it against the regret you can't feel today: the road not taken.",
+          then: {
+            toolId: "act",
+            note: "If your older self endorses it, turn the call into the first concrete move before the moment passes.",
+          },
+        },
+      },
+      {
         id: "later-bill",
         label: "It looks good right now, but I suspect the bill comes later.",
         rec: {
@@ -183,6 +211,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "premortem",
             note: "If the plan still holds, pre-mortem the surprises the class already counts.",
+          },
+        },
+      },
+      {
+        id: "already-sure",
+        label: "I'm fairly sure it's the right call — I just want to pressure-test that before I commit.",
+        detail: "I've mostly been collecting reasons it'll work. I haven't really tried to prove myself wrong.",
+        rec: {
+          toolId: "test",
+          because:
+            "“Fairly sure” is the exact state that stops you looking — once you're leaning, research quietly turns into building the case for what you already wanted. Name the one assumption the whole call rests on, force out what would prove it false, and check whether you've gone looking for that or only its opposite. Then, where you can, run the cheapest real test instead of trusting the prediction.",
+          then: {
+            toolId: "decide",
+            note: "If it survives, log what you expect and how sure you are — so reality, not memory, grades the call later.",
           },
         },
       },
