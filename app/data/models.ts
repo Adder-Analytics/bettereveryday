@@ -109,6 +109,14 @@ export const models: Model[] = [
     essays: ["whether-or-not"],
   },
   {
+    id: "reality-testing",
+    name: "Reality-Testing",
+    domain: "Decisions",
+    tagline: "Before you commit, go looking for the evidence that you're wrong — and, where you can, run a cheap test instead of a confident prediction.",
+    explanation:
+      "The 'R' in the Heath brothers' WRAP process, and the antidote to the most pervasive decision bias there is: confirmation bias. Once you're leaning toward a call, you stop gathering evidence and start gathering ammunition — you notice what supports the choice and wave off what doesn't, so 'doing your research' quietly becomes building the case for what you already wanted. The bias is invisible from the inside because it feels exactly like diligence. Two moves break it. First, consider the opposite: name the one assumption the whole decision rests on, then ask what observable evidence would prove it false — and whether you've actually gone looking for that evidence or only for its opposite. A belief that nothing could falsify isn't a conviction, it's a closed loop; being able to state what would change your mind is the difference. 'Considering the opposite' is one of the most robust debiasing techniques in the literature precisely because it forces the disconfirming search your instincts skip. Second — where the stakes and reversibility allow — ooch: don't predict, test. Run the smallest real experiment that generates actual evidence before you commit fully. A retailer that can't decide on a new line puts it in five stores, not a forecast; a founder unsure people will pay puts up a pre-order page before building. The caveat runs both ways: a small test is only honest if you decide in advance what result would change course and then accept it, and ooching fits probes better than one-way doors you can't stage. Its near neighbour on this site is the pre-mortem, which imagines the failure from the inside; reality-testing goes and gathers the evidence from the outside.",
+  },
+  {
     id: "mediating-assessments",
     name: "Mediating Assessments Protocol",
     domain: "Decisions",

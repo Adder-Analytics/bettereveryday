@@ -215,6 +215,20 @@ const nodes: Record<string, TriageNode> = {
         },
       },
       {
+        id: "already-sure",
+        label: "I'm fairly sure it's the right call — I just want to pressure-test that before I commit.",
+        detail: "I've mostly been collecting reasons it'll work. I haven't really tried to prove myself wrong.",
+        rec: {
+          toolId: "test",
+          because:
+            "“Fairly sure” is the exact state that stops you looking — once you're leaning, research quietly turns into building the case for what you already wanted. Name the one assumption the whole call rests on, force out what would prove it false, and check whether you've gone looking for that or only its opposite. Then, where you can, run the cheapest real test instead of trusting the prediction.",
+          then: {
+            toolId: "decide",
+            note: "If it survives, log what you expect and how sure you are — so reality, not memory, grades the call later.",
+          },
+        },
+      },
+      {
         id: "sunk",
         label: "I've put years or money in, and can't tell if I should walk away.",
         rec: {

@@ -94,6 +94,16 @@ export const tools: Tool[] = [
     payoff: "now",
   },
   {
+    id: "test",
+    href: "/test",
+    name: "Could You Be Wrong?",
+    short: "Reality-test",
+    when: "You're fairly sure this is the right call — but 'fairly sure' is exactly the state that stops you looking. You've been gathering reasons it'll work, not reasons it won't.",
+    ask: "What would prove me wrong — and have I actually gone looking for it, or can I just test it?",
+    does: "Names the one assumption the decision rests on, forces out what evidence would falsify it, and checks whether you've sought that or only its opposite — the antidote to confirmation bias. Then, where you can, turns a confident prediction into the cheapest real experiment that would settle it before you commit.",
+    payoff: "now",
+  },
+  {
     id: "quit",
     href: "/quit",
     name: "Would You Start It Today?",
@@ -228,7 +238,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "widen", "weigh", "compare", "outside", "trace", "cool", "regret", "quit"],
+    toolIds: ["doors", "widen", "weigh", "compare", "outside", "test", "trace", "cool", "regret", "quit"],
   },
   {
     id: "big-commitment",
