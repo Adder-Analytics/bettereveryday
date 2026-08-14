@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { getTool } from "../data/tools";
+import { getTool, toolCount } from "../data/tools";
 import {
   getTriageNode,
   TRIAGE_ROOT,
@@ -150,7 +150,7 @@ export default function FindClient() {
           href="/tools"
           className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
         >
-          Or browse all fifteen instruments &rarr;
+          Or browse all {toolCount}{" "}instruments &rarr;
         </Link>
       </div>
     </div>

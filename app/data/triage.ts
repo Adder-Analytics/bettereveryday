@@ -3,11 +3,11 @@ import { getTool } from "./tools";
 /**
  * The guided front door: two or three questions that hand you the one instrument.
  *
- * The toolkit has fifteen instruments and a good browse-by-moment index at
- * `/tools`. But that page *organizes* the fifteen doors — its own header admits
- * the problem it can't solve ("you don't arrive knowing which one you need") —
- * it doesn't *reduce* them. A first-time visitor standing in front of a real,
- * loaded decision won't read fifteen "when you're here" paragraphs to
+ * The toolkit has over a dozen instruments and a good browse-by-moment index at
+ * `/tools`. But that page *organizes* the doors — its own header admits the
+ * problem it can't solve ("you don't arrive knowing which one you need") — it
+ * doesn't *reduce* them. A first-time visitor standing in front of a real,
+ * loaded decision won't read a dozen-plus "when you're here" paragraphs to
  * self-diagnose; choice overload at the point of need is exactly how a good tool
  * goes unused. What was missing was the interactive version: answer *which of
  * these is you?*, once or twice, and be handed the single instrument — with your

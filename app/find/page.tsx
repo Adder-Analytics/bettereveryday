@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FindClient from "./FindClient";
+import { toolCountWord } from "../data/tools";
 
 export const metadata: Metadata = {
   title: "Where do I start? — Better Every Day",
@@ -8,8 +9,7 @@ export const metadata: Metadata = {
     "Facing a decision and not sure which tool it needs? Answer a question or two about the shape of it, and the toolkit hands you the one instrument for the moment you're in — with your decision carried in, and the next step named.",
   openGraph: {
     title: "Where do I start? — Better Every Day",
-    description:
-      "Answer a question or two about your decision, and be handed the one instrument for the moment you're in — not fifteen to choose between.",
+    description: `Answer a question or two about your decision, and be handed the one instrument for the moment you're in — not ${toolCountWord} to choose between.`,
     type: "website",
   },
 };
@@ -22,9 +22,10 @@ export default function FindPage() {
           Where do I start?
         </h1>
         <p className="text-base text-[var(--muted)] leading-relaxed">
-          The toolkit has fifteen instruments, and when you&rsquo;re actually in
-          front of a hard decision, fifteen is too many to read through. So
-          don&rsquo;t. Answer a question or two about the shape of the thing and
+          The toolkit has {toolCountWord}{" "}instruments, and when
+          you&rsquo;re actually in front of a hard decision, {toolCountWord}{" "}
+          is too many to read through. So don&rsquo;t. Answer a question or two
+          about the shape of the thing and
           it hands you the one instrument for the moment you&rsquo;re in &mdash;
           and, since real calls are rarely one tool, names the honest next step
           after it. Nothing you type is saved or sent anywhere.

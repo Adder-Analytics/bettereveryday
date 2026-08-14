@@ -223,6 +223,47 @@ export function getTool(id: string): Tool {
   return t;
 }
 
+/**
+ * The size of the toolkit, derived from the registry.
+ *
+ * For fifteen sessions the count lived in the prose as an English word, copied
+ * into five places — the guided front door's header and its browse link, the
+ * walkthrough, the router's own comment, the search index — and every one of
+ * them silently went stale the moment a tool was added. By the seventeenth
+ * instrument the whole site was still telling people it held fifteen. The names
+ * and one-liners already flow from this module alone so they can't drift; the
+ * count never did, and drift is exactly what a hardcoded number invites. This is
+ * the missing single source: every surface that names a number now reads it from
+ * here, so the toolkit can't misreport its own size again.
+ */
+export const toolCount = tools.length;
+
+const ONES = [
+  "zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
+  "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+  "sixteen", "seventeen", "eighteen", "nineteen",
+];
+const TENS = ["", "", "twenty", "thirty", "forty", "fifty"];
+
+/**
+ * Spell a small non-negative integer for prose ("seventeen"). Covers the range
+ * the toolkit could plausibly grow into; anything larger falls back to digits,
+ * so the helper degrades to something true rather than throwing.
+ */
+export function spellCount(n: number): string {
+  if (!Number.isInteger(n) || n < 0) return String(n);
+  if (n < 20) return ONES[n];
+  if (n < 60) {
+    const tens = TENS[Math.floor(n / 10)];
+    const ones = n % 10;
+    return ones === 0 ? tens : `${tens}-${ONES[ones]}`;
+  }
+  return String(n);
+}
+
+/** The toolkit's size, spelled for prose ("seventeen"). */
+export const toolCountWord = spellCount(toolCount);
+
 export type ToolGroup = {
   id: string;
   /** The heading — the class of moment these tools serve. */
