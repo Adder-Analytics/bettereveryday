@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { withSubject } from "../data/carry";
+import { toolCountWord } from "../data/tools";
 
 export const metadata: Metadata = {
   title: "One Decision, Worked Through — Better Every Day",
   description:
-    "The toolkit is fifteen instruments, and each one has a worked example of its own. This is the one thing a single tool can't show: how they connect. Follow one real decision — take the offer at the smaller company, or stay — across the whole loop, from the reversibility triage to the return desk, and watch the through-line carry it from tool to tool. Every step links into the live instrument, pre-filled, so you can pick up the same decision or swap in your own.",
+    `The toolkit is ${toolCountWord} instruments, and each one has a worked example of its own. This is the one thing a single tool can't show: how they connect. Follow one real decision — take the offer at the smaller company, or stay — across the whole loop, from the reversibility triage to the return desk, and watch the through-line carry it from tool to tool. Every step links into the live instrument, pre-filled, so you can pick up the same decision or swap in your own.`,
   openGraph: {
     title: "One Decision, Worked Through — Better Every Day",
     description:
@@ -120,7 +121,7 @@ export default function ExamplePage() {
           One decision, worked through
         </h1>
         <p className="text-base text-[var(--muted)] leading-relaxed">
-          The toolkit is fifteen instruments, and several of them carry a worked
+          The toolkit is {toolCountWord}{" "}instruments, and several of them carry a worked
           example of their own. This page is for the one thing a single tool
           can&rsquo;t show you: <em>how they connect.</em> Here is one real,
           ordinary decision &mdash; take the offer at the smaller company, or stay
