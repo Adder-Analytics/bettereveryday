@@ -161,3 +161,113 @@ body {
 .prose a:hover {
   opacity: 0.75;
 }
+
+/*
+ * Print & PDF — a record you can hold, on paper.
+ *
+ * "A Record You Can Hold" is one of this site's own essays: a decision you
+ * worked through is only durable if you can get it out of the browser and keep
+ * it. The /data page made that true digitally — a backup you own. It was quietly
+ * false for paper. With no print styles at all, Cmd-P on a worked decision
+ * printed the whole shell around it: the sticky nav, the footer, dark-mode grays
+ * turned to mud, box-shadows wasting ink. So the one export everybody's browser
+ * already has — print, save-as-PDF, hand it to the person the decision is about —
+ * produced a mess.
+ *
+ * This turns any page, and any decision worked through a tool, into a clean
+ * document. It changes nothing on screen: every rule lives inside @media print.
+ * It reads no state and adds no markup — it re-skins whatever is on the page for
+ * paper by overriding the design tokens every component already draws from, in
+ * one place. Placed after the dark-mode block so that a reader printing in dark
+ * mode still gets a light page (equal specificity, later rule wins).
+ */
+@media print {
+  /* Force a clean, ink-light palette regardless of the reader's screen theme.
+     Every surface pulls its color from these tokens, so overriding them here
+     re-skins the whole page for paper at once. Screen "muted" (#78716C /
+     #A8A29E) prints too faint to read, so paper gets a darker grey; the accent
+     stays a deep brown so emphasis and links survive in black-and-white. */
+  :root {
+    --background: #ffffff;
+    --foreground: #111111;
+    --muted: #444444;
+    --accent: #5a3210;
+    --border: #b0aca8;
+    --card: #ffffff;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  /* Honor the forced palette instead of the browser's ink-saving guesses. */
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* The site chrome carries no meaning on paper. Nav and footer are direct
+     children of <body>; the skip link is a keyboard-only affordance. */
+  body > header,
+  body > footer,
+  .skip-link {
+    display: none !important;
+  }
+
+  /* Ink economy: drop the depth cues that only exist to give a screen dimension. */
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* A comfortable, book-like page. Chromium prints the source URL and date in
+     its own margin, so the record stays self-identifying without extra markup. */
+  @page {
+    margin: 18mm 16mm;
+  }
+
+  /* A worked decision often lives in the tool's own fields; print their values
+     plainly, on a light rule, so the record reads as filled-in, not as mush. */
+  input,
+  textarea,
+  select {
+    color: #111111 !important;
+    background: #ffffff !important;
+    border: 1px solid #9a9a9a !important;
+  }
+
+  /* Keep a heading with the text it introduces, and don't split a list item,
+     quote, or figure across a page break where avoiding it is cheap. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  li,
+  blockquote,
+  figure,
+  table {
+    break-inside: avoid;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  a {
+    color: var(--accent) !important;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+}
