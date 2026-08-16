@@ -12,6 +12,7 @@ import {
 } from "../data/carry";
 import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
+import PrintButton from "../components/PrintButton";
 import Link from "next/link";
 import {
   appendDecisionEntry,
@@ -1011,6 +1012,15 @@ export default function WeighClient() {
               </p>
             </div>
           )}
+
+          {/* Keep the worked flip point as a record — on paper, or as a PDF you
+              can file or hand to whoever the call is with. Shown whenever there's
+              a verdict, so it's there whether or not you also log the forecast. */}
+          {calc && flipPct != null ? (
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <PrintButton label="Print / Save as PDF" />
+            </div>
+          ) : null}
 
           {/* ---- The handoff ---- */}
           {calc && !inp.ruin ? (

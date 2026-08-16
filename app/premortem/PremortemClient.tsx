@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import PrintButton from "../components/PrintButton";
 import { SITE_URL, icsEscape, icsStamp, wrapCalendar } from "../data/ics";
 import {
   LENSES,
@@ -1813,6 +1814,7 @@ function PremortemView({
         >
           {copied ? "Copied ✓" : "Copy as a memo"}
         </button>
+        <PrintButton label="Print / Save as PDF" />
         {armedTw.length > 0 && (
           <button
             type="button"

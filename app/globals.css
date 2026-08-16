@@ -216,6 +216,13 @@ body {
     display: none !important;
   }
 
+  /* Interactive affordances a tool marks as screen-only — the Print button
+     itself, chief among them: the control that produces the record has no place
+     on the record it produces. Any element can opt out of paper this way. */
+  [data-print-hide] {
+    display: none !important;
+  }
+
   /* Ink economy: drop the depth cues that only exist to give a screen dimension. */
   *,
   *::before,
