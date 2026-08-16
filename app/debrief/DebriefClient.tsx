@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import PrintButton from "../components/PrintButton";
 import Link from "next/link";
 
 /**
@@ -679,7 +680,8 @@ export default function DebriefClient() {
       )}
 
       {/* ---- Reset ---- */}
-      <div className="mt-6">
+      <div className="mt-6 flex flex-wrap items-center gap-4">
+        {cell ? <PrintButton label="Print / Save as PDF" /> : null}
         <button
           type="button"
           onClick={reset}

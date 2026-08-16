@@ -6,6 +6,7 @@ import { SITE_URL, icsEscape, icsStamp, wrapCalendar } from "../data/ics";
 import { countDueTripwireChecks } from "../data/premortem";
 import { readCarriedSubject, clearCarriedSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import PrintButton from "../components/PrintButton";
 
 /**
  * Plain, serializable shapes passed down from the server page. These mirror the
@@ -1330,6 +1331,7 @@ export default function DecideClient({
         >
           {copied ? "Copied ✓" : "Copy as a memo"}
         </button>
+        <PrintButton label="Print / Save as PDF" />
         <button
           type="button"
           onClick={clearActive}

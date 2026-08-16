@@ -13,6 +13,7 @@ import {
 } from "../data/carry";
 import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
+import PrintButton from "../components/PrintButton";
 import Link from "next/link";
 import {
   appendDecisionEntry,
@@ -1374,13 +1375,19 @@ export default function CompareClient() {
             inside the link itself and is sent to no server; only whoever you hand
             it to can read it.
           </p>
-          <button
-            type="button"
-            onClick={copyShareLink}
-            className="mt-4 text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
-          >
-            {copied ? "Copied — the link is on your clipboard" : "Copy a link to this comparison"}
-          </button>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={copyShareLink}
+              className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+            >
+              {copied ? "Copied — the link is on your clipboard" : "Copy a link to this comparison"}
+            </button>
+            <PrintButton
+              label="Print / Save as PDF"
+              className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+            />
+          </div>
         </div>
       ) : null}
     </div>
