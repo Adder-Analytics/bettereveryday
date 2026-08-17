@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Nav } from "./components/nav";
 import { Footer } from "./components/footer";
 import SearchShortcut from "./components/SearchShortcut";
+import PrintStamp from "./components/PrintStamp";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -54,6 +55,7 @@ export default function RootLayout({
         <Nav />
         <SearchShortcut />
         <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
+          <PrintStamp />
           {children}
         </main>
         <Footer />

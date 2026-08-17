@@ -10,6 +10,7 @@ import {
   withOptionList,
 } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import PrintButton from "../components/PrintButton";
 
 /**
  * What else could you do? (/widen)
@@ -674,6 +675,12 @@ function Verdict({
             before you spend real deliberation weighing the set.
           </li>
         </ul>
+        <div className="mt-4 pt-4 border-t border-[var(--border)]">
+          <PrintButton
+            label="Print / Save this slate as PDF"
+            className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+          />
+        </div>
       </div>
     </div>
   );
