@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import PrintButton from "../components/PrintButton";
 import Link from "next/link";
 
 /**
@@ -550,6 +551,12 @@ export default function TraceClient() {
               bite — and let reality grade it.
             </li>
           </ul>
+          <div className="mt-5 pt-4 border-t border-[var(--border)]">
+            <PrintButton
+              label="Print / Save this trace as PDF"
+              className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+            />
+          </div>
         </div>
       ) : null}
     </div>

@@ -181,6 +181,12 @@ body {
  * one place. Placed after the dark-mode block so that a reader printing in dark
  * mode still gets a light page (equal specificity, later rule wins).
  */
+
+/* The print letterhead is invisible on screen; @media print reveals it. */
+[data-print-only] {
+  display: none;
+}
+
 @media print {
   /* Force a clean, ink-light palette regardless of the reader's screen theme.
      Every surface pulls its color from these tokens, so overriding them here
@@ -221,6 +227,13 @@ body {
      on the record it produces. Any element can opt out of paper this way. */
   [data-print-hide] {
     display: none !important;
+  }
+
+  /* The complement: a stamp that exists only on paper. The print letterhead
+     (site name + date printed) is hidden on screen and revealed here, so a
+     saved PDF is self-labeling even when the browser's margin date is off. */
+  [data-print-only] {
+    display: flex !important;
   }
 
   /* Ink economy: drop the depth cues that only exist to give a screen dimension. */

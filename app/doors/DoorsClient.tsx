@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import PrintButton from "../components/PrintButton";
 
 /**
  * Which door is this? (/doors)
@@ -477,6 +478,13 @@ function VerdictBlock({
       ) : (
         <MiddleBody inp={inp} it={it} />
       )}
+
+      <div className="mt-6 pt-4 border-t border-[var(--border)]">
+        <PrintButton
+          label="Print / Save this verdict as PDF"
+          className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+        />
+      </div>
     </div>
   );
 }
