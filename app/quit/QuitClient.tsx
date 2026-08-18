@@ -625,7 +625,7 @@ export default function QuitClient() {
           <p className="mt-2 text-xs text-[var(--muted)] leading-relaxed">
             A brand-new you, walking up to this today, carries none of what you&rsquo;ve spent — so
             their answer is the one the sunk cost can&rsquo;t reach. If they&rsquo;d walk on and you
-            won&rsquo;t, the gap between you <em>is</em> the sunk cost. Answer as them, not as the
+            won&rsquo;t, the gap between you <em>is</em>{" "}the sunk cost. Answer as them, not as the
             person who&rsquo;s already paid.
           </p>
         </div>

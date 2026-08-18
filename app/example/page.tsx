@@ -136,7 +136,7 @@ export default function ExamplePage() {
           clear it and drop in the decision actually in front of you.
         </p>
         <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
-          This is the <em>cold</em> spine &mdash; a call you get to weigh at
+          This is the <em>cold</em>{" "}spine &mdash; a call you get to weigh at
           leisure. The decisions people most regret are the opposite:{" "}
           <Link
             href="/example/hot"
@@ -228,7 +228,7 @@ export default function ExamplePage() {
           You typed <em>&ldquo;{SUBJECT}&rdquo;</em> once, at the first door, and
           it rode into every tool after it &mdash; the triage, the flip point, the
           pre-mortem, the journal. That&rsquo;s the toolkit working as{" "}
-          <em>one instrument</em> instead of five separate forms, each demanding
+          <em>one instrument</em>{" "}instead of five separate forms, each demanding
           you restate the decision from scratch. The tools aren&rsquo;t a menu;
           they&rsquo;re a path, and the decision walks it with you.
         </p>

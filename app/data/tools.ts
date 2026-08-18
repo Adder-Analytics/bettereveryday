@@ -40,6 +40,14 @@ export type Tool = {
    * practice you repeat.
    */
   payoff: Payoff;
+  /**
+   * Slugs of essays whose *idea* this instrument is the *practice* of — the
+   * whether-or-not essay for the widener, the second-order essay for the trace.
+   * The essay page reads this to bridge from reading the idea to working it on
+   * your own decision, the same way `Model.essays` bridges an essay to a concept.
+   * Only strong 1:1 matches belong here, so the bridge stays high-signal.
+   */
+  essays?: string[];
 };
 
 export const tools: Tool[] = [
@@ -62,6 +70,7 @@ export const tools: Tool[] = [
     ask: "Is this a real choice between options, or one option dressed up as a decision?",
     does: "Catches a 'whether-or-not' frame — the single most common decision mistake — and forces it open: the vanishing-options test and three more lenses to surface the alternatives nobody named, a guard against decoy options that only flatter the first, then hands the real slate on to be compared or weighed.",
     payoff: "now",
+    essays: ["whether-or-not"],
   },
   {
     id: "weigh",
@@ -72,6 +81,7 @@ export const tools: Tool[] = [
     ask: "Which side of the line am I on?",
     does: "Finds the probability where the decision flips — p* = R/(B+R) — so you only have to judge which side you're on, not pin down a number you can't know.",
     payoff: "now",
+    essays: ["the-flip-point", "loss-aversion"],
   },
   {
     id: "compare",
@@ -82,6 +92,7 @@ export const tools: Tool[] = [
     ask: "Which one wins on the things that matter — not just the one that made the best first impression?",
     does: "Scores every option one factor at a time, so a single strong impression can't halo the whole choice — then sets the tally against your gut and makes the disagreement the thing you examine.",
     payoff: "now",
+    essays: ["anchoring"],
   },
   {
     id: "outside",
@@ -92,6 +103,7 @@ export const tools: Tool[] = [
     ask: "What actually happened to everyone who tried something like this?",
     does: "Seals your own estimate first, then sets it against the real distribution of comparable cases — reference-class forecasting — so the plan's best-case story meets the surprises the class already counted.",
     payoff: "now",
+    essays: ["nobody-thinks-theyre-the-base-rate", "availability-heuristic"],
   },
   {
     id: "test",
@@ -102,6 +114,7 @@ export const tools: Tool[] = [
     ask: "What would prove me wrong — and have I actually gone looking for it, or can I just test it?",
     does: "Names the one assumption the decision rests on, forces out what evidence would falsify it, and checks whether you've sought that or only its opposite — the antidote to confirmation bias. Then, where you can, turns a confident prediction into the cheapest real experiment that would settle it before you commit.",
     payoff: "now",
+    essays: ["the-plan-was-never-tried"],
   },
   {
     id: "quit",
@@ -122,6 +135,7 @@ export const tools: Tool[] = [
     ask: "What's the first concrete move, exactly when will I make it, and what would tell me to stop and reconsider?",
     does: "Turns a decision into an if-then plan that fires on a cue — the smallest first move, a backup for the obstacle, and a tripwire to reconsider — after checking the plan is even the right tool and the problem isn't that you don't want it.",
     payoff: "later",
+    essays: ["deciding-and-doing"],
   },
   {
     id: "trace",
@@ -132,6 +146,7 @@ export const tools: Tool[] = [
     ask: "Where does the effect I want turn into the one I have to live with?",
     does: "Traces a decision past its first-order effect — and then what, and then what — and reads the sign pattern to find where it flips on you.",
     payoff: "now",
+    essays: ["second-order-thinking", "the-bill-comes-later", "metric-not-the-mission"],
   },
   {
     id: "cool",
@@ -142,6 +157,7 @@ export const tools: Tool[] = [
     ask: "Should I decide this now at all, or once I'm cool?",
     does: "Settles the real choice when you're hot — decide-now-or-later — then hands you two research-backed ways to manufacture the distance to see it straight.",
     payoff: "now",
+    essays: ["the-option-to-wait"],
   },
   {
     id: "regret",
@@ -172,6 +188,7 @@ export const tools: Tool[] = [
     ask: "If this has failed a year from now, what went wrong?",
     does: "Declares the plan dead before it starts, writes the history of the failure, then turns each cause into a fix, an accepted risk, or a tripwire on your calendar.",
     payoff: "later",
+    essays: ["hold-the-funeral-first", "advice-you-dont-take"],
   },
   {
     id: "decide",
@@ -182,6 +199,7 @@ export const tools: Tool[] = [
     ask: "What do I expect to happen, and how sure am I?",
     does: "A worksheet that walks the models, records your reasoning and your forecast, and schedules the one thing that teaches: coming back to compare it against what actually happened.",
     payoff: "later",
+    essays: ["experience-doesnt-teach"],
   },
   {
     id: "debrief",
@@ -192,6 +210,7 @@ export const tools: Tool[] = [
     ask: "Am I grading the decision, or just the result it happened to get?",
     does: "Reconstructs the call under a hindsight guard — what you knew then, not what you know now — grades it apart from the outcome, and lands it on the four cells: the win to bank, the win to fix, the loss to keep, the loss to fix.",
     payoff: "now",
+    essays: ["decision-quality", "the-honest-number-comes-after"],
   },
   {
     id: "review",
@@ -202,6 +221,7 @@ export const tools: Tool[] = [
     ask: "What did I schedule myself to come back and check?",
     does: "Gathers every review and tripwire check you've scheduled across the tools into one queue, and links each straight to where you answer it — so the return stops depending on memory.",
     payoff: "ongoing",
+    essays: ["the-return", "the-last-inch"],
   },
   {
     id: "practice",
@@ -212,6 +232,7 @@ export const tools: Tool[] = [
     ask: "Which of the three numbers under a forecast is my weakest?",
     does: "Three short trainers — how sure to be, how to reach a number at all, and how much a new fact should move you — shown beside your real record from the journal.",
     payoff: "ongoing",
+    essays: ["three-numbers-for-an-uncertain-world", "the-compound-needs-evidence", "your-ninety-percent", "how-much-should-this-change-your-mind", "guessing-on-purpose", "orders-of-magnitude"],
   },
 ];
 
@@ -221,6 +242,16 @@ export function getTool(id: string): Tool {
   const t = byId.get(id);
   if (!t) throw new Error(`Unknown tool id: ${id}`);
   return t;
+}
+
+/**
+ * The instruments whose idea a given essay explores — the bridge from reading
+ * about a way of thinking to working it on a decision of your own. Preserves the
+ * registry order, so the more foundational instruments lead. Mirrors
+ * `getThreadsForEssay` in threads.ts.
+ */
+export function getToolsForEssay(slug: string): Tool[] {
+  return tools.filter((t) => t.essays?.includes(slug));
 }
 
 /**

@@ -38,7 +38,7 @@ export default function OutsidePage() {
         </p>
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
           The fix isn&rsquo;t to plan harder. It&rsquo;s to look up — to ask what
-          happened to <em>everyone else</em> who tried something like this, and
+          happened to <em>everyone else</em>{" "}who tried something like this, and
           start the forecast there. That distribution has already counted every
           surprise the plan can&rsquo;t see. This tool runs the procedure Kahneman
           calls{" "}

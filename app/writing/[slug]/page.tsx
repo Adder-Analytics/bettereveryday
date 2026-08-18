@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { posts, getPostBySlug, formatDate } from "../../data/posts";
 import { models } from "../../data/models";
 import { getThreadsForEssay } from "../../data/threads";
+import { getToolsForEssay } from "../../data/tools";
 import type { Metadata } from "next";
 
 type Props = {
@@ -43,6 +44,7 @@ export default async function PostPage({ params }: Props) {
   const next = index < posts.length - 1 ? posts[index + 1] : null;
   const relatedModels = models.filter((m) => m.essays?.includes(slug));
   const relatedThreads = getThreadsForEssay(slug);
+  const relatedTools = getToolsForEssay(slug);
 
   return (
     <div className="max-w-2xl mx-auto px-6 py-16">
@@ -87,6 +89,33 @@ export default async function PostPage({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </article>
+
+      {relatedTools.length > 0 && (
+        <aside className="mt-16 pt-8 border-t border-[var(--border)]">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+            Put the Idea to Work
+          </h2>
+          <p className="text-sm text-[var(--muted)] leading-relaxed mb-5">
+            This isn&rsquo;t more to read — it&rsquo;s the instrument that turns
+            the idea above on a decision of your own.
+          </p>
+          <div className="space-y-4">
+            {relatedTools.map((tool) => (
+              <Link key={tool.id} href={tool.href} className="group block">
+                <span className="text-sm font-medium text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
+                  {tool.name}{" "}
+                  <span className="text-[var(--accent)]" aria-hidden="true">
+                    &rarr;
+                  </span>
+                </span>
+                <span className="block mt-0.5 text-sm text-[var(--muted)] leading-relaxed">
+                  {tool.ask}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </aside>
+      )}
 
       {relatedThreads.length > 0 && (
         <aside className="mt-16 pt-8 border-t border-[var(--border)]">

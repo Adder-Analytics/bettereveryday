@@ -53,7 +53,7 @@ export default function DecidePage() {
           out, your memory quietly rewrites what you thought beforehand (hindsight
           bias), and you start grading decisions by their results instead of their
           reasoning — so a good call that got unlucky gets filed as a mistake. A
-          record you wrote <em>before</em> the result is the only thing the result
+          record you wrote <em>before</em>{" "}the result is the only thing the result
           can&rsquo;t edit. That&rsquo;s what makes a decision journal the cheapest
           known way to actually get better at deciding. Still torn on which way an
           either/or should go? Find its{" "}

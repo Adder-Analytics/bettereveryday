@@ -230,8 +230,9 @@ export default function DataClient() {
         <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
           Moving to a new browser or device, or coming back after clearing your
           data? Pick a backup file to bring it all here. Restoring{" "}
-          <span className="text-[var(--foreground)]">replaces</span> what&rsquo;s
-          in this browser with what&rsquo;s in the file — so before it does,
+          <span className="text-[var(--foreground)]">replaces</span>{" "}
+          what&rsquo;s in this browser with what&rsquo;s in the file — so before
+          it does,
           it&rsquo;ll save a copy of the current state to your downloads, and
           show you exactly what the file holds first.
         </p>
