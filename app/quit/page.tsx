@@ -38,7 +38,7 @@ export default function QuitPage() {
         </p>
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
           So this tool does the two things the sunk-cost feeling won&rsquo;t let you do alone. It{" "}
-          <em>quarantines</em> what you&rsquo;ve already put in — you name it, and then it gets no
+          <em>quarantines</em>{" "}what you&rsquo;ve already put in — you name it, and then it gets no
           vote. And it runs the two tests that survive the strip: would you{" "}
           <em>begin</em> this today from scratch, and does one more push beat the best{" "}
           <Link

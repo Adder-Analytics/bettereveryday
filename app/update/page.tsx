@@ -45,7 +45,7 @@ export default function UpdatePage() {
           <span className="text-[var(--foreground)]">A round</span> runs six quick
           ones and scores not just how far off you were, but whether you keep
           landing high — the signature of neglecting the base rate. And{" "}
-          <span className="text-[var(--foreground)]">Pick the prior</span> drills
+          <span className="text-[var(--foreground)]">Pick the prior</span>{" "}drills
           the judgement the first two modes hand you for free: real questions
           don&rsquo;t come with the base rate attached, so this one makes you choose
           the reference class yourself — and tracks how far your gut runs above

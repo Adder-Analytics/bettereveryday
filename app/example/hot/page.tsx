@@ -151,7 +151,7 @@ export default function HotExamplePage() {
         </p>
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
           Every step links into the live instrument with this decision already
-          loaded. And unlike the cold spine, <em>every</em> tool here reads the
+          loaded. And unlike the cold spine, <em>every</em>{" "}tool here reads the
           through-line &mdash; so the exact words you typed in anger ride into each
           calm tool after them, and three days later you don&rsquo;t have to
           reconstruct what you meant.
@@ -270,7 +270,7 @@ export default function HotExamplePage() {
           through-line carried those exact words into every calm tool after it, so
           three days later the cold version of you didn&rsquo;t start from a blank
           field and a softened memory. That&rsquo;s the toolkit working as{" "}
-          <em>one instrument</em> across a gap of days, not four forms you&rsquo;d
+          <em>one instrument</em>{" "}across a gap of days, not four forms you&rsquo;d
           have had to fill from scratch once the heat had faded and the details with
           it.
         </p>
