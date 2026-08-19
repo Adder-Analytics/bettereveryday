@@ -48,6 +48,20 @@ export type Tool = {
    * Only strong 1:1 matches belong here, so the bridge stays high-signal.
    */
   essays?: string[];
+  /**
+   * Ids of the mental models (`models.ts`) this instrument is the *practice* of —
+   * `reversibility` for the door triage, `decision-threshold` for the flip point,
+   * `pre-mortem` and `inversion` for the pre-mortem room. The exact twin of
+   * `essays` above, one surface over: an essay explains an idea in prose, a model
+   * defines it as a concept, and both should point at the instrument that runs it
+   * on a decision of your own. The models page reads this (via `getToolsForModel`)
+   * to bridge from understanding an idea to working it — the same move the essay
+   * page makes, on the site's other idea surface. Declaring both `essays` and
+   * `models` on the tool keeps every "this instrument practices these ideas"
+   * relationship in one file, and lets each idea surface reverse-look-it-up so the
+   * two directions can't drift. Only strong 1:1 matches belong here.
+   */
+  models?: string[];
 };
 
 export const tools: Tool[] = [
@@ -60,6 +74,7 @@ export const tools: Tool[] = [
     ask: "Can I walk back through this door — and am I spending the right amount of deliberation for it?",
     does: "Sorts the call into a one-way or two-way door by how reversible it really is — so you spend slow, careful thought only where reversal won't save you, and give a fast, undoable call the permission to move it's usually denied.",
     payoff: "now",
+    models: ["reversibility"],
   },
   {
     id: "widen",
@@ -70,6 +85,7 @@ export const tools: Tool[] = [
     ask: "Is this a real choice between options, or one option dressed up as a decision?",
     does: "Catches a 'whether-or-not' frame — the single most common decision mistake — and forces it open: the vanishing-options test and three more lenses to surface the alternatives nobody named, a guard against decoy options that only flatter the first, then hands the real slate on to be compared or weighed.",
     payoff: "now",
+    models: ["narrow-framing"],
     essays: ["whether-or-not"],
   },
   {
@@ -81,6 +97,7 @@ export const tools: Tool[] = [
     ask: "Which side of the line am I on?",
     does: "Finds the probability where the decision flips — p* = R/(B+R) — so you only have to judge which side you're on, not pin down a number you can't know.",
     payoff: "now",
+    models: ["decision-threshold", "expected-value", "loss-aversion"],
     essays: ["the-flip-point", "loss-aversion"],
   },
   {
@@ -92,6 +109,7 @@ export const tools: Tool[] = [
     ask: "Which one wins on the things that matter — not just the one that made the best first impression?",
     does: "Scores every option one factor at a time, so a single strong impression can't halo the whole choice — then sets the tally against your gut and makes the disagreement the thing you examine.",
     payoff: "now",
+    models: ["halo-effect", "anchoring", "mediating-assessments"],
     essays: ["anchoring"],
   },
   {
@@ -103,6 +121,7 @@ export const tools: Tool[] = [
     ask: "What actually happened to everyone who tried something like this?",
     does: "Seals your own estimate first, then sets it against the real distribution of comparable cases — reference-class forecasting — so the plan's best-case story meets the surprises the class already counted.",
     payoff: "now",
+    models: ["outside-view", "base-rates", "availability-heuristic"],
     essays: ["nobody-thinks-theyre-the-base-rate", "availability-heuristic"],
   },
   {
@@ -114,6 +133,7 @@ export const tools: Tool[] = [
     ask: "What would prove me wrong — and have I actually gone looking for it, or can I just test it?",
     does: "Names the one assumption the decision rests on, forces out what evidence would falsify it, and checks whether you've sought that or only its opposite — the antidote to confirmation bias. Then, where you can, turns a confident prediction into the cheapest real experiment that would settle it before you commit.",
     payoff: "now",
+    models: ["reality-testing"],
     essays: ["the-plan-was-never-tried"],
   },
   {
@@ -125,6 +145,7 @@ export const tools: Tool[] = [
     ask: "Am I still here because it's the right call — or because I can't stand to walk away from what I've already put in?",
     does: "Takes the sunk cost out of the vote: asks whether you'd start the thing fresh today, sets one more push against the best other use of the same time and money, and — if you carry on — makes you set the kill criterion in advance.",
     payoff: "now",
+    models: ["opportunity-cost"],
   },
   {
     id: "act",
@@ -135,6 +156,7 @@ export const tools: Tool[] = [
     ask: "What's the first concrete move, exactly when will I make it, and what would tell me to stop and reconsider?",
     does: "Turns a decision into an if-then plan that fires on a cue — the smallest first move, a backup for the obstacle, and a tripwire to reconsider — after checking the plan is even the right tool and the problem isn't that you don't want it.",
     payoff: "later",
+    models: ["implementation-intentions"],
     essays: ["deciding-and-doing"],
   },
   {
@@ -146,6 +168,7 @@ export const tools: Tool[] = [
     ask: "Where does the effect I want turn into the one I have to live with?",
     does: "Traces a decision past its first-order effect — and then what, and then what — and reads the sign pattern to find where it flips on you.",
     payoff: "now",
+    models: ["second-order-effects", "goodharts-law"],
     essays: ["second-order-thinking", "the-bill-comes-later", "metric-not-the-mission"],
   },
   {
@@ -157,6 +180,7 @@ export const tools: Tool[] = [
     ask: "Should I decide this now at all, or once I'm cool?",
     does: "Settles the real choice when you're hot — decide-now-or-later — then hands you two research-backed ways to manufacture the distance to see it straight.",
     payoff: "now",
+    models: ["self-distancing"],
     essays: ["the-option-to-wait"],
   },
   {
@@ -168,6 +192,7 @@ export const tools: Tool[] = [
     ask: "Which way will I be glad I went — ten minutes from now, ten months, ten years?",
     does: "Plays the pull forward to three horizons — ten minutes, ten months, ten years — reads how it changes across them, and weighs it against the regret you can't feel now: the road not taken. So a feeling that won't last can't outvote the one that will.",
     payoff: "now",
+    models: ["self-distancing"],
   },
   {
     id: "tripwire",
@@ -178,6 +203,7 @@ export const tools: Tool[] = [
     ask: "What signal, on what date, would tell me to stop and re-decide?",
     does: "Turns a decision into a state and a date — an observable signal you can't argue with, set while you're calm — and hands it back to you on that day at the return desk, so a call going wrong can't coast past the point it stopped being right.",
     payoff: "later",
+    models: ["tripwires"],
   },
   {
     id: "premortem",
@@ -188,6 +214,7 @@ export const tools: Tool[] = [
     ask: "If this has failed a year from now, what went wrong?",
     does: "Declares the plan dead before it starts, writes the history of the failure, then turns each cause into a fix, an accepted risk, or a tripwire on your calendar.",
     payoff: "later",
+    models: ["pre-mortem", "inversion"],
     essays: ["hold-the-funeral-first", "advice-you-dont-take"],
   },
   {
@@ -232,6 +259,7 @@ export const tools: Tool[] = [
     ask: "Which of the three numbers under a forecast is my weakest?",
     does: "Three short trainers — how sure to be, how to reach a number at all, and how much a new fact should move you — shown beside your real record from the journal.",
     payoff: "ongoing",
+    models: ["calibration", "fermi-estimation", "base-rates"],
     essays: ["three-numbers-for-an-uncertain-world", "the-compound-needs-evidence", "your-ninety-percent", "how-much-should-this-change-your-mind", "guessing-on-purpose", "orders-of-magnitude"],
   },
 ];
@@ -252,6 +280,17 @@ export function getTool(id: string): Tool {
  */
 export function getToolsForEssay(slug: string): Tool[] {
   return tools.filter((t) => t.essays?.includes(slug));
+}
+
+/**
+ * The instruments that practice a given mental model — the bridge from
+ * understanding an idea as a concept to running it on a decision of your own.
+ * The twin of `getToolsForEssay`, keyed by a model id instead of an essay slug,
+ * so the models page can offer the instrument the way the essay page does.
+ * Preserves registry order, so the more foundational instruments lead.
+ */
+export function getToolsForModel(modelId: string): Tool[] {
+  return tools.filter((t) => t.models?.includes(modelId));
 }
 
 /**
