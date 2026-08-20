@@ -1,12 +1,17 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { posts, formatDate } from "./data/posts";
+import { resolveToolGroups, toolCount } from "./data/tools";
 import ReviewDueBadge from "./components/ReviewDueBadge";
+import DecideHero from "./components/DecideHero";
 
 const sortedPosts = [...posts].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 );
 const recentPosts = sortedPosts.slice(0, 3);
 const lastUpdated = formatDate(sortedPosts[0].date);
+
+const toolGroups = resolveToolGroups();
 
 const currentFocus = [
   { label: "Reading", value: "Poor Charlie's Almanack (2nd read) + DDIA" },
@@ -18,34 +23,82 @@ const currentFocus = [
 export default function Home() {
   return (
     <div className="max-w-2xl mx-auto px-6">
-      {/* Hero */}
+      {/* Hero — lead with the useful thing: a private toolkit for a real decision. */}
       <section className="pt-20 pb-16 border-b border-[var(--border)]">
         <h1 className="text-4xl font-semibold tracking-tight leading-tight text-[var(--foreground)] mb-6">
           Better Every Day.
         </h1>
         <p className="text-lg text-[var(--muted)] leading-relaxed max-w-lg">
-          Essays on finance, decisions, learning, and craft. The conviction
-          underneath all of it: understanding a few fundamental ideas well beats
-          knowing many things shallowly.
+          A private toolkit for thinking through a real decision &mdash; the flip
+          point, the pre-mortem, the consequence trace, and a dozen more &mdash;
+          with the essays and mental models behind the thinking. Nothing you enter
+          ever leaves your browser.
         </p>
-        <div className="mt-6 flex flex-wrap items-center gap-4">
-          <Link
-            href="/start"
-            className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            New here? Start with a reading path →
-          </Link>
+        <DecideHero />
+        <p className="mt-8 text-sm text-[var(--muted)]">Updated {lastUpdated}</p>
+      </section>
+
+      {/* The instruments, by the shape of the moment — the site's core utility,
+          scannable at a glance instead of buried in prose. */}
+      <section className="py-14 border-b border-[var(--border)]">
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-6">
+          The Toolkit
+        </h2>
+        <ReviewDueBadge />
+        <p className="text-sm text-[var(--muted)] leading-relaxed max-w-md mb-8">
+          {toolCount}{" "}working instruments, each built for a different kind of
+          moment in a decision&rsquo;s life. Not a lecture &mdash; a worksheet you
+          fill in, that keeps the record for you and can hand it back weeks later,
+          when you find out whether you were right.
+        </p>
+
+        <div className="space-y-7">
+          {toolGroups.map((group) => (
+            <div key={group.id}>
+              <Link
+                href={`/tools#${group.id}`}
+                className="text-sm font-semibold text-[var(--foreground)] leading-snug hover:text-[var(--accent)] transition-colors"
+              >
+                {group.title}
+              </Link>
+              <p className="mt-1.5 text-sm leading-relaxed">
+                {group.tools.map((tool, i) => (
+                  <Fragment key={tool.id}>
+                    {i > 0 && (
+                      <span className="text-[var(--border)]" aria-hidden>
+                        {" · "}
+                      </span>
+                    )}
+                    <Link
+                      href={tool.href}
+                      className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+                    >
+                      {tool.name}
+                    </Link>
+                  </Fragment>
+                ))}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-9 flex flex-wrap gap-x-6 gap-y-2">
           <Link
             href="/find"
             className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
-            Facing a decision now? Find your tool in a question or two →
+            Find your tool in a question or two &rarr;
           </Link>
-          <span className="text-sm text-[var(--muted)]">Updated {lastUpdated}</span>
+          <Link
+            href="/example"
+            className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+          >
+            Or watch one decision go through the whole kit &rarr;
+          </Link>
         </div>
       </section>
 
-      {/* Recent Writing */}
+      {/* Recent Writing — the thinking the tools are built on. */}
       <section className="py-14 border-b border-[var(--border)]">
         <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-8">
           Recent Writing
@@ -76,19 +129,19 @@ export default function Home() {
           href="/writing"
           className="inline-block mt-10 text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
         >
-          All writing →
+          All writing &rarr;
         </Link>
       </section>
 
-      {/* Models Teaser */}
+      {/* Reference — the ideas to think with, and where to find them. */}
       <section className="py-14 border-b border-[var(--border)]">
         <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-4">
           Reference
         </h2>
-        <ReviewDueBadge />
         <p className="text-sm text-[var(--muted)] leading-relaxed max-w-md mb-4">
-          A curated collection of mental models — ideas from finance, decisions,
-          systems thinking, and psychology that change how you reason. The{" "}
+          A curated collection of mental models &mdash; ideas from finance,
+          decisions, systems thinking, and psychology that change how you reason.
+          The{" "}
           <Link
             href="/playbook"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
@@ -97,64 +150,39 @@ export default function Home() {
           </Link>{" "}
           flips them around so you can find the right idea by the moment
           you&rsquo;re in, and reading notes capture what specific books did to my
-          thinking.
+          thinking. The conviction underneath all of it: understanding a few
+          fundamental ideas well beats knowing many things shallowly.
         </p>
-        <p className="text-sm text-[var(--muted)] leading-relaxed max-w-md mb-4">
-          Alongside the reading is a set of working instruments to think a real
-          decision through — weigh a close call, trace it past the first-order
-          effect, cool a hot one, run a pre-mortem, log a forecast and come back
-          to grade it. The{" "}
-          <Link
-            href="/tools"
-            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            toolkit
-          </Link>{" "}
-          hands you the right one by the moment you&rsquo;re in, or you can{" "}
-          <Link
-            href="/example"
-            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            watch one decision go through the whole kit
-          </Link>{" "}
-          first. Everything you enter stays in your browser and is sent nowhere.
-        </p>
-        <div className="flex flex-wrap gap-6">
-          <Link
-            href="/tools"
-            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            The toolkit →
-          </Link>
+        <div className="flex flex-wrap gap-x-6 gap-y-2">
           <Link
             href="/models"
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
-            Mental models →
+            Mental models &rarr;
           </Link>
           <Link
             href="/playbook"
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
-            The playbook →
-          </Link>
-          <Link
-            href="/review"
-            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
-          >
-            Due for review →
+            The playbook &rarr;
           </Link>
           <Link
             href="/notes"
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
-            Reading notes →
+            Reading notes &rarr;
+          </Link>
+          <Link
+            href="/bookshelf"
+            className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            The bookshelf &rarr;
           </Link>
           <Link
             href="/search"
             className="inline-block text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
-            Search the site →
+            Search the site &rarr;
           </Link>
         </div>
       </section>
@@ -180,7 +208,7 @@ export default function Home() {
           href="/now"
           className="inline-block mt-10 text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
         >
-          Full /now page →
+          Full /now page &rarr;
         </Link>
       </section>
     </div>
