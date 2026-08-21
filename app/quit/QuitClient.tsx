@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { readCarriedSubject, clearCarriedSubject } from "../data/carry";
+import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 
@@ -290,6 +290,7 @@ function VerdictBlock({
   cell,
   reason,
   onReason,
+  guard,
   killState,
   killDate,
   onKillState,
@@ -299,6 +300,9 @@ function VerdictBlock({
   cell: Cell;
   reason: string;
   onReason?: (v: string) => void;
+  /** The thing you're deciding whether to quit — carried to the tripwire as the
+   *  decision it guards, so arming a kill criterion doesn't retype it. */
+  guard: string;
   killState: string;
   killDate: string;
   onKillState?: (v: string) => void;
@@ -401,11 +405,14 @@ function VerdictBlock({
             feeling is the bias, not the verdict. Put the date somewhere that outranks your future
             self:{" "}
             <Link
-              href={`/tripwire?signal=${encodeURIComponent(
-                killState.trim()
-              )}&on=${encodeURIComponent(killDate)}&from=${encodeURIComponent(
-                "/quit"
-              )}`}
+              href={withSubject(
+                `/tripwire?signal=${encodeURIComponent(
+                  killState.trim()
+                )}&on=${encodeURIComponent(killDate)}&from=${encodeURIComponent(
+                  "/quit"
+                )}`,
+                guard
+              )}
               className="text-[var(--accent)] hover:opacity-70 transition-opacity"
             >
               arm it as a tripwire
@@ -469,6 +476,7 @@ function QuitExample() {
         <VerdictBlock
           cell={cell}
           reason={EXAMPLE.reason}
+          guard={EXAMPLE.thing}
           killState={EXAMPLE.killState}
           killDate={EXAMPLE.killDate}
           readOnly
@@ -677,6 +685,7 @@ export default function QuitClient() {
             cell={cell}
             reason={inp.reason}
             onReason={(v) => set("reason", v)}
+            guard={inp.thing}
             killState={inp.killState}
             killDate={inp.killDate}
             onKillState={(v) => set("killState", v)}
