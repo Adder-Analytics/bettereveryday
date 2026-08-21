@@ -546,7 +546,7 @@ function Verdict({ inp }: { inp: Inputs }) {
               </li>
               <li>
                 <Link
-                  href="/tripwire"
+                  href={withSubject("/tripwire", subject)}
                   className="text-[var(--accent)] hover:opacity-70 transition-opacity font-medium"
                 >
                   Set the deadline as a tripwire &rarr;
