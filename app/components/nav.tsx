@@ -7,9 +7,9 @@ import { useEffect, useRef, useState } from "react";
 /**
  * Site navigation.
  *
- * The link set is a lot — twelve destinations — because the site is a lot: the
+ * The link set is a lot — thirteen destinations — because the site is a lot: the
  * writing, the models, the whole toolkit. On a wide screen they lay out inline.
- * On a phone, twelve links flex-wrapping under a sticky bar ate four rows of a
+ * On a phone, that many links flex-wrapping under a sticky bar ate four rows of a
  * small screen and looked broken — a bad first impression for a tool someone
  * reached for in a hard moment, on the device most likely to be in their hand.
  *
@@ -30,6 +30,7 @@ const LINKS: { href: string; label: string; title?: string }[] = [
   { href: "/playbook", label: "Playbook" },
   { href: "/tools", label: "Tools" },
   { href: "/decide", label: "Decide" },
+  { href: "/decisions", label: "Decisions" },
   { href: "/review", label: "Review" },
   { href: "/practice", label: "Practice" },
   { href: "/now", label: "Now" },
