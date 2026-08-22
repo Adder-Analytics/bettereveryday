@@ -13,6 +13,7 @@ import {
 } from "../data/tripwires";
 import { whenLabel, daysBetween } from "../data/review";
 import { SITE_URL, icsEscape, icsStamp, wrapCalendar } from "../data/ics";
+import { readCarriedSubject } from "../data/carry";
 
 /**
  * The tripwire tool (/tripwire): arm a state-and-a-date anywhere, answer it here.
@@ -25,6 +26,18 @@ import { SITE_URL, icsEscape, icsStamp, wrapCalendar } from "../data/ics";
  * due; or arrive pre-filled from a tool (?signal=…&on=…&guard=…&from=/act), the
  * whole reason this exists — a reconsider line computed elsewhere finally has
  * somewhere to land, and it comes back on its date at /review.
+ *
+ * The guard — the decision this tripwire watches over — arrives one of two ways.
+ * A tool that computes a precise guard passes it explicitly (?guard=… — the
+ * consequence trace hands over the effect that turns against you, the if-then
+ * planner the plan it's protecting). A tool that only holds the plain decision
+ * hands it in on the site's one carry key instead (?subject=…, via `withSubject`
+ * — the same helper every other handoff uses), so the older-self tool and the
+ * quit-or-stay tool can arm a tripwire on the very call they just helped you
+ * make without you retyping it. An explicit guard always wins; the carried
+ * subject only fills the guard when no explicit one was given. This is the last
+ * instrument the through-line reaches — before it, a decision walked here always
+ * landed on a blank field.
  */
 
 const inputClass =
@@ -150,9 +163,15 @@ export default function TripwireClient() {
     const pGuard = params.get("guard");
     const pFailure = params.get("failure");
     const pFrom = params.get("from");
+    // A decision can also ride in on the through-line's `subject` key — the same
+    // one every `withSubject` handoff uses — and becomes the guard when no
+    // explicit `?guard=` was given. Normalized and capped by `readCarriedSubject`,
+    // so a hand-edited link can't seed an essay into the field.
+    const carried = readCarriedSubject();
     if (pSignal) setSignal(pSignal);
     if (pOn) setCheckOn(pOn);
     if (pGuard) setGuard(pGuard);
+    else if (carried) setGuard(carried);
     if (pFailure) setFailure(pFailure);
     if (pFrom) setFrom(pFrom);
     /* eslint-enable react-hooks/set-state-in-effect */

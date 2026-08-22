@@ -50,6 +50,18 @@ export default function ReviewPage() {
           it, and it becomes the one page worth opening when you wonder what you
           promised yourself you&rsquo;d check.
         </p>
+        <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
+          This desk shows what&rsquo;s <em>due</em>. To see the whole record
+          instead &mdash; everything you&rsquo;ve worked on a decision, grouped by
+          the decision, due or not &mdash; go to{" "}
+          <Link
+            href="/decisions"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            your decisions
+          </Link>
+          .
+        </p>
       </header>
 
       <ReviewClient />

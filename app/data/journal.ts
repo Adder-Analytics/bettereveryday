@@ -146,6 +146,67 @@ export function countDecisions(): number {
   return readLog().length;
 }
 
+/**
+ * One logged decision, flattened for the decision home (/decisions) — which
+ * gathers everything you've worked on a call, not just what's scheduled. The
+ * return desk (review.ts) already reads the *scheduled* slice of the log; this
+ * is the whole-record slice, so the two surfaces read the same store through
+ * different lenses without either one owning it. Read defensively, like every
+ * other reader here: an older or hand-edited log degrades to blanks, not a throw.
+ *
+ * `subject` is the decision as you framed it — the field the committed entry
+ * stores as `decision`, which is exactly where a carried through-line subject
+ * lands (DecideClient snapshots `decision: context`, and the carried subject
+ * seeds that context). So a decision walked in from another tool lines up on the
+ * same subject the pre-mortem, tripwire, and cooling-off tools stored it under,
+ * and the home can group the arc without a shared id.
+ */
+export type LoggedDecision = {
+  id: string;
+  /** The decision as you framed it (holds the carried subject when carried). */
+  subject: string;
+  question: string;
+  expectation: string;
+  confidence: number | null;
+  decidedOn: string;
+  reviewOn: string;
+  /** ISO date reviewed, or null if the return hasn't happened yet. */
+  reviewedOn: string | null;
+  outcomeQuality: "good" | "bad" | "tbd" | null;
+  decisionQuality: "again" | "different" | null;
+};
+
+export function loadLoggedDecisions(): LoggedDecision[] {
+  const str = (v: unknown) => (typeof v === "string" ? v : "");
+  return readLog().map((e) => {
+    const reviewed = str(e.reviewedOn).trim();
+    return {
+      id: str(e.id) || `${str(e.reviewOn)}-${str(e.decidedOn)}`,
+      subject:
+        str(e.decision).trim() ||
+        str(e.situationTitle).trim() ||
+        str(e.question).trim() ||
+        "A logged decision",
+      question: str(e.question).trim(),
+      expectation: str(e.expectation).trim(),
+      confidence: typeof e.confidence === "number" ? e.confidence : null,
+      decidedOn: str(e.decidedOn),
+      reviewOn: str(e.reviewOn),
+      reviewedOn: reviewed || null,
+      outcomeQuality:
+        e.outcomeQuality === "good" ||
+        e.outcomeQuality === "bad" ||
+        e.outcomeQuality === "tbd"
+          ? e.outcomeQuality
+          : null,
+      decisionQuality:
+        e.decisionQuality === "again" || e.decisionQuality === "different"
+          ? e.decisionQuality
+          : null,
+    };
+  });
+}
+
 export type JournalProfile = {
   /** Any entries logged at all? */
   hasLog: boolean;

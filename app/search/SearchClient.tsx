@@ -280,6 +280,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Your decisions",
+    href: "/decisions",
+    snippet:
+      "Everything you've worked on a real decision, gathered in one place and grouped by the decision itself — the journal entry, the pre-mortem, the tripwires, the calls you're sleeping on. Not what's due (that's the return desk) — the whole record, and a way straight back into any part of it.",
+    meta: "The decision home — your whole record, grouped by the call",
+    titleText:
+      "decisions decision home your decisions record history log everything all my decisions worked one place gathered grouped arc portfolio dashboard ledger overview index what have i decided past decisions my calls saved records journal premortem tripwire cooling-off in one view".toLowerCase(),
+    bodyText:
+      "your decisions (/decisions): the decision home — everything you've worked on a real call, gathered in one place and grouped by the call itself. for a dozen sessions the site's own complaint about itself was the same: you can walk one decision through half the toolkit — sort the door, hold its funeral in the pre-mortem, log the forecast in the journal, arm a tripwire, park a hot call to cool — and the carry through-line threads your one-liner from tool to tool so you never retype it, but once the pieces were saved there was no single view that showed them back together. the return desk (/review) gathers the scheduled half — what's due to check — and each tool keeps its own list, but everything i've worked on this one decision had no home. this is that home. it reads, never writes, every persisting tool's records straight from your browser and folds them into one shape, then groups records that share the same decision line: a decision carried across the journal, pre-mortem, tripwire, and cooling-off tools lands under the same line in each store, so grouping by that line reassembles the whole arc precisely — not a fuzzy match that might merge unrelated calls, an exact match on the text the tools already agree on, and a record typed on its own stands cleanly alone. each decision is a card: the line you worked, a one-glance summary (worked across how many tools, first worked when, the next return due), and every saved piece under it in the order you worked it — awaiting review, armed, cooling, reviewed, fired, decided cold — each linking straight back into its tool to continue or answer it. only the four tools that actually keep a record appear — the decision journal, the pre-mortem room, the standalone tripwire, and the cooling-off tool; the answer-now tools (which door, widen, flip point, compare, outside view, reality-test, trace, older self, quit-or-stay) compute in the moment and persist nothing, so there's nothing of theirs to gather, and the page says so rather than pretending. a search box filters by the decision line once the record grows, and the whole record prints to a clean pdf you can hold. it's the companion to the return desk: that page answers what did i schedule myself to come back and check; this one answers what have i worked, and where does each piece stand. because it all lives only in this browser, back it up when it grows. nothing is sent anywhere.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Due for review",
     href: "/review",
     snippet:

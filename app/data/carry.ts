@@ -27,9 +27,14 @@
  *
  * A deliberate boundary, learned from a prior day's mistake: a handoff carries
  * the subject ONLY when the destination actually reads it. A param the other end
- * ignores is a dead param that implies a bridge that doesn't fire — so the tools
- * that hand off to a subject-less destination (the return desk, a tripwire) link
- * plainly, and only the readers below get the param.
+ * ignores is a dead param that implies a bridge that doesn't fire — so a tool
+ * that hands off to a genuinely subject-less destination (the return desk) links
+ * plainly, and only the readers get the param. The tripwire was the last such
+ * gap: it read its own `?guard=`/`?signal=` params but not the subject, so an
+ * older-self or quit handoff carrying `withSubject("/tripwire", …)` dropped the
+ * decision on the threshold. It now reads the carried subject as its guard, so
+ * that handoff lands like every other — the through-line reaches every tool that
+ * holds a decision.
  */
 
 /** The query key the subject rides in. Short, human-legible in a URL. */

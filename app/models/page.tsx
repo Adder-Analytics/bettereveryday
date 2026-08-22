@@ -5,6 +5,7 @@ import { getPostBySlug } from "../data/posts";
 import { getBooksForModel, bookAnchor } from "../data/books";
 import { getSituationsForModel } from "../data/situations";
 import { getNotesForModel } from "../data/notes";
+import { getToolsForModel } from "../data/tools";
 
 export const metadata: Metadata = {
   title: "Mental Models — Better Every Day",
@@ -42,6 +43,7 @@ export default function ModelsPage() {
               </h2>
               <div className="space-y-10">
                 {domainModels.map((model) => {
+                  const modelTools = getToolsForModel(model.id);
                   const shelfBooks = getBooksForModel(model.id);
                   const modelSituations = getSituationsForModel(model.id);
                   const modelNotes = getNotesForModel(model.id);
@@ -56,8 +58,24 @@ export default function ModelsPage() {
                     <p className="text-sm text-[var(--muted)] leading-relaxed">
                       {model.explanation}
                     </p>
+                    {modelTools.length > 0 && (
+                      <p className="mt-3 text-xs text-[var(--muted)]">
+                        Put it to work:{" "}
+                        {modelTools.map((tool, i) => (
+                          <span key={tool.id}>
+                            {i > 0 ? " · " : ""}
+                            <Link
+                              href={tool.href}
+                              className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+                            >
+                              {tool.name}
+                            </Link>
+                          </span>
+                        ))}
+                      </p>
+                    )}
                     {model.essays && model.essays.length > 0 && (
-                      <div className="mt-3 space-y-1">
+                      <div className={`${modelTools.length > 0 ? "mt-2" : "mt-3"} space-y-1`}>
                         {model.essays.map((slug) => {
                           const post = getPostBySlug(slug);
                           if (!post) return null;
