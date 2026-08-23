@@ -74,6 +74,20 @@ function count(n: number, one: string, many = one + "s"): string {
   return `${n} ${n === 1 ? one : many}`;
 }
 
+/** How many entries in an array carry a non-empty `label` — the count of the
+ *  things a person actually named (options, factors, alternatives). Defensive:
+ *  returns 0 for anything that isn't a well-formed array of labelled objects. */
+function countLabeled(v: unknown): number {
+  if (!Array.isArray(v)) return 0;
+  return v.filter(
+    (x) =>
+      x &&
+      typeof x === "object" &&
+      typeof (x as { label?: unknown }).label === "string" &&
+      (x as { label: string }).label.trim() !== ""
+  ).length;
+}
+
 export const STORES: StoreDescriptor[] = [
   {
     key: "decide:log:v1",
@@ -185,6 +199,117 @@ export const STORES: StoreDescriptor[] = [
     href: "/trace",
     label: "The consequence chain you last traced",
     describe: (raw) => (parse(raw) ? "a trace in progress" : null),
+  },
+  // The answer-now instruments. Each one gives you a conclusion in a single
+  // sitting, but it also keeps the worksheet you reached it on — so you can
+  // close the tab and pick the same call back up. That kept worksheet is real
+  // decision work, and for a month it sat outside the backup: nine tools whose
+  // records this "back up everything" file quietly didn't hold, so a person who
+  // sorted a door, forecast against a class, or graded a past call, then moved
+  // devices, lost exactly that. Registering them here closes the gap — and makes
+  // a restore replace them like every other store, instead of leaving them as a
+  // silent mix of the backup and whatever this browser already held.
+  {
+    key: "doors:v1",
+    tool: "Which door is this?",
+    href: "/doors",
+    label: "The call you last sorted into a one-way or two-way door",
+    describe: (raw) => {
+      const v = parse(raw);
+      if (!v || typeof v !== "object") return null;
+      switch ((v as { undo?: unknown }).undo) {
+        case "easy":
+          return "sorted: a two-way door";
+        case "costly":
+          return "sorted: reversible, but costly";
+        case "none":
+          return "sorted: a one-way door";
+        default:
+          return "a door being sorted";
+      }
+    },
+  },
+  {
+    key: "widen:v1",
+    tool: "What else could you do?",
+    href: "/widen",
+    label: "The either/or you last cracked open, and the options you named",
+    describe: (raw) => {
+      const v = parse(raw);
+      if (!v || typeof v !== "object") return null;
+      const named = countLabeled((v as { added?: unknown }).added);
+      return named > 0
+        ? count(named, "alternative named", "alternatives named")
+        : "a framing in progress";
+    },
+  },
+  {
+    key: "compare:v1",
+    tool: "The halo comes off",
+    href: "/compare",
+    label: "The options and factors in your last side-by-side comparison",
+    describe: (raw) => {
+      const v = parse(raw);
+      if (!v || typeof v !== "object") return null;
+      const options = countLabeled((v as { options?: unknown }).options);
+      const factors = countLabeled((v as { factors?: unknown }).factors);
+      if (options === 0 && factors === 0) return "a comparison in progress";
+      return `${count(options, "option")} across ${count(factors, "factor")}`;
+    },
+  },
+  {
+    key: "outside:v1",
+    tool: "You are not the exception",
+    href: "/outside",
+    label: "The forecast you last set against its reference class",
+    describe: (raw) => {
+      const v = parse(raw);
+      if (!v || typeof v !== "object") return null;
+      const cases = (v as { cases?: unknown }).cases;
+      const withData = Array.isArray(cases)
+        ? cases.filter(
+            (c) => c && typeof c === "object" && typeof (c as { value?: unknown }).value === "number"
+          ).length
+        : 0;
+      return withData > 0
+        ? count(withData, "comparable case")
+        : "a forecast in progress";
+    },
+  },
+  {
+    key: "test:v1",
+    tool: "Could you be wrong?",
+    href: "/test",
+    label: "The assumption you last stress-tested for what would prove it wrong",
+    describe: (raw) => (parse(raw) ? "a reality-test in progress" : null),
+  },
+  {
+    key: "quit:v1",
+    tool: "Would you start it today?",
+    href: "/quit",
+    label: "The commitment you last weighed quitting, sunk cost set aside",
+    describe: (raw) => (parse(raw) ? "a quit-or-stay in progress" : null),
+  },
+  {
+    key: "regret:v1",
+    tool: "Ask your older self",
+    href: "/regret",
+    label: "The pull you last played forward to ten minutes, months, and years",
+    describe: (raw) => (parse(raw) ? "an older-self check in progress" : null),
+  },
+  {
+    key: "act:v1",
+    tool: "Decided isn't done",
+    href: "/act",
+    label: "The if-then plan you last built to make a decision actually move",
+    describe: (raw) => (parse(raw) ? "an action plan in progress" : null),
+  },
+  {
+    key: "debrief:v1",
+    tool: "The outcome isn't the verdict",
+    href: "/debrief",
+    label: "The past call you last graded apart from how it happened to turn out",
+    describe: (raw) => (parse(raw) ? "a debrief in progress" : null),
   },
   {
     key: "tripwires:v1",
