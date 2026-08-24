@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
 import Link from "next/link";
 import {
@@ -40,7 +41,12 @@ import {
  * sealed*, before you look at a single comparison — otherwise the cases you
  * choose anchor the number, and the gap we came for disappears. Nothing is sent
  * anywhere; inputs persist in your browser, and a forecast you commit to logs to
- * the decision journal so reality grades it on the day.
+ * the decision journal so reality grades it on the day. A forecast is also the
+ * one artifact here most worth showing someone else — the class behind a
+ * number — so it can be handed to another person by a link that carries the
+ * whole thing in the URL fragment, peer to peer, reaching no server (see the
+ * share section below, and `data/share.ts` for the codec it shares with the flip
+ * point, the comparison, and the pre-mortem).
  */
 
 const STORE_KEY = "outside:v1";
@@ -150,6 +156,112 @@ function unitOf(inp: Inputs): string {
   return inp.unit.trim() || "units";
 }
 
+// ---- handing the forecast to another person ------------------------------
+//
+// A reference-class forecast is, of every instrument here, one of the most
+// worth showing to someone else: "you think three months — here are five
+// comparable projects that took five to sixteen." It's the number a manager, a
+// client, or a partner most needs to see the *class* behind, not just the
+// point. Peer-sharing (see data/share.ts) hands the whole forecast to that
+// person by link — the question, your sealed instinct, every comparable case
+// and what it actually took, and where you landed — so they open exactly what
+// you weighed and can add a case or change a number to argue back. The payload
+// rides in the URL *fragment*, never the query string, so it reaches no server,
+// only whoever you send the link to.
+//
+// Unlike the comparison's gut, the whole forecast travels: the recipient isn't
+// being asked to make a fresh blind estimate of their own, they're reviewing
+// yours — the sealed number and the class are the artifact under discussion, so
+// hiding either would leave nothing to argue with.
+
+/** Collapse whitespace and cap a shared string, so a link stays a link. Mirrors
+ *  the normalization the through-line and the other tools' shares apply. */
+function capStr(s: string, n = 120): string {
+  return s.replace(/\s+/g, " ").trim().slice(0, n);
+}
+
+/** A fresh blank Inputs — cloned, with fresh case ids, so a reset can never
+ *  mutate the module-level BLANK or reuse its case objects. */
+function blankInputs(): Inputs {
+  return {
+    question: "",
+    unit: "",
+    inside: null,
+    sealed: false,
+    cases: [freshCase(), freshCase(), freshCase()],
+    adjusted: null,
+    adjustReason: "",
+  };
+}
+
+/** True when the tool holds no real work — nothing named, no estimate, no case
+ *  filled in. A share link adopts a whole forecast ONLY into a blank tool, so
+ *  this is the gate that protects a forecast in progress. Array length is
+ *  ignored: the blank opens with three empty case rows. */
+function isBlankInputs(i: Inputs): boolean {
+  return (
+    !i.question.trim() &&
+    !i.unit.trim() &&
+    i.inside == null &&
+    !i.sealed &&
+    i.cases.every((c) => !c.label.trim() && c.value == null) &&
+    i.adjusted == null &&
+    !i.adjustReason.trim()
+  );
+}
+
+/** The encodable subset of a forecast: the frame, the sealed instinct, the
+ *  reference class, and where you landed — labels capped so a link stays a
+ *  link. */
+function sharePayload(i: Inputs): Record<string, unknown> {
+  return {
+    question: capStr(i.question),
+    unit: capStr(i.unit, 24),
+    inside: i.inside,
+    sealed: i.sealed,
+    cases: i.cases.map((c) => ({ id: c.id, label: capStr(c.label), value: c.value })),
+    adjusted: i.adjusted,
+    adjustReason: capStr(i.adjustReason, 240),
+  };
+}
+
+/** Rebuild a full Inputs from a decoded share payload, defensively — the same
+ *  field-by-field coercion loadInputs uses for localStorage, so a truncated or
+ *  hand-edited link degrades to blank fields, never a throw. Returns null when
+ *  nothing meaningful decoded, so a blank payload can't seed a blank tool. */
+function coerceSharedOutside(data: unknown): Inputs | null {
+  if (!data || typeof data !== "object") return null;
+  const v = data as Partial<Inputs>;
+  const cases: RefCase[] = Array.isArray(v.cases)
+    ? v.cases.map((c): RefCase => ({
+        id: typeof c?.id === "string" ? c.id : newLocalId(),
+        label: typeof c?.label === "string" ? capStr(c.label) : "",
+        value: num(c?.value),
+      }))
+    : blankInputs().cases;
+  const out: Inputs = {
+    question: typeof v.question === "string" ? capStr(v.question) : "",
+    unit: typeof v.unit === "string" ? capStr(v.unit, 24) : "",
+    inside: num(v.inside),
+    sealed: typeof v.sealed === "boolean" ? v.sealed : false,
+    cases: cases.length ? cases : blankInputs().cases,
+    adjusted: num(v.adjusted),
+    adjustReason: typeof v.adjustReason === "string" ? capStr(v.adjustReason, 240) : "",
+  };
+  return isBlankInputs(out) ? null : out;
+}
+
+/** A short, honest read of a shared forecast for the "someone shared this" card:
+ *  its subject and one line naming the class it rests on. Recomputed from the
+ *  shared cases so the card can't claim a base the numbers don't support. */
+function describeSharedOutside(i: Inputs): { subject: string; line: string } {
+  const subject = i.question.trim() || "A forecast";
+  const filled = i.cases.filter((c) => c.value != null && (c.value as number) > 0).length;
+  const line =
+    filled >= 3 ? `${filled} comparable cases, with their real outcomes` : "";
+  return { subject, line };
+}
+
 function fmt(n: number): string {
   // Keep whole numbers clean; show at most one decimal otherwise.
   return Number.isInteger(n) ? String(n) : n.toFixed(1);
@@ -192,6 +304,15 @@ export default function OutsideClient() {
   const [showExample, setShowExample] = useState(false);
   const [conf, setConf] = useState<number>(70);
   const [logged, setLogged] = useState<null | { conf: number; reviewOn: string; n: number }>(null);
+  // A forecast handed in by a share link. `adoptedShare` — it was adopted whole
+  // into a blank tool (banner). `pendingShare` — the tool already held work, so
+  // the shared forecast waits in a card the person can open (replacing their
+  // draft) or dismiss. `copied` — the "copy a link" affordance's transient
+  // confirmation.
+  const [adoptedShare, setAdoptedShare] = useState(false);
+  const [pendingShare, setPendingShare] = useState<Inputs | null>(null);
+  const [copied, setCopied] = useState(false);
+  const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const loaded = loadInputs();
@@ -199,15 +320,82 @@ export default function OutsideClient() {
     // work: pre-fill the subject only when this tool's own field is still blank.
     const carried = readCarriedSubject();
     const seeded = Boolean(carried) && !loaded.question.trim();
-    const next = seeded ? { ...loaded, question: carried } : loaded;
+    let next = seeded ? { ...loaded, question: carried } : loaded;
+
+    // A share link hands a WHOLE forecast in from another person. It's
+    // all-or-nothing, never field-by-field: adopting the entire forecast only
+    // into a blank tool keeps two people's numbers from blending into a nonsense
+    // hybrid. If this tool already holds work (its own, or a carry seed above),
+    // don't touch it — surface the shared forecast as a card the person can open
+    // (replacing their draft) or dismiss.
+    const shared = coerceSharedOutside(readShare("outside"));
+    let adopted = false;
+    let pending: Inputs | null = null;
+    if (shared) {
+      if (isBlankInputs(next)) {
+        next = shared;
+        adopted = true;
+      } else {
+        pending = shared;
+      }
+    }
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setInp(next);
     setHydrated(true);
     if (seeded) setCarriedSeed(carried);
+    if (adopted) setAdoptedShare(true);
+    if (pending) setPendingShare(pending);
     /* eslint-enable react-hooks/set-state-in-effect */
     if (carried) clearCarriedSubject();
+    // Strip the share fragment once read, whether adopted or held pending, so a
+    // refresh doesn't re-apply it and the address bar stops carrying someone
+    // else's forecast. The pending card lives in state, not the URL, from here.
+    if (shared) clearShare();
   }, []);
+
+  // Clear the copy-confirmation timer on unmount so it can't fire into a gone
+  // component.
+  useEffect(
+    () => () => {
+      if (copyTimer.current) clearTimeout(copyTimer.current);
+    },
+    []
+  );
+
+  // Build the share link and put it on the clipboard. Encodes the whole forecast
+  // into the URL fragment — never a server — with the same clipboard-then-
+  // execCommand fallback the flip point, journal, and comparison use.
+  const copyShareLink = useCallback(async () => {
+    if (typeof window === "undefined") return;
+    const token = encodeShare("outside", sharePayload(inp));
+    if (!token) return;
+    const link = `${window.location.origin}/outside#${SHARE_PARAM}=${token}`;
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(link);
+      ok = true;
+    } catch {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = link;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+      } catch {
+        ok = false;
+      }
+    }
+    if (ok) {
+      setCopied(true);
+      if (copyTimer.current) clearTimeout(copyTimer.current);
+      copyTimer.current = setTimeout(() => setCopied(false), 2500);
+    }
+  }, [inp]);
 
   useEffect(() => {
     if (!hydrated || typeof window === "undefined") return;
@@ -265,8 +453,77 @@ export default function OutsideClient() {
 
   const reviewPreview = addDaysISO(todayISO(), REVIEW_DEFAULT_DAYS);
 
+  // The one-line read of a forecast waiting in the pending card.
+  const pendingDesc = pendingShare ? describeSharedOutside(pendingShare) : null;
+
   return (
     <div>
+      {/* ---- Shared with you: adopted whole into a blank tool ---- */}
+      {adoptedShare ? (
+        <div className="mb-5 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-4">
+          <p className="text-sm text-[var(--foreground)] leading-relaxed">
+            <span className="font-medium">
+              You&rsquo;re looking at a forecast someone shared with you.
+            </span>{" "}
+            The estimate and the comparable cases below are theirs &mdash; add a
+            case, change a number to argue back, or{" "}
+            <button
+              type="button"
+              onClick={() => {
+                setInp(blankInputs());
+                setAdoptedShare(false);
+                setLogged(null);
+              }}
+              className="font-medium text-[var(--accent)] underline underline-offset-2 hover:opacity-70 transition-opacity"
+            >
+              start from a blank tool
+            </button>
+            .
+          </p>
+        </div>
+      ) : null}
+
+      {/* ---- Shared with you: held, because the tool already had work ---- */}
+      {pendingShare && pendingDesc ? (
+        <div className="mb-5 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            A forecast was shared with you
+          </p>
+          <p className="mt-2 text-sm font-medium text-[var(--foreground)] leading-relaxed">
+            {pendingDesc.subject}
+          </p>
+          {pendingDesc.line ? (
+            <p className="mt-1 text-sm text-[var(--muted)] leading-relaxed">
+              {pendingDesc.line}
+            </p>
+          ) : null}
+          <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
+            You already have a forecast in progress here. Opening theirs replaces
+            what&rsquo;s in the tool now.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                setInp(pendingShare);
+                setPendingShare(null);
+                setLogged(null);
+              }}
+              className="text-sm font-medium px-4 py-2 rounded-lg bg-[var(--accent)] text-[var(--background)] hover:opacity-90 transition-opacity"
+            >
+              Open it in the tool
+            </button>
+            <button
+              type="button"
+              onClick={() => setPendingShare(null)}
+              className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+            >
+              Dismiss
+            </button>
+          </div>
+        </div>
+      ) : null}
+
       {/* ---- New here? A read-only worked example (never touches the fields) ---- */}
       <div className="mb-5">
         <button
@@ -565,6 +822,34 @@ export default function OutsideClient() {
               </div>
             </div>
           )}
+        </div>
+      ) : null}
+
+      {/* ---- Hand it to someone: the same forecast, carried person to person ---- */}
+      {stats && inp.inside != null ? (
+        <div className="mt-5 rounded-xl border border-[var(--border)] p-5 sm:p-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            Show someone the class
+          </p>
+          <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            The hardest part of an estimate to defend is the one thing this tool
+            makes plain: the <span className="font-medium text-[var(--foreground)]">class</span>{" "}
+            behind the number. Copy a link that carries this whole forecast &mdash;
+            the question, your sealed instinct, every comparable case and what it
+            actually took, and where you landed &mdash; so a manager, a client, or a
+            partner opens exactly what you weighed and can add a case or change a
+            number to argue back. It rides inside the link itself and is sent to no
+            server; only whoever you hand it to can read it.
+          </p>
+          <div className="mt-4">
+            <button
+              type="button"
+              onClick={copyShareLink}
+              className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+            >
+              {copied ? "Copied — the link is on your clipboard" : "Copy a link to this forecast"}
+            </button>
+          </div>
         </div>
       ) : null}
     </div>
