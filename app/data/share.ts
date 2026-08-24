@@ -29,9 +29,10 @@
  * "is this meant for me?" and a version (`v`) so the wrapper can change without
  * silently misreading old links. Each tool owns the shape of its own `d`
  * payload and validates it defensively on the way in — exactly the discipline
- * `loadInputs` uses for localStorage. So today only the flip point reads these,
- * and the comparison or the pre-mortem can adopt the same codec later without
- * touching this file.
+ * `loadInputs` uses for localStorage. The flip point, the comparison, the
+ * pre-mortem, and the reference-class forecast each read their own tag through
+ * this one codec; any further tool can adopt it the same way, without touching
+ * this file.
  *
  * DEFENSIVE THROUGHOUT. Decode never throws: a truncated, hand-edited, or
  * hostile fragment reads as "nothing shared," never as a crash or a half-parsed
