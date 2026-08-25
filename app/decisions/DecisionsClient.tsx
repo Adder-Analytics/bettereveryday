@@ -32,6 +32,9 @@ const toneClass: Record<WorkedTone, string> = {
   open: "border-[var(--border)] text-[var(--muted)]",
   alert: "border-[var(--accent)] text-[var(--accent)]",
   resolved: "border-[var(--border)] text-[var(--muted)] opacity-80",
+  // A draft is unfinished, not scheduled — a dashed edge reads "still open,
+  // pick it back up" without borrowing the accent that means "this is due."
+  draft: "border-dashed border-[var(--border)] text-[var(--muted)]",
 };
 
 function StatusPill({ item }: { item: WorkedItem }) {
@@ -187,7 +190,8 @@ export default function DecisionsClient() {
     );
   }
 
-  const { itemCount, decisionCount, openDecisions, dueDecisions, today } = view;
+  const { itemCount, decisionCount, openDecisions, dueDecisions, draftCount, today } =
+    view;
 
   return (
     <div>
@@ -197,6 +201,12 @@ export default function DecisionsClient() {
             {decisionCount} decision{decisionCount === 1 ? "" : "s"}
           </span>{" "}
           from {itemCount} saved record{itemCount === 1 ? "" : "s"}
+          {draftCount > 0 && (
+            <>
+              {" · "}
+              {draftCount} in progress
+            </>
+          )}
           {openDecisions > 0 && (
             <>
               {" · "}
