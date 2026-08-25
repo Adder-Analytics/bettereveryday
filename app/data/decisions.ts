@@ -25,10 +25,28 @@
  *
  * Same discipline as review.ts: this module *reads* — never writes — composing
  * each tool's own read side (loadLoggedDecisions, loadSavedPremortems,
- * loadTripwires, loadParked). Every tool still owns its storage; this only folds
- * their records into one shape and groups them. The answer-now tools (doors,
- * weigh, compare, …) compute in-session and persist nothing, so they aren't
- * here — the home gathers what was actually kept, and says so.
+ * loadTripwires, loadParked).
+ *
+ * The answer-now tools (doors, weigh, compare, outside, …) were long excluded on
+ * the belief they "persist nothing." That stopped being true: each one keeps the
+ * *last* worksheet you reached its answer on — one slot, overwritten next time —
+ * so you can close the tab and pick the same call back up. That kept worksheet is
+ * real, resumable decision work, and until now it surfaced nowhere but the backup
+ * page; this home, whose whole promise is "everything on one call in one place,"
+ * silently omitted it and told you it didn't exist. So those worksheets now join
+ * the home as *in-progress drafts*: read from the answer-now stores the backup
+ * registry (portable.ts) already knows how to describe, folded into the same
+ * subject grouping — so a decision walked through doors → compare → journal shows
+ * the door sort and the comparison beside the logged forecast, and a call you
+ * only started in a tool that keeps no log is resumable instead of lost. A draft
+ * is deliberately *undated* (the stores keep no timestamp) and never *due* — it
+ * sits at the foot of its group as the live thing still open, and never counts
+ * toward what's scheduled to return. Grouping still keys on the subject line the
+ * carry through-line seeds; a draft with no subject typed is skipped, so an empty
+ * scratch worksheet can't manufacture a phantom decision.
+ *
+ * Every tool still owns its storage; this only folds their records into one shape
+ * and groups them.
  *
  * `groupDecisions` is a pure function of its inputs, so the grouping logic is
  * unit-testable without a browser; `loadDecisions` is the thin browser-reading
@@ -39,6 +57,7 @@ import { loadLoggedDecisions } from "./journal";
 import { loadSavedPremortems } from "./premortem";
 import { loadTripwires } from "./tripwires";
 import { loadParked } from "./parked";
+import { STORES } from "./portable";
 
 function todayISO(): string {
   const d = new Date();
@@ -46,10 +65,15 @@ function todayISO(): string {
   return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
 }
 
-export type WorkedKind = "decision" | "premortem" | "tripwire" | "parked";
+export type WorkedKind =
+  | "decision"
+  | "premortem"
+  | "tripwire"
+  | "parked"
+  | "draft";
 
 /** How an item stands, for the status pill's colour. */
-export type WorkedTone = "open" | "resolved" | "alert";
+export type WorkedTone = "open" | "resolved" | "alert" | "draft";
 
 /**
  * One saved record, normalized across the four persisting tools. The home never
@@ -252,6 +276,54 @@ function parkedItems(today: string): WorkedItem[] {
   });
 }
 
+/**
+ * The answer-now worksheets, as resumable in-progress drafts. Reads each store
+ * the backup registry flags `answerNow` straight from localStorage, pulls its
+ * subject line with the store's own defensive extractor, and skips anything
+ * without a subject typed — so a blank scratch worksheet never becomes a phantom
+ * decision. Undated (the stores keep no timestamp) and never due, so a draft
+ * touches none of the scheduled-return arithmetic; it rides its group as the live
+ * thing still open. The link is just the tool's own page, which restores its last
+ * worksheet on mount — so "pick it back up" lands you exactly where you left off.
+ * Reads only; returns [] on the server or any storage failure.
+ */
+function draftItems(): WorkedItem[] {
+  if (typeof window === "undefined") return [];
+  const out: WorkedItem[] = [];
+  for (const store of STORES) {
+    if (!store.answerNow || !store.subject) continue;
+    let raw: string | null = null;
+    try {
+      raw = window.localStorage.getItem(store.key);
+    } catch {
+      continue; // a locked-down browser can throw on access; skip this store
+    }
+    if (raw == null) continue;
+    const subject = store.subject(raw);
+    if (!subject) continue;
+    let detail: string | null = null;
+    try {
+      detail = store.describe ? store.describe(raw) : null;
+    } catch {
+      detail = null;
+    }
+    out.push({
+      id: `draft:${store.key}`,
+      kind: "draft",
+      toolLabel: store.tool,
+      subject,
+      detail: detail ? `Worksheet open — ${detail}.` : "A worksheet you left open.",
+      status: "in progress",
+      tone: "draft",
+      workedOn: "",
+      dueOn: "",
+      href: store.href,
+      actionLabel: "Pick it back up →",
+    });
+  }
+  return out;
+}
+
 const minISO = (a: string, b: string): string =>
   !a ? b : !b ? a : a <= b ? a : b;
 const maxISO = (a: string, b: string): string =>
@@ -279,7 +351,13 @@ export function groupDecisions(items: WorkedItem[], today: string): DecisionGrou
   const result: DecisionGroup[] = [];
   for (const [key, bucket] of groups) {
     const sorted = [...bucket].sort((a, b) => {
-      const c = a.workedOn.localeCompare(b.workedOn);
+      // Dated records run oldest-first; undated drafts (workedOn "") sink to the
+      // foot of the group, where they read as "and this is still open."
+      let c: number;
+      if (a.workedOn && b.workedOn) c = a.workedOn.localeCompare(b.workedOn);
+      else if (a.workedOn) c = -1;
+      else if (b.workedOn) c = 1;
+      else c = 0;
       return c !== 0 ? c : a.id.localeCompare(b.id);
     });
     let firstOn = "";
@@ -330,7 +408,7 @@ export function groupDecisions(items: WorkedItem[], today: string): DecisionGrou
 
 export type DecisionsView = {
   groups: DecisionGroup[];
-  /** Total saved records across the tools. */
+  /** Total saved records across the tools, drafts included. */
   itemCount: number;
   /** Distinct decisions (groups). */
   decisionCount: number;
@@ -338,6 +416,8 @@ export type DecisionsView = {
   openDecisions: number;
   /** Decisions with something due today or overdue. */
   dueDecisions: number;
+  /** In-progress answer-now worksheets you can pick back up. */
+  draftCount: number;
   today: string;
 };
 
@@ -348,11 +428,13 @@ export type DecisionsView = {
  */
 export function loadDecisions(): DecisionsView {
   const today = todayISO();
+  const drafts = draftItems();
   const items = [
     ...journalItems(today),
     ...premortemItems(today),
     ...tripwireItems(today),
     ...parkedItems(today),
+    ...drafts,
   ];
   const groups = groupDecisions(items, today);
   return {
@@ -361,6 +443,7 @@ export function loadDecisions(): DecisionsView {
     decisionCount: groups.length,
     openDecisions: groups.filter((g) => g.openCount > 0).length,
     dueDecisions: groups.filter((g) => g.hasDue).length,
+    draftCount: drafts.length,
     today,
   };
 }

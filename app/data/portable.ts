@@ -59,7 +59,43 @@ export type StoreDescriptor = {
   /** Optional friendly count of what's inside. Defensive; returns null if the
    *  shape is unfamiliar. Never throws. */
   describe?: (raw: string) => string | null;
+  /**
+   * True for an "answer-now" worksheet — a tool that gives you a conclusion in a
+   * single sitting and keeps only the *last* worksheet you reached it on (one
+   * slot, overwritten next time), as opposed to the tools that keep a durable
+   * log of every record. The decision home (/decisions) reads this flag to
+   * surface those single-slot worksheets as resumable "in progress" drafts, so
+   * work you left half-done in a tool that keeps no log isn't invisible.
+   */
+  answerNow?: boolean;
+  /**
+   * Pull the decision line out of a stored worksheet — the "what are you
+   * deciding?" field the carry through-line seeds. Co-located here with
+   * `describe` because both are the per-tool schema knowledge this file already
+   * owns; the decision home stays schema-agnostic and just calls this. Defensive:
+   * returns a trimmed non-empty string, or null for a blank or unfamiliar shape,
+   * and never throws. Only meaningful on an `answerNow` store.
+   */
+  subject?: (raw: string) => string | null;
 };
+
+/**
+ * A defensive extractor factory: read the named string field out of a stored
+ * worksheet object and return it trimmed, or null for a blank value or a shape
+ * that isn't a plain object. Never throws — the decision home uses this only for
+ * grouping and display, so a malformed store degrades to "nothing to show," not
+ * a crash. Each answer-now store names the field its subject lives in (the field
+ * the carry through-line pre-fills): `decision` for most, `question` for the
+ * outside view, `thing` for quit-or-stay, `move` for the consequence trace.
+ */
+function subjectField(field: string): (raw: string) => string | null {
+  return (raw) => {
+    const v = parse(raw);
+    if (!v || typeof v !== "object") return null;
+    const s = (v as Record<string, unknown>)[field];
+    return typeof s === "string" && s.trim() !== "" ? s.trim() : null;
+  };
+}
 
 /** Safe JSON.parse — returns null instead of throwing on bad input. */
 function parse(raw: string): unknown {
@@ -164,6 +200,8 @@ export const STORES: StoreDescriptor[] = [
     tool: "Flip point",
     href: "/weigh",
     label: "The either/or you last weighed",
+    answerNow: true,
+    subject: subjectField("decision"),
     describe: (raw) => (parse(raw) ? "a decision in progress" : null),
   },
   {
@@ -198,6 +236,8 @@ export const STORES: StoreDescriptor[] = [
     tool: "Consequence trace",
     href: "/trace",
     label: "The consequence chain you last traced",
+    answerNow: true,
+    subject: subjectField("move"),
     describe: (raw) => (parse(raw) ? "a trace in progress" : null),
   },
   // The answer-now instruments. Each one gives you a conclusion in a single
@@ -214,6 +254,8 @@ export const STORES: StoreDescriptor[] = [
     tool: "Which door is this?",
     href: "/doors",
     label: "The call you last sorted into a one-way or two-way door",
+    answerNow: true,
+    subject: subjectField("decision"),
     describe: (raw) => {
       const v = parse(raw);
       if (!v || typeof v !== "object") return null;
@@ -234,6 +276,8 @@ export const STORES: StoreDescriptor[] = [
     tool: "What else could you do?",
     href: "/widen",
     label: "The either/or you last cracked open, and the options you named",
+    answerNow: true,
+    subject: subjectField("decision"),
     describe: (raw) => {
       const v = parse(raw);
       if (!v || typeof v !== "object") return null;
@@ -248,6 +292,8 @@ export const STORES: StoreDescriptor[] = [
     tool: "The halo comes off",
     href: "/compare",
     label: "The options and factors in your last side-by-side comparison",
+    answerNow: true,
+    subject: subjectField("decision"),
     describe: (raw) => {
       const v = parse(raw);
       if (!v || typeof v !== "object") return null;
@@ -262,6 +308,8 @@ export const STORES: StoreDescriptor[] = [
     tool: "You are not the exception",
     href: "/outside",
     label: "The forecast you last set against its reference class",
+    answerNow: true,
+    subject: subjectField("question"),
     describe: (raw) => {
       const v = parse(raw);
       if (!v || typeof v !== "object") return null;
@@ -281,6 +329,8 @@ export const STORES: StoreDescriptor[] = [
     tool: "Could you be wrong?",
     href: "/test",
     label: "The assumption you last stress-tested for what would prove it wrong",
+    answerNow: true,
+    subject: subjectField("decision"),
     describe: (raw) => (parse(raw) ? "a reality-test in progress" : null),
   },
   {
@@ -288,6 +338,8 @@ export const STORES: StoreDescriptor[] = [
     tool: "Would you start it today?",
     href: "/quit",
     label: "The commitment you last weighed quitting, sunk cost set aside",
+    answerNow: true,
+    subject: subjectField("thing"),
     describe: (raw) => (parse(raw) ? "a quit-or-stay in progress" : null),
   },
   {
@@ -295,6 +347,8 @@ export const STORES: StoreDescriptor[] = [
     tool: "Ask your older self",
     href: "/regret",
     label: "The pull you last played forward to ten minutes, months, and years",
+    answerNow: true,
+    subject: subjectField("decision"),
     describe: (raw) => (parse(raw) ? "an older-self check in progress" : null),
   },
   {
@@ -302,6 +356,8 @@ export const STORES: StoreDescriptor[] = [
     tool: "Decided isn't done",
     href: "/act",
     label: "The if-then plan you last built to make a decision actually move",
+    answerNow: true,
+    subject: subjectField("decision"),
     describe: (raw) => (parse(raw) ? "an action plan in progress" : null),
   },
   {
@@ -309,6 +365,8 @@ export const STORES: StoreDescriptor[] = [
     tool: "The outcome isn't the verdict",
     href: "/debrief",
     label: "The past call you last graded apart from how it happened to turn out",
+    answerNow: true,
+    subject: subjectField("decision"),
     describe: (raw) => (parse(raw) ? "a debrief in progress" : null),
   },
   {

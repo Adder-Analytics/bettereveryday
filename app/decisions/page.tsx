@@ -46,7 +46,8 @@ export default function DecisionsPage() {
 
       <div className="mt-16 pt-8 border-t border-[var(--border)]">
         <p className="text-sm text-[var(--muted)] leading-relaxed">
-          Only the tools that keep a record appear here &mdash; the{" "}
+          Two kinds of thing gather here. The tools that keep a full log &mdash;
+          the{" "}
           <Link
             href="/decide"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
@@ -74,11 +75,14 @@ export default function DecisionsPage() {
           >
             cooling-off
           </Link>{" "}
-          tool. The answer-now tools work in the moment and keep nothing, so
-          there&rsquo;s nothing of theirs to gather. Records line up as one
-          decision when they share the same line &mdash; carried tool to tool it
-          lines up on its own; typed separately, each stands alone. Because it all
-          lives only in this browser,{" "}
+          tool &mdash; show every record you saved. The answer-now tools (the
+          door, the flip point, the comparison, and the rest) keep only the{" "}
+          <em>last</em> worksheet you reached an answer on &mdash; so those show
+          up as an <em>in-progress</em> draft you can pick back up, marked with a
+          dashed edge and no date, one per tool. Records line up as one decision
+          when they share the same line &mdash; carried tool to tool it lines up
+          on its own; typed separately, each stands alone. Because it all lives
+          only in this browser,{" "}
           <Link
             href="/data"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
