@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
+  buildReturnCalendar,
   loadReviewQueue,
   whenLabel,
   type ReviewItem,
@@ -68,6 +69,29 @@ function ItemCard({ item, due }: { item: ReviewItem; due: boolean }) {
   );
 }
 
+// The desk's whole point is that the return shouldn't ride on memory — but until
+// you open this page, it does. This hands every scheduled return to the calendar
+// you already check, built in the browser and downloaded, never sent. Same blob-
+// download shape the per-tool exports use; if the browser blocks it, every
+// return is still safe here.
+function downloadReturnCalendar(items: ReviewItem[], today: string) {
+  try {
+    const blob = new Blob([buildReturnCalendar(items)], {
+      type: "text/calendar",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `return-desk-${today}.ics`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch {
+    /* download blocked — every return is still safe in this browser and here */
+  }
+}
+
 export default function ReviewClient() {
   const [queue, setQueue] = useState<ReviewQueue | null>(null);
 
@@ -84,8 +108,9 @@ export default function ReviewClient() {
     );
   }
 
-  const { due, upcoming, backup } = queue;
+  const { due, upcoming, backup, today } = queue;
   const nothingScheduled = due.length === 0 && upcoming.length === 0;
+  const allItems = [...due, ...upcoming];
 
   return (
     <div>
@@ -176,6 +201,34 @@ export default function ReviewClient() {
               </p>
             </section>
           )}
+        </div>
+      )}
+
+      {/* Take the desk with you. The queue above is only ever seen when you
+          remember to open this page; this hands every return to the calendar you
+          already check, dated and linked back to where you answer it. */}
+      {!nothingScheduled && (
+        <div className="mt-12 pt-8 border-t border-[var(--border)]">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-3">
+            Take the desk with you
+          </h2>
+          <p className="text-sm text-[var(--muted)] leading-relaxed max-w-md mb-5">
+            One calendar file with every return above &mdash; each one dated, and
+            linked straight back to where you answer it. Import it once and the
+            day arrives on the calendar you already check, instead of waiting for
+            you to remember this page. It&rsquo;s built here in your browser and
+            downloaded to your device &mdash; nothing is sent anywhere.
+          </p>
+          <button
+            type="button"
+            onClick={() => downloadReturnCalendar(allItems, today)}
+            className="inline-flex items-center gap-2 rounded-md border border-[var(--border)] bg-[var(--card)] px-4 py-2.5 text-sm font-medium text-[var(--foreground)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+          >
+            {`Add ${allItems.length} ${
+              allItems.length === 1 ? "return" : "returns"
+            } to your calendar (.ics)`}{" "}
+            &darr;
+          </button>
         </div>
       )}
     </div>
