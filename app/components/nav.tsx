@@ -3,6 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { countDueReviews } from "../data/journal";
+import { countDueTripwireChecks } from "../data/premortem";
+import { countDueTripwires } from "../data/tripwires";
+import { countDueParked } from "../data/parked";
 
 /**
  * Site navigation.
@@ -19,6 +23,34 @@ import { useEffect, useRef, useState } from "react";
  * three ways a person signals they're done with it — and the trigger reports its
  * state to assistive tech. Movement is a short ease-out; anyone who asked their
  * system for less motion gets none (handled globally).
+ *
+ * The "Decide" slot is the guided front door (`/find`), not one specific tool.
+ * For many sessions the nav omitted the single destination most useful to a
+ * person actually facing a decision — the guided door that asks a question or
+ * two and hands you the one instrument for your moment — while spending a slot on
+ * `/decide`, which is just one of the toolkit's instruments (the journal). The
+ * fix isn't a fourteenth flat link: a lone tool doesn't belong at nav level, but
+ * the toolkit's *entry* does. So the nav now carries both of the kit's doors —
+ * "Tools" (browse every instrument by moment) and "Decide" (the guided door that
+ * routes you straight to one) — and the journal stays one click away from each of
+ * them, from `/decisions`, and from the homepage, exactly as every other
+ * instrument is. As a bonus it unpicks a real snag: "Decide" and "Decisions" sat
+ * adjacent pointing at unrelated things; now they read cleanly as the action
+ * (start deciding) beside the archive (the calls you've saved).
+ *
+ * The "Review" item carries a live due count. The whole site runs on one loop —
+ * decide now, come back on the day to grade it — but the "something's waiting for
+ * an answer" signal lived only on the homepage, so a person reading an essay or
+ * working a tool got no nudge that a review or a tripwire check had come due. The
+ * nav is on every page, so it's the honest home for that ambient signal: the
+ * count folds in the same four debts the return desk and the homepage badge
+ * count (journal reviews, pre-mortem checks, standalone tripwires, cooled-off
+ * decisions), read from the exact shared `countDue*` helpers so the three
+ * surfaces can never disagree. It's read after mount and re-read on every
+ * navigation (so answering something and moving on updates it), renders nothing
+ * on the server or first client paint (no hydration mismatch, no placeholder for
+ * the common case of nothing due), and appears only when the count is real — the
+ * same restraint the homepage badge shows.
  */
 
 const LINKS: { href: string; label: string; title?: string }[] = [
@@ -29,7 +61,7 @@ const LINKS: { href: string; label: string; title?: string }[] = [
   { href: "/models", label: "Models" },
   { href: "/playbook", label: "Playbook" },
   { href: "/tools", label: "Tools" },
-  { href: "/decide", label: "Decide" },
+  { href: "/find", label: "Decide", title: "Answer a question or two, get the one tool for your decision" },
   { href: "/decisions", label: "Decisions" },
   { href: "/review", label: "Review" },
   { href: "/practice", label: "Practice" },
@@ -40,6 +72,7 @@ const LINKS: { href: string; label: string; title?: string }[] = [
 export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [due, setDue] = useState(0);
   const panelId = "mobile-nav-panel";
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -51,6 +84,23 @@ export function Nav() {
        the external navigation state; closing on route change is the whole point
        and can't be derived in render. Same intentional use as FindClient. */
     setOpen(false);
+    /* eslint-enable react-hooks/set-state-in-effect */
+  }, [pathname]);
+
+  // The live "something's due" count on the Review item. Read after mount (so the
+  // server and first paint render no badge — no hydration mismatch) and re-read
+  // on every navigation, so answering a review and moving on updates the signal.
+  // Reuses the exact shared debt counters the return desk and the homepage badge
+  // use, so the three surfaces can't disagree.
+  useEffect(() => {
+    const total =
+      countDueReviews() +
+      countDueTripwireChecks() +
+      countDueTripwires() +
+      countDueParked();
+    /* eslint-disable react-hooks/set-state-in-effect -- one-time read from
+       browser storage after mount/navigation; intentional, can't run in render. */
+    setDue(total);
     /* eslint-enable react-hooks/set-state-in-effect */
   }, [pathname]);
 
@@ -89,16 +139,21 @@ export function Nav() {
 
         {/* Wide screens: the full set, inline. Unchanged from before. */}
         <nav className="hidden md:flex flex-wrap items-center justify-end gap-x-5 gap-y-1 text-sm text-[var(--muted)]">
-          {LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              title={link.title}
-              className="hover:text-[var(--foreground)] transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {LINKS.map((link) => {
+            const showDue = link.href === "/review" && due > 0;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                title={link.title}
+                aria-label={showDue ? `Review — ${due} due for review` : undefined}
+                className="inline-flex items-center hover:text-[var(--foreground)] transition-colors"
+              >
+                {link.label}
+                {showDue && <DueCount due={due} />}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Small screens: one control that opens the panel. */}
@@ -147,19 +202,22 @@ export function Nav() {
           <ul className="max-w-2xl mx-auto px-4 py-2 flex flex-col">
             {LINKS.map((link) => {
               const active = pathname === link.href;
+              const showDue = link.href === "/review" && due > 0;
               return (
                 <li key={link.href}>
                   <Link
                     href={link.href}
                     title={link.title}
                     aria-current={active ? "page" : undefined}
-                    className={`block rounded-md px-2 py-2.5 text-[15px] active:scale-[0.99] transition-[color,background-color,transform] duration-150 ${
+                    aria-label={showDue ? `Review — ${due} due for review` : undefined}
+                    className={`flex items-center rounded-md px-2 py-2.5 text-[15px] active:scale-[0.99] transition-[color,background-color,transform] duration-150 ${
                       active
                         ? "text-[var(--foreground)] font-medium bg-[var(--card)]"
                         : "text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--card)]"
                     }`}
                   >
                     {link.label}
+                    {showDue && <DueCount due={due} />}
                   </Link>
                 </li>
               );
@@ -168,5 +226,22 @@ export function Nav() {
         </nav>
       </div>
     </header>
+  );
+}
+
+/**
+ * The compact due count that rides the "Review" item when something's waiting.
+ * Purely decorative to assistive tech (the count is spoken through the link's
+ * `aria-label`), so it's `aria-hidden`; the accent fill reads as "attention"
+ * without a full pill of chrome. Only ever rendered when `due > 0`.
+ */
+function DueCount({ due }: { due: number }) {
+  return (
+    <span
+      aria-hidden
+      className="ml-1.5 inline-flex min-w-[1.05rem] items-center justify-center rounded-full bg-[var(--accent)] px-1 py-px text-[10px] font-semibold leading-none text-[var(--background)]"
+    >
+      {due}
+    </span>
   );
 }
