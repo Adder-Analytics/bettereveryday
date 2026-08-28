@@ -181,7 +181,7 @@ export const tools: Tool[] = [
     does: "Settles the real choice when you're hot — decide-now-or-later — then hands you two research-backed ways to manufacture the distance to see it straight.",
     payoff: "now",
     models: ["self-distancing"],
-    essays: ["the-option-to-wait"],
+    essays: ["advice-you-dont-take", "the-option-to-wait"],
   },
   {
     id: "regret",
@@ -193,6 +193,7 @@ export const tools: Tool[] = [
     does: "Plays the pull forward to three horizons — ten minutes, ten months, ten years — reads how it changes across them, and weighs it against the regret you can't feel now: the road not taken. So a feeling that won't last can't outvote the one that will.",
     payoff: "now",
     models: ["self-distancing"],
+    essays: ["advice-you-dont-take"],
   },
   {
     id: "tripwire",
@@ -215,7 +216,7 @@ export const tools: Tool[] = [
     does: "Declares the plan dead before it starts, writes the history of the failure, then turns each cause into a fix, an accepted risk, or a tripwire on your calendar.",
     payoff: "later",
     models: ["pre-mortem", "inversion"],
-    essays: ["hold-the-funeral-first", "advice-you-dont-take"],
+    essays: ["hold-the-funeral-first"],
   },
   {
     id: "decide",
