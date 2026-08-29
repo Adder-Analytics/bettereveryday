@@ -132,6 +132,20 @@ const nodes: Record<string, TriageNode> = {
         },
       },
       {
+        id: "advise-self",
+        label: "I could tell a friend exactly what to do — but I can't see my own version straight.",
+        detail: "Not hot, just fogged: identical dilemma, obvious to me for anyone else, a blank for me.",
+        rec: {
+          toolId: "advise",
+          because:
+            "That's Solomon's paradox — you reason more wisely about a friend's dilemma than your own, and it needs no heat. Put your call in a friend's name, say what you'd tell them, then face the half the reframe skips: would you take that advice? If not, the decision was never unclear — the obstacle was, and naming it is the work.",
+          then: {
+            toolId: "regret",
+            note: "If the pull is really about how a feeling will age rather than advice you won't take, play it forward to your older self across the three horizons.",
+          },
+        },
+      },
+      {
         id: "whether-or-not",
         label: "It's a yes-or-no — whether or not to do this one thing.",
         detail: "Take the job or not, make the move or not. One option, weighed against nothing.",

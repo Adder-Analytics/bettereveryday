@@ -352,6 +352,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "an older-self check in progress" : null),
   },
   {
+    key: "advise:v1",
+    tool: "Advise a friend",
+    href: "/advise",
+    label: "The call you last put in a friend's name to hear your own advice on it",
+    answerNow: true,
+    subject: subjectField("decision"),
+    describe: (raw) => (parse(raw) ? "an advise-a-friend pass in progress" : null),
+  },
+  {
     key: "act:v1",
     tool: "Decided isn't done",
     href: "/act",

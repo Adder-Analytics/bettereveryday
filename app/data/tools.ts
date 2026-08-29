@@ -196,6 +196,18 @@ export const tools: Tool[] = [
     essays: ["advice-you-dont-take"],
   },
   {
+    id: "advise",
+    href: "/advise",
+    name: "Advise a Friend",
+    short: "Advise a friend",
+    when: "You could tell a friend exactly what to do in your situation — but your own identical version stays a fog. You're not hot, just unable to see your own call the way you'd see anyone else's.",
+    ask: "What would I tell a friend in this spot — and would I actually take that advice myself?",
+    does: "Puts your decision in a friend's name so the answer comes clear (Solomon's paradox), then asks the harder half: would you take it? If not, it names the real obstacle — fear, sunk cost, other people's opinion, the comfort of not choosing — and hands you the tool built for it.",
+    payoff: "now",
+    models: ["self-distancing"],
+    essays: ["advice-you-dont-take"],
+  },
+  {
     id: "tripwire",
     href: "/tripwire",
     name: "Set a Tripwire",
@@ -350,7 +362,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "widen", "weigh", "compare", "outside", "test", "trace", "cool", "regret", "quit"],
+    toolIds: ["doors", "widen", "weigh", "compare", "outside", "test", "trace", "cool", "regret", "advise", "quit"],
   },
   {
     id: "big-commitment",
