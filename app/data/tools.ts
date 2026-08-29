@@ -181,7 +181,7 @@ export const tools: Tool[] = [
     does: "Settles the real choice when you're hot — decide-now-or-later — then hands you two research-backed ways to manufacture the distance to see it straight.",
     payoff: "now",
     models: ["self-distancing"],
-    essays: ["the-option-to-wait"],
+    essays: ["advice-you-dont-take", "the-option-to-wait"],
   },
   {
     id: "regret",
@@ -193,6 +193,19 @@ export const tools: Tool[] = [
     does: "Plays the pull forward to three horizons — ten minutes, ten months, ten years — reads how it changes across them, and weighs it against the regret you can't feel now: the road not taken. So a feeling that won't last can't outvote the one that will.",
     payoff: "now",
     models: ["self-distancing"],
+    essays: ["advice-you-dont-take"],
+  },
+  {
+    id: "advise",
+    href: "/advise",
+    name: "Advise a Friend",
+    short: "Advise a friend",
+    when: "You could tell a friend exactly what to do in your situation — but your own identical version stays a fog. You're not hot, just unable to see your own call the way you'd see anyone else's.",
+    ask: "What would I tell a friend in this spot — and would I actually take that advice myself?",
+    does: "Puts your decision in a friend's name so the answer comes clear (Solomon's paradox), then asks the harder half: would you take it? If not, it names the real obstacle — fear, sunk cost, other people's opinion, the comfort of not choosing — and hands you the tool built for it.",
+    payoff: "now",
+    models: ["self-distancing"],
+    essays: ["advice-you-dont-take"],
   },
   {
     id: "tripwire",
@@ -215,7 +228,7 @@ export const tools: Tool[] = [
     does: "Declares the plan dead before it starts, writes the history of the failure, then turns each cause into a fix, an accepted risk, or a tripwire on your calendar.",
     payoff: "later",
     models: ["pre-mortem", "inversion"],
-    essays: ["hold-the-funeral-first", "advice-you-dont-take"],
+    essays: ["hold-the-funeral-first"],
   },
   {
     id: "decide",
@@ -349,7 +362,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "widen", "weigh", "compare", "outside", "test", "trace", "cool", "regret", "quit"],
+    toolIds: ["doors", "widen", "weigh", "compare", "outside", "test", "trace", "cool", "regret", "advise", "quit"],
   },
   {
     id: "big-commitment",
