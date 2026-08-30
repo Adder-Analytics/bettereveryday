@@ -243,6 +243,20 @@ const nodes: Record<string, TriageNode> = {
         },
       },
       {
+        id: "need-more",
+        label: "I keep feeling I need to know more before I can decide.",
+        detail: "One more data point, one more opinion, one more week of research — and I can't tell if that's diligence or a way to put off deciding.",
+        rec: {
+          toolId: "enough",
+          because:
+            "Run the value-of-information test before you gather another thing: name the one fact you're waiting on, then say what you'd do under each way it could turn out. If your move is the same either way, you already have enough — more research is delay, not diligence. Only a fact that would actually change the call is worth chasing, and only when it's cheap and in time.",
+          then: {
+            toolId: "test",
+            note: "If the missing fact would change the call, don't predict it — design the cheapest real test that would settle it before you commit.",
+          },
+        },
+      },
+      {
         id: "sunk",
         label: "I've put years or money in, and can't tell if I should walk away.",
         rec: {

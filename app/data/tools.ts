@@ -137,6 +137,17 @@ export const tools: Tool[] = [
     essays: ["the-plan-was-never-tried"],
   },
   {
+    id: "enough",
+    href: "/enough",
+    name: "Enough to Decide?",
+    short: "Enough",
+    when: "You keep telling yourself you need to know more before you can decide — one more data point, one more opinion, one more week of research. You can't tell if that's diligence or a way to not decide.",
+    ask: "Would what I'm about to go find out actually change my call — or do I already have enough?",
+    does: "Runs Hubbard's value-of-information test without the math: name the one thing you're waiting to learn, say what you'd do under each way it could land, and if the answer's the same either way, you already have enough — more research is delay. If it would flip the call, it's worth getting only when it's cheap and in time, and hands you the tool for that.",
+    payoff: "now",
+    models: ["value-of-information"],
+  },
+  {
     id: "quit",
     href: "/quit",
     name: "Would You Start It Today?",
@@ -362,7 +373,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "widen", "weigh", "compare", "outside", "test", "trace", "cool", "regret", "advise", "quit"],
+    toolIds: ["doors", "widen", "weigh", "compare", "outside", "test", "enough", "trace", "cool", "regret", "advise", "quit"],
   },
   {
     id: "big-commitment",

@@ -91,6 +91,14 @@ export const models: Model[] = [
     essays: ["the-flip-point", "decision-quality"],
   },
   {
+    id: "value-of-information",
+    name: "Value of Information",
+    domain: "Decisions",
+    tagline: "More information is only worth gathering if it could actually change what you'd do.",
+    explanation:
+      "Douglas Hubbard's core finding in How to Measure Anything: the value of a measurement is not how interesting it is or how confident it makes you feel — it is only what it changes about a decision, and by that test most of what people agonize over learning is worth almost nothing, while the few things that would actually move the call go unmeasured. The idea comes from decision theory (Ronald Howard coined 'value of information' in the 1960s), where it's computed as how much the best expected outcome improves once you know a fact — and it's exactly zero when the fact can't change which option wins. The practical form needs no math. For the thing you feel you must find out first, ask what you'd do under each way it could turn out. If your move is the same either way, the information has no decision value: you already have enough, and more research is delay wearing the costume of diligence — which is what analysis paralysis almost always is, not a genuine shortage of information but a reluctance to commit, defended as needing more. If your move would flip, the information is worth having — but only when you can get it cheaply and before the decision has to be made. Past that point, more waiting doesn't buy a better call; it just postpones the same one. This is the qualitative twin of the decision threshold's rule that only a fact which could move you across the flip point is worth knowing — the same test, run before you've put numbers on anything.",
+  },
+  {
     id: "reversibility",
     name: "Reversibility",
     domain: "Decisions",
