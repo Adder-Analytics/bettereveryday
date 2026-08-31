@@ -148,6 +148,17 @@ export const tools: Tool[] = [
     models: ["value-of-information"],
   },
   {
+    id: "stop",
+    href: "/stop",
+    name: "When Do You Stop Looking?",
+    short: "Stop looking",
+    when: "You're searching — apartments, jobs, candidates, a used car — and they come one at a time. Every decent one asks the same question: take it, or hold out for something better? You can't tell if you're being careful or just never satisfied.",
+    ask: "Have I looked at enough to commit to this one — or am I settling early, or holding out too long?",
+    does: "Runs the secretary-problem answer without the math: look at (and pass) the first ~37% of the field to learn what good looks like, then take the first that beats them all. Names the two failure modes — grabbing the first shiny thing, and passing the best one hoping — and tells you which side of the line you're on right now.",
+    payoff: "now",
+    models: ["optimal-stopping"],
+  },
+  {
     id: "quit",
     href: "/quit",
     name: "Would You Start It Today?",
@@ -373,7 +384,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "widen", "weigh", "compare", "outside", "test", "enough", "trace", "cool", "regret", "advise", "quit"],
+    toolIds: ["doors", "widen", "weigh", "compare", "outside", "test", "enough", "stop", "trace", "cool", "regret", "advise", "quit"],
   },
   {
     id: "big-commitment",

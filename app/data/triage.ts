@@ -188,6 +188,20 @@ const nodes: Record<string, TriageNode> = {
         },
       },
       {
+        id: "keep-looking",
+        label: "There's always another option — I can't tell when to stop looking.",
+        detail: "Apartments, jobs, candidates coming one at a time; each is take-it-or-leave-it, and I might be settling early or holding out too long.",
+        rec: {
+          toolId: "stop",
+          because:
+            "When options arrive in a sequence and passing is final, there's a proven answer: look at (and pass) the first 37% to learn what good looks like, then take the first that beats them all. It names the two ways people fail — grabbing the first shiny thing, and passing the best one hoping — and tells you which side of the line you're on right now.",
+          then: {
+            toolId: "act",
+            note: "When one clears the bar, commit it before it's gone — turn “this is the one” into the first concrete move.",
+          },
+        },
+      },
+      {
         id: "leaning-unsure",
         label: "I keep leaning one way, but can't tell if it's the real call or just how I feel right now.",
         detail: "Not hot exactly — a pull toward comfort, or a new thing's shine, that I can't tell is durable.",
