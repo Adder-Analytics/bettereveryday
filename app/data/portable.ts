@@ -343,6 +343,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a value-of-information check in progress" : null),
   },
   {
+    key: "stop:v1",
+    tool: "When do you stop looking?",
+    href: "/stop",
+    label: "The search you last worked out a look-then-leap rule for",
+    answerNow: true,
+    subject: subjectField("search"),
+    describe: (raw) => (parse(raw) ? "a stopping-rule check in progress" : null),
+  },
+  {
     key: "quit:v1",
     tool: "Would you start it today?",
     href: "/quit",
