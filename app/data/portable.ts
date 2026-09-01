@@ -352,6 +352,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a stopping-rule check in progress" : null),
   },
   {
+    key: "ruin:v1",
+    tool: "Can you survive the worst case?",
+    href: "/ruin",
+    label: "The call you last checked for a downside you couldn't recover from",
+    answerNow: true,
+    subject: subjectField("decision"),
+    describe: (raw) => (parse(raw) ? "a survivability check in progress" : null),
+  },
+  {
     key: "quit:v1",
     tool: "Would you start it today?",
     href: "/quit",

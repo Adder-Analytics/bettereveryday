@@ -122,6 +122,20 @@ const nodes: Record<string, TriageNode> = {
         },
       },
       {
+        id: "downside-scary",
+        label: "The upside is real — but there's a downside I keep waving off.",
+        detail: "\"It probably won't happen.\" Maybe not — but if it did, I'm not sure I'd recover from it.",
+        rec: {
+          toolId: "ruin",
+          because:
+            "Before you weigh the odds or the upside, run the survival check they both assume: name the worst realistic outcome and ask whether you'd come back from it. If you'd recover, this is an ordinary risk call — go weigh it. If you wouldn't, no odds and no upside justify it, because there's no \"on average\" for someone who's out of the game — so don't refuse the goal, refuse the un-survivable version of it and cap the downside below ruin.",
+          then: {
+            toolId: "widen",
+            note: "If the worst case is one you couldn't take, widen the frame to find the version of the same ambition whose downside you'd survive.",
+          },
+        },
+      },
+      {
         id: "hot",
         label: "I'm deciding while hot.",
         detail: "Angry, panicked, infatuated, or rushed by a clock.",

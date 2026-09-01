@@ -77,6 +77,17 @@ export const tools: Tool[] = [
     models: ["reversibility"],
   },
   {
+    id: "ruin",
+    href: "/ruin",
+    name: "Can You Survive the Worst Case?",
+    short: "Survive it",
+    when: "A call with real upside — but a bad tail you keep waving off with \"it probably won't happen.\" You're weighing the odds and the reward, and haven't stopped to ask whether the worst case is one you'd actually walk away from.",
+    ask: "If the worst realistic outcome happened, would I recover — or is this a bet I can't afford to lose?",
+    does: "Runs the survival check the rest of the kit quietly defers to. Separates a loss you'd recover from (an ordinary risk call — go weigh it) from a ruin you can't come back from, where no odds and no upside justify it. For a ruin, it doesn't say \"don't\" — it hands you the way to cap the downside below ruin and take the version you'd survive.",
+    payoff: "now",
+    models: ["ruin", "margin-of-safety"],
+  },
+  {
     id: "widen",
     href: "/widen",
     name: "What Else Could You Do?",
@@ -384,7 +395,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "widen", "weigh", "compare", "outside", "test", "enough", "stop", "trace", "cool", "regret", "advise", "quit"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "outside", "test", "enough", "stop", "trace", "cool", "regret", "advise", "quit"],
   },
   {
     id: "big-commitment",
