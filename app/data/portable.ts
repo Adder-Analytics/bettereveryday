@@ -334,6 +334,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a reality-test in progress" : null),
   },
   {
+    key: "incentives:v1",
+    tool: "Who gains if you say yes?",
+    href: "/incentives",
+    label: "The recommendation you last checked for the messenger's incentive",
+    answerNow: true,
+    subject: subjectField("decision"),
+    describe: (raw) => (parse(raw) ? "an incentive check in progress" : null),
+  },
+  {
     key: "enough:v1",
     tool: "Enough to decide?",
     href: "/enough",

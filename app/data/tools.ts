@@ -148,6 +148,17 @@ export const tools: Tool[] = [
     essays: ["the-plan-was-never-tried"],
   },
   {
+    id: "incentives",
+    href: "/incentives",
+    name: "Who Gains If You Say Yes?",
+    short: "Who gains",
+    when: "Someone's recommending, selling, or urging you toward a choice — an adviser, an agent, a salesperson, a boss, a friend with a stake — and they've got something to gain from your yes. The advice might be right, but you can't tell how much is the advice and how much is the incentive.",
+    ask: "Once I subtract what the messenger gets out of my yes, does this recommendation still hold?",
+    does: "Runs Munger's 'show me the incentive' on the advice you were handed. Separates a source whose interests track yours (weigh it on the merits) from one who wins whether or not you do (worth what it'd be worth from someone unpaid) — and where they diverge, hands you the ways to get the incentive-free version rather than just distrust everyone.",
+    payoff: "now",
+    models: ["incentive-structures"],
+  },
+  {
     id: "enough",
     href: "/enough",
     name: "Enough to Decide?",
@@ -395,7 +406,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "outside", "test", "enough", "stop", "trace", "cool", "regret", "advise", "quit"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "quit"],
   },
   {
     id: "big-commitment",

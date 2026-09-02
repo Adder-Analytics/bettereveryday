@@ -271,6 +271,20 @@ const nodes: Record<string, TriageNode> = {
         },
       },
       {
+        id: "being-sold",
+        label: "Someone's pushing this — and they stand to gain from my yes.",
+        detail: "An adviser, an agent, a salesperson, a boss, a friend with a stake. The advice might be right, but I can't tell how much is the advice and how much is their interest.",
+        rec: {
+          toolId: "incentives",
+          because:
+            "Before you weigh advice you were handed, find out whose side the incentive is on. Name what the messenger gains from your yes, then ask the question that sorts it: if the best thing for you were the worst thing for them, would they still be telling you this? If yes, weigh it on the merits. If no, the incentive is doing the talking — so don't just distrust them, get the same recommendation from someone paid differently, or change the structure so their pay tracks your outcome.",
+          then: {
+            toolId: "widen",
+            note: "Then widen the frame to the options an incentivized messenger never mentions — the ones they don't get paid for.",
+          },
+        },
+      },
+      {
         id: "need-more",
         label: "I keep feeling I need to know more before I can decide.",
         detail: "One more data point, one more opinion, one more week of research — and I can't tell if that's diligence or a way to put off deciding.",
