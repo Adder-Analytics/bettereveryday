@@ -16,6 +16,7 @@ import {
 } from "../data/parked";
 import { icsEscape, icsStamp, wrapCalendar, SITE_URL } from "../data/ics";
 import { waitReadingText } from "../data/wait";
+import { toThirdPerson } from "../data/reframe";
 import Link from "next/link";
 
 /**
@@ -226,44 +227,6 @@ function loadInputs(): Inputs {
   } catch {
     return BLANK;
   }
-}
-
-/**
- * A best-effort rewrite of a first-person decision into the third person — the
- * Solomon's-paradox move made concrete. It doesn't have to be grammatically
- * perfect; seeing your own dilemma with someone else's name on it is the whole
- * mechanism, and the original stays visible above it.
- */
-function toThirdPerson(text: string, rawName: string): string {
-  const name = rawName.trim();
-  const subj = name || "a friend";
-  const poss = name ? `${name}’s` : "their";
-  const refl = name || "them";
-  const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-
-  const rules: [RegExp, string][] = [
-    // question openers first, so "Am I" → "Is she", not "Is I"
-    [/\bam I\b/gi, `is ${subj}`],
-    [/\bdo I\b/gi, `does ${subj}`],
-    [/\bhave I\b/gi, `has ${subj}`],
-    [/\bwas I\b/gi, `was ${subj}`],
-    [/\bcan I\b/gi, `can ${subj}`],
-    // contractions
-    [/\bI['’]m\b/gi, `${subj} is`],
-    [/\bI['’]ve\b/gi, `${subj} has`],
-    [/\bI['’]ll\b/gi, `${subj} will`],
-    [/\bI['’]d\b/gi, `${subj} would`],
-    // pronouns
-    [/\bmyself\b/gi, refl],
-    [/\bmy\b/gi, poss],
-    [/\bmine\b/gi, poss],
-    [/\bme\b/gi, refl],
-    [/\bI\b/g, subj],
-  ];
-
-  let out = text;
-  for (const [re, sub] of rules) out = out.replace(re, sub);
-  return cap(out.trim());
 }
 
 const inputClass =
@@ -860,6 +823,21 @@ export default function CoolClient() {
               &ldquo;{thirdPerson}?&rdquo;
             </p>
           </div>
+          <p className="mt-3 text-xs text-[var(--muted)] leading-relaxed">
+            Not actually hot — you just see everyone&rsquo;s situation more
+            clearly than your own? That&rsquo;s Solomon&rsquo;s paradox, and it
+            needs no heat. This reframe is a passing move here; its own tool
+            walks the whole advise-a-friend pass and asks the harder half —{" "}
+            <em>would you take that advice, and if not, what&rsquo;s stopping
+            you?</em>{" "}
+            <Link
+              href={withSubject("/advise", inp.decision)}
+              className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+            >
+              advise a friend
+            </Link>
+            .
+          </p>
         </div>
 
         {/* Across time */}

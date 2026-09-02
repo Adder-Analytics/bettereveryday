@@ -56,6 +56,7 @@ import {
   type ScheduledParked,
 } from "./parked";
 import { readLastBackup } from "./portable";
+import { SITE_URL, icsEscape, icsStamp, wrapCalendar } from "./ics";
 
 function todayISO(): string {
   const d = new Date();
@@ -247,6 +248,72 @@ export function loadReviewQueue(): ReviewQueue {
   ].sort((a, b) => a.dateISO.localeCompare(b.dateISO)); // soonest first
 
   return { due, upcoming, backup: backupStatus(), today };
+}
+
+/**
+ * The desk as a calendar file (.ics) — the last inch of the return loop.
+ *
+ * The desk already gathers every scheduled return into one queue "so the return
+ * stops depending on memory." But until you open this page it depends on exactly
+ * that: remembering the desk exists and thinking to check it. The per-tool
+ * exports each hand *one* date to your calendar at the moment you set it — but
+ * only then, only that one, and only to the tool's front door. This is the
+ * missing whole: every return the desk is holding, due and upcoming, folded into
+ * one file whose events ride into the calendar you already live in and fire on
+ * their own day. Each event links back to the *exact* screen where you answer it
+ * (`SITE_URL + item.href`), not the tool's doorstep — the one advantage a
+ * unified export has over the per-item ones. Built entirely in the browser; the
+ * file is downloaded, never sent. Stable per-item UIDs mean re-importing an
+ * updated file refreshes the events instead of stacking duplicates.
+ */
+const RETURN_VERB: Record<ReviewKind, string> = {
+  decision: "Decision review",
+  tripwire: "Tripwire check",
+  revisit: "Decide it cold",
+};
+
+function itemToEvent(item: ReviewItem): string[] {
+  const day = item.dateISO.replace(/-/g, ""); // YYYYMMDD
+  const answerUrl = `${SITE_URL}${item.href}`;
+  const rawTitle = item.title.replace(/\s+/g, " ").trim() || "A return you scheduled";
+  const title = rawTitle.length > 70 ? `${rawTitle.slice(0, 69)}…` : rawTitle;
+
+  const desc: string[] = [
+    item.detail.replace(/\s+/g, " ").trim(),
+    item.meta ? `\n\n(${item.meta.replace(/\s+/g, " ").trim()})` : "",
+    `\n\nAnswer it: ${answerUrl}`,
+  ];
+
+  return [
+    "BEGIN:VEVENT",
+    // Stable, spec-safe UID from the item's already-unique id, so a re-import
+    // updates the event rather than duplicating it.
+    `UID:return-${item.id.replace(/[^a-zA-Z0-9_-]/g, "-")}@bettereveryday`,
+    `DTSTAMP:${icsStamp()}`,
+    `DTSTART:${day}T090000`,
+    `DTEND:${day}T093000`,
+    `SUMMARY:${icsEscape(`${RETURN_VERB[item.kind]}: ${title}`)}`,
+    `DESCRIPTION:${icsEscape(desc.join(""))}`,
+    `URL:${answerUrl}`,
+    "BEGIN:VALARM",
+    "ACTION:DISPLAY",
+    "DESCRIPTION:A decision is due back",
+    "TRIGGER:-PT0M",
+    "END:VALARM",
+    "END:VEVENT",
+  ];
+}
+
+/**
+ * Build the whole return desk as one iCalendar string. Only items carrying a
+ * well-formed ISO date become events — a malformed date is skipped rather than
+ * emitted as a broken VEVENT, so the file always imports cleanly.
+ */
+export function buildReturnCalendar(items: ReviewItem[]): string {
+  const events = items
+    .filter((it) => /^\d{4}-\d{2}-\d{2}$/.test(it.dateISO))
+    .map(itemToEvent);
+  return wrapCalendar(events, "Return Desk");
 }
 
 /** A human phrase for how overdue / how soon an item is, from its relDays. */

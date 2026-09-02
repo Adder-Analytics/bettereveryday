@@ -122,6 +122,20 @@ const nodes: Record<string, TriageNode> = {
         },
       },
       {
+        id: "downside-scary",
+        label: "The upside is real — but there's a downside I keep waving off.",
+        detail: "\"It probably won't happen.\" Maybe not — but if it did, I'm not sure I'd recover from it.",
+        rec: {
+          toolId: "ruin",
+          because:
+            "Before you weigh the odds or the upside, run the survival check they both assume: name the worst realistic outcome and ask whether you'd come back from it. If you'd recover, this is an ordinary risk call — go weigh it. If you wouldn't, no odds and no upside justify it, because there's no \"on average\" for someone who's out of the game — so don't refuse the goal, refuse the un-survivable version of it and cap the downside below ruin.",
+          then: {
+            toolId: "widen",
+            note: "If the worst case is one you couldn't take, widen the frame to find the version of the same ambition whose downside you'd survive.",
+          },
+        },
+      },
+      {
         id: "hot",
         label: "I'm deciding while hot.",
         detail: "Angry, panicked, infatuated, or rushed by a clock.",
@@ -129,6 +143,20 @@ const nodes: Record<string, TriageNode> = {
           toolId: "cool",
           because:
             "The first question isn't which way to go — it's whether to decide this now at all. Settle decide-now-or-later while you're hot, then borrow one of two research-backed ways to manufacture the distance to see it straight.",
+        },
+      },
+      {
+        id: "advise-self",
+        label: "I could tell a friend exactly what to do — but I can't see my own version straight.",
+        detail: "Not hot, just fogged: identical dilemma, obvious to me for anyone else, a blank for me.",
+        rec: {
+          toolId: "advise",
+          because:
+            "That's Solomon's paradox — you reason more wisely about a friend's dilemma than your own, and it needs no heat. Put your call in a friend's name, say what you'd tell them, then face the half the reframe skips: would you take that advice? If not, the decision was never unclear — the obstacle was, and naming it is the work.",
+          then: {
+            toolId: "regret",
+            note: "If the pull is really about how a feeling will age rather than advice you won't take, play it forward to your older self across the three horizons.",
+          },
         },
       },
       {
@@ -170,6 +198,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "weigh",
             note: "If two finalists end up too close to call, take both to the flip point.",
+          },
+        },
+      },
+      {
+        id: "keep-looking",
+        label: "There's always another option — I can't tell when to stop looking.",
+        detail: "Apartments, jobs, candidates coming one at a time; each is take-it-or-leave-it, and I might be settling early or holding out too long.",
+        rec: {
+          toolId: "stop",
+          because:
+            "When options arrive in a sequence and passing is final, there's a proven answer: look at (and pass) the first 37% to learn what good looks like, then take the first that beats them all. It names the two ways people fail — grabbing the first shiny thing, and passing the best one hoping — and tells you which side of the line you're on right now.",
+          then: {
+            toolId: "act",
+            note: "When one clears the bar, commit it before it's gone — turn “this is the one” into the first concrete move.",
           },
         },
       },
@@ -225,6 +267,34 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "decide",
             note: "If it survives, log what you expect and how sure you are — so reality, not memory, grades the call later.",
+          },
+        },
+      },
+      {
+        id: "being-sold",
+        label: "Someone's pushing this — and they stand to gain from my yes.",
+        detail: "An adviser, an agent, a salesperson, a boss, a friend with a stake. The advice might be right, but I can't tell how much is the advice and how much is their interest.",
+        rec: {
+          toolId: "incentives",
+          because:
+            "Before you weigh advice you were handed, find out whose side the incentive is on. Name what the messenger gains from your yes, then ask the question that sorts it: if the best thing for you were the worst thing for them, would they still be telling you this? If yes, weigh it on the merits. If no, the incentive is doing the talking — so don't just distrust them, get the same recommendation from someone paid differently, or change the structure so their pay tracks your outcome.",
+          then: {
+            toolId: "widen",
+            note: "Then widen the frame to the options an incentivized messenger never mentions — the ones they don't get paid for.",
+          },
+        },
+      },
+      {
+        id: "need-more",
+        label: "I keep feeling I need to know more before I can decide.",
+        detail: "One more data point, one more opinion, one more week of research — and I can't tell if that's diligence or a way to put off deciding.",
+        rec: {
+          toolId: "enough",
+          because:
+            "Run the value-of-information test before you gather another thing: name the one fact you're waiting on, then say what you'd do under each way it could turn out. If your move is the same either way, you already have enough — more research is delay, not diligence. Only a fact that would actually change the call is worth chasing, and only when it's cheap and in time.",
+          then: {
+            toolId: "test",
+            note: "If the missing fact would change the call, don't predict it — design the cheapest real test that would settle it before you commit.",
           },
         },
       },
