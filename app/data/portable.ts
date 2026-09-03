@@ -343,6 +343,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "an incentive check in progress" : null),
   },
   {
+    key: "crux:v1",
+    tool: "Where do you actually disagree?",
+    href: "/crux",
+    label: "The joint disagreement you last sorted into facts, values, and risk",
+    answerNow: true,
+    subject: subjectField("decision"),
+    describe: (raw) => (parse(raw) ? "a disagreement in progress" : null),
+  },
+  {
     key: "enough:v1",
     tool: "Enough to decide?",
     href: "/enough",

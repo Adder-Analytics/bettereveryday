@@ -192,6 +192,16 @@ export const tools: Tool[] = [
     models: ["opportunity-cost"],
   },
   {
+    id: "crux",
+    href: "/crux",
+    name: "Where Do You Actually Disagree?",
+    short: "Find the crux",
+    when: "You and someone you have to decide with — a partner, a cofounder, family — are stuck. You've argued it in circles and you're no closer, and you can't tell if you're disagreeing about the facts, about what matters, or about how much risk is okay.",
+    ask: "Once the heat's stripped out, are we fighting about facts, about what we want, or about risk — and what would actually change a mind?",
+    does: "Sorts a stuck disagreement into its real root — a fact you can settle with evidence, a values split that needs a fair procedure not more arguing, or a gap in risk tolerance you close with a survival check — and finds the crux: the one thing that, if it went the other way, would change a mind. Then hands each kind to the tool that resolves it.",
+    payoff: "now",
+  },
+  {
     id: "act",
     href: "/act",
     name: "Decided Isn't Done",
@@ -406,7 +416,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "quit"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "quit"],
   },
   {
     id: "big-commitment",
