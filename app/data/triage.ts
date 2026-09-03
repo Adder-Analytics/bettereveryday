@@ -285,6 +285,20 @@ const nodes: Record<string, TriageNode> = {
         },
       },
       {
+        id: "disagree",
+        label: "It's not mine alone — someone I have to decide this with sees it differently.",
+        detail: "A partner, a cofounder, family. We've argued it in circles and we're no closer.",
+        rec: {
+          toolId: "crux",
+          because:
+            "You're probably not having one argument — you're having up to three at once: a disagreement about what's true, a disagreement about what you each want, and a disagreement about how much risk is okay. Each has a different resolution — evidence for a fact, a fair procedure for a values split, a survival check for a risk gap — so arguing them as one is why it goes in circles. Separate the strands, then find the crux: the one thing that, if it went the other way, would change a mind.",
+          then: {
+            toolId: "compare",
+            note: "If it comes down to a values split, make the weights explicit — you'll usually find you agree on every factor but one.",
+          },
+        },
+      },
+      {
         id: "need-more",
         label: "I keep feeling I need to know more before I can decide.",
         detail: "One more data point, one more opinion, one more week of research — and I can't tell if that's diligence or a way to put off deciding.",
