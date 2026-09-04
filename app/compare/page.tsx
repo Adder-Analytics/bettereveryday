@@ -103,7 +103,19 @@ export default function ComparePage() {
           >
             pre-mortem
           </Link>{" "}
-          stress-tests it before you commit. The whole kit is on the{" "}
+          stress-tests it before you commit. One more thing this can&rsquo;t do:
+          a comparison scores the options for <em>one</em>{" "}decider against one
+          set of weights. If the hard part isn&rsquo;t the scoring but that
+          someone you&rsquo;re deciding <em>with</em>{" "}wants a different thing,
+          the numbers
+          just formalize the disagreement &mdash;{" "}
+          <Link
+            href="/crux"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            sort where you actually disagree
+          </Link>{" "}
+          first, then come back and weight it together. The whole kit is on the{" "}
           <Link
             href="/tools"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"

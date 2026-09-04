@@ -61,6 +61,26 @@ export default function WidenPage() {
         </p>
       </header>
       <WidenClient />
+
+      <div className="mt-16 pt-8 border-t border-[var(--border)]">
+        <p className="text-sm text-[var(--muted)] leading-relaxed">
+          Nothing you enter here leaves your browser. One case this can&rsquo;t
+          crack on its own: if the frame won&rsquo;t open &mdash; if it stays
+          stuck at your option versus someone else&rsquo;s &mdash; the block may
+          not be a hidden option at all but a{" "}
+          <em>disagreement</em>{" "}wearing the costume of one. You two want
+          different things, so every third option one of you names, the other
+          rules out. That isn&rsquo;t a framing problem, and no amount of widening
+          fixes it;{" "}
+          <Link
+            href="/crux"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            sort where you actually disagree
+          </Link>{" "}
+          first, then widen it together.
+        </p>
+      </div>
     </div>
   );
 }
