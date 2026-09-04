@@ -80,7 +80,18 @@ export default function DoorsPage() {
           >
             decision journal
           </Link>{" "}
-          are where the careful version happens.
+          are where the careful version happens. And there&rsquo;s one door worse
+          than one-way: the kind that opens onto a loss you couldn&rsquo;t recover
+          from at all. If the far side could be ruin &mdash; not just hard to
+          undo, but the reserve gone, the health, the reputation &mdash;
+          reversibility stops being the question and survival takes over; run the{" "}
+          <Link
+            href="/ruin"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            survival check
+          </Link>{" "}
+          before anything else.
         </p>
       </div>
     </div>

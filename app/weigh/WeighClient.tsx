@@ -1389,12 +1389,19 @@ function RuinWarning() {
         playing; against a loss you can&rsquo;t come back from, the question
         isn&rsquo;t <em>&ldquo;is this a good bet&rdquo;</em> — it&rsquo;s{" "}
         <em>don&rsquo;t bet the things you can&rsquo;t afford to lose</em>, almost
-        regardless of the odds below. Buy a{" "}
+        regardless of the odds below. This is the one call the flip point
+        can&rsquo;t finish for you — so take it to the tool that can:{" "}
+        <Link href="/ruin" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+          the survival check
+        </Link>{" "}
+        names the worst realistic outcome, asks honestly whether you&rsquo;d
+        recover, and helps you find the version of the same move whose downside
+        you&rsquo;d survive — a{" "}
         <Link href="/models#margin-of-safety" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
           margin of safety
-        </Link>{" "}
-        or walk away. The flip point still tells you how strong the bet looks — but
-        a strong bet on ruin is still ruin.
+        </Link>
+        . The flip point still tells you how strong the bet looks — but a strong
+        bet on ruin is still ruin.
       </p>
     </div>
   );
@@ -1415,6 +1422,19 @@ function TooCloseRead({ marginPts }: { marginPts: number }) {
         even,&rdquo; the tiebreaker is whatever you couldn&rsquo;t put a number on:
         how reversible it is, what you give up elsewhere, who you become, which
         regret you can live with.
+      </p>
+      <p className="mt-2.5 text-sm text-[var(--muted)] leading-relaxed">
+        Or the gap isn&rsquo;t a matter of taste at all. If one thing you
+        don&rsquo;t yet know would tip it, you&rsquo;re not too close — you&rsquo;re
+        missing a fact. Before you flip a coin,{" "}
+        <Link
+          href="/enough"
+          className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          check whether it&rsquo;s worth going to get
+        </Link>{" "}
+        — name the one thing you&rsquo;re waiting on, and if the call is the same
+        whichever way it lands, you already have enough.
       </p>
     </div>
   );

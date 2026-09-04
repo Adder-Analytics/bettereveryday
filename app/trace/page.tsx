@@ -92,7 +92,16 @@ export default function TracePage() {
           >
             flip point
           </Link>
-          .
+          . And if one of the effects down the chain is one you couldn&rsquo;t
+          come back from, it&rsquo;s no longer a ripple to weigh &mdash; a single
+          unrecoverable consequence ends the game, so run the{" "}
+          <Link
+            href="/ruin"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            survival check
+          </Link>{" "}
+          on it before the rest.
         </p>
       </div>
     </div>
