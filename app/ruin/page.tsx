@@ -68,7 +68,15 @@ export default function RuinPage() {
           >
             flip point
           </Link>{" "}
-          to weigh it properly. The idea in full is in the{" "}
+          to weigh it properly. The reasoning in full &mdash; why an average can
+          be true and still ruin everyone who trusts it &mdash; is in{" "}
+          <Link
+            href="/writing/the-river-is-four-feet-deep"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            The River Is Four Feet Deep on Average
+          </Link>
+          ; the one-screen version is the{" "}
           <Link
             href="/models#ruin"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"

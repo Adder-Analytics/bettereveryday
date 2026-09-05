@@ -138,6 +138,11 @@ export const threads: Thread[] = [
       },
       {
         kind: "essay",
+        slug: "the-river-is-four-feet-deep",
+        why: "The one case where the flip point is the wrong question entirely: a downside you can't recover from, where the average is a lie and no odds redeem it. First survive — then optimize.",
+      },
+      {
+        kind: "essay",
         slug: "the-option-to-wait",
         why: "The precondition under all of it: none of this careful reasoning survives a hot state, and the calls you most regret are made in one. The reframe that saves you — when you're hot, the real decision is whether to decide at all, and a reversible door makes waiting nearly free.",
       },

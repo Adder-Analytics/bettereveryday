@@ -1406,6 +1406,64 @@ export const posts: Post[] = [
 
 <p>And then leave the last inch alone — the one where the actual thing happens. The goal was never a life with no friction in it. It was to spend every bit of friction you can afford on the part that matters, and none on the part that doesn&rsquo;t. <a href="/review">See what&rsquo;s due</a> — it&rsquo;s one click from here to the answer now.</p>`,
   },
+  {
+    slug: "the-river-is-four-feet-deep",
+    title: "The River Is Four Feet Deep on Average",
+    date: "2026-09-05",
+    excerpt:
+      "A coin that pays +50% on heads and −40% on tails is a good bet by every ordinary measure — and ruins almost everyone who plays it. The gap between those two facts is the one check the rest of a careful decision quietly assumes you've already run.",
+    readTime: 8,
+    tags: ["decisions", "thinking"],
+    content: `<p>Nassim Taleb likes to say you should never cross a river because it is four feet deep on average. It sounds like a joke until you notice it isn&rsquo;t one. The average depth is a real, correct fact about the river. It is also useless to the person deciding whether to wade across, because the thing that drowns you is not the average — it is the one stretch in the middle that is over your head. An average smooths a jagged reality into a single number, and most of the time that is exactly what you want from it. Here it quietly deletes the only number that matters.</p>
+
+<p>This is about the class of decisions where the average lies to you in precisely that way, and about the check that catches it — a check almost every other tool on this site quietly assumes you have already run before you reach for it.</p>
+
+<h2>A loss and a ruin are not the same animal</h2>
+
+<p>Start with a distinction the language blurs. We call it all &ldquo;downside,&rdquo; as though a bad outcome were just a bad outcome, larger or smaller. But there are two kinds, and they behave differently enough that treating them alike is the mistake underneath a startling share of ruined lives and folded companies.</p>
+
+<p>A <em>loss</em> is recoverable. You take the hit, it hurts, you are poorer or embarrassed or set back — and you are still in the game, still able to play the next round, and the round after that. A <em>ruin</em> is an outcome there is no coming back from: the reserve spent with nothing behind it, the reputation that will not rebuild, the health you cannot undo, the bankruptcy that ends the enterprise. Taleb&rsquo;s term for it, borrowed from probability, is an <em>absorbing barrier</em> — a state that, once you touch it, you never leave. A loss is a point on a line you keep walking. A ruin is the end of the line.</p>
+
+<p>This matters because <a href="/models#expected-value">expected value</a> — the machinery underneath nearly every careful way of weighing a decision, this site&rsquo;s own <a href="/weigh">flip point</a> included — carries one assumption so basic it usually goes unspoken: that you are still around afterward to keep playing. Averaging is a promise about the long run. It says: do this enough times and the good draws will pay for the bad ones. That promise is true for losses and empty for ruins, because there is no long run for someone who is out of the game. You do not get to average your way back from an outcome you did not survive.</p>
+
+<h2>The average that ruins everyone who trusts it</h2>
+
+<p>Here is where it stops being a caution and turns into arithmetic, because there is a bet that looks good by every ordinary measure and destroys almost everyone who takes it.</p>
+
+<p>Consider a coin. Heads, your wealth goes up 50%. Tails, it goes down 40%. You may play as many rounds as you like, staking everything each time. Should you?</p>
+
+<p>The expected value says yes, emphatically. A round multiplies your money by 1.5 half the time and 0.6 the other half, averaging 1.05 — a 5% gain per throw, compounding, forever. Line up a thousand people to each play once, and the money they hold afterward really is about 5% more than they started with. The arithmetic is not wrong.</p>
+
+<p>Now play it yourself, round after round, the way an actual person would. A win and then a loss — in either order — turns one dollar into 1.5 × 0.6 = 0.90. You are down to ninety cents. Two rounds, one of each, and a tenth of everything is gone, and it makes no difference which came first. The number that governs <em>your</em> fate is not the average of the outcomes but their <em>product</em>, and the product bleeds: the long-run growth rate for the individual player works out to &radic;(1.5 &times; 0.6) &minus; 1 &approx; &minus;5% per round. Positive on average, negative almost surely. Play long enough and you go broke with a probability climbing toward one, while the &ldquo;expected&rdquo; fortune sits there on paper, real and unreachable, held up by a handful of astronomically lucky trajectories that drag the average skyward for everyone else.</p>
+
+<p>This is the case Ole Peters formalized as <em>ergodicity economics</em>, and the name for the gap is worth keeping. The <em>ensemble average</em> — what happens across many people each playing once — and the <em>time average</em> — what happens to one person playing repeatedly — are different quantities. For most everyday bets they roughly agree, which is why the distinction can be ignored most of the time and why ignoring it here is so natural. They come apart exactly, and only, where ruin is possible: where a loss multiplies instead of subtracts, where one bad enough draw takes you out of all the rounds that were supposed to bail you out. The four-foot river was never a metaphor. It is the same fact wearing different clothes.</p>
+
+<h2>&ldquo;Probably fine&rdquo; is how you walk in</h2>
+
+<p>Two things follow, and both cut against the grain of how we are built to think.</p>
+
+<p>The first: a small probability of ruin is not a small problem, and it cannot be traded against a large probability of gain the way ordinary risks can. &ldquo;It probably won&rsquo;t happen&rdquo; is not a reassurance here — it is the exact sentence people say on the way into the one outcome they cannot undo. A 2% chance of a recoverable loss is a rounding error you can accept a hundred times over. A 2% chance of ruin is a lit fuse, and the catastrophe only has to reach you once. The rarity is not protection; it is what makes the danger easy to wave off, right up until it isn&rsquo;t.</p>
+
+<p>The second follows from the first: repetition is the multiplier that turns an acceptable risk into a certain one. A one-in-a-hundred chance of ruin, run a single time, might be worth it. Run again and again — because the thing that paid off the first time invites you back — it stops being a risk and becomes a schedule. This is why one round of Russian roulette for a life-changing sum is still not a deal any sane person takes, and why playing it repeatedly is not a gamble at all but a slow suicide with flattering odds on each individual pull. The odds on the pull were never the question. The question was how many pulls the game will eventually ask of you.</p>
+
+<h2>The move is not &ldquo;don&rsquo;t&rdquo;</h2>
+
+<p>All of this could read as an argument for timidity, and it is the opposite. The rule the people who survive risk for a living actually follow is not <em>take no chances</em> — it is <em>never stake the survival of the whole on any single throw, however good the throw looks.</em> Warren Buffett&rsquo;s &ldquo;Rule No. 1: never lose money&rdquo; does not mean never take a loss; it means never take the ruinous kind. The enormous space between those two is where all the good decisions live.</p>
+
+<p>The countermeasure has an old name — a <a href="/models#margin-of-safety">margin of safety</a> — and the move it names is specific: do not refuse the ambition, refuse the un-survivable <em>version</em> of it. Bet only what you can lose in full and still be standing. Keep a floor you never touch, however sure the thing looks. Turn a catastrophe you cannot afford into a cost you can — insurance, a hedge, a smaller position. Stage an irreversible leap as a run of reversible steps, so that being wrong is a lesson and not an ending. Each of these keeps the upside almost wholly intact while lopping off the tail that ends the game. The aim is to arrange things so that surviving the worst case does not depend on the worst case not happening — because across enough rounds, sooner or later, it does.</p>
+
+<h2>The honest limits</h2>
+
+<p>Three, because a check this powerful is as easy to misuse as to use.</p>
+
+<p>First, most downside is not ruin, and calling it ruin is its own expensive error. Flinch from every recoverable loss as though it were an absorbing barrier and you will never take the ordinary favorable risks a good life and a good portfolio are built from — you will have talked yourself into the slow failure instead of the fast one. The whole force of the idea depends on the distinction being real: a ruin is an outcome you genuinely do not come back from, not merely one that would sting or embarrass or frighten you. Most bad outcomes are losses. Spend the survival check on the few that aren&rsquo;t.</p>
+
+<p>Second, whether a given outcome is a loss or a ruin is a judgement, not a fact you can read off a spreadsheet, and it is personal. The same dollar figure is a bruise to one person and the end of the road to another; the same career risk is survivable at twenty-five and not at fifty-five with a mortgage and two kids. The check does not compute the answer for you — it forces the one question you were stepping around: <em>if the worst realistic version of this happened, would I actually recover?</em> Answering that honestly, about your own life, is the entire work.</p>
+
+<p>Third, this tells you what to refuse, not what to choose. Ruling out the un-survivable versions of a decision leaves a slate of survivable ones, and among those the average is trustworthy again and the ordinary tools apply — <a href="/weigh">weigh the odds against the stakes</a>, <a href="/writing/the-flip-point">find the flip point</a>, and pick. Surviving is the precondition, not the strategy. First you make sure you are still there for the long run; then you go and win it.</p>
+
+<p>There is a <a href="/ruin">room for this</a> on the site now — name the worst realistic outcome, say honestly whether you&rsquo;d recover, and it sorts the losses from the ruins: for a loss, it hands you back to the flip point to weigh properly; for a ruin, it helps you find the version of the same move whose downside you&rsquo;d survive. Because the decision was never whether the odds are good. Against a downside you can&rsquo;t come back from, the odds were never the question — the river is four feet deep on average, and you still don&rsquo;t cross it there.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

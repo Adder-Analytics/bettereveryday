@@ -86,6 +86,7 @@ export const tools: Tool[] = [
     does: "Runs the survival check the rest of the kit quietly defers to. Separates a loss you'd recover from (an ordinary risk call — go weigh it) from a ruin you can't come back from, where no odds and no upside justify it. For a ruin, it doesn't say \"don't\" — it hands you the way to cap the downside below ruin and take the version you'd survive.",
     payoff: "now",
     models: ["ruin", "margin-of-safety"],
+    essays: ["the-river-is-four-feet-deep"],
   },
   {
     id: "widen",
