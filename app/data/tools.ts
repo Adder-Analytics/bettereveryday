@@ -75,6 +75,7 @@ export const tools: Tool[] = [
     does: "Sorts the call into a one-way or two-way door by how reversible it really is — so you spend slow, careful thought only where reversal won't save you, and give a fast, undoable call the permission to move it's usually denied.",
     payoff: "now",
     models: ["reversibility"],
+    essays: ["the-door-you-can-walk-back-through"],
   },
   {
     id: "ruin",

@@ -50,8 +50,16 @@ export default function DoorsPage() {
       <div className="mt-16 pt-8 border-t border-[var(--border)]">
         <p className="text-sm text-[var(--muted)] leading-relaxed">
           Nothing you enter here leaves your browser, and there&rsquo;s nothing to
-          log — a triage isn&rsquo;t a forecast. The idea in one screen lives in
-          the reference:{" "}
+          log — a triage isn&rsquo;t a forecast. Why the slow call, not the wrong
+          one, is the expensive mistake on a door you can undo — and why the door
+          is more movable than it looks — is the essay behind this tool:{" "}
+          <Link
+            href="/writing/the-door-you-can-walk-back-through"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            The Door You Can Walk Back Through
+          </Link>
+          . The idea in one screen lives in the reference:{" "}
           <Link
             href="/models#reversibility"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"

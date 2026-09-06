@@ -147,6 +147,11 @@ export const threads: Thread[] = [
         why: "The precondition under all of it: none of this careful reasoning survives a hot state, and the calls you most regret are made in one. The reframe that saves you — when you're hot, the real decision is whether to decide at all, and a reversible door makes waiting nearly free.",
       },
       {
+        kind: "essay",
+        slug: "the-door-you-can-walk-back-through",
+        why: "The triage that belongs before any of it: is this even a decision worth the weight? Most of what we agonize over is a door we could walk back through — where the slow call, not the wrong one, is the expensive mistake — and the door is more movable than it looks.",
+      },
+      {
         kind: "model",
         id: "reversibility",
         why: "Spend your deliberation where the door only swings one way.",
