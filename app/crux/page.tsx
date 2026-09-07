@@ -49,6 +49,18 @@ export default function CruxPage() {
           honest account of theirs, which is itself the move most stuck arguments
           skip. Nothing you enter is sent anywhere; it stays in your browser.
         </p>
+        <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
+          The reasoning behind it &mdash; why a stuck argument is usually three at
+          once, and why naming the one thing that would change your mind is what
+          unsticks it &mdash;{" "}
+          <Link
+            href="/writing/the-one-thing-that-would-change-your-mind"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            is in the essay
+          </Link>
+          .
+        </p>
       </header>
       <CruxClient />
       <p className="mt-10 text-sm text-[var(--muted)] leading-relaxed">

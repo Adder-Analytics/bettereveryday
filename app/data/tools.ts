@@ -202,6 +202,7 @@ export const tools: Tool[] = [
     ask: "Once the heat's stripped out, are we fighting about facts, about what we want, or about risk — and what would actually change a mind?",
     does: "Sorts a stuck disagreement into its real root — a fact you can settle with evidence, a values split that needs a fair procedure not more arguing, or a gap in risk tolerance you close with a survival check — and finds the crux: the one thing that, if it went the other way, would change a mind. Then hands each kind to the tool that resolves it.",
     payoff: "now",
+    essays: ["the-one-thing-that-would-change-your-mind"],
   },
   {
     id: "act",
