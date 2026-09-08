@@ -34,7 +34,16 @@ export default function QuitPage() {
           >
             not information
           </Link>{" "}
-          about whether to continue.
+          about whether to continue. For the reasoning behind that &mdash; why what&rsquo;s spent is
+          a fact about the past, the three forces that make it so hard to feel, and the one question
+          that strips it out &mdash; read{" "}
+          <Link
+            href="/writing/the-money-is-already-gone"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            The Money Is Already Gone
+          </Link>
+          .
         </p>
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
           So this tool does the two things the sunk-cost feeling won&rsquo;t let you do alone. It{" "}
@@ -65,21 +74,29 @@ export default function QuitPage() {
 
       <div className="mt-16 pt-8 border-t border-[var(--border)]">
         <p className="text-sm text-[var(--muted)] leading-relaxed">
-          Nothing you enter here leaves your browser. The idea underneath it is{" "}
+          Nothing you enter here leaves your browser. The idea underneath it is the{" "}
+          <Link
+            href="/models#sunk-cost"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            sunk cost
+          </Link>{" "}
+          you&rsquo;re being pulled to honour;{" "}
           <Link
             href="/models#loss-aversion"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             loss aversion
           </Link>{" "}
-          and the{" "}
+          is the feeling that makes writing it off so hard, and the{" "}
           <Link
             href="/models#opportunity-cost"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             opportunity cost
           </Link>{" "}
-          you pay to honour a sunk one; the way to keep &ldquo;keep going&rdquo; honest is the{" "}
+          is what you actually pay to keep going; the way to keep &ldquo;keep going&rdquo; honest is
+          the{" "}
           <Link
             href="/models#tripwires"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"

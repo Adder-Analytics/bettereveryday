@@ -243,6 +243,15 @@ export const models: Model[] = [
       "Kahneman and Tversky's finding: the pain of losing $100 is roughly equivalent to the pleasure of winning $200. This asymmetry helps explain why people hold losing investments too long (selling would make the loss real), avoid risks that are actually favorable (the downside looms too large), and respond to framing (presenting something as avoiding a loss rather than achieving a gain makes it feel more urgent). How robust the effect is has become genuinely contested — the careful version is that it's contingent, holding up strongly in some settings (the disposition effect, sunk costs) and weakly or not at all in others. Knowing about it doesn't eliminate it; it just makes it visible.",
     essays: ["loss-aversion"],
   },
+  {
+    id: "sunk-cost",
+    name: "Sunk Cost",
+    domain: "Psychology",
+    tagline: "What you've already spent is gone whether you continue or not — so it can't be a reason to continue.",
+    explanation:
+      "A cost is sunk when nothing you do now can recover it. The fallacy is letting it vote anyway: continuing a project, job, or relationship because of what you've already put in, rather than what continuing is worth from here forward. The tell is the tense — a sunk-cost reason is always stated in the past (\"we've spent so much,\" \"I've given it years\"), while a genuine reason to continue points forward. Arkes and Blumer (1985) traced the pull to the childhood rule against waste: people who paid full price used a theater subscription more than those given it free, and most people will pick a ski trip they'll enjoy less because it cost more. Barry Staw's \"Knee-Deep in the Big Muddy\" (1976) found the escalation is worst when you made the original call yourself — because quitting admits you were wrong, so the sunk cost is your judgment, not just your money. Dawkins and Carlisle named the animal version the Concorde fallacy in 1976, after the jet its governments kept funding because they'd funded it already. The move that dissolves it is the fresh-start test: knowing what you know now, would you begin this today, from zero? A fresh start has no past to honor — it leaves only the forward prospects, judged against their real opportunity cost. The caveat that keeps it honest: distinguish the expense you paid from the asset it built, which may still pay forward — count the standing bridge, not the money burned building it.",
+    essays: ["the-money-is-already-gone"],
+  },
 
   // Epistemology
   {

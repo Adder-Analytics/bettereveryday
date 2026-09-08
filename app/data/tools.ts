@@ -191,7 +191,8 @@ export const tools: Tool[] = [
     ask: "Am I still here because it's the right call — or because I can't stand to walk away from what I've already put in?",
     does: "Takes the sunk cost out of the vote: asks whether you'd start the thing fresh today, sets one more push against the best other use of the same time and money, and — if you carry on — makes you set the kill criterion in advance.",
     payoff: "now",
-    models: ["opportunity-cost"],
+    models: ["sunk-cost", "opportunity-cost"],
+    essays: ["the-money-is-already-gone"],
   },
   {
     id: "crux",
