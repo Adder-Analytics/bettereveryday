@@ -70,6 +70,15 @@ export default function StopPage() {
           >
             optimal-stopping model
           </Link>
+          , and the reasoning behind it &mdash; why you have to let good options
+          go by on purpose to learn what &ldquo;good&rdquo; even means here
+          &mdash; is in the essay{" "}
+          <Link
+            href="/writing/look-then-leap"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Look, Then Leap
+          </Link>
           . Nothing you enter is sent anywhere; it stays in your browser.
         </p>
       </header>

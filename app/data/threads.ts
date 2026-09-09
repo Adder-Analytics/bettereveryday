@@ -174,6 +174,40 @@ export const threads: Thread[] = [
     ],
   },
   {
+    id: "knowing-when-to-stop",
+    title: "Knowing When to Stop",
+    tagline: "When more looking, more waiting, and more pouring in stop being worth it.",
+    intro:
+      "Three of the most common decisions in a life are really the same one wearing different clothes: when to stop searching, when to stop investing in what you've already begun, and when to stop gathering information. Each has a proven answer, and each fails in the same quiet way — not by a wrong choice, but by never deciding to stop at all. Read in this order and “keep going” stops being the default you back into.",
+    steps: [
+      {
+        kind: "essay",
+        slug: "look-then-leap",
+        why: "When to stop searching. Options arrive one at a time and passing is final — so how long do you look before you take one? Look without choosing, long enough to learn what good means here, then take the first thing that beats it. The strange, useful instruction: you have to let good options go on purpose.",
+      },
+      {
+        kind: "model",
+        id: "optimal-stopping",
+        why: "The one-screen version of the search rule, and the two ways it goes wrong — leaping before you're calibrated, and looking past the best one you'll ever see.",
+      },
+      {
+        kind: "essay",
+        slug: "the-money-is-already-gone",
+        why: "The same question asked backward: when to stop pouring into a thing you've already begun. What you've spent is a fact about the past; the decision is entirely about the future — and the one question that strips the sunk cost out is whether you'd start it today, from zero.",
+      },
+      {
+        kind: "model",
+        id: "sunk-cost",
+        why: "The one-screen version: the tense tell, why the pull is so strong, and the fresh-start test that deletes it.",
+      },
+      {
+        kind: "model",
+        id: "value-of-information",
+        why: "The most general form, and the one that ends analysis paralysis: more looking or waiting is only worth it if it could actually change what you'd do. When your move is the same either way, you already have enough — and the search, whatever its shape, is over.",
+      },
+    ],
+  },
+  {
     id: "clear-thinking",
     title: "Not Fooling Yourself",
     tagline: "A small kit for catching your own errors.",
