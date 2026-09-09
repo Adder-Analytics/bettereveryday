@@ -181,6 +181,7 @@ export const tools: Tool[] = [
     does: "Runs the secretary-problem answer without the math: look at (and pass) the first ~37% of the field to learn what good looks like, then take the first that beats them all. Names the two failure modes — grabbing the first shiny thing, and passing the best one hoping — and tells you which side of the line you're on right now.",
     payoff: "now",
     models: ["optimal-stopping"],
+    essays: ["look-then-leap"],
   },
   {
     id: "quit",
