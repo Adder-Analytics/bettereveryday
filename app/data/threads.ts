@@ -201,9 +201,14 @@ export const threads: Thread[] = [
         why: "The one-screen version: the tense tell, why the pull is so strong, and the fresh-start test that deletes it.",
       },
       {
+        kind: "essay",
+        slug: "what-would-you-do-either-way",
+        why: "When to stop gathering information — the most general form of all three, and the cure for the analysis paralysis the other two feed. A fact is worth knowing only for what it would change about what you'd do; when your move is the same either way, the search, of whatever kind, is already over. The one that separates diligence from hiding.",
+      },
+      {
         kind: "model",
         id: "value-of-information",
-        why: "The most general form, and the one that ends analysis paralysis: more looking or waiting is only worth it if it could actually change what you'd do. When your move is the same either way, you already have enough — and the search, whatever its shape, is over.",
+        why: "The one-screen version, and the through-line under all three costumes: more looking, more waiting, more pouring in is worth it only if it could change what you'd actually do.",
       },
     ],
   },
