@@ -60,7 +60,16 @@ export default function EnoughPage() {
           </Link>
           &rsquo;s own rule &mdash; only a fact that could move you across the line
           is worth knowing &mdash; run before you&rsquo;ve put a single number on
-          anything. The idea in full is in the{" "}
+          anything. The reasoning behind it &mdash; why a fact is worth only what it
+          would change about what you do, and how to tell real diligence from a place
+          to hide &mdash; is in the essay{" "}
+          <Link
+            href="/writing/what-would-you-do-either-way"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            What Would You Do Either Way?
+          </Link>
+          ; the same idea as a one-screen concept is the{" "}
           <Link
             href="/models#value-of-information"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"

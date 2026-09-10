@@ -170,6 +170,7 @@ export const tools: Tool[] = [
     does: "Runs Hubbard's value-of-information test without the math: name the one thing you're waiting to learn, say what you'd do under each way it could land, and if the answer's the same either way, you already have enough — more research is delay. If it would flip the call, it's worth getting only when it's cheap and in time, and hands you the tool for that.",
     payoff: "now",
     models: ["value-of-information"],
+    essays: ["what-would-you-do-either-way"],
   },
   {
     id: "stop",
