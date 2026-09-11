@@ -159,6 +159,7 @@ export const tools: Tool[] = [
     does: "Runs Munger's 'show me the incentive' on the advice you were handed. Separates a source whose interests track yours (weigh it on the merits) from one who wins whether or not you do (worth what it'd be worth from someone unpaid) — and where they diverge, hands you the ways to get the incentive-free version rather than just distrust everyone.",
     payoff: "now",
     models: ["incentive-structures"],
+    essays: ["never-ask-a-barber"],
   },
   {
     id: "enough",
