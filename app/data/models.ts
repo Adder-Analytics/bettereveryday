@@ -42,7 +42,7 @@ export const models: Model[] = [
     tagline: "People respond to what they're rewarded for, not what they're told.",
     explanation:
       "Charlie Munger: 'Show me the incentive and I'll show you the outcome.' Almost every institutional dysfunction, perverse behavior, or persistent failure can be traced to an incentive structure that rewards the wrong thing. A doctor paid per procedure has different incentives than one paid per patient outcome. A fund manager paid on assets under management has different incentives than one paid on returns. Before judging people for behaving badly, understand what they're actually being paid — in money, status, or security — to do.",
-    essays: ["metric-not-the-mission"],
+    essays: ["metric-not-the-mission", "never-ask-a-barber"],
   },
 
   // Decision-making
