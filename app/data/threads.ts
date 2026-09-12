@@ -117,6 +117,11 @@ export const threads: Thread[] = [
         why: "The one-screen version of the funeral: assume it failed, write the history, triage the causes.",
       },
       {
+        kind: "essay",
+        slug: "tie-me-tighter",
+        why: "Why the guard is needed at all: the person who reaches the line you drew is present-biased and hot, and will want, sincerely, to wave it off. The case for binding a future self the way Odysseus bound himself to the mast — and how to bind against your own weakness without binding against the news that you were wrong.",
+      },
+      {
         kind: "model",
         id: "tripwires",
         why: "And the guard it leaves behind: a state and a date, set while you're calm, that outranks your future self.",

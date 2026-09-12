@@ -278,6 +278,7 @@ export const tools: Tool[] = [
     does: "Turns a decision into a state and a date — an observable signal you can't argue with, set while you're calm — and hands it back to you on that day at the return desk, so a call going wrong can't coast past the point it stopped being right.",
     payoff: "later",
     models: ["tripwires"],
+    essays: ["tie-me-tighter"],
   },
   {
     id: "premortem",
