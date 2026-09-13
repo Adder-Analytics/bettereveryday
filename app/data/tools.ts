@@ -281,6 +281,18 @@ export const tools: Tool[] = [
     essays: ["tie-me-tighter"],
   },
   {
+    id: "rule",
+    href: "/rule",
+    name: "Make It a Rule",
+    short: "Make a rule",
+    when: "It's not one decision — it's the same small call you keep facing: the after-hours message, the impulse buy, the \"quick\" favour that eats the evening. You re-decide it from scratch every time, usually while tired or tempted, and usually the way you later wish you hadn't.",
+    ask: "Should I keep making this call case by case — or make it once, as a rule, and stop spending the willpower?",
+    does: "Turns a recurring decision into a standing rule: checks it actually recurs, forces the call into a bright line you can tell you've broken, makes you name the rare exceptions that should genuinely override it, and schedules a review on the return desk — so you decide it once, cold, instead of a hundred times under pressure.",
+    payoff: "now",
+    models: ["bright-line-rules"],
+    essays: ["decide-it-once"],
+  },
+  {
     id: "premortem",
     href: "/premortem",
     name: "The Pre-mortem",
@@ -424,7 +436,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "quit"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "quit", "rule"],
   },
   {
     id: "big-commitment",

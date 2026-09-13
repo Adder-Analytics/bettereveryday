@@ -171,6 +171,16 @@ export const models: Model[] = [
     essays: ["deciding-and-doing", "the-plan-was-never-tried"],
   },
 
+  {
+    id: "bright-line-rules",
+    name: "Bright-Line Rules",
+    domain: "Decisions",
+    tagline: "For a decision you face over and over, decide once as a rule — not freshly, under pressure, every time.",
+    explanation:
+      "Most of the decision literature treats one call at a time. But a large share of what a life spends is the same small decision faced repeatedly — the after-hours message, the second drink, the impulse buy — and there the leverage isn't deciding better each time; it's not deciding each time at all. A bright-line rule ('none on weeknights') decided once, while calm, beats a case-by-case intention ('I'll be reasonable about it') for three reasons. First, the case-by-case call is made by the version of you least able to make it well: George Ainslie's account of hyperbolic discounting shows the in-the-moment self predictably overweights the immediate reward, so the fresh decision reliably tilts toward what you'll later regret — a rule settles it before that self arrives, the same Ulysses-and-the-mast move as a tripwire, pointed at a recurring call rather than a single one. Ainslie's own name for the mechanism is 'personal rules': you bundle the individual choice into a whole series ('this cigarette' becomes 'whether I'm a person who quit'), so the small temptation can't be taken without defecting on the entire policy — a private side-bet against your future self. Second, a rule is a bright line precisely so the moment can't reinterpret it: the test is whether a stranger watching could tell you'd broken it. A line you have to construe in the moment ('unless it's important') just hands the decision back to the self you didn't trust with it — the same 'a bind you can talk your way out of is decoration' failure that undoes a weak tripwire. Third, rules buy back the deliberation and willpower each instance would cost, and they make you consistent — Kahneman, Sibony, and Sunstein's 'Noise' shows how much unwanted variability creeps into repeated judgments made case by case, which a rule simply deletes. The honest limits are two. Don't rule-ify what genuinely needs judgment each time — a bright line applied where the cases really differ ossifies into a worse decision than discretion would make; the art is to bind against your *predictable* weakness (you'll cave at 9pm because you're tired) while staying open to genuine news (the case that's actually different), which is why a good rule names its rare, specific exceptions in advance rather than either forbidding all exceptions or leaving a vague trapdoor. And a rule is a standing decision, not a life sentence: it's set to be re-endorsed on a schedule, or it quietly becomes the same autopilot it was meant to replace. The tool that runs this as a procedure is /rule: it checks the call actually recurs, forces the bright line, makes you name the exceptions, and arms the review on the return desk.",
+    essays: ["decide-it-once"],
+  },
+
   // Systems Thinking
   {
     id: "feedback-loops",
