@@ -205,6 +205,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a decision in progress" : null),
   },
   {
+    key: "rule:v1",
+    tool: "Make it a rule",
+    href: "/rule",
+    label: "The recurring call you last turned into a standing rule",
+    answerNow: true,
+    subject: subjectField("decision"),
+    describe: (raw) => (parse(raw) ? "a rule in progress" : null),
+  },
+  {
     key: "cool:v1",
     tool: "Cooling-off tool",
     href: "/cool",
