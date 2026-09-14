@@ -4,6 +4,7 @@ import { Nav } from "./components/nav";
 import { Footer } from "./components/footer";
 import SearchShortcut from "./components/SearchShortcut";
 import PrintStamp from "./components/PrintStamp";
+import AnswerLogRecorder from "./components/AnswerLogRecorder";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -54,6 +55,7 @@ export default function RootLayout({
         </a>
         <Nav />
         <SearchShortcut />
+        <AnswerLogRecorder />
         <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
           <PrintStamp />
           {children}

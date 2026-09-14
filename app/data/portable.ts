@@ -433,6 +433,27 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a debrief in progress" : null),
   },
   {
+    key: "answerlog:v1",
+    tool: "Answer-now history",
+    href: "/decisions",
+    label: "The quick calls you've worked in the answer-now tools",
+    describe: (raw) => {
+      const v = parse(raw);
+      if (!Array.isArray(v)) return null;
+      if (v.length === 0) return "no calls recorded yet";
+      const tools = new Set(
+        v
+          .filter((e) => e && typeof e === "object")
+          .map((e) => (e as { key?: unknown }).key)
+          .filter((k) => typeof k === "string")
+      );
+      return `${count(v.length, "call recorded", "calls recorded")} across ${count(
+        tools.size,
+        "tool"
+      )}`;
+    },
+  },
+  {
     key: "tripwires:v1",
     tool: "Tripwires",
     href: "/tripwire",
