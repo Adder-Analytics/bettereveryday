@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   loadDecisions,
   dueLabel,
@@ -10,6 +11,7 @@ import {
   type WorkedItem,
   type WorkedTone,
 } from "../data/decisions";
+import { reopenPastCall } from "../data/answerLog";
 import { formatDate } from "../data/posts";
 import PrintButton from "../components/PrintButton";
 
@@ -48,7 +50,27 @@ function StatusPill({ item }: { item: WorkedItem }) {
 }
 
 function ItemRow({ item, today }: { item: WorkedItem; today: string }) {
+  const router = useRouter();
   const due = item.dueOn ? dueLabel(item.dueOn, today) : "";
+  const actionClass =
+    "shrink-0 text-xs font-medium text-[var(--accent)] hover:opacity-70 transition-opacity";
+
+  // A reopenable past call restores its saved worksheet into the tool's slot,
+  // then navigates — so the tool opens on *this* call, filled in, not its
+  // current one. Everything else is a plain link. The restore is the exact
+  // byte-for-byte write the backup/restore path uses, so it touches no tool.
+  function handleReopen() {
+    if (!item.reopenKey) return;
+    reopenPastCall(item.reopenKey, item.subject);
+    // Navigate to a clean tool URL (no carry/share params) so the restored slot
+    // is what the tool reads on mount. Fall back to a hard load if needed.
+    try {
+      router.push(item.href);
+    } catch {
+      window.location.assign(item.href);
+    }
+  }
+
   return (
     <li className="border-t border-[var(--border)] pt-3 first:border-t-0 first:pt-0">
       <div className="flex items-baseline justify-between gap-3">
@@ -77,12 +99,20 @@ function ItemRow({ item, today }: { item: WorkedItem; today: string }) {
             </span>
           )}
         </div>
-        <Link
-          href={item.href}
-          className="shrink-0 text-xs font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
-        >
-          {item.actionLabel}
-        </Link>
+        {item.reopenKey ? (
+          <button
+            type="button"
+            onClick={handleReopen}
+            className={actionClass}
+            data-print-hide
+          >
+            {item.actionLabel}
+          </button>
+        ) : (
+          <Link href={item.href} className={actionClass}>
+            {item.actionLabel}
+          </Link>
+        )}
       </div>
     </li>
   );

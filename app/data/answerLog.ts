@@ -60,12 +60,26 @@ export const ANSWER_LOG_KEY = "answerlog:v1";
 export const MAX_HISTORY = 150 as const;
 
 /**
- * One recorded call. Deliberately self-contained — it stores the already-
- * computed subject and detail strings rather than the raw worksheet, so the
- * history renders without re-parsing any tool's schema and stays small. `sig`
- * is a cheap fingerprint of the worksheet used only to tell "the content
- * changed" from "an unchanged passive sweep," so the date moves only on real
- * edits. `on` is the ISO date the content was last seen to change.
+ * The largest raw worksheet we keep for reopening. An answer-now worksheet is a
+ * handful of short fields — comfortably under this — so the cap only guards a
+ * pathological slot from bloating the log. A slot over the cap is still recorded
+ * as a summary (subject + detail); it just isn't reopenable, and falls back to a
+ * plain link to the tool. 150 entries this size stays far under the storage
+ * budget the rest of the site shares.
+ */
+export const MAX_RAW = 4000 as const;
+
+/**
+ * One recorded call. It stores the already-computed subject and detail strings
+ * so the history renders without re-parsing any tool's schema, and — since the
+ * whole point of this site is to hand a call back to you — the `raw` worksheet
+ * itself, so a past call can be *reopened* in its tool, not just read as a
+ * summary. `raw` is the exact string the tool wrote to its own slot, so
+ * restoring it is byte-for-byte the same operation the backup/restore path uses
+ * (portable.ts): the tool re-parses it defensively on load, unchanged. `sig` is
+ * a cheap fingerprint used only to tell "the content changed" from "an unchanged
+ * passive sweep," so the date moves only on real edits. `on` is the ISO date the
+ * content was last seen to change.
  */
 export type Snapshot = {
   /** The tool's storage key, e.g. "weigh:v1" — identifies which instrument. */
@@ -80,6 +94,10 @@ export type Snapshot = {
   sig: string;
   /** ISO yyyy-mm-dd the content last changed. */
   on: string;
+  /** The exact worksheet string, for reopening this call in its tool. Absent
+   *  when the slot was over `MAX_RAW`, or on entries recorded before reopen
+   *  existed — such a call reads fine as a record but can't be reopened. */
+  raw?: string;
 };
 
 function todayISO(): string {
@@ -124,11 +142,15 @@ export function sig(raw: string): string {
  */
 export function foldSnapshot(
   log: Snapshot[],
-  incoming: { key: string; subject: string; detail: string; sig: string },
+  incoming: { key: string; subject: string; detail: string; sig: string; raw?: string },
   today: string
 ): { log: Snapshot[]; changed: boolean } {
   const norm = normSubject(incoming.subject);
   if (!norm) return { log, changed: false }; // nothing to group on — skip
+  // Keep the raw worksheet only when it's present and within the cap; an
+  // oversized slot is still recorded as a summary, just not reopenable.
+  const raw =
+    incoming.raw && incoming.raw.length <= MAX_RAW ? incoming.raw : undefined;
   const idx = log.findIndex((e) => e.key === incoming.key && e.norm === norm);
 
   if (idx >= 0) {
@@ -141,6 +163,7 @@ export function foldSnapshot(
       detail: incoming.detail,
       sig: incoming.sig,
       on: today,
+      raw,
     };
     return { log: cap(next), changed: true };
   }
@@ -154,6 +177,7 @@ export function foldSnapshot(
       detail: incoming.detail,
       sig: incoming.sig,
       on: today,
+      raw,
     },
   ];
   return { log: cap(next), changed: true };
@@ -194,14 +218,22 @@ function readLog(): Snapshot[] {
   const str = (v: unknown) => (typeof v === "string" ? v : "");
   return parsed
     .filter((e): e is Record<string, unknown> => !!e && typeof e === "object")
-    .map((e) => ({
-      key: str(e.key),
-      subject: str(e.subject),
-      norm: str(e.norm) || normSubject(str(e.subject)),
-      detail: str(e.detail),
-      sig: str(e.sig),
-      on: str(e.on),
-    }))
+    .map((e) => {
+      // Keep raw only if it's a string within the cap — a hand-edited or
+      // oversized value degrades to "not reopenable," never to a bad restore.
+      const rawVal =
+        typeof e.raw === "string" && e.raw.length <= MAX_RAW ? e.raw : undefined;
+      const snap: Snapshot = {
+        key: str(e.key),
+        subject: str(e.subject),
+        norm: str(e.norm) || normSubject(str(e.subject)),
+        detail: str(e.detail),
+        sig: str(e.sig),
+        on: str(e.on),
+        ...(rawVal !== undefined ? { raw: rawVal } : {}),
+      };
+      return snap;
+    })
     .filter((e) => e.key && e.norm);
 }
 
@@ -251,7 +283,7 @@ export function sweepAnswerNow(): void {
 
     const folded = foldSnapshot(
       log,
-      { key: store.key, subject, detail: detail ?? "", sig: sig(raw) },
+      { key: store.key, subject, detail: detail ?? "", sig: sig(raw), raw },
       today
     );
     log = folded.log;
@@ -278,6 +310,9 @@ export type PastCall = {
   href: string;
   /** The tool's display name, e.g. "Flip point". */
   tool: string;
+  /** True when this call kept its worksheet and can be reopened in its tool
+   *  (see `reopenPastCall`); false for a summary-only record. */
+  canReopen: boolean;
 };
 
 /**
@@ -298,8 +333,42 @@ export function loadAnswerHistory(): PastCall[] {
         on: e.on,
         href: store.href,
         tool: store.tool,
+        canReopen: typeof e.raw === "string" && e.raw.length > 0,
       };
     })
     .filter((x): x is PastCall => x !== null)
     .sort((a, b) => (a.on === b.on ? 0 : a.on < b.on ? 1 : -1));
+}
+
+/**
+ * Reopen a past call: put its saved worksheet back into its tool's live slot, so
+ * navigating to the tool shows *that* call, filled in, rather than whatever you
+ * last worked there. This is the completion of the site's core promise for the
+ * answer-now family — the record isn't just readable, it's returnable.
+ *
+ * Safety, and why this touches no tool: it writes the raw worksheet string back
+ * to the tool's own storage key, byte for byte — exactly what a backup restore
+ * does (portable.ts). Every answer-now tool already re-reads its slot on mount
+ * through a defensive `loadInputs`, so the restored call renders with no change
+ * to the tool. Whatever call was live in that slot is not lost: the recorder
+ * sweeps it into this same history on the navigation that brought you here, so
+ * it stays reopenable too.
+ *
+ * Returns true if a worksheet was found for `(key, subject)` and written. Fully
+ * defensive and browser-only: returns false (changing nothing) on the server,
+ * when storage is unavailable, or when the call kept no reopenable worksheet.
+ * The caller navigates to the tool only on a true return.
+ */
+export function reopenPastCall(key: string, subject: string): boolean {
+  if (typeof window === "undefined") return false;
+  const norm = normSubject(subject);
+  if (!norm) return false;
+  const entry = readLog().find((e) => e.key === key && e.norm === norm);
+  if (!entry || typeof entry.raw !== "string" || !entry.raw) return false;
+  try {
+    window.localStorage.setItem(key, entry.raw);
+    return true;
+  } catch {
+    return false;
+  }
 }
