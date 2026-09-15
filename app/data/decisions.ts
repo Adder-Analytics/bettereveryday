@@ -103,6 +103,14 @@ export type WorkedItem = {
   href: string;
   /** The link's text. */
   actionLabel: string;
+  /**
+   * Set only on a reopenable answer-now history record: the tool's storage key.
+   * When present, the row's action restores this exact worksheet into the tool
+   * (via `reopenPastCall`) before navigating to `href`, so you land on *this*
+   * call filled in — not the tool's current slot. Absent everywhere else, where
+   * `href` is a plain link.
+   */
+  reopenKey?: string;
 };
 
 /** A decision, reassembled: every record that shares its line, in worked order. */
@@ -368,7 +376,12 @@ function historyItems(liveKeys: Set<string>): WorkedItem[] {
       workedOn: c.on,
       dueOn: "",
       href: c.href,
-      actionLabel: "Revisit →",
+      // A reopenable call restores *this* worksheet into the tool, so the label
+      // promises exactly that. A summary-only record (no saved worksheet — an
+      // older entry, or an oversized slot) can only open the tool as it stands,
+      // so it says so honestly rather than implying it'll reload this call.
+      actionLabel: c.canReopen ? "Reopen this call →" : "Open the tool →",
+      ...(c.canReopen ? { reopenKey: c.key } : {}),
     }));
 }
 
