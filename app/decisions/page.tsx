@@ -93,7 +93,10 @@ export default function DecisionsPage() {
           >
             back it up
           </Link>{" "}
-          when it grows.
+          when it grows. And when you want the reasoning itself out &mdash; to
+          paste into a journal, send to the one person the call is about, or keep
+          in your own notes &mdash; <em>Copy as text</em> on any decision hands
+          back its whole arc as a plain-text memo, still sent nowhere.
         </p>
       </div>
     </div>

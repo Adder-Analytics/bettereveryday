@@ -12,6 +12,7 @@ import {
   type WorkedTone,
 } from "../data/decisions";
 import { reopenPastCall } from "../data/answerLog";
+import { decisionToText } from "../data/decisionText";
 import { formatDate } from "../data/posts";
 import PrintButton from "../components/PrintButton";
 
@@ -135,6 +136,48 @@ function summaryLine(group: DecisionGroup, today: string): string {
   return parts.join(" · ");
 }
 
+/**
+ * "Copy as text" — the per-decision way to take one call's whole arc out of the
+ * browser as a plain-text memo you can paste into a journal, an email to the one
+ * person it's about, or your own notes. The page-level print button hands back
+ * the *whole* record as a PDF; this hands back *this* decision as words. The
+ * text is composed by the pure `decisionToText`, so this component owns only the
+ * one impure step — the clipboard write — with the same defensive,
+ * fail-quiet handling the tools' copy affordances use. `data-print-hide` keeps
+ * the button off the printed record it would otherwise clutter.
+ */
+function CopyDecisionButton({
+  group,
+  today,
+}: {
+  group: DecisionGroup;
+  today: string;
+}) {
+  const [copied, setCopied] = useState(false);
+  return (
+    <button
+      type="button"
+      data-print-hide
+      onClick={() => {
+        try {
+          navigator.clipboard?.writeText(decisionToText(group, today)).then(
+            () => {
+              setCopied(true);
+              window.setTimeout(() => setCopied(false), 1800);
+            },
+            () => {}
+          );
+        } catch {
+          /* clipboard blocked — the record is still on screen to copy by hand */
+        }
+      }}
+      className="shrink-0 text-xs font-medium text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+    >
+      {copied ? "Copied ✓" : "Copy as text"}
+    </button>
+  );
+}
+
 function GroupCard({ group, today }: { group: DecisionGroup; today: string }) {
   return (
     <li
@@ -142,9 +185,12 @@ function GroupCard({ group, today }: { group: DecisionGroup; today: string }) {
         group.hasDue ? "border-[var(--accent)]" : "border-[var(--border)]"
       }`}
     >
-      <h3 className="text-base font-semibold text-[var(--foreground)] leading-snug">
-        {group.subject}
-      </h3>
+      <div className="flex items-baseline justify-between gap-3">
+        <h3 className="text-base font-semibold text-[var(--foreground)] leading-snug">
+          {group.subject}
+        </h3>
+        <CopyDecisionButton group={group} today={today} />
+      </div>
       {summaryLine(group, today) && (
         <p className="mt-1 text-xs text-[var(--muted)]">
           {summaryLine(group, today)}
