@@ -159,6 +159,7 @@ export const tools: Tool[] = [
     does: "Runs Munger's 'show me the incentive' on the advice you were handed. Separates a source whose interests track yours (weigh it on the merits) from one who wins whether or not you do (worth what it'd be worth from someone unpaid) — and where they diverge, hands you the ways to get the incentive-free version rather than just distrust everyone.",
     payoff: "now",
     models: ["incentive-structures"],
+    essays: ["never-ask-a-barber"],
   },
   {
     id: "enough",
@@ -170,6 +171,7 @@ export const tools: Tool[] = [
     does: "Runs Hubbard's value-of-information test without the math: name the one thing you're waiting to learn, say what you'd do under each way it could land, and if the answer's the same either way, you already have enough — more research is delay. If it would flip the call, it's worth getting only when it's cheap and in time, and hands you the tool for that.",
     payoff: "now",
     models: ["value-of-information"],
+    essays: ["what-would-you-do-either-way"],
   },
   {
     id: "stop",
@@ -181,6 +183,7 @@ export const tools: Tool[] = [
     does: "Runs the secretary-problem answer without the math: look at (and pass) the first ~37% of the field to learn what good looks like, then take the first that beats them all. Names the two failure modes — grabbing the first shiny thing, and passing the best one hoping — and tells you which side of the line you're on right now.",
     payoff: "now",
     models: ["optimal-stopping"],
+    essays: ["look-then-leap"],
   },
   {
     id: "quit",
@@ -275,6 +278,19 @@ export const tools: Tool[] = [
     does: "Turns a decision into a state and a date — an observable signal you can't argue with, set while you're calm — and hands it back to you on that day at the return desk, so a call going wrong can't coast past the point it stopped being right.",
     payoff: "later",
     models: ["tripwires"],
+    essays: ["tie-me-tighter"],
+  },
+  {
+    id: "rule",
+    href: "/rule",
+    name: "Make It a Rule",
+    short: "Make a rule",
+    when: "It's not one decision — it's the same small call you keep facing: the after-hours message, the impulse buy, the \"quick\" favour that eats the evening. You re-decide it from scratch every time, usually while tired or tempted, and usually the way you later wish you hadn't.",
+    ask: "Should I keep making this call case by case — or make it once, as a rule, and stop spending the willpower?",
+    does: "Turns a recurring decision into a standing rule: checks it actually recurs, forces the call into a bright line you can tell you've broken, makes you name the rare exceptions that should genuinely override it, and schedules a review on the return desk — so you decide it once, cold, instead of a hundred times under pressure.",
+    payoff: "now",
+    models: ["bright-line-rules"],
+    essays: ["decide-it-once"],
   },
   {
     id: "premortem",
@@ -420,7 +436,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "quit"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "quit", "rule"],
   },
   {
     id: "big-commitment",

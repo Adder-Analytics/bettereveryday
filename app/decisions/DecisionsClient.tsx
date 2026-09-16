@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   loadDecisions,
   dueLabel,
@@ -10,6 +11,8 @@ import {
   type WorkedItem,
   type WorkedTone,
 } from "../data/decisions";
+import { reopenPastCall } from "../data/answerLog";
+import { decisionToText } from "../data/decisionText";
 import { formatDate } from "../data/posts";
 import PrintButton from "../components/PrintButton";
 
@@ -48,7 +51,27 @@ function StatusPill({ item }: { item: WorkedItem }) {
 }
 
 function ItemRow({ item, today }: { item: WorkedItem; today: string }) {
+  const router = useRouter();
   const due = item.dueOn ? dueLabel(item.dueOn, today) : "";
+  const actionClass =
+    "shrink-0 text-xs font-medium text-[var(--accent)] hover:opacity-70 transition-opacity";
+
+  // A reopenable past call restores its saved worksheet into the tool's slot,
+  // then navigates — so the tool opens on *this* call, filled in, not its
+  // current one. Everything else is a plain link. The restore is the exact
+  // byte-for-byte write the backup/restore path uses, so it touches no tool.
+  function handleReopen() {
+    if (!item.reopenKey) return;
+    reopenPastCall(item.reopenKey, item.subject);
+    // Navigate to a clean tool URL (no carry/share params) so the restored slot
+    // is what the tool reads on mount. Fall back to a hard load if needed.
+    try {
+      router.push(item.href);
+    } catch {
+      window.location.assign(item.href);
+    }
+  }
+
   return (
     <li className="border-t border-[var(--border)] pt-3 first:border-t-0 first:pt-0">
       <div className="flex items-baseline justify-between gap-3">
@@ -77,12 +100,20 @@ function ItemRow({ item, today }: { item: WorkedItem; today: string }) {
             </span>
           )}
         </div>
-        <Link
-          href={item.href}
-          className="shrink-0 text-xs font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
-        >
-          {item.actionLabel}
-        </Link>
+        {item.reopenKey ? (
+          <button
+            type="button"
+            onClick={handleReopen}
+            className={actionClass}
+            data-print-hide
+          >
+            {item.actionLabel}
+          </button>
+        ) : (
+          <Link href={item.href} className={actionClass}>
+            {item.actionLabel}
+          </Link>
+        )}
       </div>
     </li>
   );
@@ -105,6 +136,48 @@ function summaryLine(group: DecisionGroup, today: string): string {
   return parts.join(" · ");
 }
 
+/**
+ * "Copy as text" — the per-decision way to take one call's whole arc out of the
+ * browser as a plain-text memo you can paste into a journal, an email to the one
+ * person it's about, or your own notes. The page-level print button hands back
+ * the *whole* record as a PDF; this hands back *this* decision as words. The
+ * text is composed by the pure `decisionToText`, so this component owns only the
+ * one impure step — the clipboard write — with the same defensive,
+ * fail-quiet handling the tools' copy affordances use. `data-print-hide` keeps
+ * the button off the printed record it would otherwise clutter.
+ */
+function CopyDecisionButton({
+  group,
+  today,
+}: {
+  group: DecisionGroup;
+  today: string;
+}) {
+  const [copied, setCopied] = useState(false);
+  return (
+    <button
+      type="button"
+      data-print-hide
+      onClick={() => {
+        try {
+          navigator.clipboard?.writeText(decisionToText(group, today)).then(
+            () => {
+              setCopied(true);
+              window.setTimeout(() => setCopied(false), 1800);
+            },
+            () => {}
+          );
+        } catch {
+          /* clipboard blocked — the record is still on screen to copy by hand */
+        }
+      }}
+      className="shrink-0 text-xs font-medium text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+    >
+      {copied ? "Copied ✓" : "Copy as text"}
+    </button>
+  );
+}
+
 function GroupCard({ group, today }: { group: DecisionGroup; today: string }) {
   return (
     <li
@@ -112,9 +185,12 @@ function GroupCard({ group, today }: { group: DecisionGroup; today: string }) {
         group.hasDue ? "border-[var(--accent)]" : "border-[var(--border)]"
       }`}
     >
-      <h3 className="text-base font-semibold text-[var(--foreground)] leading-snug">
-        {group.subject}
-      </h3>
+      <div className="flex items-baseline justify-between gap-3">
+        <h3 className="text-base font-semibold text-[var(--foreground)] leading-snug">
+          {group.subject}
+        </h3>
+        <CopyDecisionButton group={group} today={today} />
+      </div>
       {summaryLine(group, today) && (
         <p className="mt-1 text-xs text-[var(--muted)]">
           {summaryLine(group, today)}

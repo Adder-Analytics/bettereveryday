@@ -47,7 +47,16 @@ export default function IncentivesPage() {
           on the answer: weigh advice from someone whose interests track yours on
           its merits, and, where they don&rsquo;t, get the same recommendation from
           someone paid differently, or change the structure so their pay follows
-          your outcome. The idea in full is in the{" "}
+          your outcome. The reasoning behind it &mdash; why the incentive doesn&rsquo;t
+          mainly make people lie to you but changes what they sincerely believe, and
+          why that means you can&rsquo;t read your way out of it &mdash; is in the essay{" "}
+          <Link
+            href="/writing/never-ask-a-barber"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Never Ask a Barber
+          </Link>
+          ; the same idea as a one-screen concept is the{" "}
           <Link
             href="/models#incentive-structures"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"

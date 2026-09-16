@@ -117,6 +117,11 @@ export const threads: Thread[] = [
         why: "The one-screen version of the funeral: assume it failed, write the history, triage the causes.",
       },
       {
+        kind: "essay",
+        slug: "tie-me-tighter",
+        why: "Why the guard is needed at all: the person who reaches the line you drew is present-biased and hot, and will want, sincerely, to wave it off. The case for binding a future self the way Odysseus bound himself to the mast — and how to bind against your own weakness without binding against the news that you were wrong.",
+      },
+      {
         kind: "model",
         id: "tripwires",
         why: "And the guard it leaves behind: a state and a date, set while you're calm, that outranks your future self.",
@@ -170,6 +175,45 @@ export const threads: Thread[] = [
         kind: "essay",
         slug: "the-last-inch",
         why: "The final polish on the loop: even for the willing, the return dies on the ten seconds of hunting between 'it's due' and answering it. Why friction, not motivation, is usually what stops us — and the discipline of sanding away the navigation friction while leaving the thinking friction, which is the review itself, exactly where it is.",
+      },
+    ],
+  },
+  {
+    id: "knowing-when-to-stop",
+    title: "Knowing When to Stop",
+    tagline: "When more looking, more waiting, and more pouring in stop being worth it.",
+    intro:
+      "Three of the most common decisions in a life are really the same one wearing different clothes: when to stop searching, when to stop investing in what you've already begun, and when to stop gathering information. Each has a proven answer, and each fails in the same quiet way — not by a wrong choice, but by never deciding to stop at all. Read in this order and “keep going” stops being the default you back into.",
+    steps: [
+      {
+        kind: "essay",
+        slug: "look-then-leap",
+        why: "When to stop searching. Options arrive one at a time and passing is final — so how long do you look before you take one? Look without choosing, long enough to learn what good means here, then take the first thing that beats it. The strange, useful instruction: you have to let good options go on purpose.",
+      },
+      {
+        kind: "model",
+        id: "optimal-stopping",
+        why: "The one-screen version of the search rule, and the two ways it goes wrong — leaping before you're calibrated, and looking past the best one you'll ever see.",
+      },
+      {
+        kind: "essay",
+        slug: "the-money-is-already-gone",
+        why: "The same question asked backward: when to stop pouring into a thing you've already begun. What you've spent is a fact about the past; the decision is entirely about the future — and the one question that strips the sunk cost out is whether you'd start it today, from zero.",
+      },
+      {
+        kind: "model",
+        id: "sunk-cost",
+        why: "The one-screen version: the tense tell, why the pull is so strong, and the fresh-start test that deletes it.",
+      },
+      {
+        kind: "essay",
+        slug: "what-would-you-do-either-way",
+        why: "When to stop gathering information — the most general form of all three, and the cure for the analysis paralysis the other two feed. A fact is worth knowing only for what it would change about what you'd do; when your move is the same either way, the search, of whatever kind, is already over. The one that separates diligence from hiding.",
+      },
+      {
+        kind: "model",
+        id: "value-of-information",
+        why: "The one-screen version, and the through-line under all three costumes: more looking, more waiting, more pouring in is worth it only if it could change what you'd actually do.",
       },
     ],
   },

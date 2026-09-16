@@ -58,6 +58,7 @@ import { loadSavedPremortems } from "./premortem";
 import { loadTripwires } from "./tripwires";
 import { loadParked } from "./parked";
 import { STORES } from "./portable";
+import { loadAnswerHistory } from "./answerLog";
 
 function todayISO(): string {
   const d = new Date();
@@ -70,7 +71,8 @@ export type WorkedKind =
   | "premortem"
   | "tripwire"
   | "parked"
-  | "draft";
+  | "draft"
+  | "history";
 
 /** How an item stands, for the status pill's colour. */
 export type WorkedTone = "open" | "resolved" | "alert" | "draft";
@@ -101,6 +103,14 @@ export type WorkedItem = {
   href: string;
   /** The link's text. */
   actionLabel: string;
+  /**
+   * Set only on a reopenable answer-now history record: the tool's storage key.
+   * When present, the row's action restores this exact worksheet into the tool
+   * (via `reopenPastCall`) before navigating to `href`, so you land on *this*
+   * call filled in — not the tool's current slot. Absent everywhere else, where
+   * `href` is a plain link.
+   */
+  reopenKey?: string;
 };
 
 /** A decision, reassembled: every record that shares its line, in worked order. */
@@ -324,6 +334,57 @@ function draftItems(): WorkedItem[] {
   return out;
 }
 
+/** Uppercase the first letter of a describer's phrase so it reads as a sentence
+ *  in the row, leaving the rest as written. */
+function sentence(s: string): string {
+  return s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+}
+
+/**
+ * The answer-now history, as past calls. Where `draftItems` surfaces the *live*
+ * worksheet each answer-now tool still holds (one slot, undated, "in progress"),
+ * this surfaces every *earlier* call you worked in those tools — the record the
+ * shared history (answerLog.ts) keeps now that a single slot no longer throws
+ * the last call away. A past call is dated (the day its worksheet last changed),
+ * never due, and reads as a finished piece of the arc: a decision walked through
+ * the door sort, then the flip point, then logged in the journal now shows all
+ * three, even weeks later.
+ *
+ * `liveKeys` holds the `key|norm` of every worksheet currently live in a tool
+ * (its draft) — those are already shown by `draftItems`, so they're skipped here
+ * to avoid showing the same call twice, once as a draft and once as history.
+ */
+function historyItems(liveKeys: Set<string>): WorkedItem[] {
+  return loadAnswerHistory()
+    .filter((c) => !liveKeys.has(`${c.key}|${normKey(c.subject)}`))
+    .map((c) => ({
+      id: `history:${c.key}:${normKey(c.subject)}`,
+      kind: "history" as const,
+      toolLabel: c.tool,
+      subject: c.subject,
+      // The backup describers summarise the *live* slot, so the flat tools
+      // return an "…in progress" placeholder rather than content. That phrasing
+      // contradicts a finished, worked record — so use it only when it carries
+      // real content (a door sorted, options counted), and fall back to a plain
+      // record line otherwise.
+      detail:
+        c.detail && !/in progress$/i.test(c.detail.trim())
+          ? `${sentence(c.detail)}.`
+          : "A quick call you worked through here.",
+      status: "worked",
+      tone: "resolved" as const,
+      workedOn: c.on,
+      dueOn: "",
+      href: c.href,
+      // A reopenable call restores *this* worksheet into the tool, so the label
+      // promises exactly that. A summary-only record (no saved worksheet — an
+      // older entry, or an oversized slot) can only open the tool as it stands,
+      // so it says so honestly rather than implying it'll reload this call.
+      actionLabel: c.canReopen ? "Reopen this call →" : "Open the tool →",
+      ...(c.canReopen ? { reopenKey: c.key } : {}),
+    }));
+}
+
 const minISO = (a: string, b: string): string =>
   !a ? b : !b ? a : a <= b ? a : b;
 const maxISO = (a: string, b: string): string =>
@@ -429,12 +490,18 @@ export type DecisionsView = {
 export function loadDecisions(): DecisionsView {
   const today = todayISO();
   const drafts = draftItems();
+  // Every worksheet currently live in a tool, keyed as `storeKey|normSubject`,
+  // so the history can skip the calls the drafts already show as in-progress.
+  const liveKeys = new Set(
+    drafts.map((d) => `${d.id.slice("draft:".length)}|${normKey(d.subject)}`)
+  );
   const items = [
     ...journalItems(today),
     ...premortemItems(today),
     ...tripwireItems(today),
     ...parkedItems(today),
     ...drafts,
+    ...historyItems(liveKeys),
   ];
   const groups = groupDecisions(items, today);
   return {

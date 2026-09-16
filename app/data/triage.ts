@@ -122,6 +122,20 @@ const nodes: Record<string, TriageNode> = {
         },
       },
       {
+        id: "recurring",
+        label: "It's not one decision — it's the same call I keep facing.",
+        detail: "The after-hours message, the impulse buy, the \"quick\" favour. I re-decide it every time, usually while tired or tempted, and usually the way I later regret.",
+        rec: {
+          toolId: "rule",
+          because:
+            "A decision you face over and over isn't solved by deciding it better each time — it's solved by deciding it once, as a standing rule, so the fight simply doesn't get held under pressure. Check it actually recurs, force the call into a bright line you can tell you've broken, and name the rare exceptions that should genuinely override it — binding against your predictable weakness, not against the news that you were wrong.",
+          then: {
+            toolId: "tripwire",
+            note: "A rule is a standing decision, not a life sentence — arm its review as a tripwire so it comes back on its date to be re-endorsed, not obeyed on autopilot.",
+          },
+        },
+      },
+      {
         id: "downside-scary",
         label: "The upside is real — but there's a downside I keep waving off.",
         detail: "\"It probably won't happen.\" Maybe not — but if it did, I'm not sure I'd recover from it.",

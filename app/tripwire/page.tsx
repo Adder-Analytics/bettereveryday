@@ -57,6 +57,19 @@ export default function TripwirePage() {
           </Link>
           , and every check ends in a recorded answer: fired, or all clear.
         </p>
+        <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
+          For the reasoning under all of this — why a decision you made well while
+          calm needs binding at all, why you&rsquo;ll lose the argument at the line
+          if you plan on winning it, and how to bind against your own weakness
+          without binding against the news that you were wrong — see{" "}
+          <Link
+            href="/writing/tie-me-tighter"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            Tie Me Tighter
+          </Link>
+          .
+        </p>
       </header>
 
       <TripwireClient />

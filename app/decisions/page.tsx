@@ -76,10 +76,14 @@ export default function DecisionsPage() {
             cooling-off
           </Link>{" "}
           tool &mdash; show every record you saved. The answer-now tools (the
-          door, the flip point, the comparison, and the rest) keep only the{" "}
-          <em>last</em> worksheet you reached an answer on &mdash; so those show
-          up as an <em>in-progress</em> draft you can pick back up, marked with a
-          dashed edge and no date, one per tool. Records line up as one decision
+          door, the flip point, the comparison, and the rest) hold only the{" "}
+          <em>last</em> worksheet in each tool, so the call you have open there
+          shows up as an <em>in-progress</em> draft you can pick back up, marked
+          with a dashed edge. But the calls you worked <em>before</em> that
+          aren&rsquo;t thrown away any more &mdash; each is kept as a dated{" "}
+          <em>worked</em> record you can <em>reopen</em> &mdash; putting that exact
+          worksheet back into its tool, filled in, weeks later &mdash; so a quick
+          call you ran is returnable, not just readable. Records line up as one decision
           when they share the same line &mdash; carried tool to tool it lines up
           on its own; typed separately, each stands alone. Because it all lives
           only in this browser,{" "}
@@ -89,7 +93,10 @@ export default function DecisionsPage() {
           >
             back it up
           </Link>{" "}
-          when it grows.
+          when it grows. And when you want the reasoning itself out &mdash; to
+          paste into a journal, send to the one person the call is about, or keep
+          in your own notes &mdash; <em>Copy as text</em> on any decision hands
+          back its whole arc as a plain-text memo, still sent nowhere.
         </p>
       </div>
     </div>
