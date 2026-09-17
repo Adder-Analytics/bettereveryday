@@ -132,6 +132,10 @@ export const situations: Situation[] = [
         id: "regression-to-mean",
         move: "An extreme event is, almost by definition, likely to be followed by something less extreme. One dramatic data point is not a trend.",
       },
+      {
+        id: "survivorship-bias",
+        move: "The vivid story is almost always a survivor's. Ask who did the same thing and isn't around to tell it — the failures don't post the thread, write the memoir, or commission the painting, so the example reached you already filtered by who lived.",
+      },
     ],
     essays: ["availability-heuristic", "how-much-should-this-change-your-mind"],
     notes: ["kahneman-inside-view"],
@@ -212,6 +216,10 @@ export const situations: Situation[] = [
       {
         id: "reversibility",
         move: "A cheap-to-undo choice made fast isn't a mistake just because it missed. For a two-way door, speed was the right call and a wrong outcome is the cost of doing business.",
+      },
+      {
+        id: "survivorship-bias",
+        move: "A track record you're being asked to trust is a survivor by definition — the funds that closed, the hires who washed out, the bets that ended the game are quietly gone from it. Ask what the record would look like if the failures were still in it before you read a winning streak as skill.",
       },
     ],
     tool: {
