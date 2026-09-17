@@ -1868,6 +1868,52 @@ export const posts: Post[] = [
 
 <p>Underneath all three is the reframe: for the decisions you face once, decide well; for the ones you face over and over, stop deciding. The nightly call, the recurring temptation, the standing request &mdash; you will not out-argue these in the moment, because the moment is precisely when you&rsquo;re weakest and there are so many moments. Pull the decision out of them. Make it <a href="/rule">a rule</a>: settle it once while you&rsquo;re calm, draw the line bright enough that the tired self can&rsquo;t blur it, name the exceptions you&rsquo;d honor cold, and put a date on the calendar to check that it still fits. It&rsquo;s the recurring cousin of the <a href="/tripwire">tripwire</a> &mdash; where the tripwire binds a single decision against a future self, a rule replaces a decision that keeps coming back &mdash; and the review it schedules lands on the same <a href="/review">return desk</a> as everything else you&rsquo;re holding. Win the fight once. Then stop showing up to it.</p>`,
   },
+  {
+    slug: "paintings-of-the-drowned",
+    title: "Where Are the Paintings of the Drowned?",
+    date: "2026-09-17",
+    excerpt:
+      "The failures don't show up in the data — they sank, folded, or dropped out before you started looking. Why the lessons drawn from success stories run backwards, and how to go find the evidence that stayed silent.",
+    readTime: 6,
+    tags: ["decisions", "epistemology", "thinking"],
+    content: `<p>Cicero tells a story about Diagoras of Melos, the atheist. A friend, meaning to convince him the gods were real, walked him through a temple hung with painted tablets — offerings from sailors who had prayed through a storm and lived to commission the art. <em>Look how many were saved</em>, the friend said. Diagoras looked, and asked the question that has never stopped being useful: where are the paintings of the ones who prayed and drowned?</p>
+
+<p>They aren't there, of course. The drowned don't commission paintings. A wall that looks like overwhelming evidence for the power of prayer turns out to be evidence that survivors decorate temples. The data set was assembled, silently, by who lived — and once you notice that, the wall says nothing at all.</p>
+
+<p>This is survivorship bias, and it is not one mistake among many. It is a machine for learning the exact opposite of the truth, and it hides in almost every story we tell about what works.</p>
+
+<h2>The bombers that came back</h2>
+
+<p>The cleanest modern version comes from the Second World War. The U.S. military studied its bombers returning from raids over Europe, mapping the bullet holes — clustered on the wings, the fuselage, the tail — to decide where to bolt on more armour. Reasonable: put the steel where the planes are getting hit.</p>
+
+<p>Abraham Wald, a statistician working with Columbia's Statistical Research Group, saw why it was backwards. The map was drawn only from planes that came home. A hit to the engines or the cockpit was <em>missing</em> from the data not because those places were never struck, but because a plane struck there didn't return to be measured. The holes showed where a bomber could be shot and still fly. The armour belonged in the places the survivors had <em>no</em> holes — because the planes hit there were at the bottom of the Channel, uncounted. Wald was reading the silence in the data, not the noise.</p>
+
+<h2>The machine that hides the losers</h2>
+
+<p>Once you have the shape of it, you see it everywhere you learn from success:</p>
+
+<p><strong>Advice from people who made it.</strong> The founder who dropped out and followed their passion gives the commencement speech; the far larger number who dropped out, followed theirs, and quietly went broke are not on the stage. The advice isn't lying — it's just drawn entirely from a room that failure was not allowed to enter.</p>
+
+<p><strong>Track records.</strong> A fund advertising a glittering ten-year return is often quoting an index that survivorship built: the funds that blew up were closed and dropped out of the average, so the number describes a population that no investor could actually have held. The same quiet deletion flatters every "our customers see results like these."</p>
+
+<p><strong>"They built things to last back then."</strong> We admire century-old buildings and conclude the past built better. But the flimsy buildings of the past already fell down — we're comparing the survivors of a century-long filter to everything going up today, good and bad. Old furniture, old music, old machines: the junk was thrown out, and only the good stuff aged into the sample.</p>
+
+<p>There's even a famous statistical mirage in it: a 1987 veterinary study found that cats falling from higher floors seemed to fare <em>better</em> than cats falling from lower ones. The likeliest explanation isn't feline aerodynamics — it's that cats who died on impact from great heights were less likely to be brought to the vet and entered into the data at all.</p>
+
+<h2>Why it's worse than an ordinary bias</h2>
+
+<p>Most biases distort how you weigh the evidence in front of you. Survivorship bias distorts <em>which evidence is in front of you</em> — and it does its damage before you've done any reasoning at all. That makes it the silent enemy of the two ideas the rest of good judgement rests on. A <a href="/models#base-rates">base rate</a> is only honest if it counts the whole class; the <a href="/models#outside-view">outside view</a> only works if the reference class you look up includes the cases that ended badly. Survivorship bias quietly deletes the failures from the class first, so the "outside view" you take is really just an inside view of the winners.</p>
+
+<p>Here's the test that dissolves most success-copying. Take the habit you're about to imitate from the people who made it — the 5 a.m. wake-up, the aggressive bet, the refusal to have a backup plan — and ask whether the people who <em>failed</em> also did it. Plenty of broke founders also woke at five, bet big, and burned the boats. If the winners and the losers did the same thing, that thing is not what separated them. It survived into the story because winners tell stories, not because it worked.</p>
+
+<h2>Going to look for the dead</h2>
+
+<p>The cure is unglamorous and almost always available: go find the failures on purpose. Before you copy what worked, spend the harder half of the effort hunting the people who did the same and aren't around to be asked — the shuttered restaurants on the block, not just the packed one; the classmates who took the same swing and missed; the version of this plan that quietly didn't get written up.</p>
+
+<p>Three habits make it routine. When someone offers a lesson drawn from winners, ask what the losers' data would look like and whether it's missing — if it is, treat the lesson as a hypothesis, not a finding. When you build a reference class to forecast from, build it from everyone who <em>started</em>, not everyone who finished; that's the discipline the <a href="/outside">outside-view tool</a> is built to force. And when you grade a result — a hire, a bet, an investment — remember that a shiny outcome may just be the one draw that survived; the <a href="/debrief">debrief</a> exists to grade the decision apart from the luck of who lived to report it.</p>
+
+<p>Diagoras had no data and needed none. He just asked who was missing from the picture, and the picture fell apart. Most bad conclusions drawn from success would fall apart the same way, if we remembered to ask where the drowned were painted.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
