@@ -285,6 +285,15 @@ export const models: Model[] = [
     essays: ["nobody-thinks-theyre-the-base-rate"],
   },
   {
+    id: "survivorship-bias",
+    name: "Survivorship Bias",
+    domain: "Epistemology",
+    tagline: "You see only the winners — the failures dropped out of the data before you looked, so the lessons drawn from what's left run backwards.",
+    explanation:
+      "In the Second World War the U.S. military mapped where returning bombers were riddled with bullet holes — wings, fuselage, tail — to decide where to add armour. Abraham Wald, a statistician at Columbia's Statistical Research Group, saw the flaw: the map was drawn only from planes that came back. A hit to the engines or cockpit was missing from the data not because those spots were never struck, but because the planes struck there never returned to be counted — so the armour belonged exactly where the survivors showed no holes. That is the whole bias: reasoning from a sample that survival has already filtered, in which the failures are silent — gone from the data, and gone from the lesson. Cicero preserved the older version: shown temple paintings of the faithful who had prayed and survived shipwreck, Diagoras asked where they had painted the ones who prayed and drowned. Taleb calls it silent evidence. It runs a quiet machine wherever we learn from success — the founder's advice to drop out and follow your passion (the dropouts who followed theirs and vanished aren't on the stage), the fund's glittering decade (the funds that died were quietly dropped from the index), 'they built things to last back then' (the flimsy old buildings already fell down). Structurally it is the base rate's and the outside view's silent enemy, because it corrupts the reference class before you average anything: the class you can see is made of survivors. The cure is to go looking for the dead — the people who did the same thing and aren't here to be asked — and the test that dissolves most success-copying is simple: if the winners and the losers both did the thing you're about to imitate, that thing isn't the cause.",
+    essays: ["paintings-of-the-drowned"],
+  },
+  {
     id: "regression-to-mean",
     name: "Regression to the Mean",
     domain: "Epistemology",
