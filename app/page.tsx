@@ -13,11 +13,21 @@ const lastUpdated = formatDate(sortedPosts[0].date);
 
 const toolGroups = resolveToolGroups();
 
-const currentFocus = [
-  { label: "Reading", value: "Poor Charlie's Almanack (2nd read) + DDIA" },
-  { label: "Writing", value: "Publishing weekly — this site is the commitment" },
-  { label: "Learning", value: "Spanish B1 plateau, systems design" },
-  { label: "Physical", value: "Half marathon training, ~18 mi/week" },
+// What a first-time visitor actually needs to know before they trust the kit
+// with a real decision — the three promises the whole site is built on.
+const howItWorks: { title: string; body: string }[] = [
+  {
+    title: "It's private.",
+    body: "Every tool keeps what you write in your browser and nowhere else — no account, no server, nothing uploaded. The record is yours, and you can back it up to a file you hold.",
+  },
+  {
+    title: "It's a worksheet, not a lecture.",
+    body: "You don't read advice here; you work your own decision through. Each instrument asks the few questions that settle the call and hands you an answer, in one sitting.",
+  },
+  {
+    title: "It brings you back.",
+    body: "A decision only teaches you once you find out whether you were right. So the kit keeps a dated record and returns it to you on the day — the half of the loop almost everything else skips.",
+  },
 ];
 
 export default function Home() {
@@ -187,29 +197,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Now Snapshot */}
+      {/* How it works — the three promises a first-time visitor needs before
+          trusting the kit with a real decision, in place of a personal feed. */}
       <section className="py-14">
         <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-8">
-          Currently
+          How it works
         </h2>
-        <div className="space-y-4">
-          {currentFocus.map(({ label, value }) => (
-            <div key={label} className="flex gap-6">
-              <span className="text-sm font-medium text-[var(--foreground)] w-20 shrink-0">
-                {label}
-              </span>
-              <span className="text-sm text-[var(--muted)] leading-relaxed">
-                {value}
-              </span>
+        <div className="space-y-6">
+          {howItWorks.map(({ title, body }) => (
+            <div key={title}>
+              <h3 className="text-sm font-semibold text-[var(--foreground)] leading-snug">
+                {title}
+              </h3>
+              <p className="mt-1.5 text-sm text-[var(--muted)] leading-relaxed max-w-md">
+                {body}
+              </p>
             </div>
           ))}
         </div>
-        <Link
-          href="/now"
-          className="inline-block mt-10 text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
-        >
-          Full /now page &rarr;
-        </Link>
+        <div className="mt-9 flex flex-wrap gap-x-6 gap-y-2">
+          <Link
+            href="/start"
+            className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            New here? Start with a reading path &rarr;
+          </Link>
+          <Link
+            href="/now"
+            className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+          >
+            What the project is building now &rarr;
+          </Link>
+        </div>
       </section>
     </div>
   );

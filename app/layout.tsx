@@ -19,17 +19,18 @@ const geistMono = Geist_Mono({
 
 const SITE_URL = "https://bettereveryday.vercel.app";
 
+const SITE_DESCRIPTION =
+  "A private toolkit for thinking through a real decision — the flip point, the pre-mortem, the consequence trace, and two dozen more working instruments, plus the essays and mental models behind them. Nothing you enter ever leaves your browser.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Better Every Day",
-  description:
-    "Essays on finance, decisions, learning, and craft — built around the conviction that understanding a few ideas well beats knowing many things shallowly.",
+  description: SITE_DESCRIPTION,
   openGraph: {
     type: "website",
     url: SITE_URL,
     title: "Better Every Day",
-    description:
-      "Essays on finance, decisions, learning, and craft — built around the conviction that understanding a few ideas well beats knowing many things shallowly.",
+    description: SITE_DESCRIPTION,
     siteName: "Better Every Day",
   },
   alternates: {
