@@ -173,10 +173,11 @@ export default function EnoughClient() {
 
       {/* ---- The call and the thing you're waiting to know ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="enough-decision" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What are you trying to decide?
         </label>
         <input
+          id="enough-decision"
           type="text"
           value={inp.decision}
           onChange={(e) => set("decision", e.target.value)}
@@ -191,10 +192,11 @@ export default function EnoughClient() {
           }}
         />
 
-        <label className="mt-5 block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="enough-unknown" className="mt-5 block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What do you keep feeling you need to find out first?
         </label>
         <input
+          id="enough-unknown"
           type="text"
           value={inp.unknown}
           onChange={(e) => set("unknown", e.target.value)}
@@ -221,10 +223,11 @@ export default function EnoughClient() {
             it could turn out. Write the move, not the feeling.
           </p>
 
-          <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+          <label htmlFor="enough-if-a" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
             If it turns out one way, I&rsquo;d&hellip;
           </label>
           <input
+            id="enough-if-a"
             type="text"
             value={inp.ifA}
             onChange={(e) => set("ifA", e.target.value)}
@@ -232,10 +235,11 @@ export default function EnoughClient() {
             className={inputClass}
           />
 
-          <label className="mt-4 block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+          <label htmlFor="enough-if-b" className="mt-4 block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
             If it turns out the other way, I&rsquo;d&hellip;
           </label>
           <input
+            id="enough-if-b"
             type="text"
             value={inp.ifB}
             onChange={(e) => set("ifB", e.target.value)}

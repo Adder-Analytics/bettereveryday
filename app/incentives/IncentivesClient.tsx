@@ -172,10 +172,11 @@ export default function IncentivesClient() {
 
       {/* ---- The decision ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="incentives-decision" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What are you being urged toward?
         </label>
         <input
+          id="incentives-decision"
           type="text"
           value={inp.decision}
           onChange={(e) => set("decision", e.target.value)}
@@ -192,10 +193,11 @@ export default function IncentivesClient() {
 
         {decision ? (
           <div className="mt-5">
-            <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+            <label htmlFor="incentives-source" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
               Who&rsquo;s recommending it?
             </label>
             <input
+              id="incentives-source"
               type="text"
               value={inp.messenger}
               onChange={(e) => set("messenger", e.target.value)}
@@ -207,7 +209,7 @@ export default function IncentivesClient() {
 
         {decision && messenger ? (
           <div className="mt-5">
-            <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+            <label htmlFor="incentives-gain" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
               What do they gain if you say yes?
             </label>
             <p className="mb-2 text-sm text-[var(--muted)] leading-relaxed">
@@ -217,6 +219,7 @@ export default function IncentivesClient() {
               the move: it&rsquo;s the thing you can feel but rarely make explicit.
             </p>
             <textarea
+              id="incentives-gain"
               value={inp.gain}
               onChange={(e) => set("gain", e.target.value)}
               rows={3}

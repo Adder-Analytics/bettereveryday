@@ -463,10 +463,11 @@ export default function DebriefClient() {
         </p>
         <div className="mt-3 space-y-3">
           <div>
-            <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+            <label htmlFor="debrief-decision" className="block text-sm font-medium text-[var(--foreground)] mb-1">
               The call you made
             </label>
             <input
+              id="debrief-decision"
               type="text"
               value={inp.decision}
               onChange={(e) => set("decision", e.target.value)}
@@ -482,10 +483,11 @@ export default function DebriefClient() {
             />
           </div>
           <div className="max-w-[16rem]">
-            <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+            <label htmlFor="debrief-when" className="block text-sm font-medium text-[var(--foreground)] mb-1">
               Roughly when? <span className="text-[var(--muted)] font-normal">(optional)</span>
             </label>
             <input
+              id="debrief-when"
               type="text"
               value={inp.when}
               onChange={(e) => set("when", e.target.value)}
@@ -494,10 +496,11 @@ export default function DebriefClient() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+            <label htmlFor="debrief-outcome" className="block text-sm font-medium text-[var(--foreground)] mb-1">
               What actually happened
             </label>
             <textarea
+              id="debrief-outcome"
               value={inp.outcome}
               onChange={(e) => set("outcome", e.target.value)}
               placeholder="The result you're sitting with now — the thing that's making you revisit the call."
@@ -540,10 +543,11 @@ export default function DebriefClient() {
         </p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <div>
-            <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+            <label htmlFor="debrief-knew-then" className="block text-sm font-medium text-[var(--foreground)] mb-1">
               What you actually knew then
             </label>
             <textarea
+              id="debrief-knew-then"
               value={inp.knewThen}
               onChange={(e) => set("knewThen", e.target.value)}
               placeholder="The information and options genuinely in front of you at the time."
@@ -551,10 +555,11 @@ export default function DebriefClient() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+            <label htmlFor="debrief-learned-after" className="block text-sm font-medium text-[var(--foreground)] mb-1">
               What you only learned <em>after</em>
             </label>
             <textarea
+              id="debrief-learned-after"
               value={inp.learnedAfter}
               onChange={(e) => set("learnedAfter", e.target.value)}
               placeholder="Everything the result taught you that you couldn't have known going in. This does not count."
@@ -658,6 +663,7 @@ export default function DebriefClient() {
                 : "You'd make this call again, so there may be no process change to make. If the honest answer is “nothing — it was the roll,” that is a complete and correct answer. Write that, and resist the pull to invent a fix for bad luck."}
             </p>
             <textarea
+              aria-label="The lesson — guarded"
               value={inp.lesson}
               onChange={(e) => set("lesson", e.target.value)}
               placeholder={

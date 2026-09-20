@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import { posts, formatDate } from "./data/posts";
-import { resolveToolGroups, toolCount } from "./data/tools";
+import { resolveToolGroups, toolCount, toolCountWord } from "./data/tools";
 import ReviewDueBadge from "./components/ReviewDueBadge";
 import DecideHero from "./components/DecideHero";
 
@@ -39,10 +39,10 @@ export default function Home() {
           Better Every Day.
         </h1>
         <p className="text-lg text-[var(--muted)] leading-relaxed max-w-lg">
-          A private toolkit for thinking through a real decision &mdash; the flip
-          point, the pre-mortem, the consequence trace, and a dozen more &mdash;
-          with the essays and mental models behind the thinking. Nothing you enter
-          ever leaves your browser.
+          A private toolkit of {toolCountWord} working instruments for thinking
+          through a real decision &mdash; the flip point, the pre-mortem, the
+          consequence trace, and more &mdash; with the essays and mental models
+          behind them. Nothing you enter ever leaves your browser.
         </p>
         <DecideHero />
         <p className="mt-8 text-sm text-[var(--muted)]">Updated {lastUpdated}</p>

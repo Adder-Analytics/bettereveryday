@@ -214,10 +214,11 @@ export default function RuleClient() {
 
       {/* ---- The decision ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="rule-decision" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What decision keeps coming back?
         </label>
         <input
+          id="rule-decision"
           type="text"
           value={inp.decision}
           onChange={(e) => set("decision", e.target.value)}
@@ -583,6 +584,7 @@ function RuleBuilder({
           you that couldn&rsquo;t be trusted with it.
         </p>
         <textarea
+          aria-label="Write it as a bright line"
           value={inp.rule}
           onChange={(e) => set("rule", e.target.value)}
           rows={2}
@@ -604,7 +606,7 @@ function RuleBuilder({
         </label>
 
         <div className="mt-5">
-          <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+          <label htmlFor="rule-exceptions" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
             The exceptions that genuinely override it
           </label>
           <p className="mb-2 text-sm text-[var(--muted)] leading-relaxed">
@@ -617,6 +619,7 @@ function RuleBuilder({
             strong rule — say so.
           </p>
           <textarea
+            id="rule-exceptions"
             value={inp.exceptions}
             onChange={(e) => set("exceptions", e.target.value)}
             rows={2}

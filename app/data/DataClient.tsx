@@ -241,6 +241,7 @@ export default function DataClient() {
           <input
             ref={fileRef}
             type="file"
+            aria-label="Choose a backup file to restore"
             accept="application/json,.json"
             className="hidden"
             onChange={(e) => {

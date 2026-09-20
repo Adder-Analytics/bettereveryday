@@ -196,10 +196,11 @@ export default function TestClient() {
 
       {/* ---- The call and the assumption under it ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="test-decision" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What are you leaning toward doing?
         </label>
         <input
+          id="test-decision"
           type="text"
           value={inp.decision}
           onChange={(e) => set("decision", e.target.value)}
@@ -214,10 +215,11 @@ export default function TestClient() {
           }}
         />
 
-        <label className="mt-5 block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="test-belief" className="mt-5 block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           For this to be the right call, what has to be true?
         </label>
         <input
+          id="test-belief"
           type="text"
           value={inp.belief}
           onChange={(e) => set("belief", e.target.value)}
@@ -253,10 +255,11 @@ export default function TestClient() {
             whether you&rsquo;ve gone looking.
           </p>
 
-          <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+          <label htmlFor="test-disconfirmer" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
             What would you have to see to know it&rsquo;s false?
           </label>
           <input
+            id="test-disconfirmer"
             type="text"
             value={inp.disconfirmer}
             onChange={(e) => set("disconfirmer", e.target.value)}
@@ -332,10 +335,11 @@ export default function TestClient() {
             ))}
           </div>
 
-          <label className="mt-5 block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+          <label htmlFor="test-ooch" className="mt-5 block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
             The cheapest test you could run first
           </label>
           <input
+            id="test-ooch"
             type="text"
             value={inp.ooch}
             onChange={(e) => set("ooch", e.target.value)}

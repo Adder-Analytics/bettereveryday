@@ -5,6 +5,7 @@ import { Footer } from "./components/footer";
 import SearchShortcut from "./components/SearchShortcut";
 import PrintStamp from "./components/PrintStamp";
 import AnswerLogRecorder from "./components/AnswerLogRecorder";
+import { toolCountWord } from "./data/tools";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,7 +21,7 @@ const geistMono = Geist_Mono({
 const SITE_URL = "https://bettereveryday.vercel.app";
 
 const SITE_DESCRIPTION =
-  "A private toolkit for thinking through a real decision — the flip point, the pre-mortem, the consequence trace, and two dozen more working instruments, plus the essays and mental models behind them. Nothing you enter ever leaves your browser.";
+  `A private toolkit of ${toolCountWord} working instruments for thinking through a real decision — the flip point, the pre-mortem, the consequence trace, and more — plus the essays and mental models behind them. Nothing you enter ever leaves your browser.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
