@@ -4,7 +4,7 @@ import { notes } from "../data/notes";
 const SITE_URL = "https://bettereveryday.vercel.app";
 const SITE_TITLE = "Better Every Day";
 const SITE_DESCRIPTION =
-  "Essays on finance, decisions, learning, and craft — built around the conviction that understanding a few fundamental ideas well beats knowing many things shallowly.";
+  "Essays and reading notes on decisions and clear thinking — the reasoning behind the private decision toolkit at Better Every Day.";
 
 function escapeXml(str: string): string {
   return str

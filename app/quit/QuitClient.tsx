@@ -343,6 +343,7 @@ function VerdictBlock({
             </p>
           ) : (
             <textarea
+              aria-label="The one measured reason continuing beats starting"
               value={reason}
               onChange={(e) => onReason?.(e.target.value)}
               placeholder="e.g. The last integration test passed Tuesday; only the payment flow is left, ~2 weeks by the tracker — not a feeling of 'almost.'"
@@ -369,13 +370,14 @@ function VerdictBlock({
           </p>
           <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto]">
             <div>
-              <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+              <label htmlFor="quit-kill-state" className="block text-sm font-medium text-[var(--foreground)] mb-1">
                 If this isn&rsquo;t true…
               </label>
               {readOnly ? (
                 <p className="text-sm italic text-[var(--muted)] py-2">{killState || "—"}</p>
               ) : (
                 <input
+                  id="quit-kill-state"
                   type="text"
                   value={killState}
                   onChange={(e) => onKillState?.(e.target.value)}
@@ -385,13 +387,14 @@ function VerdictBlock({
               )}
             </div>
             <div>
-              <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+              <label htmlFor="quit-kill-date" className="block text-sm font-medium text-[var(--foreground)] mb-1">
                 …by this date
               </label>
               {readOnly ? (
                 <p className="text-sm italic text-[var(--muted)] py-2">{killDate || "—"}</p>
               ) : (
                 <input
+                  id="quit-kill-date"
                   type="date"
                   value={killDate}
                   onChange={(e) => onKillDate?.(e.target.value)}
@@ -553,10 +556,11 @@ export default function QuitClient() {
         </p>
         <div className="mt-3 space-y-3">
           <div>
-            <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+            <label htmlFor="quit-thing" className="block text-sm font-medium text-[var(--foreground)] mb-1">
               What you&rsquo;re deciding whether to quit
             </label>
             <input
+              id="quit-thing"
               type="text"
               value={inp.thing}
               onChange={(e) => set("thing", e.target.value)}
@@ -572,10 +576,11 @@ export default function QuitClient() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+            <label htmlFor="quit-next-push" className="block text-sm font-medium text-[var(--foreground)] mb-1">
               What one more push costs from here
             </label>
             <textarea
+              id="quit-next-push"
               value={inp.nextPush}
               onChange={(e) => set("nextPush", e.target.value)}
               placeholder="The next chunk of time, money, and attention it'll take to keep going — going forward, not what's already in."
@@ -599,6 +604,7 @@ export default function QuitClient() {
           &ldquo;I can&rsquo;t waste all that.&rdquo;
         </p>
         <textarea
+          aria-label="What's already spent — the money, years, and effort already gone"
           value={inp.sunk}
           onChange={(e) => set("sunk", e.target.value)}
           placeholder="The time, money, and effort already gone — the more it hurts to list, the more it's been quietly running the decision."
@@ -651,10 +657,11 @@ export default function QuitClient() {
           the comparison cheats in favour of staying.
         </p>
         <div className="mt-4">
-          <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+          <label htmlFor="quit-alternative" className="block text-sm font-medium text-[var(--foreground)] mb-1">
             Where the same time and money would actually go instead
           </label>
           <textarea
+            id="quit-alternative"
             value={inp.alternative}
             onChange={(e) => set("alternative", e.target.value)}
             placeholder="Your real next-best use — the specific other thing, not a vague 'something else.'"

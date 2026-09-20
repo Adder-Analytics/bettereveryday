@@ -4,7 +4,7 @@ import SearchClient from "./SearchClient";
 export const metadata: Metadata = {
   title: "Search — Better Every Day",
   description:
-    "Search across every essay, mental model, and book annotation on the site.",
+    "Search across everything on the site in one place — every tool, playbook situation, essay, mental model, reading note, and book annotation.",
 };
 
 export default function SearchPage() {
@@ -15,8 +15,9 @@ export default function SearchPage() {
           Search
         </h1>
         <p className="text-base text-[var(--muted)] leading-relaxed max-w-lg">
-          Everything on the site — essays, mental models, and bookshelf
-          annotations — searchable in one place.
+          Everything on the site — the tools and the playbook, essays, mental
+          models, reading notes, and bookshelf annotations — searchable in one
+          place.
         </p>
       </div>
       <SearchClient />

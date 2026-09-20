@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Better Every Day — essays on finance, decisions, learning, and craft";
+export const alt = "Better Every Day — a private toolkit for thinking through a real decision";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -47,8 +47,8 @@ export default function Image() {
               maxWidth: 900,
             }}
           >
-            Essays on finance, decisions, learning, and craft — understanding a
-            few ideas well beats knowing many things shallowly.
+            A private toolkit for thinking through a real decision — nothing you
+            enter ever leaves your browser.
           </div>
         </div>
         <div style={{ fontSize: 24, color: "#92400E" }}>

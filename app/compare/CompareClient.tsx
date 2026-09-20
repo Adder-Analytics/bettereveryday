@@ -796,10 +796,11 @@ export default function CompareClient() {
 
       {/* ---- The choice + the options ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="compare-decision" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What are you choosing between?
         </label>
         <input
+          id="compare-decision"
           type="text"
           value={state.decision}
           onChange={(e) => setDecision(e.target.value)}
@@ -854,6 +855,7 @@ export default function CompareClient() {
                 type="text"
                 value={o.label}
                 onChange={(e) => setOptionLabel(o.id, e.target.value)}
+                aria-label={`Option ${i + 1}`}
                 placeholder={`Option ${i + 1}`}
                 className={inputClass}
               />
@@ -899,6 +901,7 @@ export default function CompareClient() {
                 type="text"
                 value={f.label}
                 onChange={(e) => setFactorLabel(f.id, e.target.value)}
+                aria-label={`Factor ${i + 1}`}
                 placeholder={`Factor ${i + 1} — e.g. how much I'd grow`}
                 className={inputClass}
               />

@@ -520,10 +520,11 @@ export default function CoolClient() {
 
       {/* ---- The call ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="cool-decision" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What are you about to do?
         </label>
         <input
+          id="cool-decision"
           type="text"
           value={inp.decision}
           onChange={(e) => set("decision", e.target.value)}
@@ -745,6 +746,7 @@ export default function CoolClient() {
                   })}
                   <input
                     type="date"
+                    aria-label="The date to decide"
                     value={parkDate}
                     min={todayISO()}
                     onChange={(e) => setParkDate(e.target.value)}
@@ -754,11 +756,12 @@ export default function CoolClient() {
               </div>
 
               <div className="mt-4">
-                <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+                <label htmlFor="cool-park-note" className="block text-sm font-medium text-[var(--foreground)] mb-1">
                   A note for your cold self{" "}
                   <span className="font-normal text-[var(--muted)]">(optional)</span>
                 </label>
                 <input
+                  id="cool-park-note"
                   type="text"
                   value={parkNote}
                   onChange={(e) => setParkNote(e.target.value)}
@@ -804,10 +807,11 @@ export default function CoolClient() {
 
         {/* Across person */}
         <div className="mt-5">
-          <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+          <label htmlFor="cool-name" className="block text-sm font-medium text-[var(--foreground)] mb-1">
             Across person: whose name should be on it?
           </label>
           <input
+            id="cool-name"
             type="text"
             value={inp.name}
             onChange={(e) => set("name", e.target.value)}
@@ -851,10 +855,11 @@ export default function CoolClient() {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-1.5">
+              <label htmlFor="cool-ten-min" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-1.5">
                 10 minutes
               </label>
               <textarea
+                id="cool-ten-min"
                 value={inp.tenMin}
                 onChange={(e) => set("tenMin", e.target.value)}
                 rows={3}
@@ -863,10 +868,11 @@ export default function CoolClient() {
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-1.5">
+              <label htmlFor="cool-ten-month" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-1.5">
                 10 months
               </label>
               <textarea
+                id="cool-ten-month"
                 value={inp.tenMonth}
                 onChange={(e) => set("tenMonth", e.target.value)}
                 rows={3}
@@ -875,10 +881,11 @@ export default function CoolClient() {
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-1.5">
+              <label htmlFor="cool-ten-year" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-1.5">
                 10 years
               </label>
               <textarea
+                id="cool-ten-year"
                 value={inp.tenYear}
                 onChange={(e) => set("tenYear", e.target.value)}
                 rows={3}

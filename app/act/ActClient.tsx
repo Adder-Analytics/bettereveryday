@@ -539,10 +539,11 @@ export default function ActClient() {
           Step 1 — the call, and the honest gate
         </p>
         <div className="mt-3">
-          <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+          <label htmlFor="act-decision" className="block text-sm font-medium text-[var(--foreground)] mb-1">
             What you&rsquo;ve decided to do
           </label>
           <input
+            id="act-decision"
             type="text"
             value={inp.decision}
             onChange={(e) => set("decision", e.target.value)}
@@ -640,6 +641,7 @@ export default function ActClient() {
               deliberating can.
             </p>
             <textarea
+              aria-label="The first move, small enough to finish this week"
               value={inp.firstMove}
               onChange={(e) => set("firstMove", e.target.value)}
               placeholder="e.g. Open the account and move the first $200 in — just the transfer, not the whole plan."
@@ -662,6 +664,7 @@ export default function ActClient() {
             </p>
             <input
               type="text"
+              aria-label="The cue that fires it"
               value={inp.cue}
               onChange={(e) => set("cue", e.target.value)}
               placeholder="e.g. When my paycheck lands on the 1st, before I open any other tab."
@@ -689,10 +692,11 @@ export default function ActClient() {
             </p>
             <div className="mt-4 space-y-3">
               <div>
-                <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+                <label htmlFor="act-obstacle" className="block text-sm font-medium text-[var(--foreground)] mb-1">
                   What&rsquo;s most likely to stop you
                 </label>
                 <input
+                  id="act-obstacle"
                   type="text"
                   value={inp.obstacle}
                   onChange={(e) => set("obstacle", e.target.value)}
@@ -701,10 +705,11 @@ export default function ActClient() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+                <label htmlFor="act-coping" className="block text-sm font-medium text-[var(--foreground)] mb-1">
                   If that happens, I will…
                 </label>
                 <textarea
+                  id="act-coping"
                   value={inp.coping}
                   onChange={(e) => set("coping", e.target.value)}
                   placeholder="e.g. …put the money in the default option now and optimize later — a started account beats a perfect one."
@@ -732,10 +737,11 @@ export default function ActClient() {
             </p>
             <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto]">
               <div>
-                <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+                <label htmlFor="act-reconsider-state" className="block text-sm font-medium text-[var(--foreground)] mb-1">
                   If I see this…
                 </label>
                 <input
+                  id="act-reconsider-state"
                   type="text"
                   value={inp.reconsiderState}
                   onChange={(e) => set("reconsiderState", e.target.value)}
@@ -744,10 +750,11 @@ export default function ActClient() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+                <label htmlFor="act-reconsider-date" className="block text-sm font-medium text-[var(--foreground)] mb-1">
                   …by this date
                 </label>
                 <input
+                  id="act-reconsider-date"
                   type="date"
                   value={inp.reconsiderDate}
                   onChange={(e) => set("reconsiderDate", e.target.value)}

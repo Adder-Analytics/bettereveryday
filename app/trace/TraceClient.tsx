@@ -236,10 +236,11 @@ export default function TraceClient() {
 
       {/* ---- The move ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="trace-move" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What are you thinking of doing?
         </label>
         <input
+          id="trace-move"
           type="text"
           value={inp.move}
           onChange={(e) => set("move", e.target.value)}
@@ -677,6 +678,7 @@ function OrderBlock({
       </div>
       <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">{prompt}</p>
       <textarea
+        aria-label={badge}
         value={value}
         onChange={(e) => onText(e.target.value)}
         placeholder={placeholder}

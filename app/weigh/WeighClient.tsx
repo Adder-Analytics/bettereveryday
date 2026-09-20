@@ -751,10 +751,11 @@ export default function WeighClient() {
         <>
           {/* ---- The frame ---- */}
           <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-            <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+            <label htmlFor="weigh-decision" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
               What are you deciding?
             </label>
             <input
+              id="weigh-decision"
               type="text"
               value={inp.decision}
               onChange={(e) => set("decision", e.target.value)}
@@ -772,10 +773,11 @@ export default function WeighClient() {
 
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+                <label htmlFor="weigh-move" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
                   The move
                 </label>
                 <input
+                  id="weigh-move"
                   type="text"
                   value={inp.actLabel}
                   onChange={(e) => set("actLabel", e.target.value)}
@@ -784,10 +786,11 @@ export default function WeighClient() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+                <label htmlFor="weigh-alternative" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
                   The alternative
                 </label>
                 <input
+                  id="weigh-alternative"
                   type="text"
                   value={inp.altLabel}
                   onChange={(e) => set("altLabel", e.target.value)}
@@ -798,10 +801,11 @@ export default function WeighClient() {
             </div>
 
             <div className="mt-4">
-              <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+              <label htmlFor="weigh-hinge" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
                 The one thing it turns on
               </label>
               <input
+                id="weigh-hinge"
                 type="text"
                 value={inp.hinge}
                 onChange={(e) => set("hinge", e.target.value)}
@@ -829,13 +833,14 @@ export default function WeighClient() {
 
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+                <label htmlFor="weigh-upside" className="block text-sm font-medium text-[var(--foreground)] mb-1">
                   If <span className="text-[var(--accent)]">{inp.actLabel.trim() || "you act"}</span>{" "}and it works out
                 </label>
                 <p className="text-xs text-[var(--muted)] mb-2">
                   How much better than {inp.altLabel.trim() || "the alternative"}? (the upside)
                 </p>
                 <input
+                  id="weigh-upside"
                   type="number"
                   min={0}
                   step="any"
@@ -845,13 +850,14 @@ export default function WeighClient() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+                <label htmlFor="weigh-downside" className="block text-sm font-medium text-[var(--foreground)] mb-1">
                   If <span className="text-[var(--accent)]">{inp.actLabel.trim() || "you act"}</span>{" "}and it doesn&rsquo;t
                 </label>
                 <p className="text-xs text-[var(--muted)] mb-2">
                   How much worse than {inp.altLabel.trim() || "the alternative"}? (the downside)
                 </p>
                 <input
+                  id="weigh-downside"
                   type="number"
                   min={0}
                   step="any"
@@ -1060,10 +1066,11 @@ export default function WeighClient() {
         <>
           {/* ---- The frame ---- */}
           <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-            <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+            <label htmlFor="weigh-decision-ab" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
               What are you choosing between?
             </label>
             <input
+              id="weigh-decision-ab"
               type="text"
               value={inp.decision}
               onChange={(e) => set("decision", e.target.value)}
@@ -1081,10 +1088,11 @@ export default function WeighClient() {
 
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--accent)] mb-2">
+                <label htmlFor="weigh-option-a" className="block text-xs font-semibold uppercase tracking-widest text-[var(--accent)] mb-2">
                   Option A
                 </label>
                 <input
+                  id="weigh-option-a"
                   type="text"
                   value={inp.optionA}
                   onChange={(e) => set("optionA", e.target.value)}
@@ -1093,10 +1101,11 @@ export default function WeighClient() {
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+                <label htmlFor="weigh-option-b" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
                   Option B
                 </label>
                 <input
+                  id="weigh-option-b"
                   type="text"
                   value={inp.optionB}
                   onChange={(e) => set("optionB", e.target.value)}
@@ -1123,10 +1132,11 @@ export default function WeighClient() {
             />
 
             <div className="mt-4">
-              <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+              <label htmlFor="weigh-hinge-ab" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
                 The one thing it turns on
               </label>
               <input
+                id="weigh-hinge-ab"
                 type="text"
                 value={inp.hinge}
                 onChange={(e) => set("hinge", e.target.value)}
@@ -1156,13 +1166,14 @@ export default function WeighClient() {
 
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+                <label htmlFor="weigh-regret-a" className="block text-sm font-medium text-[var(--foreground)] mb-1">
                   You picked <span className="text-[var(--accent)]">{inp.optionA.trim() || "A"}</span>, but <span className="font-medium">{inp.optionB.trim() || "B"}</span> was right
                 </label>
                 <p className="text-xs text-[var(--muted)] mb-2">
                   How much do you regret it? (the cost of a wrong A)
                 </p>
                 <input
+                  id="weigh-regret-a"
                   type="number"
                   min={0}
                   step="any"
@@ -1172,13 +1183,14 @@ export default function WeighClient() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+                <label htmlFor="weigh-regret-b" className="block text-sm font-medium text-[var(--foreground)] mb-1">
                   You picked <span className="font-medium">{inp.optionB.trim() || "B"}</span>, but <span className="text-[var(--accent)]">{inp.optionA.trim() || "A"}</span> was right
                 </label>
                 <p className="text-xs text-[var(--muted)] mb-2">
                   How much do you regret it? (the cost of a wrong B)
                 </p>
                 <input
+                  id="weigh-regret-b"
                   type="number"
                   min={0}
                   step="any"

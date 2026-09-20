@@ -274,10 +274,11 @@ export default function WidenClient() {
 
       {/* ---- The one option on the table ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="widen-decision" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What are you deciding?
         </label>
         <input
+          id="widen-decision"
           type="text"
           value={inp.decision}
           onChange={(e) => set("decision", e.target.value)}
@@ -292,10 +293,11 @@ export default function WidenClient() {
           }}
         />
 
-        <label className="mt-5 block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="widen-option" className="mt-5 block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What&rsquo;s the one option you&rsquo;re weighing?
         </label>
         <input
+          id="widen-option"
           type="text"
           value={inp.option}
           onChange={(e) => set("option", e.target.value)}
@@ -389,6 +391,7 @@ export default function WidenClient() {
                     type="text"
                     value={a.label}
                     onChange={(e) => setAddedLabel(a.id, e.target.value)}
+                    aria-label={`Another option you'd consider, ${i + 1}`}
                     placeholder={
                       i === 0
                         ? "e.g. Negotiate what's making me want to leave"

@@ -302,10 +302,11 @@ export default function AdviseClient() {
 
       {/* ---- The decision, in a friend's name ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="advise-decision" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What are you deciding?
         </label>
         <input
+          id="advise-decision"
           type="text"
           value={inp.decision}
           onChange={(e) => set("decision", e.target.value)}
@@ -320,10 +321,11 @@ export default function AdviseClient() {
           }}
         />
 
-        <label className="mt-5 block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="advise-friend" className="mt-5 block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           Whose name should be on it?
         </label>
         <input
+          id="advise-friend"
           type="text"
           value={inp.friend}
           onChange={(e) => set("friend", e.target.value)}
@@ -343,7 +345,7 @@ export default function AdviseClient() {
 
       {/* ---- The advice ---- */}
       <div className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="advise-advice" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What would you tell {inp.friend.trim() || "them"}?
         </label>
         <p className="mb-3 text-sm text-[var(--muted)] leading-relaxed">
@@ -352,6 +354,7 @@ export default function AdviseClient() {
           into &ldquo;it depends.&rdquo;
         </p>
         <textarea
+          id="advise-advice"
           value={inp.advice}
           onChange={(e) => set("advice", e.target.value)}
           rows={3}
@@ -435,6 +438,7 @@ export default function AdviseClient() {
               in a sentence.
             </p>
             <textarea
+              aria-label="The specific difference in your case that would change the advice"
               value={inp.realDiff}
               onChange={(e) => set("realDiff", e.target.value)}
               rows={2}

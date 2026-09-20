@@ -544,6 +544,7 @@ export default function OutsideClient() {
         <div className="mt-3">
           <input
             type="text"
+            aria-label="What are you forecasting?"
             value={inp.question}
             onChange={(e) => set("question", e.target.value)}
             placeholder="e.g. How long will the kitchen renovation take?"
@@ -558,10 +559,11 @@ export default function OutsideClient() {
           />
         </div>
         <div className="mt-3 max-w-[10rem]">
-          <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+          <label htmlFor="outside-unit" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
             In what unit?
           </label>
           <input
+            id="outside-unit"
             type="text"
             value={inp.unit}
             onChange={(e) => set("unit", e.target.value)}
@@ -588,11 +590,12 @@ export default function OutsideClient() {
         </p>
         <div className="mt-4 flex flex-wrap items-end gap-3">
           <div className="max-w-[10rem]">
-            <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+            <label htmlFor="outside-inside" className="block text-sm font-medium text-[var(--foreground)] mb-1">
               Your estimate
             </label>
             <div className="flex items-center gap-2">
               <input
+                id="outside-inside"
                 type="number"
                 min={0}
                 step="any"
@@ -659,6 +662,7 @@ export default function OutsideClient() {
               <div key={c.id} className="flex items-center gap-2">
                 <input
                   type="text"
+                  aria-label={`Case ${i + 1} — what was it?`}
                   value={c.label}
                   onChange={(e) => setCase(c.id, { label: e.target.value })}
                   placeholder={`Case ${i + 1} — what was it?`}
@@ -995,11 +999,12 @@ function Reveal({
         </p>
         <div className="mt-3 flex flex-wrap items-end gap-3">
           <div className="max-w-[10rem]">
-            <label className="block text-sm font-medium text-[var(--foreground)] mb-1">
+            <label htmlFor="outside-adjusted" className="block text-sm font-medium text-[var(--foreground)] mb-1">
               Your outside-view number
             </label>
             <div className="flex items-center gap-2">
               <input
+                id="outside-adjusted"
                 type="number"
                 min={0}
                 step="any"
@@ -1016,10 +1021,11 @@ function Reveal({
           </div>
         </div>
         <div className="mt-3">
-          <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+          <label htmlFor="outside-adjust-reason" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
             The one measured difference that justifies moving
           </label>
           <input
+            id="outside-adjust-reason"
             type="text"
             value={adjustReason}
             onChange={(e) => onReason(e.target.value)}
