@@ -195,7 +195,15 @@ export type BackupStatus = {
   newSince: number;
 };
 
-function backupStatus(): BackupStatus {
+/**
+ * How the record stands against its last saved copy — the durability nudge,
+ * read straight from the browser. Exported so the same fact can surface where
+ * people already are (the homepage, the decisions archive, the /data page)
+ * instead of only on the return desk, which a person with nothing due yet never
+ * reaches. Degrades to a safe "nothing to back up" on the server or any storage
+ * failure, exactly like every other reader here.
+ */
+export function loadBackupStatus(): BackupStatus {
   const last = readLastBackup();
   const totalRecord =
     countDecisions() + countPremortems() + countTripwires() + countParked();
@@ -247,7 +255,7 @@ export function loadReviewQueue(): ReviewQueue {
     ...upcomingParkedItems(today).map((p) => parkedToItem(p, today)),
   ].sort((a, b) => a.dateISO.localeCompare(b.dateISO)); // soonest first
 
-  return { due, upcoming, backup: backupStatus(), today };
+  return { due, upcoming, backup: loadBackupStatus(), today };
 }
 
 /**

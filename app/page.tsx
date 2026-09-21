@@ -3,6 +3,7 @@ import Link from "next/link";
 import { posts, formatDate } from "./data/posts";
 import { resolveToolGroups, toolCount, toolCountWord } from "./data/tools";
 import ReviewDueBadge from "./components/ReviewDueBadge";
+import BackupNudge from "./components/BackupNudge";
 import DecideHero from "./components/DecideHero";
 
 const sortedPosts = [...posts].sort(
@@ -55,6 +56,7 @@ export default function Home() {
           The Toolkit
         </h2>
         <ReviewDueBadge />
+        <BackupNudge className="mb-4" />
         <p className="text-sm text-[var(--muted)] leading-relaxed max-w-md mb-8">
           {toolCount}{" "}working instruments, each built for a different kind of
           moment in a decision&rsquo;s life. Not a lecture &mdash; a worksheet you
@@ -221,6 +223,12 @@ export default function Home() {
             className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             New here? Start with a reading path &rarr;
+          </Link>
+          <Link
+            href="/data"
+            className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+          >
+            Keep your own copy of your record &rarr;
           </Link>
           <Link
             href="/now"
