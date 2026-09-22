@@ -472,23 +472,65 @@ const docs: SearchDoc[] = [
   },
 ];
 
-function search(query: string): SearchDoc[] {
-  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-  if (terms.length === 0) return [];
+/**
+ * Light singular/plural stemming so a query term also matches its other number:
+ * "models" finds "model", "biases" finds "bias", "companies" finds "company".
+ * Substring matching already covers the singular→plural direction ("model" is a
+ * substring of "models"), so this only strips the query down, never up.
+ */
+function termVariants(term: string): string[] {
+  const variants = [term];
+  if (term.length > 4 && term.endsWith("ies")) variants.push(term.slice(0, -3) + "y");
+  if (term.length > 3 && term.endsWith("es")) variants.push(term.slice(0, -2));
+  if (term.length > 3 && term.endsWith("s") && !term.endsWith("ss")) variants.push(term.slice(0, -1));
+  return variants;
+}
 
-  return docs
-    .map((doc) => {
-      let score = 0;
-      for (const term of terms) {
-        if (doc.titleText.includes(term)) score += 3;
-        else if (doc.bodyText.includes(term)) score += 1;
-        else return null;
-      }
-      return { doc, score };
-    })
-    .filter((r): r is { doc: SearchDoc; score: number } => r !== null)
+/** Best hit for one term against one doc: 3 in the title fields, 1 in the body, 0 for a miss. */
+function termScore(doc: SearchDoc, term: string): number {
+  const variants = termVariants(term);
+  if (variants.some((v) => doc.titleText.includes(v))) return 3;
+  if (variants.some((v) => doc.bodyText.includes(v))) return 1;
+  return 0;
+}
+
+export type SearchResult = {
+  docs: SearchDoc[];
+  /** True when no page matched every term and these are the closest partial matches instead. */
+  partial: boolean;
+};
+
+function search(query: string): SearchResult {
+  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+  if (terms.length === 0) return { docs: [], partial: false };
+
+  const scored = docs.map((doc) => {
+    let score = 0;
+    let matched = 0;
+    for (const term of terms) {
+      const s = termScore(doc, term);
+      if (s > 0) matched += 1;
+      score += s;
+    }
+    return { doc, score, matched };
+  });
+
+  // Primary: pages that matched every term (strict AND), best score first.
+  const full = scored
+    .filter((r) => r.matched === terms.length)
     .sort((a, b) => b.score - a.score)
     .map((r) => r.doc);
+  if (full.length > 0) return { docs: full, partial: false };
+
+  // Fallback: no page matched every term, so one absent word no longer collapses
+  // the whole set to a dead end — surface the closest matches (most terms hit
+  // first, then by score), capped, so a near-miss lands somewhere useful.
+  const partial = scored
+    .filter((r) => r.matched > 0)
+    .sort((a, b) => b.matched - a.matched || b.score - a.score)
+    .slice(0, 8)
+    .map((r) => r.doc);
+  return { docs: partial, partial: true };
 }
 
 const typeStyles: Record<SearchDoc["type"], string> = {
@@ -502,7 +544,7 @@ const typeStyles: Record<SearchDoc["type"], string> = {
 
 export default function SearchClient() {
   const [query, setQuery] = useState("");
-  const results = useMemo(() => search(query), [query]);
+  const { docs: results, partial } = useMemo(() => search(query), [query]);
   const showResults = query.trim().length > 0;
 
   return (
@@ -520,8 +562,14 @@ export default function SearchClient() {
       {showResults && (
         <p className="mt-6 text-xs text-[var(--muted)]">
           {results.length === 0
-            ? "No results. Try a broader term."
-            : `${results.length} result${results.length === 1 ? "" : "s"}`}
+            ? "No matches. Try a single, broader word."
+            : partial
+              ? `Nothing matched every word — ${
+                  results.length === 1
+                    ? "the closest match"
+                    : `the ${results.length} closest matches`
+                }, by how much of your search each one covers:`
+              : `${results.length} result${results.length === 1 ? "" : "s"}`}
         </p>
       )}
 
