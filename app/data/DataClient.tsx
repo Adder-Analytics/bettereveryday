@@ -12,6 +12,7 @@ import {
   type StoreDescriptor,
   type StoreSummary,
 } from "./portable";
+import { loadBackupStatus, type BackupStatus } from "./review";
 
 /**
  * Your data (/data): back up everything this site keeps for you, and restore it.
@@ -57,6 +58,32 @@ function formatBytes(n: number): string {
   return `${(n / 1024).toFixed(n < 10240 ? 1 : 0)} KB`;
 }
 
+/** Whole days between two ISO dates (yesterday's backup read today → 1). Both
+ *  dates are local calendar days, so this is a plain date diff, not a clock. */
+function daysBetween(fromISO: string, toISO: string): number {
+  const ms = Date.parse(toISO + "T00:00:00") - Date.parse(fromISO + "T00:00:00");
+  if (Number.isNaN(ms)) return 0;
+  return Math.max(0, Math.round(ms / 86_400_000));
+}
+
+/** A plain-language "how long since the last saved copy" line — the one fact
+ *  that turns "back up someday" into "back up now." Reads the shared backup
+ *  status, so it can never disagree with the nudge that sent the person here. */
+function backupLine(backup: BackupStatus, todayISO: string): string {
+  if (!backup.hasRecord) return "Nothing stored yet — nothing to lose, for now.";
+  if (!backup.lastBackupOn) {
+    return "Never backed up — this browser is the only copy.";
+  }
+  const days = daysBetween(backup.lastBackupOn, todayISO);
+  const when =
+    days === 0 ? "today" : days === 1 ? "yesterday" : `${days} days ago`;
+  if (backup.newSince === 0) {
+    return `Last backed up ${when}. Nothing new since — your file is current.`;
+  }
+  const n = `${backup.newSince} ${backup.newSince === 1 ? "record" : "records"}`;
+  return `Last backed up ${when} · ${n} logged since, held only in this browser.`;
+}
+
 /** What a picked file was found to contain, held until the user confirms. */
 type Pending = {
   filename: string;
@@ -68,6 +95,7 @@ type Pending = {
 export default function DataClient() {
   // Hydrate the live summary once, on the client, from localStorage.
   const [rows, setRows] = useState<StoreSummary[] | null>(null);
+  const [backup, setBackup] = useState<BackupStatus | null>(null);
   const [pending, setPending] = useState<Pending | null>(null);
   const [note, setNote] = useState<{ kind: "ok" | "err"; text: string } | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -76,11 +104,13 @@ export default function DataClient() {
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setRows(summarize());
+    setBackup(loadBackupStatus());
     /* eslint-enable react-hooks/set-state-in-effect */
   }, []);
 
   function refresh() {
     setRows(summarize());
+    setBackup(loadBackupStatus());
   }
 
   function onExport() {
@@ -98,6 +128,9 @@ export default function DataClient() {
       // Record the backup so the return desk can stop nudging and start
       // counting from here ("N new decisions since your last backup").
       markBackedUp(todayISO());
+      // Re-read so the "last backed up" line updates to "today · nothing new"
+      // the instant the file is written, without a reload.
+      setBackup(loadBackupStatus());
       setNote({
         kind: "ok",
         text: `Backed up ${present === 1 ? "1 store" : `${present} stores`} to a file. Keep it somewhere you'll find it — that file is now the only copy that survives clearing this browser.`,
@@ -171,6 +204,21 @@ export default function DataClient() {
           file is written straight to your downloads.
         </p>
 
+        {/* How the saved copy stands against the live record — the one fact that
+            turns "back up someday" into "back up now." A stale or never-made
+            backup reads in the foreground; a current one steps back to muted. */}
+        {backup && backup.hasRecord && (
+          <p
+            className={`mt-3 text-sm leading-relaxed ${
+              backup.newSince > 0 || !backup.lastBackupOn
+                ? "text-[var(--foreground)]"
+                : "text-[var(--muted)]"
+            }`}
+          >
+            {backupLine(backup, todayISO())}
+          </p>
+        )}
+
         {rows === null ? (
           <p className="mt-4 text-sm text-[var(--muted)]">Reading what&rsquo;s in this browser…</p>
         ) : hasData ? (
@@ -241,6 +289,7 @@ export default function DataClient() {
           <input
             ref={fileRef}
             type="file"
+            aria-label="Choose a backup file to restore"
             accept="application/json,.json"
             className="hidden"
             onChange={(e) => {

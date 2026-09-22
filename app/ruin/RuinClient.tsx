@@ -193,10 +193,11 @@ export default function RuinClient() {
 
       {/* ---- The decision, and the worst realistic outcome ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="ruin-decision" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What are you weighing?
         </label>
         <input
+          id="ruin-decision"
           type="text"
           value={inp.decision}
           onChange={(e) => set("decision", e.target.value)}
@@ -213,7 +214,7 @@ export default function RuinClient() {
 
         {decision ? (
           <div className="mt-5">
-            <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+            <label htmlFor="ruin-worst" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
               What&rsquo;s the worst that could realistically happen?
             </label>
             <p className="mb-2 text-sm text-[var(--muted)] leading-relaxed">
@@ -223,6 +224,7 @@ export default function RuinClient() {
               much.
             </p>
             <textarea
+              id="ruin-worst"
               value={inp.worst}
               onChange={(e) => set("worst", e.target.value)}
               rows={3}

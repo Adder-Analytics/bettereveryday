@@ -85,7 +85,7 @@ export const books: Book[] = [
       "Taleb's best book, sharper and less performatively contrarian than his later work. The core argument: we systematically underestimate the role of luck in success and failure, and this leads to learning exactly the wrong lessons from outcomes. Essential reading alongside Annie Duke on decision quality.",
     category: "Thinking",
     rating: 3,
-    models: ["expected-value", "regression-to-mean", "base-rates"],
+    models: ["expected-value", "regression-to-mean", "base-rates", "survivorship-bias"],
   },
   {
     title: "How Minds Change",

@@ -132,6 +132,10 @@ export const situations: Situation[] = [
         id: "regression-to-mean",
         move: "An extreme event is, almost by definition, likely to be followed by something less extreme. One dramatic data point is not a trend.",
       },
+      {
+        id: "survivorship-bias",
+        move: "The vivid story is almost always a survivor's. Ask who did the same thing and isn't around to tell it — the failures don't post the thread, write the memoir, or commission the painting, so the example reached you already filtered by who lived.",
+      },
     ],
     essays: ["availability-heuristic", "how-much-should-this-change-your-mind"],
     notes: ["kahneman-inside-view"],
@@ -212,6 +216,10 @@ export const situations: Situation[] = [
       {
         id: "reversibility",
         move: "A cheap-to-undo choice made fast isn't a mistake just because it missed. For a two-way door, speed was the right call and a wrong outcome is the cost of doing business.",
+      },
+      {
+        id: "survivorship-bias",
+        move: "A track record you're being asked to trust is a survivor by definition — the funds that closed, the hires who washed out, the bets that ended the game are quietly gone from it. Ask what the record would look like if the failures were still in it before you read a winning streak as skill.",
       },
     ],
     tool: {
@@ -366,6 +374,187 @@ export const situations: Situation[] = [
     },
     essays: ["hold-the-funeral-first", "decision-quality"],
     notes: ["housel-tails"],
+  },
+  {
+    id: "someone-selling-you",
+    title: "Someone's pushing you toward a yes",
+    scene:
+      "A salesperson, a recruiter, an advisor, a pundit, a friend with strong opinions — someone with a stake in your choice is telling you what to do, and their case sounds good.",
+    question: "Who profits if I say yes — and would they give me the same advice if they didn't?",
+    models: [
+      {
+        id: "incentive-structures",
+        move: "Before you weigh the argument, read the arithmetic behind the person making it. Ask what they get — in money, status, or a quota — if you go their way, and whether the same advice would survive if that payment vanished. Munger's rule: never ask a barber whether you need a haircut.",
+      },
+      {
+        id: "reality-testing",
+        move: "Their case is built to persuade, so go find the part they left out. Name the one claim the whole pitch rests on and ask what you'd have to see to know it's false — then look for that, not for more reasons to agree.",
+      },
+      {
+        id: "base-rates",
+        move: "Set their story of how this goes against how it goes for everyone in your position who took the deal — not against the vivid best case they're describing. The average customer's outcome, not the testimonial, is your prior.",
+      },
+      {
+        id: "second-order-effects",
+        move: "Play the yes forward past the sale. The first-order effect is what they're promising; the second order is what you're locked into afterward, what it costs to leave, and who keeps collecting once you're in.",
+      },
+    ],
+    tool: {
+      id: "incentives",
+      move: "This is the exact moment the incentives tool is built for. It runs 'show me the incentive' on the advice you were handed — names who gains from your yes, what they'd say if they didn't, and what the disinterested version of the same counsel would sound like — so you keep the useful part of a pitch without swallowing the part that's just someone's interest wearing the costume of advice.",
+    },
+    essays: ["never-ask-a-barber"],
+  },
+  {
+    id: "not-enough-to-decide",
+    title: "You keep needing to know more before you'll decide",
+    scene:
+      "One more spreadsheet, one more opinion, one more week of data. The call has been researchable for a while and you're still researching — it feels responsible, but it might just be the comfort of not choosing.",
+    question: "Is there a fact I'm missing that would actually change my call — or am I gathering information to avoid making one?",
+    models: [
+      {
+        id: "value-of-information",
+        move: "A fact is only worth chasing if some possible answer would change what you do. Name your call each way: if the number came back high, would you choose differently than if it came back low? If not, you already have enough — the research is costing time and buying nothing.",
+      },
+      {
+        id: "opportunity-cost",
+        move: "Waiting isn't neutral. Price the delay in what it forgoes — the option that closes, the head start you lose, the cost of the thing sitting undecided — and weigh that against how much the missing fact could really improve the call.",
+      },
+      {
+        id: "expected-value",
+        move: "You'll never have all of it, and past a point more precision doesn't move the expected value enough to matter. Decide at the resolution the choice actually needs, not the one that would finally make you feel certain.",
+      },
+      {
+        id: "reversibility",
+        move: "Check the door. If it's cheap to undo, the fastest way to learn is usually to act and find out, not to research from the outside — the gathering only earns its keep on the choices you can't easily walk back.",
+      },
+    ],
+    tool: {
+      id: "enough",
+      move: "This is the exact moment the enough-to-decide tool is built for. It runs a value-of-information test without the math: you write what you'd do if the fact you're chasing came back one way, then the other, and if the answer is the same it shows you you're already done — so you stop researching a call you've effectively already made.",
+    },
+    essays: ["what-would-you-do-either-way"],
+  },
+  {
+    id: "cant-stop-looking",
+    title: "You can't tell when to stop looking",
+    scene:
+      "Apartments, job candidates, contractors, a used car. Options come by one at a time, each one you pass is gone, and you can't tell if the next will be better or if you're about to talk yourself right past the best one you'll see.",
+    question: "Have I seen enough to recognize a good one when it appears — and am I still looking because more will help, or because committing is scary?",
+    models: [
+      {
+        id: "optimal-stopping",
+        move: "When options arrive in sequence and passing is permanent, the shape of the answer is known: spend the first stretch looking without committing, to set your bar, then take the first option that beats everything you've seen. Roughly the first 37% is calibration, the rest is for pulling the trigger — searching forever and grabbing the first thing are both mistakes.",
+      },
+      {
+        id: "value-of-information",
+        move: "Before you look at one more, ask what the next viewing could tell you that would change your pick. If every plausible result leaves you choosing the same option, the search is over — you're gathering comfort now, not information.",
+      },
+      {
+        id: "opportunity-cost",
+        move: "The search itself has a price: the good option someone else takes while you keep looking, and the hours the looking eats. Weigh 'one more round' against what the standing offer and that time are worth.",
+      },
+      {
+        id: "loss-aversion",
+        move: "The dread driving 'just one more' is usually the fear of committing and then seeing something better. Name it: a good-enough choice you act on beats a perfect one you're still chasing, and the regret of the road not taken is a tax on every option, not a flaw in this one.",
+      },
+    ],
+    tool: {
+      id: "stop",
+      move: "This is the exact moment the when-to-stop tool is built for. It runs the optimal-stopping rule on your actual search — how many you've seen, how many you can still expect — and tells you whether you're still in the look-and-calibrate phase or past it and should take the next option that beats your best so far, so you stop by a rule instead of by exhaustion or nerve.",
+    },
+    essays: ["look-then-leap"],
+  },
+  {
+    id: "bad-tail",
+    title: "There's a bad outcome you keep waving off",
+    scene:
+      "A bet with real upside and a small chance of something you couldn't walk back — a leveraged position, a health risk, quitting with no cushion, a stunt you'd 'probably' be fine doing. You keep telling yourself it almost certainly won't happen.",
+    question: "If the worst realistic version happened, would I recover — or is this a bet I can't afford to lose even once?",
+    models: [
+      {
+        id: "ruin",
+        move: "Sort the size of the downside before you argue the odds. A loss you'd recover from is an ordinary risk — go weigh it. A loss you couldn't come back from is different in kind: no probability is small enough and no upside large enough to make a ruin worth it, because you only have to be wrong once and you're out of the game for good.",
+      },
+      {
+        id: "margin-of-safety",
+        move: "Your sense of how unlikely the bad tail is is probably optimistic, and rare shocks tend to arrive at the worst moment. Size the buffer — cash, redundancy, an exit — to survive the outcome, not to match your confidence that it won't come.",
+      },
+      {
+        id: "expected-value",
+        move: "The average is a lie when one branch ends the game. Expected value quietly assumes you survive to keep playing; against an unrecoverable loss, don't average the branches — cap the one that ruins you, then take the version you'd survive.",
+      },
+      {
+        id: "second-order-effects",
+        move: "Trace the worst case past the first hit. The loss you can name is rarely the whole bill; it's what the loss then forces — the sale at the bottom, the thing you can no longer fund, who else goes down with you.",
+      },
+    ],
+    tool: {
+      id: "ruin",
+      move: "This is the exact moment the survive-the-worst-case tool is built for. It runs the survival check the rest of the kit quietly defers to: it separates a loss you'd recover from — hand that to the flip point — from a ruin you can't, and for a ruin it doesn't just say don't; it hands you the way to cap the downside below ruin and take the version of the bet you'd actually walk away from.",
+    },
+    essays: ["the-river-is-four-feet-deep"],
+    notes: ["housel-tails"],
+  },
+  {
+    id: "deadlocked-with-someone",
+    title: "You're deadlocked with someone you have to decide with",
+    scene:
+      "A partner, a co-founder, a family member. You've argued the same points in circles, it's getting warm, and you can't even tell anymore whether you disagree about the facts, about what you each want, or about how much risk is okay.",
+    question: "Once the heat's out, are we fighting about facts, about what we want, or about risk — and what one thing, if it flipped, would change a mind?",
+    models: [
+      {
+        id: "reality-testing",
+        move: "Most stuck arguments hide a factual question — one that's settleable with evidence neither side has gone to get. Split the part you could look up or test from the part you can't, and go settle the settleable part instead of re-arguing it.",
+      },
+      {
+        id: "incentive-structures",
+        move: "You each see the choice from where you stand. Before you assume bad faith, ask what each of you is protecting — whose time, money, or safety is on the line — because a stubborn disagreement is often two people being rational about different exposures.",
+      },
+      {
+        id: "self-distancing",
+        move: "Argue the other side out loud, as if it were yours, until they'd agree you've put it fairly. The heat drops when each person feels understood — and half of what looked like disagreement turns out to be two people talking past each other.",
+      },
+      {
+        id: "expected-value",
+        move: "If it comes down to how likely something is, don't trade adjectives — put rough numbers on it. 'I think it's 70/30' against 'I think it's 30/70' turns a values fight back into a factual one you can actually check, or bet on.",
+      },
+    ],
+    tool: {
+      id: "crux",
+      move: "This is the exact moment the disagreement tool is built for. It sorts a stuck argument into its real root — a fact you can settle with evidence, a values split that needs a fair procedure instead of more arguing, or a gap in risk tolerance you close with a shared survival check — and finds the crux: the one thing that, if it went the other way, would change a mind. Then it hands each kind to the tool that resolves it.",
+    },
+    essays: ["the-one-thing-that-would-change-your-mind"],
+  },
+  {
+    id: "keep-re-deciding",
+    title: "You keep re-deciding the same thing",
+    scene:
+      "The second drink. Checking work email at dinner. The exception you make 'just this once' and have now made a dozen times. Each instance feels reasonable on its own, and each somehow goes the way you'd rather it didn't.",
+    question: "Should I be deciding this case by case at all — or settle it once, as a rule, and stop spending willpower relitigating it?",
+    models: [
+      {
+        id: "bright-line-rules",
+        move: "Some calls are cheaper to decide once than every time. A bright line — 'no email after seven', 'never on margin' — takes the recurring choice out of the moment, where you're tired and the exception always sounds reasonable, and settles it in the cool hour when you can see the pattern. The clean rule beats case-by-case judgment precisely because it won't negotiate.",
+      },
+      {
+        id: "implementation-intentions",
+        move: "A rule that lives only in your head gets renegotiated the instant it's tested. Tie it to the trigger — 'when the waiter offers the second, I say no by default' — so it fires on the cue instead of waiting on resolve you won't have in the moment.",
+      },
+      {
+        id: "incentive-structures",
+        move: "Look at what keeps pulling you across the line — what the exception gives you each time. If the rule has to fight an incentive you leave in place, add a small one on the other side, or make crossing the line cost something you'll actually feel.",
+      },
+      {
+        id: "second-order-effects",
+        move: "Judge the pattern, not the instance. Any single exception is minor; the second-order effect is the precedent — once 'just this once' works, it becomes the rule, and the line stops meaning anything.",
+      },
+    ],
+    tool: {
+      id: "rule",
+      move: "This is the exact moment the make-it-a-rule tool is built for. It takes a call you keep making and turns it into one standing decision — the bright line, the trigger that fires it, and the rare exception you'll allow named in advance so it can't quietly expand — then sets a date to review whether the rule still earns its place, so you decide it once instead of a hundred tired times.",
+    },
+    essays: ["decide-it-once"],
   },
   {
     id: "weigh-it-through",

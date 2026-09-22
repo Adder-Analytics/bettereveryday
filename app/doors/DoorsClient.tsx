@@ -217,10 +217,11 @@ export default function DoorsClient() {
 
       {/* ---- The decision ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="doors-decision" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What are you deciding?
         </label>
         <input
+          id="doors-decision"
           type="text"
           value={inp.decision}
           onChange={(e) => set("decision", e.target.value)}

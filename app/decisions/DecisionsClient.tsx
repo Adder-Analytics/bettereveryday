@@ -15,6 +15,7 @@ import { reopenPastCall } from "../data/answerLog";
 import { decisionToText } from "../data/decisionText";
 import { formatDate } from "../data/posts";
 import PrintButton from "../components/PrintButton";
+import BackupNudge from "../components/BackupNudge";
 
 /**
  * The decision home (/decisions), rendered.
@@ -271,6 +272,10 @@ export default function DecisionsClient() {
 
   return (
     <div>
+      {/* The durability nudge, where a person is looking at the very record that
+          isn't backed up yet — self-hides unless something's logged since the
+          last saved copy. */}
+      <BackupNudge className="mb-6" />
       <div className="mb-6 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-3">
         <p className="text-sm text-[var(--muted)] leading-relaxed">
           <span className="text-[var(--foreground)] font-medium">

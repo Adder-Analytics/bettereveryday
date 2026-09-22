@@ -180,10 +180,11 @@ export default function CruxClient() {
 
       {/* ---- The decision and the two positions ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="crux-decision" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What are the two of you trying to decide?
         </label>
         <input
+          id="crux-decision"
           type="text"
           value={inp.decision}
           onChange={(e) => set("decision", e.target.value)}
@@ -200,10 +201,11 @@ export default function CruxClient() {
 
         {decision ? (
           <div className="mt-5">
-            <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+            <label htmlFor="crux-other" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
               Who&rsquo;s on the other side of it?
             </label>
             <input
+              id="crux-other"
               type="text"
               value={inp.other}
               onChange={(e) => set("other", e.target.value)}
@@ -216,10 +218,11 @@ export default function CruxClient() {
         {decision && other ? (
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+              <label htmlFor="crux-you-want" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
                 What you want to do
               </label>
               <textarea
+                id="crux-you-want"
                 value={inp.youWant}
                 onChange={(e) => set("youWant", e.target.value)}
                 rows={3}
@@ -228,10 +231,11 @@ export default function CruxClient() {
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+              <label htmlFor="crux-they-want" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
                 What {other || "they"} want to do
               </label>
               <textarea
+                id="crux-they-want"
                 value={inp.theyWant}
                 onChange={(e) => set("theyWant", e.target.value)}
                 rows={3}

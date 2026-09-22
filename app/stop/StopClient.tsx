@@ -181,10 +181,11 @@ export default function StopClient() {
 
       {/* ---- The search, and whether it's the right shape ---- */}
       <div className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
-        <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+        <label htmlFor="stop-search" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
           What are you searching for?
         </label>
         <input
+          id="stop-search"
           type="text"
           value={inp.search}
           onChange={(e) => set("search", e.target.value)}
@@ -280,10 +281,11 @@ export default function StopClient() {
 
           {inp.mode === "count" ? (
             <div className="mt-4">
-              <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+              <label htmlFor="stop-size-count" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
                 About how many will you see in all?
               </label>
               <input
+                id="stop-size-count"
                 type="text"
                 inputMode="numeric"
                 value={inp.size}
@@ -296,10 +298,11 @@ export default function StopClient() {
 
           {inp.mode === "time" ? (
             <div className="mt-4">
-              <label className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
+              <label htmlFor="stop-size-time" className="block text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
                 How long will you look? (in weeks)
               </label>
               <input
+                id="stop-size-time"
                 type="text"
                 inputMode="numeric"
                 value={inp.size}
