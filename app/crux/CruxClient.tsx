@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
 import PrintButton from "../components/PrintButton";
 
@@ -50,6 +51,23 @@ import PrintButton from "../components/PrintButton";
  * risk gap, /cool and /advise when you can't see it straight. Nothing is sent
  * anywhere; inputs persist in the browser. There's no forecast to log — sorting a
  * disagreement isn't a prediction — only the handoff.
+ *
+ * HANDING IT TO THE OTHER PERSON. This is the one tool in the kit whose whole
+ * subject is a second person, and until now it could only ever be worked alone —
+ * the second person to a joint decision never got to see how the first one framed
+ * it. So the crux read now carries a "hand this to them" link, built on the
+ * site's share codec (share.ts): the sender's whole worked crux rides inside the
+ * URL *fragment*, which the browser never transmits, so "share this" and "sent
+ * nowhere" stay both true. But crux is not weigh: its fields are written from one
+ * side's point of view ("what you want", "what they want" are the *sender's*),
+ * so a received crux is never silently adopted into the receiver's own editable
+ * fields — that would relabel both positions and quietly put words in the
+ * receiver's mouth. Instead a shared link opens a read-only card, plainly
+ * attributed to the sender, showing their frame — including, most usefully, *how
+ * they read the receiver's own position* and which of the three disagreements
+ * they think you're actually having. Seeing that is the productive act the tool
+ * exists to produce; the receiver can then run their own read, from their own
+ * side, in the blank tool below, untouched.
  */
 
 const STORE_KEY = "crux:v1";
@@ -116,6 +134,80 @@ function loadInputs(): Inputs {
   }
 }
 
+/** Collapse whitespace and cap a shared string, so a link stays a link. Mirrors
+ *  the normalization weigh's and the pre-mortem's share paths apply. */
+function capStr(s: string, n = 240): string {
+  return s.replace(/\s+/g, " ").trim().slice(0, n);
+}
+
+/** The encodable form of a worked crux: every field, each string capped so the
+ *  whole thing stays a link. The root and tell ride along so the receiver sees
+ *  the sender's diagnosis, not just the two positions. */
+function sharePayload(inp: Inputs): Record<string, unknown> {
+  return {
+    decision: capStr(inp.decision),
+    other: capStr(inp.other, 80),
+    youWant: capStr(inp.youWant, 400),
+    theyWant: capStr(inp.theyWant, 400),
+    root: inp.root,
+    tell: inp.tell,
+  };
+}
+
+/** Rebuild a crux from a decoded share payload, defensively — the same
+ *  field-by-field coercion `loadInputs` uses, so a truncated or hand-edited link
+ *  degrades to nothing, never a throw. Returns null unless the two things that
+ *  make a crux worth sharing are both present: the decision and *both*
+ *  positions. A half-empty payload can't raise a card. */
+function coerceSharedCrux(data: unknown): Inputs | null {
+  if (!data || typeof data !== "object") return null;
+  const v = data as Partial<Inputs>;
+  const out: Inputs = {
+    decision: typeof v.decision === "string" ? capStr(v.decision) : "",
+    other: typeof v.other === "string" ? capStr(v.other, 80) : "",
+    youWant: typeof v.youWant === "string" ? capStr(v.youWant, 400) : "",
+    theyWant: typeof v.theyWant === "string" ? capStr(v.theyWant, 400) : "",
+    root: isRoot(v.root) ? v.root : "",
+    tell: isTell(v.tell) ? v.tell : "",
+  };
+  if (!out.decision.trim() || !out.youWant.trim() || !out.theyWant.trim()) {
+    return null;
+  }
+  return out;
+}
+
+/** A short, receiver-facing read of the sender's diagnosis — the one line that
+ *  says which of the three disagreements they think you're actually having, and
+ *  the move it points to. Deliberately written in the third person ("they
+ *  think…") because the sender's own read is first/second person from *their*
+ *  side; shown straight it would put their frame in the receiver's mouth. */
+function sharedRootRead(root: Root): { label: string; line: string } | null {
+  switch (root) {
+    case "facts":
+      return {
+        label: "A disagreement about facts",
+        line: "They think you'd agree on what to do if you agreed on what's true — so the move isn't more arguing, it's finding the one fact that would change a mind and going to get it.",
+      };
+    case "values":
+      return {
+        label: "A disagreement about values",
+        line: "They think no fact will settle this — the two of you want different things — so it needs a fair way to decide, not more evidence.",
+      };
+    case "risk":
+      return {
+        label: "A disagreement about risk",
+        line: "They think you agree on the facts and the goal, and only draw the line on acceptable downside in different places — so the move is to look at the worst case together.",
+      };
+    case "cant":
+      return {
+        label: "Still tangled — facts, values, and risk at once",
+        line: "They couldn't yet separate what's a fact, a value, and a risk. The first task is to pull those strands apart before arguing another round.",
+      };
+    default:
+      return null;
+  }
+}
+
 const inputClass =
   "w-full px-3 py-2 text-base rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--accent)] transition-colors";
 const chipBase =
@@ -129,20 +221,78 @@ export default function CruxClient() {
   const [hydrated, setHydrated] = useState(false);
   const [carriedSeed, setCarriedSeed] = useState("");
   const [showExample, setShowExample] = useState(false);
+  // A crux someone handed to you by link. Unlike weigh's adopt-whole, a received
+  // crux is never merged into your own fields — it's read-only, because its two
+  // positions are written from the sender's point of view. It lives only in
+  // state; the share fragment is stripped from the URL on mount.
+  const [received, setReceived] = useState<Inputs | null>(null);
+  const [copied, setCopied] = useState(false);
+  const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const loaded = loadInputs();
     const carried = readCarriedSubject();
     const seeded = Boolean(carried) && !loaded.decision.trim();
     const next = seeded ? { ...loaded, decision: carried } : loaded;
+    // A share link hands in the *sender's* whole worked crux. It never touches
+    // your own fields (its "you"/"they" are their frame, not yours); it opens a
+    // read-only card instead, so your own work below stays exactly as you left it.
+    const shared = coerceSharedCrux(readShare("crux"));
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setInp(next);
     setHydrated(true);
     if (seeded) setCarriedSeed(carried);
+    if (shared) setReceived(shared);
     /* eslint-enable react-hooks/set-state-in-effect */
     if (carried) clearCarriedSubject();
+    // Strip the share fragment once read, so a refresh doesn't re-apply it and
+    // the address bar stops carrying someone else's disagreement.
+    if (shared) clearShare();
   }, []);
+
+  // Clear the copy-confirmation timer on unmount so it can't fire into a gone
+  // component.
+  useEffect(
+    () => () => {
+      if (copyTimer.current) clearTimeout(copyTimer.current);
+    },
+    []
+  );
+
+  // Build the share link and put it on the clipboard — the whole worked crux in
+  // the URL fragment (never a server), with the same clipboard-then-execCommand
+  // fallback weigh and the pre-mortem use.
+  const copyShareLink = useCallback(async () => {
+    if (typeof window === "undefined") return;
+    const token = encodeShare("crux", sharePayload(inp));
+    if (!token) return;
+    const link = `${window.location.origin}/crux#${SHARE_PARAM}=${token}`;
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(link);
+      ok = true;
+    } catch {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = link;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+      } catch {
+        ok = false;
+      }
+    }
+    if (ok) {
+      setCopied(true);
+      if (copyTimer.current) clearTimeout(copyTimer.current);
+      copyTimer.current = setTimeout(() => setCopied(false), 2000);
+    }
+  }, [inp]);
 
   useEffect(() => {
     if (!hydrated || typeof window === "undefined") return;
@@ -161,9 +311,17 @@ export default function CruxClient() {
   const youWant = inp.youWant.trim();
   const theyWant = inp.theyWant.trim();
   const positionsIn = Boolean(decision && other && youWant && theyWant);
+  // The full read is on screen only once every gate is answered — the same
+  // condition under which handing it to the other person is worth offering.
+  const readShowing = positionsIn && inp.root !== "" && inp.tell !== "";
 
   return (
     <div>
+      {/* ---- Shared with you: the sender's worked crux, read-only ---- */}
+      {received ? (
+        <SharedCard received={received} onDismiss={() => setReceived(null)} />
+      ) : null}
+
       {/* ---- New here? A read-only worked example ---- */}
       <div className="mb-5">
         <button
@@ -357,6 +515,120 @@ export default function CruxClient() {
 
       {/* ---- The read + handoff ---- */}
       <Verdict inp={inp} />
+
+      {/* ---- Hand it to the other person: the same disagreement, their turn ---- */}
+      {readShowing ? (
+        <div className="mt-5 rounded-xl border border-[var(--border)] p-5 sm:p-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            Hand it to {other}
+          </p>
+          <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            You&rsquo;ve sorted this from your side. Copy a link that carries the
+            whole thing &mdash; the decision, both positions as you&rsquo;ve put
+            them, and which of the three disagreements you think you&rsquo;re
+            really having &mdash; and hand it to {other}. They&rsquo;ll see how
+            you&rsquo;ve framed it, including how you read <em>their</em>{" "}side, and
+            can tell you where you&rsquo;ve got it wrong. It rides inside the link
+            itself and is sent to no server; only {other} can read it.
+          </p>
+          <button
+            type="button"
+            onClick={copyShareLink}
+            className="mt-4 text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+          >
+            {copied
+              ? "Copied — the link is on your clipboard"
+              : `Copy a link to hand ${other} this`}
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+/**
+ * A crux someone handed you by link, shown read-only and plainly attributed to
+ * them. It never fills your own fields — its "you"/"they" are the sender's frame
+ * — so instead it shows their side: the decision, what they want, and (the
+ * useful part) how they read *your* position and which of the three
+ * disagreements they think you're actually having. The point of the tool is to
+ * make that visible, so you can correct where they've got you wrong. Dismissing
+ * it leaves the blank tool below for you to run your own read, from your side.
+ */
+function SharedCard({
+  received,
+  onDismiss,
+}: {
+  received: Inputs;
+  onDismiss: () => void;
+}) {
+  const read = sharedRootRead(received.root);
+  return (
+    <div className="mb-6 rounded-xl border border-[var(--accent)] bg-[var(--card)] p-5 sm:p-6">
+      <p className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+        Someone shared this disagreement with you
+      </p>
+      <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
+        This is their side, in their words &mdash; including how they read yours.
+        Seeing it is the point: you can tell them where they&rsquo;ve got your
+        position wrong, then run your own read below.
+      </p>
+
+      <div className="mt-4 space-y-4">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            What you&rsquo;re deciding
+          </p>
+          <p className="mt-1 text-base text-[var(--foreground)] leading-relaxed">
+            {received.decision}
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+              What they want
+            </p>
+            <p className="mt-1 text-sm text-[var(--foreground)] leading-relaxed">
+              {received.youWant}
+            </p>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+              What they think you want
+            </p>
+            <p className="mt-1 text-sm text-[var(--foreground)] leading-relaxed">
+              {received.theyWant}
+            </p>
+          </div>
+        </div>
+        {read ? (
+          <div className="pt-4 border-t border-[var(--border)]">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+              Where they think you actually disagree
+            </p>
+            <p className="mt-1.5 text-sm font-medium text-[var(--foreground)] leading-relaxed">
+              {read.label}
+            </p>
+            <p className="mt-1.5 text-sm text-[var(--muted)] leading-relaxed">
+              {read.line}
+            </p>
+          </div>
+        ) : null}
+      </div>
+
+      <div className="mt-5 pt-4 border-t border-[var(--border)]">
+        <button
+          type="button"
+          onClick={onDismiss}
+          className="text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          Now run your own read &rarr;
+        </button>
+        <p className="mt-1.5 text-xs text-[var(--muted)] leading-relaxed">
+          Your own worksheet below is blank &mdash; fill it from <em>your</em>{" "}
+          side, and you can hand your read back the same way.
+        </p>
+      </div>
     </div>
   );
 }
