@@ -494,16 +494,98 @@ function termScore(doc: SearchDoc, term: string): number {
   return 0;
 }
 
+/**
+ * The words the site actually contains, drawn from the *title-level* fields
+ * only — names, tags, authors, model and tool names, playbook titles. That is
+ * the high-signal vocabulary people reach for by name (and misspell): "kahneman"
+ * from a book author, "reversibility" from a model, "anchoring" from a bias.
+ * Building the correction dictionary from title text, not body prose, is the
+ * false-positive guard: a typo is only ever rescued *to* a word the site treats
+ * as a keyword, never to some incidental word buried in an essay.
+ */
+const VOCABULARY: string[] = Array.from(
+  new Set(
+    docs
+      .flatMap((doc) => doc.titleText.split(/[^a-z0-9]+/))
+      .filter((w) => w.length >= 4)
+  )
+).sort();
+
+/**
+ * Levenshtein distance between `a` and `b`, capped: returns the true distance
+ * when it's within `max`, or `max + 1` once it's provably past budget — so a
+ * correction check against the whole vocabulary stays cheap. A length gap wider
+ * than `max` can't be closed, so it's rejected before any DP work.
+ */
+function boundedEditDistance(a: string, b: string, max: number): number {
+  const la = a.length;
+  const lb = b.length;
+  if (Math.abs(la - lb) > max) return max + 1;
+
+  let prev = Array.from({ length: lb + 1 }, (_, j) => j);
+  for (let i = 1; i <= la; i++) {
+    const curr = [i];
+    let rowMin = i;
+    for (let j = 1; j <= lb; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      const v = Math.min(prev[j] + 1, curr[j - 1] + 1, prev[j - 1] + cost);
+      curr[j] = v;
+      if (v < rowMin) rowMin = v;
+    }
+    // Whole row already past budget — no later row can recover.
+    if (rowMin > max) return max + 1;
+    prev = curr;
+  }
+  return prev[lb];
+}
+
+/** True once any doc scores this term — i.e. it's already a word the site has. */
+function termMatchesAnyDoc(term: string): boolean {
+  return docs.some((doc) => termScore(doc, term) > 0);
+}
+
+/**
+ * The closest real vocabulary word to a misspelled term, or null. The budget
+ * scales with length — one edit for a short word, two for a long one — because a
+ * one-character slip in "kahnemann" and a two-character slip in "reversibiity"
+ * are the same *kind* of typo, and a fixed budget of 1 would rescue only the
+ * former. Ties break toward the shorter word (the likelier root), then
+ * alphabetically, so the correction is deterministic.
+ */
+function nearestVocabWord(term: string): string | null {
+  if (term.length < 4) return null;
+  const budget = term.length >= 8 ? 2 : 1;
+  let best: string | null = null;
+  let bestDist = Infinity;
+  for (const word of VOCABULARY) {
+    if (word === term) return null; // exact vocab word — not a typo to fix
+    if (Math.abs(word.length - term.length) > budget) continue;
+    const dist = boundedEditDistance(term, word, budget);
+    if (dist > budget) continue;
+    // Closest wins; ties break toward the shorter word (the likelier root), and
+    // VOCABULARY is sorted so a remaining tie resolves alphabetically and stably.
+    if (dist < bestDist || (dist === bestDist && best !== null && word.length < best.length)) {
+      best = word;
+      bestDist = dist;
+    }
+  }
+  return best;
+}
+
+export type Correction = { from: string; to: string };
+
 export type SearchResult = {
   docs: SearchDoc[];
   /** True when no page matched every term and these are the closest partial matches instead. */
   partial: boolean;
+  /** Misspelled terms that were auto-corrected to rescue an otherwise-empty page. */
+  corrections: Correction[];
+  /** The query actually run, with corrections applied — for the "showing results for" line. */
+  correctedQuery?: string;
 };
 
-function search(query: string): SearchResult {
-  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
-  if (terms.length === 0) return { docs: [], partial: false };
-
+/** Score and rank a fixed set of terms — the strict-AND primary, then the near-miss fallback. */
+function runSearch(terms: string[]): { docs: SearchDoc[]; partial: boolean } {
   const scored = docs.map((doc) => {
     let score = 0;
     let matched = 0;
@@ -533,6 +615,35 @@ function search(query: string): SearchResult {
   return { docs: partial, partial: true };
 }
 
+function search(query: string): SearchResult {
+  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+  if (terms.length === 0) return { docs: [], partial: false, corrections: [] };
+
+  const primary = runSearch(terms);
+  if (primary.docs.length > 0) return { ...primary, corrections: [] };
+
+  // Nothing matched, not even a partial. Before giving up, ask whether a term
+  // was simply misspelled: correct only the terms that hit nothing, only to a
+  // word the site actually carries, and re-run. This is purely a rescue — it
+  // fires only on an already-empty page, so it can never reshuffle or degrade a
+  // query that was working; the worst case is the same empty page as before.
+  const corrections: Correction[] = [];
+  const rescued = terms.map((term) => {
+    if (termMatchesAnyDoc(term)) return term;
+    const fix = nearestVocabWord(term);
+    if (fix) {
+      corrections.push({ from: term, to: fix });
+      return fix;
+    }
+    return term;
+  });
+  if (corrections.length === 0) return { ...primary, corrections: [] };
+
+  const retry = runSearch(rescued);
+  if (retry.docs.length === 0) return { ...primary, corrections: [] };
+  return { ...retry, corrections, correctedQuery: rescued.join(" ") };
+}
+
 const typeStyles: Record<SearchDoc["type"], string> = {
   Essay: "text-[var(--accent)] border-[var(--accent)]",
   Note: "text-[var(--accent)] border-[var(--border)]",
@@ -544,8 +655,12 @@ const typeStyles: Record<SearchDoc["type"], string> = {
 
 export default function SearchClient() {
   const [query, setQuery] = useState("");
-  const { docs: results, partial } = useMemo(() => search(query), [query]);
+  const { docs: results, partial, corrections, correctedQuery } = useMemo(
+    () => search(query),
+    [query]
+  );
   const showResults = query.trim().length > 0;
+  const corrected = corrections.length > 0;
 
   return (
     <>
@@ -563,13 +678,19 @@ export default function SearchClient() {
         <p className="mt-6 text-xs text-[var(--muted)]">
           {results.length === 0
             ? "No matches. Try a single, broader word."
-            : partial
-              ? `Nothing matched every word — ${
-                  results.length === 1
-                    ? "the closest match"
-                    : `the ${results.length} closest matches`
-                }, by how much of your search each one covers:`
-              : `${results.length} result${results.length === 1 ? "" : "s"}`}
+            : corrected
+              ? `No matches for ${corrections
+                  .map((c) => `“${c.from}”`)
+                  .join(" or ")} — showing ${
+                  results.length === 1 ? "the result" : `${results.length} results`
+                } for “${correctedQuery}” instead.`
+              : partial
+                ? `Nothing matched every word — ${
+                    results.length === 1
+                      ? "the closest match"
+                      : `the ${results.length} closest matches`
+                  }, by how much of your search each one covers:`
+                : `${results.length} result${results.length === 1 ? "" : "s"}`}
         </p>
       )}
 
