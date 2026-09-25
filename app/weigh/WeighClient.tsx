@@ -1,5 +1,7 @@
 "use client";
 
+import ClearCallButton from "../components/ClearCallButton";
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   readCarriedSubject,
@@ -916,7 +918,7 @@ export default function WeighClient() {
           {/* ---- The verdict ---- */}
           {calc && flipPct != null ? (
             <div className="mt-5 rounded-xl border border-[var(--accent)] bg-[var(--card)] p-5 sm:p-6">
-              {inp.ruin ? <RuinWarning /> : null}
+              {inp.ruin ? <RuinWarning subject={inp.decision} /> : null}
 
               <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
                 The flip point
@@ -943,7 +945,7 @@ export default function WeighClient() {
 
               {/* The read */}
               {tooClose ? (
-                <TooCloseRead marginPts={marginPts} />
+                <TooCloseRead marginPts={marginPts} subject={inp.decision} />
               ) : (
                 <div className="mt-5">
                   <p className="text-sm font-semibold text-[var(--foreground)]">
@@ -1250,7 +1252,7 @@ export default function WeighClient() {
           {/* ---- The verdict ---- */}
           {calcAB && flipPctAB != null ? (
             <div className="mt-5 rounded-xl border border-[var(--accent)] bg-[var(--card)] p-5 sm:p-6">
-              {inp.ruin ? <RuinWarning /> : null}
+              {inp.ruin ? <RuinWarning subject={inp.decision} /> : null}
 
               <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
                 The flip point
@@ -1279,7 +1281,7 @@ export default function WeighClient() {
               />
 
               {tooCloseAB ? (
-                <TooCloseRead marginPts={marginPtsAB} />
+                <TooCloseRead marginPts={marginPtsAB} subject={inp.decision} />
               ) : (
                 <div className="mt-5">
                   <p className="text-sm font-semibold text-[var(--foreground)]">
@@ -1384,13 +1386,14 @@ export default function WeighClient() {
           </button>
         </div>
       ) : null}
+      <ClearCallButton storeKey={STORE_KEY} onReset={() => setInp(BLANK)} />
     </div>
   );
 }
 
 /** The ruin guard — shared by both frames. Expected value is the wrong tool when
  *  the downside is a loss you can't come back from. */
-function RuinWarning() {
+function RuinWarning({ subject }: { subject: string }) {
   return (
     <div className="mb-5 rounded-lg border border-[var(--accent)] p-4">
       <p className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
@@ -1403,7 +1406,7 @@ function RuinWarning() {
         <em>don&rsquo;t bet the things you can&rsquo;t afford to lose</em>, almost
         regardless of the odds below. This is the one call the flip point
         can&rsquo;t finish for you — so take it to the tool that can:{" "}
-        <Link href="/ruin" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+        <Link href={withSubject("/ruin", subject)} className="text-[var(--accent)] hover:opacity-70 transition-opacity">
           the survival check
         </Link>{" "}
         names the worst realistic outcome, asks honestly whether you&rsquo;d
@@ -1421,7 +1424,7 @@ function RuinWarning() {
 
 /** The "too close to call" read — shared, since the tiebreaker is the same in
  *  both frames: whatever you couldn't put a number on. */
-function TooCloseRead({ marginPts }: { marginPts: number }) {
+function TooCloseRead({ marginPts, subject }: { marginPts: number; subject: string }) {
   return (
     <div className="mt-5">
       <p className="text-sm font-semibold text-[var(--foreground)]">
@@ -1440,7 +1443,7 @@ function TooCloseRead({ marginPts }: { marginPts: number }) {
         don&rsquo;t yet know would tip it, you&rsquo;re not too close — you&rsquo;re
         missing a fact. Before you flip a coin,{" "}
         <Link
-          href="/enough"
+          href={withSubject("/enough", subject)}
           className="text-[var(--accent)] hover:opacity-70 transition-opacity"
         >
           check whether it&rsquo;s worth going to get
