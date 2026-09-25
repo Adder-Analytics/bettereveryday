@@ -1,5 +1,7 @@
 "use client";
 
+import ClearCallButton from "../components/ClearCallButton";
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
@@ -856,6 +858,7 @@ export default function OutsideClient() {
           </div>
         </div>
       ) : null}
+      <ClearCallButton storeKey={STORE_KEY} onReset={() => setInp(BLANK)} />
     </div>
   );
 }

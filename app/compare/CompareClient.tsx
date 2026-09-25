@@ -1,5 +1,7 @@
 "use client";
 
+import ClearCallButton from "../components/ClearCallButton";
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   readCarriedSubject,
@@ -1393,6 +1395,7 @@ export default function CompareClient() {
           </div>
         </div>
       ) : null}
+      <ClearCallButton storeKey={STORE_KEY} onReset={() => setState(BLANK)} />
     </div>
   );
 }
