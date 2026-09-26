@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Nav } from "./components/nav";
 import { Footer } from "./components/footer";
 import SearchShortcut from "./components/SearchShortcut";
 import PrintStamp from "./components/PrintStamp";
 import AnswerLogRecorder from "./components/AnswerLogRecorder";
+import ServiceWorkerRegister from "./components/ServiceWorkerRegister";
 import { toolCountWord } from "./data/tools";
 import "./globals.css";
 
@@ -39,6 +40,22 @@ export const metadata: Metadata = {
       "application/rss+xml": `${SITE_URL}/feed.xml`,
     },
   },
+  // Installed to a home screen, the toolkit opens in its own window (see
+  // app/manifest.ts). These tell iOS to run it standalone and title the tile.
+  appleWebApp: {
+    capable: true,
+    title: "Better Every Day",
+    statusBarStyle: "default",
+  },
+};
+
+// theme-color follows the site's own light/dark palette, so the standalone app's
+// status bar and the browser's UI match the page instead of a default white.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FAFAF8" },
+    { media: "(prefers-color-scheme: dark)", color: "#0F0E0C" },
+  ],
 };
 
 export default function RootLayout({
@@ -58,6 +75,7 @@ export default function RootLayout({
         <Nav />
         <SearchShortcut />
         <AnswerLogRecorder />
+        <ServiceWorkerRegister />
         <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
           <PrintStamp />
           {children}
