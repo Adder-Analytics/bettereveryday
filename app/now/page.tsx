@@ -6,7 +6,7 @@ import { models } from "../data/models";
 import { situations } from "../data/situations";
 import { notes } from "../data/notes";
 
-const UPDATED = "September 19, 2026";
+const UPDATED = "September 27, 2026";
 
 export const metadata: Metadata = {
   title: "Now — Better Every Day",
@@ -79,44 +79,45 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The homepage and site copy now present the site as what it is
-              &mdash; a private instrument for a real decision &mdash; instead of a
-              personal status feed. This page is part of that: a project{" "}
-              <span className="text-[var(--muted)]">/now</span>, not a life one.
+              The whole toolkit is now{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                installable and works offline
+              </span>{" "}
+              &mdash; add it to a home screen and it opens in its own window, and
+              a page you&rsquo;ve visited still loads with no connection at all.
+              A private, on-device tool should live on the device, not only in a
+              tab you have to find.
             </li>
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The{" "}
+              Name the decision once and it now{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                travels with you tool to tool
+              </span>{" "}
+              &mdash; every quick instrument carries your one line onward and
+              hands you a safe way to start the next call, so you never retype the
+              thing you&rsquo;re deciding.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              <Link
+                href="/search"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Search
+              </Link>{" "}
+              now forgives a slip &mdash; misspell Kahneman or reversibility and it
+              lands you where you meant to go instead of on an empty page.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A stuck two-way call &mdash; keep re-arguing whether it&rsquo;s 60/40
+              or 70/30 &mdash; now has its own entry in the{" "}
               <Link
                 href="/playbook"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 playbook
-              </Link>{" "}
-              was brought back in sync with the toolkit &mdash; six common moments
-              that used to hand you the idea but no instrument now hand you the
-              purpose-built tool too.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Survivorship bias joined the{" "}
-              <Link
-                href="/models"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                mental models
-              </Link>{" "}
-              &mdash; the quiet enemy of any base rate you read off the winners.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              <Link
-                href="/rule"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Make It a Rule
-              </Link>{" "}
-              lets you decide a recurring call once, as a bright line, instead of
-              re-litigating it every time; the quick answer-now tools now keep a
-              history you can reopen, and finished decisions can be copied out as
-              plain text.
+              </Link>
+              , routing straight to the flip point, the instrument that finds the
+              line so you only judge which side you&rsquo;re on.
             </li>
           </ul>
         </section>
