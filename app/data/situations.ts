@@ -557,6 +557,36 @@ export const situations: Situation[] = [
     essays: ["decide-it-once"],
   },
   {
+    id: "stuck-between-two",
+    title: "You're down to two options and keep re-arguing the odds",
+    scene:
+      "Take the job or stay. Sell or hold. This treatment or that one. You've made the case both ways more than once, and now you're re-litigating the same number — is it 60/40 or 70/30? — as if one more round will finally pin a probability you can't actually know. The needle won't settle, and the deciding won't end.",
+    question: "Which side of the break-even line am I on — the odds at which this call would flip?",
+    models: [
+      {
+        id: "decision-threshold",
+        move: "Stop trying to pin the exact odds. Find the probability where the decision flips instead — p* = R/(B+R), how much better it is if it works over how much worse if it doesn't — and then all you have to judge is which side of that one line you're on. That's a call you can actually make; 'exactly 65%' never was.",
+      },
+      {
+        id: "expected-value",
+        move: "Weigh each side by magnitude, not just likelihood. A near-even split on probability isn't near-even at all if one side's downside dwarfs the other's upside — size the better-if-right against the worse-if-wrong before you argue the percent again.",
+      },
+      {
+        id: "loss-aversion",
+        move: "Notice if the number won't settle because losing looms larger than the same-size gain. The sting of being wrong runs about twice the pleasure of being right, so your gut quietly tilts the odds toward the cautious side — correct for the tilt before you trust the estimate.",
+      },
+      {
+        id: "reversibility",
+        move: "Before you spend another hour on the exact odds, ask whether the door swings back. A reversible call doesn't earn this much precision — decide on the rough side you're on and let moving teach you the rest; save the agonizing for the doors that don't reopen.",
+      },
+    ],
+    tool: {
+      id: "weigh",
+      move: "This is the exact moment the flip point is built for. Instead of pinning the odds you can't know, it finds the probability where the call tips — p* = R/(B+R) — so all you judge is which side of that line you're on. It keeps your gut read separate and last, and tells you plainly when it's genuinely too close to call rather than pretending a coin-flip is a decision.",
+    },
+    essays: ["the-flip-point", "loss-aversion"],
+  },
+  {
     id: "weigh-it-through",
     title: "Any other decision — weigh it through",
     scene:

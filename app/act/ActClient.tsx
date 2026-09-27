@@ -1,5 +1,7 @@
 "use client";
 
+import ClearCallButton from "../components/ClearCallButton";
+
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
@@ -772,15 +774,7 @@ export default function ActClient() {
       ) : null}
 
       {/* ---- Reset ---- */}
-      <div className="mt-6">
-        <button
-          type="button"
-          onClick={reset}
-          className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-        >
-          Clear this
-        </button>
-      </div>
+      <ClearCallButton storeKey={STORE_KEY} onReset={reset} />
     </div>
   );
 }

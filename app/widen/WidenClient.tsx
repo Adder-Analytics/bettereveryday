@@ -1,5 +1,7 @@
 "use client";
 
+import ClearCallButton from "../components/ClearCallButton";
+
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
@@ -460,6 +462,7 @@ export default function WidenClient() {
         shamCount={shamCount}
         unconfirmed={unconfirmed}
       />
+      <ClearCallButton storeKey={STORE_KEY} onReset={() => setInp(BLANK)} />
     </div>
   );
 }

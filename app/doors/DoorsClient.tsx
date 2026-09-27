@@ -1,5 +1,7 @@
 "use client";
 
+import ClearCallButton from "../components/ClearCallButton";
+
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
@@ -336,6 +338,7 @@ export default function DoorsClient() {
           </p>
         </div>
       )}
+      <ClearCallButton storeKey={STORE_KEY} onReset={() => setInp(BLANK)} />
     </div>
   );
 }

@@ -1,5 +1,7 @@
 "use client";
 
+import ClearCallButton from "../components/ClearCallButton";
+
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
@@ -686,16 +688,16 @@ export default function DebriefClient() {
       )}
 
       {/* ---- Reset ---- */}
-      <div className="mt-6 flex flex-wrap items-center gap-4">
-        {cell ? <PrintButton label="Print / Save as PDF" /> : null}
-        <button
-          type="button"
-          onClick={reset}
-          className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-        >
-          Clear this debrief
-        </button>
-      </div>
+      {cell ? (
+        <div className="mt-6">
+          <PrintButton label="Print / Save as PDF" />
+        </div>
+      ) : null}
+      <ClearCallButton
+        storeKey={STORE_KEY}
+        onReset={reset}
+        label="Clear this debrief"
+      />
     </div>
   );
 }
