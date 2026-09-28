@@ -6,7 +6,7 @@ import { models } from "../data/models";
 import { situations } from "../data/situations";
 import { notes } from "../data/notes";
 
-const UPDATED = "September 27, 2026";
+const UPDATED = "September 28, 2026";
 
 export const metadata: Metadata = {
   title: "Now — Better Every Day",
@@ -79,6 +79,32 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The site has two front doors — a{" "}
+              <Link
+                href="/find"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                guided router
+              </Link>{" "}
+              that asks a question or two, and the{" "}
+              <Link
+                href="/playbook"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                playbook
+              </Link>{" "}
+              you browse by moment — and they&rsquo;d quietly drifted. Five
+              distinct moments the router already routed to an instrument reached{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                nowhere in the playbook
+              </span>
+              : the whether-or-not trap, pressure-testing a call you&rsquo;re sure
+              of, deciding while a friend&rsquo;s version would be obvious, a pull
+              you can&rsquo;t tell is durable, and over-thinking a call you could
+              undo. Each now has its own entry, so browsing lands you on the same
+              right tool as answering.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The whole toolkit is now{" "}
               <span className="text-[var(--foreground)] font-medium">
                 installable and works offline
@@ -106,18 +132,6 @@ export default function Now() {
               </Link>{" "}
               now forgives a slip &mdash; misspell Kahneman or reversibility and it
               lands you where you meant to go instead of on an empty page.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A stuck two-way call &mdash; keep re-arguing whether it&rsquo;s 60/40
-              or 70/30 &mdash; now has its own entry in the{" "}
-              <Link
-                href="/playbook"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                playbook
-              </Link>
-              , routing straight to the flip point, the instrument that finds the
-              line so you only judge which side you&rsquo;re on.
             </li>
           </ul>
         </section>
@@ -160,10 +174,13 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A handful of instruments still have no dedicated playbook situation
-              &mdash; most on purpose, because they overlap a broader entry, but
-              the parity is worth tightening where a genuinely distinct moment
-              turns up.
+              With the five distinct moments above now routed, the instruments
+              left without their own playbook situation are the process and
+              return tools &mdash; the journal, the return desk, the tripwire, the
+              trainers &mdash; and those overlap a broader entry on purpose rather
+              than marking a gap. The parity to keep watching is the reverse one:
+              a genuinely new shape of moment should turn up in both front doors
+              at once, not just the guided one.
             </li>
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The analytic kit is deliberately thinnest on the emotional half of a

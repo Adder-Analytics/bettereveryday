@@ -92,6 +92,36 @@ export const situations: Situation[] = [
     essays: ["decision-quality"],
   },
   {
+    id: "over-thinking-reversible",
+    title: "You're agonizing over a call you could probably undo",
+    scene:
+      "Three weeks on a job title, one morning on the two-year lease. You've been giving this real weight — drafting the email six times, canvassing one more opinion — without once asking whether it's even the kind of decision that earns it.",
+    question: "Can I walk back through this door — and if I can, why am I still deliberating as if I can't?",
+    models: [
+      {
+        id: "reversibility",
+        move: "Sort the door before you sort the decision. Careful deliberation isn't a virtue you spread evenly over everything that matters — it's a scarce resource with one job, protecting you where a mistake is permanent. On a two-way door it protects you against almost nothing, so a choice you can reverse deserves the speed you've been denying it.",
+      },
+      {
+        id: "loss-aversion",
+        move: "Notice why the caution only ever runs one way. A wrong call is legible — a moment you can point to afterward — and slowness is invisible, so you buy insurance against the mistake you can picture and pay for it in weeks nobody tallies. The quiet toll of not deciding is real; it just never gets a scene.",
+      },
+      {
+        id: "opportunity-cost",
+        move: "Deliberating isn't a neutral holding pattern. While you decide, you've already decided — you've chosen the status quo, at full running cost, for exactly as long as you sit. Price the delay against what moving would get you, not against zero.",
+      },
+      {
+        id: "reality-testing",
+        move: "If it's the downside that's freezing you, ask whether you can build a door you'd be able to come back through — a trial period, a pilot, a staged rollout, a first step sized so a wrong turn is a lesson, not an ending. The move most people miss is that which door this is often isn't fixed; it's a fact about how you choose to walk through it.",
+      },
+    ],
+    tool: {
+      id: "doors",
+      move: "This is the exact moment the door triage is built for. It sorts the call into a one-way or two-way door by how reversible it really is — so you spend slow, careful thought only where reversal won't save you, and hand a fast, undoable call the permission to move it's usually denied. And where the door looks one-way, it helps you engineer the exit that turns the leap into a step you could walk back.",
+    },
+    essays: ["the-door-you-can-walk-back-through"],
+  },
+  {
     id: "a-number-appears",
     title: "Someone just put a number in front of you",
     scene:
@@ -340,6 +370,58 @@ export const situations: Situation[] = [
     notes: ["kahneman-inside-view"],
   },
   {
+    id: "cant-advise-myself",
+    title: "You could tell a friend what to do — but your own version is a fog",
+    scene:
+      "If a friend brought you this exact situation, you'd know what to say in a sentence. Your own copy of it stays a blank. You're not hot — no anger, no clock — just unable to see your own call the way you'd see anyone else's.",
+    question: "What would I tell a friend in this spot — and would I actually take that advice myself?",
+    models: [
+      {
+        id: "self-distancing",
+        move: "This is Solomon's paradox: you reason more wisely about other people's dilemmas than your own, and it needs no heat to bite. Put your decision in a friend's name and say out loud what you'd tell them — the answer usually arrives clearer and faster than anything you can reach from inside your own head.",
+      },
+      {
+        id: "loss-aversion",
+        move: "If you know the advice and still won't take it, the decision was never the unclear part — the obstacle is. Often it's a loss you're flinching from: name exactly what you're afraid of losing, and check whether it's a real future cost or just the sting of giving something up.",
+      },
+      {
+        id: "sunk-cost",
+        move: "One of the most common reasons you won't take your own good advice is what you've already put in. What's spent is spent whether you go on or not — so ask only whether you'd choose this fresh today, and don't let the years or the money already gone cast a vote they haven't earned.",
+      },
+    ],
+    tool: {
+      id: "advise",
+      move: "This is the exact moment the advise-a-friend tool is built for. It puts your decision in a friend's name so the answer comes clear, then asks the harder half most reframes skip: would you take it? If not, it names the real obstacle — fear, sunk cost, other people's opinion, the comfort of not choosing — and hands you the tool built for that one.",
+    },
+    essays: ["advice-you-dont-take"],
+  },
+  {
+    id: "pull-wont-settle",
+    title: "You keep leaning one way and can't tell if it's real or just a mood",
+    scene:
+      "Not hot, exactly — no anger, no ticking clock. Just a steady pull toward one side: the comfort of staying, or the shine of the new thing. From inside today you can't tell whether it's the durable call or a feeling that'll be gone by next month.",
+    question: "Which way will I be glad I went — ten minutes from now, ten months, ten years?",
+    models: [
+      {
+        id: "self-distancing",
+        move: "Run 10/10/10: how will this look ten minutes from now, ten months, ten years? Read how the pull changes across the horizons — a feeling that's loud now often lies about how long it lasts, and the ones that survive all three are the ones worth deciding on.",
+      },
+      {
+        id: "availability-heuristic",
+        move: "The feeling you have right now is vivid and immediate; the version of you who lives with the choice, and the path you don't take, are neither. So the present mood wins the vote by default — unless you deliberately weight the future you can't feel yet as heavily as the one you can.",
+      },
+      {
+        id: "loss-aversion",
+        move: "Weigh it against the regret you can't feel today — the road not taken. A pull toward the familiar is often just the fear of giving something up wearing the costume of preference; the option you'd quietly miss for years rarely gets a fair hearing against the one that's comfortable tonight.",
+      },
+    ],
+    tool: {
+      id: "regret",
+      move: "This is the exact moment the older-self tool is built for. It plays the pull forward to ten minutes, ten months, and ten years, reads how it changes across them, and weighs it against the regret you can't feel now — the road not taken — so a feeling that won't last can't outvote the one that will.",
+    },
+    essays: ["advice-you-dont-take"],
+  },
+  {
     id: "time-to-quit",
     title: "You can't tell if it's time to quit",
     scene:
@@ -434,6 +516,32 @@ export const situations: Situation[] = [
       move: "This is the exact moment the enough-to-decide tool is built for. It runs a value-of-information test without the math: you write what you'd do if the fact you're chasing came back one way, then the other, and if the answer is the same it shows you you're already done — so you stop researching a call you've effectively already made.",
     },
     essays: ["what-would-you-do-either-way"],
+  },
+  {
+    id: "fairly-sure-already",
+    title: "You're fairly sure — and that's exactly what stopped you looking",
+    scene:
+      "You've mostly made up your mind, and now you're gathering support for it. The last three things you read agreed with you. It feels like diligence, but you've been collecting reasons it'll work and none that it won't — and “fairly sure” is the precise state that ends the search too early.",
+    question: "What would prove me wrong — and have I actually gone looking for it, or only for reasons I'm right?",
+    models: [
+      {
+        id: "reality-testing",
+        move: "Name the one assumption the whole decision rests on, then ask what you'd have to see to know it's false — and go look for that, not for more reasons to agree. Confidence quietly turns research into a case for what you already wanted; the antidote is to hunt the disconfirming evidence on purpose.",
+      },
+      {
+        id: "inversion",
+        move: "Stop asking how this succeeds and ask what would guarantee it fails — then check you're not quietly doing those things. The failure modes you'd never surface looking forward tend to jump out the moment you go looking for them directly.",
+      },
+      {
+        id: "value-of-information",
+        move: "Where you can, don't defend the prediction — test it. Name the cheapest real experiment that would settle the key assumption before you commit, and run that instead of gathering one more opinion that only agrees. A confident forecast you could have checked cheaply is one you should have.",
+      },
+    ],
+    tool: {
+      id: "test",
+      move: "This is the exact moment the reality-test is built for. It names the assumption the call rests on, forces out what evidence would falsify it, and checks whether you've sought that or only its opposite — the antidote to confirmation bias. Then, where you can, it turns the confident prediction into the cheapest real experiment that would settle it before you commit.",
+    },
+    essays: ["the-plan-was-never-tried"],
   },
   {
     id: "cant-stop-looking",
@@ -555,6 +663,36 @@ export const situations: Situation[] = [
       move: "This is the exact moment the make-it-a-rule tool is built for. It takes a call you keep making and turns it into one standing decision — the bright line, the trigger that fires it, and the rare exception you'll allow named in advance so it can't quietly expand — then sets a date to review whether the rule still earns its place, so you decide it once instead of a hundred tired times.",
     },
     essays: ["decide-it-once"],
+  },
+  {
+    id: "whether-or-not",
+    title: "You're deciding whether or not to do one thing",
+    scene:
+      "Should I take the job, or not? Make the move, or not? It feels like a decision — you can list the pros and cons, sleep on it, ask a friend. But the question has already shrunk a wide-open situation to a single yes-or-no about one option, and everything you didn't name has quietly left the room.",
+    question: "Is this a real choice between options, or one option dressed up as a decision?",
+    models: [
+      {
+        id: "narrow-framing",
+        move: "There's a tell, and it's almost grammatical: any time the decision has the word “whether” in it, or exactly two sides — in or out, this or nothing — you're probably in a narrow frame. The failure to beat isn't a hard choice; it's a frame with one option in it. Refuse to decide between one thing and nothing, and make yourself name just one more real alternative — going from one option to two is where almost all the value lives.",
+      },
+      {
+        id: "opportunity-cost",
+        move: "The hidden alternative is almost always there. Run the vanishing test: if this option were suddenly off the table — gone, impossible — what would you do instead? Whatever you'd scramble toward is a real option you had the whole time; the frame just painted it over. And it's the true cost of a yes — the next-best thing the same time or money would have bought.",
+      },
+      {
+        id: "base-rates",
+        move: "Most of your decisions aren't original. Someone has taken this job, made this move, had this exact hard conversation — find them and ask how it went. Their experience is a cheaper teacher than your own future regret, and it swaps the single vivid path in your head for what actually tends to happen.",
+      },
+      {
+        id: "reversibility",
+        move: "Widening has a trap on its own side: past a handful, more options mostly produce anxiety and stall, and generating endless alternatives is a comfortable way to never decide. So check the door — if the call is cheap to reverse, get to two or three real options and move, rather than manufacturing a tenth to hide behind.",
+      },
+    ],
+    tool: {
+      id: "widen",
+      move: "This is the exact moment the widener is built for. It catches the whether-or-not frame — the single most common decision mistake — and forces it open: the vanishing-options test and three more lenses to surface the alternatives nobody named, a guard against decoy options that only flatter the first, then it hands the real slate on to be compared or weighed.",
+    },
+    essays: ["whether-or-not"],
   },
   {
     id: "stuck-between-two",
