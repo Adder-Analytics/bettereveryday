@@ -2,9 +2,10 @@
 
 import ClearCallButton from "../components/ClearCallButton";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
+import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
 import PrintButton from "../components/PrintButton";
 
@@ -126,6 +127,77 @@ function loadInputs(): Inputs {
   }
 }
 
+// ---- handing the survivability check to another person ------------------
+//
+// A ruin check is, more than almost any tool here, one you run on a stake you
+// share: the savings you'd put into a business, the house, the leap that lands
+// on a whole household, not just you. The person on the other end of that
+// downside deserves to see the same worst case you named and where you think it
+// leaves you — and to change any of it to argue back. Peer-sharing (data/share.ts)
+// hands them the whole check by link: the call, the worst realistic outcome, and
+// your reads on survivability, odds, and repetition. Unlike the comparison's gut,
+// none of it is withheld — the sender's answers *are* the thing worth arguing
+// over, and the recipient is meant to see them and push. The payload rides in the
+// URL fragment, so it reaches no server, only whoever the link is handed to.
+
+/** Collapse whitespace and cap a shared string so a link stays a link. Mirrors
+ *  the normalization the through-line and the other share adopters apply. */
+function capStr(s: string, n: number): string {
+  return s.replace(/\s+/g, " ").trim().slice(0, n);
+}
+
+/** True when the tool holds no real work — nothing named, nothing chosen. A
+ *  share link is adopted whole ONLY into a blank tool, so this is the gate that
+ *  protects a check already in progress. */
+function isBlankInputs(i: Inputs): boolean {
+  return (
+    !i.decision.trim() &&
+    !i.worst.trim() &&
+    i.survive === "" &&
+    i.odds === "" &&
+    i.repeat === ""
+  );
+}
+
+/** The encodable subset of a check: every field, free text capped so a link
+ *  stays a link. Nothing is withheld — the sender's reads are what's argued over. */
+function sharePayload(i: Inputs): Record<string, unknown> {
+  return {
+    decision: capStr(i.decision, 140),
+    worst: capStr(i.worst, 500),
+    survive: i.survive,
+    odds: i.odds,
+    repeat: i.repeat,
+  };
+}
+
+/** Rebuild Inputs from a decoded share payload, reusing the same field-by-field
+ *  validators loadInputs trusts for localStorage, so a truncated or hand-edited
+ *  link degrades to blank fields, never a throw. Returns null when nothing
+ *  meaningful decoded, so a blank payload can't seed a blank tool. */
+function coerceShared(data: unknown): Inputs | null {
+  if (!data || typeof data !== "object") return null;
+  const v = data as Partial<Inputs>;
+  const out: Inputs = {
+    decision: typeof v.decision === "string" ? capStr(v.decision, 140) : "",
+    worst: typeof v.worst === "string" ? capStr(v.worst, 500) : "",
+    survive: isSurvive(v.survive) ? v.survive : "",
+    odds: isOdds(v.odds) ? v.odds : "",
+    repeat: isRepeat(v.repeat) ? v.repeat : "",
+  };
+  return isBlankInputs(out) ? null : out;
+}
+
+/** A short, honest read of a shared check for the "someone shared this" card:
+ *  its subject and one line naming where the sender landed. */
+function describeShared(i: Inputs): { subject: string; line: string } {
+  const subject = i.decision.trim() || "A survivability check";
+  const line = i.worst.trim()
+    ? `Worst case: ${capStr(i.worst, 90)}${i.worst.trim().length > 90 ? "…" : ""}`
+    : "";
+  return { subject, line };
+}
+
 const inputClass =
   "w-full px-3 py-2 text-base rounded-lg border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--accent)] transition-colors";
 const chipBase =
@@ -147,20 +219,93 @@ export default function RuinClient() {
   const [hydrated, setHydrated] = useState(false);
   const [carriedSeed, setCarriedSeed] = useState("");
   const [showExample, setShowExample] = useState(false);
+  // A check handed in by a share link. `adoptedShare` — adopted whole into a
+  // blank tool (banner). `pendingShare` — the tool already held a check, so the
+  // shared one waits in a card the person can open or dismiss. `copied` — the
+  // transient confirmation on the copy-a-link affordance.
+  const [adoptedShare, setAdoptedShare] = useState(false);
+  const [pendingShare, setPendingShare] = useState<Inputs | null>(null);
+  const [copied, setCopied] = useState(false);
+  const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const loaded = loadInputs();
     const carried = readCarriedSubject();
     const seeded = Boolean(carried) && !loaded.decision.trim();
-    const next = seeded ? { ...loaded, decision: carried } : loaded;
+    let next = seeded ? { ...loaded, decision: carried } : loaded;
+
+    // A share link hands a WHOLE check in from another person. It's
+    // all-or-nothing, never field-by-field: adopting the entire check only into
+    // a blank tool keeps two people's answers from blending into a nonsense
+    // hybrid. If this tool already holds work, don't touch it — surface the
+    // shared check as a card the person can open or dismiss.
+    const shared = coerceShared(readShare("ruin"));
+    let adopted = false;
+    let pending: Inputs | null = null;
+    if (shared) {
+      if (isBlankInputs(next)) {
+        next = shared;
+        adopted = true;
+      } else {
+        pending = shared;
+      }
+    }
     /* eslint-disable react-hooks/set-state-in-effect -- one-time hydration from
        browser storage; intentionally synchronous on mount, can't run in render. */
     setInp(next);
     setHydrated(true);
     if (seeded) setCarriedSeed(carried);
+    if (adopted) setAdoptedShare(true);
+    if (pending) setPendingShare(pending);
     /* eslint-enable react-hooks/set-state-in-effect */
     if (carried) clearCarriedSubject();
+    // Strip the share fragment once read so a refresh doesn't re-apply it and the
+    // address bar stops carrying someone else's check.
+    if (shared) clearShare();
   }, []);
+
+  // Clear the copy-confirmation timer on unmount so it can't fire into a gone
+  // component.
+  useEffect(
+    () => () => {
+      if (copyTimer.current) clearTimeout(copyTimer.current);
+    },
+    []
+  );
+
+  // Build the share link and put it on the clipboard. Encodes the whole check
+  // into the URL fragment — never a server — with the same clipboard-then-
+  // execCommand fallback the other adopters use.
+  const copyShareLink = useCallback(async () => {
+    if (typeof window === "undefined") return;
+    const token = encodeShare("ruin", sharePayload(inp));
+    if (!token) return;
+    const link = `${window.location.origin}/ruin#${SHARE_PARAM}=${token}`;
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(link);
+      ok = true;
+    } catch {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = link;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+      } catch {
+        ok = false;
+      }
+    }
+    if (ok) {
+      setCopied(true);
+      if (copyTimer.current) clearTimeout(copyTimer.current);
+      copyTimer.current = setTimeout(() => setCopied(false), 2500);
+    }
+  }, [inp]);
 
   useEffect(() => {
     if (!hydrated || typeof window === "undefined") return;
@@ -176,9 +321,75 @@ export default function RuinClient() {
 
   const decision = inp.decision.trim();
   const worst = inp.worst.trim();
+  const hasSubstance = decision !== "" && worst !== "";
+  const pendingDesc = pendingShare ? describeShared(pendingShare) : null;
 
   return (
     <div>
+      {/* ---- Shared with you: adopted whole into a blank tool ---- */}
+      {adoptedShare ? (
+        <div className="mb-5 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-4">
+          <p className="text-sm text-[var(--foreground)] leading-relaxed">
+            <span className="font-medium">
+              You&rsquo;re looking at a survivability check someone shared with you.
+            </span>{" "}
+            The call and the worst case below are theirs &mdash; change any answer
+            to argue back, or{" "}
+            <button
+              type="button"
+              onClick={() => {
+                setInp(BLANK);
+                setAdoptedShare(false);
+              }}
+              className="font-medium text-[var(--accent)] underline underline-offset-2 hover:opacity-70 transition-opacity"
+            >
+              start from a blank tool
+            </button>
+            .
+          </p>
+        </div>
+      ) : null}
+
+      {/* ---- Shared with you: held, because the tool already had work ---- */}
+      {pendingShare && pendingDesc ? (
+        <div className="mb-5 rounded-xl border border-[var(--border)] border-l-2 border-l-[var(--accent)] bg-[var(--card)] p-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            A survivability check was shared with you
+          </p>
+          <p className="mt-2 text-sm font-medium text-[var(--foreground)] leading-relaxed">
+            {pendingDesc.subject}
+          </p>
+          {pendingDesc.line ? (
+            <p className="mt-1 text-sm text-[var(--muted)] leading-relaxed">
+              {pendingDesc.line}
+            </p>
+          ) : null}
+          <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
+            You already have a check in progress here. Opening theirs replaces
+            what&rsquo;s in the tool now.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                setInp(pendingShare);
+                setPendingShare(null);
+              }}
+              className="text-sm font-medium px-4 py-2 rounded-lg bg-[var(--accent)] text-[var(--background)] hover:opacity-90 transition-opacity"
+            >
+              Open it in the tool
+            </button>
+            <button
+              type="button"
+              onClick={() => setPendingShare(null)}
+              className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+            >
+              Dismiss
+            </button>
+          </div>
+        </div>
+      ) : null}
+
       {/* ---- New here? A read-only worked example ---- */}
       <div className="mb-5">
         <button
@@ -344,7 +555,41 @@ export default function RuinClient() {
 
       {/* ---- The read + handoff ---- */}
       <Verdict inp={inp} />
-      <ClearCallButton storeKey={STORE_KEY} onReset={() => setInp(BLANK)} />
+
+      {/* ---- Hand it to someone: the same check, carried person to person ---- */}
+      {hasSubstance ? (
+        <div className="mt-5 rounded-xl border border-[var(--border)] p-5 sm:p-6">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+            Talk it over with whoever shares the downside
+          </p>
+          <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
+            A stake this size usually lands on more than one person. Copy a link
+            that carries this whole check &mdash; the call, the worst case you
+            named, and where you think it leaves you &mdash; so a partner or a
+            cofounder can open exactly what you weighed and change any answer to
+            argue back. It rides inside the link itself and is sent to no server;
+            only whoever you hand it to can read it.
+          </p>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={copyShareLink}
+              className="text-sm font-medium px-4 py-2 rounded-lg border border-[var(--border)] text-[var(--foreground)] hover:border-[var(--accent)] transition-colors"
+            >
+              {copied ? "Copied — the link is on your clipboard" : "Copy a link to this check"}
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      <ClearCallButton
+        storeKey={STORE_KEY}
+        onReset={() => {
+          setInp(BLANK);
+          setAdoptedShare(false);
+          setPendingShare(null);
+        }}
+      />
     </div>
   );
 }

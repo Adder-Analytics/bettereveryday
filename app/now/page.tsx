@@ -6,7 +6,7 @@ import { models } from "../data/models";
 import { situations } from "../data/situations";
 import { notes } from "../data/notes";
 
-const UPDATED = "September 28, 2026";
+const UPDATED = "September 29, 2026";
 
 export const metadata: Metadata = {
   title: "Now — Better Every Day",
@@ -79,6 +79,36 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A worked call can now{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                be handed to whoever the decision is really with
+              </span>
+              . The tools were single-player, but the calls people bring to them
+              &mdash; two offers, a move, betting the savings, whether to quit
+              &mdash; are talked over with a partner, a cofounder, an advisor. So
+              the instruments built for a shared call now copy a link that carries
+              the whole worked decision, and the person you send it to opens
+              exactly what you weighed and can change any answer to argue back. It
+              rides inside the link and is sent to no server &mdash; the privacy
+              promise held. With the{" "}
+              <Link
+                href="/ruin"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                survivability check
+              </Link>{" "}
+              and the{" "}
+              <Link
+                href="/enough"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                value-of-information test
+              </Link>{" "}
+              now joining the flip point, the comparison, the pre-mortem, the
+              reference-class forecast, and the crux finder, every tool built for a
+              decision you don&rsquo;t make alone can be shared.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The site has two front doors — a{" "}
               <Link
                 href="/find"
@@ -122,16 +152,6 @@ export default function Now() {
               &mdash; every quick instrument carries your one line onward and
               hands you a safe way to start the next call, so you never retype the
               thing you&rsquo;re deciding.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              <Link
-                href="/search"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Search
-              </Link>{" "}
-              now forgives a slip &mdash; misspell Kahneman or reversibility and it
-              lands you where you meant to go instead of on an empty page.
             </li>
           </ul>
         </section>
@@ -188,6 +208,16 @@ export default function Now() {
               more covered than it looks (cool the call, the regret test, advice
               for a friend), but it&rsquo;s the axis to watch, not to paper over
               with another worksheet.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Peer-sharing is now finished for the tools built around a shared
+              call, and the ones left single-player are that way on purpose: a
+              private nudge like cooling a hot call or asking your older self, and
+              the process and return tools that hold your own record, aren&rsquo;t
+              artifacts you hand someone to argue back with. The link to watch for
+              is a genuinely new instrument that produces a decision made with
+              another person &mdash; it should ship shareable, not have sharing
+              bolted on later.
             </li>
           </ul>
         </section>
