@@ -6,7 +6,7 @@ import { models } from "../data/models";
 import { situations } from "../data/situations";
 import { notes } from "../data/notes";
 
-const UPDATED = "September 29, 2026";
+const UPDATED = "September 30, 2026";
 
 export const metadata: Metadata = {
   title: "Now — Better Every Day",
@@ -79,6 +79,27 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The{" "}
+              <Link
+                href="/find"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                guided router
+              </Link>{" "}
+              promised to narrow instead of list &mdash; then answered{" "}
+              <em>&ldquo;I have to make the call&rdquo;</em> with eighteen
+              unordered answers, nearly five phone screens of them. They&rsquo;re
+              now{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                sorted under five kinds of hard
+              </span>{" "}
+              &mdash; the options, the stakes, your own read, going in circles,
+              other people &mdash; with a row at the top to jump straight to
+              yours. Still one tap to your instrument. Answering also now lands
+              you on the next question or the recommendation itself, with focus
+              on it, instead of just past it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A worked call can now{" "}
               <span className="text-[var(--foreground)] font-medium">
                 be handed to whoever the decision is really with
@@ -143,15 +164,6 @@ export default function Now() {
               a page you&rsquo;ve visited still loads with no connection at all.
               A private, on-device tool should live on the device, not only in a
               tab you have to find.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Name the decision once and it now{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                travels with you tool to tool
-              </span>{" "}
-              &mdash; every quick instrument carries your one line onward and
-              hands you a safe way to start the next call, so you never retype the
-              thing you&rsquo;re deciding.
             </li>
           </ul>
         </section>
@@ -218,6 +230,13 @@ export default function Now() {
               is a genuinely new instrument that produces a decision made with
               another person &mdash; it should ship shareable, not have sharing
               bolted on later.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The router&rsquo;s five clusters are a first cut, drawn from what
+              each answer is <em>about</em>, not from watching people use it. If a
+              kind of hard turns out to be looked for under the wrong heading, the
+              fix is to move the line, not to add a sixth question in front of
+              it &mdash; the list stays one tap deep.
             </li>
           </ul>
         </section>
