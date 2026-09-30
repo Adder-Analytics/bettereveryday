@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { getTool, toolCount } from "../data/tools";
 import {
   getTriageNode,
+  groupChoices,
   TRIAGE_ROOT,
   type TriageNode,
   type TriageRec,
@@ -68,6 +69,27 @@ export default function FindClient() {
 
   const { trail, position } = useMemo(() => walk(steps), [steps]);
 
+  // Each answer swaps the card for a shorter one. Chosen from low down a long
+  // list, the browser clamps the scroll and the new card's heading lands above
+  // the viewport — and focus falls back to <body>, so a screen reader announces
+  // nothing. After every step (never on first load), move focus to the new
+  // heading and bring the step into view if it isn't.
+  const stepRef = useRef<HTMLDivElement>(null);
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    const el = stepRef.current;
+    if (!el) return;
+    el.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
+    const top = el.getBoundingClientRect().top;
+    if (top < 64 || top > window.innerHeight * 0.6) {
+      el.scrollIntoView({ block: "start" });
+    }
+  }, [steps]);
+
   const choose = (id: string) => setSteps((s) => [...s, id]);
   const back = () => setSteps((s) => s.slice(0, -1));
   const rewindTo = (i: number) => setSteps((s) => s.slice(0, i));
@@ -120,11 +142,13 @@ export default function FindClient() {
         </nav>
       )}
 
-      {position.kind === "node" ? (
-        <QuestionCard node={position.node} onChoose={choose} />
-      ) : (
-        <Recommendation rec={position.rec} subject={subject} />
-      )}
+      <div ref={stepRef} className="scroll-mt-20">
+        {position.kind === "node" ? (
+          <QuestionCard node={position.node} onChoose={choose} />
+        ) : (
+          <Recommendation rec={position.rec} subject={subject} />
+        )}
+      </div>
 
       {/* Controls + the escape hatch to the full browse index. */}
       <div className="mt-10 pt-6 border-t border-[var(--border)] flex flex-wrap items-center gap-x-6 gap-y-2">
@@ -164,9 +188,23 @@ function QuestionCard({
   node: TriageNode;
   onChoose: (id: string) => void;
 }) {
+  const clusters = groupChoices(node);
+  const grouped = clusters.length > 1;
+
+  const jumpTo = (groupId: string) => {
+    const target = document.getElementById(`find-group-${groupId}`);
+    if (!target) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
+    target.querySelector<HTMLElement>("button")?.focus({ preventScroll: true });
+  };
+
   return (
     <div>
-      <h2 className="text-xl font-semibold tracking-tight text-[var(--foreground)] leading-snug">
+      <h2
+        tabIndex={-1}
+        className="text-xl font-semibold tracking-tight text-[var(--foreground)] leading-snug focus:outline-none"
+      >
         {node.question}
       </h2>
       {node.hint && (
@@ -174,34 +212,85 @@ function QuestionCard({
           {node.hint}
         </p>
       )}
-      <div className="mt-6 flex flex-col gap-3">
-        {node.choices.map((choice) => (
-          <button
-            key={choice.id}
-            type="button"
-            onClick={() => onChoose(choice.id)}
-            className="group flex items-start gap-3 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 py-3.5 text-left hover:border-[var(--accent)] transition-colors"
+
+      {/* The jump row: on a phone the grouped list is still a few screens, so
+          the headings double as a table of contents you can tap straight into. */}
+      {grouped && (
+        <nav aria-label="Kinds of hard" className="mt-4 flex flex-wrap gap-2">
+          {clusters.map(({ group, choices }) =>
+            group ? (
+              <button
+                key={group.id}
+                type="button"
+                onClick={() => jumpTo(group.id)}
+                className="rounded-full border border-[var(--border)] px-3 py-1 text-xs text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--foreground)] transition-colors"
+              >
+                {group.short}{" "}
+                <span className="opacity-60">{choices.length}</span>
+              </button>
+            ) : null
+          )}
+        </nav>
+      )}
+
+      <div className={grouped ? "mt-8 flex flex-col gap-8" : "mt-6"}>
+        {clusters.map(({ group, choices }) => (
+          <section
+            key={group?.id ?? "all"}
+            id={group ? `find-group-${group.id}` : undefined}
+            aria-labelledby={group ? `find-group-${group.id}-label` : undefined}
+            className="scroll-mt-20"
           >
-            <span className="min-w-0 flex-1">
-              <span className="block text-base font-medium text-[var(--foreground)] leading-snug">
-                {choice.label}
-              </span>
-              {choice.detail && (
-                <span className="mt-1 block text-sm text-[var(--muted)] leading-relaxed">
-                  {choice.detail}
-                </span>
-              )}
-            </span>
-            <span
-              aria-hidden
-              className="shrink-0 mt-0.5 text-[var(--muted)] group-hover:text-[var(--accent)] group-hover:translate-x-0.5 transition-all"
-            >
-              &rarr;
-            </span>
-          </button>
+            {group && (
+              <h3
+                id={`find-group-${group.id}-label`}
+                className="mb-3 text-xs font-semibold uppercase tracking-widest text-[var(--muted)]"
+              >
+                {group.label}
+              </h3>
+            )}
+            <div className="flex flex-col gap-3">
+              {choices.map((choice) => (
+                <ChoiceButton key={choice.id} choice={choice} onChoose={onChoose} />
+              ))}
+            </div>
+          </section>
         ))}
       </div>
     </div>
+  );
+}
+
+function ChoiceButton({
+  choice,
+  onChoose,
+}: {
+  choice: TriageNode["choices"][number];
+  onChoose: (id: string) => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onChoose(choice.id)}
+      className="group flex items-start gap-3 rounded-lg border border-[var(--border)] bg-[var(--card)] px-4 py-3.5 text-left hover:border-[var(--accent)] transition-colors"
+    >
+      <span className="min-w-0 flex-1">
+        <span className="block text-base font-medium text-[var(--foreground)] leading-snug">
+          {choice.label}
+        </span>
+        {choice.detail && (
+          <span className="mt-1 block text-sm text-[var(--muted)] leading-relaxed">
+            {choice.detail}
+          </span>
+        )}
+      </span>
+      <span
+        aria-hidden
+        className="shrink-0 mt-0.5 text-[var(--muted)] group-hover:text-[var(--accent)] group-hover:translate-x-0.5 transition-all"
+      >
+        &rarr;
+      </span>
+    </button>
   );
 }
 
@@ -221,7 +310,10 @@ function Recommendation({
       <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-2">
         Start here
       </p>
-      <h2 className="text-2xl font-semibold tracking-tight text-[var(--foreground)] leading-tight">
+      <h2
+        tabIndex={-1}
+        className="text-2xl font-semibold tracking-tight text-[var(--foreground)] leading-tight focus:outline-none"
+      >
         {tool.name}
       </h2>
       <p className="mt-2 text-sm font-medium text-[var(--foreground)] pl-4 border-l-2 border-[var(--accent)] leading-relaxed">

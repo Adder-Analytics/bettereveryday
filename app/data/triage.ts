@@ -55,6 +55,24 @@ export type TriageChoice = {
   detail?: string;
 } & ({ next: string } | { rec: TriageRec });
 
+/**
+ * A labelled cluster of a node's choices. A node with a long list of answers
+ * (the "what's making it hard?" node has eighteen) would otherwise hand the
+ * visitor the exact wall this module exists to remove. Grouping keeps it one
+ * click — no extra question is asked — but lets the eye skip whole clusters by
+ * their heading and read only the three or four lines that could be you.
+ */
+export type TriageGroup = {
+  /** Stable, unique within its node — used for in-page anchors. */
+  id: string;
+  /** The cluster's heading — what kind of hard this is. */
+  label: string;
+  /** Short name for the jump row above the list. */
+  short: string;
+  /** The choice ids in this cluster, in display order. */
+  choiceIds: string[];
+};
+
 /** A question and its answers. */
 export type TriageNode = {
   id: string;
@@ -63,6 +81,11 @@ export type TriageNode = {
   /** An optional one-line framing under the question. */
   hint?: string;
   choices: TriageChoice[];
+  /**
+   * Optional clusters for a long list. When present, every choice must sit in
+   * exactly one group (checked at module load), and the groups set the order.
+   */
+  groups?: TriageGroup[];
 };
 
 /** Where the walk starts. */
@@ -105,7 +128,39 @@ const nodes: Record<string, TriageNode> = {
   making: {
     id: "making",
     question: "What's making it hard?",
-    hint: "Most hard calls are hard for one of these reasons. Pick the one that fits best — you can back up and try another.",
+    hint: "Most hard calls are hard for one of these reasons. Skim the headings, then pick the one line that fits best — you can back up and try another.",
+    groups: [
+      {
+        id: "options",
+        label: "It's the options themselves",
+        short: "The options",
+        choiceIds: ["whether-or-not", "two-odds", "several", "keep-looking"],
+      },
+      {
+        id: "stakes",
+        label: "It's what could go wrong — or whether it's as big as it feels",
+        short: "The stakes",
+        choiceIds: ["downside-scary", "big-undo", "later-bill", "promise", "reversible"],
+      },
+      {
+        id: "head",
+        label: "It's my own read I can't trust",
+        short: "My own read",
+        choiceIds: ["hot", "advise-self", "leaning-unsure", "already-sure"],
+      },
+      {
+        id: "loop",
+        label: "I keep going round in circles",
+        short: "Going in circles",
+        choiceIds: ["need-more", "sunk", "recurring"],
+      },
+      {
+        id: "people",
+        label: "It's other people",
+        short: "Other people",
+        choiceIds: ["being-sold", "disagree"],
+      },
+    ],
     choices: [
       {
         id: "reversible",
@@ -437,6 +492,18 @@ const nodes: Record<string, TriageNode> = {
   },
 };
 
+/** A node's choices, clustered by its groups (or one unlabelled cluster). */
+export function groupChoices(
+  node: TriageNode
+): { group: TriageGroup | null; choices: TriageChoice[] }[] {
+  if (!node.groups) return [{ group: null, choices: node.choices }];
+  const byId = new Map(node.choices.map((c) => [c.id, c]));
+  return node.groups.map((group) => ({
+    group,
+    choices: group.choiceIds.map((id) => byId.get(id)!),
+  }));
+}
+
 export function getTriageNode(id: string): TriageNode {
   const n = nodes[id];
   if (!n) throw new Error(`Unknown triage node: ${id}`);
@@ -476,6 +543,32 @@ function validateTriage(): void {
         // Throws if the tool id (or the next-step tool id) is unknown.
         getTool(choice.rec.toolId);
         if (choice.rec.then) getTool(choice.rec.then.toolId);
+      }
+    }
+    if (node.groups) {
+      // Every choice in exactly one group — a choice left out of the groups
+      // would silently vanish from the page, which is worse than a wall.
+      const placed = new Set<string>();
+      const groupIds = new Set<string>();
+      for (const group of node.groups) {
+        if (groupIds.has(group.id)) {
+          throw new Error(`Duplicate triage group id "${group.id}" in node "${node.id}"`);
+        }
+        groupIds.add(group.id);
+        for (const id of group.choiceIds) {
+          if (!seen.has(id)) {
+            throw new Error(`Triage group "${node.id}/${group.id}" names unknown choice "${id}"`);
+          }
+          if (placed.has(id)) {
+            throw new Error(`Triage choice "${node.id}/${id}" is in more than one group`);
+          }
+          placed.add(id);
+        }
+      }
+      for (const id of seen) {
+        if (!placed.has(id)) {
+          throw new Error(`Triage choice "${node.id}/${id}" is in no group`);
+        }
       }
     }
   }
