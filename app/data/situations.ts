@@ -944,3 +944,113 @@ export function getSituationsForTool(id: string): { id: string; title: string }[
     .filter((s) => s.tool?.id === id)
     .map((s) => ({ id: s.id, title: s.title }));
 }
+
+/**
+ * A labelled cluster of situations for the playbook's contents. Twenty-five
+ * moments in authoring order are the same wall the guided router's "what's
+ * making it hard?" node used to be, so the playbook sorts them under the same
+ * kinds of hard the router uses (options, stakes, your own read, going in
+ * circles, other people) — the two front doors should read alike — plus the two
+ * kinds the router reaches by a different question: a number in front of you,
+ * and the call that's already made. Display order only: the `situations` array
+ * keeps its order for the worksheet and search, and every `#id` anchor is
+ * unchanged.
+ */
+export type SituationGroup = {
+  /** Stable — used for the in-page anchor. */
+  id: string;
+  /** The cluster's heading, in the playbook's second person. */
+  label: string;
+  /** The situation ids in this cluster, in display order. */
+  situationIds: string[];
+};
+
+export const situationGroups: SituationGroup[] = [
+  {
+    id: "options",
+    label: "It's the options themselves",
+    situationIds: ["whether-or-not", "stuck-between-two", "cant-stop-looking", "weigh-it-through"],
+  },
+  {
+    id: "stakes",
+    label: "It's what could go wrong — or whether it's as big as it feels",
+    situationIds: [
+      "one-way-door",
+      "bad-tail",
+      "over-thinking-reversible",
+      "promising-a-date",
+      "long-haul",
+    ],
+  },
+  {
+    id: "head",
+    label: "It's your own read you can't trust",
+    situationIds: [
+      "deciding-while-hot",
+      "cant-advise-myself",
+      "pull-wont-settle",
+      "fairly-sure-already",
+      "vivid-story",
+    ],
+  },
+  {
+    id: "loop",
+    label: "You keep going round in circles",
+    situationIds: ["not-enough-to-decide", "time-to-quit", "keep-re-deciding"],
+  },
+  {
+    id: "people",
+    label: "It's other people — or the system they're in",
+    situationIds: [
+      "someone-selling-you",
+      "deadlocked-with-someone",
+      "designing-incentives",
+      "stubborn-system",
+    ],
+  },
+  {
+    id: "numbers",
+    label: "There's a number in it",
+    situationIds: ["a-number-appears", "need-an-estimate"],
+  },
+  {
+    id: "after",
+    label: "The call's already made",
+    situationIds: ["make-it-happen", "judging-a-decision"],
+  },
+];
+
+/**
+ * The playbook's situations, resolved and clustered. Every situation must sit
+ * in exactly one group — one left out would silently vanish from the playbook
+ * (and break every `/playbook#id` link to it), which is worse than the wall.
+ * Throws at build time, the same discipline `validateTriage` uses.
+ */
+export function getGroupedSituations(): {
+  group: SituationGroup;
+  situations: ResolvedSituation[];
+}[] {
+  const byId = new Map(situations.map((s) => [s.id, s]));
+  const placed = new Set<string>();
+  const groupIds = new Set<string>();
+  const grouped = situationGroups.map((group) => {
+    if (groupIds.has(group.id)) {
+      throw new Error(`Duplicate situation group id "${group.id}"`);
+    }
+    groupIds.add(group.id);
+    return {
+      group,
+      situations: group.situationIds.map((id) => {
+        const s = byId.get(id);
+        if (!s) throw new Error(`Situation group "${group.id}" names unknown situation "${id}"`);
+        if (placed.has(id)) throw new Error(`Situation "${id}" is in more than one group`);
+        placed.add(id);
+        return resolveSituation(s);
+      }),
+    };
+  });
+  for (const s of situations) {
+    if (!placed.has(s.id)) throw new Error(`Situation "${s.id}" is in no playbook group`);
+  }
+  return grouped;
+}
