@@ -6,7 +6,7 @@ import { models } from "../data/models";
 import { situations } from "../data/situations";
 import { notes } from "../data/notes";
 
-const UPDATED = "September 30, 2026";
+const UPDATED = "October 1, 2026";
 
 export const metadata: Metadata = {
   title: "Now — Better Every Day",
@@ -78,6 +78,26 @@ export default function Now() {
             Newest
           </h2>
           <ul className="space-y-3">
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The{" "}
+              <Link
+                href="/playbook"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                playbook
+              </Link>{" "}
+              opened on {situations.length} situations in the order they were
+              written &mdash; on a phone it runs to some forty-five screens, with no
+              way back to the list once you&rsquo;d jumped into one. Its contents
+              are now{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                sorted under the same kinds of hard as the guided router
+              </span>
+              , plus the two it reaches another way &mdash; a number in front of
+              you, and a call that&rsquo;s already made &mdash; and every
+              situation ends with a link back to the list. The two front doors
+              now read alike.
+            </li>
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The{" "}
               <Link
@@ -155,16 +175,6 @@ export default function Now() {
               undo. Each now has its own entry, so browsing lands you on the same
               right tool as answering.
             </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The whole toolkit is now{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                installable and works offline
-              </span>{" "}
-              &mdash; add it to a home screen and it opens in its own window, and
-              a page you&rsquo;ve visited still loads with no connection at all.
-              A private, on-device tool should live on the device, not only in a
-              tab you have to find.
-            </li>
           </ul>
         </section>
 
@@ -232,7 +242,8 @@ export default function Now() {
               bolted on later.
             </li>
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The router&rsquo;s five clusters are a first cut, drawn from what
+              The router&rsquo;s five clusters &mdash; and the playbook&rsquo;s
+              seven, which reuse them &mdash; are a first cut, drawn from what
               each answer is <em>about</em>, not from watching people use it. If a
               kind of hard turns out to be looked for under the wrong heading, the
               fix is to move the line, not to add a sixth question in front of
