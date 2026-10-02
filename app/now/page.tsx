@@ -6,7 +6,7 @@ import { models } from "../data/models";
 import { situations } from "../data/situations";
 import { notes } from "../data/notes";
 
-const UPDATED = "October 1, 2026";
+const UPDATED = "October 2, 2026";
 
 export const metadata: Metadata = {
   title: "Now — Better Every Day",
@@ -81,6 +81,22 @@ export default function Now() {
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The{" "}
               <Link
+                href="/models"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                mental models
+              </Link>{" "}
+              page runs to some forty phone screens, and someone arriving for one
+              idea had only the scroll bar to find it. It now opens on{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                an index of every model, sorted by domain
+              </span>{" "}
+              &mdash; the whole list fits in less than a screen &mdash; and each
+              model ends with a link back to it, the same way the playbook does.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The{" "}
+              <Link
                 href="/playbook"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
@@ -149,32 +165,6 @@ export default function Now() {
               reference-class forecast, and the crux finder, every tool built for a
               decision you don&rsquo;t make alone can be shared.
             </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The site has two front doors — a{" "}
-              <Link
-                href="/find"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                guided router
-              </Link>{" "}
-              that asks a question or two, and the{" "}
-              <Link
-                href="/playbook"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                playbook
-              </Link>{" "}
-              you browse by moment — and they&rsquo;d quietly drifted. Five
-              distinct moments the router already routed to an instrument reached{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                nowhere in the playbook
-              </span>
-              : the whether-or-not trap, pressure-testing a call you&rsquo;re sure
-              of, deciding while a friend&rsquo;s version would be obvious, a pull
-              you can&rsquo;t tell is durable, and over-thinking a call you could
-              undo. Each now has its own entry, so browsing lands you on the same
-              right tool as answering.
-            </li>
           </ul>
         </section>
 
@@ -216,7 +206,7 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              With the five distinct moments above now routed, the instruments
+              With every moment the router reaches now in the playbook too, the instruments
               left without their own playbook situation are the process and
               return tools &mdash; the journal, the return desk, the tripwire, the
               trainers &mdash; and those overlap a broader entry on purpose rather

@@ -33,6 +33,44 @@ export default function ModelsPage() {
         </p>
       </div>
 
+      {/* The contents. Thirty-five models run to some forty phone screens, and
+          a reader arriving for one idea had only the scroll bar to find it.
+          Names are short, so each domain's list wraps inline instead of
+          stacking one per line: the whole index fits in about a screen. */}
+      <nav
+        id="index"
+        aria-label="Models"
+        className="mb-16 scroll-mt-24 space-y-5"
+      >
+        {domains.map((domain) => (
+          <div key={domain}>
+            <p
+              id={`toc-${domain.toLowerCase()}`}
+              className="mb-1.5 text-xs font-semibold uppercase tracking-widest text-[var(--muted)]"
+            >
+              {domain}
+            </p>
+            <ul
+              aria-labelledby={`toc-${domain.toLowerCase()}`}
+              className="flex flex-wrap gap-x-3 gap-y-1"
+            >
+              {models
+                .filter((m) => m.domain === domain)
+                .map((m) => (
+                  <li key={m.id}>
+                    <a
+                      href={`#${m.id}`}
+                      className="inline-block py-0.5 text-sm text-[var(--accent)] hover:opacity-70 transition-opacity"
+                    >
+                      {m.name}
+                    </a>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
+
       <div className="space-y-16">
         {domains.map((domain) => {
           const domainModels = models.filter((m) => m.domain === domain);
@@ -141,6 +179,12 @@ export default function ModelsPage() {
                         ))}
                       </p>
                     )}
+                    <a
+                      href="#index"
+                      className="mt-4 inline-block text-xs text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+                    >
+                      &uarr; All models
+                    </a>
                   </div>
                   );
                 })}
