@@ -6,7 +6,7 @@ import { models } from "../data/models";
 import { situations } from "../data/situations";
 import { notes } from "../data/notes";
 
-const UPDATED = "October 2, 2026";
+const UPDATED = "October 3, 2026";
 
 export const metadata: Metadata = {
   title: "Now — Better Every Day",
@@ -81,6 +81,24 @@ export default function Now() {
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The{" "}
               <Link
+                href="/writing"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essays
+              </Link>{" "}
+              opened in the order they were written, so the first screen was the
+              oldest and least useful of them, behind a row of topic tags that
+              couldn&rsquo;t tell them apart &mdash; nearly every essay was tagged
+              &ldquo;decisions.&rdquo; They&rsquo;re now{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                sorted by what&rsquo;s making the decision hard
+              </span>
+              , under the same headings as the playbook, with a short index at
+              the top and a way back to it after each group.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The{" "}
+              <Link
                 href="/models"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
@@ -134,36 +152,6 @@ export default function Now() {
               yours. Still one tap to your instrument. Answering also now lands
               you on the next question or the recommendation itself, with focus
               on it, instead of just past it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A worked call can now{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                be handed to whoever the decision is really with
-              </span>
-              . The tools were single-player, but the calls people bring to them
-              &mdash; two offers, a move, betting the savings, whether to quit
-              &mdash; are talked over with a partner, a cofounder, an advisor. So
-              the instruments built for a shared call now copy a link that carries
-              the whole worked decision, and the person you send it to opens
-              exactly what you weighed and can change any answer to argue back. It
-              rides inside the link and is sent to no server &mdash; the privacy
-              promise held. With the{" "}
-              <Link
-                href="/ruin"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                survivability check
-              </Link>{" "}
-              and the{" "}
-              <Link
-                href="/enough"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                value-of-information test
-              </Link>{" "}
-              now joining the flip point, the comparison, the pre-mortem, the
-              reference-class forecast, and the crux finder, every tool built for a
-              decision you don&rsquo;t make alone can be shared.
             </li>
           </ul>
         </section>
