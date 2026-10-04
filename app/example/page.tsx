@@ -123,7 +123,7 @@ export default function ExamplePage() {
         <p className="text-base text-[var(--muted)] leading-relaxed">
           The toolkit is {toolCountWord}{" "}instruments, and several of them carry a worked
           example of their own. This page is for the one thing a single tool
-          can&rsquo;t show you: <em>how they connect.</em> Here is one real,
+          can&rsquo;t show you: <em>how they connect.</em>{" "}Here is one real,
           ordinary decision &mdash; take the offer at the smaller company, or stay
           where you are &mdash; walked across the whole loop. Watch how each tool
           hands the decision to the next, and how you type the decision itself{" "}
@@ -213,7 +213,7 @@ export default function ExamplePage() {
                 href={href}
                 className="inline-block mt-4 text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
-                {step.cta} &rarr;
+                {step.cta}{" "}&rarr;
               </Link>
             </li>
           );
@@ -225,7 +225,7 @@ export default function ExamplePage() {
           What just happened
         </h2>
         <p className="text-sm text-[var(--muted)] leading-relaxed">
-          You typed <em>&ldquo;{SUBJECT}&rdquo;</em> once, at the first door, and
+          You typed <em>&ldquo;{SUBJECT}&rdquo;</em>{" "}once, at the first door, and
           it rode into every tool after it &mdash; the triage, the flip point, the
           pre-mortem, the journal. That&rsquo;s the toolkit working as{" "}
           <em>one instrument</em>{" "}instead of five separate forms, each demanding

@@ -511,7 +511,7 @@ function RuleBox({ mode, n, k }: { mode: Mode; n: number | null; k: number | nul
         </p>
         <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
           You can&rsquo;t bound the field, so use the robust version. See maybe
-          five or six options deliberately as <em>research</em> &mdash; take none,
+          five or six options deliberately as <em>research</em>{" "}&mdash; take none,
           no matter how good &mdash; purely to learn what the market offers and
           what a genuinely good one looks like. Let the best of those set your bar.
           Then commit to the first option that clears the bar. The exact number in
@@ -607,8 +607,8 @@ function PositionRead({
           not to choose. So even if one of these early options is wonderful, pass
           it &mdash; on purpose. This is the counterintuitive heart of the rule and
           the discipline people can&rsquo;t stand: the best-looking option you see
-          in the {lookLabel} is not there to be taken, it&rsquo;s there to set the
-          bar that lets you <em>recognize</em> the one worth taking later. Note who
+          in the {lookLabel}{" "}is not there to be taken, it&rsquo;s there to set the
+          bar that lets you <em>recognize</em>{" "}the one worth taking later. Note who
           your current best is; that&rsquo;s your bar. Then keep going until the
           look phase is done.
         </p>
@@ -637,7 +637,7 @@ function PositionRead({
           while calibrating. That is precisely the signal the rule waits for
           &mdash; so the move is to commit, now, before it&rsquo;s gone. It
           won&rsquo;t feel certain, and it isn&rsquo;t supposed to: you can&rsquo;t
-          know it&rsquo;s <em>the</em> best, because knowing that would mean seeing
+          know it&rsquo;s <em>the</em>{" "}best, because knowing that would mean seeing
           every option, and by then most of them would have expired. Taking the
           first post-look option that beats your window is the move that lands the
           best one more often than any other &mdash; and holding out from{" "}
@@ -794,7 +794,7 @@ function StopExample() {
         <p className="mt-2 text-sm text-[var(--foreground)] leading-relaxed">
           37% of twelve is between four and five. So the first{" "}
           <span className="font-medium">four or five flats</span>, you see and{" "}
-          <span className="font-medium">pass</span> &mdash; however good &mdash;
+          <span className="font-medium">pass</span>{" "}&mdash; however good &mdash;
           just to learn the market: what a fair price buys, what &ldquo;good
           light&rdquo; actually looks like here, what&rsquo;s normal and what&rsquo;s
           rare. Then you take the <span className="font-medium">first flat that
@@ -803,7 +803,7 @@ function StopExample() {
       </div>
       <p className="mt-4 text-sm text-[var(--foreground)] leading-relaxed">
         The fifth flat you loved and let go wasn&rsquo;t a mistake &mdash; it set
-        the bar that let you <em>recognize</em> the eighth, and commit that
+        the bar that let you <em>recognize</em>{" "}the eighth, and commit that
         afternoon instead of losing it to someone who could. Skip the look phase
         and you&rsquo;d have grabbed the second place, never knowing it was
         middling. Never leap and you&rsquo;d have passed the eighth too, hoping,

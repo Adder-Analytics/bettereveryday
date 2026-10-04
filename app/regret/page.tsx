@@ -24,7 +24,7 @@ export default function RegretPage() {
         <p className="text-base text-[var(--muted)] leading-relaxed">
           You keep leaning one way, and you can&rsquo;t tell whether that&rsquo;s
           the real call or just the version of you sitting here right now.
-          You&rsquo;re not <em>hot</em> — no anger, no clock — it&rsquo;s the
+          You&rsquo;re not <em>hot</em>{" "}— no anger, no clock — it&rsquo;s the
           quieter distortion: the pull of comfort, of avoidance, of a new thing&rsquo;s
           shine, of the fear of trying. All of them are <strong>present-weighted</strong>,
           and present weight is exactly what you can&rsquo;t feel from inside the

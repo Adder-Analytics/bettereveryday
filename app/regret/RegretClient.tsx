@@ -468,7 +468,7 @@ function ShapeBody({ shape, pull }: { shape: Shape; pull: React.ReactNode }) {
     case "lasting":
       return (
         <p>
-          You&rsquo;d be glad you went with {pull}{" "}now <em>and</em> a decade out.
+          You&rsquo;d be glad you went with {pull}{" "}now <em>and</em>{" "}a decade out.
           A pull that survives all three horizons isn&rsquo;t the present talking
           — it&rsquo;s the call. The horizons are supposed to catch a feeling that
           evaporates; this one doesn&rsquo;t. Go, and stop re-litigating it.
@@ -580,7 +580,7 @@ function ForegoneRead({ shape, foregone }: { shape: Shape; foregone: Foregone })
             <>
               So notice the tension: the pull you&rsquo;re leaning toward
               doesn&rsquo;t last, yet walking away from the other road is a lasting
-              regret. That usually means it isn&rsquo;t <em>this</em> version you
+              regret. That usually means it isn&rsquo;t <em>this</em>{" "}version you
               want — it&rsquo;s some version of the road you&rsquo;d regret giving
               up. Don&rsquo;t take this one on the strength of the feeling; go find
               the one your older self is actually asking for.
@@ -717,7 +717,7 @@ function RegretExample() {
         <span className="font-medium">turn it down and keep the life I have.</span>{" "}
         Played forward, that&rsquo;s a <span className="font-medium">relief</span>{" "}
         in ten minutes, <span className="font-medium">mixed</span> in ten months,
-        and a <span className="font-medium">regret</span> in ten years — while not
+        and a <span className="font-medium">regret</span>{" "}in ten years — while not
         taking the job is the road you&rsquo;d{" "}
         <span className="font-medium">regret giving up.</span>
       </p>

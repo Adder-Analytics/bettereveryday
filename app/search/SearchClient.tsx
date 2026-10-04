@@ -720,7 +720,7 @@ export default function SearchClient() {
           The index covers {posts.length} essays, {notes.length} reading notes,{" "}
           {models.length} mental models, {situations.length} playbook situations,
           the decision journal, the practice hub and its calibration, estimation,
-          and base-rate trainers, and {books.length} books.
+          and base-rate trainers, and {books.length}{" "}books.
           Results link straight to the essay, the note, the model&rsquo;s entry on
           the reference page, the playbook, the journal, a trainer, or the
           bookshelf. Tip: press{" "}

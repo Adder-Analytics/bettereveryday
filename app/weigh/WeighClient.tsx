@@ -1402,7 +1402,7 @@ function RuinWarning({ subject }: { subject: string }) {
       <p className="mt-2 text-sm text-[var(--foreground)] leading-relaxed">
         You marked one outcome unrecoverable. Averages assume you get to keep
         playing; against a loss you can&rsquo;t come back from, the question
-        isn&rsquo;t <em>&ldquo;is this a good bet&rdquo;</em> — it&rsquo;s{" "}
+        isn&rsquo;t <em>&ldquo;is this a good bet&rdquo;</em>{" "}— it&rsquo;s{" "}
         <em>don&rsquo;t bet the things you can&rsquo;t afford to lose</em>, almost
         regardless of the odds below. This is the one call the flip point
         can&rsquo;t finish for you — so take it to the tool that can:{" "}
@@ -1431,7 +1431,7 @@ function TooCloseRead({ marginPts, subject }: { marginPts: number; subject: stri
         Too close to call — and that&rsquo;s the answer.
       </p>
       <p className="mt-1.5 text-sm text-[var(--muted)] leading-relaxed">
-        You&rsquo;re only {marginPts} point{marginPts === 1 ? "" : "s"} from the
+        You&rsquo;re only {marginPts} point{marginPts === 1 ? "" : "s"}{" "}from the
         line — inside the noise of numbers this rough. Don&rsquo;t let a
         spreadsheet cast the deciding vote. When expected value says &ldquo;about
         even,&rdquo; the tiebreaker is whatever you couldn&rsquo;t put a number on:

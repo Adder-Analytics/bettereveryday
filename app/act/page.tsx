@@ -45,7 +45,7 @@ export default function ActPage() {
           >
             if-then plan
           </Link>{" "}
-          — &ldquo;when <em>this</em> happens, I&rsquo;ll do <em>that</em>&rdquo; —
+          — &ldquo;when <em>this</em>{" "}happens, I&rsquo;ll do <em>that</em>&rdquo; —
           and you hand the behaviour from your distractible, later self to the
           situation itself. Across 94 studies it roughly doubled follow-through.
           This tool builds the whole thing: the smallest first move bound to a cue

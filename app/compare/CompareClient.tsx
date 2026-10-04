@@ -1140,7 +1140,7 @@ export default function CompareClient() {
             ) : gutTiedWithTop ? (
               <>
                 <p className="text-sm font-semibold text-[var(--foreground)]">
-                  A near-tie: {optionName(winner, 0)} edges it, but your gut&rsquo;s
+                  A near-tie: {optionName(winner, 0)}{" "}edges it, but your gut&rsquo;s
                   pick is right behind.
                 </p>
                 <p className="mt-1.5 text-sm text-[var(--muted)] leading-relaxed">
@@ -1177,7 +1177,7 @@ export default function CompareClient() {
                       There&rsquo;s a factor you never wrote down.
                     </span>{" "}
                     Something is pulling you toward{" "}
-                    {gutOption ? optionName(gutOption, 0) : "it"} that isn&rsquo;t on
+                    {gutOption ? optionName(gutOption, 0) : "it"}{" "}that isn&rsquo;t on
                     the list. Name it, add it as a factor, score it — and see whether
                     the ranking moves.
                   </li>
@@ -1232,7 +1232,7 @@ export default function CompareClient() {
               </p>
             ) : calc.activeFactors.length >= 2 && !calc.tooClose ? (
               <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
-                No single factor is carrying this — {optionName(winner, 0)} stays on
+                No single factor is carrying this — {optionName(winner, 0)}{" "}stays on
                 top even if you drop any one of them. That&rsquo;s a robust lead, not
                 a knife-edge.
               </p>
@@ -1482,7 +1482,7 @@ function CompareExample() {
           </>
         ) : null}{" "}
         That gap between the gut and the factors is the signal: either{" "}
-        {gutName} is winning on something not yet on the list (name it, add it), or
+        {gutName}{" "}is winning on something not yet on the list (name it, add it), or
         the first impression was overrating security. The tool doesn&rsquo;t settle
         it for you — it just makes sure you actually look.
       </p>

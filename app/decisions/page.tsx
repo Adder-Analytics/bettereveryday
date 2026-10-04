@@ -36,7 +36,7 @@ export default function DecisionsPage() {
           >
             return desk
           </Link>
-          : that page shows what&rsquo;s <em>due</em> to check; this one shows the
+          : that page shows what&rsquo;s <em>due</em>{" "}to check; this one shows the
           whole record, due or not. Everything here is read straight from this
           browser &mdash; nothing is sent anywhere.
         </p>
@@ -79,9 +79,9 @@ export default function DecisionsPage() {
           door, the flip point, the comparison, and the rest) hold only the{" "}
           <em>last</em> worksheet in each tool, so the call you have open there
           shows up as an <em>in-progress</em> draft you can pick back up, marked
-          with a dashed edge. But the calls you worked <em>before</em> that
+          with a dashed edge. But the calls you worked <em>before</em>{" "}that
           aren&rsquo;t thrown away any more &mdash; each is kept as a dated{" "}
-          <em>worked</em> record you can <em>reopen</em> &mdash; putting that exact
+          <em>worked</em> record you can <em>reopen</em>{" "}&mdash; putting that exact
           worksheet back into its tool, filled in, weeks later &mdash; so a quick
           call you ran is returnable, not just readable. Records line up as one decision
           when they share the same line &mdash; carried tool to tool it lines up

@@ -145,7 +145,7 @@ export default function HotExamplePage() {
           weeks. This is its opposite, and the one people actually regret: a
           decision made <em>hot</em>. Pulse up, a resignation half-typed at 11pm,
           feeling less like a choice than the only response left. Here&rsquo;s one
-          such call &mdash; <em>quit my job today</em> &mdash; walked across the
+          such call &mdash; <em>quit my job today</em>{" "}&mdash; walked across the
           kit. Watch the one thing the cold walkthrough can&rsquo;t show you:{" "}
           <em>the toolkit&rsquo;s first move is to stop you from deciding at all.</em>
         </p>
@@ -196,7 +196,7 @@ export default function HotExamplePage() {
                     </Link>{" "}
                     surfaces the parked call and reopens it cold. This is the beat
                     the deliberate walkthrough has no room for: the most important
-                    move on a hot decision was <em>not made yet</em> &mdash; and
+                    move on a hot decision was <em>not made yet</em>{" "}&mdash; and
                     now, calm, you make it.
                   </p>
                 </div>
@@ -245,7 +245,7 @@ export default function HotExamplePage() {
                 href={href}
                 className="inline-block mt-4 text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
-                {step.cta} &rarr;
+                {step.cta}{" "}&rarr;
               </Link>
             </li>
           );
@@ -257,7 +257,7 @@ export default function HotExamplePage() {
           What just happened
         </h2>
         <p className="text-sm text-[var(--muted)] leading-relaxed">
-          A decision that started as <em>&ldquo;quit tonight&rdquo;</em> ended as a
+          A decision that started as <em>&ldquo;quit tonight&rdquo;</em>{" "}ended as a
           dated plan that starts on Sunday. The kit&rsquo;s first move wasn&rsquo;t
           to help you decide &mdash; it was to <em>stop</em> you deciding while hot,
           park the call, and hand it back once you could see it straight. Only then
@@ -266,7 +266,7 @@ export default function HotExamplePage() {
           than any single tool.
         </p>
         <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
-          And you typed the decision <em>once</em> &mdash; hot, at 11pm. The
+          And you typed the decision <em>once</em>{" "}&mdash; hot, at 11pm. The
           through-line carried those exact words into every calm tool after it, so
           three days later the cold version of you didn&rsquo;t start from a blank
           field and a softened memory. That&rsquo;s the toolkit working as{" "}

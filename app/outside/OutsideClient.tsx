@@ -714,12 +714,12 @@ export default function OutsideClient() {
             <ul className="mt-2 space-y-1.5 text-xs text-[var(--muted)] leading-relaxed">
               <li>
                 <span className="text-[var(--foreground)]">Start broad,</span> narrow
-                only as far as a <em>measured</em> difference takes you — never with
+                only as far as a <em>measured</em>{" "}difference takes you — never with
                 adjectives (&ldquo;but ours is well-run&rdquo; is not a reference
                 class).
               </li>
               <li>
-                <span className="text-[var(--foreground)]">Reject folklore</span> you
+                <span className="text-[var(--foreground)]">Reject folklore</span>{" "}you
                 can&rsquo;t source. A number someone once said is not an outcome.
               </li>
               <li>
@@ -750,7 +750,7 @@ export default function OutsideClient() {
               A class of one is not a class.
             </p>
             <p className="mt-1.5 text-sm text-[var(--muted)] leading-relaxed">
-              You have {filledCases} case{filledCases === 1 ? "" : "s"} with a real
+              You have {filledCases} case{filledCases === 1 ? "" : "s"}{" "}with a real
               number so far. With fewer than three, there&rsquo;s no distribution to
               read — one comparison is just another anecdote, and the outside view
               is a <em>shape</em>, not a single other data point. Add a couple more
@@ -923,7 +923,7 @@ function Reveal({
       <>
         Inside view and outside view agree — the rarer, calmer case. A forecast
         that survives the comparison is one to trust <em>more</em>, not less. Start
-        from {fmt(median)} {unit} and you&rsquo;re on firm ground.
+        from {fmt(median)} {unit}{" "}and you&rsquo;re on firm ground.
       </>
     );
   } else if (inside <= max) {
@@ -982,7 +982,7 @@ function Reveal({
             This class is too spread out to promise a point
           </p>
           <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
-            The cases run from {fmt(min)} to {fmt(max)} {unit} — more than a 3× spread.
+            The cases run from {fmt(min)} to {fmt(max)} {unit}{" "}— more than a 3× spread.
             When the class is this varied, the honest forecast isn&rsquo;t a single
             number, it&rsquo;s a <em>range</em>. Promise {fmt(min)}–{fmt(max)} {unit},
             plan around the middle, and hold back a buffer for the top of it.
@@ -1046,7 +1046,7 @@ function Reveal({
             <p className="mt-1.5 text-sm text-[var(--muted)] leading-relaxed">
               Your outside-view number ({fmt(finalN)} {unit}) is at or below the very
               estimate the class just disagreed with. That&rsquo;s the trap: if you
-              can&rsquo;t name a <em>measured</em> reason this case beats the class,
+              can&rsquo;t name a <em>measured</em>{" "}reason this case beats the class,
               you&rsquo;ve quietly slid back inside the plan. Knowing about the inside
               view doesn&rsquo;t protect you from it — that&rsquo;s exactly why this
               step is a checklist item and not a feeling.

@@ -6,7 +6,7 @@ import { models } from "../data/models";
 import { situations } from "../data/situations";
 import { notes } from "../data/notes";
 
-const UPDATED = "October 3, 2026";
+const UPDATED = "October 4, 2026";
 
 export const metadata: Metadata = {
   title: "Now — Better Every Day",
@@ -23,7 +23,7 @@ export default function Now() {
         </h1>
         <p className="text-sm text-[var(--muted)]">Updated {UPDATED}</p>
         <p className="mt-6 text-base text-[var(--muted)] leading-relaxed">
-          A <span className="text-[var(--foreground)]">/now</span> page, but for
+          A <span className="text-[var(--foreground)]">/now</span>{" "}page, but for
           the project rather than a person &mdash; where the toolkit stands today,
           what&rsquo;s newest, what it&rsquo;s built on, and what&rsquo;s still
           open. If you&rsquo;re here to work a decision, the tool is at{" "}
@@ -46,7 +46,7 @@ export default function Now() {
           </h2>
           <p className="text-sm text-[var(--foreground)] leading-relaxed">
             {toolCountWord[0].toUpperCase() + toolCountWord.slice(1)} working
-            instruments ({toolCount} in all), arranged by the shape of the moment
+            instruments ({toolCount}{" "}in all), arranged by the shape of the moment
             you&rsquo;re in &mdash; a call to settle today, a commitment worth
             slowing down for, the week after when a decision quietly dies, and the
             return that finally grades it. Behind them sits a reference of{" "}
@@ -58,7 +58,7 @@ export default function Now() {
             >
               playbook
             </Link>{" "}
-            of {situations.length} situations that routes the moment you&rsquo;re
+            of {situations.length}{" "}situations that routes the moment you&rsquo;re
             in to both the idea and the instrument for it. Everything you enter
             stays in your browser; you can hold your own copy from{" "}
             <Link
@@ -78,6 +78,19 @@ export default function Now() {
             Newest
           </h2>
           <ul className="space-y-3">
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A quirk in the build was quietly{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                gluing words together
+              </span>{" "}
+              &mdash; the homepage&rsquo;s first sentence read &ldquo;twenty-fourworking
+              instruments,&rdquo; and a near-tie in the comparison tool came out as
+              &ldquo;Option Aedges it.&rdquo; It
+              had been fixed a sentence at a time for months. The cause is now
+              found and every instance &mdash; a hundred and sixteen of them,
+              most inside the tools&rsquo; own answers &mdash; is fixed at once,
+              with a check that stops it coming back.
+            </li>
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The{" "}
               <Link
@@ -120,7 +133,7 @@ export default function Now() {
               >
                 playbook
               </Link>{" "}
-              opened on {situations.length} situations in the order they were
+              opened on {situations.length}{" "}situations in the order they were
               written &mdash; on a phone it runs to some forty-five screens, with no
               way back to the list once you&rsquo;d jumped into one. Its contents
               are now{" "}
@@ -131,27 +144,6 @@ export default function Now() {
               you, and a call that&rsquo;s already made &mdash; and every
               situation ends with a link back to the list. The two front doors
               now read alike.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The{" "}
-              <Link
-                href="/find"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                guided router
-              </Link>{" "}
-              promised to narrow instead of list &mdash; then answered{" "}
-              <em>&ldquo;I have to make the call&rdquo;</em> with eighteen
-              unordered answers, nearly five phone screens of them. They&rsquo;re
-              now{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                sorted under five kinds of hard
-              </span>{" "}
-              &mdash; the options, the stakes, your own read, going in circles,
-              other people &mdash; with a row at the top to jump straight to
-              yours. Still one tap to your instrument. Answering also now lands
-              you on the next question or the recommendation itself, with focus
-              on it, instead of just past it.
             </li>
           </ul>
         </section>
@@ -164,7 +156,7 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              <span className="font-medium">Private and local-first.</span> A
+              <span className="font-medium">Private and local-first.</span>{" "}A
               record you&rsquo;ll lose is a review you&rsquo;ll never do, so your
               data is yours &mdash; in your browser, exportable, never uploaded.
             </li>
@@ -174,7 +166,7 @@ export default function Now() {
               advice you nod at and forget.
             </li>
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              <span className="font-medium">Curated, not exhaustive.</span> The kit
+              <span className="font-medium">Curated, not exhaustive.</span>{" "}The kit
               adds an instrument only for a distinct moment a real person lands in
               &mdash; a comprehensive list would be worse, not better.
             </li>

@@ -1611,7 +1611,7 @@ function Calibration({ log }: { log: LogEntry[] }) {
         <p className="text-sm text-[var(--muted)] leading-relaxed">
           <span className="font-semibold text-[var(--foreground)]">Calibration</span>{" "}
           unlocks once you&rsquo;ve reviewed a few decisions with a confidence and a
-          clear outcome. {scored} so far — about {left} more and it&rsquo;ll start
+          clear outcome. {scored} so far — about {left}{" "}more and it&rsquo;ll start
           telling you something real instead of something lucky.
         </p>
       </div>
@@ -1703,7 +1703,7 @@ function Resulting({ log }: { log: LogEntry[] }) {
           </span>{" "}
           opens up once you&rsquo;ve reviewed a few decisions and graded both how
           they turned out and whether you&rsquo;d make the same call. {scored} so
-          far — about {left} more and it&rsquo;ll show you where luck and judgment
+          far — about {left}{" "}more and it&rsquo;ll show you where luck and judgment
           part ways.
         </p>
       </div>
@@ -1823,7 +1823,7 @@ function FollowThrough({ log }: { log: LogEntry[] }) {
             Follow-through
           </span>{" "}
           starts reading once you&rsquo;ve reviewed a few decisions that had a
-          first move written down. {scored} so far — about {left} more and
+          first move written down. {scored} so far — about {left}{" "}more and
           you&rsquo;ll have the number almost nobody knows about themselves:
           how often your decisions actually happen.
         </p>
@@ -1860,7 +1860,7 @@ function FollowThrough({ log }: { log: LogEntry[] }) {
       </p>
       {untriedBad > 0 && (
         <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
-          And {untriedBad} of the &ldquo;turned out badly&rdquo; entries{" "}
+          And {untriedBad}{" "}of the &ldquo;turned out badly&rdquo; entries{" "}
           {untriedBad === 1 ? "was" : "were"} never tried — {untriedBad === 1 ? "that outcome grades" : "those outcomes grade"}{" "}
           your follow-through, not your judgement. Before banking a lesson
           about how you decide, check it isn&rsquo;t a lesson about how you
@@ -2029,7 +2029,7 @@ function ReviewDetail({
               Then grade what follows carefully. A plan that was never tried
               can&rsquo;t be graded on its outcome — whatever happened, it
               isn&rsquo;t evidence about the call, because the call was never
-              tested. It <em>does</em> still count against your forecast:
+              tested. It <em>does</em>{" "}still count against your forecast:
               you were part of what you were forecasting, and the miss you
               just recorded is a measurement of your own follow-through. Both
               lessons are real; don&rsquo;t write the first when the data

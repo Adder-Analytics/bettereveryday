@@ -434,7 +434,7 @@ export default function AdviseClient() {
             </p>
             <p className="mb-3 text-xs text-[var(--muted)] leading-relaxed">
               What is true about your case that would make you give{" "}
-              {inp.friend.trim() || "a friend"} <em>different</em> advice if it
+              {inp.friend.trim() || "a friend"} <em>different</em>{" "}advice if it
               were theirs? &ldquo;My situation is more complicated&rdquo; is not a
               difference — it&rsquo;s what everyone says. A real one you can state
               in a sentence.
@@ -663,14 +663,14 @@ function AdviseExample() {
           <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
             The advice is clear and unheeded, so the work isn&rsquo;t more
             deciding — it&rsquo;s the sunk cost you&rsquo;d never let{" "}
-            {EXAMPLE.friend} count. A decade spent is gone either way; the only
+            {EXAMPLE.friend}{" "}count. A decade spent is gone either way; the only
             honest question is whether you&rsquo;d start this career fresh today.
             That points straight at one tool, not another round of agonizing.
           </p>
         </div>
       ) : null}
       <p className="mt-4 text-xs text-[var(--muted)] leading-relaxed">
-        Your own fields below are blank — put <em>your</em> call in a
+        Your own fields below are blank — put <em>your</em>{" "}call in a
         friend&rsquo;s name.
       </p>
     </div>

@@ -136,7 +136,7 @@ export default function PlaybookPage() {
                       </p>
                       <Link href={s.tool.href} className="group inline-block">
                         <span className="text-base font-semibold text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
-                          {s.tool.name} &rarr;
+                          {s.tool.name}{" "}&rarr;
                         </span>
                       </Link>
                       <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">

@@ -40,7 +40,7 @@ export default function WeighPage() {
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
           It comes from medicine. Rather than pin down the exact probability a
           patient is sick, Pauker and Kassirer (<em>NEJM</em>, 1980) had
-          clinicians find the <em>treatment threshold</em> — the probability at
+          clinicians find the <em>treatment threshold</em>{" "}— the probability at
           which treating and not treating are a wash — and simply ask whether the
           patient sits above or below it. The unanswerable question (&ldquo;what
           are the exact odds?&rdquo;) becomes an easy one (&ldquo;which side of

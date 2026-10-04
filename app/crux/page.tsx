@@ -43,7 +43,7 @@ export default function CruxPage() {
         </p>
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
           This tool does the one thing that unsticks it: it separates the
-          strands, and then finds the <em>crux</em> &mdash; the one thing that,
+          strands, and then finds the <em>crux</em>{" "}&mdash; the one thing that,
           if it turned out the other way, would actually change a mind. It&rsquo;s
           still a private worksheet: you fill in your side <em>and</em>{" "}your best
           honest account of theirs, which is itself the move most stuck arguments

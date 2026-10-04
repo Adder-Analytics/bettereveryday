@@ -22,12 +22,12 @@ export default function AdvisePage() {
           Advise a friend
         </h1>
         <p className="text-base text-[var(--muted)] leading-relaxed">
-          You are not <em>hot</em> — no anger, no closing clock. You&rsquo;re just
+          You are not <em>hot</em>{" "}— no anger, no closing clock. You&rsquo;re just
           stuck on your own call in a way you never would be on someone
           else&rsquo;s. A friend describes the same dilemma and the answer is
           obvious to you; your own version, identical in every respect, stays a
           fog. That isn&rsquo;t a failure of nerve. It&rsquo;s{" "}
-          <strong>Solomon&rsquo;s paradox</strong> — named for the king whose
+          <strong>Solomon&rsquo;s paradox</strong>{" "}— named for the king whose
           wisdom ran his kingdom and wrecked his own house — and Igor Grossmann
           and Ethan Kross measured it: we reason more wisely about a friend&rsquo;s
           problem than our own, and the gap closes the moment we take the outside

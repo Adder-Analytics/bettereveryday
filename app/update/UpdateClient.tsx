@@ -450,7 +450,7 @@ function FrequencyBars({ problem }: { problem: BayesProblem }) {
           <span className="text-[var(--foreground)]">{fmt(f.withCondition)}</span> of them are{" "}
           {problem.conditionNoun}; the test flags{" "}
           <span className="text-[var(--foreground)]">{fmt(f.truePositives)}</span> of those. Of the{" "}
-          <span className="text-[var(--foreground)]">{fmt(f.withoutCondition)}</span> who aren&rsquo;t,
+          <span className="text-[var(--foreground)]">{fmt(f.withoutCondition)}</span>{" "}who aren&rsquo;t,
           it still flags about{" "}
           <span className="text-[var(--foreground)]">{fmt(f.falsePositives)}</span> of them anyway.
         </p>

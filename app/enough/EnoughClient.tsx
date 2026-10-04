@@ -612,7 +612,7 @@ function Verdict({ inp }: { inp: Inputs }) {
         <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
           &ldquo;Not sure&rdquo; usually means the two outcomes are still abstract.
           Finish both sentences with an actual move &mdash; <em>if it&rsquo;s this,
-          I&rsquo;d do that</em> &mdash; specific enough that you can hold the two
+          I&rsquo;d do that</em>{" "}&mdash; specific enough that you can hold the two
           side by side and see whether they differ. If, once they&rsquo;re both
           concrete, you honestly can&rsquo;t make them come out different,
           that&rsquo;s not a gap in the exercise. That <em>is</em>{" "}the finding: the
@@ -895,11 +895,11 @@ function EnoughExample() {
         </p>
         <ul className="mt-2 space-y-2.5 text-sm text-[var(--foreground)] leading-relaxed">
           <li>
-            <span className="font-medium">If rent is normal,</span> you&rsquo;d take
+            <span className="font-medium">If rent is normal,</span>{" "}you&rsquo;d take
             the job.
           </li>
           <li>
-            <span className="font-medium">If rent is steep,</span> you&rsquo;d&hellip;
+            <span className="font-medium">If rent is steep,</span>{" "}you&rsquo;d&hellip;
             still take it &mdash; the salary covers either, and the job is the whole
             reason you&rsquo;re moving.
           </li>

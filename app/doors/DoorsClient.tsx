@@ -445,7 +445,7 @@ function VerdictBlock({
               </>
             ) : null}
             Before anything about speed: is there a version of{" "}
-            <span className="font-medium">{it}</span> that caps the downside — a
+            <span className="font-medium">{it}</span>{" "}that caps the downside — a
             smaller bet, a buffer, an exit, a reversible first slice? Averages
             assume you get to keep playing; against a loss you can&rsquo;t come
             back from, the rule isn&rsquo;t &ldquo;is this a good bet&rdquo; —
@@ -500,14 +500,14 @@ function TwoWayBody({ inp, it }: { inp: Inputs; it: string }) {
         You can walk back through this one, and being wrong costs little. That
         flips the math most people get backwards: the expensive thing here
         isn&rsquo;t a wrong call — it&rsquo;s a slow one. Every day you spend
-        deliberating over <span className="font-medium">{it}</span> is a real
+        deliberating over <span className="font-medium">{it}</span>{" "}is a real
         cost you&rsquo;re paying for certainty you don&rsquo;t need. Pick, move,
         and let the world tell you what no amount of staring at it could.
       </p>
       {inp.learn === "only-trying" ? (
         <p className="mt-3 text-sm text-[var(--muted)] leading-relaxed">
           And you said you&rsquo;ll only really know by trying — so acting{" "}
-          <em>is</em> the research. The fastest route to the answer runs through
+          <em>is</em>{" "}the research. The fastest route to the answer runs through
           the door, not around it. Deliberating longer can&rsquo;t buy
           information that only moving will give you.
         </p>
@@ -562,7 +562,7 @@ function OneWayBody({
     <div className="mt-5">
       <p className="text-sm text-[var(--foreground)] leading-relaxed">
         Once you&rsquo;re through, you don&rsquo;t get to come back. That puts{" "}
-        <span className="font-medium">{it}</span> in the small class of decisions
+        <span className="font-medium">{it}</span>{" "}in the small class of decisions
         where thinking longer genuinely pays — because reversal won&rsquo;t bail
         out a wrong call the way it does for most choices. This is what slow,
         careful deliberation is <em>for</em>. Don&rsquo;t let it get decided in an

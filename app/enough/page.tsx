@@ -34,7 +34,7 @@ export default function EnoughPage() {
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
           There&rsquo;s a clean test that separates them, and it&rsquo;s the whole
           idea behind Douglas Hubbard&rsquo;s <em>How to Measure Anything</em>: a
-          fact is worth knowing only for what it would <em>change</em> about the
+          fact is worth knowing only for what it would <em>change</em>{" "}about the
           decision. Not how interesting it is, not how much more confident it would
           make you feel &mdash; only whether it could move the call. Run by that
           measure, most of what people agonize over learning turns out to be worth
