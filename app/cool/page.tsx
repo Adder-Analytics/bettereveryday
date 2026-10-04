@@ -32,7 +32,7 @@ export default function CoolPage() {
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
           It won&rsquo;t talk you into or out of anything. It does one thing:
           when you&rsquo;re hot, the real decision isn&rsquo;t{" "}
-          <em>act or don&rsquo;t</em> — it&rsquo;s <em>decide now, or once
+          <em>act or don&rsquo;t</em>{" "}— it&rsquo;s <em>decide now, or once
           you&rsquo;re cool?</em> Two facts you can judge even now settle that —
           whether the door swings back, and whether anything outside you is
           actually forcing the clock. Then it helps you{" "}

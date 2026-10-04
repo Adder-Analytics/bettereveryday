@@ -35,7 +35,7 @@ export default function TripwirePage() {
             tripwire
           </Link>
           : a cheap, observable signal chosen in advance that means{" "}
-          <em>stop and reconsider</em> — the fuel light that interrupts you at a
+          <em>stop and reconsider</em>{" "}— the fuel light that interrupts you at a
           threshold you set while calm, so you don&rsquo;t have to monitor the
           gauge or trust the moment&rsquo;s judgement.
         </p>

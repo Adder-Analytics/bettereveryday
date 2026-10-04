@@ -323,7 +323,7 @@ function LifetimeRecord({
 
       {rangeRate !== null && (
         <p className="mt-4 text-sm text-[var(--foreground)] leading-relaxed">
-          Across <span className="font-semibold">{rangeN}</span> ranges you&rsquo;ve
+          Across <span className="font-semibold">{rangeN}</span>{" "}ranges you&rsquo;ve
           given, the true answer landed inside{" "}
           <span className="font-semibold">{rangeRate}%</span> of them.{" "}
           <span className="text-[var(--muted)]">

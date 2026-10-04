@@ -40,7 +40,7 @@ export default function Home() {
           Better Every Day.
         </h1>
         <p className="text-lg text-[var(--muted)] leading-relaxed max-w-lg">
-          A private toolkit of {toolCountWord} working instruments for thinking
+          A private toolkit of {toolCountWord}{" "}working instruments for thinking
           through a real decision &mdash; the flip point, the pre-mortem, the
           consequence trace, and more &mdash; with the essays and mental models
           behind them. Nothing you enter ever leaves your browser.

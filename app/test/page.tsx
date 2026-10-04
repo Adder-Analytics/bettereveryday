@@ -41,8 +41,8 @@ export default function TestPage() {
           will happen and run a small test that tells you.
         </p>
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
-          This is the <strong>R</strong> in Chip and Dan Heath&rsquo;s{" "}
-          <strong>WRAP</strong> process from <em>Decisive</em> &mdash;{" "}
+          This is the <strong>R</strong>{" "}in Chip and Dan Heath&rsquo;s{" "}
+          <strong>WRAP</strong> process from <em>Decisive</em>{" "}&mdash;{" "}
           <em>reality-test your assumptions</em>. The site already{" "}
           <Link
             href="/widen"

@@ -1280,9 +1280,9 @@ export default function PremortemClient() {
         <p className="mt-8 text-sm text-[var(--muted)] leading-relaxed">
           A pre-mortem&rsquo;s output isn&rsquo;t a list of fears — it&rsquo;s
           decisions. For each cause of the imagined failure, pick one:{" "}
-          <span className="text-[var(--foreground)]">change the plan</span> now,
+          <span className="text-[var(--foreground)]">change the plan</span>{" "}now,
           while it&rsquo;s cheap;{" "}
-          <span className="text-[var(--foreground)]">set a tripwire</span> — a
+          <span className="text-[var(--foreground)]">set a tripwire</span>{" "}— a
           signal plus a date to check for it, decided while you&rsquo;re calm; or{" "}
           <span className="text-[var(--foreground)]">accept the risk</span> with
           open eyes and stop worrying about it.

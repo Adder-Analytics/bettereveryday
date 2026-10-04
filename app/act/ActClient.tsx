@@ -657,7 +657,7 @@ export default function ActClient() {
               Step 3 — the cue that fires it
             </p>
             <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
-              &ldquo;When <em>this</em> happens, I&rsquo;ll do it.&rdquo; A time, a
+              &ldquo;When <em>this</em>{" "}happens, I&rsquo;ll do it.&rdquo; A time, a
               place, or an event you&rsquo;ll unambiguously notice — best of all,
               one that already happens on its own (after I pour my morning coffee;
               when I sit down Monday at 9; the moment my paycheck lands).
@@ -731,9 +731,9 @@ export default function ActClient() {
               never started, or never revisited — and a plan welded to one cue can
               coast past the moment it stopped being right. So set the one signal
               that means <em>stop and rethink</em>: a{" "}
-              <span className="text-[var(--foreground)]">state</span> you
+              <span className="text-[var(--foreground)]">state</span>{" "}you
               can&rsquo;t argue with and a{" "}
-              <span className="text-[var(--foreground)]">date</span> you&rsquo;re
+              <span className="text-[var(--foreground)]">date</span>{" "}you&rsquo;re
               obligated to look — not &ldquo;if it&rsquo;s not working&rdquo; (that
               renegotiates every morning), but &ldquo;if X by this date, I stop.&rdquo;
             </p>

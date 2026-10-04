@@ -408,7 +408,7 @@ function OneOffRedirect({ thing, decision }: { thing: string; decision: string }
       </p>
       <p className="mt-2 text-sm text-[var(--foreground)] leading-relaxed">
         A rule is a machine for a decision you&rsquo;ll face <em>again</em>. If{" "}
-        <span className="font-medium">{it}</span> is really a one-off — its own
+        <span className="font-medium">{it}</span>{" "}is really a one-off — its own
         shape each time, or a call that won&rsquo;t come back — then a standing
         rule would either never fire or quietly go wrong, binding a future you
         can&rsquo;t see. The whole job here is to decide this <em>once</em>, well.
@@ -478,7 +478,7 @@ function CaseForRule({
       </p>
       {pattern === "tiring" ? (
         <p className="mt-2 text-sm text-[var(--foreground)] leading-relaxed">
-          You said you usually get <span className="font-medium">{it}</span> right
+          You said you usually get <span className="font-medium">{it}</span>{" "}right
           — so this isn&rsquo;t about fixing a bad call. It&rsquo;s that every
           instance costs you the same deliberation and the same scrap of
           willpower, and those are finite. A rule spends the judgement <em>once</em>
@@ -488,7 +488,7 @@ function CaseForRule({
       ) : pattern === "inconsistent" ? (
         <p className="mt-2 text-sm text-[var(--foreground)] leading-relaxed">
           Decided case by case, <span className="font-medium">{it}</span> comes out
-          however the moment pushes — and {forceName} pushes differently every
+          however the moment pushes — and {forceName}{" "}pushes differently every
           time, so there&rsquo;s no pattern you&rsquo;d actually defend. The
           inconsistency <em>is</em> the cost. A rule replaces a decision made by
           whoever you happen to be in the moment with one made by the version of
@@ -500,7 +500,7 @@ function CaseForRule({
           reliably wish you&rsquo;d gone the other. That gap is {forceName}. You
           won&rsquo;t out-argue it at the moment of choice — it&rsquo;s loudest
           exactly then, by design. A rule doesn&rsquo;t make you stronger at the
-          line; it settles <span className="font-medium">{it}</span> now, while
+          line; it settles <span className="font-medium">{it}</span>{" "}now, while
           you&rsquo;re calm, so the line never has to be defended.
         </p>
       )}
@@ -579,7 +579,7 @@ function RuleBuilder({
         </p>
         <p className="mt-2 mb-4 text-sm text-[var(--muted)] leading-relaxed">
           The one test that separates a rule from a wish:{" "}
-          <em>could a stranger watching tell whether you&rsquo;d broken it?</em> A
+          <em>could a stranger watching tell whether you&rsquo;d broken it?</em>{" "}A
           bright line is countable and unambiguous — &ldquo;none on
           weeknights,&rdquo; not &ldquo;less often;&rdquo; &ldquo;decided at the
           door,&rdquo; not &ldquo;be reasonable about it.&rdquo; A rule you have to
@@ -613,7 +613,7 @@ function RuleBuilder({
             The exceptions that genuinely override it
           </label>
           <p className="mb-2 text-sm text-[var(--muted)] leading-relaxed">
-            The hard part. Name the <em>rare, specific</em> conditions under which
+            The hard part. Name the <em>rare, specific</em>{" "}conditions under which
             the rule really shouldn&rsquo;t apply — so it binds against your
             predictable weakness, not against the news that you were wrong. Vague
             exceptions (&ldquo;unless it&rsquo;s important&rdquo;) are a trapdoor
@@ -735,7 +735,7 @@ function RuleBuilder({
 function FreshStartLine({ it }: { it: string }) {
   return (
     <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
-      From here, {it === "this" ? "the recurring call" : `“${it}”`} isn&rsquo;t a
+      From here, {it === "this" ? "the recurring call" : `“${it}”`}{" "}isn&rsquo;t a
       decision anymore — it&rsquo;s a rule. When it comes up, you don&rsquo;t
       re-argue it; you apply it, or you invoke a named exception. If you find
       yourself re-opening the case in the moment, that&rsquo;s the signal the rule

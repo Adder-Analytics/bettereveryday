@@ -432,7 +432,7 @@ export default function RuinClient() {
             </label>
             <p className="mb-2 text-sm text-[var(--muted)] leading-relaxed">
               Not the theoretical worst &mdash; a meteor, a once-in-a-century
-              crash. The worst <em>plausible</em> outcome, the bad tail you can
+              crash. The worst <em>plausible</em>{" "}outcome, the bad tail you can
               actually picture. Write it concretely: what you&rsquo;d lose, and how
               much.
             </p>
@@ -695,18 +695,18 @@ function SurviveRead({
           This is a loss you can take.
         </p>
         <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
-          The worst case you named &mdash; <WorstQuote worst={worst} /> &mdash; is
+          The worst case you named &mdash; <WorstQuote worst={worst} />{" "}&mdash; is
           a real hit, but one you&rsquo;d recover from. That changes what kind of
           decision this is. A ruin check exists to catch the outcomes there&rsquo;s
           no coming back from, and this isn&rsquo;t one: you&rsquo;d still be
           standing, still in the game, still able to try again. So this isn&rsquo;t
-          a bet to <em>veto</em> on the downside &mdash; it&rsquo;s an ordinary
+          a bet to <em>veto</em>{" "}on the downside &mdash; it&rsquo;s an ordinary
           risk-and-reward call, and the move is to weigh the odds against the
           stakes, not to freeze.
         </p>
         <p className="mt-3 pl-3 border-l-2 border-[var(--accent)] text-sm text-[var(--muted)] leading-relaxed">
           The trap on this side is the opposite one: refusing a loss you could
-          absorb. Loss aversion makes a recoverable setback <em>feel</em> like
+          absorb. Loss aversion makes a recoverable setback <em>feel</em>{" "}like
           ruin, and that&rsquo;s how people talk themselves out of good bets
           they&rsquo;d have been glad they took. If you&rsquo;d genuinely recover,
           don&rsquo;t let the flinch make the call.
@@ -723,7 +723,7 @@ function SurviveRead({
         {often ? (
           <p className="mt-3 pl-3 border-l-2 border-[var(--accent)] text-sm text-[var(--muted)] leading-relaxed">
             And since you&rsquo;ll take bets like this repeatedly, size each one so
-            a bad run can&rsquo;t add up to something you <em>can&rsquo;t</em> take.
+            a bad run can&rsquo;t add up to something you <em>can&rsquo;t</em>{" "}take.
             A loss you&rsquo;d shrug off once can still bleed you white if you keep
             taking it at full size &mdash; survivable-per-bet and survivable-in-a-row
             aren&rsquo;t the same test.
@@ -774,11 +774,11 @@ function SurviveRead({
           Don&rsquo;t take this bet &mdash; take the version you&rsquo;d survive.
         </p>
         <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
-          The worst case you named &mdash; <WorstQuote worst={worst} /> &mdash; is
+          The worst case you named &mdash; <WorstQuote worst={worst} />{" "}&mdash; is
           one there&rsquo;s no coming back from. That single fact overrides
           everything else, and here&rsquo;s the part worth sitting with:{" "}
           <em>the odds don&rsquo;t save you and the upside doesn&rsquo;t pay for
-          it.</em> Every expected-value sum, every flip point, every &ldquo;the
+          it.</em>{" "}Every expected-value sum, every flip point, every &ldquo;the
           average says go&rdquo; quietly assumes one thing &mdash; that you&rsquo;re
           still around afterward to keep playing. Against an outcome you can&rsquo;t
           recover from, that assumption breaks, and the average becomes a lie.
@@ -794,7 +794,7 @@ function SurviveRead({
         </p>
         {lowOdds ? (
           <p className="mt-3 pl-3 border-l-2 border-[var(--accent)] text-sm text-[var(--foreground)] leading-relaxed">
-            You marked it <span className="font-medium">{oddsPhrase}</span> &mdash;
+            You marked it <span className="font-medium">{oddsPhrase}</span>{" "}&mdash;
             and that is exactly the trap. &ldquo;Probably fine&rdquo; is the
             sentence people say on the way into the one outcome they can&rsquo;t
             undo. A small chance of ruin is still ruin: the rare catastrophe only
@@ -833,12 +833,12 @@ function SurviveRead({
           <ul className="mt-3 space-y-1.5 text-sm text-[var(--muted)] leading-relaxed list-disc pl-5">
             <li>
               <span className="text-[var(--foreground)]">Bet only what you can
-              lose in full</span> &mdash; a fraction of the stake, never the whole
+              lose in full</span>{" "}&mdash; a fraction of the stake, never the whole
               reserve.
             </li>
             <li>
               <span className="text-[var(--foreground)]">Keep a floor you never
-              touch</span> &mdash; the runway, the emergency fund, the thing that
+              touch</span>{" "}&mdash; the runway, the emergency fund, the thing that
               keeps a bad outcome from becoming a final one.
             </li>
             <li>
@@ -847,7 +847,7 @@ function SurviveRead({
               catastrophe into a cost.
             </li>
             <li>
-              <span className="text-[var(--foreground)]">Stage it</span> &mdash;
+              <span className="text-[var(--foreground)]">Stage it</span>{" "}&mdash;
               commit in reversible steps instead of one irreversible leap, so no
               single step can end you.
             </li>
@@ -925,7 +925,7 @@ function SurviveRead({
           </p>
         ) : (
           <p className="mt-3 pl-3 border-l-2 border-[var(--accent)] text-sm text-[var(--muted)] leading-relaxed">
-            And you&rsquo;ve put the bad case at {oddsPhrase} &mdash; all the more
+            And you&rsquo;ve put the bad case at {oddsPhrase}{" "}&mdash; all the more
             reason the floor isn&rsquo;t optional. At those odds you should assume
             you&rsquo;ll be tested against the line, not spared it.
           </p>
@@ -982,7 +982,7 @@ function SurviveRead({
         Settle this one question first &mdash; it changes everything else.
       </p>
       <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
-        You can&rsquo;t tell whether <WorstQuote worst={worst} /> is something
+        You can&rsquo;t tell whether <WorstQuote worst={worst} />{" "}is something
         you&rsquo;d recover from &mdash; and that&rsquo;s the one thing you need to
         know before any other tool can help, because it decides which <em>kind</em>{" "}
         of decision this is. If it&rsquo;s survivable, this is an ordinary
@@ -992,7 +992,7 @@ function SurviveRead({
         on the survivable side of that line.
       </p>
       <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
-        So settle it directly. Name your <em>point of no return</em> &mdash; not
+        So settle it directly. Name your <em>point of no return</em>{" "}&mdash; not
         vaguely, concretely: the specific loss (of money, health, time, a
         relationship, a reputation, a career) past which there&rsquo;s genuinely no
         coming back. Then ask whether the worst case you wrote actually reaches it.
@@ -1068,11 +1068,11 @@ function RuinExample() {
       </p>
       <div className="mt-4 rounded-lg border border-[var(--accent)] p-4 space-y-3">
         <p className="text-sm text-[var(--foreground)] leading-relaxed">
-          <span className="font-medium">Worst realistic case:</span> the business
+          <span className="font-medium">Worst realistic case:</span>{" "}the business
           folds &mdash; most do &mdash; and the whole stake is gone.
         </p>
         <p className="text-sm text-[var(--foreground)] leading-relaxed">
-          <span className="font-medium">Would you recover?</span> No &mdash; not
+          <span className="font-medium">Would you recover?</span>{" "}No &mdash; not
           because you couldn&rsquo;t earn again, but because with no reserve, the
           next unlucky month (a medical bill, a layoff) has nothing behind it. The
           loss isn&rsquo;t just the money; it&rsquo;s the floor under everything
@@ -1081,7 +1081,7 @@ function RuinExample() {
         </p>
         <p className="text-sm text-[var(--foreground)] leading-relaxed">
           <span className="font-medium">&ldquo;But it&rsquo;ll probably
-          work&rdquo;:</span> probably isn&rsquo;t the question. A small chance of
+          work&rdquo;:</span>{" "}probably isn&rsquo;t the question. A small chance of
           losing your floor is still losing your floor, and you only need it to
           happen once.
         </p>

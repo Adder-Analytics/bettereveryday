@@ -161,7 +161,7 @@ function ReviewDueBanner({ due }: { due: number }) {
       <p className="mt-2 text-sm text-[var(--foreground)] leading-relaxed">
         {due === 1 ? "A decision in your journal is" : `${due} decisions in your journal are`}{" "}
         due for review — {due === 1 ? "a forecast" : "forecasts"} reality has
-        already graded. Closing {due === 1 ? "it" : "them"} out is worth more
+        already graded. Closing {due === 1 ? "it" : "them"}{" "}out is worth more
         than any practice round: it&rsquo;s your real calibration, one data
         point at a time.
       </p>

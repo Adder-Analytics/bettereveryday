@@ -82,7 +82,7 @@ export default function Writing() {
                     {post.excerpt}
                   </p>
                   <p className="text-xs text-[var(--muted)]">
-                    {post.readTime} min read &middot;{" "}
+                    {post.readTime}{" "}min read &middot;{" "}
                     <time dateTime={post.date}>{formatDate(post.date)}</time>
                   </p>
                 </article>

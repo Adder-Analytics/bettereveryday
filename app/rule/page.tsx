@@ -33,11 +33,11 @@ export default function RulePage() {
           same choice made a hundred times in a compromised state.
         </p>
         <p className="mt-4 text-base text-[var(--muted)] leading-relaxed">
-          The answer to a <em>recurring</em> decision isn&rsquo;t to decide it
+          The answer to a <em>recurring</em>{" "}decision isn&rsquo;t to decide it
           better each time — it&rsquo;s to decide it <strong>once</strong>, as a
           standing rule, and spend your judgement on whether the rule is right
           rather than re-fighting the instance. This tool checks the call actually
-          recurs, forces the rule into a <strong>bright line</strong> you can tell
+          recurs, forces the rule into a <strong>bright line</strong>{" "}you can tell
           you&rsquo;ve broken, makes you name the <strong>rare exceptions</strong>{" "}
           that should genuinely override it, and sets a date to re-endorse it — so
           a good rule can&rsquo;t curdle into blind habit.

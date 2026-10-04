@@ -60,7 +60,7 @@ export default function RuinPage() {
           >
             margin of safety
           </Link>
-          . If the worst case turns out to be one you <em>can</em> take, this
+          . If the worst case turns out to be one you <em>can</em>{" "}take, this
           isn&rsquo;t a ruin problem at all, and it&rsquo;ll send you to the{" "}
           <Link
             href="/weigh"

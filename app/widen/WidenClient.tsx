@@ -522,7 +522,7 @@ function Verdict({
               You haven&rsquo;t named a second option yet, so this is still a
               &ldquo;whether or not&rdquo; — the single most common way a decision
               goes wrong before any reasoning starts. Try the vanishing test above:
-              if {option} were off the table entirely, what would you scramble to
+              if {option}{" "}were off the table entirely, what would you scramble to
               do? Whatever that is, it&rsquo;s a real alternative you already have.
             </>
           )}
@@ -602,7 +602,7 @@ function Verdict({
           <>
             You&rsquo;ve broken the frame open into two genuine options — the whole
             point. The choice is no longer &ldquo;do this or not&rdquo; but this{" "}
-            <em>or</em> that, which is a choice you can actually reason about. Take
+            <em>or</em>{" "}that, which is a choice you can actually reason about. Take
             both to the flip point: find the odds where the call tips, and just ask
             which side you&rsquo;re on.
           </>
@@ -731,7 +731,7 @@ function WidenExample() {
         <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
           One option became <span className="font-medium">{reals.length}</span>. The
           decoy guard caught the strawman —{" "}
-          {sham ? <em>&ldquo;{sham.label.toLowerCase()}&rdquo;</em> : "the padding"} —
+          {sham ? <em>&ldquo;{sham.label.toLowerCase()}&rdquo;</em> : "the padding"}{" "}—
           and set it aside, so it can&rsquo;t make quitting look obvious by standing
           next to something no one would pick. Four real options go to the halo-off
           comparison to be scored; if it had narrowed to two, they&rsquo;d go to the

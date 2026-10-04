@@ -477,7 +477,7 @@ export default function CoolClient() {
             <>
               <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
                 On {prettyDate(resumed.parkedOn)} you were{" "}
-                {resumed.feeling || "hot"} and chose to sleep on this rather than
+                {resumed.feeling || "hot"}{" "}and chose to sleep on this rather than
                 decide it then. Here it is again, unchanged — now judge it with the
                 calm you didn&rsquo;t have.
               </p>
@@ -567,7 +567,7 @@ export default function CoolClient() {
       <div className="mt-5 rounded-xl border border-[var(--border)] bg-[var(--card)] p-5 sm:p-6">
         <p className="text-sm text-[var(--muted)] leading-relaxed">
           When you&rsquo;re hot, the real decision isn&rsquo;t{" "}
-          <em>act or don&rsquo;t</em> — it&rsquo;s <em>decide now, or once
+          <em>act or don&rsquo;t</em>{" "}— it&rsquo;s <em>decide now, or once
           you&rsquo;re cool?</em> Two facts settle that, and you can judge both
           even now.
         </p>
@@ -686,7 +686,7 @@ export default function CoolClient() {
                 >
                   return desk
                 </Link>{" "}
-                for <span className="font-medium">{prettyDate(parked.decideOn)}</span> —
+                for <span className="font-medium">{prettyDate(parked.decideOn)}</span>{" "}—
                 it&rsquo;ll come back to you cold on that day, unchanged, so the
                 heat can&rsquo;t win by default.
               </p>
@@ -925,7 +925,7 @@ export default function CoolClient() {
           One check before you cool it off
         </p>
         <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">
-          Distance is for stripping the visceral <em>overweighting</em> — not for
+          Distance is for stripping the visceral <em>overweighting</em>{" "}— not for
           numbing a feeling that carries real information. Some feelings are data:
           the dread walking into a place, the way a person makes you smaller, the
           quiet wrongness of a deal that pencils out fine. &ldquo;I&rsquo;m sure
@@ -1099,7 +1099,7 @@ function CoolExample() {
         A worked example — nothing here is saved
       </p>
       <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
-        <span className="font-medium">The call:</span> &ldquo;
+        <span className="font-medium">The call:</span>{" "}&ldquo;
         {EXAMPLE.decision}&rdquo; — driven by anger.
       </p>
       <p className="mt-2 text-sm text-[var(--muted)] leading-relaxed">

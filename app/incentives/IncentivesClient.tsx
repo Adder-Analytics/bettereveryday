@@ -533,7 +533,7 @@ function IncentiveRead({
           Discount the advice to its incentive-free core.
         </p>
         <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
-          The gain you named &mdash; <GainQuote gain={gain} /> &mdash; pays out
+          The gain you named &mdash; <GainQuote gain={gain} />{" "}&mdash; pays out
           whether or not the choice is good for you. That doesn&rsquo;t make{" "}
           {messenger}{" "}a liar, and it doesn&rsquo;t make the advice wrong. It means
           the advice is worth exactly what it would be worth coming from someone

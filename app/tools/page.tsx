@@ -87,7 +87,7 @@ export default function ToolsPage() {
                   <Link href={tool.href} className="group block">
                     <div className="flex items-baseline justify-between gap-4">
                       <span className="text-base font-semibold text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
-                        {tool.name} &rarr;
+                        {tool.name}{" "}&rarr;
                       </span>
                       <span
                         className={`shrink-0 text-[10px] font-semibold uppercase tracking-widest px-1.5 py-0.5 rounded border ${payoffStyles[tool.payoff]}`}
@@ -117,7 +117,7 @@ export default function ToolsPage() {
                                 href={`/playbook#${s.id}`}
                                 className="text-sm text-[var(--accent)] hover:opacity-70 transition-opacity leading-snug"
                               >
-                                {s.title} &rarr;
+                                {s.title}{" "}&rarr;
                               </Link>
                             </li>
                           ))}

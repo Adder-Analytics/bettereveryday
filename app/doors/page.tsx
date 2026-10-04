@@ -26,7 +26,7 @@ export default function DoorsPage() {
           decision is worth thinking hard about. This one asks the question that
           comes first, and almost nobody does:{" "}
           <em>does this choice even deserve it?</em> Jeff Bezos sorts decisions
-          into two kinds. A <strong>one-way door</strong> — you can&rsquo;t come
+          into two kinds. A <strong>one-way door</strong>{" "}— you can&rsquo;t come
           back through — earns slow, careful deliberation, because getting it
           wrong is permanent. A <strong>two-way door</strong> — you can walk right
           back — should be decided <em>fast</em>, because there the expensive
