@@ -142,3 +142,29 @@ export function getGroupedPosts(): ResolvedEssayGroup[] {
   }
   return grouped;
 }
+
+export type EssayPlace = {
+  group: { id: string; label: string };
+  prev: Post | null;
+  next: Post | null;
+};
+
+/**
+ * Where an essay sits in the grouped order /writing shows: its group, and the
+ * essays either side of it. The essay page's Previous / Next used to follow the
+ * order the essays were written in, so after "The Flip Point" came an essay on
+ * reading habits. Walking the grouped order instead keeps a reader beside essays
+ * on the same kind of hard, and only crosses into the next group at its edge.
+ */
+export function getEssayPlace(slug: string): EssayPlace {
+  const groups = getGroupedPosts();
+  const order = groups.flatMap((g) => g.posts.map((post) => ({ post, group: g })));
+  const i = order.findIndex((e) => e.post.slug === slug);
+  if (i === -1) throw new Error(`Essay "${slug}" is in no writing group`);
+  const { id, label } = order[i].group;
+  return {
+    group: { id, label },
+    prev: i > 0 ? order[i - 1].post : null,
+    next: i < order.length - 1 ? order[i + 1].post : null,
+  };
+}

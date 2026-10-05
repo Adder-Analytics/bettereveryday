@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import { posts, formatDate } from "./data/posts";
+import { SITE_UPDATED } from "./data/updated";
 import { resolveToolGroups, toolCount, toolCountWord } from "./data/tools";
 import ReviewDueBadge from "./components/ReviewDueBadge";
 import BackupNudge from "./components/BackupNudge";
@@ -10,7 +11,6 @@ const sortedPosts = [...posts].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 );
 const recentPosts = sortedPosts.slice(0, 3);
-const lastUpdated = formatDate(sortedPosts[0].date);
 
 const toolGroups = resolveToolGroups();
 
@@ -46,7 +46,7 @@ export default function Home() {
           behind them. Nothing you enter ever leaves your browser.
         </p>
         <DecideHero />
-        <p className="mt-8 text-sm text-[var(--muted)]">Updated {lastUpdated}</p>
+        <p className="mt-8 text-sm text-[var(--muted)]">Updated {SITE_UPDATED}</p>
       </section>
 
       {/* The instruments, by the shape of the moment — the site's core utility,
@@ -161,8 +161,8 @@ export default function Home() {
             playbook
           </Link>{" "}
           flips them around so you can find the right idea by the moment
-          you&rsquo;re in, and reading notes capture what specific books did to my
-          thinking. The conviction underneath all of it: understanding a few
+          you&rsquo;re in, and the reading notes keep what the books behind the kit
+          actually argue. The conviction underneath all of it: understanding a few
           fundamental ideas well beats knowing many things shallowly.
         </p>
         <div className="flex flex-wrap gap-x-6 gap-y-2">

@@ -5,8 +5,7 @@ import { posts } from "../data/posts";
 import { models } from "../data/models";
 import { situations } from "../data/situations";
 import { notes } from "../data/notes";
-
-const UPDATED = "October 4, 2026";
+import { SITE_UPDATED } from "../data/updated";
 
 export const metadata: Metadata = {
   title: "Now — Better Every Day",
@@ -21,7 +20,7 @@ export default function Now() {
         <h1 className="text-2xl font-semibold tracking-tight text-[var(--foreground)] mb-2">
           Now
         </h1>
-        <p className="text-sm text-[var(--muted)]">Updated {UPDATED}</p>
+        <p className="text-sm text-[var(--muted)]">Updated {SITE_UPDATED}</p>
         <p className="mt-6 text-base text-[var(--muted)] leading-relaxed">
           A <span className="text-[var(--foreground)]">/now</span>{" "}page, but for
           the project rather than a person &mdash; where the toolkit stands today,
@@ -79,6 +78,24 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Thirty-four of the{" "}
+              <Link
+                href="/writing"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essays
+              </Link>{" "}
+              have a tool that does what the essay describes, and the link to it sat
+              after the last paragraph, ten minutes down. Someone who found the essay
+              in the middle of that decision now{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                sees the tool under the title
+              </span>
+              . And Previous / Next now step through essays on the same kind of hard
+              instead of the order they were written in, so the essay on loss
+              aversion no longer leads into one on being bored of practice.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A quirk in the build was quietly{" "}
               <span className="text-[var(--foreground)] font-medium">
                 gluing words together
@@ -124,26 +141,6 @@ export default function Now() {
               </span>{" "}
               &mdash; the whole list fits in less than a screen &mdash; and each
               model ends with a link back to it, the same way the playbook does.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The{" "}
-              <Link
-                href="/playbook"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                playbook
-              </Link>{" "}
-              opened on {situations.length}{" "}situations in the order they were
-              written &mdash; on a phone it runs to some forty-five screens, with no
-              way back to the list once you&rsquo;d jumped into one. Its contents
-              are now{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                sorted under the same kinds of hard as the guided router
-              </span>
-              , plus the two it reaches another way &mdash; a number in front of
-              you, and a call that&rsquo;s already made &mdash; and every
-              situation ends with a link back to the list. The two front doors
-              now read alike.
             </li>
           </ul>
         </section>
