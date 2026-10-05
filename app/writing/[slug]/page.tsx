@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { posts, getPostBySlug, formatDate } from "../../data/posts";
+import { getEssayPlace } from "../../data/writingGroups";
 import { models } from "../../data/models";
 import { getThreadsForEssay } from "../../data/threads";
 import { getToolsForEssay } from "../../data/tools";
@@ -39,9 +40,7 @@ export default async function PostPage({ params }: Props) {
 
   if (!post) notFound();
 
-  const index = posts.findIndex((p) => p.slug === slug);
-  const prev = index > 0 ? posts[index - 1] : null;
-  const next = index < posts.length - 1 ? posts[index + 1] : null;
+  const { group, prev, next } = getEssayPlace(slug);
   const relatedModels = models.filter((m) => m.essays?.includes(slug));
   const relatedThreads = getThreadsForEssay(slug);
   const relatedTools = getToolsForEssay(slug);
@@ -82,6 +81,26 @@ export default async function PostPage({ params }: Props) {
               </span>
             ))}
           </div>
+          {/* The bridge used to wait at the bottom, after the whole essay. A
+              reader who arrives mid-decision should learn there's an
+              instrument for it before spending ten minutes on the prose. */}
+          {relatedTools.length > 0 && (
+            <p className="mt-6 text-sm text-[var(--muted)] leading-relaxed">
+              In the middle of a decision like this?{" "}
+              {relatedTools.map((tool, i) => (
+                <span key={tool.id}>
+                  {i > 0 && " or "}
+                  <Link
+                    href={tool.href}
+                    className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+                  >
+                    {tool.name}
+                  </Link>
+                </span>
+              ))}{" "}
+              works it through on your own case &mdash; or read on for the idea.
+            </p>
+          )}
         </header>
 
         <div
@@ -166,6 +185,16 @@ export default async function PostPage({ params }: Props) {
       )}
 
       <div className="mt-16 pt-8 border-t border-[var(--border)]">
+        <p className="text-xs text-[var(--muted)] leading-relaxed mb-6">
+          Filed under{" "}
+          <Link
+            href={`/writing#${group.id}`}
+            className="text-[var(--foreground)] hover:text-[var(--accent)] transition-colors"
+          >
+            &ldquo;{group.label}&rdquo;
+          </Link>
+          .
+        </p>
         {prev || next ? (
           <div className="flex justify-between gap-4">
             <div className="flex-1">
