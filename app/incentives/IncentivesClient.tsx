@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import PrintButton from "../components/PrintButton";
 
 /**
@@ -335,10 +336,26 @@ export default function IncentivesClient() {
       ) : null}
 
       {/* ---- The read + handoff ---- */}
+      <AnnounceAnswer message={readHeadline(inp)} />
       <Verdict inp={inp} />
       <ClearCallButton storeKey={STORE_KEY} onReset={() => setInp(BLANK)} />
     </div>
   );
+}
+
+/** The read's headline as plain text, for the live region; null until there's a read. */
+function readHeadline(inp: Inputs): string | null {
+  if (!inp.decision.trim() || !inp.messenger.trim() || !inp.gain.trim()) return null;
+  if (inp.align === "" || inp.tell === "") return null;
+  const headline =
+    inp.align === "aligned"
+      ? "The incentive’s on your side — weigh the advice on its merits."
+      : inp.align === "diverged"
+        ? "Discount the advice to its incentive-free core."
+        : inp.align === "partly"
+          ? "Find the one seam where you split — and read the advice there."
+          : "Find out how they’re paid — that one fact reorders everything.";
+  return `The read: ${headline}`;
 }
 
 function Verdict({ inp }: { inp: Inputs }) {

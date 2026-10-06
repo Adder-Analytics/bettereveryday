@@ -11,6 +11,7 @@ import {
   updateVerdict,
   type BayesProblem,
 } from "../data/bayes";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import {
   referenceProblems,
   honestClasses,
@@ -497,6 +498,15 @@ function FrequencyBars({ problem }: { problem: BayesProblem }) {
 
 type Phase = "guess" | "done";
 
+/** The walk-through's one-line read of the guess against the truth. */
+function walkRead(guess: number, truth: number): string {
+  return Math.abs(guess - truth) <= 5
+    ? "Spot on — you already weighed the base rate."
+    : guess > truth
+      ? `You came in about ${Math.round(guess - truth)} points high — the base-rate-neglect direction, trusting the test and forgetting how rare the thing is.`
+      : `You came in about ${Math.round(truth - guess)} points low — you underweighted the evidence this time.`;
+}
+
 function WalkRound({
   problem,
   onComplete,
@@ -573,6 +583,13 @@ function WalkRound({
         </div>
       </div>
 
+      <AnnounceAnswer
+        message={
+          phase === "done" && guessNum !== null
+            ? `The actual chance: ${truth}%. ${walkRead(guessNum, truth)}`
+            : null
+        }
+      />
       {phase === "done" && guessNum !== null && (
         <div className="mt-8 rounded-lg border border-[var(--border)] bg-[var(--card)] p-5">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
@@ -591,11 +608,7 @@ function WalkRound({
           </ul>
 
           <p className="mt-3 text-sm text-[var(--foreground)] leading-relaxed">
-            {Math.abs(guessNum - truth) <= 5
-              ? "Spot on — you already weighed the base rate."
-              : guessNum > truth
-                ? `You came in about ${Math.round(guessNum - truth)} points high — the base-rate-neglect direction, trusting the test and forgetting how rare the thing is.`
-                : `You came in about ${Math.round(truth - guessNum)} points low — you underweighted the evidence this time.`}
+            {walkRead(guessNum, truth)}
           </p>
 
           <FrequencyBars problem={problem} />
@@ -727,6 +740,7 @@ function QuickRound({
         ))}
       </ol>
 
+      <AnnounceAnswer message={submitted ? roundHeadline(results) : null} />
       {!submitted ? (
         <div className="mt-8 flex items-center gap-4">
           <button onClick={submit} disabled={!allAnswered} className={primaryBtn}>
@@ -942,6 +956,19 @@ function PriorRound({
         </div>
       )}
 
+      <AnnounceAnswer
+        message={
+          phase === "done" && anchor && guessNum !== null
+            ? `You chose ${anchor.label.toLowerCase()} at ${anchor.rate}%, and your gut said ${Math.round(guessNum)}%${
+                Math.abs(Math.round(guessNum - (anchor.rate as number))) <= 5
+                  ? ", nearly on top of it."
+                  : `, ${Math.abs(Math.round(guessNum - (anchor.rate as number)))} points ${
+                      guessNum >= (anchor.rate as number) ? "above" : "below"
+                    } your own starting point.`
+              }`
+            : null
+        }
+      />
       {phase === "done" && anchor && guessNum !== null && (
         <div className="mt-8 rounded-lg border border-[var(--border)] bg-[var(--card)] p-5">
           <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
@@ -999,6 +1026,19 @@ function PriorRound({
   );
 }
 
+function roundScore(results: { signed: number }[]) {
+  const n = results.length;
+  const within = results.filter((r) => Math.abs(r.signed) <= 10).length;
+  const meanAbs = Math.round(results.reduce((s, r) => s + Math.abs(r.signed), 0) / n);
+  return { n, within, meanAbs };
+}
+
+/** The round's headline as plain text, for the live region. */
+function roundHeadline(results: { signed: number }[]): string {
+  const { n, within, meanAbs } = roundScore(results);
+  return `Your round: ${within} of ${n} landed within ten points, and your typical miss was ${meanAbs} point${meanAbs === 1 ? "" : "s"}. ${updateVerdict(meanAbs)}`;
+}
+
 function RoundResult({
   results,
   onAgain,
@@ -1008,9 +1048,7 @@ function RoundResult({
   onAgain: () => void;
   onExit: () => void;
 }) {
-  const n = results.length;
-  const within = results.filter((r) => Math.abs(r.signed) <= 10).length;
-  const meanAbs = Math.round(results.reduce((s, r) => s + Math.abs(r.signed), 0) / n);
+  const { n, within, meanAbs } = roundScore(results);
   const bias = results.reduce((s, r) => s + r.signed, 0) / n;
 
   return (

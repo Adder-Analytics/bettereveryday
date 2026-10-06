@@ -5,6 +5,7 @@ import ClearCallButton from "../components/ClearCallButton";
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import Link from "next/link";
 
 /**
@@ -688,6 +689,7 @@ export default function QuitClient() {
       </div>
 
       {/* ---- The verdict ---- */}
+      <AnnounceAnswer message={cell ? `The verdict: ${cell.title}.` : null} />
       {cell ? (
         <div className="mt-5">
           <VerdictBlock
