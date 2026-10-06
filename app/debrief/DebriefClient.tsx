@@ -5,6 +5,7 @@ import ClearCallButton from "../components/ClearCallButton";
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import PrintButton from "../components/PrintButton";
 import Link from "next/link";
 
@@ -650,6 +651,7 @@ export default function DebriefClient() {
       </div>
 
       {/* ---- The verdict ---- */}
+      <AnnounceAnswer message={cell ? `The verdict: ${cell.title}. ${cell.read}` : null} />
       {cell ? (
         <div className="mt-5">
           <VerdictBlock cell={cell} control={inp.control} extreme={inp.extreme} redo={inp.redo} subject={inp.decision} />

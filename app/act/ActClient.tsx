@@ -5,6 +5,7 @@ import ClearCallButton from "../components/ClearCallButton";
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import Link from "next/link";
 
 /**
@@ -590,6 +591,17 @@ export default function ActClient() {
           </p>
         </div>
       </div>
+
+      {/* The answer is either the gate's refusal or, once there's a spine, the plan's read. */}
+      <AnnounceAnswer
+        message={
+          shoulding
+            ? "A plan isn't the tool you need. The problem is the wanting, not the doing."
+            : wanting && plan.start
+              ? `Your plan: ${plan.headline}.`
+              : null
+        }
+      />
 
       {/* ---- The "wrong tool" branch ---- */}
       {shoulding ? (

@@ -7,6 +7,7 @@ import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import PrintButton from "../components/PrintButton";
 
 /**
@@ -217,6 +218,14 @@ const chipBase =
 const chipOn = "border-[var(--accent)] text-[var(--accent)] font-medium";
 const chipOff =
   "border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)]";
+
+/** CruxRead's headline per root, as plain text for the live region. */
+const READ_HEADLINES: Record<Exclude<Root, "">, string> = {
+  facts: "You’re arguing a fact — so find the crux and go get it, don’t keep debating it.",
+  values: "No fact will settle this — so stop arguing facts and pick a fair way to decide.",
+  risk: "You agree on everything but the size of the bet — so size the downside together, not the odds.",
+  cant: "First untangle it — sort the disagreement into facts, values, and risk before you argue another round.",
+};
 
 export default function CruxClient() {
   const [inp, setInp] = useState<Inputs>(BLANK);
@@ -516,6 +525,9 @@ export default function CruxClient() {
       ) : null}
 
       {/* ---- The read + handoff ---- */}
+      <AnnounceAnswer
+        message={readShowing && inp.root ? `The read: ${READ_HEADLINES[inp.root]}` : null}
+      />
       <Verdict inp={inp} />
 
       {/* ---- Hand it to the other person: the same disagreement, their turn ---- */}

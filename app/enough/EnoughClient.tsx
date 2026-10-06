@@ -7,6 +7,7 @@ import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import PrintButton from "../components/PrintButton";
 
 /**
@@ -525,6 +526,7 @@ export default function EnoughClient() {
       ) : null}
 
       {/* ---- The read + handoff ---- */}
+      <AnnounceAnswer message={readHeadline(inp)} />
       <Verdict inp={inp} />
 
       {/* ---- Hand it to someone: the same check, carried person to person ---- */}
@@ -565,6 +567,23 @@ export default function EnoughClient() {
       />
     </div>
   );
+}
+
+/** The read's headline as plain text for the live region — mirrors Verdict's
+ *  branches; null while it's still only prompting. */
+function readHeadline(inp: Inputs): string | null {
+  if (!inp.decision.trim() || !inp.unknown.trim() || inp.changes === "") return null;
+  const head =
+    inp.changes === "unsure"
+      ? "Then get concrete before you go get anything."
+      : inp.changes === "same"
+        ? "You already have enough."
+        : inp.gettable === ""
+          ? "This one’s worth knowing."
+          : inp.gettable === "cheap"
+            ? "Go get it — cheaply."
+            : "More waiting won’t buy the answer.";
+  return `The read: ${head}`;
 }
 
 function Verdict({ inp }: { inp: Inputs }) {
