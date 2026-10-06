@@ -19,6 +19,7 @@ import {
 import { appendDecisionEntry, CONFIDENCE_OPTIONS } from "../data/decisionLog";
 import { readCarriedSubject, clearCarriedSubject } from "../data/carry";
 import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import CarriedNote from "../components/CarriedNote";
 
 /**
@@ -759,6 +760,27 @@ export default function PremortemClient() {
     [saved, openView, top]
   );
 
+  // Each step (and the finished view) swaps the whole screen, and the button
+  // that moved you there goes with it — focus falls to <body> and a screen
+  // reader hears nothing. After every move (never on load), land focus on the
+  // new screen's heading, unless an autoFocus field already took it.
+  const stepRef = useRef<HTMLDivElement>(null);
+  const settled = useRef(false);
+  useEffect(() => {
+    if (!hydrated) return;
+    if (!settled.current) {
+      settled.current = true;
+      return;
+    }
+    const el = stepRef.current;
+    if (!el || el.contains(document.activeElement)) return;
+    el.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
+    const top = el.getBoundingClientRect().top;
+    if (top < 64 || top > window.innerHeight * 0.6) {
+      el.scrollIntoView({ block: "start" });
+    }
+  }, [hydrated, screen, draft?.step, viewId]);
+
   const setStep = useCallback(
     (step: Step) => {
       setDraft((d) => (d ? { ...d, step } : d));
@@ -985,24 +1007,26 @@ export default function PremortemClient() {
       viewId === "sample" ? SAMPLE_PREMORTEM : saved.find((p) => p.id === viewId) ?? null;
     if (pm) {
       return (
-        <PremortemView
-          pm={pm}
-          isSample={viewId === "sample"}
-          focusReasonId={focusReasonId}
-          onBack={goHome}
-          onCopy={() => copy(buildPremortemMemo(pm))}
-          onICS={() => downloadICS(pm)}
-          onShare={() => copyShareLink(pm)}
-          onReturn={() => copyReturnLink(pm)}
-          onDelete={() => deletePremortem(pm.id)}
-          onUpdateReason={(reasonId, fn) => updateSavedReason(pm.id, reasonId, fn)}
-          onLogDecision={(confidence, expectation) =>
-            logPremortemDecision(pm, confidence, expectation)
-          }
-          copied={copied}
-          shareCopied={shareCopied}
-          returnCopied={returnCopied}
-        />
+        <div ref={stepRef}>
+          <PremortemView
+            pm={pm}
+            isSample={viewId === "sample"}
+            focusReasonId={focusReasonId}
+            onBack={goHome}
+            onCopy={() => copy(buildPremortemMemo(pm))}
+            onICS={() => downloadICS(pm)}
+            onShare={() => copyShareLink(pm)}
+            onReturn={() => copyReturnLink(pm)}
+            onDelete={() => deletePremortem(pm.id)}
+            onUpdateReason={(reasonId, fn) => updateSavedReason(pm.id, reasonId, fn)}
+            onLogDecision={(confidence, expectation) =>
+              logPremortemDecision(pm, confidence, expectation)
+            }
+            copied={copied}
+            shareCopied={shareCopied}
+            returnCopied={returnCopied}
+          />
+        </div>
       );
     }
   }
@@ -1011,7 +1035,7 @@ export default function PremortemClient() {
   if (screen === "work" && draft) {
     if (draft.step === "plan") {
       return (
-        <div>
+        <div ref={stepRef}>
           <StepHeader step={1} label="The plan" onExit={abandonDraft} />
           <div className="mt-8">
             <label
@@ -1083,7 +1107,7 @@ export default function PremortemClient() {
     if (draft.step === "imagine") {
       const n = draft.reasons.length;
       return (
-        <div>
+        <div ref={stepRef}>
           <StepHeader step={2} label="The failure" onExit={abandonDraft} />
 
           {pooledCount > 0 && (
@@ -1169,6 +1193,10 @@ export default function PremortemClient() {
             </div>
           </div>
 
+          {/* Enter clears the box and keeps focus in it; say the list grew. */}
+          <AnnounceAnswer
+            message={n > 0 ? `${n} reason${n === 1 ? "" : "s"} so far.` : null}
+          />
           {n > 0 && (
             <ol className="mt-6 space-y-2">
               {draft.reasons.map((r, i) => (
@@ -1259,7 +1287,7 @@ export default function PremortemClient() {
 
     // ---- triage ----------------------------------------------------------
     return (
-      <div>
+      <div ref={stepRef}>
         <StepHeader step={3} label="The response" onExit={abandonDraft} />
 
         {pooledCount > 0 && (
@@ -1656,9 +1684,12 @@ function StepHeader({
 }) {
   return (
     <div className="flex items-center justify-between gap-3">
-      <span className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+      <h2
+        tabIndex={-1}
+        className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] focus:outline-none"
+      >
         Step {step} of 3 — {label}
-      </span>
+      </h2>
       <button
         type="button"
         onClick={onExit}
@@ -1737,7 +1768,10 @@ function PremortemView({
         </p>
       )}
 
-      <h2 className="mt-4 text-xl font-semibold tracking-tight text-[var(--foreground)] leading-snug">
+      <h2
+        tabIndex={-1}
+        className="mt-4 text-xl font-semibold tracking-tight text-[var(--foreground)] leading-snug focus:outline-none"
+      >
         {pm.plan}
       </h2>
       <p className="mt-2 text-sm text-[var(--muted)]">

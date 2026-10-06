@@ -15,6 +15,7 @@ import {
 } from "../data/carry";
 import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import PrintButton from "../components/PrintButton";
 import Link from "next/link";
 import {
@@ -1057,6 +1058,23 @@ export default function CompareClient() {
       ) : null}
 
       {/* ---- The reveal ---- */}
+      <AnnounceAnswer
+        message={
+          revealed && calc && winner
+            ? `Where the factors land: ${
+                calc.tooClose
+                  ? "Too close to separate — and that's the answer."
+                  : gutAgrees
+                    ? `Your reasons back your instinct: ${optionName(winner, 0)}.`
+                    : gutTiedWithTop
+                      ? `A near-tie: ${optionName(winner, 0)} edges it, but your gut's pick is right behind.`
+                      : `The gap worth examining: your gut wanted ${
+                          gutOption ? optionName(gutOption, 0) : "another"
+                        }, the factors say ${optionName(winner, 0)}.`
+              }`
+            : null
+        }
+      />
       {revealed && calc && winner ? (
         <div className="mt-5 rounded-xl border border-[var(--accent)] bg-[var(--card)] p-5 sm:p-6">
           <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">

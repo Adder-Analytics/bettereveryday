@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import {
   parkDecision,
   findParked,
@@ -304,6 +305,17 @@ export default function CoolClient() {
   // gets checked — did sleeping on it actually change the answer?
   const [coldPhase, setColdPhase] = useState<"decide" | "grade" | "done">("decide");
   const [coldGrade, setColdGrade] = useState<WaitGrade>("");
+  // Each beat swaps the banner's contents and removes the button just pressed,
+  // so focus would fall to <body>; hand it to the banner's heading instead.
+  const coldHeadingRef = useRef<HTMLParagraphElement>(null);
+  const coldFirstRender = useRef(true);
+  useEffect(() => {
+    if (coldFirstRender.current) {
+      coldFirstRender.current = false;
+      return;
+    }
+    coldHeadingRef.current?.focus({ preventScroll: true });
+  }, [coldPhase]);
 
   // The tool's reading of its own history: what it's still holding for you, and
   // how often the wait has actually changed a call. Loaded from the browser on
@@ -411,7 +423,11 @@ export default function CoolClient() {
       {/* ---- The cold return: you parked this, and it's back ---- */}
       {resumed ? (
         <div className="mb-6 rounded-xl border border-[var(--accent)] bg-[var(--card)] p-5 sm:p-6">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
+          <p
+            ref={coldHeadingRef}
+            tabIndex={-1}
+            className="text-xs font-semibold uppercase tracking-widest text-[var(--accent)] focus:outline-none"
+          >
             You&rsquo;re back — and cold
           </p>
           {coldPhase === "done" ? (
@@ -639,6 +655,7 @@ export default function CoolClient() {
       </div>
 
       {/* ---- The verdict ---- */}
+      <AnnounceAnswer message={verdict ? `The call: ${verdict.headline}` : null} />
       {verdict ? (
         <div
           className={`mt-5 rounded-xl border p-5 sm:p-6 ${

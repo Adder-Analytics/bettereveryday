@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 
 /**
  * Could you be wrong? (/test)
@@ -357,10 +358,24 @@ export default function TestClient() {
       ) : null}
 
       {/* ---- The read + handoff ---- */}
+      <AnnounceAnswer message={readHeadline(inp)} />
       <Verdict inp={inp} />
       <ClearCallButton storeKey={STORE_KEY} onReset={() => setInp(BLANK)} />
     </div>
   );
+}
+
+/** The read's headline as plain text, for the live region — mirrors Verdict. */
+function readHeadline(inp: Inputs): string | null {
+  if (!inp.belief.trim()) return null;
+  if (inp.sought === "nothing") return "The read: The belief can’t lose.";
+  if (!inp.disconfirmer.trim()) {
+    return "The read: You haven’t said what would change your mind.";
+  }
+  if (inp.sought === "looked") return "The read: It survived a real look.";
+  return inp.ooch.trim()
+    ? "The read: You have a test to run."
+    : "The read: You know the test — you haven't run it.";
 }
 
 function Verdict({ inp }: { inp: Inputs }) {

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { SITE_URL, icsEscape, icsStamp, wrapCalendar } from "../data/ics";
 import { countDueTripwireChecks } from "../data/premortem";
 import { readCarriedSubject, clearCarriedSubject } from "../data/carry";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import CarriedNote from "../components/CarriedNote";
 import PrintButton from "../components/PrintButton";
 
@@ -1341,6 +1342,13 @@ export default function DecideClient({
         </button>
       </div>
 
+      <AnnounceAnswer
+        message={
+          justLogged && loggedEntry
+            ? `Logged, with today's date and a review set for ${formatHuman(loggedEntry.reviewOn)}.`
+            : null
+        }
+      />
       {justLogged && (
         <div className="mt-4 rounded-lg border border-[var(--accent)] bg-[var(--card)] px-4 py-3">
           <p className="text-sm text-[var(--foreground)] leading-relaxed">

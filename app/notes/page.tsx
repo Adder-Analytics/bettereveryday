@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { sortedNotes, resolveNoteModels } from "../data/notes";
 import { formatDate } from "../data/posts";
+import { getToolsForModel, type Tool } from "../data/tools";
 
 export const metadata: Metadata = {
   title: "Reading Notes — Better Every Day",
@@ -39,6 +40,15 @@ export default function NotesPage() {
       <div className="space-y-16">
         {sortedNotes.map((note) => {
           const noteModels = resolveNoteModels(note);
+          // The instruments that run the note's idea, reached through the models
+          // it already names — so a note never declares tools of its own.
+          const noteTools = [
+            ...new Map(
+              noteModels
+                .flatMap((m) => getToolsForModel(m.id))
+                .map((t): [string, Tool] => [t.id, t])
+            ).values(),
+          ];
           return (
           <article key={note.slug} id={note.slug} className="scroll-mt-24">
             <header className="mb-6">
@@ -73,6 +83,22 @@ export default function NotesPage() {
                       className="text-[var(--accent)] hover:opacity-70 transition-opacity"
                     >
                       {m.name}
+                    </Link>
+                  </span>
+                ))}
+              </p>
+            )}
+            {noteTools.length > 0 && (
+              <p className="mt-2 text-xs text-[var(--muted)]">
+                Run it on a decision of your own:{" "}
+                {noteTools.map((t, i) => (
+                  <span key={t.id}>
+                    {i > 0 ? " · " : ""}
+                    <Link
+                      href={t.href}
+                      className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+                    >
+                      {t.name}
                     </Link>
                   </span>
                 ))}

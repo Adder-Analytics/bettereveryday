@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import PrintButton from "../components/PrintButton";
 
 /**
@@ -328,6 +329,19 @@ export default function DoorsClient() {
       </QuestionCard>
 
       {/* ---- The verdict ---- */}
+      <AnnounceAnswer
+        message={
+          verdict
+            ? `${verdict.ruin ? "First, the downside you can't take back. " : ""}The verdict: ${
+                verdict.band === "two-way"
+                  ? "A two-way door. Decide fast."
+                  : verdict.band === "one-way"
+                    ? "A one-way door. This earns the slowness."
+                    : "A one-and-a-half-way door."
+              }`
+            : null
+        }
+      />
       {verdict ? (
         <VerdictBlock verdict={verdict} inp={inp} thing={thing} />
       ) : (

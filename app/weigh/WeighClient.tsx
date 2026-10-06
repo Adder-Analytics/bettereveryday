@@ -14,6 +14,7 @@ import {
 } from "../data/carry";
 import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import PrintButton from "../components/PrintButton";
 import Link from "next/link";
 import {
@@ -615,6 +616,21 @@ export default function WeighClient() {
   // The one-line read of a shared decision waiting in the pending card.
   const pendingDesc = pendingShare ? describeShared(pendingShare) : null;
 
+  // The verdict's headline in the active frame, spoken by the live region.
+  const ab = inp.mode === "ab";
+  const announcePct = ab ? flipPctAB : flipPct;
+  const announceMargin = ab ? calcAB?.margin : calc?.margin;
+  const announce =
+    announcePct != null && announceMargin != null
+      ? `${inp.ruin ? "Stop — expected value is the wrong tool here. " : ""}The flip point: ${announcePct}%. ${
+          (ab ? tooCloseAB : tooClose)
+            ? "Too close to call — and that’s the answer."
+            : ab
+              ? `Clear enough: ${announceMargin > 0 ? inp.optionA.trim() || "A" : inp.optionB.trim() || "B"}.`
+              : `Clear enough: ${announceMargin > 0 ? inp.actLabel.trim() || "act" : inp.altLabel.trim() || "hold"}.`
+        }`
+      : null;
+
   return (
     <div>
       {/* ---- Shared with you: adopted whole into a blank tool ---- */}
@@ -747,6 +763,8 @@ export default function WeighClient() {
           inp.mode === "act" ? <WeighExample /> : <WeighExampleAB />
         ) : null}
       </div>
+
+      <AnnounceAnswer message={announce} />
 
       {inp.mode === "act" ? (
         /* ==================== ACT OR HOLD ==================== */

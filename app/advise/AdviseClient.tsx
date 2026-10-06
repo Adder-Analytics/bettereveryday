@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import { toThirdPerson } from "../data/reframe";
 
 /**
@@ -247,6 +248,14 @@ function computeOutcome(inp: Inputs): Outcome | null {
   return null;
 }
 
+/** The read's headline per outcome — shared by the card and the live region. */
+const HEADLINES: Record<Outcome, string> = {
+  "already-know": "You already knew. You just needed to hear it in the open.",
+  obstacle: "The decision was never the unclear part. This is.",
+  "different-real": "Fair — if that difference is real, it changes the advice.",
+  "different-pleading": "“My case is different” — but you can't say how.",
+};
+
 export default function AdviseClient() {
   const [inp, setInp] = useState<Inputs>(BLANK);
   const [hydrated, setHydrated] = useState(false);
@@ -452,6 +461,9 @@ export default function AdviseClient() {
       </div>
 
       {/* ---- The read ---- */}
+      <AnnounceAnswer
+        message={outcome ? `What the reframe shows: ${HEADLINES[outcome]}` : null}
+      />
       {outcome ? (
         <ReadBlock outcome={outcome} inp={inp} />
       ) : (
@@ -478,7 +490,7 @@ function ReadBlock({ outcome, inp }: { outcome: Outcome; inp: Inputs }) {
   let routes: { tool: string; label: string; note: string }[] = [];
 
   if (outcome === "already-know") {
-    headline = "You already knew. You just needed to hear it in the open.";
+    headline = HEADLINES["already-know"];
     body = (
       <p>
         That&rsquo;s the whole of Solomon&rsquo;s paradox: the answer was never
@@ -501,7 +513,7 @@ function ReadBlock({ outcome, inp }: { outcome: Outcome; inp: Inputs }) {
       },
     ];
   } else if (outcome === "obstacle" && block) {
-    headline = "The decision was never the unclear part. This is.";
+    headline = HEADLINES.obstacle;
     body = (
       <>
         <p>
@@ -519,7 +531,7 @@ function ReadBlock({ outcome, inp }: { outcome: Outcome; inp: Inputs }) {
     );
     routes = block.routes;
   } else if (outcome === "different-real") {
-    headline = "Fair — if that difference is real, it changes the advice.";
+    headline = HEADLINES["different-real"];
     body = (
       <>
         <p>
@@ -552,7 +564,7 @@ function ReadBlock({ outcome, inp }: { outcome: Outcome; inp: Inputs }) {
     ];
   } else {
     // different-pleading
-    headline = "“My case is different” — but you can't say how.";
+    headline = HEADLINES["different-pleading"];
     body = (
       <p>
         That&rsquo;s the tell. An asymmetry you can feel but can&rsquo;t state in

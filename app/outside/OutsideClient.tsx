@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import Link from "next/link";
 import {
   appendDecisionEntry,
@@ -733,6 +734,13 @@ export default function OutsideClient() {
       ) : null}
 
       {/* ---- The reveal: the base case vs your sealed plan ---- */}
+      <AnnounceAnswer
+        message={
+          inp.sealed && inp.inside != null && stats
+            ? `The base case: middle ${fmt(stats.median)} ${unit}. ${revealHeadline(stats, inp.inside)}`
+            : null
+        }
+      />
       {inp.sealed && inp.inside != null ? (
         stats ? (
           <Reveal
@@ -870,6 +878,23 @@ export default function OutsideClient() {
  * the re-import guard (if you adjust back to your first instinct without a
  * measured reason, you've smuggled the inside view back in).
  */
+function isNearMedian(stats: Stats, inside: number): boolean {
+  return stats.median > 0 && Math.abs(inside - stats.median) / stats.median <= 0.1;
+}
+
+/** The one-line read of where the plan lands against the class. */
+function revealHeadline(stats: Stats, inside: number): string {
+  const { min, max, median, n, sorted } = stats;
+  if (inside < min) return "Your plan is off the bottom of the whole class.";
+  if (inside < median) {
+    const higher = sorted.filter((v) => v > inside).length;
+    return `${higher} of ${n} comparable cases ran longer than your plan.`;
+  }
+  if (isNearMedian(stats, inside)) return "Your instinct lands near the middle of the class.";
+  if (inside <= max) return "Your instinct runs above the middle of the class.";
+  return "Your instinct runs above everything that actually happened.";
+}
+
 function Reveal({
   stats,
   inside,
@@ -887,16 +912,14 @@ function Reveal({
   onAdjusted: (v: number | null) => void;
   onReason: (v: string) => void;
 }) {
-  const { min, max, median, n, sorted } = stats;
-  const higher = sorted.filter((v) => v > inside).length;
+  const { min, max, median, n } = stats;
   const wide = min > 0 && max / min >= 3;
-  const nearMedian = median > 0 && Math.abs(inside - median) / median <= 0.1;
+  const nearMedian = isNearMedian(stats, inside);
 
   // The tiered read of where the plan lands.
-  let headline: string;
+  const headline = revealHeadline(stats, inside);
   let body: React.ReactNode;
   if (inside < min) {
-    headline = "Your plan is off the bottom of the whole class.";
     body = (
       <>
         Every one of the {n} comparable cases came in above your {fmt(inside)}-{unit}{" "}
@@ -907,7 +930,6 @@ function Reveal({
       </>
     );
   } else if (inside < median) {
-    headline = `${higher} of ${n} comparable cases ran longer than your plan.`;
     body = (
       <>
         Your instinct ({fmt(inside)} {unit}) sits below the middle of the class
@@ -918,7 +940,6 @@ function Reveal({
       </>
     );
   } else if (nearMedian) {
-    headline = "Your instinct lands near the middle of the class.";
     body = (
       <>
         Inside view and outside view agree — the rarer, calmer case. A forecast
@@ -927,7 +948,6 @@ function Reveal({
       </>
     );
   } else if (inside <= max) {
-    headline = "Your instinct runs above the middle of the class.";
     body = (
       <>
         Above the median ({fmt(median)} {unit}) but still inside the range. Either
@@ -938,7 +958,6 @@ function Reveal({
       </>
     );
   } else {
-    headline = "Your instinct runs above everything that actually happened.";
     body = (
       <>
         Your {fmt(inside)}-{unit} estimate is above the whole class ({fmt(min)}–

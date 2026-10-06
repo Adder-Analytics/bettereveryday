@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 
 /**
  * Ask your older self (/regret)
@@ -350,6 +351,11 @@ export default function RegretClient() {
       </div>
 
       {/* ---- The verdict ---- */}
+      <AnnounceAnswer
+        message={
+          verdict ? `What your older self sees: ${SHAPE_COPY[verdict.shape].verdict}` : null
+        }
+      />
       {verdict ? (
         <VerdictBlock verdict={verdict} inp={inp} />
       ) : (

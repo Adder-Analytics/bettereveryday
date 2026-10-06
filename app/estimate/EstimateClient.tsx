@@ -12,6 +12,7 @@ import {
   type EstimateQuestion,
 } from "../data/estimation";
 import { foldIntoDay, localDayISO } from "../data/history";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 
 /**
  * The lifetime record. Estimation skill, like calibration, is a pattern that
@@ -516,6 +517,17 @@ function DecomposeRound({
         </div>
       )}
 
+      <AnnounceAnswer
+        message={
+          phase === "done" && gutNum !== null && product !== null
+            ? `True answer: ${fmt(problem.answer)} ${problem.unit}. ${
+                logError(product, problem.answer) < logError(gutNum, problem.answer)
+                  ? "Your decomposition beat your gut."
+                  : "This time your gut held its own."
+              }`
+            : null
+        }
+      />
       {phase === "done" && gutNum !== null && product !== null && (
         <DecomposeResult
           problem={problem}
@@ -706,6 +718,7 @@ function OneshotRound({
         ))}
       </ol>
 
+      <AnnounceAnswer message={submitted ? oneshotHeadline(results) : null} />
       {!submitted ? (
         <div className="mt-8 flex items-center gap-4">
           <button onClick={submit} disabled={!allAnswered} className={primaryBtn}>
@@ -722,6 +735,19 @@ function OneshotRound({
   );
 }
 
+function oneshotScore(results: { logErr: number }[]) {
+  const n = results.length;
+  const within = results.filter((r) => r.logErr <= 1).length;
+  const meanLog = results.reduce((s, r) => s + Math.min(r.logErr, 6), 0) / n;
+  return { n, within, typicalFactor: Math.pow(10, meanLog) };
+}
+
+/** The round's headline as plain text, for the live region. */
+function oneshotHeadline(results: { logErr: number }[]): string {
+  const { n, within, typicalFactor } = oneshotScore(results);
+  return `Your round: ${within} of ${n} landed within an order of magnitude, and your typical miss was a factor of ${fmtFactor(typicalFactor)}×.`;
+}
+
 function OneshotResult({
   results,
   onAgain,
@@ -731,10 +757,7 @@ function OneshotResult({
   onAgain: () => void;
   onExit: () => void;
 }) {
-  const n = results.length;
-  const within = results.filter((r) => r.logErr <= 1).length;
-  const meanLog = results.reduce((s, r) => s + Math.min(r.logErr, 6), 0) / n;
-  const typicalFactor = Math.pow(10, meanLog);
+  const { n, within, typicalFactor } = oneshotScore(results);
 
   return (
     <div className="mt-10 rounded-lg border border-[var(--border)] bg-[var(--card)] p-5">

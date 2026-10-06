@@ -7,6 +7,7 @@ import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import { encodeShare, readShare, clearShare, SHARE_PARAM } from "../data/share";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import PrintButton from "../components/PrintButton";
 
 /**
@@ -554,6 +555,7 @@ export default function RuinClient() {
       ) : null}
 
       {/* ---- The read + handoff ---- */}
+      <AnnounceAnswer message={readHeadline(inp)} />
       <Verdict inp={inp} />
 
       {/* ---- Hand it to someone: the same check, carried person to person ---- */}
@@ -592,6 +594,21 @@ export default function RuinClient() {
       />
     </div>
   );
+}
+
+/** The read's headline as plain text, for the live region; null until there's a read. */
+function readHeadline(inp: Inputs): string | null {
+  if (!inp.decision.trim() || !inp.worst.trim()) return null;
+  if (inp.survive === "" || inp.odds === "" || inp.repeat === "") return null;
+  const headline =
+    inp.survive === "recover"
+      ? "This is a loss you can take."
+      : inp.survive === "noreturn"
+        ? "Don’t take this bet — take the version you’d survive."
+        : inp.survive === "setback"
+          ? "Treat it as ruin until you’ve put a floor under it."
+          : "Settle this one question first — it changes everything else.";
+  return `The read: ${headline}`;
 }
 
 function Verdict({ inp }: { inp: Inputs }) {
