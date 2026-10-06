@@ -5,6 +5,7 @@ import ClearCallButton from "../components/ClearCallButton";
 import { useEffect, useMemo, useState } from "react";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import PrintButton from "../components/PrintButton";
 import Link from "next/link";
 
@@ -330,6 +331,23 @@ export default function TraceClient() {
       />
 
       {/* ---- The read ---- */}
+      <AnnounceAnswer
+        message={
+          verdict.kind === "need-more"
+            ? null
+            : `The shape of this chain: ${
+                verdict.kind === "trap"
+                  ? "Purely pleasant now, the bill comes later — be suspicious."
+                  : verdict.kind === "treasure"
+                    ? "Costs up front, compounds after — give it a second look."
+                    : verdict.kind === "mixed"
+                      ? "The later effects cut both ways — and you’d have stopped at the win."
+                      : verdict.kind === "all-good"
+                        ? "Good all the way down — which is worth one more push."
+                        : "Worse now and worse later — the rare easy no."
+              }`
+        }
+      />
       <div className="mt-6 rounded-xl border border-[var(--accent)] bg-[var(--card)] p-5 sm:p-6">
         {verdict.kind === "need-more" ? (
           <div>

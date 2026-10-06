@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import PrintButton from "../components/PrintButton";
 
 /**
@@ -356,10 +357,34 @@ export default function StopClient() {
       ) : null}
 
       {/* ---- The read + handoff ---- */}
+      <AnnounceAnswer message={readHeadline(inp)} />
       <Verdict inp={inp} />
       <ClearCallButton storeKey={STORE_KEY} onReset={() => setInp(BLANK)} />
     </div>
   );
+}
+
+/** The read's headline as plain text, for the live region — mirrors Verdict. */
+function readHeadline(inp: Inputs): string | null {
+  if (!inp.search.trim() || inp.shape === "") return null;
+  if (inp.shape === "recall" || inp.shape === "allatonce") {
+    return "The read: This isn’t a stopping problem — it’s a comparison.";
+  }
+  if (inp.mode === "") return null;
+  const n = parseSize(inp.size);
+  const k = n !== null ? lookPhase(n) : null;
+  if (inp.mode !== "unbounded" && k === null) return null;
+  if (inp.pos === "looking") return "The read: Keep looking — and take nothing.";
+  if (inp.pos === "beater") return "The read: Take it.";
+  if (inp.pos === "searching") return "The read: Take the next one that beats your bar.";
+  if (inp.pos === "toolong") return "The read: You’re past the rule — call time.";
+  if (inp.mode === "unbounded") {
+    return "Your rule: Look at a handful to calibrate, then take the first that beats them.";
+  }
+  const look = k as number;
+  return inp.mode === "time"
+    ? `Your rule: Spend the first ${look === 1 ? "week" : `${look} weeks`} looking only. Then take the first that beats them.`
+    : `Your rule: Look at the first ${look === 1 ? "one" : look}, take none. Then take the first that beats all ${look === 1 ? "of it" : look}.`;
 }
 
 function Verdict({ inp }: { inp: Inputs }) {

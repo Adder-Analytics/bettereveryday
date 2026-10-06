@@ -12,6 +12,7 @@ import {
   withOptionList,
 } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import PrintButton from "../components/PrintButton";
 
 /**
@@ -456,6 +457,15 @@ export default function WidenClient() {
       </div>
 
       {/* ---- The read + handoff ---- */}
+      <AnnounceAnswer
+        message={
+          !inp.option.trim()
+            ? null
+            : reals.length < 2
+              ? `The read: ${shamCount > 0 ? "Every alternative here is a decoy." : "Still one option and its shadow."}`
+              : `The read: ${reals.length === 2 ? "Now it's a real two-way call." : `Now there's a real slate — ${reals.length} options.`}`
+        }
+      />
       <Verdict
         inp={inp}
         reals={reals}

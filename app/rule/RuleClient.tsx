@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject, withSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 import PrintButton from "../components/PrintButton";
 import { todayISO, addDaysISO } from "../data/decisionLog";
 
@@ -251,6 +252,16 @@ export default function RuleClient() {
           onPick={(id) => set("freq", id)}
         />
       </QuestionCard>
+
+      <AnnounceAnswer
+        message={
+          isOneOff
+            ? "This is the wrong tool — and that’s worth knowing. A one-off is decided once, well, not made into a rule."
+            : diagnosed
+              ? "Why a rule, and not more willpower: this call is worth deciding once, as a standing rule. Now write it as a bright line."
+              : null
+        }
+      />
 
       {/* ---- One-off: the wrong tool. Route away honestly. ---- */}
       {isOneOff ? (
