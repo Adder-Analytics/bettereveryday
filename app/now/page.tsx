@@ -78,6 +78,25 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Every tool ends in an answer, and on screen it&rsquo;s the loudest thing
+              on the page. To a screen reader it was silent: you picked the last
+              option and heard nothing, because not one of the tools announced its
+              result. Twenty-five of them now{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                say the answer when it arrives
+              </span>{" "}
+              &mdash; once it settles, not on every keystroke, and not when a saved
+              call reloads &mdash; and the pre-mortem now lands you on each new
+              step&rsquo;s heading instead of the top of the page. The{" "}
+              <Link
+                href="/notes"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                reading notes
+              </Link>{" "}
+              also now point to the tool that runs their idea.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Thirty-four of the{" "}
               <Link
                 href="/writing"
@@ -125,22 +144,6 @@ export default function Now() {
               </span>
               , under the same headings as the playbook, with a short index at
               the top and a way back to it after each group.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The{" "}
-              <Link
-                href="/models"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                mental models
-              </Link>{" "}
-              page runs to some forty phone screens, and someone arriving for one
-              idea had only the scroll bar to find it. It now opens on{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                an index of every model, sorted by domain
-              </span>{" "}
-              &mdash; the whole list fits in less than a screen &mdash; and each
-              model ends with a link back to it, the same way the playbook does.
             </li>
           </ul>
         </section>

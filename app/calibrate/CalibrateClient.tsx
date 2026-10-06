@@ -11,6 +11,7 @@ import {
   type BinaryQuestion,
 } from "../data/calibration";
 import { foldIntoDay, localDayISO } from "../data/history";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 
 /**
  * The lifetime record, the genuinely useful part: calibration is a fact about
@@ -466,6 +467,13 @@ function RangeRound({
         ))}
       </ol>
 
+      <AnnounceAnswer
+        message={
+          submitted
+            ? `The true answer fell inside ${hits} of ${questions.length} of your ranges. A well-calibrated 90% interval would catch about ${Math.round(questions.length * 0.9)}.`
+            : null
+        }
+      />
       {!submitted ? (
         <div className="mt-8 flex items-center gap-4">
           <button onClick={submit} disabled={!allAnswered} className={primaryBtn}>
@@ -678,6 +686,15 @@ function BinaryRound({
         ))}
       </ol>
 
+      <AnnounceAnswer
+        message={
+          submitted
+            ? `You got ${results.filter((r) => r.correct).length} of ${results.length} right, at an average confidence of ${Math.round(
+                results.reduce((s, r) => s + (r.confidence ?? 0), 0) / results.length
+              )}%.`
+            : null
+        }
+      />
       {!submitted ? (
         <div className="mt-8 flex items-center gap-4">
           <button onClick={submit} disabled={!allAnswered} className={primaryBtn}>

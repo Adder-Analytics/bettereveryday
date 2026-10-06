@@ -14,6 +14,7 @@ import {
 import { whenLabel, daysBetween } from "../data/review";
 import { SITE_URL, icsEscape, icsStamp, wrapCalendar } from "../data/ics";
 import { readCarriedSubject } from "../data/carry";
+import AnnounceAnswer from "../components/AnnounceAnswer";
 
 /**
  * The tripwire tool (/tripwire): arm a state-and-a-date anywhere, answer it here.
@@ -223,6 +224,15 @@ export default function TripwireClient() {
 
   const answered = list.filter((t) => !!t.checkedOn);
 
+  // Arming clears the form and lands the card further down — say what was armed.
+  const armedNow = justArmed ? list.find((t) => t.id === justArmed) : null;
+  const armedSignal = armedNow?.signal.replace(/\s+/g, " ").trim() ?? "";
+  const armedMessage = armedNow
+    ? `Tripwire armed. If ${
+        armedSignal.length > 110 ? `${armedSignal.slice(0, 109)}…` : armedSignal
+      }, by ${formatHuman(armedNow.checkOn)}, stop and reconsider.`
+    : null;
+
   if (!hydrated) {
     return (
       <p className="text-sm text-[var(--muted)]">Reading your tripwires…</p>
@@ -357,6 +367,7 @@ export default function TripwireClient() {
             </p>
           )}
 
+          <AnnounceAnswer message={armedMessage} />
           <div className="flex items-center gap-4 pt-1">
             <button
               type="button"
