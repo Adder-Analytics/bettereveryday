@@ -209,6 +209,17 @@ export const tools: Tool[] = [
     essays: ["the-one-thing-that-would-change-your-mind"],
   },
   {
+    id: "round",
+    href: "/round",
+    name: "Before Anyone Speaks",
+    short: "Blind round",
+    when: "Your group has to settle on one number — when it'll be done, what to budget, what to offer, how likely it is to work — and you can feel how it'll go: someone will say a number first, and everyone else will adjust from theirs.",
+    ask: "What does each of us actually think, before we hear each other — and is the spread telling us we're picturing different things?",
+    does: "Runs estimate–talk–estimate: everyone commits a number privately (one phone passed round, or by message), all are revealed at once, and the spread is read — agree and take the middle, or hear the two ends first and answer again. The group's number is the middle of the last round, with a check for a second round that just collapsed onto one person's first answer.",
+    payoff: "now",
+    models: ["independent-judgments", "anchoring"],
+  },
+  {
     id: "act",
     href: "/act",
     name: "Decided Isn't Done",
@@ -436,7 +447,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "quit", "rule"],
   },
   {
     id: "big-commitment",

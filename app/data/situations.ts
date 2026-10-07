@@ -635,6 +635,31 @@ export const situations: Situation[] = [
     essays: ["the-one-thing-that-would-change-your-mind"],
   },
   {
+    id: "group-needs-a-number",
+    title: "Your group has to agree on a number",
+    scene:
+      "The team needs a launch date for the client. The family needs a budget for the renovation. The partners need a price to offer. Everyone will talk, someone will say a number first, and you can already feel the meeting bending toward it.",
+    question: "What does each of us actually think before we hear each other — and if we're far apart, what is each of us picturing that the others aren't?",
+    models: [
+      {
+        id: "independent-judgments",
+        move: "A group's estimate beats an individual's only when the estimates are made apart, so their errors cancel instead of leaning the same way. Collect everyone's number privately before anyone speaks, and the group becomes a crowd instead of an echo of its first speaker.",
+      },
+      {
+        id: "anchoring",
+        move: "The first number said aloud sets the range for every number after it, even for people who think they're ignoring it. If it has to be said, have it said last, by the person whose view carries most weight.",
+      },
+      {
+        id: "outside-view",
+        move: "A group's middle still shares the group's optimism. For a timeline or a budget, set it against how long or how much projects like this one actually took before you promise it to anyone.",
+      },
+    ],
+    tool: {
+      id: "round",
+      move: "This is the exact moment the blind round is built for. Everyone answers privately, one phone passed round or by message. The numbers are revealed at once, and the spread is read: agree and take the middle, or hear from the two ends first and answer again. The group's number is the middle of the last round.",
+    },
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1004,6 +1029,7 @@ export const situationGroups: SituationGroup[] = [
     situationIds: [
       "someone-selling-you",
       "deadlocked-with-someone",
+      "group-needs-a-number",
       "designing-incentives",
       "stubborn-system",
     ],
