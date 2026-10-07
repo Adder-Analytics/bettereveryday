@@ -254,6 +254,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Before anyone speaks",
+    href: "/round",
+    snippet:
+      "Your group has to settle on one number — a deadline, a budget, a price to offer, the odds it works — and whoever says a number first will set it for everyone. Run a blind round: everyone answers privately, all numbers revealed at once, the two ends speak first, then everyone answers again. One phone passed round, or by message.",
+    meta: "Blind round — a group estimate without the anchor",
+    titleText:
+      "before anyone speaks blind round group estimate team estimate estimate together agree on a number group number meeting estimate planning poker delphi method estimate talk estimate wisdom of crowds independent judgments independent estimates anchoring first number groupthink herding senior voice hippo deadline timeline budget price to offer offer price how long will it take how much will it cost launch date estimate as a team family budget".toLowerCase(),
+    bodyText:
+      "before anyone speaks (/round): the instrument for a group that has to land on one number together — when the project will be done, what to budget, what to offer for the house, how likely the launch is to work. the usual way is to talk it through, and talking means someone says a number first; everyone after adjusts from it (anchoring), the most senior or confident voice pulls hardest, and the quiet person with the crucial fact nods along. the fix is the estimate-talk-estimate procedure from kahneman, sibony and sunstein's noise — the same idea as planning poker and the delphi method, and the reason galton's crowd at the ox-weighing contest beat its experts: many estimates only beat one when they're made independently, so the errors cancel instead of leaning the same way. round one: everyone commits a number privately with one line on why, either passing one phone round the table (each person taps their name, types, locks it in and hides it) or by message (the organizer sends an invite link that carries only the question; each person answers on their own screen and gets a reply link to send to the organizer alone, never the group thread; the organizer pastes the replies back in, still hidden). the reveal shows every number at once on a line with the middle (the median), and reads the spread: within a fifth of the middle you already agree, so take the middle and stop — more talk only adds noise; moderately apart, talk for five minutes; far apart (the high double the low or more), you're not estimating the same thing — different scope, a different idea of done, or a fact one person has — so the lowest and highest speak first about what they were counting, everyone else asks what are you including that i left out, and the most senior person speaks last. round two: everyone answers again privately; the group's number is the middle of round two, and the tool flags when everyone collapsed onto one person's first answer and that person didn't move — persuasion or deference? hands off to the outside view for a timeline or budget, the flip point for a probability, the crux finder if the group is still far apart, and the decision journal to log it. copy the result as text for the meeting notes. includes a read-only worked example: the website launch where the newest person knew about the client's legal review. nothing is sent to any server; the invite and replies ride in the link fragment. pairs with the independent judgments and anchoring models.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Cool the call",
     href: "/cool",
     snippet:

@@ -238,6 +238,15 @@ export const models: Model[] = [
     essays: ["anchoring"],
   },
   {
+    id: "independent-judgments",
+    name: "Independent Judgments",
+    domain: "Decisions",
+    tagline: "Many estimates beat one only if they're made apart — so collect the numbers before anyone talks.",
+    explanation:
+      "In 1906 Francis Galton collected the 787 tickets from a weight-judging contest at a country fair and found that the middle guess for the ox, 1,207 lb, was within 1% of its true weight of 1,198 lb. The crowd beat nearly every individual in it. James Surowiecki's The Wisdom of Crowds (2004) named the catch: it only works when the errors are independent, so that one person's overshoot cancels another's undershoot. Talk destroys that. Once a number is said aloud, every later estimate adjusts from it (anchoring), the senior or confident voice pulls hardest, and the group's errors start leaning the same way. Lorenz and colleagues (PNAS, 2011) watched it happen: letting people see each other's estimates narrowed the spread, made the group more confident, and did not make it more accurate. Kahneman, Sibony and Sunstein's Noise turns this into decision hygiene. Collect judgments independently first, then discuss, then estimate again privately and aggregate (estimate–talk–estimate, the core of the Delphi method and of planning poker). A wide spread in the first round is the most useful output, not an embarrassment: it usually means people are picturing different scope or one of them knows something the others don't. Hear from the two ends first and the senior voice last. The blind round on this site runs the procedure for any group, passing one phone round the table or by message.",
+    essays: [],
+  },
+  {
     id: "halo-effect",
     name: "Halo Effect",
     domain: "Psychology",

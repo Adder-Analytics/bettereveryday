@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "disagree"],
+        choiceIds: ["being-sold", "disagree", "group-number"],
       },
     ],
     choices: [
@@ -364,6 +364,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "compare",
             note: "If it comes down to a values split, make the weights explicit — you'll usually find you agree on every factor but one.",
+          },
+        },
+      },
+      {
+        id: "group-number",
+        label: "We have to agree on a number together — and whoever speaks first will set it.",
+        detail: "A deadline, a budget, a price to offer, the odds it works. In the meeting, the first number said becomes everyone's.",
+        rec: {
+          toolId: "round",
+          because:
+            "Don't talk first. Have everyone commit a number privately, reveal them all at once, and read the spread. Close together means you already agree, so take the middle and stop. Far apart means you're picturing different things. The two ends explain what they were counting, then everyone answers again privately, and the group's number is the middle of that second round.",
+          then: {
+            toolId: "outside",
+            note: "If the number is a timeline or a budget, check the group's middle against what happened to projects like it — a room shares its optimism.",
           },
         },
       },

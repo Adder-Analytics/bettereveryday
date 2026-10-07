@@ -127,6 +127,20 @@ export function readShare(tool: string): unknown | null {
     if (!hash || hash.length < 2) return null;
     const params = new URLSearchParams(hash.slice(1));
     const token = params.get(SHARE_PARAM);
+    return token ? decodeShareToken(tool, token) : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Decode a bare token (the value after `#s=`) for the given tool — the same
+ * checks as `readShare`, for a link that arrives as pasted text rather than in
+ * the address bar. The blind round needs it: each person's reply comes back as
+ * a link sent to the organizer, who pastes several at once. Never throws.
+ */
+export function decodeShareToken(tool: string, token: string): unknown | null {
+  try {
     if (!token || token.length > MAX_ENCODED) return null;
     const json = new TextDecoder().decode(base64UrlToBytes(token));
     const env = JSON.parse(json) as unknown;

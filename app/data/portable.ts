@@ -361,6 +361,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a disagreement in progress" : null),
   },
   {
+    key: "round:v1",
+    tool: "Before anyone speaks",
+    href: "/round",
+    label: "The number your group last estimated in a blind round",
+    answerNow: true,
+    subject: subjectField("question"),
+    describe: (raw) => (parse(raw) ? "a blind round in progress" : null),
+  },
+  {
     key: "enough:v1",
     tool: "Enough to decide?",
     href: "/enough",

@@ -78,6 +78,26 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A new instrument for a moment nothing here covered: a group that has
+              to agree on one number &mdash; a deadline, a budget, a price to offer
+              &mdash; where whoever speaks first sets it for everyone.{" "}
+              <Link
+                href="/round"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Before anyone speaks
+              </Link>{" "}
+              runs a{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                blind round
+              </span>
+              : everyone answers privately, passing one phone round the table or
+              by message, the numbers are revealed at once, the two ends speak
+              first, and everyone answers again. It reaches both front doors, the
+              guided one and the playbook, and it was built to share from the
+              start.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Every tool ends in an answer, and on screen it&rsquo;s the loudest thing
               on the page. To a screen reader it was silent: you picked the last
               option and heard nothing, because not one of the tools announced its
@@ -126,24 +146,6 @@ export default function Now() {
               found and every instance &mdash; a hundred and sixteen of them,
               most inside the tools&rsquo; own answers &mdash; is fixed at once,
               with a check that stops it coming back.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The{" "}
-              <Link
-                href="/writing"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essays
-              </Link>{" "}
-              opened in the order they were written, so the first screen was the
-              oldest and least useful of them, behind a row of topic tags that
-              couldn&rsquo;t tell them apart &mdash; nearly every essay was tagged
-              &ldquo;decisions.&rdquo; They&rsquo;re now{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                sorted by what&rsquo;s making the decision hard
-              </span>
-              , under the same headings as the playbook, with a short index at
-              the top and a way back to it after each group.
             </li>
           </ul>
         </section>
@@ -206,9 +208,10 @@ export default function Now() {
               call, and the ones left single-player are that way on purpose: a
               private nudge like cooling a hot call or asking your older self, and
               the process and return tools that hold your own record, aren&rsquo;t
-              artifacts you hand someone to argue back with. The link to watch for
-              is a genuinely new instrument that produces a decision made with
-              another person &mdash; it should ship shareable, not have sharing
+              artifacts you hand someone to argue back with. The blind round is the first
+              instrument built for several people from the start: its invite and
+              replies are links too. Any further tool that produces a decision
+              made with other people should ship the same way, not have sharing
               bolted on later.
             </li>
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
