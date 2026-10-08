@@ -28,7 +28,7 @@ type EssayGroup = {
 const essayGroups: EssayGroup[] = [
   {
     id: "options",
-    slugs: ["whether-or-not", "the-flip-point", "look-then-leap"],
+    slugs: ["whether-or-not", "the-flip-point", "neither-is-better", "look-then-leap"],
   },
   {
     id: "stakes",

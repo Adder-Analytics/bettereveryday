@@ -78,6 +78,32 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Every tool here assumed a stuck choice was missing something &mdash; a
+              fact, a probability, distance from a feeling. Some aren&rsquo;t. When two
+              good options each give you something the other can&rsquo;t, and the list
+              comes out even every time,{" "}
+              <Link
+                href="/par"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Neither one wins
+              </Link>{" "}
+              runs Ruth Chang&rsquo;s{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                small-improvement test
+              </span>{" "}
+              to tell a real hard choice from a tie, a missing fact, or a choice that
+              only hurts. If the two are on a par, it stops the weighing and helps you
+              commit to the one you&rsquo;ll stand behind. A new{" "}
+              <Link
+                href="/writing/neither-is-better"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains the idea, and the comparison now hands a too-close pair here.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A new instrument for a moment nothing here covered: a group that has
               to agree on one number &mdash; a deadline, a budget, a price to offer
               &mdash; where whoever speaks first sets it for everyone.{" "}
@@ -134,19 +160,6 @@ export default function Now() {
               instead of the order they were written in, so the essay on loss
               aversion no longer leads into one on being bored of practice.
             </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A quirk in the build was quietly{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                gluing words together
-              </span>{" "}
-              &mdash; the homepage&rsquo;s first sentence read &ldquo;twenty-fourworking
-              instruments,&rdquo; and a near-tie in the comparison tool came out as
-              &ldquo;Option Aedges it.&rdquo; It
-              had been fixed a sentence at a time for months. The cause is now
-              found and every instance &mdash; a hundred and sixteen of them,
-              most inside the tools&rsquo; own answers &mdash; is fixed at once,
-              with a check that stops it coming back.
-            </li>
           </ul>
         </section>
 
@@ -200,8 +213,9 @@ export default function Now() {
               The analytic kit is deliberately thinnest on the emotional half of a
               hard call &mdash; competing values, the weight of the choice. It&rsquo;s
               more covered than it looks (cool the call, the regret test, advice
-              for a friend), but it&rsquo;s the axis to watch, not to paper over
-              with another worksheet.
+              for a friend, and now the hard-choice test, which ends in a
+              commitment rather than a score), but it&rsquo;s the axis to watch,
+              not to paper over with another worksheet.
             </li>
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Peer-sharing is now finished for the tools built around a shared

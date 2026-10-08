@@ -1914,6 +1914,58 @@ export const posts: Post[] = [
 
 <p>Diagoras had no data and needed none. He just asked who was missing from the picture, and the picture fell apart. Most bad conclusions drawn from success would fall apart the same way, if we remembered to ask where the drowned were painted.</p>`,
   },
+  {
+    slug: "neither-is-better",
+    title: "Neither Is Better",
+    date: "2026-10-08",
+    excerpt:
+      "You've made the list four times and it keeps coming out even. The natural conclusion is that you're missing something, and one more pass will find it. Sometimes that's true. But some choices aren't missing anything: the options are on a par, and a par isn't settled by weighing. It's settled by committing.",
+    readTime: 7,
+    tags: ["decisions", "thinking"],
+    content: `<p>Two offers. One is the job you spent six years training for, in a city where you know nobody. The other is staying where you are, ten minutes from your sister and her kids, doing work that&rsquo;s fine. You know the salaries. You&rsquo;ve visited. You&rsquo;ve talked to everyone worth talking to. You have made the list of pros and cons four times, in four different formats, and it keeps coming out even.</p>
+
+<p>The usual reading of that situation is that something is wrong with you, or with your list. You must be missing a fact. Or you haven&rsquo;t weighed things properly. Or you&rsquo;re afraid of something you won&rsquo;t admit. Any of those might be true, and the rest of this site has tools for each of them. But there&rsquo;s another possibility, and it changes what you should do next: nothing is wrong. The two options are <em>on a par</em>, and no amount of weighing will separate them, because there&rsquo;s nothing there to find.</p>
+
+<h2>Better, worse, equal &mdash; and a fourth thing</h2>
+
+<p>We tend to assume that any two options stand in one of three relations. One is better, the other is better, or they&rsquo;re equally good. If you can&rsquo;t tell which, the problem must be you: you don&rsquo;t know enough. The philosopher Ruth Chang has spent much of her career arguing that this picture is incomplete. In her paper &ldquo;Hard Choices&rdquo; (2017) and a widely watched TED talk (2014), she argues that options can be comparable and yet stand in none of those three relations. Neither is better, and they aren&rsquo;t equal either. They&rsquo;re on a par: in the same league of value, but good in different ways that no common scale ranks.</p>
+
+<p>That sounds like a philosopher&rsquo;s distinction, but it has a test you can run at the kitchen table. Chang calls it the small-improvement argument. Take the two options and make one of them a little better: a bit more salary, a slightly shorter commute, one more week of holiday. Now ask: does that settle it?</p>
+
+<p>If the two options were exactly equal, it has to. Equal plus a little is better. Equal options are balanced on a knife edge, and the smallest gain tips them. But that&rsquo;s rarely what people report about their genuinely hard choices. A few thousand more a year doesn&rsquo;t make the research job the clear winner over being near family. A shorter commute doesn&rsquo;t make staying the clear winner over the work. Each option can absorb a small improvement and still not beat the other. That&rsquo;s the signature of a par. If they were equal, you&rsquo;d be tipped. If one were better, you&rsquo;d know. You aren&rsquo;t, and you don&rsquo;t.</p>
+
+<h2>Four things that feel the same from inside</h2>
+
+<p>The useful thing about the test is that it separates four situations that all feel like &ldquo;I can&rsquo;t decide&rdquo;, and each one calls for something different.</p>
+
+<p><strong>One option is better, and choosing it hurts.</strong> Often, when you set the list aside and ask honestly, all things considered, you do know. What makes it feel hard is that the better option still costs you the best thing about the other one. That&rsquo;s a painful choice, not a hard one. The pain is real, but it isn&rsquo;t evidence that you chose wrong, and reopening the question every time you feel it is the mistake.</p>
+
+<p><strong>A fact is missing.</strong> If there&rsquo;s something you could find out that would settle it (whether the contract gets renewed, whether the school has a place), you aren&rsquo;t facing a hard choice. You&rsquo;re facing an unfinished one. The move is to check that the fact <a href="/writing/what-would-you-do-either-way">would really change what you do</a>, and then go and get it.</p>
+
+<p><strong>They&rsquo;re equal.</strong> If a small improvement to either would tip it, the options are as good as each other, and the only remaining cost is the time you spend agonizing. Flip a coin. (If the coin lands and your stomach drops, that tells you something. Go the other way.)</p>
+
+<p><strong>They&rsquo;re on a par.</strong> You know enough, neither is better, and small improvements don&rsquo;t settle it. This is the case the usual advice handles worst, because the usual advice is to analyze harder, and here analysis has nothing to find.</p>
+
+<h2>What you do with a par</h2>
+
+<p>Chang&rsquo;s answer is the part of her view people quote most. When the reasons given to you by the world run out &mdash; when they say the options are on a par &mdash; you can create a reason of your own by committing to one of them. You put yourself behind it. You become the kind of person who chose the work while the door was open, or the kind who chose to be there for the people they love. That commitment isn&rsquo;t a guess at a hidden right answer, which means it can&rsquo;t be a mistake of that kind. You didn&rsquo;t fail to find the better option. There wasn&rsquo;t one. You chose yours.</p>
+
+<p>This matters practically, not just philosophically. People stuck in a par tend to do one of two things. They keep researching, hoping the next fact will do the choosing for them, and months pass. Or they let the choice make itself. Chang calls this <em>drifting</em>: the offer lapses, the default wins, and they end up wherever not deciding leads, which is usually where they already were. Drifting feels safer than committing, because nobody chose it. But it&rsquo;s still a choice, made by inertia, and it carries none of the commitment that would let you stand behind it on the bad days.</p>
+
+<p>There is some evidence that the default deserves less trust than it gets. The economist Steven Levitt ran an unusual experiment: people stuck on a major decision (quitting a job, ending a relationship, moving) could let a coin decide, and more than 20,000 coins were flipped. When he followed up, those the coin sent toward making the change were, on average, happier six months later than those it sent toward staying put. The sample was self-selected and the effect modest, so it isn&rsquo;t a reason to always change. It is a reason not to let staying put win just because it&rsquo;s what happens when you don&rsquo;t decide.</p>
+
+<h2>The honest limits</h2>
+
+<p>Three, because the idea is freeing enough to be misused.</p>
+
+<p>First, &ldquo;it&rsquo;s a par&rdquo; can be a way to skip the work. If you haven&rsquo;t actually looked at the options side by side, or haven&rsquo;t checked the one fact that might settle it, calling it a par is just a respectable name for not thinking. The test only works after the weighing is done. It&rsquo;s for the fourth time the list comes out even, not the first.</p>
+
+<p>Second, Chang&rsquo;s view is contested. Some philosophers think what she calls parity is better explained as vagueness, or as our values simply not settling the question. For the person at the kitchen table, though, the practical upshot is much the same: more weighing won&rsquo;t produce an answer, and the call has to come from you.</p>
+
+<p>Third, committing doesn&rsquo;t make the other option disappear. You&rsquo;ll still feel the loss of what you didn&rsquo;t choose, sometimes sharply, and some days the other path will look better. That isn&rsquo;t evidence that you got it wrong. On a par, there was no &ldquo;right&rdquo; to get. The work, after choosing, is to make the commitment real: a first move this week, so the decision doesn&rsquo;t <a href="/writing/deciding-and-doing">quietly drift back to the default</a>.</p>
+
+<p>There&rsquo;s a <a href="/par">tool for this</a> on the site. Name the two options and what only each one gives you. It asks whether one is better, whether a fact is missing, and runs the small-improvement test on both. If it&rsquo;s a real par, it asks you to finish one sentence for each option &mdash; &ldquo;choosing this, I&rsquo;m someone who&hellip;&rdquo; &mdash; names which option wins if you never decide, and writes down the one you&rsquo;ll stand behind. It won&rsquo;t tell you which is better, because neither is. It helps you stop looking for an answer that isn&rsquo;t there, and choose.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

@@ -134,7 +134,7 @@ const nodes: Record<string, TriageNode> = {
         id: "options",
         label: "It's the options themselves",
         short: "The options",
-        choiceIds: ["whether-or-not", "two-odds", "several", "keep-looking"],
+        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking"],
       },
       {
         id: "stakes",
@@ -253,6 +253,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "tripwire",
             note: "Once you've picked a side, set the signal that would tell you you were wrong.",
+          },
+        },
+      },
+      {
+        id: "even",
+        label: "Two good options, and however I weigh them it comes out even.",
+        detail: "Each gives me something the other can't. I've made the list more than once, and I keep thinking one more pass will settle it.",
+        rec: {
+          toolId: "par",
+          because:
+            "First find out what kind of even this is. If a small gain to either option would settle it, they're simply equal: flip a coin and stop. If a fact you could find out would settle it, go and find it out. But if nothing small tips it, the two are on a par: good in different ways that no scale ranks. Then there's no hidden answer for more weighing to find, and you settle it by committing to the one you'll stand behind.",
+          then: {
+            toolId: "act",
+            note: "Once you've committed, make the first move this week — a commitment that lives only in your head drifts back to whatever happens by default.",
           },
         },
       },

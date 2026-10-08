@@ -1279,7 +1279,10 @@ export default function CompareClient() {
           decides between them and which way you'd regret being wrong. That's the
           flip point's A/B frame, and it's built for exactly two options. This card
           takes the place of the journal handoff in the too-close case (they're
-          mutually exclusive), turning a former dead-end into a live next step. */}
+          mutually exclusive), turning a former dead-end into a live next step.
+          When no unknown separates them at all, the two may be on a par, so the
+          card also offers /par, which tells a par from a tie and ends in a
+          commitment instead of a line. */}
       {revealed && calc && winner && calc.tooClose && calc.ranked.length >= 2 ? (() => {
         const fA = calc.ranked[0];
         const fB = calc.ranked[1];
@@ -1310,6 +1313,22 @@ export default function CompareClient() {
             >
               Take {labelA} and {labelB}{" "}to the flip point &rarr;
             </Link>
+            <p className="mt-4 pt-4 border-t border-[var(--border)] text-sm text-[var(--muted)] leading-relaxed">
+              If no unknown separates them &mdash; you know the facts and each is
+              simply good in a way the other isn&rsquo;t &mdash; they may be on a
+              par, and no line will settle it.{" "}
+              <Link
+                href={withOptions("/par", {
+                  subject: state.decision,
+                  optionA: labelA,
+                  optionB: labelB,
+                  from: "compare",
+                })}
+                className="font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Test whether they&rsquo;re on a par &rarr;
+              </Link>
+            </p>
           </div>
         );
       })() : null}
