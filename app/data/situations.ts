@@ -750,6 +750,36 @@ export const situations: Situation[] = [
     essays: ["the-flip-point", "loss-aversion"],
   },
   {
+    id: "neither-wins",
+    title: "Two good options, and neither one wins",
+    scene:
+      "The job you trained for or the town your family is in. The steady partner track or the thing you'd always wonder about. You know the facts, you've made the list four times, and it comes out even every time. You've started to suspect something's wrong with you for not being able to choose.",
+    question: "Is this a tie, a missing fact, or a real hard choice — and if it's a hard choice, which one will I stand behind?",
+    models: [
+      {
+        id: "parity",
+        move: "Run the small-improvement test. Make one option a little better: a bit more pay, a slightly shorter commute. If that settles it, they were equal, so flip a coin. If it doesn't, they're on a par, and no further weighing will find an answer, because there isn't one to find. You settle a par by committing.",
+      },
+      {
+        id: "value-of-information",
+        move: "Before calling it a par, check that it isn't ignorance. Name any fact you could still find out and ask what you'd do under each answer. If one would settle it and you can learn it in time, that's your next step, not soul-searching.",
+      },
+      {
+        id: "self-distancing",
+        move: "Ask what you'd tell a friend in exactly this spot. When the honest advice is 'either is fine, pick the one that's you', take that seriously: it's the right answer to a par, not a dodge.",
+      },
+      {
+        id: "loss-aversion",
+        move: "Whichever you choose, you'll lose the best thing about the other, and that loss will sting more than the gain feels good. Expect the sting, and don't read it as proof you chose wrong.",
+      },
+    ],
+    tool: {
+      id: "par",
+      move: "This is the exact moment Neither One Wins is built for. It separates a real hard choice from the three things it's mistaken for (one option is better, a fact is missing, a plain tie), using Ruth Chang's small-improvement test. If the two are on a par, it stops the weighing, asks what each choice would make you, warns you if one of them wins by default, and writes your commitment as a sentence you can keep.",
+    },
+    essays: ["neither-is-better"],
+  },
+  {
     id: "weigh-it-through",
     title: "Any other decision — weigh it through",
     scene:
@@ -994,7 +1024,7 @@ export const situationGroups: SituationGroup[] = [
   {
     id: "options",
     label: "It's the options themselves",
-    situationIds: ["whether-or-not", "stuck-between-two", "cant-stop-looking", "weigh-it-through"],
+    situationIds: ["whether-or-not", "stuck-between-two", "neither-wins", "cant-stop-looking", "weigh-it-through"],
   },
   {
     id: "stakes",

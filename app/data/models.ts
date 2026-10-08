@@ -247,6 +247,15 @@ export const models: Model[] = [
     essays: [],
   },
   {
+    id: "parity",
+    name: "Hard Choices (Parity)",
+    domain: "Decisions",
+    tagline: "Some options aren't better, worse or equal — they're on a par, and you settle those by committing, not by weighing more.",
+    explanation:
+      "The philosopher Ruth Chang (Hard Choices, 2017; her TED talk, 2014) argues that we misread our hardest choices. We assume that when two options won't rank, it's because we don't know enough, or because the values can't be compared at all. Often neither is true. The options are comparable, neither is better, and they aren't equally good either: they are on a par. The test that tells parity from equality is the small-improvement argument. If two options were exactly equal, a slight gain to one (a little more salary, a slightly shorter commute) would make it better and settle the choice. When a small gain to either side still leaves you unable to choose, they weren't equal; they're good in different ways that no common scale ranks. That changes what to do. A tie should be flipped, since nothing rides on which. A missing fact should be found out. But a par has no hidden answer for more analysis to uncover, and searching for one is how people get stuck for months or let the default win by drift. Chang's answer is that in a par you can commit: put yourself behind one option and make that commitment a reason that wasn't there before. You don't discover which is better. You decide which you'll be. Steven Levitt's coin-toss study (Review of Economic Studies, 2021) adds a practical warning: among more than 20,000 undecided people, those the coin nudged toward a change were on average happier six months later, so on close calls the status quo tends to be overrated. The tool Neither One Wins runs the test and the commitment on a choice of your own.",
+    essays: ["neither-is-better"],
+  },
+  {
     id: "halo-effect",
     name: "Halo Effect",
     domain: "Psychology",

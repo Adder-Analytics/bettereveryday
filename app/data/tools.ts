@@ -126,6 +126,18 @@ export const tools: Tool[] = [
     essays: ["anchoring"],
   },
   {
+    id: "par",
+    href: "/par",
+    name: "Neither One Wins",
+    short: "On a par",
+    when: "You're down to two good options, each with something the other can't give you — the work or the people, the city or the quiet — and every time you weigh them it comes out even. You keep thinking one more pass will find the answer.",
+    ask: "Is one actually better, am I missing a fact, are they simply equal — or is this a hard choice that's mine to make by committing?",
+    does: "Runs Ruth Chang's small-improvement test to tell a real hard choice (two options on a par) from the three things it gets mistaken for: a painful choice where one is better, a fact you could find out, and a plain tie you should flip. If it's a par, it stops the weighing and helps you commit to the one you'll stand behind, written as a sentence you can keep.",
+    payoff: "now",
+    models: ["parity"],
+    essays: ["neither-is-better"],
+  },
+  {
     id: "outside",
     href: "/outside",
     name: "You Are Not the Exception",
@@ -447,7 +459,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "quit", "rule"],
   },
   {
     id: "big-commitment",

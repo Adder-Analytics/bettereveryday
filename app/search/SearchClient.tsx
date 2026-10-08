@@ -254,6 +254,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Neither one wins",
+    href: "/par",
+    snippet:
+      "Two good options, each with something the other can't give, and every pass at the pros and cons comes out even. Find out whether one is really better, a fact is missing, they're a plain tie to flip, or they're on a par — a hard choice you settle by committing to the one you'll stand behind.",
+    meta: "On a par — the hard choice more weighing won't settle",
+    titleText:
+      "neither one wins on a par parity hard choice hard choices ruth chang small improvement test small-improvement argument can't decide between two can't choose between two torn between two options two good options both good options equally good tie tied coin flip flip a coin commit commitment who do i want to be values clash competing values incommensurable incomparable pros and cons list keeps coming out even analysis paralysis drifting status quo default levitt coin toss job or family move or stay".toLowerCase(),
+    bodyText:
+      "neither one wins (/par): the instrument for a choice between two good options that won't settle however you weigh it — each gives you something the other can't, and the list comes out even every time. it draws on ruth chang's account of hard choices: we assume that options which won't rank must be missing information or be incomparable, but often they're on a par — comparable, neither better, and not equally good either. the small-improvement test tells a par from a tie: if two options were exactly equal, a slight gain to one (a little more pay, a slightly shorter commute) would settle it; if a small gain to either still leaves you unable to choose, they're on a par. the tool sorts the moment into four reads. one is better overall: not a hard choice but a painful one, because you still lose the best thing about the other — go, and don't treat the loss as proof you chose wrong; hands off to make it happen (/act) and ask your older self (/regret). a fact would settle it: not hard, unfinished — check it would change the call and can be learned cheaply and in time; hands off to enough to decide (/enough) and could you be wrong (/test). a tie, or one with a hair of an edge: flip a coin, or take the edge, and stop weighing. on a par: there's no hidden answer for more analysis to find, so settle it by committing — finish 'choosing this, i'm someone who…' for each option, name which one happens anyway if you never decide (steven levitt's coin-toss study of more than 20,000 undecided people found those nudged toward a change were on average happier six months later, so the status quo tends to be overrated on close calls), pick the one you'll stand behind, and get your commitment as a sentence you can keep and copy. hands off to the journal (/decide) and make it happen. the comparison's too-close-to-call result hands its two finalists here. includes a read-only worked example: a research job in edinburgh against staying in bristol near family. nothing is sent anywhere; inputs persist in your browser. pairs with the hard choices (parity) model.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Before anyone speaks",
     href: "/round",
     snippet:
