@@ -488,6 +488,36 @@ export const situations: Situation[] = [
     essays: ["never-ask-a-barber"],
   },
   {
+    id: "about-to-negotiate",
+    title: "You're about to negotiate a number",
+    scene:
+      "The offer call is tomorrow. The dealer wants to talk numbers. The agent says the sellers are open to offers. You know roughly what you hope for and roughly what would be too low, and roughly is all you've got.",
+    question: "What will I actually do if this falls through — and so what's the worst deal I'll still take?",
+    models: [
+      {
+        id: "batna",
+        move: "Your walk-away point comes from your best alternative, not from what you'd like. Name what you'll actually do if there's no deal, put a number on it, and adjust for what this deal offers beyond the price. Below that line, no is the right answer, and deciding it now is what keeps you from talking yourself past it in the room.",
+      },
+      {
+        id: "anchoring",
+        move: "The first number said pulls the final one toward it. If you know the market at least as well as they do, name yours first, a little past your target, with a reason. If they've already named theirs, counter from your target, not from their number.",
+      },
+      {
+        id: "loss-aversion",
+        move: "In the room, walking away feels like losing the deal, and that loss looms larger than a worse price. People take deals below their own alternative just to avoid an impasse. A line set beforehand is the counterweight.",
+      },
+      {
+        id: "opportunity-cost",
+        move: "The deal's real price is what you give up by not taking the alternative. A number that feels disappointing can still beat it, and a number that feels exciting can still lose to it.",
+      },
+    ],
+    tool: {
+      id: "walkaway",
+      move: "This is the exact moment the walk-away tool is built for. It turns your alternative into a walk-away point, sets a target you can justify, tells you if there's room for a deal at all, and whether to name the first number. Then it checks any offer on the table against the line you set before you walked in.",
+    },
+    essays: ["decide-your-line-first", "anchoring"],
+  },
+  {
     id: "not-enough-to-decide",
     title: "You keep needing to know more before you'll decide",
     scene:
@@ -1058,6 +1088,7 @@ export const situationGroups: SituationGroup[] = [
     label: "It's other people — or the system they're in",
     situationIds: [
       "someone-selling-you",
+      "about-to-negotiate",
       "deadlocked-with-someone",
       "group-needs-a-number",
       "designing-incentives",

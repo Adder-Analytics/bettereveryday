@@ -66,6 +66,7 @@ const essayGroups: EssayGroup[] = [
     slugs: [
       "the-one-thing-that-would-change-your-mind",
       "never-ask-a-barber",
+      "decide-your-line-first",
       "metric-not-the-mission",
       "second-order-thinking",
       "the-bill-comes-later",
