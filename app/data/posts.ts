@@ -1966,6 +1966,70 @@ export const posts: Post[] = [
 
 <p>There&rsquo;s a <a href="/par">tool for this</a> on the site. Name the two options and what only each one gives you. It asks whether one is better, whether a fact is missing, and runs the small-improvement test on both. If it&rsquo;s a real par, it asks you to finish one sentence for each option &mdash; &ldquo;choosing this, I&rsquo;m someone who&hellip;&rdquo; &mdash; names which option wins if you never decide, and writes down the one you&rsquo;ll stand behind. It won&rsquo;t tell you which is better, because neither is. It helps you stop looking for an answer that isn&rsquo;t there, and choose.</p>`,
   },
+  {
+    slug: "decide-your-line-first",
+    title: "Decide Your Line Before the Room Does",
+    date: "2026-10-09",
+    excerpt:
+      "Most people walk into a negotiation knowing roughly what they hope for and roughly what's too low. Roughly is how the line gets drawn in the room, by the other side's first number and by how much nobody likes saying no. Set it the night before, from the one thing that actually decides it: what you'll do if there's no deal.",
+    readTime: 7,
+    tags: ["decisions", "psychology"],
+    content: `<p>The recruiter calls on Thursday afternoon. They&rsquo;re delighted. The team loved you. The offer is &pound;60,000. There&rsquo;s a pause, the kind that is meant for you to fill, and you hear yourself say that it sounds great, though you were hoping for a bit more. They say they&rsquo;ll see what they can do. On Monday it&rsquo;s &pound;61,500, and you take it, and for about a week you feel fine.</p>
+
+<p>Nothing went wrong in that call, exactly. You were polite, you asked, you got a little more. What went wrong happened before it: you didn&rsquo;t know where your line was. You knew roughly what you hoped for and roughly what would feel too low. When the line is &ldquo;roughly&rdquo;, it doesn&rsquo;t hold anything. It gets drawn in the room, by two forces that have nothing to do with what the deal is worth to you.</p>
+
+<h2>The two forces in the room</h2>
+
+<p>The first is their number. Whoever names a figure first sets the point everyone adjusts from. Adam Galinsky and Thomas Mussweiler showed in 2001 that first offers predict final settlements, and the <a href="/writing/anchoring">same anchoring</a> moves judges&rsquo; sentences and estimates of the Nile. &pound;60,000 wasn&rsquo;t a fact about the role. It was where they chose to start, and after you heard it, &ldquo;a bit more&rdquo; meant a bit more than that.</p>
+
+<p>The second is the discomfort of no. In 2016 Ece Tuncel and three colleagues ran a set of studies with an unsettling result. Offered two options, people chose a worse one more often when it was labelled &ldquo;agreement&rdquo; than when it was labelled &ldquo;Option A&rdquo;, and avoided a better one labelled &ldquo;impasse&rdquo;. In face-to-face negotiations, a substantial share of people agreed to deals worse than the alternative they had walked in with. The pull wasn&rsquo;t mostly the appeal of a deal. It was the aversion to having no deal, which was the stronger of the two. In the room, walking away feels like a loss, and <a href="/writing/loss-aversion">losses loom large</a>.</p>
+
+<p>Neither force can be wished away while it&rsquo;s acting on you. Both are much weaker against a line you decided before you walked in, while nobody was watching and no number had been said.</p>
+
+<h2>Where the line comes from</h2>
+
+<p>The usual way to pick a walk-away number is to think about what you want, or what would feel insulting. Both are the wrong source. Your line comes from what you&rsquo;ll actually do if this deal doesn&rsquo;t happen.</p>
+
+<p>Roger Fisher and William Ury gave that a clumsy, durable name in <em>Getting to Yes</em> (1981): your BATNA, the best alternative to a negotiated agreement. The useful thing about the idea is that it&rsquo;s a course of action, not a number. Stay in your current job. Take the other offer. Buy the second car you looked at. Keep the flat on the market another month. There is always one, even when it&rsquo;s &ldquo;nothing changes&rdquo;, and it&rsquo;s the thing every offer has to beat.</p>
+
+<p>Turning it into a number takes one more step, which Deepak Malhotra and Max Bazerman spell out in <em>Negotiation Genius</em>. Put a value on the alternative, then adjust it for what this deal offers beyond the figure. If you&rsquo;re on &pound;58,000 now, and the new job is better in ways you&rsquo;d honestly give up &pound;3,000 a year for (a shorter commute, more senior work), then your line is &pound;55,000. Anything below that is worse than staying. Anything above it is a deal you&rsquo;d be right to take, even if it disappoints you.</p>
+
+<p>That last part matters as much as the first. A line built this way protects you in both directions. It stops you accepting something worse than what you already have. And it stops you refusing something better out of pride, because &pound;61,500 felt small next to what you&rsquo;d hoped for.</p>
+
+<h2>The line is not the goal</h2>
+
+<p>Once you have a walk-away point, the temptation is to aim at it. Don&rsquo;t. The line is a floor you hold, not a target you reach for. People who go into a negotiation focused on an ambitious target tend to come out with more than people focused on their minimum, even if, oddly, they feel less satisfied with it.</p>
+
+<p>So set a second number: the best outcome you could justify out loud with a straight face. Not a fantasy, a figure with a reason. What the role pays elsewhere according to three salary surveys. What the last four similar houses sold for. The quote from the other builder. The reason is half the point, because a number with a reason moves people and a number alone invites a haggle.</p>
+
+<p>The gap between the two numbers is your room. Spend the conversation near the top of it, and concede in shrinking steps, with a reason each time.</p>
+
+<h2>Who goes first</h2>
+
+<p>If the first number anchors, it seems you should always name it. The research is more careful than that. Going first helps when you know the market at least as well as they do. When they know much more (what the role really pays, what the house is really worth), an opening number mostly advertises what you don&rsquo;t know. Then let them open, and answer by restating your target and its reason, as if theirs hadn&rsquo;t been said.</p>
+
+<p>When you do go first, two small findings are worth using. Malia Mason and colleagues found in 2013 that precise first offers (&pound;71,400 rather than &pound;70,000) drew smaller counteroffers, because a precise number reads as homework. And Daniel Ames and Mason found that a range that starts at your target and runs past it (&ldquo;somewhere between &pound;68,000 and &pound;75,000&rdquo;) tended to win better deals than a single number, without costing goodwill. A range that starts below your target does the opposite.</p>
+
+<p>And if they&rsquo;ve already named a number, the one thing not to do is counter from it. A counter a polite step above their figure accepts their frame. Counter from your target.</p>
+
+<h2>When there&rsquo;s no deal to find</h2>
+
+<p>The last part of preparation is a guess about the other side: how far could they go? The top of a posted pay band, what they&rsquo;d have to pay the next candidate, what they paid for the car. It&rsquo;s the softest number you&rsquo;ll write down, but it can tell you something important. If their limit is short of your line, there is no number you would both accept. A long, hopeful conversation will then end in one of two places, a no or a deal you&rsquo;ll regret, and it&rsquo;s much better to know which one you&rsquo;re heading for the night before.</p>
+
+<p>That&rsquo;s also when the best move is to change your alternative rather than your number. The strongest position in any negotiation is built before it starts: the second offer in writing, the second quote, another viewing booked. If your line rests on an alternative you only hope for, it&rsquo;s a bluff, and you should know that before they do.</p>
+
+<h2>The honest limits</h2>
+
+<p>This is preparation for the part of a negotiation that is about one number. Plenty of negotiations aren&rsquo;t only that. A job has a start date, a title, flexible days and a review date. A house has a completion date and what&rsquo;s left in it. Treating everything as a single figure can make you miss trades that leave both sides better off. The line still matters, but test whether something other than the number could close a gap before you call it a no.</p>
+
+<p>The research is also less tidy than the summaries of it. The first-offer advantage is real but conditional. The precise-number effect has been questioned on how far it extends: a later study found precise listing prices can put buyers off from starting a negotiation at all. Take the findings as tilts, not laws.</p>
+
+<p>And some negotiations happen with people you&rsquo;ll keep working with, sometimes for years. Winning the last &pound;2,000 at the cost of the relationship is a bad trade, which is part of why the best opening move is a number with a reason rather than a number with an edge.</p>
+
+<p>None of that changes the core of it. Decide the line before you&rsquo;re in the room, from what you&rsquo;ll actually do without the deal, and write it down. In the room, if you feel the pull to move it, ask one question: did I just learn something about my alternative, or do I just want this to be over? Only the first is a reason.</p>
+
+<p>There&rsquo;s a <a href="/walkaway">tool for this</a> on the site. It asks what you&rsquo;ll do if the deal falls through and what that&rsquo;s worth, adjusts for what this deal offers beyond the number, and gives you your walk-away point. Then it takes a target and a guess at their limit, tells you if there&rsquo;s room for a deal at all, and whether to go first and with what. You can come back to it on a break and type in the number on the table to check it against the line you set. It has no share button. The walk-away is the one number you never tell them.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

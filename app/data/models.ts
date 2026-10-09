@@ -247,6 +247,15 @@ export const models: Model[] = [
     essays: [],
   },
   {
+    id: "batna",
+    name: "BATNA and the Walk-Away Point",
+    domain: "Decisions",
+    tagline: "The worst deal you should take is set by what you'll do without one, so decide it before anyone names a number.",
+    explanation:
+      "Roger Fisher and William Ury's Getting to Yes (1981) named the idea: your BATNA, the best alternative to a negotiated agreement, is what you'll actually do if this deal doesn't happen. It's a course of action, not a number: stay in the current job, take the other offer, buy the other car. Your power in a negotiation comes mostly from how good that alternative is, which is why the strongest preparation is often improving it. Deepak Malhotra and Max Bazerman (Negotiation Genius, 2007) add the step that makes it usable: convert the alternative into a reservation value, the worst number you'd still accept, adjusted for whatever this deal offers beyond the number. Do the same, as a guess, for the other side; if their limit falls short of yours, there's no zone of possible agreement and no amount of talking will find a deal worth taking. The reason to set all this beforehand is that the room is a bad place to set it. Tuncel, Mislin, Kesebir and Pinkley (Psychological Science, 2016) found that people pick an option worse than their alternative when it's labelled 'agreement', and avoid a better one labelled 'impasse'; the aversion to no deal was the stronger pull. The first number said also anchors the final one (Galinsky and Mussweiler, 2001), so go first when you know the market at least as well as they do, and let them go first when they know more. Precise first offers draw smaller counteroffers than round ones (Mason and colleagues, 2013), and a range that starts at your target and runs further does better than a single number without costing goodwill (Ames and Mason, 2015). Aim at an ambitious target, not at your floor; the walk-away is a line you hold, not a goal. The tool Where's Your Line? runs the whole preparation on a deal of your own.",
+    essays: ["decide-your-line-first"],
+  },
+  {
     id: "parity",
     name: "Hard Choices (Parity)",
     domain: "Decisions",

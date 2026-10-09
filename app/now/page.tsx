@@ -78,6 +78,34 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The playbook had a moment with no instrument behind it: someone just
+              put a number in front of you &mdash; a salary offer, an asking price,
+              a quote. The most common version is a negotiation, and the usual
+              mistake is walking in without a line, so it gets set in the room by
+              their first number.{" "}
+              <Link
+                href="/walkaway"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Where&rsquo;s your line?
+              </Link>{" "}
+              sets your{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                walk-away point
+              </span>{" "}
+              from what you&rsquo;ll actually do if the deal falls through, then a
+              target, whether there&rsquo;s room for a deal at all, and who should name
+              the first number. On a break, type in the offer on the table and it
+              checks it against the line you set beforehand. A new{" "}
+              <Link
+                href="/writing/decide-your-line-first"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why the line comes first.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Every tool here assumed a stuck choice was missing something &mdash; a
               fact, a probability, distance from a feeling. Some aren&rsquo;t. When two
               good options each give you something the other can&rsquo;t, and the list
@@ -141,24 +169,6 @@ export default function Now() {
                 reading notes
               </Link>{" "}
               also now point to the tool that runs their idea.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Thirty-four of the{" "}
-              <Link
-                href="/writing"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essays
-              </Link>{" "}
-              have a tool that does what the essay describes, and the link to it sat
-              after the last paragraph, ten minutes down. Someone who found the essay
-              in the middle of that decision now{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                sees the tool under the title
-              </span>
-              . And Previous / Next now step through essays on the same kind of hard
-              instead of the order they were written in, so the essay on loss
-              aversion no longer leads into one on being bored of practice.
             </li>
           </ul>
         </section>

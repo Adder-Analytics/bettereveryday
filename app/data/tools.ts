@@ -232,6 +232,18 @@ export const tools: Tool[] = [
     models: ["independent-judgments", "anchoring"],
   },
   {
+    id: "walkaway",
+    href: "/walkaway",
+    name: "Where's Your Line?",
+    short: "Walk-away",
+    when: "You're about to negotiate a number — a job offer, a raise, a car, a house, a rate for your work — and you know roughly what you hope for and roughly what's too low. Roughly is how the line ends up being drawn in the room, by their first number.",
+    ask: "What's the worst deal I'll take, given what I'll actually do if this falls through — and what am I aiming for?",
+    does: "Turns your best alternative (BATNA) into a walk-away point, adjusted for what this deal offers beyond the number; sets a target you can justify out loud; says whether there's room for a deal at all; and tells you whether to name the first number, and what it should be. Then checks any offer on the table against the line you set before you walked in.",
+    payoff: "now",
+    models: ["batna", "anchoring"],
+    essays: ["decide-your-line-first"],
+  },
+  {
     id: "act",
     href: "/act",
     name: "Decided Isn't Done",
@@ -459,7 +471,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "walkaway", "quit", "rule"],
   },
   {
     id: "big-commitment",

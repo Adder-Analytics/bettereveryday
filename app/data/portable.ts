@@ -379,6 +379,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a blind round in progress" : null),
   },
   {
+    key: "walkaway:v1",
+    tool: "Where's your line?",
+    href: "/walkaway",
+    label: "The walk-away point and target you last set before a negotiation",
+    answerNow: true,
+    subject: subjectField("deal"),
+    describe: (raw) => (parse(raw) ? "a negotiation line in progress" : null),
+  },
+  {
     key: "enough:v1",
     tool: "Enough to decide?",
     href: "/enough",

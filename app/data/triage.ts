@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "disagree", "group-number"],
+        choiceIds: ["being-sold", "negotiate", "disagree", "group-number"],
       },
     ],
     choices: [
@@ -364,6 +364,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "widen",
             note: "Then widen the frame to the options an incentivized messenger never mentions — the ones they don't get paid for.",
+          },
+        },
+      },
+      {
+        id: "negotiate",
+        label: "I'm about to negotiate a number — and I don't know where my line is.",
+        detail: "A job offer, a raise, a car, a house, a rate for my work. I know roughly what I hope for and roughly what's too low.",
+        rec: {
+          toolId: "walkaway",
+          because:
+            "Set the line before you're in the room, because in the room it gets set by their first number and by how much you want the conversation over. Your walk-away comes from what you'll actually do if this falls through, adjusted for what this deal offers beyond the number. Then set a target you can justify out loud, and decide who names the first number.",
+          then: {
+            toolId: "decide",
+            note: "Log the line and the deal you expect, so afterwards you can grade the preparation, not just the price.",
           },
         },
       },
