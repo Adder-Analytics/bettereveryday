@@ -254,6 +254,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "If it were next week",
+    href: "/later",
+    snippet:
+      "Someone's asked you to do something weeks or months away: a talk, a committee seat, a favour, a trip. Count the real hours, picture it landing next week, and find out whether it's a yes, a no the distance was hiding, a smaller yes, or a no that's hard to say. Ends in a reply you can send.",
+    meta: "Far-off yes — the next-week test for a request",
+    titleText:
+      "if it were next week far-off yes far off ask future commitment say no saying no how to say no decline decline an invitation turn down invitation overcommit overcommitted over-committed too busy yes damn effect future time slack zauberman lynch construal level liberman trope request favour favor asked to speak give a talk conference talk speaking invitation committee board seat volunteer volunteering help a friend move wedding speech should i say yes people pleaser people pleasing hard to say no guilt flattered owe them calendar prep time".toLowerCase(),
+    bodyText:
+      "if it were next week (/later): the instrument for a request that lands a good way off — a talk in march, a committee seat from the autumn, helping a friend move next month, a trip, a volunteering role. yes is easy because the cost falls on a future week that looks empty from here. zauberman and lynch (journal of experimental psychology: general, 2005) found people expect more spare time in the future than now, more so for time than money, because time demands arrive close to the day; liberman and trope (jpsp 1998) found distant plans are judged on desirability and near ones on feasibility. the tool moves the ask into the near view. first, the real cost in hours: the thing itself, preparing for it, getting there and back, recovering and following up — and what those hours will come out of. then the next-week test: picture it landing next week, out of the week you actually have — would you say yes? (for things that need lead time, picture the first week of preparation instead.) then the main reason yes is tempting: you'd enjoy it, it's useful, you'd feel bad saying no, it's flattering to be asked, or you owe them; and how hard backing out later would be. four reads: yes, it passes the next-week test (block the prep in your calendar now); no, only the distance made it a yes (decline now while it's cheap — givi and kirk, jpsp 2023, found people overestimate how upset an inviter will be by a no); a smaller yes (you want it, but not at full size — offer the part you'd do next week without resenting it); not a yes, a hard-to-say-no (guilt, flattery or a debt is doing the work). each read ends in a short reply you can copy and send today, and the whole read copies as text. hands off to make it happen (block the prep), the outside view (check the prep estimate) and make a rule (if these asks keep coming). includes a read-only worked example: a 45-minute meetup talk that's really fifteen hours, answered with an offer to share last year's slides. nothing is sent anywhere; inputs persist in your browser. pairs with the future time slack model and the essay future you is not less busy.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Where's your line?",
     href: "/walkaway",
     snippet:

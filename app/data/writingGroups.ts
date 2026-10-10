@@ -67,6 +67,7 @@ const essayGroups: EssayGroup[] = [
       "the-one-thing-that-would-change-your-mind",
       "never-ask-a-barber",
       "decide-your-line-first",
+      "future-you-is-not-less-busy",
       "metric-not-the-mission",
       "second-order-thinking",
       "the-bill-comes-later",

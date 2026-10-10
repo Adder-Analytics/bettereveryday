@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              One of the commonest calls people get wrong wasn&rsquo;t in the kit at all:
+              someone asks you to do something months away, and you say yes because
+              that week looks empty from here. It never is.{" "}
+              <Link
+                href="/later"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                If it were next week
+              </Link>{" "}
+              counts the hours the invitation leaves out, then runs the{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                next-week test
+              </span>
+              : would you say yes if it landed next week, out of the week you actually
+              have? It reads the answer as a yes, a no, a smaller yes, or a no
+              that&rsquo;s just hard to say, and gives you a short reply to send. A new{" "}
+              <Link
+                href="/writing/future-you-is-not-less-busy"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why far-off weeks look empty.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The playbook had a moment with no instrument behind it: someone just
               put a number in front of you &mdash; a salary offer, an asking price,
               a quote. The most common version is a negotiation, and the usual
@@ -150,25 +175,6 @@ export default function Now() {
               first, and everyone answers again. It reaches both front doors, the
               guided one and the playbook, and it was built to share from the
               start.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Every tool ends in an answer, and on screen it&rsquo;s the loudest thing
-              on the page. To a screen reader it was silent: you picked the last
-              option and heard nothing, because not one of the tools announced its
-              result. Twenty-five of them now{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                say the answer when it arrives
-              </span>{" "}
-              &mdash; once it settles, not on every keystroke, and not when a saved
-              call reloads &mdash; and the pre-mortem now lands you on each new
-              step&rsquo;s heading instead of the top of the page. The{" "}
-              <Link
-                href="/notes"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                reading notes
-              </Link>{" "}
-              also now point to the tool that runs their idea.
             </li>
           </ul>
         </section>

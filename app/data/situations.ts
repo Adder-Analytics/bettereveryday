@@ -518,6 +518,36 @@ export const situations: Situation[] = [
     essays: ["decide-your-line-first", "anchoring"],
   },
   {
+    id: "far-off-ask",
+    title: "Someone's asked you to commit to something months away",
+    scene:
+      "A talk in March. A committee seat from the autumn. Helping a friend move next month. From here the week looks wide open, it's nice to be asked, and yes would cost nothing today.",
+    question: "If it were next week, out of the week I actually have, would I still say yes?",
+    models: [
+      {
+        id: "future-time-slack",
+        move: "The week it lands on looks empty only because its other commitments haven't arrived yet. Count the real hours, including prep and travel, then picture paying them next week. Whatever you'd answer then is the honest answer now.",
+      },
+      {
+        id: "opportunity-cost",
+        move: "The hours have to come out of something: evenings, a weekend, the work you said was the priority. Name what, specifically. A yes to this is a no to that, made months in advance without asking it.",
+      },
+      {
+        id: "outside-view",
+        move: "Prep is the number people get most wrong. Set your guess against how long the last talk or the last favour actually took, not how long it looked from a distance.",
+      },
+      {
+        id: "bright-line-rules",
+        move: "If these asks keep coming, stop deciding them one by one while flattered. A rule set calmly, like one talk a quarter or no new committees this year, answers the next one before the moment does.",
+      },
+    ],
+    tool: {
+      id: "later",
+      move: "This is the exact moment the next-week test is built for. It counts the hours the invitation leaves out, moves the ask into next week, and reads the answer as a yes, a no the distance was hiding, a smaller yes, or a no that's just hard to say. Then it gives you a short reply to send today, while it's still easy for them to ask someone else.",
+    },
+    essays: ["future-you-is-not-less-busy"],
+  },
+  {
     id: "not-enough-to-decide",
     title: "You keep needing to know more before you'll decide",
     scene:
@@ -1089,6 +1119,7 @@ export const situationGroups: SituationGroup[] = [
     situationIds: [
       "someone-selling-you",
       "about-to-negotiate",
+      "far-off-ask",
       "deadlocked-with-someone",
       "group-needs-a-number",
       "designing-incentives",

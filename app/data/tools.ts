@@ -244,6 +244,18 @@ export const tools: Tool[] = [
     essays: ["decide-your-line-first"],
   },
   {
+    id: "later",
+    href: "/later",
+    name: "If It Were Next Week",
+    short: "Far-off yes",
+    when: "Someone's asked you to do something weeks or months away — a talk, a committee seat, a favour, a trip — and yes is easy, because that week looks empty from here.",
+    ask: "Would I say yes if it were next week, out of the week I actually have — and if not, what's my reply?",
+    does: "Counts the real hours (prep, travel and the day after, not just the headline), then moves the ask into next week to see whether it's a yes, a no the distance was hiding, a smaller yes, or a no that's just hard to say. Ends in a short reply you can send today.",
+    payoff: "now",
+    models: ["future-time-slack"],
+    essays: ["future-you-is-not-less-busy"],
+  },
+  {
     id: "act",
     href: "/act",
     name: "Decided Isn't Done",
@@ -471,7 +483,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "walkaway", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "walkaway", "later", "quit", "rule"],
   },
   {
     id: "big-commitment",
