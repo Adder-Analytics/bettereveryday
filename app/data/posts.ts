@@ -2030,6 +2030,69 @@ export const posts: Post[] = [
 
 <p>There&rsquo;s a <a href="/walkaway">tool for this</a> on the site. It asks what you&rsquo;ll do if the deal falls through and what that&rsquo;s worth, adjusts for what this deal offers beyond the number, and gives you your walk-away point. Then it takes a target and a guess at their limit, tells you if there&rsquo;s room for a deal at all, and whether to go first and with what. You can come back to it on a break and type in the number on the table to check it against the line you set. It has no share button. The walk-away is the one number you never tell them.</p>`,
   },
+  {
+    slug: "future-you-is-not-less-busy",
+    title: "Future You Is Not Less Busy",
+    date: "2026-10-10",
+    excerpt:
+      "A request for a talk in October arrives in June, and October looks wide open. It always does. Far-off weeks look empty only because their other commitments haven't arrived yet, and far-off plans get judged on how good they'd be, not how they'd fit. One question moves the ask up close: would you say yes if it were next week?",
+    readTime: 6,
+    tags: ["decisions", "psychology"],
+    content: `<p>The email arrives in June. Would you give a talk at the regional meetup in October? Forty-five minutes, any topic you like, they'd love to have you. You look at October in your calendar and it is almost entirely white. It's nice to be asked. You say yes before lunch.</p>
+
+<p>In late September you are writing slides at eleven at night, after a week that was already full, wondering what you were thinking. The honest answer is that you weren't thinking about this week at all. You were thinking about a week that didn't exist: October as it looked from June.</p>
+
+<h2>The empty week</h2>
+
+<p>Gal Zauberman and John Lynch studied this directly (<em>Journal of Experimental Psychology: General</em>, 2005). They asked people how much spare time and spare money they expected to have now and a few weeks out. People expected more slack in the future than in the present, for both. But the gap was much larger for time than for money, and it showed up in their choices: people were more willing to commit future time than present time, more so than with money.</p>
+
+<p>Their explanation is plain and a little uncomfortable. Money demands are fairly predictable. Time demands aren't: they arrive close to the day, a deadline here, a sick child there, a meeting that "won't take long". So a week in October looks empty in June for the same reason a beach looks empty at dawn. Nobody has arrived yet. People act as if no new demands will turn up, even though they always do.</p>
+
+<h2>Why it looks good from far away</h2>
+
+<p>There's a second thing going on. Nira Liberman and Yaacov Trope (<em>JPSP</em>, 1998) found that people judge distant plans on <em>desirability</em> (why the thing would be good) and near ones on <em>feasibility</em> (how it would actually fit). Students choosing an assignment due much later weighed how interesting it was. Choosing one due soon, they weighed how hard it was.</p>
+
+<p>So a far-off ask is weighed on its best features. The talk is a chance to share your work, meet people, be the expert for an evening. Its costs, the ten hours of preparation, the train, the tired next morning, are blurred by the distance. Up close, the same ask is mostly costs. Neither view is false. But you're making the decision with only one of them.</p>
+
+<h2>The test</h2>
+
+<p>The correction is old advice with a good reason behind it: <strong>if it were next week, would you say yes?</strong> Not next week as you imagine it, but next week as it is, with everything already in it.</p>
+
+<p>Two things make the test work better. First, count the real hours before you ask it. An invitation states the headline (forty-five minutes, one evening, a quick coffee) and leaves out the rest. Preparation, travel there and back, the follow-up emails, the recovery. For a short talk, the headline is often a fifth of the cost. Second, name what the hours will come out of. They don't come from nowhere. Two evenings and a Saturday with your kids is a different price from "some time in October".</p>
+
+<p>Then picture paying that price next week. There are roughly four answers.</p>
+
+<ul>
+<li><strong>Yes, I'd clear the space.</strong> Then the distance isn't doing the deciding, and you can say yes with a clear head. The one thing to do now is put the preparation in your calendar as blocks with dates, because the far-off view's favourite trick is to let prep slide into the two evenings before.</li>
+<li><strong>No.</strong> Then the only thing making it a yes is that it's far away. October will be as full as this week when it comes. Say no now, while it's cheap, for you and for them.</li>
+<li><strong>Only grudgingly, but I do want it.</strong> This is the commonest honest answer, and the usual mistake is to round it up to a full yes. Offer the size you'd do next week without resenting it: the shorter slot, one meeting instead of the series, help on the day but not the planning.</li>
+<li><strong>Only grudgingly, and the pull is guilt, or flattery, or a debt.</strong> That isn't a yes. It's a no that's hard to say. The feeling is about today's conversation, and the cost lands on a future week, which is exactly why it's so easy to pay with.</li>
+</ul>
+
+<h2>The no costs less than you think</h2>
+
+<p>Most far-off yeses aren't miscalculations. They're avoidances: saying no is uncomfortable now, and the cost of yes is safely in the future. So it's worth knowing what the no actually costs.</p>
+
+<p>Julian Givi and Colleen Kirk ran five studies with more than 2,000 people on declined invitations (<em>JPSP</em>, 2023). The people declining consistently expected the person who asked to be more upset and angrier than they actually were. The ones who asked tended to think about the reasons behind the no more than the no itself. Givi's own caveat is worth keeping: don't decline everything, because time together is how relationships are built. But the occasional no is cheaper than it feels.</p>
+
+<p>And it's cheapest now. A no in June gives them four months to find someone else. A no in late September, or a talk delivered tired and underprepared, costs them far more. If other people will plan around your yes, that's the strongest reason of all to decide it properly today.</p>
+
+<h2>Where the test misleads</h2>
+
+<p>Three honest limits.</p>
+
+<p><strong>Some things need lead time.</strong> You wouldn't run a marathon next week, or give the best man's speech without a month to write it. For those, the test is the wrong shape. Ask instead whether you'd do the <em>first week of preparation</em> next week. If you wouldn't start training next Monday, you probably won't start in March either.</p>
+
+<p><strong>Some far-off yeses are deliberate.</strong> Signing up for the race, booking the course, agreeing to the talk precisely so that you'll have to write it: those are commitment devices, and their whole point is to bind a future self who'd rather not. That's fine, as long as it's a choice you made on purpose and not one the empty calendar made for you.</p>
+
+<p><strong>Grudging isn't always wrong.</strong> Helping a friend move is rarely something you'd leap at next week. If the reason is love, or keeping a promise you care about, a grudging yes can still be the right one. The test isn't there to filter out everything that costs you something. It's there to make sure you see the cost before you agree to pay it.</p>
+
+<h2>Saying it</h2>
+
+<p>The last step is the one most often skipped: actually replying. A decision you haven't sent is a decision that can still be talked out of you. A short reply works best. "Thank you for thinking of me. I can't take this on, and I'd rather say so now than let you down nearer the time." A no that explains too much reads like an opening for a counter-offer.</p>
+
+<p>There's a <a href="/later">tool for this</a> on the site. It counts the hours the invitation leaves out, asks what they'll come out of, moves the ask into next week, and reads your answer as one of the four above. Then it gives you a short reply, sized to the answer, that you can copy and send today.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

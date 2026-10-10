@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "disagree", "group-number"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number"],
       },
     ],
     choices: [
@@ -378,6 +378,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "decide",
             note: "Log the line and the deal you expect, so afterwards you can grade the preparation, not just the price.",
+          },
+        },
+      },
+      {
+        id: "far-off-ask",
+        label: "Someone's asked me to do something weeks or months away, and yes is easy to say now.",
+        detail: "A talk, a committee, a favour, a trip. That week looks empty from here.",
+        rec: {
+          toolId: "later",
+          because:
+            "Future weeks always look emptier than they turn out to be, so a far-off yes is paid for with time you won't have. Count the real hours, prep and travel included, then picture it landing next week, out of the week you actually have. Whatever you'd say then is your answer now.",
+          then: {
+            toolId: "rule",
+            note: "If you get this kind of ask often, decide it once as a rule, so the next one doesn't need a sitting.",
           },
         },
       },

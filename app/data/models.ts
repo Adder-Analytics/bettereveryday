@@ -256,6 +256,15 @@ export const models: Model[] = [
     essays: ["decide-your-line-first"],
   },
   {
+    id: "future-time-slack",
+    name: "Future Time Slack",
+    domain: "Decisions",
+    tagline: "Next month always looks emptier than this one, and it never is, so far-off yeses get paid for with time you won't have.",
+    explanation:
+      "Gal Zauberman and John Lynch (Journal of Experimental Psychology: General, 2005) asked people how much spare time and spare money they expected to have, now and in a month or so. People expected more slack in the future than in the present, and the gap was larger for time than for money, which is why they discounted future time more steeply than future money. Their explanation is that time demands arrive unpredictably and close to the day, so a far-off week looks empty only because its commitments haven't shown up yet. The same blind spot drives the familiar pattern of saying yes to a talk, a committee or a favour months ahead and dreading it when the week arrives. Yaacov Trope and Nira Liberman's construal-level research adds the second half (Liberman and Trope, JPSP, 1998): distant plans are judged on desirability, why the thing would be good, and near ones on feasibility, how it would fit. A far-off ask is weighed on its best features with its costs blurred out. The practical correction is to move the ask into the near view: count the real hours, including preparation, travel and recovery, and ask whether you'd say yes if it were next week, out of the week you actually have. Julian Givi and Colleen Kirk (JPSP, 2023) found the social cost of declining is smaller than people fear: across five studies, inviters were less upset by a no than the people declining predicted. The tool If It Were Next Week runs the test on an ask of your own and ends in a reply you can send.",
+    essays: ["future-you-is-not-less-busy"],
+  },
+  {
     id: "parity",
     name: "Hard Choices (Parity)",
     domain: "Decisions",
