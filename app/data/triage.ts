@@ -134,7 +134,7 @@ const nodes: Record<string, TriageNode> = {
         id: "options",
         label: "It's the options themselves",
         short: "The options",
-        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking"],
+        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money"],
       },
       {
         id: "stakes",
@@ -267,6 +267,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "act",
             note: "Once you've committed, make the first move this week — a commitment that lives only in your head drifts back to whatever happens by default.",
+          },
+        },
+      },
+      {
+        id: "time-money",
+        label: "One option costs more money, the other more time, and I can't tell if it's worth it.",
+        detail: "Delivery or the shop, the direct flight or the cheap one, the closer flat or the cheaper one.",
+        rec: {
+          toolId: "worth",
+          because:
+            "Time and money only compare once they're in the same unit. Work out what the trade costs or pays per hour, and set it against what an hour like that is worth to you. Then check the percentage isn't doing the deciding: the same saving looks big on a cheap thing and small on a dear one.",
+          then: {
+            toolId: "rule",
+            note: "If it's a trade you face every week, make your answer a standing rule, so the next one doesn't need the sum.",
           },
         },
       },

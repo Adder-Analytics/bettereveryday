@@ -78,6 +78,33 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The trade between time and money comes up every week (delivery or the
+              shop, the cheap flight or the direct one, the cheaper flat further
+              out) and it had no instrument. The usual mistake is letting the
+              percentage decide: five pounds off something cheap feels worth a
+              drive, and five pounds off something dear doesn&rsquo;t.{" "}
+              <Link
+                href="/worth"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Is it worth the time?
+              </Link>{" "}
+              turns the trade into its{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                price per hour
+              </span>
+              , counts a habit over a year, and sets it against your own price for
+              an hour like that one, not your wage. It ends in a line you can keep,
+              so the next trade is a lookup, not a sum. A new{" "}
+              <Link
+                href="/writing/an-hour-has-a-price"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               One of the commonest calls people get wrong wasn&rsquo;t in the kit at all:
               someone asks you to do something months away, and you say yes because
               that week looks empty from here. It never is.{" "}
@@ -155,26 +182,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               explains the idea, and the comparison now hands a too-close pair here.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A new instrument for a moment nothing here covered: a group that has
-              to agree on one number &mdash; a deadline, a budget, a price to offer
-              &mdash; where whoever speaks first sets it for everyone.{" "}
-              <Link
-                href="/round"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Before anyone speaks
-              </Link>{" "}
-              runs a{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                blind round
-              </span>
-              : everyone answers privately, passing one phone round the table or
-              by message, the numbers are revealed at once, the two ends speak
-              first, and everyone answers again. It reaches both front doors, the
-              guided one and the playbook, and it was built to share from the
-              start.
             </li>
           </ul>
         </section>

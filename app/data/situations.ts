@@ -171,6 +171,32 @@ export const situations: Situation[] = [
     notes: ["kahneman-inside-view"],
   },
   {
+    id: "time-or-money",
+    title: "You're trading time against money",
+    scene:
+      "Pay for delivery or do the shop yourself. Drive twenty minutes for a better price. The direct flight or the cheap one with the layover. The cheaper flat, further out. Each one gets decided on feel, and the feel changes with the price tag.",
+    question: "What does this trade cost or pay per hour, and what's an hour like this worth to me?",
+    models: [
+      {
+        id: "relative-thinking",
+        move: "Judge the saving in money, not in percent. Five pounds off something cheap feels like a find and five pounds off something dear feels like nothing, but it's the same five pounds and the same drive. Divide it by the hours to get one number you can compare.",
+      },
+      {
+        id: "opportunity-cost",
+        move: "The hour you'd spend saving money comes out of something: an evening, sleep, the kids. Price it as that hour, not as your wage. Unless you'd actually work the hour for pay, it isn't for sale at that rate.",
+      },
+      {
+        id: "bright-line-rules",
+        move: "Set your price for an hour once and reuse it. Pricing every hour as it comes makes free time feel like lost earnings. A number you've already settled lets you stop doing the sum.",
+      },
+    ],
+    tool: {
+      id: "worth",
+      move: "This is the trade the tool is built for. It works out the price per hour (counting a habit over a year), sets it against your own price for that kind of hour, flags when the percentage is doing the persuading, and gives you the line to keep.",
+    },
+    essays: ["an-hour-has-a-price"],
+  },
+  {
     id: "need-an-estimate",
     title: "You need a number and don't have one",
     scene:
@@ -1129,7 +1155,7 @@ export const situationGroups: SituationGroup[] = [
   {
     id: "numbers",
     label: "There's a number in it",
-    situationIds: ["a-number-appears", "need-an-estimate"],
+    situationIds: ["a-number-appears", "time-or-money", "need-an-estimate"],
   },
   {
     id: "after",

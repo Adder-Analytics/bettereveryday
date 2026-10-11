@@ -397,6 +397,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a far-off ask in progress" : null),
   },
   {
+    key: "worth:v1",
+    tool: "Is it worth the time?",
+    href: "/worth",
+    label: "The time-for-money trade you last priced",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "a time-for-money trade in progress" : null),
+  },
+  {
     key: "enough:v1",
     tool: "Enough to decide?",
     href: "/enough",

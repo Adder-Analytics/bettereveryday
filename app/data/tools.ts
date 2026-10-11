@@ -256,6 +256,18 @@ export const tools: Tool[] = [
     essays: ["future-you-is-not-less-busy"],
   },
   {
+    id: "worth",
+    href: "/worth",
+    name: "Is It Worth the Time?",
+    short: "Time for money",
+    when: "You're trading time against money — pay for the delivery or do the shop, drive across town for a better price, take the cheaper flat with the longer commute — and you're deciding on feel.",
+    ask: "What does this trade work out at per hour, and is that more or less than an hour like this is worth to me?",
+    does: "Turns the trade into its price per hour (one-off or recurring, over a year), sets it against your own price for that kind of hour, and catches the percentage doing the persuading. Ends in a line you can reuse, so you stop doing the sum.",
+    payoff: "now",
+    models: ["relative-thinking", "opportunity-cost"],
+    essays: ["an-hour-has-a-price"],
+  },
+  {
     id: "act",
     href: "/act",
     name: "Decided Isn't Done",
@@ -483,7 +495,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "walkaway", "later", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "walkaway", "later", "worth", "quit", "rule"],
   },
   {
     id: "big-commitment",
