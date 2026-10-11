@@ -2093,6 +2093,60 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/later">tool for this</a> on the site. It counts the hours the invitation leaves out, asks what they'll come out of, moves the ask into next week, and reads your answer as one of the four above. Then it gives you a short reply, sized to the answer, that you can copy and send today.</p>`,
   },
+  {
+    slug: "an-hour-has-a-price",
+    title: "An Hour Has a Price, Whether You Set It or Not",
+    date: "2026-10-11",
+    excerpt:
+      "People will cross town to save five pounds on something cheap and not on something dear, though it's the same five pounds and the same drive. Every trade between time and money has a price per hour. Work it out once, set your own price for an hour, and the percentage stops deciding for you.",
+    readTime: 6,
+    tags: ["decisions", "finance", "psychology"],
+    content: `<p>In 1981 Amos Tversky and Daniel Kahneman asked people a small question. You're about to buy a calculator, and the salesperson mentions that the same model is $5 cheaper at another branch, a twenty-minute drive away. Do you go?</p>
+
+<p>When the calculator cost $15, most people said they'd make the drive. When it cost $125, most said they wouldn't. The saving was the same five dollars. The drive was the same twenty minutes. The only thing that changed was the percentage, and the percentage made the decision.</p>
+
+<p>Once you've seen it, you see it everywhere. People drive across town for a few pounds off a cheap kettle and then add a £400 option to a new car without blinking, because it's only a couple of percent. They take a flight with a six-hour layover to save £40 on a £120 ticket, and they don't haggle over £1,500 on a house because it's a rounding error on the price. Behavioural economists call it <a href="/models#relative-thinking">relative thinking</a>: a saving is judged as a share of the price, not as an amount.</p>
+
+<h2>Why time makes it worse</h2>
+
+<p>Money comes with built-in bookkeeping. It has a number on it, a balance it comes out of, a statement at the end of the month. Time doesn't. Ritesh Saini and Ashwani Monga found that people's decisions about spending time lean much more on rules of thumb than their decisions about spending money: they were more swayed by an arbitrary anchor and more drawn to the middle option. The reason, they argue, is that time is harder to account for. When they prompted people to account for their time the way they would for money, the difference disappeared.</p>
+
+<p>That's the whole fix, more or less. Put both sides of the trade into one unit, and the percentage loses its grip.</p>
+
+<h2>One division</h2>
+
+<p>Every trade between time and money has a price per hour. Divide the money by the hours.</p>
+
+<p>Paying £6 for grocery delivery that saves you an hour and a quarter is paying about £5 an hour to get that time back. Driving forty minutes there and back to save £5 is earning £7.50 an hour. The cheaper flat that saves £250 a month and adds fifty minutes of commuting each working day is paying you about £16 an hour to sit on a train: £3,000 a year for nearly 200 hours.</p>
+
+<p>On its own, a price per hour means nothing. It needs something to be compared with.</p>
+
+<h2>Your price for an hour</h2>
+
+<p>The obvious candidate is your wage, and it's usually the wrong one. Your hourly rate tells you what an employer pays for an hour of your work. It says nothing about an hour of your Saturday unless you could actually spend that hour working for pay instead. Most salaried people can't. For them the hour isn't for sale at that rate, or at all.</p>
+
+<p>A better question is the plain one. <em>What would someone have to pay me to spend an hour of my free time on this?</em> An hour of commuting, of cleaning the bathroom, of queueing at the tip. The answer depends on the hour. An hour of something you hate is worth more to escape than an hour of something you'd half enjoy, and that's correct, not a bias. Commuting deserves a high number: in Kahneman and colleagues' study of how people spend their days, it came bottom of 28 daily activities for enjoyment, and Alois Stutzer and Bruno Frey found, across nineteen years of a German household panel, that people with longer commutes were less satisfied with their lives, with no sign the cheaper housing or better pay made up for it.</p>
+
+<p>Two adjustments help. If you do use pay as a guide, use take-home pay: money you save isn't taxed, so a pound saved is worth more than a pound earned. And notice which is tighter right now. When money is short, an hour is worth less in money, and your line should drop. That isn't a mistake.</p>
+
+<h2>Most people under-buy time</h2>
+
+<p>Run the sum honestly and a lot of people find they should be paying for more of their time. Ashley Whillans and colleagues surveyed more than 6,000 adults across four countries and found that those who spent money to buy themselves time, on cleaning or errands or takeaway, were more satisfied with their lives, at every income level they looked at. In a small field experiment, 60 working adults were given $40 to spend on two weekends: once on something that saved them time, once on a thing. They felt less rushed and happier the week they bought time. Yet when 98 working adults were asked how they'd spend a $40 windfall, only 2% said they'd use it to save time.</p>
+
+<p>The surveys are correlations and the experiment was small, so I wouldn't lean on the size of the effect. But the direction runs against the instinct most of us have, which is that paying someone to do what you could do yourself is an indulgence.</p>
+
+<h2>Set it once</h2>
+
+<p>There's a cost to all this, and it's worth taking seriously. Sanford DeVoe and Julian House found that people prompted to think about their hourly wage enjoyed their leisure less and were more impatient during it. Listening to a pleasant piece of music, they enjoyed it less if they'd just been thinking about what their time was worth. Pricing every hour as it passes turns free time into lost earnings.</p>
+
+<p>So don't price every hour. Price the hour once, for the trades that keep coming round, and write it down: <em>an hour of the weekly shop is worth £15 to me. I'll pay up to that to skip it, and I won't spend the hour to save less.</em> After that, the delivery fee isn't a decision. It's a lookup. The point of setting your price for an hour is to stop thinking about what your hours are worth.</p>
+
+<h2>When the arithmetic stops</h2>
+
+<p>Three limits. When the trade comes out close to your line, within a quarter either way, the arithmetic can't separate the options, so let whichever is scarcer, time or money, decide. When the gap between the options is worth less than a few minutes of your time, stop: you've already spent more deciding than the difference. And when the money is part of something bigger, like a move or a job, the price per hour is one factor among several, not the verdict.</p>
+
+<p>There's a <a href="/worth">tool for this</a> on the site. You type the trade, one-off or recurring, and your price for an hour like it. It works out the trade's price per hour (over a year, if it's a habit), says whether it's worth it to you, flags it when the percentage is doing the persuading, and gives you the line to keep.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
