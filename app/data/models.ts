@@ -274,6 +274,15 @@ export const models: Model[] = [
     essays: ["an-hour-has-a-price"],
   },
   {
+    id: "probability-weighting",
+    name: "Probability Weighting",
+    domain: "Psychology",
+    tagline: "Small chances of a vivid loss feel bigger than they are, which is what the offer at the till is selling.",
+    explanation:
+      "Daniel Kahneman and Amos Tversky's prospect theory (1979; cumulative version 1992) describes how people treat probabilities: small ones are overweighted and moderate-to-large ones underweighted. One consequence is a pattern they called the fourfold pattern, which includes paying over the odds to insure against unlikely losses. The everyday version is the cover offered at the till. Jose Miguel Abito and Yuval Salant (Review of Economic Studies, 2019) studied extended warranties and found demand came mainly from people overestimating how likely the product was to fail, not from ordinary caution: in their survey experiment, people's guesses ran around 13 to 15 percent against an expert figure of 5, and the median price they'd pay roughly halved once they saw it. Justin Sydnor (AEJ: Applied, 2010) found most homeowners chose a low deductible that cost far more than it could be expected to return given how rarely they claimed. The bias also runs the other way for rare disasters that don't feel vivid: Howard Kunreuther and colleagues (Risk Analysis, 2012) found the typical new US flood policy lapsed within two to four years. The correction is to sort by size before odds. Insure the losses you couldn't absorb, whatever the price. For the ones you could, divide the price by what the cover would pay, which gives the chance of a claim at which it breaks even, and check that against a real failure or claim rate rather than the feeling. The tool Insure It or Carry It? runs both steps on an offer of your own.",
+    essays: ["insure-the-catastrophe"],
+  },
+  {
     id: "parity",
     name: "Hard Choices (Parity)",
     domain: "Decisions",

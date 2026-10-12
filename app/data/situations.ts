@@ -197,6 +197,32 @@ export const situations: Situation[] = [
     essays: ["an-hour-has-a-price"],
   },
   {
+    id: "offered-cover",
+    title: "You're offered cover against something going wrong",
+    scene:
+      "\"Would you like to protect that?\" The warranty at the till, cover for the phone, the damage waiver at the rental desk, a lower excess for a bit more a year. It comes just after you've said yes to something, framed as a worry, and nobody mentions the odds.",
+    question: "Could I pay this loss myself, and is a claim really likelier than the cover needs it to be?",
+    models: [
+      {
+        id: "ruin",
+        move: "Sort the loss before you price it. If you couldn't pay it from savings without borrowing or real hardship, insure it, even at a poor price. That's what insurance is for. If you could, the cover is a bet, and the seller set the odds.",
+      },
+      {
+        id: "probability-weighting",
+        move: "Small chances of a vivid loss feel bigger than they are. People guess the odds of a product failing at about three times the expert figure, and the offer at the till is built on that guess. Look up a failure rate before you trust the feeling.",
+      },
+      {
+        id: "expected-value",
+        move: "Divide the price by what it would pay out. That's the chance of a claim at which the cover breaks even. If it isn't plainly likelier than that for you, keep the money and put it aside.",
+      },
+    ],
+    tool: {
+      id: "cover",
+      move: "This is the call the tool is built for. It checks the loss against what you could pay from savings, works out the break-even odds, reads your answer against the known overestimate, and gives you a line to keep for the next till.",
+    },
+    essays: ["insure-the-catastrophe"],
+  },
+  {
     id: "need-an-estimate",
     title: "You need a number and don't have one",
     scene:
@@ -1155,7 +1181,7 @@ export const situationGroups: SituationGroup[] = [
   {
     id: "numbers",
     label: "There's a number in it",
-    situationIds: ["a-number-appears", "time-or-money", "need-an-estimate"],
+    situationIds: ["a-number-appears", "time-or-money", "offered-cover", "need-an-estimate"],
   },
   {
     id: "after",

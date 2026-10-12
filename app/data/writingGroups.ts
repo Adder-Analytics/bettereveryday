@@ -39,6 +39,7 @@ const essayGroups: EssayGroup[] = [
       "nobody-thinks-theyre-the-base-rate",
       "money-math",
       "an-hour-has-a-price",
+      "insure-the-catastrophe",
       "inflation-silent-tax",
     ],
   },

@@ -78,6 +78,32 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              &ldquo;Would you like to protect that?&rdquo; The warranty at the
+              till, phone cover, a lower excess for a bit more a year: a call
+              almost everyone faces, with no instrument here until now.{" "}
+              <Link
+                href="/cover"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Insure it or carry it?
+              </Link>{" "}
+              sorts the loss by whether you could pay it from savings, and for the
+              ones you could, works out the{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                break-even odds
+              </span>{" "}
+              the cover has to beat, then checks your read of them against the
+              known overestimate. It ends in a line to keep for the next till. A
+              new{" "}
+              <Link
+                href="/writing/insure-the-catastrophe"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The trade between time and money comes up every week (delivery or the
               shop, the cheap flight or the direct one, the cheaper flat further
               out) and it had no instrument. The usual mistake is letting the
@@ -156,32 +182,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               explains why the line comes first.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Every tool here assumed a stuck choice was missing something &mdash; a
-              fact, a probability, distance from a feeling. Some aren&rsquo;t. When two
-              good options each give you something the other can&rsquo;t, and the list
-              comes out even every time,{" "}
-              <Link
-                href="/par"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Neither one wins
-              </Link>{" "}
-              runs Ruth Chang&rsquo;s{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                small-improvement test
-              </span>{" "}
-              to tell a real hard choice from a tie, a missing fact, or a choice that
-              only hurts. If the two are on a par, it stops the weighing and helps you
-              commit to the one you&rsquo;ll stand behind. A new{" "}
-              <Link
-                href="/writing/neither-is-better"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains the idea, and the comparison now hands a too-close pair here.
             </li>
           </ul>
         </section>
