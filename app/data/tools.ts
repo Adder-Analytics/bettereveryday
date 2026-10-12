@@ -268,6 +268,18 @@ export const tools: Tool[] = [
     essays: ["an-hour-has-a-price"],
   },
   {
+    id: "cover",
+    href: "/cover",
+    name: "Insure It or Carry It?",
+    short: "Cover or carry",
+    when: "You're offered cover — the extended warranty at the till, phone or gadget insurance, the damage waiver at the rental desk, a lower excess for a higher premium — and it's framed as a worry, with the odds left out.",
+    ask: "Could I pay this loss myself, and if I could, is a claim likelier than the odds the cover needs to beat?",
+    does: "Sorts the loss by whether you could pay it from savings — insure it if not — and for the ones you could carry, works out the chance of a claim at which the cover breaks even, then checks your read of the odds against the known overestimate. Ends in a line to keep for the next till.",
+    payoff: "now",
+    models: ["probability-weighting", "ruin"],
+    essays: ["insure-the-catastrophe"],
+  },
+  {
     id: "act",
     href: "/act",
     name: "Decided Isn't Done",
@@ -495,7 +507,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "walkaway", "later", "worth", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "walkaway", "later", "worth", "cover", "quit", "rule"],
   },
   {
     id: "big-commitment",

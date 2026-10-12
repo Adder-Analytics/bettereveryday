@@ -140,7 +140,7 @@ const nodes: Record<string, TriageNode> = {
         id: "stakes",
         label: "It's what could go wrong — or whether it's as big as it feels",
         short: "The stakes",
-        choiceIds: ["downside-scary", "big-undo", "later-bill", "promise", "reversible"],
+        choiceIds: ["downside-scary", "insure-it", "big-undo", "later-bill", "promise", "reversible"],
       },
       {
         id: "head",
@@ -323,6 +323,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "act",
             note: "If your older self endorses it, turn the call into the first concrete move before the moment passes.",
+          },
+        },
+      },
+      {
+        id: "insure-it",
+        label: "I'm being offered cover against it going wrong, and I can't tell if it's worth it.",
+        detail: "An extended warranty, phone cover, a rental car's waiver, a lower excess for a higher premium.",
+        rec: {
+          toolId: "cover",
+          because:
+            "Insure the losses you couldn't pay yourself, and carry the ones you could. For a loss you could carry, the cover's price over what it would pay is the chance of a claim it needs to beat — and sellers price above it, while buyers tend to guess the odds high.",
+          then: {
+            toolId: "rule",
+            note: "The offer comes back at every till. Make your answer a standing rule so the next one is a lookup.",
           },
         },
       },

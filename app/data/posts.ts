@@ -452,7 +452,7 @@ export const posts: Post[] = [
 
 <p>The disposition effect is the clearest. If you can't bring yourself to sell a losing investment — waiting for it to "get back to even" first — notice that "back to even" is a fact about your purchase price, a number the market has never heard of and does not care about. The only real question is whether you'd buy it today at today's price. Sunk costs are the same machine running on time and effort instead of money: the half-finished degree, the project that stopped making sense two years ago, the commitment continued mainly because of what's already been poured in. In every case the spent thing is gone whether you continue or not, and the aversion to "wasting" it is precisely what keeps you spending more.</p>
 
-<p>The framing effects are real enough to defend against, too. The same option described as a loss to avoid will feel more urgent than when it's described as a gain to capture — which is why warranties, insurance upsells, and "don't miss out" are all worded the way they are. When a choice suddenly feels urgent, it's worth asking whether the urgency is in the situation or only in the framing.</p>
+<p>The framing effects are real enough to defend against, too. The same option described as a loss to avoid will feel more urgent than when it's described as a gain to capture — which is why <a href="/cover">warranties, insurance upsells</a>, and "don't miss out" are all worded the way they are. When a choice suddenly feels urgent, it's worth asking whether the urgency is in the situation or only in the framing.</p>
 
 <h2>The lesson under the lesson</h2>
 
@@ -2146,6 +2146,58 @@ export const posts: Post[] = [
 <p>Three limits. When the trade comes out close to your line, within a quarter either way, the arithmetic can't separate the options, so let whichever is scarcer, time or money, decide. When the gap between the options is worth less than a few minutes of your time, stop: you've already spent more deciding than the difference. And when the money is part of something bigger, like a move or a job, the price per hour is one factor among several, not the verdict.</p>
 
 <p>There's a <a href="/worth">tool for this</a> on the site. You type the trade, one-off or recurring, and your price for an hour like it. It works out the trade's price per hour (over a year, if it's a habit), says whether it's worth it to you, flags it when the percentage is doing the persuading, and gives you the line to keep.</p>`,
+  },
+  {
+    slug: "insure-the-catastrophe",
+    title: "Insure the Catastrophe, Carry the Rest",
+    date: "2026-10-12",
+    excerpt:
+      "The offer comes at the till, framed as a worry, with the odds left out. People pay heavily to cover small things they could replace and drop the cover that would save them. One rule fixes both, and one division tells you what the cover has to beat.",
+    readTime: 6,
+    tags: ["decisions", "finance", "psychology"],
+    content: `<p>You've just said yes to a new laptop, and the person at the till asks whether you'd like to protect it. Three years of cover, a fraction of the price. Screens are expensive to fix, they mention. It sounds prudent, and saying no feels a little like tempting fate.</p>
+
+<p>That moment is designed. The offer comes just after you've committed to spending money, when another slice of it feels small. It's framed as a worry rather than a price. And the one number you'd need to judge it, how often things like this actually break, is left out.</p>
+
+<h2>Two mistakes at once</h2>
+
+<p>People get insurance wrong in both directions, and the research on each is unusually clear.</p>
+
+<p>The first mistake is paying too much to cover small things. Justin Sydnor looked at the deductibles homeowners chose at one large US insurer. Most chose a low deductible, and paid far more for it than it could be expected to return, given how rarely they claimed. Fitting their choices to a standard model of caution gave implausibly high levels of risk aversion. Jose Miguel Abito and Yuval Salant studied extended warranties and found the reason: demand came mainly from people <em>overestimating how likely the product was to fail</em>, not from ordinary prudence. In their survey experiment, people's guesses ran around 13 to 15 percent where the expert figure was 5. Shown the expert figure, the median price they'd pay for the warranty roughly halved.</p>
+
+<p>The second mistake is not covering the big things. Howard Kunreuther and colleagues followed US flood insurance policies and found the typical new one lapsed within two to four years, faster than people moved house. A few quiet years, and the cover felt like money thrown away.</p>
+
+<p>It looks like a contradiction: over-cautious about the phone, careless about the house. It's the same error. People respond to how a loss <em>feels</em>, not to how likely it is or how much it would hurt. A cracked screen is vivid, and the person at the till has just made it more vivid. A flood is abstract until it happens. Prospect theory has a name for part of this: small probabilities are overweighted. But the deeper problem is that nobody sorts the loss by size before thinking about the odds.</p>
+
+<h2>Sort by size first</h2>
+
+<p>Insurance is a good deal in exactly one situation: when the loss would be bigger than you could absorb. Then a small, certain cost that stops a ruinous one is worth paying even at a poor price, because the average doesn't help someone who can't recover from the bad case. Your home, your income, your liability to other people, your health in countries without a public system. Insure those, and don't let them lapse because nothing happened last year.</p>
+
+<p>For everything else, the cover is a bet, and the seller sets the odds. They know the claim rate and you don't, and they price the cover to pay out less than it takes in, because that's how they stay in business. The UK regulator publishes the figures: in 2025 gadget insurance paid out about 36p in claims for every pound of premium. When it looked at GAP insurance, sold alongside car finance, it found 6p, and firms selling most of it agreed to pause sales. Across a lifetime of offers like these, carrying the small risks yourself comes out well ahead.</p>
+
+<p>So the first question isn't "how likely is it?" It's "could I pay for this myself?" Be honest rather than brave: the biggest bill you could pay from savings this month without borrowing or real hardship. That number decides most of the answer. Losses above it, insure. Losses below it, you're in the betting part.</p>
+
+<h2>The one division</h2>
+
+<p>For a loss you could carry, there's a quick way to see what the cover is asking you to believe. Divide its price by what it would pay out. That's the chance of a claim at which the cover breaks even.</p>
+
+<p>A three-year warranty costing £99 on a £600 TV breaks even at a one-in-six chance the set fails in those three years. A lower excess that costs £100 a year more and saves you £500 on a claim pays only if you claim more often than once every five years. Put like that, most offers answer themselves. The question at the till, "are you sure you don't want cover?", turns into a different one: "do I think this is likelier than one in six?"</p>
+
+<p>Your gut will often say yes. That's the overestimate Abito and Salant measured, and it's what the offer is built on. So don't trust the feeling. Look for a failure or claim rate. And remember that if your gut and the seller's price both say the odds are high, the seller's price already includes their margin on top.</p>
+
+<p>There are real exceptions. If your own record says you claim more than most, the average doesn't describe you: the phone you've dropped twice this year, the toddler, the bike on a city commute. Then the cover can pay, though check whether the price already reflects your record and read the exclusions, which is where cover like this stops paying. And check you aren't buying it twice. The maker's warranty, your legal rights over faulty goods (which in the UK and EU run well past the first year), a card's purchase protection and your home contents policy often already cover some or all of it.</p>
+
+<h2>What peace of mind costs</h2>
+
+<p>The honest case for small cover is that it buys calm, and calm is worth something. Fine, but name the price. If cover pays back a third of what it costs on average, most of what you're paying for is the calm, not the claims. There's another way to buy the same calm: put the money you'd have spent on cover into savings set aside for these losses. After a couple of years the pot pays for the cracked screen, and the money that didn't go on claims is still yours.</p>
+
+<p>The same logic tells you which excess to choose. Take the highest excess you could pay from savings without hardship. That's the part of the loss you can carry, and it's usually the cheapest part to stop insuring. A lower one only pays if you claim often, and most people don't.</p>
+
+<h2>Set it before the till</h2>
+
+<p>The offer always comes at the worst moment: rushed, mid-purchase, put to you as a worry. So decide beforehand, once. <em>I insure losses I couldn't pay from savings, anything over £1,000. Below that I carry the risk myself and put what the cover would have cost into savings. I take the highest excess I could pay without borrowing.</em> After that, the question at the till is a lookup, not a decision.</p>
+
+<p>There's a <a href="/cover">tool for this</a> on the site. You type the offer and what you could pay from savings. It tells you whether the loss is one to insure or one to carry, works out the odds the cover has to beat, reads your answer against the known overestimate, and gives you the line to keep.</p>`,
   },
 ];
 
