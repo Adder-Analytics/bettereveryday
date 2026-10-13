@@ -232,6 +232,18 @@ export const tools: Tool[] = [
     models: ["independent-judgments", "anchoring"],
   },
   {
+    id: "split",
+    href: "/split",
+    name: "Who Gets Which Room?",
+    short: "Room and rent",
+    when: "You're moving in with others and the rooms aren't equal — one has its own bathroom, one is the box room — and you have to agree who takes which and what each pays, without it turning into a haggle that whoever minds least wins.",
+    ask: "Who should take which room, and at what rents would none of us rather have someone else's room at its price?",
+    does: "Each of you privately prices every room so you wouldn't mind which one you got, with your prices adding up to the rent, one phone passed round. Rooms go to whoever values them most as a set; rents are set so nobody would swap, by the widest margin your numbers allow. Says how close the nearest swap is, whether an equal split would have worked, and gives you the split to send the house.",
+    payoff: "now",
+    models: ["envy-free-division", "independent-judgments"],
+    essays: ["price-the-rooms-not-the-people"],
+  },
+  {
     id: "walkaway",
     href: "/walkaway",
     name: "Where's Your Line?",
@@ -507,7 +519,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "walkaway", "later", "worth", "cover", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "walkaway", "later", "worth", "cover", "quit", "rule"],
   },
   {
     id: "big-commitment",

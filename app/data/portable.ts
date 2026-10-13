@@ -406,6 +406,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a time-for-money trade in progress" : null),
   },
   {
+    key: "split:v1",
+    tool: "Who gets which room?",
+    href: "/split",
+    label: "The rent split you last worked out",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "a rent split in progress" : null),
+  },
+  {
     key: "cover:v1",
     tool: "Insure it or carry it?",
     href: "/cover",

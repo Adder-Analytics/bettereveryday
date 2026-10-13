@@ -772,6 +772,32 @@ export const situations: Situation[] = [
     },
   },
   {
+    id: "splitting-the-rent",
+    title: "You're splitting the rent on rooms that aren't equal",
+    scene:
+      "The new flat has a big room with its own bathroom, a bright room at the front and a box room over the stairs. Somebody suggests splitting it equally, and somebody else is already doing the floor area on their phone. Two of you want the same room, and nobody wants to be the one who says so.",
+    question: "Who should take which room, and what should each of us pay so that nobody would rather have someone else's room at its price?",
+    models: [
+      {
+        id: "envy-free-division",
+        move: "Don't try to agree what each room is really worth. Let each person price every room by their own lights, and look for rents at which each of you prefers your own room. That split always exists, and it's the one nobody can reasonably resent.",
+      },
+      {
+        id: "independent-judgments",
+        move: "Price the rooms privately, before anyone hears anyone else. Once someone says 'the big room's worth at least a hundred more', every other number bends towards it, and the loudest preference becomes the price.",
+      },
+      {
+        id: "anchoring",
+        move: "An equal split and a split by floor area are anchors too. They feel neutral, but each prices only what it measures. Equal is fair only if you all want different rooms.",
+      },
+    ],
+    tool: {
+      id: "split",
+      move: "This is the call the tool is built for. One phone goes round; each of you prices every room so you wouldn't mind which you got, adding up to the rent. It gives each room to the right person, sets rents nobody would swap, says how close the nearest swap is, and gives you the split to send the house.",
+    },
+    essays: ["price-the-rooms-not-the-people"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1174,6 +1200,7 @@ export const situationGroups: SituationGroup[] = [
       "far-off-ask",
       "deadlocked-with-someone",
       "group-needs-a-number",
+      "splitting-the-rent",
       "designing-incentives",
       "stubborn-system",
     ],
