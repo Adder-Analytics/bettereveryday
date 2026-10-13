@@ -254,6 +254,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Who gets which room?",
+    href: "/split",
+    snippet:
+      "Housemates, rooms that aren't equal, one rent. Each of you prices every room privately; the rooms go to the right people and the rents are set so nobody would rather swap.",
+    meta: "Room and rent — split the rent fairly between housemates",
+    titleText:
+      "who gets which room room and rent split the rent splitting rent rent split rent calculator fair rent fair share divide rent dividing rent housemates roommates flatmates flatshare house share shared house moving in together bigger room en suite ensuite master bedroom box room smallest room who pays more room prices fair division envy-free envy free rental harmony spliddit su sperner's lemma".toLowerCase(),
+    bodyText:
+      "who gets which room? (/split): the instrument for housemates splitting the rent on rooms that aren't equal — one has its own bathroom, one is the box room over the stairs. an equal split is only fair if everyone wants a different room; a split by floor area prices size and nothing else; haggling hands the answer to whoever speaks first or minds least. the tool runs the fair-division method instead. you give the rent, how many of you (two to six), names and rooms. then one phone goes round: each person, privately, prices every room so they wouldn't mind which one they got, with their prices adding up to the whole rent, and locks it in; locked prices stay hidden until everyone is done. only the gaps between one person's prices matter, so a row that doesn't add up is evened out. the rooms go to the assignment that makes the most of everyone's numbers taken together, and the rents are set so nobody would rather have anyone else's room at its price (envy-free), by the widest margin the numbers allow, with what's left shared equally. it says how close the nearest swap came, flags a tie where two of you could trade and be just as happy, says whether an equal split would have worked, and gives you the split to send the house. draws on francis su's rental harmony (american mathematical monthly, 1999), spliddit (goldman and procaccia, 2014), gal, mash, procaccia and zick on the fairest envy-free split (2016), and peters, procaccia and zhu's robust rent division (2022). if someone won't accept it, hands off to the disagreement tool. includes a read-only worked example: three friends and a £2,400 flat with an en suite, a front room and a box room. nothing is sent anywhere; inputs persist in your browser. pairs with the envy-free division model and the essay price the rooms, not the people.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Insure it or carry it?",
     href: "/cover",
     snippet:

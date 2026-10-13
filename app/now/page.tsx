@@ -78,6 +78,30 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Moving in with others, with rooms that aren&rsquo;t equal, is a
+              call people settle by splitting it equally or by haggling, and
+              someone ends up paying the same for the box room.{" "}
+              <Link
+                href="/split"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Who gets which room?
+              </Link>{" "}
+              has each of you price every room privately, passing one phone
+              round, then gives each room to the right person and sets{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                rents nobody would swap
+              </span>
+              , by the widest margin your numbers allow. A new{" "}
+              <Link
+                href="/writing/price-the-rooms-not-the-people"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains the fair-division maths behind it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               &ldquo;Would you like to protect that?&rdquo; The warranty at the
               till, phone cover, a lower excess for a bit more a year: a call
               almost everyone faces, with no instrument here until now.{" "}
@@ -155,34 +179,7 @@ export default function Now() {
               </Link>{" "}
               explains why far-off weeks look empty.
             </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The playbook had a moment with no instrument behind it: someone just
-              put a number in front of you &mdash; a salary offer, an asking price,
-              a quote. The most common version is a negotiation, and the usual
-              mistake is walking in without a line, so it gets set in the room by
-              their first number.{" "}
-              <Link
-                href="/walkaway"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Where&rsquo;s your line?
-              </Link>{" "}
-              sets your{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                walk-away point
-              </span>{" "}
-              from what you&rsquo;ll actually do if the deal falls through, then a
-              target, whether there&rsquo;s room for a deal at all, and who should name
-              the first number. On a break, type in the offer on the table and it
-              checks it against the line you set beforehand. A new{" "}
-              <Link
-                href="/writing/decide-your-line-first"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why the line comes first.
-            </li>
+            
           </ul>
         </section>
 

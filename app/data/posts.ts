@@ -2199,6 +2199,52 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/cover">tool for this</a> on the site. You type the offer and what you could pay from savings. It tells you whether the loss is one to insure or one to carry, works out the odds the cover has to beat, reads your answer against the known overestimate, and gives you the line to keep.</p>`,
   },
+  {
+    slug: "price-the-rooms-not-the-people",
+    title: "Price the Rooms, Not the People",
+    date: "2026-10-13",
+    excerpt:
+      "Three of you, one flat, rooms that aren't equal. An equal split is only fair if you all want different rooms, and haggling hands the answer to whoever minds least. There's a split nobody would swap, and a theorem that says it always exists.",
+    readTime: 6,
+    tags: ["decisions", "relationships", "finance"],
+    content: `<p>You've found the flat. Three bedrooms: a big one with its own bathroom, a bright one at the front, and a box room over the stairs. The rent is £2,400 a month. Someone says "let's just split it three ways", and it sounds generous and simple. Someone else is already working out the floor area on their phone. Two of you quietly want the big room, and neither wants to be the one who says so first.</p>
+
+<p>What happens next is usually a negotiation nobody calls a negotiation. Whoever speaks first sets the range. Whoever minds least about the money, or most about keeping the peace, ends up in the box room paying more than they think it's worth, and says nothing. The resentment arrives about three months later, around the time of the first argument about the bins.</p>
+
+<h2>Why the obvious splits fail</h2>
+
+<p>An equal split is fair in exactly one case: when everyone wants a different room. Then each of you gets your favourite at the same price and nobody would trade. But as soon as two people want the same room, an equal split guarantees that one of them ends up in a room they like less, paying the same. That isn't neutral. It's a transfer from whoever loses the room to whoever gets it.</p>
+
+<p>A split by floor area looks more principled, and it is better than nothing, but it prices one thing. It says nothing about the bathroom, the light, the traffic noise or the stairs, and those are often what people actually care about. A smaller room with its own bathroom can be worth more to someone than a bigger room without one. Any formula picked in advance is an argument about which features count, dressed up as arithmetic.</p>
+
+<h2>A test anyone can apply</h2>
+
+<p>Fair division, the branch of maths that studies how to split things among people who value them differently, has a better test than "equal" or "proportional". A split is <em>envy-free</em> if nobody would rather have someone else's room at someone else's rent. Each person judges by their own values. You don't have to agree what the rooms are really worth. You only have to be happy, by your own lights, with what you got.</p>
+
+<p>That sounds like it might be impossible. It isn't. Francis Su, a mathematician at Harvey Mudd College, proved in 1999 that under mild assumptions there is always a way to divide any rent across any rooms so that each housemate prefers a different room. His proof used a result from combinatorics called Sperner's lemma, and it turned into a step-by-step procedure. In 2014 the <em>New York Times</em> built a rent calculator on it.</p>
+
+<h2>How to find the split</h2>
+
+<p>The version that's easiest to run came from Spliddit, a not-for-profit site built by computer scientists at Carnegie Mellon. Tens of thousands of people used it in its first months. It asks each person one question: what is each room worth to you, if your numbers have to add up to the whole rent? Put differently, price the rooms so you wouldn't mind which one you got.</p>
+
+<p>Then two things happen. The rooms go to the assignment that makes the most of everyone's numbers taken together: whoever values the en suite most gets it, unless that would cost the others more than it gains. And there are always rents, for that assignment, at which nobody would rather swap. That second part is a theorem, not a hope.</p>
+
+<p>There are usually many envy-free splits, and some are lopsided: everyone is technically content, but one person gets a great deal and another barely clears the bar. Ya'akov Gal, Ariel Procaccia and colleagues tested this with Spliddit's own users, showing them splits of their real flats. People rated the split that does best by the worst-off housemate as clearly fairer than an arbitrary envy-free one, by more than a point on a five-point scale, and Spliddit has used it since 2015. A later paper by Dominik Peters, Procaccia and David Zhu added a practical refinement: people's numbers are rough, because they've seen the rooms for ten minutes. So prefer the split that would still be envy-free if everyone's numbers were a little off.</p>
+
+<h2>The procedure is the fair part</h2>
+
+<p>The maths settles the prices, but most of the fairness comes from how the numbers are gathered. Three things matter.</p>
+
+<p><strong>Price privately.</strong> Once someone says "the big room's worth at least a hundred more", every other number bends towards it. Collect everyone's prices before anyone hears anyone else's, the same way a good group estimate is collected.</p>
+
+<p><strong>Price honestly.</strong> It's tempting to price the room you want low, hoping to get it cheap. In this method that can lose you the room: it goes to whoever values it most, and you've just told everyone you don't value it much.</p>
+
+<p><strong>Agree to the method before you see the result.</strong> It's much easier to accept a procedure you chose than an answer you're looking at. Say out loud, before anyone types a number, that you'll go with what comes out. If someone still balks afterwards, it's usually about one room and one disagreement, either a fact about the room or what matters more, and you can talk about that instead of about each other.</p>
+
+<p>In the example above, two of the three wanted the en suite. Pricing privately showed which of them wanted it more, and by how much, and the split that came out put the other one in a room they preferred at its price. Nobody had to win an argument. The rooms were priced, not the people.</p>
+
+<p>There's a <a href="/split">tool for this</a> on the site. You pass one phone round; each person prices every room privately and locks it in. It gives each room to the right person, sets rents nobody would swap, tells you how close the nearest swap came and whether an equal split would have worked, and gives you the split to send the house.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

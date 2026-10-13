@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms"],
       },
     ],
     choices: [
@@ -448,6 +448,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "outside",
             note: "If the number is a timeline or a budget, check the group's middle against what happened to projects like it — a room shares its optimism.",
+          },
+        },
+      },
+      {
+        id: "split-rooms",
+        label: "We're sharing a place and have to split the rent — but the rooms aren't equal.",
+        detail: "One has its own bathroom, one is the box room. Who takes which, and who pays what?",
+        rec: {
+          toolId: "split",
+          because:
+            "An equal split is only fair if you all want different rooms. Have each person privately price every room so they wouldn't mind which they got, with their prices adding up to the rent. Then give the rooms to whoever values them most as a set, and set the rents so nobody would rather have someone else's room at its price.",
+          then: {
+            toolId: "crux",
+            note: "If someone won't accept the split, it's usually one room and one disagreement — a fact about it or what matters more. Find which, settle it, and price again.",
           },
         },
       },

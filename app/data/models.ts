@@ -247,6 +247,15 @@ export const models: Model[] = [
     essays: [],
   },
   {
+    id: "envy-free-division",
+    name: "Envy-Free Division",
+    domain: "Decisions",
+    tagline: "A split is fair when nobody would rather have anyone else's share at its price, and each person is the judge of that.",
+    explanation:
+      "Fair division asks how to split something among people who value its parts differently: rooms, chores, an inheritance, credit for joint work. Its most useful test is envy-freeness. A division is envy-free if every person, judging by their own values, likes their own share at least as much as anyone else's. Nobody has to agree on what the rooms are 'really' worth; each person only has to prefer what they got. Francis Su (American Mathematical Monthly, 1999) proved with Sperner's lemma that, under mild assumptions, any rent can be split across any rooms so that every housemate prefers a different room, and the proof turns into a procedure. The Spliddit project (Goldman and Procaccia, 2014) made it practical: each person states what every room is worth to them, with their numbers adding up to the rent; rooms go to the assignment that makes the most of everyone's numbers, and envy-free rents always exist for it. Envy-freeness alone still allows lopsided splits, so Gal, Mash, Procaccia and Zick (EC 2016) chose, among the envy-free ones, the split that does best by the worst-off person, and Spliddit's own users rated that clearly fairer than an arbitrary envy-free one. Peters, Procaccia and Zhu (NeurIPS 2022) added that people's numbers are rough, so the best split stays envy-free even if everyone's numbers are a little off. Two everyday lessons follow. An equal split is only fair when everyone wants something different. And the fair part is the procedure: everyone values every part, privately, before they see anyone else's numbers, and agrees in advance to accept the result. The tool Who Gets Which Room? runs it for a house of up to six.",
+    essays: ["price-the-rooms-not-the-people"],
+  },
+  {
     id: "batna",
     name: "BATNA and the Walk-Away Point",
     domain: "Decisions",
