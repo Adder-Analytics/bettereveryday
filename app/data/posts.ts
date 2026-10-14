@@ -2245,6 +2245,60 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/split">tool for this</a> on the site. You pass one phone round; each person prices every room privately and locks it in. It gives each room to the right person, sets rents nobody would swap, tells you how close the nearest swap came and whether an equal split would have worked, and gives you the split to send the house.</p>`,
   },
+  {
+    slug: "what-the-repair-has-to-buy",
+    title: "What the Repair Has to Buy",
+    date: "2026-10-14",
+    excerpt:
+      "The washing machine has stopped, and there's a quote on the table. What you've already spent says keep it going; the new model says let it go. The half-the-price rule hides the one question that decides it: how long will the repair last?",
+    readTime: 5,
+    tags: ["decisions", "finance", "psychology"],
+    content: `<p>The washing machine stopped halfway through a cycle, full of water. The engineer comes, takes the back off, and says it's the drum bearing: £180, parts and labour. A new machine is about £450. The old one is seven years old. You stand in the kitchen doing a sum you can't quite finish, and you end up deciding on a feeling.</p>
+
+<p>Most households face this call several times a year, with a car, a laptop, a phone screen, a boiler, a pair of good boots. It's one of the commonest money decisions there is, and almost nobody has a method for it beyond a rule of thumb and a mood.</p>
+
+<h2>Two pulls, in opposite directions</h2>
+
+<p>The mood is unreliable in two well-studied ways, and they pull opposite ways.</p>
+
+<p>The first pull is towards repairing too long. What you've already spent on it, the price you paid and the last two repairs, feels like a reason to keep going. It isn't: that money is gone whichever you choose, so it can't tell you which choice is better. Erica Okada, writing in the <em>Journal of Consumer Research</em> in 2001, found something more specific. People keep a kind of mental book value for the things they own. They write the price down in their heads as they use it, and they resist replacing a thing until it feels paid off. Retiring it early feels like writing off what's left on the books, even though there are no books.</p>
+
+<p>The second pull is towards replacing too soon. Silvia Bellezza, Joshua Ackerman and Francesca Gino found that when an appealing upgrade is available, people treat what they already own more carelessly: they lose phones more, look after things less. Part of the reason is that it lets them justify the upgrade without feeling wasteful. A study for the German Environment Agency found that about a third of the large household appliances people replaced in 2012 and 2013 still worked.</p>
+
+<p>So the same person can pour money into an old car because of what it's already cost them, and replace a perfectly good laptop because the new one is thinner. The fix for both is the same: look only forward.</p>
+
+<h2>What the rule of thumb hides</h2>
+
+<p>The usual advice, from Consumer Reports among others, is not to spend more than half the price of a new one on a repair. It's simple, and it's not bad. But it hides the thing that actually matters.</p>
+
+<p>Think about what a new machine costs you. Not £450 once, but £450 spread over the years it lasts. If it lasts ten years, that's £45 for each year of washing. A repair is buying years of washing too, from the old machine. So the repair wins if the years it buys cost less than £45 each. At £180, it has to keep the old machine going for four years.</p>
+
+<p>That's the whole sum: <strong>the quote, divided by what a new one costs per year of use, is how long the repair has to last.</strong></p>
+
+<p>Now look at the half-price rule again. A repair that costs half the price of a new one has to buy half a new one's life. The rule is the same sum with a guess baked in: that a repair buys about half the life of a new one. Sometimes that's right. Often it isn't. A new battery in a laptop that's otherwise fine might buy three years for a sixth of the price. A new gearbox in a car whose engine and suspension are also near the end might buy one year for a third of the price. The rule says yes to both, and should only say yes to the first.</p>
+
+<h2>Count what the old one is worth, and what the new one saves</h2>
+
+<p>Two adjustments make the sum honest. If the old one would fetch something as it is, a trade-in or a sale for parts, take that off the new price: it's money you only get if you replace. And if the new one is cheaper to run, in energy or fuel or servicing, take that saving off each year of new. Running costs can change the answer completely. If the new washing machine saves £15 a year in electricity, a year of new costs only £30, and the £180 repair now has to last six years, on a machine that's already seven. The half-price rule says fix it. The sum says you'd need to believe it'll reach thirteen.</p>
+
+<h2>Turn a sum into a question</h2>
+
+<p>The best thing about the division is what it turns the decision into. "Is the repair worth it?" is a question nobody can answer in a kitchen. "Will it keep going for another four years?" is one you can, or at least one you can ask. And the person quoting is the right person to ask. Two questions: how long does one usually go on after this repair, and is anything else on it close to going? They've seen hundreds. An honest "I wouldn't bother" is worth more than any sum, and a quick "it'll outlive you" is worth knowing too.</p>
+
+<p>If you think it'll last comfortably longer than the bar, fix it. If you doubt it, replace it. If it's about even, the money is a draw, and you're free to let the other things decide: the hassle of another breakdown, the waste of throwing something out, or the fact that you'd really like the new one.</p>
+
+<h2>Want the upgrade on purpose</h2>
+
+<p>There's nothing wrong with wanting the new one. The problem is wanting it in disguise, letting a breakdown make the decision you'd already half made. So price it. If the sum says repair and you replace anyway, you're buying the new one early, and each year you bring it forward costs you about a year of new: £45 a year in the washing machine example. If the upgrade is worth that to you, buy it, and say so to yourself. That's a choice. Drifting into it on a broken bearing isn't.</p>
+
+<p>The same goes for waste. Repairing is usually the lower-waste choice, and that's a fair thing to care about. In a close call, let it decide. When the sum clearly says replace, you can still cut the waste by selling the old one for parts or passing it to someone who repairs things.</p>
+
+<h2>Set it before the phone rings</h2>
+
+<p>The quote usually arrives at a bad moment: the thing is in pieces, someone is waiting for a yes, and the laundry is piling up. So decide the method beforehand. <em>I divide the quote by what a new one costs per year of use. If I'm confident the repair buys more time than that, I fix it; if not, I replace it. What I've already spent on it doesn't count.</em></p>
+
+<p>There's a <a href="/fix">tool for this</a> on the site. You type the quote, the price of a new one and how long it would last. It works out how long the repair has to keep the old one going, reads your answer, puts the sunk cost, the upgrade, the waste and the next fault each in their place, and shows where the half-price rule agrees.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

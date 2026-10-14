@@ -292,6 +292,18 @@ export const tools: Tool[] = [
     essays: ["insure-the-catastrophe"],
   },
   {
+    id: "fix",
+    href: "/fix",
+    name: "Fix It or Replace It?",
+    short: "Fix or replace",
+    when: "Something you rely on has broken — the washing machine, the laptop, the car, the boiler — and you're holding a repair quote in one hand and the price of a new one in the other, pulled one way by what you've already spent and the other by the shiny new model.",
+    ask: "How long would the repair have to keep it going to beat buying new, and do I believe it will?",
+    does: "Divides the quote by what a new one costs per year of use (less what the old one would fetch and anything the new one saves to run) to get the time the repair has to buy, then reads your answer, puts each pull — sunk cost, the upgrade, waste, the next fault — in its place, and shows where the half-the-price rule of thumb agrees.",
+    payoff: "now",
+    models: ["mental-accounting", "sunk-cost"],
+    essays: ["what-the-repair-has-to-buy"],
+  },
+  {
     id: "act",
     href: "/act",
     name: "Decided Isn't Done",
@@ -519,7 +531,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "walkaway", "later", "worth", "cover", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "walkaway", "later", "worth", "cover", "fix", "quit", "rule"],
   },
   {
     id: "big-commitment",

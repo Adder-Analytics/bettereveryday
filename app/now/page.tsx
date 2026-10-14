@@ -78,6 +78,30 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Something&rsquo;s broken and there&rsquo;s a quote on the table: the
+              washing machine, the laptop, the car.{" "}
+              <Link
+                href="/fix"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Fix it or replace it?
+              </Link>{" "}
+              divides the quote by what a new one costs per year of use to get{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                how long the repair has to last
+              </span>
+              , a question you can answer or put to the repairer. It puts the
+              sunk cost and the shiny new model each in their place, and shows
+              what the half-the-price rule of thumb was guessing. A new{" "}
+              <Link
+                href="/writing/what-the-repair-has-to-buy"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Moving in with others, with rooms that aren&rsquo;t equal, is a
               call people settle by splitting it equally or by haggling, and
               someone ends up paying the same for the box room.{" "}
@@ -154,32 +178,6 @@ export default function Now() {
               </Link>{" "}
               explains why.
             </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              One of the commonest calls people get wrong wasn&rsquo;t in the kit at all:
-              someone asks you to do something months away, and you say yes because
-              that week looks empty from here. It never is.{" "}
-              <Link
-                href="/later"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                If it were next week
-              </Link>{" "}
-              counts the hours the invitation leaves out, then runs the{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                next-week test
-              </span>
-              : would you say yes if it landed next week, out of the week you actually
-              have? It reads the answer as a yes, a no, a smaller yes, or a no
-              that&rsquo;s just hard to say, and gives you a short reply to send. A new{" "}
-              <Link
-                href="/writing/future-you-is-not-less-busy"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why far-off weeks look empty.
-            </li>
-            
           </ul>
         </section>
 
