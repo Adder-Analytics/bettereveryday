@@ -223,6 +223,32 @@ export const situations: Situation[] = [
     essays: ["insure-the-catastrophe"],
   },
   {
+    id: "repair-or-replace",
+    title: "Something's broken and you've got a repair quote",
+    scene:
+      "The washing machine has stopped mid-cycle, the laptop won't hold a charge, the garage has rung with a number. A repair quote in one hand, the price of a new one in the other. Part of you says you've put too much into it to give up now; part of you has already looked at the new model.",
+    question: "How long would the repair have to keep it going to beat buying new, and will it?",
+    models: [
+      {
+        id: "sunk-cost",
+        move: "What you paid for it and the repairs so far are gone whichever you choose, so they can't tell you which is better. Only the quote, the new price and the time ahead belong in the sum.",
+      },
+      {
+        id: "mental-accounting",
+        move: "People keep a running balance for what they own and resist replacing it until it feels paid off. The pull also runs the other way: with a better model on offer, people get careless with the old one. Close the jar and look forward.",
+      },
+      {
+        id: "opportunity-cost",
+        move: "The repair money could go towards the new one instead. Divide the new one's price, less what the old would fetch, by its life to get a year of new. The quote over that is how long the repair has to last.",
+      },
+    ],
+    tool: {
+      id: "fix",
+      move: "This is the call the tool is built for. It works out how long the repair has to keep it going to win, reads your answer, puts the sunk cost, the upgrade, the waste and the next fault each in their place, and shows where the half-the-price rule agrees.",
+    },
+    essays: ["what-the-repair-has-to-buy"],
+  },
+  {
     id: "need-an-estimate",
     title: "You need a number and don't have one",
     scene:
@@ -1208,7 +1234,7 @@ export const situationGroups: SituationGroup[] = [
   {
     id: "numbers",
     label: "There's a number in it",
-    situationIds: ["a-number-appears", "time-or-money", "offered-cover", "need-an-estimate"],
+    situationIds: ["a-number-appears", "time-or-money", "offered-cover", "repair-or-replace", "need-an-estimate"],
   },
   {
     id: "after",

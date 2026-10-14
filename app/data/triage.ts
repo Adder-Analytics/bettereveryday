@@ -134,7 +134,7 @@ const nodes: Record<string, TriageNode> = {
         id: "options",
         label: "It's the options themselves",
         short: "The options",
-        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money"],
+        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair"],
       },
       {
         id: "stakes",
@@ -281,6 +281,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "rule",
             note: "If it's a trade you face every week, make your answer a standing rule, so the next one doesn't need the sum.",
+          },
+        },
+      },
+      {
+        id: "repair",
+        label: "Something's broken: pay for the repair, or buy a new one?",
+        detail: "The washing machine, the laptop, the car with a big garage quote, the boiler.",
+        rec: {
+          toolId: "fix",
+          because:
+            "Divide the quote by what a new one costs per year of use. That's how long the repair has to keep it going to win, and it's a question you can actually answer, or ask the repairer. What you've already spent on it doesn't count either way.",
+          then: {
+            toolId: "rule",
+            note: "Something else will break. Make the division your standing rule, so the next quote is a lookup.",
           },
         },
       },

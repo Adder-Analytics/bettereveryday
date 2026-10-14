@@ -266,6 +266,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Fix it or replace it?",
+    href: "/fix",
+    snippet:
+      "The washing machine, the laptop, the car with a big garage quote. Divide the repair quote by what a new one costs per year of use to see how long the repair has to last to beat buying new.",
+    meta: "Fix or replace — is the repair worth it?",
+    titleText:
+      "fix it or replace it fix or replace repair or replace repair or buy new is it worth repairing is the repair worth it worth fixing should i fix my repair quote garage quote mechanic washing machine dishwasher fridge freezer boiler oven laptop phone screen car repair old car new car upgrade sunk cost mental accounting book value 50 percent rule half the price rule consumer reports right to repair waste".toLowerCase(),
+    bodyText:
+      "fix it or replace it? (/fix): the instrument for a repair quote set against the price of a new one — the washing machine with a gone bearing, the laptop with a dead battery, the car with a big garage quote, the boiler, the phone screen. the feel is pulled both ways: towards repairing too long by what you've already spent (the sunk cost; okada, journal of consumer research 2001, found people keep a mental book value for what they own and resist replacing it until it feels paid off) and towards replacing too soon by the shiny new model (bellezza, ackerman and gino, journal of marketing research 2017, found people treat what they own more carelessly when an appealing upgrade is available; in a german environment agency study about a third of large appliances replaced in 2012/13 still worked). you give the repair quote, what a new one would cost, how long a new one would last, and optionally what the old one would fetch as it is and what a new one would save a year to run. the sum: a year of new costs (price minus what the old one fetches) divided by its life, less the running saving; the quote divided by that is how long the repair has to keep it going to win. if that's longer than a new one would last, replace it. otherwise you say whether, repaired, it'll keep going longer than that: yes comfortably (fix it), about that (too close to call on money — let hassle, waste or the upgrade decide), no (replace it), or no idea (ask the repairer how long one usually goes on after this repair and what else is close to going; if the bar is under three months, just fix it). ticked pulls each get a sentence: i've already spent a lot on it (gone either way), the new one is better and i want it (price the upgrade: each year you bring it forward costs about a year of new), throwing it out feels wasteful (a fair tie-breaker), i'm worried something else will go next (put it in the estimate). it shows the half-the-price rule of thumb against the sum: that rule is roughly the same division with a guess built in, that a repair buys half a new one's life. ends in a line to keep and hands off to the outside view, the cover tool (before the till), quit-or-stay and make a rule. includes a read-only worked example: a £120 laptop repair against an £800 new model that only had to last ten months. nothing is sent anywhere; inputs persist in your browser. pairs with the mental accounting and sunk cost models and the essay what the repair has to buy.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Insure it or carry it?",
     href: "/cover",
     snippet:

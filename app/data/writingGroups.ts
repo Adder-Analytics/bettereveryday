@@ -40,6 +40,7 @@ const essayGroups: EssayGroup[] = [
       "money-math",
       "an-hour-has-a-price",
       "insure-the-catastrophe",
+      "what-the-repair-has-to-buy",
       "inflation-silent-tax",
     ],
   },

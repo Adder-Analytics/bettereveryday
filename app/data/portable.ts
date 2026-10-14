@@ -424,6 +424,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a cover-or-carry call in progress" : null),
   },
   {
+    key: "fix:v1",
+    tool: "Fix it or replace it?",
+    href: "/fix",
+    label: "The repair you last weighed",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "a fix-or-replace call in progress" : null),
+  },
+  {
     key: "enough:v1",
     tool: "Enough to decide?",
     href: "/enough",
