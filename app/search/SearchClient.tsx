@@ -266,6 +266,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Still worth paying for?",
+    href: "/keep",
+    snippet:
+      "The gym, the streaming services, the app that renewed in March. Go through your subscriptions one by one: what each costs a use, whether paying per use is cheaper, and whether you'd sign up today at this price.",
+    meta: "Keep or cancel — subscriptions",
+    titleText:
+      "still worth paying for keep or cancel cancel subscription subscriptions should i cancel my subscription subscription audit recurring payments direct debit standing order membership gym membership streaming netflix spotify apps app store free trial auto renew auto-renewal renewal yearly annual membership news paper magazine box meal kit cost per use pay as you go flat rate status quo bias fresh start would i sign up today save money cut costs budget".toLowerCase(),
+    bodyText:
+      "still worth paying for? (/keep): the instrument for the subscriptions that renew themselves — the gym, the streaming services, the app whose free trial ended, the yearly membership, the box that arrives every fortnight. three pulls keep them going: we expect to use them more than we do (dellavigna and malmendier, american economic review 2006, paying not to go to the gym: members on monthly contracts over $70 went 4.3 times a month, more than $17 a visit against $10 on a ten-visit pass), a flat rate feels safer than paying per use (lambrecht and skiera, journal of marketing research 2006, the flat-rate bias: an insurance effect and a taxi-meter effect), and whatever is already happening has a head start (samuelson and zeckhauser's status quo bias, 1988). it starts with where to find them all: two months of bank and card statements, your phone's app store subscriptions page, and your email for renewal, receipt and trial, since yearly ones won't show on two months of statements. then one card per subscription: the price, billed monthly, yearly or weekly; times you used it in the last month, counted not planned; and optionally what one use would cost without it (a drop-in visit, renting the film). it works out what each costs a year and a use. if paying per use would have cost less, it says cancel and pay as you go, with the yearly saving. otherwise it asks the fresh-start question: if you didn't have it, would you sign up today at this price? yes: keep it. no: cancel it (for a yearly one, turn off the renewal now; you keep it until the date). not sure: if you could rejoin in a minute at the same price, cancel and see if you miss it, a cheap experiment, not a loss; if you'd lose an old price, your history or a place, keep it for now and set a date to ask again. the list ends with what everything costs a year and what cancelling would free, a line to keep (once a year, ask each subscription the fresh-start question), copy as text, and handoffs to set a tripwire, is it worth the time and make a rule. includes a read-only worked example: a gym, a second streaming service, a yearly news site and photo storage, where cancelling three frees £483 a year. nothing is sent anywhere; inputs persist in your browser. pairs with the status quo bias and reversibility models and the essay the subscription you wouldn't buy today.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Fix it or replace it?",
     href: "/fix",
     snippet:

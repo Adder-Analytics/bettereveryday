@@ -134,7 +134,7 @@ const nodes: Record<string, TriageNode> = {
         id: "options",
         label: "It's the options themselves",
         short: "The options",
-        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair"],
+        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "subscriptions"],
       },
       {
         id: "stakes",
@@ -295,6 +295,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "rule",
             note: "Something else will break. Make the division your standing rule, so the next quote is a lookup.",
+          },
+        },
+      },
+      {
+        id: "subscriptions",
+        label: "A subscription keeps renewing, and I'm not sure it's still worth it.",
+        detail: "The gym, a streaming service, an app, a yearly membership, a box that arrives every fortnight.",
+        rec: {
+          toolId: "keep",
+          because:
+            "A renewal is a decision made by default. Count last month's uses, not the ones you plan, and ask the fresh-start question: would you sign up today at this price? If you're not sure and you could rejoin in a minute, cancelling is the cheap experiment.",
+          then: {
+            toolId: "rule",
+            note: "The next free trial is already on its way. Make a once-a-year review your standing rule.",
           },
         },
       },

@@ -249,6 +249,32 @@ export const situations: Situation[] = [
     essays: ["what-the-repair-has-to-buy"],
   },
   {
+    id: "subscriptions",
+    title: "The subscriptions have piled up",
+    scene:
+      "A bank statement you actually read, or a renewal email for something you'd forgotten you had. The gym you meant to go to twice a week, a second streaming service, an app whose free trial ended in March. Each was a good idea once. None of them has been asked since.",
+    question: "If you didn't have it, would you sign up today, at this price, for the use you actually get?",
+    models: [
+      {
+        id: "status-quo-bias",
+        move: "A renewal is the status quo paying itself, and the status quo gets a vote it hasn't earned. Turn 'should I give this up?' into 'would I buy this today?', which doesn't feel like a loss.",
+      },
+      {
+        id: "reversibility",
+        move: "Most subscriptions can be restarted in a minute at the same price, so cancelling is a two-way door. When you're not sure, cancel and see if you miss it. The exceptions are a price you can't get back, your history, or a place in a queue.",
+      },
+      {
+        id: "base-rates",
+        move: "Plans are not a usage record. In one study of three US gyms, people on monthly contracts went about four times a month and paid more per visit than the pay-as-you-go price. Count last month's uses, not next month's intentions.",
+      },
+    ],
+    tool: {
+      id: "keep",
+      move: "This is the call the tool is built for. It helps you find them all, works out what each costs a year and a use, checks whether paying per use would be cheaper, asks the fresh-start question, and totals what cancelling would free.",
+    },
+    essays: ["the-subscription-you-wouldnt-buy-today"],
+  },
+  {
     id: "need-an-estimate",
     title: "You need a number and don't have one",
     scene:
@@ -1234,7 +1260,7 @@ export const situationGroups: SituationGroup[] = [
   {
     id: "numbers",
     label: "There's a number in it",
-    situationIds: ["a-number-appears", "time-or-money", "offered-cover", "repair-or-replace", "need-an-estimate"],
+    situationIds: ["a-number-appears", "time-or-money", "offered-cover", "repair-or-replace", "subscriptions", "need-an-estimate"],
   },
   {
     id: "after",

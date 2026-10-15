@@ -78,6 +78,33 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Subscriptions renew themselves, and every renewal is a decision
+              made by default: the gym, the second streaming service, the app
+              whose trial ended in March.{" "}
+              <Link
+                href="/keep"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Still worth paying for?
+              </Link>{" "}
+              goes through them one by one, counting last month&rsquo;s uses
+              rather than planned ones, checking whether paying per use would be
+              cheaper, and asking the{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                fresh-start question
+              </span>
+              : would you sign up today, at this price? When you&rsquo;re not
+              sure and could rejoin in a minute, it says cancel and see if you
+              miss it. A new{" "}
+              <Link
+                href="/writing/the-subscription-you-wouldnt-buy-today"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Something&rsquo;s broken and there&rsquo;s a quote on the table: the
               washing machine, the laptop, the car.{" "}
               <Link
@@ -145,33 +172,6 @@ export default function Now() {
               new{" "}
               <Link
                 href="/writing/insure-the-catastrophe"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The trade between time and money comes up every week (delivery or the
-              shop, the cheap flight or the direct one, the cheaper flat further
-              out) and it had no instrument. The usual mistake is letting the
-              percentage decide: five pounds off something cheap feels worth a
-              drive, and five pounds off something dear doesn&rsquo;t.{" "}
-              <Link
-                href="/worth"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Is it worth the time?
-              </Link>{" "}
-              turns the trade into its{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                price per hour
-              </span>
-              , counts a habit over a year, and sets it against your own price for
-              an hour like that one, not your wage. It ends in a line you can keep,
-              so the next trade is a lookup, not a sum. A new{" "}
-              <Link
-                href="/writing/an-hour-has-a-price"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 essay
