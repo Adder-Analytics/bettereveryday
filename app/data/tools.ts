@@ -304,6 +304,18 @@ export const tools: Tool[] = [
     essays: ["what-the-repair-has-to-buy"],
   },
   {
+    id: "keep",
+    href: "/keep",
+    name: "Still Worth Paying For?",
+    short: "Keep or cancel",
+    when: "The subscriptions have piled up — the gym, the streaming services, the app that renewed in March, the yearly one you'd forgotten — and each renews itself without anyone asking whether it's still worth it.",
+    ask: "If I didn't have this, would I sign up today, at this price, for the use I actually get?",
+    does: "Goes through your subscriptions one by one: what each costs a year and a use (counting last month's uses, not planned ones), whether paying per use would be cheaper, and the fresh-start question. A 'not sure' on something easy to rejoin reads as cancel and see if you miss it; the whole list ends in what cancelling would free a year.",
+    payoff: "now",
+    models: ["status-quo-bias", "reversibility"],
+    essays: ["the-subscription-you-wouldnt-buy-today"],
+  },
+  {
     id: "act",
     href: "/act",
     name: "Decided Isn't Done",
@@ -531,7 +543,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "walkaway", "later", "worth", "cover", "fix", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "walkaway", "later", "worth", "cover", "fix", "keep", "quit", "rule"],
   },
   {
     id: "big-commitment",

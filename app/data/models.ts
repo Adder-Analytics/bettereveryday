@@ -301,6 +301,15 @@ export const models: Model[] = [
     essays: ["what-the-repair-has-to-buy"],
   },
   {
+    id: "status-quo-bias",
+    name: "Status Quo Bias",
+    domain: "Psychology",
+    tagline: "Whatever is already happening gets an unearned vote — and a renewal is the status quo paying itself.",
+    explanation:
+      "William Samuelson and Richard Zeckhauser (Journal of Risk and Uncertainty, 1988) named the pattern: offered the same options, people choose one far more often when it's framed as the current state than when it's framed as a change. Part of it is loss aversion (leaving feels like giving something up), part is the effort of switching, and part is that keeping things as they are rarely feels like a decision at all. Subscriptions are the everyday case, because they're built so that doing nothing means paying again. Two further biases keep them going. Stefano DellaVigna and Ulrike Malmendier (American Economic Review, 2006) followed 7,752 members of three US gyms: people on monthly contracts of over $70 went 4.3 times a month on average, paying more than $17 a visit when a ten-visit pass worked out at $10, and their leading explanation is overconfidence about future self-control. Anja Lambrecht and Bernd Skiera (Journal of Marketing Research, 2006) found people often choose a flat rate when paying per use would cost less, partly because a fixed bill feels like insurance and a meter running feels like a cost each time. The correction is the fresh-start test: if you didn't have this, would you choose it today, at this price, for the use you actually get? It turns a 'should I give this up?', which feels like a loss, into a 'should I buy this?', which doesn't. Where leaving is easy to undo, the test has a cheap experiment attached: cancel, and see whether you miss it. The tool Still Worth Paying For? runs it on your own subscriptions.",
+    essays: ["the-subscription-you-wouldnt-buy-today"],
+  },
+  {
     id: "parity",
     name: "Hard Choices (Parity)",
     domain: "Decisions",

@@ -2299,6 +2299,56 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/fix">tool for this</a> on the site. You type the quote, the price of a new one and how long it would last. It works out how long the repair has to keep the old one going, reads your answer, puts the sunk cost, the upgrade, the waste and the next fault each in their place, and shows where the half-price rule agrees.</p>`,
   },
+  {
+    slug: "the-subscription-you-wouldnt-buy-today",
+    title: "The Subscription You Wouldn't Buy Today",
+    date: "2026-10-15",
+    excerpt:
+      "Each subscription was a good call the day it started. Every renewal since has been a decision made by default. One question turns the default back into a choice: if you didn't have it, would you sign up today?",
+    readTime: 5,
+    tags: ["decisions", "finance", "psychology"],
+    content: `<p>Somewhere in your bank statement is a payment you'd forgotten. Not a large one: £7.99, £12, the yearly £59 that arrived in March. You signed up for a reason. It was a good reason then. Since that day, the subscription has renewed itself every month, and nobody has asked whether the reason still holds.</p>
+
+<p>That's the odd thing about subscriptions. Signing up was a decision. Every renewal after it is also a decision, the same size, made by default. A gym at £45 a month is a £540 purchase, made again each year, without anyone in the shop.</p>
+
+<h2>Three pulls that keep them going</h2>
+
+<p>The first is that we expect to use them more than we do. Stefano DellaVigna and Ulrike Malmendier followed 7,752 members of three American gyms over three years, and published what they found in the <em>American Economic Review</em> in 2006 under the title "Paying Not to Go to the Gym". Members on a monthly contract of over \$70 went, on average, 4.3 times a month. That's more than \$17 a visit, when a ten-visit pass would have cost them \$10 a visit. Their leading explanation is overconfidence: people sign up for the person they plan to be, and keep paying for that person. The monthly members were also slower to leave than people on annual contracts.</p>
+
+<p>The second is that a flat fee feels safer than it is. Anja Lambrecht and Bernd Skiera, in the <em>Journal of Marketing Research</em> the same year, found people often choose a flat rate when paying per use would cost them less, and that the bias persists. Two of the reasons they give are easy to recognise. A fixed bill feels like insurance against a big one. And paying per use is like watching a taxi meter: every use seems to cost something, while on a flat rate each use feels free, even though you paid for all of them up front.</p>
+
+<p>The third is the oldest. William Samuelson and Richard Zeckhauser named it status quo bias in 1988: give people the same options, and they'll choose one far more often if it's framed as what's already happening. Keeping things as they are rarely feels like a choice at all. A subscription is built to take advantage of that. Doing nothing means paying again.</p>
+
+<p>Put the three together and you get a familiar result. In one 2022 survey of a thousand American adults, by the research firm C+R, people's quick guess at their monthly subscription spending was, on average, about \$133 below what they found when they sat down and added it up. It's one survey, and the method was a guess against a careful count rather than bank records. But anyone who has done the count will recognise the gap.</p>
+
+<h2>Count the uses, not the plans</h2>
+
+<p>The fix for the first pull is to replace the forecast with a record. Not "how often will I go?" but "how often did I go last month?" Most apps keep a history. Your diary, your watch, your memory of the last four weeks will do. Divide the monthly price by that count. That's what each use actually cost you.</p>
+
+<p>If there's a pay-as-you-go price, a drop-in visit, renting the one film, buying the single issue, the sum settles it. Three gym visits at £8 is £24 against a £45 membership. You'd save more than £250 a year doing exactly what you already do. If you'd really go more, run the sum again next month on the new count, not the hopeful one.</p>
+
+<h2>Ask the fresh-start question</h2>
+
+<p>The fix for the other two pulls is a question: <strong>if you didn't have this, would you sign up today, at this price, for the use you actually get?</strong></p>
+
+<p>It works because it changes what the decision feels like. "Should I cancel?" feels like giving something up, and <a href="/writing/loss-aversion">losses loom larger than gains</a>. "Should I buy?" doesn't. It's the same decision, about the same money and the same service. Only the starting point has moved, and the starting point is exactly what status quo bias feeds on.</p>
+
+<p>If the answer is yes, keep it without guilt. A subscription you'd buy again today is doing its job. If it's no, cancel it. It's only still there because leaving takes a minute.</p>
+
+<h2>When you're not sure, cancel and see</h2>
+
+<p>The interesting answer is "not sure", and here subscriptions have a feature most decisions don't. Most of them can be restarted in a minute, at the same price, with nothing lost. That makes cancelling a two-way door: a cheap experiment, not a loss.</p>
+
+<p>So the honest default for "not sure" is to cancel and see if you miss it. If you do, you rejoin and stop wondering. If a month goes by and you haven't noticed it's gone, you have your answer, and it's a better one than any amount of thinking would have given you. Yearly subscriptions make this even easier: turning off the renewal costs nothing, because you keep what you've paid for until the date.</p>
+
+<p>The exception is when leaving costs something you can't simply buy back: an old price that's no longer offered, years of history or saved files, a place on a waiting list. That's a real reason to keep it. It's also a price. Name it, and put a date in your diary to ask again, so the next renewal doesn't answer for you.</p>
+
+<h2>Once a year</h2>
+
+<p>None of this is a case against subscriptions. Plenty are good value, and some are the best money you spend. The case is against letting them renew unexamined. The method fits on a card: <em>once a year, I ask each subscription whether I'd sign up today at this price, counting last month's uses, not the ones I plan. If I'm not sure and I can rejoin easily, I cancel and see if I miss it.</em></p>
+
+<p>There's a <a href="/keep">tool for this</a> on the site. It helps you find them all, then goes through them one by one: what each costs a year and a use, whether paying per use would be cheaper, and the fresh-start question. It ends with what cancelling would free in a year.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

@@ -32,6 +32,8 @@
 
 /** The current bundle format. Bumped only on a breaking change to the wrapper
  *  (never for a tool's own schema — those are opaque strings here). */
+import { keepSubject, parseKeepInputs } from "./keep";
+
 export const BUNDLE_VERSION = 1 as const;
 
 /** Stable tag identifying our own export files, so import can tell a backup
@@ -431,6 +433,20 @@ export const STORES: StoreDescriptor[] = [
     answerNow: true,
     subject: subjectField("what"),
     describe: (raw) => (parse(raw) ? "a fix-or-replace call in progress" : null),
+  },
+  {
+    key: "keep:v1",
+    tool: "Still worth paying for?",
+    href: "/keep",
+    label: "The subscriptions you last went through",
+    answerNow: true,
+    subject: (raw) => keepSubject(parseKeepInputs(parse(raw))),
+    describe: (raw) => {
+      const v = parse(raw);
+      if (!v) return null;
+      const n = parseKeepInputs(v).rows.filter((r) => r.name.trim() || r.price.trim()).length;
+      return n ? `${n} subscription${n === 1 ? "" : "s"} listed` : null;
+    },
   },
   {
     key: "enough:v1",
