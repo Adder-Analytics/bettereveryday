@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The chores in most homes were never divided; they settled, and
+              everyone is sure they do more than their share.{" "}
+              <Link
+                href="/chores"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Who does which chore?
+              </Link>{" "}
+              replaces two memories with one list, the remembering included,
+              then has each of you rate how much you mind each chore. Because
+              you don&rsquo;t mind the same ones, each chore can go to whoever
+              minds it least, and each of you can end up with{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                less than an even share, as you count it
+              </span>
+              . A new{" "}
+              <Link
+                href="/writing/trade-the-chores-you-mind"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Subscriptions renew themselves, and every renewal is a decision
               made by default: the gym, the second streaming service, the app
               whose trial ended in March.{" "}
@@ -151,32 +176,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               explains the fair-division maths behind it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              &ldquo;Would you like to protect that?&rdquo; The warranty at the
-              till, phone cover, a lower excess for a bit more a year: a call
-              almost everyone faces, with no instrument here until now.{" "}
-              <Link
-                href="/cover"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Insure it or carry it?
-              </Link>{" "}
-              sorts the loss by whether you could pay it from savings, and for the
-              ones you could, works out the{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                break-even odds
-              </span>{" "}
-              the cover has to beat, then checks your read of them against the
-              known overestimate. It ends in a line to keep for the next till. A
-              new{" "}
-              <Link
-                href="/writing/insure-the-catastrophe"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
             </li>
           </ul>
         </section>

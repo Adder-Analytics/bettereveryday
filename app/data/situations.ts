@@ -850,6 +850,32 @@ export const situations: Situation[] = [
     essays: ["price-the-rooms-not-the-people"],
   },
   {
+    id: "sharing-chores",
+    title: "The chores have quietly landed on one of you",
+    scene:
+      "Nobody ever divided the housework. It settled: whoever noticed first, or minded the mess most, started doing it, and kept doing it. Now there's a pile of washing up and a tone of voice, and each of you is sure you do more than your share.",
+    question: "Who should own which chore, so that nobody does more than their share — as each of you counts it?",
+    models: [
+      {
+        id: "egocentric-bias",
+        move: "You're both probably overcounting. Your own chores come to mind more easily than anyone else's, so two memories will never agree. Replace them with one list and a rough time for each, and put the remembering on it: the planning, the bills, noticing what's run out.",
+      },
+      {
+        id: "envy-free-division",
+        move: "Don't aim for equal minutes. You mind different chores, and that's the opening: give each one to whoever minds it least, and each of you can do less than half the housework as you count it. The test is whether anyone would rather have someone else's list.",
+      },
+      {
+        id: "independent-judgments",
+        move: "Say how much you mind each chore before you hear the others. One person's 'I hate it' makes it harder for the next to say the same.",
+      },
+    ],
+    tool: {
+      id: "chores",
+      move: "This is the call the tool is built for. List the chores with a rough time a week, each of you rates how much you mind each one, and it gives every chore one owner so the largest share, as each person counts it, is as small as it can be. It shows who does what now against after, and the one chore to take turns on if whole chores won't split evenly.",
+    },
+    essays: ["trade-the-chores-you-mind"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1253,6 +1279,7 @@ export const situationGroups: SituationGroup[] = [
       "deadlocked-with-someone",
       "group-needs-a-number",
       "splitting-the-rent",
+      "sharing-chores",
       "designing-incentives",
       "stubborn-system",
     ],

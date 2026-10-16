@@ -244,6 +244,18 @@ export const tools: Tool[] = [
     essays: ["price-the-rooms-not-the-people"],
   },
   {
+    id: "chores",
+    href: "/chores",
+    name: "Who Does Which Chore?",
+    short: "Chores",
+    when: "The housework was never divided — it settled. Whoever noticed first, or minded the mess most, ended up doing it, and now each of you is quietly sure you do more than your share. Housemates, a couple, a family with teenagers: someone has to say it, and nobody wants it to become a row.",
+    ask: "Who should own which chore, so that each of us does no more than our share — as we each count it?",
+    does: "Lists the chores with a rough time a week, including the remembering (meal planning, bills, noticing what's run out), and has each person rate how much they mind each one. Gives every chore one owner so the largest share — each chore's time weighted by how much its owner minds it — is as small as it can be; when you mind different things, each of you ends up under an even share. Shows who does what now against after, checks nobody would rather swap lists, and names the chore to take turns on when whole chores won't split evenly.",
+    payoff: "now",
+    models: ["envy-free-division", "egocentric-bias"],
+    essays: ["trade-the-chores-you-mind"],
+  },
+  {
     id: "walkaway",
     href: "/walkaway",
     name: "Where's Your Line?",
@@ -543,7 +555,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "walkaway", "later", "worth", "cover", "fix", "keep", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "walkaway", "later", "worth", "cover", "fix", "keep", "quit", "rule"],
   },
   {
     id: "big-commitment",

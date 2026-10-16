@@ -266,6 +266,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Who does which chore?",
+    href: "/chores",
+    snippet:
+      "Housemates, a couple, a family: list the chores, including the remembering, rate how much each of you minds each one, and get a split where nobody does more than their share as they count it.",
+    meta: "Chores — divide the housework fairly",
+    titleText:
+      "who does which chore chores chore chart chore rota rota cleaning rota housework household chores divide chores dividing housework split chores sharing chores fair share of housework division of labour division of labor household labour mental load invisible work cognitive labour emotional labour housemates flatmates roommates couple partner spouse marriage family teenagers kids cleaning cooking washing up dishes laundry hoovering vacuuming bathroom bins food shop meal planning who does more i do everything nag nagging take turns".toLowerCase(),
+    bodyText:
+      "who does which chore? (/chores): the instrument for dividing housework on purpose instead of by drift — housemates, a couple, a family with teenagers. in most homes the chores were never divided; they settled on whoever noticed first or minded the mess most, and everyone is quietly sure they do more than their share. ross and sicoly (1979) found people in joint work, married couples included, take more credit than their partners give them, because their own contributions come to mind more easily (egocentric bias, overclaiming). daminger (2019) found the cognitive side of housework — anticipating, identifying options, deciding, monitoring — goes unseen. so the tool starts with one list instead of two memories, with tap-to-add chips for the usual chores and the remembering (meal planning, noticing what's run out, bills and admin, birthdays and presents, booking repairs). each chore gets a rough time a week, agreed out loud, and each person rates how much they mind it: happy to, fine, rather not, hate it. a person's share is each chore's time weighted by how much they mind it, over the same for all chores, so marking everything hate it changes nothing — only how you rank the chores counts. the split gives every chore one owner so the largest share is as small as it can be (the whole-chore version of spliddit's equitable chores method), with take-turns for the chore everyone hates. when you mind different things, each of you ends up under an even share. shows who does what now against after by the clock, checks whether anyone would rather swap lists (envy-free), and when whole chores can't split evenly names the one chore to take turns on. ends in a line to keep: every chore has one owner who notices when it's due; helping isn't owning; look again in a month. copy the split to send the house. includes a worked example: alex and sam, where alex did 82% of the time and each ends up under a third as they count it. nothing is sent anywhere. pairs with the envy-free division and egocentric bias models.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Still worth paying for?",
     href: "/keep",
     snippet:

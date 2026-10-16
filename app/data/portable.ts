@@ -33,6 +33,7 @@
 /** The current bundle format. Bumped only on a breaking change to the wrapper
  *  (never for a tool's own schema — those are opaque strings here). */
 import { keepSubject, parseKeepInputs } from "./keep";
+import { choresSubject, parseChoresInputs } from "./chores";
 
 export const BUNDLE_VERSION = 1 as const;
 
@@ -446,6 +447,20 @@ export const STORES: StoreDescriptor[] = [
       if (!v) return null;
       const n = parseKeepInputs(v).rows.filter((r) => r.name.trim() || r.price.trim()).length;
       return n ? `${n} subscription${n === 1 ? "" : "s"} listed` : null;
+    },
+  },
+  {
+    key: "chores:v1",
+    tool: "Who does which chore?",
+    href: "/chores",
+    label: "The chores you last split",
+    answerNow: true,
+    subject: (raw) => choresSubject(parseChoresInputs(parse(raw))),
+    describe: (raw) => {
+      const v = parse(raw);
+      if (!v) return null;
+      const n = parseChoresInputs(v).chores.filter((c) => c.name.trim() || c.minutes.trim()).length;
+      return n ? `${n} chore${n === 1 ? "" : "s"} listed` : null;
     },
   },
   {
