@@ -2349,6 +2349,50 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/keep">tool for this</a> on the site. It helps you find them all, then goes through them one by one: what each costs a year and a use, whether paying per use would be cheaper, and the fresh-start question. It ends with what cancelling would free in a year.</p>`,
   },
+  {
+    slug: "trade-the-chores-you-mind",
+    title: "Trade the Chores You Mind",
+    date: "2026-10-16",
+    excerpt:
+      "In most homes the housework was never divided. It settled, and everyone is sure they do more than their share. A list ends the counting argument, and the fact that you mind different chores lets each of you do less than half.",
+    readTime: 5,
+    tags: ["decisions", "relationships", "psychology"],
+    content: `<p>Ask two people who share a home what share of the housework they each do, separately, and add the answers up. It will very likely come to more than a hundred percent.</p>
+
+<p>Nobody needs to be lying. Michael Ross and Fiore Sicoly found the pattern in 1979, in married couples, basketball teams and student groups alike: people take more responsibility for shared work than the others give them. The reason is mostly memory. You were there for every dish you washed. You were there for only some of the ones your partner washed, and you were probably thinking about something else. Your own work comes to mind more easily, and what comes to mind easily feels like more.</p>
+
+<p>So the usual argument about chores can't be won. It's two memories against each other, and both are honestly biased in the same direction.</p>
+
+<h2>One list instead of two memories</h2>
+
+<p>The first move is boring and does most of the work: write the chores down. Every recurring job, with a rough time a week for each, agreed out loud. Cooking, three and a half hours. Washing up, an hour and three quarters. Bins, a quarter of an hour.</p>
+
+<p>Then add the ones nobody lists. The sociologist Allison Daminger interviewed 35 couples for a 2019 paper in the <em>American Sociological Review</em> and split the thinking side of housework into four parts: anticipating what's needed, finding the options, deciding, and keeping an eye on how it went. She found this work was often invisible, sometimes even to the person doing it. Noticing the milk is low is a chore. So is planning the week's meals, knowing when the boiler is due a service, and remembering whose birthday is next Thursday. Whoever does these is working, and they're the jobs most likely to be missing from both people's count.</p>
+
+<p>A list does what a better argument can't. It turns "I do everything" and "that's not fair" into something you can both point at.</p>
+
+<h2>Don't aim for equal minutes</h2>
+
+<p>Once the list exists, the obvious fix is to split the minutes down the middle. It's fair in one sense, but it gives away most of what makes chores easier to divide than money.</p>
+
+<p>People don't mind the same chores. One of you finds cooking relaxing and hates hoovering; the other doesn't mind hoovering and would rather do almost anything than plan meals. An hour of a chore you hate costs you more than an hour of one you don't mind. If each chore goes to whoever minds it least, the household spends the same hours and suffers less for them.</p>
+
+<p>This is fair division with the signs flipped. Splitting rent on unequal rooms is about sharing goods; chores are bads, and each person judges their load by their own sense of what's unpleasant. The fair-division site Spliddit built a chores app on exactly that idea: each person says what each task costs <em>them</em>, and the split is chosen to be equally fair to everyone by their own measure. When people mind different things, that split leaves each of them with less than an even share, as they each count it. Two people can each do under a third of the housework. That isn't a trick of the arithmetic. It's the gain from trading what you mind for what you don't.</p>
+
+<p>Two checks keep it honest. First, measure each person's share against their own ratings. Then saying you hate everything doesn't lighten your load; it only works if you hate some chores <em>more than others</em>. Second, ask whether anyone would rather have someone else's list. If nobody would, the split is envy-free, and nobody can reasonably resent it.</p>
+
+<h2>Own it, don't help with it</h2>
+
+<p>"Just tell me what to do and I'll do it" sounds generous. It quietly leaves the hardest part, the noticing, with someone else. Every chore on the list should have one owner, who notices when it's due and does it without being asked. Helping isn't owning.</p>
+
+<p>Some chores nobody will own: the bathroom, for most households. Take turns on those. Alternate weeks is a split too, and it's the right one for a job that's both disliked by everyone and too big to hand to one person.</p>
+
+<h2>Look again in a month</h2>
+
+<p>None of this is fixed. Someone takes a new job, a baby arrives, a teenager becomes old enough to own the bins. In 2007 Pew found that 62% of American adults rated sharing household chores very important to a successful marriage, up from 47% in 1990. It's worth more than one conversation. Agree to look at the list again in a month, and whenever someone's life changes.</p>
+
+<p>There's a <a href="/chores">tool for this</a> on the site. You list the chores and the remembering, with a rough time for each, and each of you says how much you mind each one. It gives every chore one owner so that the largest share, as each of you counts it, is as small as it can be. It shows who does what now against after, and if whole chores won't split evenly, it names the one to take turns on.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

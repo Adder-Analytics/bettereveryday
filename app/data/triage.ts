@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores"],
       },
     ],
     choices: [
@@ -490,6 +490,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "crux",
             note: "If someone won't accept the split, it's usually one room and one disagreement — a fact about it or what matters more. Find which, settle it, and price again.",
+          },
+        },
+      },
+      {
+        id: "chores",
+        label: "We share a home, and the chores have quietly landed on one of us.",
+        detail: "Nobody divided them; they settled. Each of us thinks we do more than our share.",
+        rec: {
+          toolId: "chores",
+          because:
+            "Everyone overcounts their own share of joint work, because your own effort comes to mind more easily than anyone else's. So start with one list instead of two memories, and put the remembering on it too: the meal planning, the bills, noticing what's run out. Then have each person say how much they mind each chore. You won't mind the same ones, and that's the opening: give each chore to whoever minds it least, and each of you can do less than half as you count it.",
+          then: {
+            toolId: "crux",
+            note: "If one chore stays stuck, it's usually one disagreement: about how long it takes, or how well it has to be done. Find which.",
           },
         },
       },

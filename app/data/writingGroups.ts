@@ -72,6 +72,7 @@ const essayGroups: EssayGroup[] = [
       "never-ask-a-barber",
       "decide-your-line-first",
       "price-the-rooms-not-the-people",
+      "trade-the-chores-you-mind",
       "future-you-is-not-less-busy",
       "metric-not-the-mission",
       "second-order-thinking",
