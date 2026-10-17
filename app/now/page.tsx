@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Two of you share a home, one earns more, and the bills are still
+              split the way they were the week you moved in.{" "}
+              <Link
+                href="/bills"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Who pays for what?
+              </Link>{" "}
+              lays half each, in proportion to pay and pooling it all side by
+              side in money. Each is fair by a different principle, so it
+              doesn&rsquo;t pick for you: it shows{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                how much the choice is actually worth
+              </span>
+              , tests each rule against one pay stopping, and ends in a line
+              with the amounts in it. A new{" "}
+              <Link
+                href="/writing/three-fair-ways-to-split-the-bills"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The chores in most homes were never divided; they settled, and
               everyone is sure they do more than their share.{" "}
               <Link
@@ -152,30 +177,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Moving in with others, with rooms that aren&rsquo;t equal, is a
-              call people settle by splitting it equally or by haggling, and
-              someone ends up paying the same for the box room.{" "}
-              <Link
-                href="/split"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Who gets which room?
-              </Link>{" "}
-              has each of you price every room privately, passing one phone
-              round, then gives each room to the right person and sets{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                rents nobody would swap
-              </span>
-              , by the widest margin your numbers allow. A new{" "}
-              <Link
-                href="/writing/price-the-rooms-not-the-people"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains the fair-division maths behind it.
             </li>
           </ul>
         </section>

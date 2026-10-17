@@ -876,6 +876,28 @@ export const situations: Situation[] = [
     essays: ["trade-the-chores-you-mind"],
   },
   {
+    id: "splitting-bills",
+    title: "One of you earns more, and the bills are split down the middle",
+    scene:
+      "You split everything in half when you moved in, back when your pay was similar. Then one of you changed jobs, went part-time or had a baby, and half of the bills started taking much more of one pay packet than the other. Nobody's said anything. One of you has started turning down dinners out.",
+    question: "Which principle do we want our split to rest on — equal in, the same share of what we earn, or the same left over — and what does each leave us?",
+    models: [
+      {
+        id: "equity-equality-need",
+        move: "Half each, in proportion to pay and pooling it all are each fair, by a different principle. If you can't agree, you may hold different principles rather than different numbers. Say which one you each hold before you argue about the sums.",
+      },
+      {
+        id: "status-quo-bias",
+        move: "The split you have now was set for the incomes you had then. Staying on it isn't neutral; it's a decision made by default. Look again whenever either pay changes.",
+      },
+    ],
+    tool: {
+      id: "bills",
+      move: "This is the call the tool is built for. Give both take-home pays and the shared costs, and it lays the three rules side by side: what each of you pays, what share of your pay that is, and what you each have left. It tests each against one pay stopping, says which rule you're on now, and ends in a line with the amounts in it for the one you choose.",
+    },
+    essays: ["three-fair-ways-to-split-the-bills"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1280,6 +1302,7 @@ export const situationGroups: SituationGroup[] = [
       "group-needs-a-number",
       "splitting-the-rent",
       "sharing-chores",
+      "splitting-bills",
       "designing-incentives",
       "stubborn-system",
     ],

@@ -265,6 +265,15 @@ export const models: Model[] = [
     essays: ["trade-the-chores-you-mind"],
   },
   {
+    id: "equity-equality-need",
+    name: "Equality, Equity and Need",
+    domain: "Decisions",
+    tagline: "There's more than one fair way to share, and the row is often about which principle, not which number.",
+    explanation:
+      "When people share a cost or a reward, there are three standard ways to call it fair. Equality gives everyone the same. Equity makes each share proportional to something, such as what each put in or what each can afford. Need puts the resources where they're needed, so that people end up in a similar place. Morton Deutsch (Journal of Social Issues, 1975) set out the three side by side and argued that which one a group reaches for depends on what kind of group it is: equity where the point is getting something done, equality where the point is getting on, need where the point is looking after each other. Margaret Clark and Judson Mills (JPSP, 1979) drew a related line between exchange relationships, where people keep track of what each gives, and communal ones, where they respond to each other's needs without counting. Household bills are the everyday case. Half each is equality of what goes in. In proportion to pay is equity, on the ability-to-pay principle tax systems use. Pooling it all and leaving each person the same to spend is closest to need. Each is defensible, which is why two people can agree on every number and still disagree, and why the useful first question is which principle the two of you want, not whose sums are right. In practice people often say one thing and do another: YouGov (2024) found more Britons thought bills should follow pay (48%) than be split 50-50 (37%), but among working couples more split 50-50 (46%) than by pay (38%). The tool Who Pays for What? lays the three side by side in money.",
+    essays: ["three-fair-ways-to-split-the-bills"],
+  },
+  {
     id: "batna",
     name: "BATNA and the Walk-Away Point",
     domain: "Decisions",
