@@ -256,6 +256,18 @@ export const tools: Tool[] = [
     essays: ["trade-the-chores-you-mind"],
   },
   {
+    id: "bills",
+    href: "/bills",
+    name: "Who Pays for What?",
+    short: "Bills",
+    when: "Two of you share a home and one earns more. The bills were split in half the week you moved in and never looked at again, and now one of you is a little short every month and neither wants to be the one who brings it up.",
+    ask: "Should we split the bills in half, in proportion to pay, or pool it all — and what does each actually leave us?",
+    does: "Lays the three common rules side by side in money, each with the principle it rests on: half each (equal in), in proportion to pay (the same share of what you earn), pool it (the same left over). Says how much the choice is worth — between half each and pooling it's always half the gap in your pay — tests each against one pay stopping, shows which rule you're on now, and ends in a line with the amounts in it for the rule you choose together.",
+    payoff: "now",
+    models: ["equity-equality-need"],
+    essays: ["three-fair-ways-to-split-the-bills"],
+  },
+  {
     id: "walkaway",
     href: "/walkaway",
     name: "Where's Your Line?",
@@ -555,7 +567,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "walkaway", "later", "worth", "cover", "fix", "keep", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "walkaway", "later", "worth", "cover", "fix", "keep", "quit", "rule"],
   },
   {
     id: "big-commitment",

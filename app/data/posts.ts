@@ -2393,6 +2393,58 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/chores">tool for this</a> on the site. You list the chores and the remembering, with a rough time for each, and each of you says how much you mind each one. It gives every chore one owner so that the largest share, as each of you counts it, is as small as it can be. It shows who does what now against after, and if whole chores won't split evenly, it names the one to take turns on.</p>`,
   },
+  {
+    slug: "three-fair-ways-to-split-the-bills",
+    title: "Three Fair Ways to Split the Bills",
+    date: "2026-10-17",
+    excerpt:
+      "Half each, in proportion to pay, or pool it all. Each is fair, by a different principle, which is why couples on unequal pay can agree on every number and still not agree. Name the principle first, then do the sum.",
+    readTime: 5,
+    tags: ["decisions", "relationships", "finance"],
+    content: `<p>Most couples settle how to split the bills in the first week of living together, when the question feels small and the pay feels similar. Half each. Then one of you changes jobs, goes part-time or has a baby, and half of the bills starts taking much more of one pay packet than the other. The split stays where it was, because nobody wants to be the one who brings it up.</p>
+
+<p>When it does come up, it tends to go badly, and not because anyone is being unreasonable. There are three common ways to split shared costs, and each one is fair.</p>
+
+<h2>Three principles, not one</h2>
+
+<p><strong>Half each</strong> is equality of what goes in. The bills are something you buy together, and each of you buys half. It's simple, it feels square, and it's what most couples on similar pay do.</p>
+
+<p><strong>In proportion to pay</strong> is the ability-to-pay principle that tax systems use. If one of you takes home 60% of the household's pay, they cover 60% of the bills, and you each put in the same share of what you earn. The higher earner pays more and still keeps more.</p>
+
+<p><strong>Pool it</strong> is equality of what's left. Both pays go into one pot, the bills come out first, and you each end up with the same amount to spend on yourselves. Here, how much each of you earns stops mattering once the money arrives.</p>
+
+<p>The social psychologist Morton Deutsch set out three principles like these in 1975: equality, equity and need. He argued that the one a group reaches for depends on what kind of group it is. People working on a task together lean towards equity; people whose point is getting on lean towards equality; people whose point is looking after each other lean towards need. A couple is all three kinds of group at once, on different days.</p>
+
+<p>That's why the argument is so slippery. Two people can agree on every figure, the rent, the energy, the two take-home pays, and still disagree, because one of them is reasoning from "we each pay our way" and the other from "we're one household". Neither is making a mistake. They're answering different questions.</p>
+
+<h2>What people say and what they do</h2>
+
+<p>YouGov asked Britons about this in 2024. More of them said bills should follow pay (48%) than be split down the middle (37%). But among couples where both work, more actually split 50-50 (46%) than by pay (38%). Where pay was similar, 69% split evenly, which is reasonable: then the rules barely differ. Even where one partner earned notably more, a third still split essentials in half.</p>
+
+<p>So the gap isn't mostly between couples. It's between what people think is fair and the arrangement they drifted into.</p>
+
+<h2>How much the choice is worth</h2>
+
+<p>Before arguing about the principle, it helps to know the stakes. There's a neat fact about the two ends. Between half each and pooling everything, the lower earner's share of the bills always moves by exactly half the difference in your pay, whatever the bills come to. If one of you takes home £1,300 a month more than the other, the choice between those two rules is worth £650 a month. In proportion to pay always lands somewhere between.</p>
+
+<p>That number does two jobs. If it's small, because your pay is close, stop arguing and split it in half. If it's large, you now know what you're actually discussing, which is usually a calmer conversation than one about who's being mean.</p>
+
+<h2>Three questions that usually decide it</h2>
+
+<p><strong>Why does one of you earn less?</strong> If it comes from a choice you made together, such as going part-time for the children, retraining, or moving for the other's job, then half each charges one person for a joint decision.</p>
+
+<p><strong>How tied together are you?</strong> A couple a year into renting and a couple with a mortgage and children aren't the same household. Margaret Clark and Judson Mills drew the line in 1979 between exchange relationships, where people keep track of what each gives, and communal ones, where they respond to each other's needs without counting. Keeping a tally suits the first. In 2022 Joe Gladstone, Emily Garbinsky and Cassie Mogilner reported six studies, with more than 38,000 people between them, in which couples who pooled all their money were more satisfied and less likely to split up, most of all when money was tight. Most of that evidence is correlational, but it points one way.</p>
+
+<p><strong>What would happen if one pay stopped?</strong> A lost job, parental leave, a long illness. In proportion and pooling move the bills to the other person without a new conversation. Half each still asks the person with no income for half.</p>
+
+<h2>Whatever you choose, keep some money of your own</h2>
+
+<p>Pooling isn't automatically equal. Carolyn Vogler and Jan Pahl studied British couples in 1994 and found that many who said they pooled their money had one partner who in practice controlled the pot. The couples with the most equality, in decisions and in having money to spend, ran their pool jointly. So whichever rule you choose, both of you should have some money that's yours to spend without asking or explaining.</p>
+
+<p>And redo the sum whenever either pay changes. The split you have now was set for the incomes you had then. Staying on it isn't neutral; it's a decision made by default.</p>
+
+<p>There's a <a href="/bills">tool for this</a> on the site. You give both take-home pays and the costs you share, and it lays the three rules side by side: what each of you pays, what share of your pay that is, and what you each have left. It says how much the choice is worth, tests each rule against one pay stopping, shows which one you're on now, and ends in a line with the amounts in it for the rule you choose together.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

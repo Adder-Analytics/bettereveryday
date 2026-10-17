@@ -266,6 +266,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Who pays for what?",
+    href: "/bills",
+    snippet:
+      "Two of you share a home and one earns more: half each, in proportion to pay, or pool it all. See what each leaves you, how much the choice is worth, and choose together.",
+    meta: "Bills — split shared costs on unequal pay",
+    titleText:
+      "who pays for what bills split the bills splitting bills household bills shared bills shared costs shared expenses joint account joint finances combine finances pool money pooling separate accounts yours mine ours 50/50 fifty fifty half each split evenly proportional split in proportion to income proportional to pay fair share earns more earns less pay gap income gap couple partner spouse moving in together rent mortgage council tax groceries who pays the rent money in a relationship".toLowerCase(),
+    bodyText:
+      "who pays for what? (/bills): the instrument for two people sharing a home on unequal pay. the bills were split in half the week you moved in and never looked at again. there are three common rules and each is fair by a different principle: half each (equality of what goes in), in proportion to pay (the same share of what you earn, the ability-to-pay principle), and pool it (the same left over each). deutsch (1975) named equality, equity and need; clark and mills (1979) distinguished exchange from communal relationships. you give both take-home pays a month and the shared costs, with tap-to-add chips (rent or mortgage, energy, council tax, groceries, childcare), and optionally what each pays now. it shows what each of you pays, what share of your pay that is and what you each have left under each rule, says how much the choice is worth (between half each and pooling it is always half the difference in pay), tests each rule against one pay stopping (parental leave, a lost job), says which rule you are on now, and when the pay gap is bigger than the bills shows the top-up that leaves you level. yougov (2024): 48% think bills should follow pay, 37% 50-50, but working couples more often split 50-50. gladstone, garbinsky and mogilner (2022) found couples who pool are more satisfied. vogler and pahl (1994): keep money of your own, run the pool jointly. choose a rule together and it gives you a line with the amounts in it; copy all three to send each other. includes a worked example: jordan and robin, where robin went part-time to retrain and half each took 55% of robin's pay. nothing is sent anywhere. pairs with the equality, equity and need model and the essay three fair ways to split the bills.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Who does which chore?",
     href: "/chores",
     snippet:

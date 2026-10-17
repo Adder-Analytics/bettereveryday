@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills"],
       },
     ],
     choices: [
@@ -504,6 +504,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "crux",
             note: "If one chore stays stuck, it's usually one disagreement: about how long it takes, or how well it has to be done. Find which.",
+          },
+        },
+      },
+      {
+        id: "bills",
+        label: "We share the bills, but one of us earns a lot more.",
+        detail: "We split everything in half when we moved in. Now it doesn't feel right, and neither of us has said so.",
+        rec: {
+          toolId: "bills",
+          because:
+            "Half each, in proportion to pay, and pooling it all are each fair, by a different principle: equal in, the same share of what you earn, or the same left over. So the row is rarely about the numbers. Put the three side by side in money first, so you can see what the choice is actually worth, then choose the principle that fits the two of you, together.",
+          then: {
+            toolId: "chores",
+            note: "If one of you earns less partly because they do more at home, the bills are only half the picture. Split the housework on purpose too.",
           },
         },
       },
