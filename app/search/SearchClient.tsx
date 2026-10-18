@@ -290,6 +290,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Before the trial ends",
+    href: "/trial",
+    snippet:
+      "Signing up for a free trial? Cancel today if the free time survives it; otherwise get the date to cancel by, put it in your calendar, and get the question back on the day.",
+    meta: "Free trial — cancel before it charges",
+    titleText:
+      "before the trial ends free trial free trials trial period cancel free trial cancel before charged forgot to cancel charged after free trial trial ends auto renew auto-renewal automatic renewal cancel by date cancel-by reminder calendar reminder 7 day trial 14 day trial 30 day free trial one month free first month free introductory offer card number streaming app store default defaults opt out".toLowerCase(),
+    bodyText:
+      "before the trial ends (/trial): the instrument for the moment you sign up for a free trial. a free trial is a subscription whose default is already chosen: do nothing and it becomes a payment. defaults win far more often than their merits explain (johnson and goldstein, science 2003, organ donation; madrian and shea, qje 2001, automatic pension enrolment). miller, sahni and strulov-shlain randomly offered about two million newspaper readers auto-renewing or auto-ending trials: around half of auto-renewal takers were inert and barely read the paper, and many readers avoided auto-renewing offers knowing their own inertia. so change the default at the start, when it is cheap. you give what it is, the price it turns into (monthly, yearly or weekly), the date of the first payment (in 7 days, 14 days, a month, 3 months, or a date), whether cancelling today keeps the free time, and optionally whether you expect to pay for it afterwards. if cancelling keeps the free time it says cancel today: the trial ends unless you choose it. otherwise it gives the cancel-by date, two days before the first charge (app stores want a day's notice; charges land early), says what forgetting would cost, and puts the date on your return desk and in your calendar as an ics file with an alarm. on the day it asks the fresh-start question with the price in it: would you sign up today, for the use you've actually had? answer kept, cancelled or charged; if it already charged, cancel and ask for a refund promptly. it keeps your record of trials against what you expected at sign-up. includes a worked example: a 14-day language-app trial at £12.99 a month. nothing is sent anywhere. pairs with the defaults model and the essay make the trial end on its own.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Still worth paying for?",
     href: "/keep",
     snippet:

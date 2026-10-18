@@ -134,7 +134,7 @@ const nodes: Record<string, TriageNode> = {
         id: "options",
         label: "It's the options themselves",
         short: "The options",
-        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "subscriptions"],
+        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "subscriptions", "trial"],
       },
       {
         id: "stakes",
@@ -309,6 +309,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "rule",
             note: "The next free trial is already on its way. Make a once-a-year review your standing rule.",
+          },
+        },
+      },
+      {
+        id: "trial",
+        label: "I'm signing up for a free trial, and I'll cancel if it's not worth it.",
+        detail: "A week free, a month free, the first box on the house. It asks for a card number.",
+        rec: {
+          toolId: "trial",
+          because:
+            "A free trial is a subscription whose default is already chosen: do nothing and it becomes a payment. The cheap moment to change that is now, at sign-up. If cancelling keeps the free time, cancel today. If not, put the cancel-by date where it'll fire, with the question waiting.",
+          then: {
+            toolId: "keep",
+            note: "The trials you didn't catch are subscriptions now. Go through them with the fresh-start question.",
           },
         },
       },

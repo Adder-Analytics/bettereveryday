@@ -2350,6 +2350,52 @@ export const posts: Post[] = [
 <p>There's a <a href="/keep">tool for this</a> on the site. It helps you find them all, then goes through them one by one: what each costs a year and a use, whether paying per use would be cheaper, and the fresh-start question. It ends with what cancelling would free in a year.</p>`,
   },
   {
+    slug: "make-the-trial-end-on-its-own",
+    title: "Make the Trial End on Its Own",
+    date: "2026-10-18",
+    excerpt:
+      "A free trial is a subscription whose default is already chosen: do nothing, and it becomes a payment. Willpower on the last day is the weakest place to fight that. The first day is the strongest.",
+    readTime: 4,
+    tags: ["decisions", "finance", "psychology"],
+    content: `<p>Nobody signs up for a free trial meaning to pay for something they don't want. You sign up for one series, one project, a week to see. If it isn't worth it, you'll cancel. Obviously.</p>
+
+<p>Then the day comes and goes. The first charge is on your statement, and the trial is now a subscription. It renews itself until a bank statement, a tidy-up or a tighter month finally catches it.</p>
+
+<p>That isn't carelessness. It's how defaults work, and a free trial is a default with your card number attached.</p>
+
+<h2>What a default does</h2>
+
+<p>Every choice has a default: what happens if you do nothing. It wins far more often than its merits explain. Eric Johnson and Daniel Goldstein compared European countries in 2003 and found consent to organ donation close to universal where it was the default, and far lower where people had to opt in. The people weren't different. The form was. Brigitte Madrian and Dennis Shea found the same in pensions: when one American company started enrolling new staff automatically, participation among new hires went from under half to over 85%.</p>
+
+<p>A default sticks for three ordinary reasons. Leaving it takes an action, and actions get put off. It reads like a recommendation: someone chose it, so it's presumably fine. And it's the status quo, which <a href="/writing/the-subscription-you-wouldnt-buy-today">already has a head start</a> over any change.</p>
+
+<h2>The experiment that settles it</h2>
+
+<p>Klaus Miller, Navdeep Sahni and Avner Strulov-Shlain got a European newspaper to offer about two million readers a trial, at random, in one of two forms. Some trials renewed into a paid subscription unless cancelled. Others ended on their own unless the reader chose to subscribe. Then the researchers followed the readers for two years.</p>
+
+<p>Around half of the people who took an auto-renewing trial were what the researchers call inert. They kept paying because they didn't act, not because they'd decided to, and they barely read the paper they were paying for. The second finding is the more interesting one. Many readers knew this about themselves. Offered an auto-renewing trial, a lot of them simply didn't take it, and sign-ups fell by about a quarter.</p>
+
+<p>So most people aren't fooled by trials. They know the default will probably win. Their only defence has been to refuse the trial altogether. There's a better one.</p>
+
+<h2>Change the default at the start</h2>
+
+<p>The last day of a trial is the worst place to fight a default. You have to remember, then find the account page, then decide, all on the day you're busiest. The first day is the best place, because on the first day you're already at the form, already thinking about it, and changing the default costs a minute.</p>
+
+<p>There are two ways to do it, and which one you get depends on the service.</p>
+
+<p><strong>If cancelling keeps the free time, cancel today.</strong> Many services let you cancel and still use the rest of the trial. Then the default flips: the trial ends on its own unless you choose to keep it. If you love it, signing up again takes a minute, and that's a decision you made rather than one made for you. The cancel screen usually says what will happen before you confirm. App-store trials on phones are the common exception: they often end the moment you cancel.</p>
+
+<p><strong>If it doesn't, schedule the decision before the charge.</strong> "I'll cancel if it's not worth it" is an intention with no <em>when</em>, and intentions without a when are the ones that slip. Give it a date: two days before the first charge, since app stores want a day's notice and charges can land early in the morning. Put the date somewhere that fires on its own, like your calendar, not your memory. And write the question into the reminder, so the decision is waiting when it arrives: <em>would I sign up for this today, at this price, for the use I've actually had?</em></p>
+
+<p>That last clause matters. By the end of a trial the honest record is usually thinner than the plan was: four lessons in the first three days, and none since. Count the use you had, not the use you meant to have.</p>
+
+<h2>Keep the score</h2>
+
+<p>One more thing is worth doing, because it's nearly free. When you sign up, guess whether you'll end up paying for it. When the trial ends, note what happened. After a few trials you'll have a small, honest record of how your sign-up self predicts your end-of-trial self. If you expected to keep five and kept one, you'll know how much to trust the next "I'll definitely use this".</p>
+
+<p>There's a <a href="/trial">tool for this</a> on the site. It asks whether cancelling today keeps the free time, and if it does, says cancel now. If it doesn't, it works out the cancel-by date and what forgetting would cost, puts the date on your return desk and in your calendar, and on the day hands you the question. It also keeps the score.</p>`,
+  },
+  {
     slug: "trade-the-chores-you-mind",
     title: "Trade the Chores You Mind",
     date: "2026-10-16",

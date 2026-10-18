@@ -7,6 +7,16 @@ import Link from "next/link";
 import { readCarriedSubject, clearCarriedSubject } from "../data/carry";
 import CarriedNote from "../components/CarriedNote";
 import AnnounceAnswer from "../components/AnnounceAnswer";
+import RenewalCheck from "../components/RenewalCheck";
+import {
+  addMonthsISO,
+  addRenewal,
+  openRenewalFor,
+  prettyDate,
+  renewalCalendar,
+  todayISO,
+  type Renewal,
+} from "../data/renewals";
 import { formatMoney, moneyInvalid } from "../data/worth";
 import {
   BLANK_KEEP,
@@ -245,6 +255,8 @@ export default function KeepClient() {
 
   return (
     <div>
+      <RenewalCheck />
+
       {/* ---- New here? A read-only worked example ---- */}
       <div className="mb-5">
         <button
@@ -491,8 +503,82 @@ function RowVerdict({ row, cur }: { row: KeepRow; cur: string }) {
       </p>
       <p className="mt-1 text-sm font-medium text-[var(--foreground)]">{rowHeadline(row, read, cur)}</p>
       <p className="mt-1 text-sm text-[var(--muted)] leading-relaxed">{rowWhy(row, read, cur)}</p>
+      {read.kind === "test" || read.kind === "hold" ? <DateIt row={row} kind={read.kind} /> : null}
     </div>
   );
+}
+
+/**
+ * "See if you miss it" and "set a date to ask again" both end in a date. This
+ * puts that date on the return desk (and, if you like, your calendar), with the
+ * question already written, so the experiment gets read rather than forgotten.
+ */
+function DateIt({ row, kind }: { row: KeepRow; kind: "test" | "hold" }) {
+  const [held, setHeld] = useState<Renewal | null>(null);
+  const [checked, setChecked] = useState(false);
+  useEffect(() => {
+    /* eslint-disable react-hooks/set-state-in-effect -- read from browser
+       storage after mount and when the row is renamed; can't run in render. */
+    setHeld(openRenewalFor(row.id, row.name));
+    setChecked(true);
+    /* eslint-enable react-hooks/set-state-in-effect */
+  }, [row.id, row.name]);
+  if (!checked) return null;
+  if (held && held.kind === kind) {
+    return (
+      <p className="mt-2 text-xs text-[var(--muted)] leading-relaxed">
+        On your{" "}
+        <Link href="/review" className="text-[var(--accent)] hover:opacity-70 transition-opacity">
+          return desk
+        </Link>{" "}
+        for {prettyDate(held.checkOn)}.{" "}
+        <button
+          type="button"
+          onClick={() => downloadIcs(held)}
+          className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+        >
+          Add it to your calendar
+        </button>
+      </p>
+    );
+  }
+  const on = addMonthsISO(todayISO(), kind === "test" ? 1 : 3);
+  return (
+    <button
+      type="button"
+      onClick={() =>
+        setHeld(
+          addRenewal({
+            kind,
+            name: rowName(row) === "this one" ? "" : rowName(row),
+            price: row.price,
+            period: row.period,
+            checkOn: on,
+            ref: row.id,
+          })
+        )
+      }
+      className="mt-2 text-sm font-medium text-[var(--accent)] hover:opacity-70 transition-opacity"
+    >
+      {kind === "test"
+        ? `Ask me on ${prettyDate(on)} whether I missed it`
+        : `Ask me again on ${prettyDate(on)}`}
+    </button>
+  );
+}
+
+function downloadIcs(r: Renewal): void {
+  const text = renewalCalendar(r);
+  if (!text) return;
+  const blob = new Blob([text], { type: "text/calendar;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${r.kind === "test" ? "did-you-miss-it" : "ask-again"}-${r.checkOn}.ics`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 function ReadBlock({ inp, headline }: { inp: KeepInputs; headline: string }) {
@@ -531,9 +617,10 @@ function ReadBlock({ inp, headline }: { inp: KeepInputs; headline: string }) {
       </ul>
       {tests.length > 0 ? (
         <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
-          For the ones you&rsquo;re not sure about, put a date in your diary a
-          month from today. Rejoin anything you&rsquo;ve missed by then; let the
-          rest go for good.
+          For the ones you&rsquo;re not sure about, use the date under each
+          one: it goes on your return desk with the question written, so the
+          experiment gets read. Rejoin anything you&rsquo;ve missed by then;
+          let the rest go for good.
         </p>
       ) : null}
 
@@ -616,6 +703,11 @@ function Handoffs({ tests }: { tests: boolean }) {
     href: "/rule",
     label: "Make it a standing rule",
     note: "The next free trial is already on its way. Decide now what happens when it ends.",
+  });
+  list.push({
+    href: "/trial",
+    label: "Signing up for a free trial?",
+    note: "Catch it at the start instead: cancel the same day if you keep the free time, or date the cancel-by.",
   });
   return (
     <div className="mt-5 pt-5 border-t border-[var(--border)]">

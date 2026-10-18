@@ -245,6 +245,26 @@ export const STORES: StoreDescriptor[] = [
     },
   },
   {
+    key: "renewals:v1",
+    tool: "Before the trial ends",
+    href: "/trial",
+    label: "Free trials you're tracking, and the subscriptions you dated to look at again",
+    describe: (raw) => {
+      const v = parse(raw);
+      if (!Array.isArray(v)) return null;
+      if (v.length === 0) return "nothing dated";
+      const waiting = v.filter(
+        (r) =>
+          r &&
+          typeof r === "object" &&
+          !(r as { resolvedOn?: unknown }).resolvedOn
+      ).length;
+      return waiting > 0
+        ? `${count(v.length, "dated renewal")}, ${waiting} still waiting`
+        : `${count(v.length, "dated renewal")}, all answered`;
+    },
+  },
+  {
     key: "trace:v1",
     tool: "Consequence trace",
     href: "/trace",
@@ -435,6 +455,15 @@ export const STORES: StoreDescriptor[] = [
     answerNow: true,
     subject: subjectField("what"),
     describe: (raw) => (parse(raw) ? "a fix-or-replace call in progress" : null),
+  },
+  {
+    key: "trial:v1",
+    tool: "Before the trial ends",
+    href: "/trial",
+    label: "The free trial you last worked out a cancel-by date for",
+    answerNow: true,
+    subject: subjectField("name"),
+    describe: (raw) => (parse(raw) ? "a free trial in progress" : null),
   },
   {
     key: "keep:v1",
