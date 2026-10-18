@@ -340,6 +340,18 @@ export const tools: Tool[] = [
     essays: ["the-subscription-you-wouldnt-buy-today"],
   },
   {
+    id: "trial",
+    href: "/trial",
+    name: "Before the Trial Ends",
+    short: "Free trial",
+    when: "You're about to start a free trial — the streaming service for one series, the app with a week free, the box with the first one on the house — and you fully intend to cancel if it isn't worth it. So did everyone it ever charged.",
+    ask: "When do I have to cancel by, and can I flip the default so it ends unless I choose it?",
+    does: "Asks whether cancelling today keeps the free time: if it does, cancel now and the trial ends on its own. If not, works out the cancel-by date (two days before the first charge), says what forgetting would cost, puts the date on your return desk and in your calendar, and on the day asks the fresh-start question with the price in it. Keeps your record: how many trials you cancelled, kept or got charged for, against what you expected at sign-up.",
+    payoff: "later",
+    models: ["defaults"],
+    essays: ["make-the-trial-end-on-its-own"],
+  },
+  {
     id: "act",
     href: "/act",
     name: "Decided Isn't Done",
@@ -580,8 +592,8 @@ export const toolGroups: ToolGroup[] = [
     id: "making-it-happen",
     title: "You've made the call — now make it happen",
     blurb:
-      "The week after a decision is where most of them quietly die: never started, or never revisited when something changed. These close both gaps — one turns the call into a first move, the other sets the signal that says stop and rethink.",
-    toolIds: ["act", "tripwire"],
+      "The week after a decision is where most of them quietly die: never started, or never revisited when something changed. These close the gaps — one turns the call into a first move, one sets the signal that says stop and rethink, and one catches the free trial before its default decides for you.",
+    toolIds: ["act", "tripwire", "trial"],
   },
   {
     id: "coming-back",

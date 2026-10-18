@@ -42,6 +42,7 @@ const essayGroups: EssayGroup[] = [
       "insure-the-catastrophe",
       "what-the-repair-has-to-buy",
       "the-subscription-you-wouldnt-buy-today",
+      "make-the-trial-end-on-its-own",
       "inflation-silent-tax",
     ],
   },

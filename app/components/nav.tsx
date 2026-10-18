@@ -7,6 +7,7 @@ import { countDueReviews } from "../data/journal";
 import { countDueTripwireChecks } from "../data/premortem";
 import { countDueTripwires } from "../data/tripwires";
 import { countDueParked } from "../data/parked";
+import { countDueRenewals } from "../data/renewals";
 
 /**
  * Site navigation.
@@ -97,7 +98,8 @@ export function Nav() {
       countDueReviews() +
       countDueTripwireChecks() +
       countDueTripwires() +
-      countDueParked();
+      countDueParked() +
+      countDueRenewals();
     /* eslint-disable react-hooks/set-state-in-effect -- one-time read from
        browser storage after mount/navigation; intentional, can't run in render. */
     setDue(total);

@@ -275,6 +275,28 @@ export const situations: Situation[] = [
     essays: ["the-subscription-you-wouldnt-buy-today"],
   },
   {
+    id: "free-trial",
+    title: "A free trial wants your card number",
+    scene:
+      "Seven days free, then £9.99 a month. You only want it for one series, or one project, or to see if you'd use it. You'll cancel if it's not worth it, obviously. The sign-up form is already filled in.",
+    question: "What happens on the day the trial ends if I do nothing, and how do I make doing nothing end it instead?",
+    models: [
+      {
+        id: "defaults",
+        move: "Whatever happens when nobody acts is the option most people end up with. A trial's default is paying. Change it at sign-up: cancel the same day if the free time survives it, or schedule the decision so it arrives before the charge does.",
+      },
+      {
+        id: "implementation-intentions",
+        move: "'I'll cancel if it's not worth it' has no when. 'On Friday morning, when the reminder fires, I'll ask whether I'd pay £9.99 for what I've used' does.",
+      },
+    ],
+    tool: {
+      id: "trial",
+      move: "This is the call the tool is built for. It asks whether cancelling ends the free time, says cancel today if it doesn't, and otherwise works out the cancel-by date, puts it on your return desk and in your calendar, and asks you the question on the day.",
+    },
+    essays: ["make-the-trial-end-on-its-own"],
+  },
+  {
     id: "need-an-estimate",
     title: "You need a number and don't have one",
     scene:
@@ -1310,7 +1332,7 @@ export const situationGroups: SituationGroup[] = [
   {
     id: "numbers",
     label: "There's a number in it",
-    situationIds: ["a-number-appears", "time-or-money", "offered-cover", "repair-or-replace", "subscriptions", "need-an-estimate"],
+    situationIds: ["a-number-appears", "time-or-money", "offered-cover", "repair-or-replace", "subscriptions", "free-trial", "need-an-estimate"],
   },
   {
     id: "after",

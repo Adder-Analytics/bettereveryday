@@ -6,6 +6,7 @@ import { countDueReviews } from "../data/journal";
 import { countDueTripwireChecks } from "../data/premortem";
 import { countDueTripwires } from "../data/tripwires";
 import { countDueParked } from "../data/parked";
+import { countDueRenewals } from "../data/renewals";
 
 /**
  * A tiny client island that surfaces the site's "something is waiting for an
@@ -29,7 +30,8 @@ export default function ReviewDueBadge() {
       countDueReviews() +
       countDueTripwireChecks() +
       countDueTripwires() +
-      countDueParked();
+      countDueParked() +
+      countDueRenewals();
     /* eslint-disable react-hooks/set-state-in-effect -- one-time read from
        browser storage after mount; intentional, can't run in render */
     if (total > 0) setDue(total);

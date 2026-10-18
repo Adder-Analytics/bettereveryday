@@ -55,6 +55,13 @@ import {
   countParkedCreatedAfter,
   type ScheduledParked,
 } from "./parked";
+import {
+  dueRenewalItems,
+  upcomingRenewalItems,
+  countRenewals,
+  countRenewalsCreatedAfter,
+  type ScheduledRenewal,
+} from "./renewals";
 import { readLastBackup } from "./portable";
 import { SITE_URL, icsEscape, icsStamp, wrapCalendar } from "./ics";
 
@@ -74,7 +81,7 @@ export function daysBetween(fromISO: string, toISO: string): number {
   return Math.round((b - a) / 86_400_000);
 }
 
-export type ReviewKind = "decision" | "tripwire" | "revisit";
+export type ReviewKind = "decision" | "tripwire" | "revisit" | "renewal";
 
 /** One thing waiting for an answer, normalized across tools. */
 export type ReviewItem = {
@@ -184,6 +191,24 @@ function parkedToItem(p: ScheduledParked, today: string): ReviewItem {
   };
 }
 
+function renewalToItem(r: ScheduledRenewal, today: string): ReviewItem {
+  const trial = r.href.startsWith("/trial");
+  return {
+    id: `renewal:${r.id}`,
+    kind: "renewal",
+    tool: trial ? "Free trial" : "Keep or cancel",
+    title: r.title,
+    // A renewal comes back with its question already written, because on the
+    // day the default (it renews) is one inaction away from winning.
+    detail: r.detail,
+    meta: r.meta,
+    dateISO: r.checkOn,
+    relDays: daysBetween(r.checkOn, today),
+    href: r.href,
+    answerLabel: trial ? "Decide before it charges →" : "Answer it →",
+  };
+}
+
 /** How the record stands against its last saved copy — the durability nudge. */
 export type BackupStatus = {
   /** Anything logged at all worth backing up? */
@@ -206,7 +231,11 @@ export type BackupStatus = {
 export function loadBackupStatus(): BackupStatus {
   const last = readLastBackup();
   const totalRecord =
-    countDecisions() + countPremortems() + countTripwires() + countParked();
+    countDecisions() +
+    countPremortems() +
+    countTripwires() +
+    countParked() +
+    countRenewals();
   if (totalRecord === 0) {
     return { hasRecord: false, lastBackupOn: last, newSince: 0 };
   }
@@ -217,7 +246,8 @@ export function loadBackupStatus(): BackupStatus {
     countDecisionsLoggedAfter(last) +
     countPremortemsCreatedAfter(last) +
     countTripwiresCreatedAfter(last) +
-    countParkedCreatedAfter(last);
+    countParkedCreatedAfter(last) +
+    countRenewalsCreatedAfter(last);
   // Guard against a marker dated in the future (clock skew / hand-editing):
   // never report negative or absurd counts.
   return { hasRecord: true, lastBackupOn: last, newSince: Math.max(0, newSince) };
@@ -246,6 +276,7 @@ export function loadReviewQueue(): ReviewQueue {
     ...dueTripwireCheckItems(today).map((c) => checkToItem(c, today)),
     ...dueTripwireItems(today).map((t) => tripwireToItem(t, today)),
     ...dueParkedItems(today).map((p) => parkedToItem(p, today)),
+    ...dueRenewalItems(today).map((r) => renewalToItem(r, today)),
   ].sort((a, b) => b.relDays - a.relDays); // most overdue first
 
   const upcoming: ReviewItem[] = [
@@ -253,6 +284,7 @@ export function loadReviewQueue(): ReviewQueue {
     ...upcomingTripwireCheckItems(today).map((c) => checkToItem(c, today)),
     ...upcomingTripwireItems(today).map((t) => tripwireToItem(t, today)),
     ...upcomingParkedItems(today).map((p) => parkedToItem(p, today)),
+    ...upcomingRenewalItems(today).map((r) => renewalToItem(r, today)),
   ].sort((a, b) => a.dateISO.localeCompare(b.dateISO)); // soonest first
 
   return { due, upcoming, backup: loadBackupStatus(), today };
@@ -278,6 +310,7 @@ const RETURN_VERB: Record<ReviewKind, string> = {
   decision: "Decision review",
   tripwire: "Tripwire check",
   revisit: "Decide it cold",
+  renewal: "Before it renews",
 };
 
 function itemToEvent(item: ReviewItem): string[] {
@@ -300,7 +333,8 @@ function itemToEvent(item: ReviewItem): string[] {
     `DTSTAMP:${icsStamp()}`,
     `DTSTART:${day}T090000`,
     `DTEND:${day}T093000`,
-    `SUMMARY:${icsEscape(`${RETURN_VERB[item.kind]}: ${title}`)}`,
+    // A renewal's title already says what it is ("Free trial ends: …").
+    `SUMMARY:${icsEscape(item.kind === "renewal" ? title : `${RETURN_VERB[item.kind]}: ${title}`)}`,
     `DESCRIPTION:${icsEscape(desc.join(""))}`,
     `URL:${answerUrl}`,
     "BEGIN:VALARM",

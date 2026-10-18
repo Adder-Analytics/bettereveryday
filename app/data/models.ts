@@ -328,6 +328,15 @@ export const models: Model[] = [
     essays: ["the-subscription-you-wouldnt-buy-today"],
   },
   {
+    id: "defaults",
+    name: "Defaults",
+    domain: "Decisions",
+    tagline: "Whatever happens when nobody acts is the option most people end up with. Choose it on purpose.",
+    explanation:
+      "Every choice has a default: the outcome you get by doing nothing. It wins far more often than its merits would explain, partly from inertia, partly because a default reads as a recommendation, and partly because leaving it means acting. Eric Johnson and Daniel Goldstein (Science, 2003) found consent to organ donation near universal in European countries where it was the default and far lower where people had to opt in. Brigitte Madrian and Dennis Shea (Quarterly Journal of Economics, 2001) found that when one US firm enrolled new staff in its pension plan automatically, participation among new hires rose from under half to over 85%, and most stayed at the default contribution rate. Defaults are sold to you too. A free trial is a subscription whose default is paying. Klaus Miller, Navdeep Sahni and Avner Strulov-Shlain randomly offered about two million readers of a European newspaper trials that either renewed automatically or ended on their own: around half of those who took the auto-renewing kind kept paying out of inertia and hardly read the paper, while many readers, knowing this about themselves, avoided auto-renewing offers altogether. The lesson for a person is not to resist defaults by willpower at the last moment, when the default is strongest, but to change them at the start, when it's cheap: cancel a trial the day you start it if the free time survives, set up the transfer to savings on payday, make the useful thing the thing that happens if you do nothing. Status quo bias explains why defaults stick; this is how to use that. The tool Before the Trial Ends does it for free trials.",
+    essays: ["make-the-trial-end-on-its-own"],
+  },
+  {
     id: "parity",
     name: "Hard Choices (Parity)",
     domain: "Decisions",

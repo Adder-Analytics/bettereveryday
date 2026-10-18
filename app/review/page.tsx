@@ -36,16 +36,24 @@ export default function ReviewPage() {
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             journal
-          </Link>{" "}
-          and the{" "}
+          </Link>
+          , the{" "}
           <Link
             href="/premortem"
             className="text-[var(--accent)] hover:opacity-70 transition-opacity"
           >
             pre-mortem room
           </Link>
-          , shows you what&rsquo;s due today and what&rsquo;s still coming, and
-          links each one straight to the place you answer it. Nothing is sent
+          , your tripwires, the calls you parked to decide cold, and the{" "}
+          <Link
+            href="/trial"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            free trials
+          </Link>{" "}
+          and subscriptions you dated to look at again. It shows you
+          what&rsquo;s due today and what&rsquo;s still coming, and links each
+          one straight to the place you answer it. Nothing is sent
           anywhere; it just reads what&rsquo;s already in your browser. Bookmark
           it, and it becomes the one page worth opening when you wonder what you
           promised yourself you&rsquo;d check.
