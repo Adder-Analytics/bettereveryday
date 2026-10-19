@@ -290,6 +290,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Pay now or pay monthly?",
+    href: "/monthly",
+    snippet:
+      "£649, or 12 payments of £59.99? Add up the plan, see the yearly rate it really charges, and check whether you'd buy it at this price without the plan.",
+    meta: "Pay monthly — is the payment plan worth it?",
+    titleText:
+      "pay now or pay monthly pay monthly monthly payments payment plan instalments installments pay in instalments pay in 3 pay in 4 pay in three pay in four buy now pay later bnpl klarna clearpay afterpay paypal pay later finance store finance interest free 0% finance zero percent no interest deferred interest apr interest rate total cost credit phone contract car finance pcp hire purchase sofa laptop is it worth paying monthly should i pay in full pain of paying".toLowerCase(),
+    bodyText:
+      "pay now or pay monthly? (/monthly): the instrument for a price with a payment plan beside it — the laptop at £649 or 12 payments of £59.99, the sofa interest-free over a year, the trainers split into four at the checkout, phone or car finance. the monthly figure hides the rate: stango and zinman (journal of finance 2009) found people underestimate the interest rate a loan's payments imply, and those who underestimate most borrow most. small pieces take the sting out of paying (prelec and loewenstein, marketing science 1998, the pain of paying), and di maggio, katz and williams (nber 2022) found access to buy now pay later raised total spending, not just how people paid. plans stack: the cfpb found 63% of pay-later borrowers had several loans at once. you give the price if you pay in full today, each payment, how many, how often (weekly, fortnightly, monthly), whether the first is taken today, and optionally a deposit and a fee. it adds up the plan against the price and turns the difference into the effective yearly rate it charges (how a uk apr is quoted). then two questions: could you pay the full price today without going short (yes, only from emergency savings, no), and without the plan would you buy it at this price (yes, a cheaper one, probably not). interest-free and already decided: spread it and set every payment to come out automatically, since a missed payment is the only way it gets expensive (and some no-interest-if-paid-in-full deals backdate all the interest). a rate: pay now, or save the payment for a month or two first. your savings earn more than it charges: spread it. can't pay today: it's a loan to afford it, so check every payment fits and what a missed one costs. optionally what your savings earn (what keeping the money is worth) and what you already pay a month on other plans (the month's total). ends in a line to keep and hands off to cool the call, survive the worst case, the cover tool and make a rule. includes a read-only worked example: a £649 laptop against 12 payments of £59.99, about 21% a year. nothing is sent anywhere; inputs persist in your browser. pairs with the pain of paying model and the essay the smallest number on the page.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Before the trial ends",
     href: "/trial",
     snippet:

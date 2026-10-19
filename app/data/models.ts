@@ -319,6 +319,15 @@ export const models: Model[] = [
     essays: ["what-the-repair-has-to-buy"],
   },
   {
+    id: "pain-of-paying",
+    name: "The Pain of Paying",
+    domain: "Psychology",
+    tagline: "Paying stings, and the sting is a brake. Split a price into small pieces and most of the brake comes off.",
+    explanation:
+      "Drazen Prelec and George Loewenstein (Marketing Science, 1998) described the 'pain of paying': handing over money hurts a little at the moment it happens, and that hurt tempers spending. Anything that blunts the moment of paying blunts the brake. Prelec and Duncan Simester (Marketing Letters, 2001) ran sealed-bid auctions for sports tickets and found people told to pay by credit card bid far more than people told to pay in cash. Payment plans do the same thing in a different way: they cut one price into pieces that each feel small. Marco Di Maggio, Justin Katz and Emily Williams (NBER working paper, 2022), with transaction data on millions of US consumers, found that access to buy-now-pay-later raised people's total spending, not just how they paid, including among people who didn't need the credit. The pieces also hide what they cost. Victor Stango and Jonathan Zinman (Journal of Finance, 2009) found people systematically underestimate the interest rate a loan's payments imply, and those who underestimate most borrow most. Twelve payments of £59.99 against a price of £649 is borrowing at about 21% a year, which nobody would guess from the monthly figure. The correction is to put the brake back on purpose: price the thing as one sum paid today and ask whether you'd buy it at that, and only then decide how to pay. A genuinely interest-free plan on something you'd buy anyway is worth taking, because the money stays with you longer; the only way it turns expensive is a missed payment, so automate them. The tool Pay Now or Pay Monthly? runs the sum on an offer of your own.",
+    essays: ["the-smallest-number-on-the-page"],
+  },
+  {
     id: "status-quo-bias",
     name: "Status Quo Bias",
     domain: "Psychology",

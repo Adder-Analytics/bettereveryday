@@ -275,6 +275,32 @@ export const situations: Situation[] = [
     essays: ["the-subscription-you-wouldnt-buy-today"],
   },
   {
+    id: "pay-monthly",
+    title: "There's an option to pay monthly",
+    scene:
+      "£649, and under it, in bigger type: 'or £59.99 a month'. The sofa is interest-free for a year. The checkout offers to split the trainers into four. Sixty a month feels like nothing. Six hundred and fifty didn't.",
+    question: "What does the plan add up to, and would I buy this at this price without it?",
+    models: [
+      {
+        id: "pain-of-paying",
+        move: "Paying hurts a little, and the hurt is a useful brake. Small pieces take most of it away, which is why people offered pay-later spend more in total. Price the thing as one sum paid today, then decide.",
+      },
+      {
+        id: "compound-interest",
+        move: "People can't see the rate inside a stream of payments, and they guess low. Multiply the payment by the count, compare it with the price, and turn the difference into a yearly rate. £71 on £649 over a year is about 21%.",
+      },
+      {
+        id: "defaults",
+        move: "A truly interest-free plan is only free if every payment lands. Make paying on time the default: set every payment to come out automatically from an account that'll have the money.",
+      },
+    ],
+    tool: {
+      id: "monthly",
+      move: "This is the call the tool is built for. It adds up the plan, works out the yearly rate it charges, asks whether you could pay today and whether you'd buy it without the plan, and counts it with the plans you already pay.",
+    },
+    essays: ["the-smallest-number-on-the-page"],
+  },
+  {
     id: "free-trial",
     title: "A free trial wants your card number",
     scene:
@@ -1332,7 +1358,7 @@ export const situationGroups: SituationGroup[] = [
   {
     id: "numbers",
     label: "There's a number in it",
-    situationIds: ["a-number-appears", "time-or-money", "offered-cover", "repair-or-replace", "subscriptions", "free-trial", "need-an-estimate"],
+    situationIds: ["a-number-appears", "time-or-money", "offered-cover", "repair-or-replace", "pay-monthly", "subscriptions", "free-trial", "need-an-estimate"],
   },
   {
     id: "after",
