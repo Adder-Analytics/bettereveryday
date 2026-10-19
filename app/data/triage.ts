@@ -134,7 +134,7 @@ const nodes: Record<string, TriageNode> = {
         id: "options",
         label: "It's the options themselves",
         short: "The options",
-        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "subscriptions", "trial"],
+        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "monthly", "subscriptions", "trial"],
       },
       {
         id: "stakes",
@@ -295,6 +295,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "rule",
             note: "Something else will break. Make the division your standing rule, so the next quote is a lookup.",
+          },
+        },
+      },
+      {
+        id: "monthly",
+        label: "There's a price, or a monthly plan for it, and the monthly one looks easier.",
+        detail: "'Or £59.99 a month', interest-free over a year, four payments at the checkout, phone or car finance.",
+        rec: {
+          toolId: "monthly",
+          because:
+            "The monthly figure is the smallest number on the page and hides the rate. Add up every payment, compare it with the price today, and turn the difference into a yearly rate. Then ask whether you'd buy it at this price without the plan.",
+          then: {
+            toolId: "cover",
+            note: "The same checkout usually offers cover on it next. Decide whether that loss is one to insure or one to carry.",
           },
         },
       },

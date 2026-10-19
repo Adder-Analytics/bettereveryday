@@ -457,6 +457,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a fix-or-replace call in progress" : null),
   },
   {
+    key: "monthly:v1",
+    tool: "Pay now or pay monthly?",
+    href: "/monthly",
+    label: "The payment plan you last added up",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "a pay-now-or-monthly call in progress" : null),
+  },
+  {
     key: "trial:v1",
     tool: "Before the trial ends",
     href: "/trial",

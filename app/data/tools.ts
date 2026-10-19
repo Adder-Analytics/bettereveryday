@@ -328,6 +328,18 @@ export const tools: Tool[] = [
     essays: ["what-the-repair-has-to-buy"],
   },
   {
+    id: "monthly",
+    href: "/monthly",
+    name: "Pay Now or Pay Monthly?",
+    short: "Pay monthly",
+    when: "There's a price, and under it, in bigger type, a smaller one: 'or £59.99 a month', interest-free over a year, four payments at the checkout. The small number is easier to say yes to, and you can't tell from it what the plan really costs.",
+    ask: "What does the plan add up to, what yearly rate is that, and would I buy this at this price without it?",
+    does: "Adds up every payment, deposit and fee against the price today and turns the difference into the yearly rate the plan charges. Then asks whether you could pay today and whether you'd buy it without the plan: interest-free and already decided means spread it and automate every payment; a rate means pay now or wait; can't pay today means it's a loan to afford it, so check it fits. Counts it with the plans you already pay.",
+    payoff: "now",
+    models: ["pain-of-paying"],
+    essays: ["the-smallest-number-on-the-page"],
+  },
+  {
     id: "keep",
     href: "/keep",
     name: "Still Worth Paying For?",
@@ -579,7 +591,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "walkaway", "later", "worth", "cover", "fix", "keep", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "walkaway", "later", "worth", "cover", "fix", "monthly", "keep", "quit", "rule"],
   },
   {
     id: "big-commitment",

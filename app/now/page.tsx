@@ -78,6 +78,30 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              &ldquo;&pound;649, or &pound;59.99 a month.&rdquo; The monthly
+              figure hides the rate.{" "}
+              <Link
+                href="/monthly"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Pay now or pay monthly?
+              </Link>{" "}
+              adds the plan up, turns the difference into{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                the yearly rate it really charges
+              </span>
+              , and asks whether you&rsquo;d buy the thing at this price
+              without the plan. Interest-free and already decided means spread
+              it and automate every payment. A new{" "}
+              <Link
+                href="/writing/the-smallest-number-on-the-page"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A free trial is a subscription whose default is already chosen:
               do nothing and it becomes a payment.{" "}
               <Link
@@ -152,33 +176,6 @@ export default function Now() {
               . A new{" "}
               <Link
                 href="/writing/trade-the-chores-you-mind"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Subscriptions renew themselves, and every renewal is a decision
-              made by default: the gym, the second streaming service, the app
-              whose trial ended in March.{" "}
-              <Link
-                href="/keep"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Still worth paying for?
-              </Link>{" "}
-              goes through them one by one, counting last month&rsquo;s uses
-              rather than planned ones, checking whether paying per use would be
-              cheaper, and asking the{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                fresh-start question
-              </span>
-              : would you sign up today, at this price? When you&rsquo;re not
-              sure and could rejoin in a minute, it says cancel and see if you
-              miss it. A new{" "}
-              <Link
-                href="/writing/the-subscription-you-wouldnt-buy-today"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 essay

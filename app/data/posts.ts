@@ -2350,6 +2350,48 @@ export const posts: Post[] = [
 <p>There's a <a href="/keep">tool for this</a> on the site. It helps you find them all, then goes through them one by one: what each costs a year and a use, whether paying per use would be cheaper, and the fresh-start question. It ends with what cancelling would free in a year.</p>`,
   },
   {
+    slug: "the-smallest-number-on-the-page",
+    title: "The Smallest Number on the Page",
+    date: "2026-10-19",
+    excerpt:
+      "'£649, or £59.99 a month.' The monthly figure is in the larger type, and it's the smallest number on the page. Multiply it out, turn the difference into a rate, and ask whether you'd buy the thing without the plan.",
+    readTime: 4,
+    tags: ["decisions", "finance", "psychology"],
+    content: `<p>The laptop is £649. Underneath, in bigger type: <em>or £59.99 a month</em>. Sixty a month sounds like nothing. Six hundred and fifty didn't.</p>
+
+<p>That's the whole design, and it works on nearly everyone. A payment plan puts the smallest number on the page where your eye lands first, and it leaves you to work out two things almost nobody works out at the checkout: what the plan adds up to, and what rate that is.</p>
+
+<h2>The rate you can't see</h2>
+
+<p>Twelve payments of £59.99 come to £719.88. That's £70.88 more than the price. Spread over a year, with the balance shrinking as you pay, that's borrowing at about 21% a year, roughly what a credit card charges.</p>
+
+<p>Very few people would guess 21%. Victor Stango and Jonathan Zinman found that people systematically underestimate the interest rate implied by a loan's payments, and that the people who underestimate it most borrow the most. The error has a name, exponential growth bias, and it isn't about being bad at maths. The rate in a stream of payments simply isn't visible from the payment. You have to calculate it, and nobody calculates at the checkout.</p>
+
+<p>The fix is one multiplication: payment times count, plus any deposit and fee, against the price today. If the total is the same as the price, the plan is interest-free. If it's more, the difference is what the time costs you, and a rough rate tells you whether that's cheap or dear.</p>
+
+<h2>The brake you've taken off</h2>
+
+<p>The second thing a plan does is quieter. Drazen Prelec and George Loewenstein described what they called the pain of paying: handing over money stings a little at the moment you do it, and that sting is a brake on spending. Prelec and Duncan Simester later found people bidding on sports tickets offered far more when they'd pay by card than when they'd pay cash. The less a payment feels like a payment, the more people pay.</p>
+
+<p>A plan cuts the sting into pieces, and the brake mostly comes off. Marco Di Maggio, Justin Katz and Emily Williams followed millions of US consumers' transactions and found that getting access to buy-now-pay-later raised people's <em>total</em> spending, not just how they paid. It held for people who could have paid outright, too. The plan wasn't just financing purchases people had already decided on. It was helping to decide them.</p>
+
+<p>So there's a second question, and it matters more than the rate: <em>without the plan, would you buy this, at this price?</em> If the answer is no, or "I'd buy a cheaper one", then the plan is choosing what you buy, not how you pay for it. Price the thing as one sum paid today, and decide on that.</p>
+
+<h2>When monthly is the better deal</h2>
+
+<p>None of this is a case against payment plans. A genuinely interest-free plan on something you'd buy anyway is the better deal: the money stays in your account longer for nothing. If your savings earn interest, keeping the money there while you pay is worth a little more again.</p>
+
+<p>The catch is who pays for the free part. Mostly it's the shop, which pays the lender to offer the plan because people buy more with it. The rest comes from the payments people miss. So a free plan is only free if every payment lands. Make that the default. Set every payment to come out automatically, from an account that will have the money on the day, and read what a missed payment costs before you sign. Some "no interest if paid in full" deals charge all the interest back to the first day if anything is left at the end.</p>
+
+<p>The other case is the one where you couldn't pay today. Then the plan isn't a way of paying. It's a loan to afford the thing, whatever its rate, and that can be the right call for something you need, like a cooker or the car that gets you to work. But it deserves the questions a loan gets: does every payment fit in the months ahead with room to spare, and what else are you already paying each month? Plans stack quietly. A US regulator found that most pay-later borrowers had several loans running at once at some point in a year. Each one looks small. The month has to pay all of them.</p>
+
+<h2>The line</h2>
+
+<p>It fits on a card: <em>I add up every payment before I look at the monthly figure. If it totals more than the price today, I pay now or wait. If it's truly interest-free and I'd buy it anyway, I take it and set every payment to come out automatically.</em></p>
+
+<p>There's a <a href="/monthly">tool for this</a> on the site. You type the price, the payment and how many there are. It adds them up, works out the yearly rate, asks whether you could pay today and whether you'd buy it without the plan, and counts it with the plans you already pay.</p>`,
+  },
+  {
     slug: "make-the-trial-end-on-its-own",
     title: "Make the Trial End on Its Own",
     date: "2026-10-18",
