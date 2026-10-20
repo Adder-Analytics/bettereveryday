@@ -946,6 +946,28 @@ export const situations: Situation[] = [
     essays: ["three-fair-ways-to-split-the-bills"],
   },
   {
+    id: "lending-money",
+    title: "Someone close asks to borrow money",
+    scene:
+      "Your brother rings: the car needs £800 of work and he can't get to his job without it. He'll pay you back, he says. The last time, it came back late and in pieces, and you spent most of a year not mentioning it.",
+    question: "How much could I give and never think about again, and is anything beyond that a loan I could wait for?",
+    models: [
+      {
+        id: "communal-exchange",
+        move: "Between family and close friends, people give when there's a need and don't keep count. A loan brings in the other rule, pay me back by then, and every week it's unpaid both of you feel the score. Up to what you could lose, give it and say so.",
+      },
+      {
+        id: "ruin",
+        move: "Lend only what you could survive never seeing again. Money you need back turns their problem into yours, and the friendship into a debt.",
+      },
+    ],
+    tool: {
+      id: "lend",
+      move: "This is the call the tool is built for. It asks what losing the money would do to you and the most you could give outright, then reads it as a gift, a smaller offer, a loan written down with dates, or a no that offers help instead. It ends in the words to send, and puts any repayments in your calendar.",
+    },
+    essays: ["lend-only-what-you-could-give"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1351,6 +1373,7 @@ export const situationGroups: SituationGroup[] = [
       "splitting-the-rent",
       "sharing-chores",
       "splitting-bills",
+      "lending-money",
       "designing-incentives",
       "stubborn-system",
     ],

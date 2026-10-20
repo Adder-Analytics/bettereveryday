@@ -78,6 +78,30 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Someone close asks to borrow money, and both yes and no feel
+              wrong.{" "}
+              <Link
+                href="/lend"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Lend it, give it, or say no?
+              </Link>{" "}
+              starts from{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                the most you could give and never think about again
+              </span>
+              . Up to that, give it and say so. Beyond it, a smaller gift, a
+              loan written down with dates in your calendar, or a no that
+              offers help instead, with the words to send. A new{" "}
+              <Link
+                href="/writing/lend-only-what-you-could-give"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               &ldquo;&pound;649, or &pound;59.99 a month.&rdquo; The monthly
               figure hides the rate.{" "}
               <Link
@@ -151,31 +175,6 @@ export default function Now() {
               with the amounts in it. A new{" "}
               <Link
                 href="/writing/three-fair-ways-to-split-the-bills"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The chores in most homes were never divided; they settled, and
-              everyone is sure they do more than their share.{" "}
-              <Link
-                href="/chores"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Who does which chore?
-              </Link>{" "}
-              replaces two memories with one list, the remembering included,
-              then has each of you rate how much you mind each chore. Because
-              you don&rsquo;t mind the same ones, each chore can go to whoever
-              minds it least, and each of you can end up with{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                less than an even share, as you count it
-              </span>
-              . A new{" "}
-              <Link
-                href="/writing/trade-the-chores-you-mind"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 essay

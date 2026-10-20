@@ -2350,6 +2350,54 @@ export const posts: Post[] = [
 <p>There's a <a href="/keep">tool for this</a> on the site. It helps you find them all, then goes through them one by one: what each costs a year and a use, whether paying per use would be cheaper, and the fresh-start question. It ends with what cancelling would free in a year.</p>`,
   },
   {
+    slug: "lend-only-what-you-could-give",
+    title: "Lend Only What You Could Give",
+    date: "2026-10-20",
+    excerpt:
+      "A loan between friends is two relationships at once, and that's why so many end badly. Find the most you could give and never think about again. Up to that, give it. Beyond it, write it down with dates, or say no and help another way.",
+    readTime: 4,
+    tags: ["decisions", "finance", "relationships"],
+    content: `<p>The phone goes, and it's your brother. The car needs £800 of work, and without it he can't get to his job. He'll pay you back, he says, as soon as he can.</p>
+
+<p>You have about ten seconds to answer, and both answers feel wrong. Yes feels like it might cost you the money. No feels like it might cost you your brother.</p>
+
+<h2>Why it's hard</h2>
+
+<p>Margaret Clark and Judson Mills described two kinds of relationship by the rule each follows for giving. In an <em>exchange</em> relationship, with a shop or a colleague, a favour calls for a prompt, matching one back, and keeping track is fair. In a <em>communal</em> relationship, with family and close friends, people give when there's a need and don't keep count. In their experiments, people who wanted the close kind of relationship liked someone <em>less</em> when that person repaid them straight away. Keeping score was a sign the relationship wasn't close.</p>
+
+<p>A loan to someone close puts an exchange rule (pay me back, by then) inside a communal relationship. Every week it's unpaid, you notice, and they know you notice. Neither of you mentions it, and the not-mentioning becomes its own weight. That's the real cost of a loan that goes wrong, and it's often bigger than the money.</p>
+
+<p>It goes wrong a lot. In a 2019 Bankrate survey of US adults, 37% of people who had lent cash to friends or family lost money, and 21% said the relationship suffered. Nobody makes these loans expecting to be in that third. Most people who end up there didn't expect it either.</p>
+
+<h2>The number that decides it</h2>
+
+<p>Before the ask comes, or while they wait, find one number: <em>the most you could give them and never think about again</em>. Not the most you have. The amount you'd never ask about, and wouldn't mind seeing them spend on a holiday.</p>
+
+<p>If the ask is within that number, the cleanest thing is to give it and say so: "It's not a loan. I don't want it back." That keeps the relationship the kind that doesn't keep score. If they insist on paying it back, accept it when it comes, but don't ask and don't count.</p>
+
+<p>If the ask is bigger, offer the number as a gift instead of lending the whole amount. "I can't lend you £800, but I can give you £300, and I don't want it back" sounds smaller than yes. It usually helps more, because it comes with no debt attached.</p>
+
+<h2>If it really is a loan</h2>
+
+<p>Sometimes losing the money would hurt, but you could wait for it, and they have a real way to pay it back: a gap until payday, a deposit coming back. Then make it a proper exchange, out loud. Write down the amount, the dates and what happens if one is going to be late, and agree it now, while you're both glad about it. Put the dates in your calendar. Then a missed payment is a fact you can mention the day it happens, not a grudge you carry for a year. Asking becomes about the agreement, not the friendship.</p>
+
+<p>Two kinds of ask don't fit a loan at all. If money is short every month, a loan covers one month and adds a debt to the next. What helps is changing the month. And if the money is to start something, it isn't a loan. It's an investment that comes back only if the venture works, and in the US about half of new businesses close within five years.</p>
+
+<h2>Co-signing is not lending</h2>
+
+<p>Being asked to co-sign or guarantee a loan feels lighter than lending, because no money leaves your account. It's heavier. US lenders have to warn co-signers in writing that they may have to pay up to the full amount if the borrower doesn't, plus late fees. Only sign for an amount you could pay yourself without it hurting, and treat it as a gift you might one day have to make.</p>
+
+<h2>Saying no</h2>
+
+<p>If you'd need the money back, the answer to the loan is no, and the kind thing is to say it once and plainly, and then offer something that isn't money: help going through the options, a call to the landlord or the garage about a payment plan, a lift to work for the week. Saying no to the loan isn't saying no to them.</p>
+
+<h2>The line</h2>
+
+<p>It fits on a card: <em>I only lend what I could give. Up to that, I give it and don't keep count. Beyond it, I lend only what I could wait for, written down with dates, and I never co-sign for more than I could pay myself.</em></p>
+
+<p>There's a <a href="/lend">tool for this</a> on the site. It asks what losing the money would do to you and the most you could give, reads the ask as a gift, a smaller offer, a loan with dates or a no, and gives you the words to send.</p>`,
+  },
+  {
     slug: "the-smallest-number-on-the-page",
     title: "The Smallest Number on the Page",
     date: "2026-10-19",
