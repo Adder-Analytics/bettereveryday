@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend"],
       },
     ],
     choices: [
@@ -546,6 +546,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "chores",
             note: "If one of you earns less partly because they do more at home, the bills are only half the picture. Split the housework on purpose too.",
+          },
+        },
+      },
+      {
+        id: "lend",
+        label: "Someone close has asked to borrow money, or to co-sign a loan.",
+        detail: "A brother short for the car repair, a friend short on rent until payday, a cousin who needs a guarantor.",
+        rec: {
+          toolId: "lend",
+          because:
+            "A loan between friends puts a score inside a relationship that usually doesn't keep one, and a large share of these loans never come back. So start from the most you could give and never think about again. Up to that, give it and say it's a gift. Beyond it, lend only what you could wait for, written down with dates, or say no and help another way. Co-signing is promising to pay all of it.",
+          then: {
+            toolId: "rule",
+            note: "Asks like this come again. Decide your line once, cold, so the next one isn't decided on the doorstep.",
           },
         },
       },

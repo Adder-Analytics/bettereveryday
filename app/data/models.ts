@@ -319,6 +319,15 @@ export const models: Model[] = [
     essays: ["what-the-repair-has-to-buy"],
   },
   {
+    id: "communal-exchange",
+    name: "Communal and Exchange Relationships",
+    domain: "Psychology",
+    tagline: "Some relationships keep score and some don't. Bring a score into one that doesn't, and it starts to feel like a debt.",
+    explanation:
+      "Margaret Clark and Judson Mills (Journal of Personality and Social Psychology, 1979) separated two kinds of relationship by the rule they follow for giving. In an exchange relationship, with a shop, a colleague or a new acquaintance, a benefit calls for a prompt, comparable one back, and keeping track is fair. In a communal relationship, with family, close friends or a partner, people give in response to need and don't keep count. In their experiments, when people wanted a communal relationship, being repaid straight away made them like the other person less, not more. Keeping score was a sign the relationship wasn't the close kind. That's why lending money to someone close is hard: a loan is an exchange rule (pay me back, by then) placed inside a communal relationship, and every week it's unpaid, the lender notices and the borrower knows it. It's also why such loans often end badly. In Bankrate's 2019 US survey, 37% of people who had lent cash to friends or family lost money, and 21% said the relationship suffered. There are two clean ways out. Keep it communal: give an amount you could lose, and say it's a gift. Or make it a proper exchange: the amount, the dates and what happens if one's late, written down and agreed while you're both glad about it, so asking later is about the agreement, not the friendship. The tool Lend It, Give It, or Say No? reads an ask of your own.",
+    essays: ["lend-only-what-you-could-give"],
+  },
+  {
     id: "pain-of-paying",
     name: "The Pain of Paying",
     domain: "Psychology",

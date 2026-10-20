@@ -340,6 +340,18 @@ export const tools: Tool[] = [
     essays: ["the-smallest-number-on-the-page"],
   },
   {
+    id: "lend",
+    href: "/lend",
+    name: "Lend It, Give It, or Say No?",
+    short: "Lend money",
+    when: "A friend or relative has asked to borrow money, or to co-sign a loan, and someone you care about is waiting for an answer. Yes feels kind and no feels mean, and neither feels like the right size.",
+    ask: "How much could I give and never think about again, and is anything beyond that a loan I could wait for?",
+    does: "Starts from what losing the money would do to you and the most you could hand over as a gift. Up to that: give it, and say it's a gift. Beyond it: a smaller gift, a loan written down with dates (with the repayments in your calendar), or a no that offers help instead. Co-signing is read as promising to pay all of it. Ends in the words to send.",
+    payoff: "now",
+    models: ["communal-exchange", "ruin"],
+    essays: ["lend-only-what-you-could-give"],
+  },
+  {
     id: "keep",
     href: "/keep",
     name: "Still Worth Paying For?",
@@ -591,7 +603,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "walkaway", "later", "worth", "cover", "fix", "monthly", "keep", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "walkaway", "later", "worth", "cover", "fix", "monthly", "keep", "quit", "rule"],
   },
   {
     id: "big-commitment",

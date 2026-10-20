@@ -290,6 +290,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Lend it, give it, or say no?",
+    href: "/lend",
+    snippet:
+      "A friend or relative has asked to borrow money, or to co-sign. Find the most you could give and never think about again, and get the words to say.",
+    meta: "Lend money — should I lend money to a friend or family?",
+    titleText:
+      "lend it give it or say no lend money lending money borrow money borrowing loan to a friend loan to family lend to a friend lend to family should i lend money friend asking for money family asking for money brother sister parents cousin asked to borrow pay me back paid back never paid back owe me money iou loan agreement repayment plan co-sign cosign co-signer cosigner guarantor guarantee a loan how to say no to lending money gift or loan".toLowerCase(),
+    bodyText:
+      "lend it, give it, or say no? (/lend): the instrument for a friend or relative asking to borrow money, or to co-sign a loan. a loan between friends puts an exchange rule inside a communal relationship (clark and mills, jpsp 1979): close relationships give on need and don't keep score, and a debt brings the score in. in bankrate's 2019 us survey, 37% of people who lent cash to friends or family lost money and 21% said the relationship suffered. co-signing isn't lending: the ftc's cosigner notice warns you may have to pay up to the full amount if the borrower does not. you give how much they've asked for, whether it's a loan or a co-sign, and what losing it would do to you (fine, it would hurt, i'd need it back), with the most you could give and never think about again. optionally what it's for (a one-off emergency, a gap until money comes in, money short every month, to start something), their record (first time, repaid on time, late or in part, never), and whether you'd still be close if it never came back. within what you could lose: give it, and say it's a gift. more than that but some to spare: offer the smaller amount as a gift. you'd need it back, or it never came back last time: say no to the loan and help another way. short every month: a loan won't close the gap. otherwise a loan in writing with dates: what they'll pay a month gives every repayment date, a message with the terms, and a calendar file (.ics) of the repayments. ends in the words to send, a line to keep, and hands off to survive the worst case, advise a friend and make a rule. includes a read-only worked example: a brother asking for £800 for the car, and a £300 gift instead. nothing is sent anywhere; inputs persist in your browser. pairs with the communal and exchange relationships model and the essay lend only what you could give.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Pay now or pay monthly?",
     href: "/monthly",
     snippet:

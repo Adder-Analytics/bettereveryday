@@ -76,6 +76,7 @@ const essayGroups: EssayGroup[] = [
       "price-the-rooms-not-the-people",
       "trade-the-chores-you-mind",
       "three-fair-ways-to-split-the-bills",
+      "lend-only-what-you-could-give",
       "future-you-is-not-less-busy",
       "metric-not-the-mission",
       "second-order-thinking",
