@@ -450,7 +450,7 @@ export const posts: Post[] = [
 
 <p>The practical value didn't evaporate with the universal claim, because the settings where loss aversion holds up best are exactly the consequential ones.</p>
 
-<p>The disposition effect is the clearest. If you can't bring yourself to sell a losing investment — waiting for it to "get back to even" first — notice that "back to even" is a fact about your purchase price, a number the market has never heard of and does not care about. The only real question is whether you'd buy it today at today's price. Sunk costs are the same machine running on time and effort instead of money: the half-finished degree, the project that stopped making sense two years ago, the commitment continued mainly because of what's already been poured in. In every case the spent thing is gone whether you continue or not, and the aversion to "wasting" it is precisely what keeps you spending more.</p>
+<p>The disposition effect is the clearest. If you can't bring yourself to sell a losing investment — waiting for it to "get back to even" first — notice that "back to even" is a fact about your purchase price, a number the market has never heard of and does not care about. The only real question is whether you'd buy it today at today's price. The same goes for <a href="/sell">the bike in the hall</a> you're waiting to sell for a fair price. Sunk costs are the same machine running on time and effort instead of money: the half-finished degree, the project that stopped making sense two years ago, the commitment continued mainly because of what's already been poured in. In every case the spent thing is gone whether you continue or not, and the aversion to "wasting" it is precisely what keeps you spending more.</p>
 
 <p>The framing effects are real enough to defend against, too. The same option described as a loss to avoid will feel more urgent than when it's described as a gain to capture — which is why <a href="/cover">warranties, insurance upsells</a>, and "don't miss out" are all worded the way they are. When a choice suddenly feels urgent, it's worth asking whether the urgency is in the situation or only in the framing.</p>
 
@@ -2348,6 +2348,48 @@ export const posts: Post[] = [
 <p>None of this is a case against subscriptions. Plenty are good value, and some are the best money you spend. The case is against letting them renew unexamined. The method fits on a card: <em>once a year, I ask each subscription whether I'd sign up today at this price, counting last month's uses, not the ones I plan. If I'm not sure and I can rejoin easily, I cancel and see if I miss it.</em></p>
 
 <p>There's a <a href="/keep">tool for this</a> on the site. It helps you find them all, then goes through them one by one: what each costs a year and a use, whether paying per use would be cheaper, and the fresh-start question. It ends with what cancelling would free in a year.</p>`,
+  },
+  {
+    slug: "what-you-paid-isnt-on-the-listing",
+    title: "What You Paid Isn't on the Listing",
+    date: "2026-10-21",
+    excerpt:
+      "The bike in the hall stays because selling it means settling on a price, and the price in your head is the one you paid. Ask the buyer's question instead, price it from what similar ones sold for, and pick the number on the listing on purpose.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>There's a road bike in the hall. It cost £900 four years ago and was ridden twice last summer. Every few months its owner decides one of two things: to start riding again, or to sell it, once they've worked out a fair price. Neither happens. The bike stays, and so does the decision.</p>
+
+<p>Most homes have a few of these: the camera in a drawer, the pram the youngest grew out of, last year's phone, the stand mixer. None of them is a big decision, which is why none of them gets made.</p>
+
+<h2>Owning it changes how it looks</h2>
+
+<p>William Samuelson and Richard Zeckhauser found in 1988 that people choose an option far more often when it's framed as the way things already are. Two years later, Daniel Kahneman, Jack Knetsch and Richard Thaler gave coffee mugs to half a class at random and opened a market: owners asked about twice what buyers would pay. The usual explanation is loss aversion, but David Gal and Derek Rucker have argued that much of it is inertia: people don't mind losing so much as they mind acting. (There's <a href="/writing/loss-aversion">a longer essay on that argument</a> here.)</p>
+
+<p>Either way, the fix is the same. "Should I get rid of it?" is a question about giving something up, and owning it tilts the answer. Ask the buyer's question instead: <em>if I didn't have it, would I buy it today for what it would sell for?</em> If you wouldn't, then every day you keep it you're buying it again at that price, and paying for it in space.</p>
+
+<h2>The price in your head is the wrong one</h2>
+
+<p>The second thing that keeps the bike in the hall is the price. "Fair" quietly means something near the £900. David Genesove and Christopher Mayer studied Boston flats in the 1990s, when prices fell. Owners who would have sold below what they'd paid listed higher than similar flats and took much longer to sell. Buyers had never heard what those owners paid. It was a number only the seller could see, and it cost them time.</p>
+
+<p>The money between what you paid and what it would fetch went while you owned it, not when you sell it. Keeping it won't bring it back. The only price that counts is what similar ones have actually sold for. Look up sold listings, not asking prices. Asking prices are other sellers' hopes.</p>
+
+<h2>The number on the listing says something</h2>
+
+<p>Once you've decided to sell, the listing price is a message. Matthew Backus, Thomas Blake and Steven Tadelis looked at millions of eBay listings that accepted offers. Items listed at round numbers drew offers 8 to 12 percent lower, but were 15 to 25 percent more likely to sell. A round price reads as a seller who wants it gone; a precise one reads as a seller who can wait.</p>
+
+<p>So choose. If you want the most for it, list at a precise number a little above the going price: £383, not £380. If you want it gone this week, list at a round number near the going price. Then decide the lowest you'll take <em>before</em> the first offer arrives, because the first offer quickly starts to feel like the real price.</p>
+
+<h2>Two ways out that aren't selling</h2>
+
+<p>Selling costs time: photos, messages, a stranger at the door. At £40 for three hours, that's about £13 an hour. If that's less than your time is worth to you, give it to someone who'll use it. It still goes, which is what mattered.</p>
+
+<p>And if you're honestly not sure, don't argue with yourself. Put it in a box, out of sight but not out of reach, and write a date on it three months away. If you go and fetch it, it was a keeper. If the date comes and the box is still shut, you have your answer, and it goes without another debate.</p>
+
+<h2>The line</h2>
+
+<p>It fits on a card: <em>if I wouldn't buy it today for what it would sell for, it goes. I price it from what similar ones sold for, never from what I paid, and decide my lowest before the first offer. If selling it isn't worth my time, I give it away. If I'm not sure, I box it and date the box.</em></p>
+
+<p>There's a <a href="/sell">tool for this</a> on the site. It asks the buyer's question against sold prices, then gives you the listing, the lowest offer to take and the reply to a lowball, or a box with a date in your calendar.</p>`,
   },
   {
     slug: "lend-only-what-you-could-give",

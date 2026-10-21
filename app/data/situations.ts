@@ -249,6 +249,32 @@ export const situations: Situation[] = [
     essays: ["what-the-repair-has-to-buy"],
   },
   {
+    id: "unused-things",
+    title: "Something you own sits unused",
+    scene:
+      "The road bike in the hall cost £900 and was ridden twice last summer. Every few months you decide to start riding again, or to sell it once you've worked out a fair price, and fair keeps meaning something near what you paid.",
+    question: "If I didn't have it, would I buy it today for what similar ones actually sell for?",
+    models: [
+      {
+        id: "status-quo-bias",
+        move: "Whatever you already own gets a vote it hasn't earned. 'Should I get rid of it?' feels like a loss; 'would I buy it today?' doesn't. Ask the second.",
+      },
+      {
+        id: "sunk-cost",
+        move: "What you paid went while you owned it, and keeping it won't bring it back. Sellers anchored on their purchase price list too high and wait much longer to sell.",
+      },
+      {
+        id: "anchoring",
+        move: "The number on the listing sets the haggle. A round one reads as 'I want it gone' and draws lower offers; a precise one reads as 'I can wait'. Pick one on purpose, and decide your lowest before the first offer anchors you.",
+      },
+    ],
+    tool: {
+      id: "sell",
+      move: "This is the call the tool is built for. It asks the buyer's question against sold prices, then reads it as keep, a dated box, give it away or sell it, with the listing, the lowest offer to take and the reply to a lowball.",
+    },
+    essays: ["what-you-paid-isnt-on-the-listing"],
+  },
+  {
     id: "subscriptions",
     title: "The subscriptions have piled up",
     scene:
@@ -1381,7 +1407,7 @@ export const situationGroups: SituationGroup[] = [
   {
     id: "numbers",
     label: "There's a number in it",
-    situationIds: ["a-number-appears", "time-or-money", "offered-cover", "repair-or-replace", "pay-monthly", "subscriptions", "free-trial", "need-an-estimate"],
+    situationIds: ["a-number-appears", "time-or-money", "offered-cover", "repair-or-replace", "unused-things", "pay-monthly", "subscriptions", "free-trial", "need-an-estimate"],
   },
   {
     id: "after",

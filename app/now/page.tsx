@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The bike in the hall stays because &ldquo;a fair price&rdquo;
+              still means what you paid for it.{" "}
+              <Link
+                href="/sell"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Sell it, keep it, or let it go?
+              </Link>{" "}
+              asks{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                whether you&rsquo;d buy it today for what similar ones sold for
+              </span>
+              . If not, it prices it from sold listings, picks a precise or a
+              round number depending on whether you want the most or want it
+              gone, and gives you the listing and the reply to a lowball. Not
+              sure? It dates the box. A new{" "}
+              <Link
+                href="/writing/what-you-paid-isnt-on-the-listing"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Someone close asks to borrow money, and both yes and no feel
               wrong.{" "}
               <Link
@@ -150,31 +175,6 @@ export default function Now() {
               tells you to test can now be dated the same way. A new{" "}
               <Link
                 href="/writing/make-the-trial-end-on-its-own"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Two of you share a home, one earns more, and the bills are still
-              split the way they were the week you moved in.{" "}
-              <Link
-                href="/bills"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Who pays for what?
-              </Link>{" "}
-              lays half each, in proportion to pay and pooling it all side by
-              side in money. Each is fair by a different principle, so it
-              doesn&rsquo;t pick for you: it shows{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                how much the choice is actually worth
-              </span>
-              , tests each rule against one pay stopping, and ends in a line
-              with the amounts in it. A new{" "}
-              <Link
-                href="/writing/three-fair-ways-to-split-the-bills"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 essay
