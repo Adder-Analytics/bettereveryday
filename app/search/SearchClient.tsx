@@ -302,6 +302,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Sell it, keep it, or let it go?",
+    href: "/sell",
+    snippet:
+      "Something you own sits unused. Ask the buyer's question, price it from what similar ones sold for, and get the listing and the lowest offer to take.",
+    meta: "Sell or keep — should I sell it, and for how much?",
+    titleText:
+      "sell it keep it or let it go sell or keep selling stuff sell my stuff should i sell it how much should i sell it for what price to ask asking price list price pricing second hand secondhand used resale resell ebay facebook marketplace vinted gumtree craigslist depop declutter decluttering clutter unused things stuff i don't use garage sale yard sale car boot give away free to a good home lowball low offer haggle endowment effect status quo bias what i paid sunk cost".toLowerCase(),
+    bodyText:
+      "sell it, keep it, or let it go? (/sell): the instrument for the thing you own but don't use: the bike in the hall, the camera in a drawer, the pram, last year's phone. owning a thing inflates it (samuelson and zeckhauser 1988 status quo bias; kahneman, knetsch and thaler 1990 endowment effect, owners asked about twice what buyers would pay; gal and rucker argue much of it is inertia). what you paid anchors the price you ask: genesove and mayer (qje 2001) found boston flat owners facing a loss on their purchase price listed higher and sold much more slowly. the listing price is a signal: backus, blake and tadelis (jpe 2019) found round-number ebay listings drew offers 8-12% lower but were 15-25% more likely to sell. you give what similar ones actually sold for (sold listings, not asking prices, after fees and postage), optionally what you paid, then the buyer's question: if you didn't have it, would you buy it today for that? plus when you last used it and why it's still here (might need it, means something, paid a lot, no reason). keep it if you'd buy it again; keep it for what it means if it's sentimental; not sure: box it and date the box 90 days away, with a calendar file (.ics); otherwise sell it, unless selling pays less an hour than your time is worth, then give it away free. the price: a precise number about a tenth above the going price if you want the most, a round number near it if you want it gone, and the lowest offer to take decided now. ends in the listing, the reply to a low offer, a line to keep, and hands off to where's your line, fix it or replace it and make a rule. includes a read-only worked example: a road bike bought for £900, sold listings at £350, listed at £383. nothing is sent anywhere. pairs with the status quo bias, sunk cost and anchoring models and the essay what you paid isn't on the listing.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Pay now or pay monthly?",
     href: "/monthly",
     snippet:

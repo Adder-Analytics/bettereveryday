@@ -134,7 +134,7 @@ const nodes: Record<string, TriageNode> = {
         id: "options",
         label: "It's the options themselves",
         short: "The options",
-        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "monthly", "subscriptions", "trial"],
+        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "sell", "monthly", "subscriptions", "trial"],
       },
       {
         id: "stakes",
@@ -295,6 +295,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "rule",
             note: "Something else will break. Make the division your standing rule, so the next quote is a lookup.",
+          },
+        },
+      },
+      {
+        id: "sell",
+        label: "Something I own sits unused: sell it, keep it, or let it go?",
+        detail: "The bike in the hall, the camera in a drawer, the pram, last year's phone.",
+        rec: {
+          toolId: "sell",
+          because:
+            "Owning a thing makes it look worth more, and what you paid keeps setting the price in your head. Ask the buyer's question instead: would you buy it today for what similar ones actually sold for? If not, it goes, priced from sold listings, with your lowest offer decided before the first one arrives. If you're not sure, box it with a date.",
+          then: {
+            toolId: "rule",
+            note: "There's always another thing in the cupboard. Make the buyer's question your standing rule.",
           },
         },
       },

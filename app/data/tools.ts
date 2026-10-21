@@ -352,6 +352,18 @@ export const tools: Tool[] = [
     essays: ["lend-only-what-you-could-give"],
   },
   {
+    id: "sell",
+    href: "/sell",
+    name: "Sell It, Keep It, or Let It Go?",
+    short: "Sell or keep",
+    when: "Something you own sits unused: the bike in the hall, the camera in a drawer, last year's phone. You keep meaning to sell it once you've worked out what it's worth, and what you paid keeps getting in the way.",
+    ask: "If I didn't have it, would I buy it today for what it would sell for, and if not, what should I ask and what's the lowest I'll take?",
+    does: "Asks the buyer's question against what similar ones actually sold for. Yes: keep it. Not sure: box it with a date (and a calendar reminder), and it goes if you haven't fetched it. No: sell it, unless selling pays less than your time, in which case give it away. Prices it from sold listings, never from what you paid, at a precise number if you want the most or a round one if you want it gone, and ends in the listing, the lowest offer to take and the reply to a lowball.",
+    payoff: "now",
+    models: ["status-quo-bias", "sunk-cost", "anchoring"],
+    essays: ["what-you-paid-isnt-on-the-listing"],
+  },
+  {
     id: "keep",
     href: "/keep",
     name: "Still Worth Paying For?",
@@ -603,7 +615,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "walkaway", "later", "worth", "cover", "fix", "monthly", "keep", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "walkaway", "later", "worth", "cover", "fix", "monthly", "sell", "keep", "quit", "rule"],
   },
   {
     id: "big-commitment",
