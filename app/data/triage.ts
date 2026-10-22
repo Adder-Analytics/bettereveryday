@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam"],
       },
     ],
     choices: [
@@ -574,6 +574,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "rule",
             note: "Asks like this come again. Decide your line once, cold, so the next one isn't decided on the doorstep.",
+          },
+        },
+      },
+      {
+        id: "scam",
+        label: "A message or call wants money, a code or my details now, and I'm not sure it's real.",
+        detail: "A parcel fee, my bank's fraud team, a new number saying it's family, a refund I wasn't expecting.",
+        rec: {
+          toolId: "scam",
+          because:
+            "Don't judge it by how it looks: logos, caller ID and knowing your name all cost a scammer nothing. Judge what it asks. A code, gift cards, crypto, cash at the door, a \"safe account\" or a secret settle it on their own. Anything else that came to you and wants something gets checked one way: contact them yourself, on details you found yourself.",
+          then: {
+            toolId: "rule",
+            note: "There'll be another one. Decide your line once, so you never have to judge one on the spot.",
           },
         },
       },

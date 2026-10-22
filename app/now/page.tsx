@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A text about a parcel fee, a call from your bank&rsquo;s fraud
+              team, a new number saying it&rsquo;s family.{" "}
+              <Link
+                href="/scam"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Is it real?
+              </Link>{" "}
+              ignores how it looks, which costs a scammer nothing, and reads{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                what it asks for and who started it
+              </span>
+              . Some asks settle it on their own. For the rest it gives you the
+              check a scammer can&rsquo;t fake and the words to end the call,
+              and if you&rsquo;ve already paid, the steps for the first hour. A
+              new{" "}
+              <Link
+                href="/writing/judge-the-ask-not-the-look"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The bike in the hall stays because &ldquo;a fair price&rdquo;
               still means what you paid for it.{" "}
               <Link
@@ -144,37 +169,6 @@ export default function Now() {
               it and automate every payment. A new{" "}
               <Link
                 href="/writing/the-smallest-number-on-the-page"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A free trial is a subscription whose default is already chosen:
-              do nothing and it becomes a payment.{" "}
-              <Link
-                href="/trial"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Before the trial ends
-              </Link>{" "}
-              changes that default at sign-up: cancel today if the free time
-              survives it, or{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                date the cancel-by
-              </span>{" "}
-              on your return desk and calendar, with the question waiting on
-              the day. The subscriptions{" "}
-              <Link
-                href="/keep"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                keep or cancel
-              </Link>{" "}
-              tells you to test can now be dated the same way. A new{" "}
-              <Link
-                href="/writing/make-the-trial-end-on-its-own"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 essay

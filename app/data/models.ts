@@ -393,6 +393,15 @@ export const models: Model[] = [
 
   // Epistemology
   {
+    id: "costly-signals",
+    name: "Costly Signals",
+    domain: "Epistemology",
+    tagline: "A sign is only evidence if faking it would cost the faker more than it costs the honest.",
+    explanation:
+      "Michael Spence (Quarterly Journal of Economics, 1973) asked why employers trust a degree they know teaches little of the job. His answer: a signal separates the honest from the pretenders only when it's cheaper for the real thing to send than for a fake. Amotz Zahavi made the same argument about the peacock's tail (1975): it's believable because a weak bird couldn't afford it. The reverse is the useful half. A sign that costs nothing to fake tells you nothing, however convincing it feels, because everyone can send it. That is the whole problem with scams. A logo, a polite tone, the bank's number on your screen, your name and the last four digits of your card all cost a scammer nothing, so none of them is evidence. What they can't fake cheaply is the channel you choose: if you hang up and call the number on the back of your card, a fake has nowhere to stand. In the UK's Take Five survey, 80% of people thought they could spot a scam and 9% got every quiz question right, which is what you'd expect when people judge by the cheap signs. Cheap talk isn't always useless: when both sides want the same thing, a cheap signal can be honest (Crawford and Sobel, 1982), which is why a round number on a listing does say \"I want it gone\". The test is whether the sender would gain from lying. When they would, believe only what lying would cost them. The tool Is It Real? reads a message of your own.",
+    essays: ["judge-the-ask-not-the-look"],
+  },
+  {
     id: "base-rates",
     name: "Base Rates",
     domain: "Epistemology",

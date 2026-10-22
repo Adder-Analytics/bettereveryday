@@ -2350,6 +2350,54 @@ export const posts: Post[] = [
 <p>There's a <a href="/keep">tool for this</a> on the site. It helps you find them all, then goes through them one by one: what each costs a year and a use, whether paying per use would be cheaper, and the fresh-start question. It ends with what cancelling would free in a year.</p>`,
   },
   {
+    slug: "judge-the-ask-not-the-look",
+    title: "Judge the Ask, Not the Look",
+    date: "2026-10-22",
+    excerpt:
+      "The things people check to tell a scam from the real thing are the things a scammer can fake for free. What gives one away is what it asks for, how it wants paying, and who started it. And there's one check they can't fake: contacting them yourself.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>The phone shows the bank's number. The woman on the line is calm and kind. She knows your name, your address and the last four digits of your card. There's been a payment you didn't make, she says, and whoever made it may be able to see your account. To be safe, your savings need to go to a new account today, and you mustn't mention it at the branch, because someone there may be involved.</p>
+
+<p>Most people who hear this story afterwards are sure they'd have spotted it. In a 2018 survey for the UK's Take Five campaign, 80% of people said they could tell a scam approach from a real one. In the campaign's quiz, taken by more than 63,000 people, 9% got every question right.</p>
+
+<h2>Everything you can see is cheap</h2>
+
+<p>The gap isn't a lack of care. It's that people check the wrong things. They look at the logo, the spelling, the tone, the number on the screen, whether the caller knows things about them. Every one of those costs a scammer nothing. Caller ID can be set to any number. A page can be copied exactly. Your name, address and card digits are in more leaked databases than you'd like.</p>
+
+<p>Economists have a name for the right test. Michael Spence asked in 1973 why employers believe a degree, and the answer was that a sign is only evidence if it would cost a faker more to send than it costs the real thing. A sign everyone can send, honest or not, tells you nothing however convincing it feels. A logo is that kind of sign.</p>
+
+<h2>What they can't hide</h2>
+
+<p>So look at the parts a scammer can't make cheap, because they're the whole point of the scam. Frank Stajano and Paul Wilson studied hundreds of cons recreated for the BBC's <em>The Real Hustle</em> and found they reduced to a handful of principles: an authority you'd obey, a clock, something you'd gain or lose, a reason to keep quiet. Those show up in the message as four questions:</p>
+
+<p><em>Who started it?</em> If they came to you, anything in the message, the number, the link, the name, is theirs to choose.</p>
+
+<p><em>What does it ask for?</em> Money, a code sent to your phone, a sign-in through a link, your details, access to your screen.</p>
+
+<p><em>How does it want paying?</em> The FTC's figures for 2025 put reported US losses at about $15.9 billion, and bank transfers carried the largest share, because they're instant and hard to reverse.</p>
+
+<p><em>What's pushing you?</em> A deadline, a threat, a windfall, a secret. Kircanski and colleagues found in 2018 that getting people worked up, whether excited or frightened, made them more willing to buy from misleading adverts. The clock in a scam is there so that you decide while you're worked up.</p>
+
+<h2>Some asks settle it</h2>
+
+<p>A few answers end the question on their own, because nobody real asks that way. No real business or government office takes gift cards. Only scammers demand crypto. Banks don't send couriers for cash, and they don't ask you to move your money to keep it safe. Nobody on your side asks you to read out the code they just sent. And nobody real tells you to keep it from your bank or your family. That secret is there to stop the one conversation that would end it.</p>
+
+<p>Everything else, the parcel fee, the tax refund, the new number from your daughter, looks the same whether it's real or not. So don't decide from inside the message. Decide from outside it.</p>
+
+<h2>The check they can't fake</h2>
+
+<p>The one thing a scammer can't control is a channel you choose. Hang up and call the number on the back of your card, from another phone if you can. Open the delivery company's own app instead of the link. Ring your daughter on the number you've always had. In the UK, 159 connects you to most banks without a number to look up.</p>
+
+<p>If it was real, you've lost ten minutes and a real caller won't mind. If it wasn't, the scam ends there, because a fake has nowhere to stand on a line you dialled yourself. You don't need to decide which it was. The check decides for you.</p>
+
+<h2>The line</h2>
+
+<p>It fits on a card: <em>if someone contacts me and asks for money, a code or my details, I don't act inside that message. I contact them myself, on details I found myself. Nobody real asks for a code, gift cards, crypto, cash at the door, a safe account or a secret.</em> Decided now, it doesn't have to be judged on a busy afternoon with a calm voice in your ear. It's worth sending to the people you'd want to have it.</p>
+
+<p>There's a <a href="/scam">tool for this</a> on the site. It reads a message or call by what it asks, not how it looks, gives you the check to make for that kind of sender and the words to end the call, and if you've already paid, the steps for the first hour.</p>`,
+  },
+  {
     slug: "what-you-paid-isnt-on-the-listing",
     title: "What You Paid Isn't on the Listing",
     date: "2026-10-21",
