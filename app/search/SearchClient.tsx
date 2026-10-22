@@ -302,6 +302,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Is it real? Before you pay, click or reply",
+    href: "/scam",
+    snippet:
+      "A text, call or message wants money, a code or your details now. Judge what it asks, not how it looks, and check it on details you found yourself.",
+    meta: "Is it a scam? — should I pay, click or reply?",
+    titleText:
+      "is it real is this a scam is it a scam scam check scam checker fraud phishing smishing vishing fake text fake call fake email suspicious message suspicious text parcel fee delivery text royal mail usps toll text bank called fraud team safe account hi mum new number whatsapp family emergency gift cards crypto bitcoin atm courier one time code otp verification code passcode remote access tech support virus warning job scam task scam investment scam romance scam refund scam irs hmrc police arrest fake invoice impersonation authorised push payment i've been scammed already paid report fraud 159 7726".toLowerCase(),
+    bodyText:
+      "is it real? before you pay, click or reply (/scam): the instrument for a text, call or message that wants something now: a parcel fee, your bank's fraud team, a new number saying it's family, a refund, a job, an investment, a virus warning. people judge these by how they look, and how they look costs a scammer nothing: logos, caller id, perfect english, knowing your name or card digits. in the uk's take five survey (2018) 80% thought they could spot a scam approach and 9% got every quiz question right. the read uses what's hard to hide instead (stajano and wilson, communications of the acm 2011, seven principles from the real hustle; kircanski et al., psychology and aging 2018: high arousal, good or bad, raises willingness to buy from misleading ads): who started it (they did, i did through their link or number, i did on details i found myself), what it asks for (pay or move money, read out a code, sign in through a link, personal or card details, install an app or share the screen), how it wants paying (card, bank transfer, payment app, gift cards, crypto, cash) and what's pushing you (a deadline, a threat, a windfall, keep it quiet, don't hang up). the ftc's 2025 figures: about $15.9 billion reported lost, bank transfers the largest losses. a code, gift cards, crypto, cash collected at the door, a bank asking you to move money to a safe account, a secret, don't hang up, remote access from someone who contacted you, a job that asks you to pay, or tech support that found you: stop, nobody real asks this way. anything else that came to you and wants something: don't act inside the message; check it another way, with the check for each kind of sender (call the number on the back of your card from another phone, or 159 in the uk; ring family on the old number; open the company's own app; look up the office on gov.uk or a .gov site; pay on the platform; check the fca register or finra brokercheck) and the words to end the call. already paid, said a code or installed something: the first-hour steps, call your bank now, the gift card company, change passwords starting with email, report to report fraud (reportfraud.police.uk, 0300 123 2040) or reportfraud.ftc.gov, forward texts to 7726, and expect a recovery scam. ends in a line to keep and hands off to lend it give it or say no, cool and make a rule. includes a read-only worked example: a safe account call that knew the card digits. nothing is sent anywhere. pairs with the costly signals and base rates models and the essay judge the ask, not the look.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Sell it, keep it, or let it go?",
     href: "/sell",
     snippet:

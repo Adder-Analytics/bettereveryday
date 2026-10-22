@@ -352,6 +352,18 @@ export const tools: Tool[] = [
     essays: ["lend-only-what-you-could-give"],
   },
   {
+    id: "scam",
+    href: "/scam",
+    name: "Is It Real? Before You Pay, Click or Reply",
+    short: "Is it a scam?",
+    when: "A text, call or message wants something now: a parcel fee, your bank's fraud team, a new number saying it's your son. It looks real enough, and it says there isn't time to check.",
+    ask: "Does anything in this ask the way only scammers ask, and how do I check it on details they didn't give me?",
+    does: "Ignores how it looks, which costs a scammer nothing, and reads what they can't hide: who started it, what it asks for, how it wants paying and what's pushing you. A code, gift cards, crypto, cash at the door, a \"safe account\" or a secret: stop. Anything else that came to you and wants something: check it by contacting them yourself, with the way to do that for a bank, a relative, a company or an office, and the words to end the call. Already paid? The steps for the first hour.",
+    payoff: "now",
+    models: ["costly-signals", "base-rates"],
+    essays: ["judge-the-ask-not-the-look"],
+  },
+  {
     id: "sell",
     href: "/sell",
     name: "Sell It, Keep It, or Let It Go?",
@@ -615,7 +627,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "walkaway", "later", "worth", "cover", "fix", "monthly", "sell", "keep", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "walkaway", "later", "worth", "cover", "fix", "monthly", "sell", "keep", "quit", "rule"],
   },
   {
     id: "big-commitment",

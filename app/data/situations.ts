@@ -994,6 +994,28 @@ export const situations: Situation[] = [
     essays: ["lend-only-what-you-could-give"],
   },
   {
+    id: "message-wants-money",
+    title: "A message or call wants something now",
+    scene:
+      "The phone shows your bank's number. A calm voice from the fraud team knows your name and the last four digits of your card, and says your savings need moving to a safe account today, before whoever got into your account empties it.",
+    question: "Does it ask the way only a fraudster would, and can I check it on details they didn't give me?",
+    models: [
+      {
+        id: "costly-signals",
+        move: "Trust only what would be expensive to fake. The number on the screen, the logo and your card digits cost a scammer nothing. The channel you choose yourself, calling back on the number on your card, costs them everything.",
+      },
+      {
+        id: "base-rates",
+        move: "Real banks almost never ask you to move money, read out a code or keep a secret; scammers ask for little else. A request like that is far more likely to come from a scammer than from the bank, however real the rest feels.",
+      },
+    ],
+    tool: {
+      id: "scam",
+      move: "This is the moment the tool is built for. It reads who started it, what it asks for, how it wants paying and what's pushing you, says stop when something settles it, and otherwise gives you the check to make for this kind of sender and the words to end the call. If you've already paid, it starts with the first hour.",
+    },
+    essays: ["judge-the-ask-not-the-look"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1400,6 +1422,7 @@ export const situationGroups: SituationGroup[] = [
       "sharing-chores",
       "splitting-bills",
       "lending-money",
+      "message-wants-money",
       "designing-incentives",
       "stubborn-system",
     ],
