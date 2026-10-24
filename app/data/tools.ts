@@ -340,6 +340,18 @@ export const tools: Tool[] = [
     essays: ["the-smallest-number-on-the-page"],
   },
   {
+    id: "debts",
+    href: "/debts",
+    name: "Which Debt First?",
+    short: "Which debt first?",
+    when: "You owe on a few things, cards, a store card, an overdraft, a loan, and there's an amount you can put towards them each month. After the minimums, you're not sure where the rest should go, so it goes a bit on each.",
+    ask: "After the minimums, which debt gets the rest, and what does the quick win of clearing the smallest one really cost?",
+    does: "Runs costliest-first, smallest-first and spread-around on your own debts, month by month. Says what the quick win costs and takes it when it's cheap, goes by rate when it isn't, and offers one quick win then the rate if you've stalled before. Gives this month's payments and the month each debt goes, and shows what paying only the minimums would cost and what a little more each month would save. Can't cover the minimums? Free debt advice first.",
+    payoff: "now",
+    models: ["goal-gradient", "anchoring", "compound-interest"],
+    essays: ["one-debt-at-a-time"],
+  },
+  {
     id: "lend",
     href: "/lend",
     name: "Lend It, Give It, or Say No?",
@@ -627,7 +639,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "walkaway", "later", "worth", "cover", "fix", "monthly", "sell", "keep", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "walkaway", "later", "worth", "cover", "fix", "monthly", "debts", "sell", "keep", "quit", "rule"],
   },
   {
     id: "big-commitment",

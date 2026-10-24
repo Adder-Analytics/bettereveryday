@@ -2350,6 +2350,42 @@ export const posts: Post[] = [
 <p>There's a <a href="/keep">tool for this</a> on the site. It helps you find them all, then goes through them one by one: what each costs a year and a use, whether paying per use would be cheaper, and the fresh-start question. It ends with what cancelling would free in a year.</p>`,
   },
   {
+    slug: "one-debt-at-a-time",
+    title: "One Debt at a Time",
+    date: "2026-10-24",
+    excerpt:
+      "Costliest first or smallest first is the argument everyone has about paying off debt. On real numbers the gap between them is usually small. The two choices that matter more are the ones people get wrong without arguing: spreading the money around, and letting the minimum set the payment.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>Say you owe on four things: an old card, a store card and two credit cards, £7,550 in all. You can put £400 a month towards them. The minimums take £215 of that. The question is where the other £185 goes.</p>
+
+<p>There are two famous answers. The arithmetic one, sometimes called the avalanche, says the debt with the highest rate, because every pound there saves the most interest. The popular one, the snowball, says the smallest balance, because clearing a debt feels like progress and progress keeps you going. People argue about this a lot.</p>
+
+<h2>What people actually do</h2>
+
+<p>They do neither. John Gathergood, Neale Mahoney, Neil Stewart and Jörg Weber followed 1.4 million UK cardholders (<em>American Economic Review</em>, 2019). For people with two cards, paying the minimums and sending the rest to the costlier card would have put about 97% of the extra there. They put about 51% there. Their payments followed each card's share of what they owed, whatever the rates, and they did no better when more money was at stake.</p>
+
+<p>Spreading it around is the one order with nothing to say for it. It doesn't save the most interest, and it doesn't clear anything early either. On the four debts above it's the most expensive of the three.</p>
+
+<h2>The win is real, and usually cheap</h2>
+
+<p>The snowball's defenders have evidence too. Moty Amar, Dan Ariely and colleagues found people clear small debts first even when it costs them, a pull they called "debt account aversion" (<em>Journal of Marketing Research</em>, 2011). That sounds like a mistake, and in their lab games it was. But Eric Gal and Blakeley McShane, looking at about 6,000 people in a debt settlement programme, found that closing accounts predicted getting out of debt altogether, whatever the balances closed (<em>JMR</em>, 2012). That's a correlation, not proof. Jacqueline Kettle and colleagues added experiments: putting the extra on one account rather than spreading it made people repay more, most of all when it was the smallest (<em>Journal of Consumer Research</em>, 2016). People judge their progress by the biggest share knocked off any one debt.</p>
+
+<p>So the real question is what the win costs. On the four debts above, going by rate saves about £95 over two years against going smallest-first. That's real money, and worth having. But it's often less than people assume, and sometimes it's only a few pounds. When it's that small, take the win. When it's large, go by rate. If you've tried before and stalled, a middle way works: clear one small debt quickly, then go by rate.</p>
+
+<h2>The bigger number</h2>
+
+<p>Here's the number that dwarfs both. Paying only the minimums on those four debts, never more, would take more than seven years and cost about £7,000 in interest. At £400 a month it's two years and about £2,000. The order is worth £95. The amount is worth thousands.</p>
+
+<p>And the amount is where the statement leans on you. Neil Stewart showed in 2009 that people shown the minimum payment chose to repay less than people who weren't; the FCA ran the experiment again and found the same pull. The minimum is the smallest number the lender will accept, printed where you decide what to pay.</p>
+
+<h2>The line</h2>
+
+<p>It fits on a card: <em>I pay every minimum, then put everything else on one debt at a time, never spread. I go by rate unless the quick win is cheap. When one's cleared, its payment moves to the next, and I don't borrow on it again.</em> Set the amount as a fixed monthly payment, so the minimum never gets a vote.</p>
+
+<p>There's a <a href="/debts">tool for this</a> on the site. It runs all three orders on your own debts, says what the quick win costs, gives you this month's payments and the month each debt goes, and shows what a little more each month would do. If you can't cover the minimums, it starts with free debt advice instead.</p>`,
+  },
+  {
     slug: "judge-the-ask-not-the-look",
     title: "Judge the Ask, Not the Look",
     date: "2026-10-22",

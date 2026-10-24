@@ -229,13 +229,22 @@ export const models: Model[] = [
     essays: ["availability-heuristic"],
   },
   {
+    id: "goal-gradient",
+    name: "Goal Gradient",
+    domain: "Psychology",
+    tagline: "Effort rises as the finish comes into view, so how close you feel shapes whether you keep going.",
+    explanation:
+      "Clark Hull noticed in 1932 that rats in a maze ran faster the nearer they got to the food. Ran Kivetz, Oleg Urminsky and Yuhuang Zheng found the same in people (Journal of Marketing Research, 2006): customers with a coffee-shop loyalty card bought coffee more often the closer they were to the free one, and a card needing ten stamps was finished more slowly than one needing twelve with two already stamped, the same distance that felt shorter. What drives effort is felt progress, not the sum left. That's the honest case for paying off the smallest debt first. Kettle and colleagues (Journal of Consumer Research, 2016) found people judge how far they've got by the biggest share knocked off any one debt, so concentrating payments makes progress visible, and Gal and McShane (2012) found closing accounts went with getting out of debt altogether. The useful move is to make progress visible cheaply: one goal at a time, a finish you can see, and a quick first win when it costs little. The trap is letting felt progress choose for you when the real cost is large. The tool Which Debt First? shows what the quick win costs before you take it.",
+    essays: ["one-debt-at-a-time"],
+  },
+  {
     id: "anchoring",
     name: "Anchoring",
     domain: "Psychology",
     tagline: "The first number we encounter disproportionately influences our estimates, even when it's irrelevant.",
     explanation:
       "Tell someone the Ganges River is 2,000 miles long before asking them to estimate the Nile's length, and their guess will be lower than if you'd said the Ganges is 5,000 miles — even though the Ganges has nothing to do with the Nile. Anchoring affects salary negotiations, price perception, and judicial sentencing. The counteraction: generate your own estimate before encountering external figures, and be especially suspicious of the first number offered in any negotiation.",
-    essays: ["anchoring"],
+    essays: ["anchoring", "one-debt-at-a-time"],
   },
   {
     id: "independent-judgments",

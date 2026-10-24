@@ -134,7 +134,7 @@ const nodes: Record<string, TriageNode> = {
         id: "options",
         label: "It's the options themselves",
         short: "The options",
-        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "sell", "monthly", "subscriptions", "trial"],
+        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "sell", "monthly", "debts", "subscriptions", "trial"],
       },
       {
         id: "stakes",
@@ -323,6 +323,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "cover",
             note: "The same checkout usually offers cover on it next. Decide whether that loss is one to insure or one to carry.",
+          },
+        },
+      },
+      {
+        id: "debts",
+        label: "I owe on a few cards or loans, and I'm not sure which to pay off first.",
+        detail: "Credit cards, a store card, an overdraft, a loan: the minimums on each, and some money left over each month.",
+        rec: {
+          toolId: "debts",
+          because:
+            "After the minimums, put the rest on one debt at a time, never spread. The highest rate saves the most; the smallest balance gives the quickest win. On your own numbers the gap between them is usually smaller than paying only the minimums, so see both before you pick.",
+          then: {
+            toolId: "keep",
+            note: "The fastest extra each month is usually a subscription you'd not sign up for today.",
           },
         },
       },
