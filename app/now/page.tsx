@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Two cards, a store card and an overdraft, and a bit paid off each
+              every month.{" "}
+              <Link
+                href="/debts"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Which debt first?
+              </Link>{" "}
+              runs costliest-first, smallest-first and spread-around on your
+              own debts, says{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                what the quick win really costs
+              </span>
+              , and gives you this month&rsquo;s payments and the month each
+              debt goes. It also shows what the minimums alone would cost,
+              which usually matters more than the order. A new{" "}
+              <Link
+                href="/writing/one-debt-at-a-time"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A text about a parcel fee, a call from your bank&rsquo;s fraud
               team, a new number saying it&rsquo;s family.{" "}
               <Link
@@ -145,30 +170,6 @@ export default function Now() {
               offers help instead, with the words to send. A new{" "}
               <Link
                 href="/writing/lend-only-what-you-could-give"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              &ldquo;&pound;649, or &pound;59.99 a month.&rdquo; The monthly
-              figure hides the rate.{" "}
-              <Link
-                href="/monthly"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Pay now or pay monthly?
-              </Link>{" "}
-              adds the plan up, turns the difference into{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                the yearly rate it really charges
-              </span>
-              , and asks whether you&rsquo;d buy the thing at this price
-              without the plan. Interest-free and already decided means spread
-              it and automate every payment. A new{" "}
-              <Link
-                href="/writing/the-smallest-number-on-the-page"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 essay

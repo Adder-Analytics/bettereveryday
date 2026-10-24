@@ -466,6 +466,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a lend-or-give call in progress" : null),
   },
   {
+    key: "debts:v1",
+    tool: "Which debt first?",
+    href: "/debts",
+    label: "Your debts and the order to pay them",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "a debt payoff plan in progress" : null),
+  },
+  {
     key: "scam:v1",
     tool: "Is it real?",
     href: "/scam",

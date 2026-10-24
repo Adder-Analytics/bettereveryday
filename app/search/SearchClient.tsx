@@ -326,6 +326,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Which debt first?",
+    href: "/debts",
+    snippet:
+      "Several debts and one amount a month. After the minimums, which one gets the rest? See costliest-first, smallest-first and spread-around on your own numbers.",
+    meta: "Which debt first? — avalanche or snowball?",
+    titleText:
+      "which debt first which debt to pay off first pay off debt debt payoff debt repayment pay down debt get out of debt debt free credit card debt credit cards store card overdraft loan avalanche snowball debt avalanche debt snowball highest interest first smallest balance first minimum payment minimums only balance transfer 0% interest apr payoff plan payoff calculator debt calculator several debts multiple cards".toLowerCase(),
+    bodyText:
+      "which debt first? (/debts): the instrument for several debts and one amount a month to put towards them. after every minimum, the arithmetic says the highest rate first (the avalanche); the popular advice says the smallest balance first, for the win (the snowball). most people do neither: gathergood, mahoney, stewart and weber (american economic review 2019) followed 1.4 million uk cardholders and found two-card holders put about 51% of their extra on the costlier card where cost-minimising would put about 97%; payments matched each card's share of the balance (the balance-matching heuristic). amar, ariely, ayal, cryder and rick (journal of marketing research 2011): debt account aversion, people clear small debts first even when it costs. gal and mcshane (jmr 2012): closing accounts predicted getting out of debt. kettle, trudel, blanchard and haubl (journal of consumer research 2016): concentrating repayments on one account raised motivation, most for the smallest. stewart (psychological science 2009) and the fca: the printed minimum anchors payments down. you give each debt's balance, yearly rate (apr) and minimum, and what you can pay each month in all, and whether you've stalled before. the tool runs costliest first, smallest first and spread around month by month: take the quick win when it costs next to nothing, go by rate when it costs real money, or one quick win then by rate if you've stalled. gives this month's payments, the month each debt is cleared, the interest by order, what paying only the minimums would cost, and what a little more each month would save. 0% deals and guessed minimums are flagged. can't cover the minimums, or the interest outruns the payment: free debt advice first (stepchange, national debtline, citizens advice, an nfcc counsellor). ends in a line to keep and hands off to keep or cancel, pay now or pay monthly and make a rule. includes a read-only worked example: four debts, £7,550, £400 a month. nothing is sent anywhere. pairs with the goal gradient, anchoring and compound interest models and the essay one debt at a time.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Pay now or pay monthly?",
     href: "/monthly",
     snippet:

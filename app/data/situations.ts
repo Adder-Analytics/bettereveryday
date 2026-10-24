@@ -301,6 +301,28 @@ export const situations: Situation[] = [
     essays: ["the-subscription-you-wouldnt-buy-today"],
   },
   {
+    id: "several-debts",
+    title: "You owe on a few things and pay a bit off each",
+    scene:
+      "Two credit cards, a store card and the overdraft. You can manage about £400 a month between them, so every month you pay the minimums and spread what's left, a bit more on the biggest. The balances move, slowly. A friend says to clear the smallest first.",
+    question: "After the minimums, which one gets the rest, and what does the quick win really cost me on my numbers?",
+    models: [
+      {
+        id: "goal-gradient",
+        move: "People keep going when they can see the finish. A cleared debt is a finish you can see, which is the honest case for the smallest first. Take it when it's cheap; pay for it knowingly when it isn't.",
+      },
+      {
+        id: "anchoring",
+        move: "The minimum is printed where you decide what to pay, and people shown it pay less. Decide your monthly amount yourself and set it as a fixed payment, so the minimum never gets a vote.",
+      },
+    ],
+    tool: {
+      id: "debts",
+      move: "This is the call the tool is built for. It runs costliest-first, smallest-first and spread-around on your own debts, says what the quick win costs, and gives you this month's payments and the month each debt goes. It also shows what the minimums alone would cost, which is usually the bigger surprise.",
+    },
+    essays: ["one-debt-at-a-time"],
+  },
+  {
     id: "pay-monthly",
     title: "There's an option to pay monthly",
     scene:
@@ -1430,7 +1452,7 @@ export const situationGroups: SituationGroup[] = [
   {
     id: "numbers",
     label: "There's a number in it",
-    situationIds: ["a-number-appears", "time-or-money", "offered-cover", "repair-or-replace", "unused-things", "pay-monthly", "subscriptions", "free-trial", "need-an-estimate"],
+    situationIds: ["a-number-appears", "time-or-money", "offered-cover", "repair-or-replace", "unused-things", "pay-monthly", "several-debts", "subscriptions", "free-trial", "need-an-estimate"],
   },
   {
     id: "after",
