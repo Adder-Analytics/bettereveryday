@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The washing machine dies in month four and the shop says
+              it&rsquo;s the manufacturer&rsquo;s problem.{" "}
+              <Link
+                href="/refund"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Get your money back
+              </Link>{" "}
+              finds what the law gives you for this problem at this age, writes
+              the message with{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                a date to reply by
+              </span>
+              , and chooses the next step before you send it: section 75 or a
+              chargeback from your card company, the platform, an ombudsman, or
+              small claims. A new{" "}
+              <Link
+                href="/writing/ask-once-in-writing-with-a-date"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Two cards, a store card and an overdraft, and a bit paid off each
               every month.{" "}
               <Link
@@ -146,30 +171,6 @@ export default function Now() {
               sure? It dates the box. A new{" "}
               <Link
                 href="/writing/what-you-paid-isnt-on-the-listing"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Someone close asks to borrow money, and both yes and no feel
-              wrong.{" "}
-              <Link
-                href="/lend"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Lend it, give it, or say no?
-              </Link>{" "}
-              starts from{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                the most you could give and never think about again
-              </span>
-              . Up to that, give it and say so. Beyond it, a smaller gift, a
-              loan written down with dates in your calendar, or a no that
-              offers help instead, with the words to send. A new{" "}
-              <Link
-                href="/writing/lend-only-what-you-could-give"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 essay

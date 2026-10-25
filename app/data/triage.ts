@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund"],
       },
     ],
     choices: [
@@ -602,6 +602,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "rule",
             note: "There'll be another one. Decide your line once, so you never have to judge one on the spot.",
+          },
+        },
+      },
+      {
+        id: "refund",
+        label: "Something I paid for broke, never came or was done badly, and they're fobbing me off.",
+        detail: "It's the manufacturer's problem, it's the courier's, it's out of warranty, or no reply at all.",
+        rec: {
+          toolId: "refund",
+          because:
+            "Ask once, in writing, for one remedy the law gives you, by a date, and decide before you send it what you'll do if they say no. A lost parcel is the seller's problem. A fault in the first six months is presumed to have been there all along. And if it cost £100 or more on a credit card, the card company is as liable as the seller.",
+          then: {
+            toolId: "rule",
+            note: "Put anything over £100 on a credit card, and decide the next step before the first message. Decide that once.",
           },
         },
       },

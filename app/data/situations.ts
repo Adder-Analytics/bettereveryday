@@ -1038,6 +1038,28 @@ export const situations: Situation[] = [
     essays: ["judge-the-ask-not-the-look"],
   },
   {
+    id: "something-went-wrong",
+    title: "Something you paid for went wrong, and they've fobbed you off",
+    scene:
+      "The washing machine stopped draining in month four. The shop sent an engineer, it broke again, and now the shop says it's the manufacturer's problem. You've spent forty minutes on hold and you're about to let £449 go.",
+    question: "What does the law give me for this problem at this age, who else has to answer for it, and what do I do if they say no again?",
+    models: [
+      {
+        id: "sludge",
+        move: "The hold music and the 'contact the manufacturer' are friction, and friction is how a refund policy pays out to fewer people. Make the effort small and it stops working.",
+      },
+      {
+        id: "implementation-intentions",
+        move: "Decide the next step before you send the first message: if there's no fix by this date, I claim from my card company. Then a no isn't a fresh decision made tired; it's the trigger you already set.",
+      },
+    ],
+    tool: {
+      id: "refund",
+      move: "This is the moment the tool is built for. It finds your remedy for this problem at this age, writes the message with a date to reply by, and lays out the ladder after it: section 75 or a chargeback, the platform, an ombudsman, a final letter and small claims.",
+    },
+    essays: ["ask-once-in-writing-with-a-date"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1445,6 +1467,7 @@ export const situationGroups: SituationGroup[] = [
       "splitting-bills",
       "lending-money",
       "message-wants-money",
+      "something-went-wrong",
       "designing-incentives",
       "stubborn-system",
     ],
