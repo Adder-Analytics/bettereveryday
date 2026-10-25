@@ -475,6 +475,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a debt payoff plan in progress" : null),
   },
   {
+    key: "refund:v1",
+    tool: "Get your money back",
+    href: "/refund",
+    label: "The purchase you last chased",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "a refund claim in progress" : null),
+  },
+  {
     key: "scam:v1",
     tool: "Is it real?",
     href: "/scam",

@@ -302,6 +302,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Get your money back",
+    href: "/refund",
+    snippet:
+      "It broke, it never came, or the job was done badly. What the law gives you, the message to send with a date, and the next step if they say no.",
+    meta: "Get money back — refund, repair, replacement or chargeback?",
+    titleText:
+      "get your money back refund get a refund faulty broken stopped working not as described wrong item never arrived parcel not delivered missing parcel lost parcel courier delivered but not received bad workmanship builder plumber cowboy repair service complaint complain complaint letter letter of complaint how to complain consumer rights consumer rights act 30 days right to reject repair or replace six months warranty out of warranty manufacturer's problem section 75 chargeback credit card protection debit card dispute paypal buyer protection klarna dispute ombudsman small claims court letter before action money claim return change my mind cooling off 14 days cancel online order".toLowerCase(),
+    bodyText:
+      "get your money back (/refund): the instrument for something you paid for that broke, never arrived, wasn't as described, or a job done badly, when the seller is fobbing you off. most unhappy customers never complain (the tarp studies: often 60 to 80 per cent), mostly because it looks like effort that won't work (huppertz); sunstein calls the friction sludge (sludge audits, behavioural public policy 2020). you give what it is, who sold it, what's wrong, where you bought it (a business online, in person, or a private seller), when it arrived or was done, the price, how you paid (credit card, debit card, paypal klarna or a marketplace, bank transfer or cash), whether they've already tried one repair, and how far you've got (not asked, waiting, refused, gone quiet). uk law: the consumer rights act 2015 gives 30 days to reject faulty goods for a full refund, then one repair or replacement, then a refund; a fault in the first six months is presumed to have been there; claims run six years (five in scotland); goods are the seller's risk until delivered (s29) so a lost parcel is the shop's problem, not the courier's; services must use reasonable care and skill, or be redone free or the price cut. the consumer contracts regulations 2013 give 14 days after delivery to cancel online orders. section 75 of the consumer credit act 1974 makes a credit card company equally liable for items from £100 to £30,000, even if only the deposit was on the card; chargeback for debit and credit cards, any amount, usually within 120 days; paypal buyer protection 180 days. the tool writes the message to the seller with a reply-by date 14 days away, the section 75, chargeback or platform claim message when they refuse or go quiet, a calendar file (.ics) for the reply date, and the ladder: seller, card or platform, ombudsman (energy, phone, broadband, banks after eight weeks), final letter and small claims (up to £10,000 in england and wales, £5,000 in scotland and northern ireland). us notes: fair credit billing act 60 days. ends in a line to keep and hands off to fix or replace, is it real, cover or carry and make a rule. includes a read-only worked example: a £449 washing machine that failed twice, refunded through section 75. nothing is sent anywhere. pairs with the sludge and implementation intentions models and the essay ask once, in writing, with a date.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Is it real? Before you pay, click or reply",
     href: "/scam",
     snippet:

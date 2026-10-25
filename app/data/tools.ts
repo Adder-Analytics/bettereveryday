@@ -376,6 +376,18 @@ export const tools: Tool[] = [
     essays: ["judge-the-ask-not-the-look"],
   },
   {
+    id: "refund",
+    href: "/refund",
+    name: "Get Your Money Back",
+    short: "Get money back",
+    when: "Something you paid for broke, never arrived, or was done badly. You rang, and they said it's the manufacturer's problem, or the courier's, or that it's out of warranty. You're about to let it go.",
+    ask: "What does the law give me for this problem at this age, what do I send, and what do I do if they say no?",
+    does: "Finds your remedy for the problem and its age (reject within 30 days, one repair or replacement, then a refund; a lost parcel is the seller's problem; bad work redone or the price cut; 14 days to cancel online), writes the message with a date to reply by, and chooses the next rung before you send it: section 75 or a chargeback from your card company, the platform's protection, an ombudsman, or a final letter and small claims.",
+    payoff: "now",
+    models: ["sludge", "implementation-intentions"],
+    essays: ["ask-once-in-writing-with-a-date"],
+  },
+  {
     id: "sell",
     href: "/sell",
     name: "Sell It, Keep It, or Let It Go?",
@@ -639,7 +651,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "walkaway", "later", "worth", "cover", "fix", "monthly", "debts", "sell", "keep", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "refund", "walkaway", "later", "worth", "cover", "fix", "monthly", "debts", "sell", "keep", "quit", "rule"],
   },
   {
     id: "big-commitment",

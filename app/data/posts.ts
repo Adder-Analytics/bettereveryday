@@ -2707,6 +2707,42 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/bills">tool for this</a> on the site. You give both take-home pays and the costs you share, and it lays the three rules side by side: what each of you pays, what share of your pay that is, and what you each have left. It says how much the choice is worth, tests each rule against one pay stopping, shows which one you're on now, and ends in a line with the amounts in it for the rule you choose together.</p>`,
   },
+  {
+    slug: "ask-once-in-writing-with-a-date",
+    title: "Ask Once, in Writing, With a Date",
+    date: "2026-10-25",
+    excerpt:
+      "Most people with a good claim for their money back never make it, because it looks like effort that won't work. The fix is a message that asks for one thing the law gives you, by a date, and a next step chosen before you send it.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>The washing machine stops draining four months after it arrived. The shop sends an engineer, who replaces a pump. Two weeks later it stops again, and this time the shop says it's out of their hands: you'll need to contact the manufacturer. You spend forty minutes on hold to the manufacturer, who asks for a model number you can't find. At some point that evening you decide £449 isn't worth this.</p>
+
+<p>That's the most common way a good claim ends. Not with a no, but with someone deciding it's not worth the effort. The studies TARP ran for the US government found that most unhappy customers, often 60 to 80 per cent depending on the industry, never complained at all. Ask them why and you hear the same three things: it wouldn't be worth the time, it wouldn't work, and they didn't know how.</p>
+
+<h2>The effort is part of the policy</h2>
+
+<p>Cass Sunstein calls it sludge: friction that costs time and attention, put between people and something they're entitled to. The phone line, the "please write to head office", the "that's the manufacturer's responsibility". Some of it is accident. Some of it works so well it's hard to believe it's an accident, because a refund policy that pays out only to the persistent is a policy of paying out to fewer people.</p>
+
+<p>Two things undo it. Make the effort small, and take the question of whether to keep going out of the moment when you're tired and fobbed off.</p>
+
+<h2>Ask for one thing the law gives you</h2>
+
+<p>The effort shrinks a lot once you know what you're owed, and in the UK it's simpler than it looks. Under the Consumer Rights Act 2015, you can reject faulty goods for a full refund within 30 days. After that, the shop gets one go at a repair or replacement, and if that fails, you can have your money back. A fault that shows up in the first six months is presumed to have been there all along, so it's for the shop to prove otherwise. Your contract is with the shop, not the manufacturer, and a parcel is the shop's responsibility until it's in your hands, not the courier's. Work that wasn't done with reasonable care and skill has to be redone free, or the price cut.</p>
+
+<p>So the message doesn't plead or tell the whole story. It says what's wrong, names the law, and asks for one thing: a refund, a repair, a redelivery. Then it sets a date, usually 14 days away. A message without a date can be ignored forever. A message with one has a moment when the next thing happens.</p>
+
+<h2>Decide the next step before you send it</h2>
+
+<p>This is the part people skip. If you wait to see what they say before deciding what you'll do, you'll be deciding on the evening they say no, tired and annoyed, which is exactly when "it's not worth it" wins. Peter Gollwitzer's research on implementation intentions found that an if-then plan ("if X happens, I'll do Y") makes people far more likely to follow through than a goal alone. Set it now: <em>if there's no refund by the 8th, I claim from my card company.</em> Then a no isn't a decision. It's the trigger.</p>
+
+<p>And there usually is a next step, often a better one than arguing. If the item cost between £100 and £30,000 and you put any of it on a credit card, even the deposit, section 75 of the Consumer Credit Act makes the card company as liable as the shop. You claim from them directly. On a debit card, or below £100, you can ask your bank for a chargeback, usually within about 120 days. PayPal and the marketplaces have their own buyer protection. Energy, phone and broadband companies and banks all answer to an ombudsman after eight weeks, free. And past all of those, a final letter and the small claims court, which in England and Wales takes claims up to £10,000 online without a lawyer. Many sellers pay when the letter arrives.</p>
+
+<h2>The line to keep</h2>
+
+<p>The cheapest moment to win a dispute is before there is one: put anything over £100 on a credit card, and pay it off in full. After that the method fits on a card: <em>ask once, in writing, for one thing the law gives me, by a date, and decide before I send it what I'll do if the date passes.</em></p>
+
+<p>There's a <a href="/refund">tool for this</a> on the site. You say what went wrong, when, how you paid and how far you've got. It finds your remedy, writes the message with the date in it, and lays out the ladder after it, with the message to your card company ready for when you need it.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
