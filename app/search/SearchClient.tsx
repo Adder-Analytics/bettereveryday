@@ -314,6 +314,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Flight delayed or cancelled",
+    href: "/flight",
+    snippet:
+      "Three hours late, cancelled at short notice, or bumped. What UK261 or EU261 owes each passenger, the claim to send, and the date the free referee opens.",
+    meta: "Flight delayed or cancelled — what am I owed?",
+    titleText:
+      "flight delayed or cancelled flight delay compensation delayed flight cancelled flight flight cancellation compensation flight refund airline refund airline compensation uk261 eu261 ec261 261/2004 denied boarding bumped overbooked overbooking missed connection extraordinary circumstances technical fault technical issue crew shortage strike airport delay holiday flight delay how much compensation £220 £350 £520 €250 €400 €600 claim flight compensation myself claims company airhelp no win no fee aviationadr cedr caa pact deadlock letter meals hotel vouchers".toLowerCase(),
+    bodyText:
+      "flight delayed or cancelled (/flight): the instrument for a flight that arrived three or more hours late, was cancelled with less than two weeks' notice, or left without you because it was overbooked. uk261 (regulation 261/2004 as kept in uk law) and eu261 pay a fixed amount per passenger by distance: £220, £350 or £520 (eu €250, €400, €600) for up to 1,500 km, 1,500 to 3,500 km, and over 3,500 km; over 3,500 km and three to four hours late is half. delay is measured at the final destination when the doors open (sturgeon v condor, 2009). cancellations: no compensation with 14 days' notice, or if the new flight stayed close to the old times. covered: any flight leaving the uk or eu; flights into the uk on a uk or eu airline; into the eu on an eu airline. extraordinary circumstances excuse the cash (weather, air traffic control, strikes by others, bird strikes, security) but a technical fault is not extraordinary (jet2 v huzar 2014, van der lans v klm 2015), nor is the airline's own staff striking (krüsemann 2018, sas 2021). you give the flight, airline, what happened, the date, passengers, where it left from and went, the distance, how late, the notice and replacement times for a cancellation, the reason given, what you spent waiting, and how far you've got. the tool writes the claim with the answer to their reason in it, a pay-by date 14 days away, the date eight weeks on when the adr scheme (aviationadr, cedr) or the caa's passenger advice and complaints team can take it free, a calendar file (.ics), and the text for the adr form. lists what you were owed at the airport: meals after two, three or four hours, a hotel overnight, a refund after five hours, the choice of refund or new flight. us notes: no cash for delays; automatic refunds for cancellations since 2024. claims run six years (five in scotland). ends in a line to keep and hands off to get your money back, is it real and make a rule. includes a worked example: four passengers gatwick to faro, four hours forty late, technical issue, £1,400. nothing is sent anywhere.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Is it real? Before you pay, click or reply",
     href: "/scam",
     snippet:

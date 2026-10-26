@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight"],
       },
     ],
     choices: [
@@ -616,6 +616,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "rule",
             note: "Put anything over £100 on a credit card, and decide the next step before the first message. Decide that once.",
+          },
+        },
+      },
+      {
+        id: "flight",
+        label: "My flight was hours late, cancelled or overbooked, and the airline says it's not their fault.",
+        detail: "Extraordinary circumstances, a technical issue, or no reply. A claims company wants a share.",
+        rec: {
+          toolId: "flight",
+          because:
+            "The amount is fixed by distance, not negotiated: £220 to £520 a passenger once you're three hours late at the door. A technical fault or their own crew isn't extraordinary. Claim it yourself, in writing, and if they say no, the ADR scheme or the CAA is free after eight weeks.",
+          then: {
+            toolId: "rule",
+            note: "Three hours late, claim it that week, money not vouchers. Decide that once.",
           },
         },
       },
