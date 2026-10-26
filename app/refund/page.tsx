@@ -47,7 +47,15 @@ export default function RefundPage() {
           >
             is it real?
           </Link>{" "}
-          first.
+          first. For a flight that was delayed, cancelled or overbooked, the
+          rules are different and the amounts fixed: try{" "}
+          <Link
+            href="/flight"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            flight delayed or cancelled
+          </Link>
+          .
         </p>
       </header>
       <RefundClient />

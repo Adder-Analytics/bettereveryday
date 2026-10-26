@@ -78,6 +78,23 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Four hours late into Faro, and the airline says extraordinary
+              circumstances.{" "}
+              <Link
+                href="/flight"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Flight delayed or cancelled
+              </Link>{" "}
+              works out what UK or EU rules owe{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                each passenger
+              </span>
+              , answers the reason they gave (a technical fault isn&rsquo;t
+              extraordinary), writes the claim, and dates the day the free
+              referee can take it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The washing machine dies in month four and the shop says
               it&rsquo;s the manufacturer&rsquo;s problem.{" "}
               <Link
@@ -146,31 +163,6 @@ export default function Now() {
               new{" "}
               <Link
                 href="/writing/judge-the-ask-not-the-look"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The bike in the hall stays because &ldquo;a fair price&rdquo;
-              still means what you paid for it.{" "}
-              <Link
-                href="/sell"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Sell it, keep it, or let it go?
-              </Link>{" "}
-              asks{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                whether you&rsquo;d buy it today for what similar ones sold for
-              </span>
-              . If not, it prices it from sold listings, picks a precise or a
-              round number depending on whether you want the most or want it
-              gone, and gives you the listing and the reply to a lowball. Not
-              sure? It dates the box. A new{" "}
-              <Link
-                href="/writing/what-you-paid-isnt-on-the-listing"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 essay

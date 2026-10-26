@@ -475,6 +475,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a debt payoff plan in progress" : null),
   },
   {
+    key: "flight:v1",
+    tool: "Flight delayed or cancelled",
+    href: "/flight",
+    label: "The flight you last claimed for",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "a flight compensation claim in progress" : null),
+  },
+  {
     key: "refund:v1",
     tool: "Get your money back",
     href: "/refund",

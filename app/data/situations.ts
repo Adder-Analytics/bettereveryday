@@ -1060,6 +1060,28 @@ export const situations: Situation[] = [
     essays: ["ask-once-in-writing-with-a-date"],
   },
   {
+    id: "flight-went-wrong",
+    title: "Your flight was hours late or cancelled, and the airline says it wasn't their fault",
+    scene:
+      "Four of you landed in Faro four hours forty late. The desk said technical issue; the email says extraordinary circumstances. A claims company's advert says it'll handle it for a share. You've half decided it isn't worth the bother.",
+    question: "Am I actually owed anything, how much, and what do I do when they've already said no?",
+    models: [
+      {
+        id: "sludge",
+        move: "\"Extraordinary circumstances\" in a first reply is friction, not a verdict. The airline has to prove it, and a technical fault isn't one. Make the effort small and the claim survives.",
+      },
+      {
+        id: "implementation-intentions",
+        move: "Decide the next step before you send the claim: if there's no money or final answer in eight weeks, it goes to the ADR scheme. Then silence is a date, not a decision.",
+      },
+    ],
+    tool: {
+      id: "flight",
+      move: "This is the moment the tool is built for. It works out the amount per passenger, writes the claim with the answer to their reason in it, lists what you were owed at the airport, and dates the free escalation.",
+    },
+    essays: ["ask-once-in-writing-with-a-date"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1468,6 +1490,7 @@ export const situationGroups: SituationGroup[] = [
       "lending-money",
       "message-wants-money",
       "something-went-wrong",
+      "flight-went-wrong",
       "designing-incentives",
       "stubborn-system",
     ],

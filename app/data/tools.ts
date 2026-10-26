@@ -388,6 +388,18 @@ export const tools: Tool[] = [
     essays: ["ask-once-in-writing-with-a-date"],
   },
   {
+    id: "flight",
+    href: "/flight",
+    name: "Flight Delayed or Cancelled",
+    short: "Flight compensation",
+    when: "Your flight landed hours late, was cancelled at short notice, or left without you. The airline says it was extraordinary circumstances, or hasn't said anything, and a claims company wants a share.",
+    ask: "Am I owed compensation, how much, and what do I send?",
+    does: "Works out what UK261 or EU261 owes each passenger (£220 to £520, fixed by distance, from three hours late at the door; cancellations inside two weeks; being bumped), answers the reason they gave (a technical fault or their own crew isn't extraordinary), writes the claim, and dates the day the free ADR scheme or the CAA can take it.",
+    payoff: "now",
+    models: ["sludge", "implementation-intentions"],
+    essays: ["ask-once-in-writing-with-a-date"],
+  },
+  {
     id: "sell",
     href: "/sell",
     name: "Sell It, Keep It, or Let It Go?",
@@ -651,7 +663,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "refund", "walkaway", "later", "worth", "cover", "fix", "monthly", "debts", "sell", "keep", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "refund", "flight", "walkaway", "later", "worth", "cover", "fix", "monthly", "debts", "sell", "keep", "quit", "rule"],
   },
   {
     id: "big-commitment",
