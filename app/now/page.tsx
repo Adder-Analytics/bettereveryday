@@ -78,6 +78,30 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A new carpet, a full repaint and a professional clean, out of the
+              deposit for a flat you lived in for three years.{" "}
+              <Link
+                href="/deposit"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Get your deposit back
+              </Link>{" "}
+              prices each deduction{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                the way an adjudicator would
+              </span>
+              : wear and tear is nothing, and a five-year-old carpet is charged
+              for the life it had left. It writes the reply and dates the last
+              day for the free dispute. A new{" "}
+              <Link
+                href="/writing/charge-for-the-life-that-was-left"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Four hours late into Faro, and the airline says extraordinary
               circumstances.{" "}
               <Link
@@ -138,31 +162,6 @@ export default function Now() {
               which usually matters more than the order. A new{" "}
               <Link
                 href="/writing/one-debt-at-a-time"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A text about a parcel fee, a call from your bank&rsquo;s fraud
-              team, a new number saying it&rsquo;s family.{" "}
-              <Link
-                href="/scam"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Is it real?
-              </Link>{" "}
-              ignores how it looks, which costs a scammer nothing, and reads{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                what it asks for and who started it
-              </span>
-              . Some asks settle it on their own. For the rest it gives you the
-              check a scammer can&rsquo;t fake and the words to end the call,
-              and if you&rsquo;ve already paid, the steps for the first hour. A
-              new{" "}
-              <Link
-                href="/writing/judge-the-ask-not-the-look"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 essay

@@ -144,7 +144,7 @@ export function addDaysISO(iso: string, days: number): string {
   return isoOf(d);
 }
 
-function addMonthsISO(iso: string, months: number): string {
+export function addMonthsISO(iso: string, months: number): string {
   const d = new Date(`${iso}T00:00:00`);
   if (!Number.isFinite(d.getTime())) return iso;
   const day = d.getDate();

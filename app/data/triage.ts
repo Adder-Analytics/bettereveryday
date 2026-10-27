@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit"],
       },
     ],
     choices: [
@@ -630,6 +630,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "rule",
             note: "Three hours late, claim it that week, money not vouchers. Decide that once.",
+          },
+        },
+      },
+      {
+        id: "deposit",
+        label: "I've moved out, and the landlord wants most of my deposit.",
+        detail: "A new carpet, a full repaint, a professional clean. Or no reply at all.",
+        rec: {
+          toolId: "deposit",
+          because:
+            "The deposit is your money, and the landlord has to justify every deduction with evidence. Fair wear and tear isn't chargeable, and a replacement is charged only for the life the old one had left. Price each line, ask for one number in writing, and if there's no agreement, the scheme's dispute service is free; it closes about three months after you move out.",
+          then: {
+            toolId: "rule",
+            note: "Photos on the way in and out, the scheme checked in month one. Decide that once.",
           },
         },
       },

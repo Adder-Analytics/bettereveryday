@@ -400,6 +400,18 @@ export const tools: Tool[] = [
     essays: ["ask-once-in-writing-with-a-date"],
   },
   {
+    id: "deposit",
+    href: "/deposit",
+    name: "Get Your Deposit Back",
+    short: "Deposit back",
+    when: "You've moved out, and the landlord or agent wants a new carpet, a full repaint and a professional clean out of your deposit. It feels like your word against theirs, and you're about to offer half and hope.",
+    ask: "Which of these deductions would an adjudicator actually allow, how much should I ask back, and what do I send?",
+    does: "Prices each deduction the way the deposit schemes' adjudicators do: fair wear and tear and unevidenced claims are refused, a replacement is charged only for the life the old one had left (a carpet five years into a six-year life is a sixth of a new one), cleaning is owed back to the check-in standard. Turns that into one number to ask for, writes the reply, and dates the last day to take it to the free dispute service. Never protected? The claim for up to three times the deposit.",
+    payoff: "now",
+    models: ["anchoring", "sludge"],
+    essays: ["charge-for-the-life-that-was-left"],
+  },
+  {
     id: "sell",
     href: "/sell",
     name: "Sell It, Keep It, or Let It Go?",
@@ -663,7 +675,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "refund", "flight", "walkaway", "later", "worth", "cover", "fix", "monthly", "debts", "sell", "keep", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "walkaway", "later", "worth", "cover", "fix", "monthly", "debts", "sell", "keep", "quit", "rule"],
   },
   {
     id: "big-commitment",

@@ -55,6 +55,13 @@ export default function RefundPage() {
           >
             flight delayed or cancelled
           </Link>
+          . For a landlord keeping your deposit, try{" "}
+          <Link
+            href="/deposit"
+            className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+          >
+            get your deposit back
+          </Link>
           .
         </p>
       </header>

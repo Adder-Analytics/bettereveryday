@@ -484,6 +484,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a flight compensation claim in progress" : null),
   },
   {
+    key: "deposit:v1",
+    tool: "Get your deposit back",
+    href: "/deposit",
+    label: "The deposit you last chased",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "a deposit claim in progress" : null),
+  },
+  {
     key: "refund:v1",
     tool: "Get your money back",
     href: "/refund",
