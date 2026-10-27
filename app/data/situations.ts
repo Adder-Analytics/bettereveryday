@@ -1082,6 +1082,28 @@ export const situations: Situation[] = [
     essays: ["ask-once-in-writing-with-a-date"],
   },
   {
+    id: "deposit-deductions",
+    title: "You've moved out, and the landlord wants most of your deposit",
+    scene:
+      "Three years in the flat. The agent's email lists a new carpet, a full repaint, a professional clean and something for the picture-hook holes: more than the whole deposit. It feels like your word against theirs, and you're about to offer half and hope.",
+    question: "Which of these would an adjudicator actually allow, and how much should I ask back?",
+    models: [
+      {
+        id: "anchoring",
+        move: "Their list is the first number on the table, and splitting the difference from it still gives them most of what they asked. Price each line from the rules instead: wear and tear is nothing, a five-year-old carpet is the life it had left. Then the number you ask for is yours, not a discount on theirs.",
+      },
+      {
+        id: "sludge",
+        move: "The dispute service is free and decided on paper, and the landlord has to bring evidence for every pound. The only thing standing between you and it is the effort of writing it down. Make that effort small, and date the last day before it closes.",
+      },
+    ],
+    tool: {
+      id: "deposit",
+      move: "This is the moment the tool is built for. It prices each deduction the way an adjudicator would, turns that into one number to ask back, writes the reply and the statement for the scheme, and dates the last day to raise the dispute.",
+    },
+    essays: ["charge-for-the-life-that-was-left"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1491,6 +1513,7 @@ export const situationGroups: SituationGroup[] = [
       "message-wants-money",
       "something-went-wrong",
       "flight-went-wrong",
+      "deposit-deductions",
       "designing-incentives",
       "stubborn-system",
     ],

@@ -326,6 +326,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Get your deposit back",
+    href: "/deposit",
+    snippet:
+      "You've moved out and the landlord wants a new carpet, a repaint and a clean from your deposit. Price each deduction the way an adjudicator would, the reply to send, and the last day for the free dispute.",
+    meta: "Get your deposit back — which deductions are fair?",
+    titleText:
+      "get your deposit back tenancy deposit deposit return deposit refund rental deposit security deposit bond landlord keeping deposit landlord won't return deposit letting agent deductions deposit deductions deposit dispute dispute deposit end of tenancy moving out check out checkout inventory check-in report fair wear and tear wear and tear betterment apportionment carpet replacement repaint redecoration professional cleaning cleaning charge picture hooks tds dps mydeposits tenancy deposit scheme deposit protection service unprotected deposit deposit not protected three times deposit tenant fees act deposit cap five weeks renting renter tenant rights".toLowerCase(),
+    bodyText:
+      "get your deposit back (/deposit): the instrument for the list of deductions that arrives after you've moved out of a rented home. the deposit is the tenant's money held as security, and the landlord has to justify each deduction with evidence: the check-in inventory, the check-out report, photos, invoices. in england and wales a deposit must be protected in one of three government schemes (deposit protection service, tenancy deposit scheme, mydeposits) within 30 days, with the details given to the tenant; if not, a court must order it back plus one to three times the amount (housing act 2004 s213-214; up to three times under the renting homes (wales) act 2016). scotland: 30 working days, and the first-tier tribunal can award up to three times if you apply within three months of moving out. once the amount is agreed it must be repaid within ten days; anything disputed stays protected. each scheme runs a free dispute service decided on written evidence; tds and mydeposits take disputes within three months of the tenancy ending. fair wear and tear (reasonable use and the ordinary operation of natural forces) isn't chargeable, nor is betterment; a replacement is apportioned by the life the old item had left (the dps guide's example: a £500 carpet two years into a five-year life costs the tenant £300; the tds lifespan guide gives carpets 2 to 4, 5 to 8 or 8 to 15 years, decoration 3 to 5). the tenant fees act 2019 caps deposits in england at five weeks' rent (six from £50,000 a year). you enter the place, the deposit, the rent, whether it was protected, the scheme, whether there was an inventory, where it's got to, and each deduction with its amount, what it's for and your view (fair, too much, not mine); for replacements and repainting, the age and usual life. the tool prices each line, gives one number to ask back, writes the first ask, the reply to their deductions, the statement for the scheme's dispute form, the chase for an agreed amount, the letter for an unprotected deposit, or the letter before a small claim, and a calendar file (.ics) for the reply date or the last day to raise the dispute. ends in a line to keep and hands off to who gets which room, splitting the bills and make a rule. includes a read-only worked example: £1,395 of deductions on a £1,200 deposit, priced at £395. nothing is sent anywhere. pairs with the anchoring and sludge models and the essay charge for the life that was left.".toLowerCase(),
+  },
+  {
+    type: "Tool",
     title: "Is it real? Before you pay, click or reply",
     href: "/scam",
     snippet:

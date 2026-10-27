@@ -2743,6 +2743,42 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/refund">tool for this</a> on the site. You say what went wrong, when, how you paid and how far you've got. It finds your remedy, writes the message with the date in it, and lays out the ladder after it, with the message to your card company ready for when you need it.</p>`,
   },
+  {
+    slug: "charge-for-the-life-that-was-left",
+    title: "Charge for the Life That Was Left",
+    date: "2026-10-27",
+    excerpt:
+      "When something old gets damaged, the fair charge is the life it had left, not the price of a new one. It's how deposit adjudicators price a carpet, and it's the number to reach for whenever someone hands you a bill for replacing something that was already wearing out.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>Three years in a flat, and a week after you hand back the keys the agent's email arrives. New lounge carpet, £600. Full repaint, £450. Professional clean, £250. Filling picture-hook holes, £60. A blind you did break, £35. It comes to £1,395, more than the whole £1,200 deposit.</p>
+
+<p>Most people's instinct is to haggle from there. Offer half, maybe, and hope. That feels reasonable, and it hands over most of what was asked, because the list has already done its work. Gregory Northcraft and Margaret Neale showed in 1987 that even experienced estate agents valued the same house higher when they were shown a higher asking price, and swore it hadn't affected them. Any figure you reach by discounting their number is still anchored on their number.</p>
+
+<p>The way out is to price each line yourself, from a rule, before you look at the total. For deposits, and for a lot more than deposits, the rule is simple.</p>
+
+<h2>Nobody should end up better off</h2>
+
+<p>The carpet was five years old when you left. Carpets don't last forever: the Tenancy Deposit Scheme's lifespan guide gives a medium-quality carpet five to eight years, a cheap one two to four. Say this one had a six-year life. When you moved out it had one year left. If the landlord charges you for a new one, they end up with a carpet that will last six more years, paid for by you, in place of one that had one. They're better off than if you'd never lived there.</p>
+
+<p>The deposit schemes call that betterment, and their adjudicators don't award it. What they do instead is apportion: you pay for the share of the item's life you cut short. The Deposit Protection Service's guide works an example: a £500 carpet, two years into a five-year life, has three-fifths of its life left, so the tenant's share is £300. For our carpet, one year left out of six: a sixth of £600, £100. The repaint, three years into a usual three to five, call it five: two-fifths of £450, £180.</p>
+
+<p>Then the lines that aren't damage at all. Fair wear and tear is the decline from "reasonable use of the premises by the tenant and the ordinary operation of natural forces", in a definition the courts have used for nearly a century, and it isn't chargeable. A few picture-hook holes in three years, faded paint, a worn path in the carpet: that's living somewhere. Cleaning is owed back to the standard it was in when you moved in, not to a standard better than that, so if the oven was the only thing that wasn't, you pay for the oven. And the blind you broke is yours. Add it up: £395, not £1,395. Ask for £805 back.</p>
+
+<h2>The burden is on them</h2>
+
+<p>The reason this works isn't that the rules are kind to tenants. It's that the deposit is your money, held as security, and the landlord has to show why they should keep any of it. In England and Wales it sits in one of three government schemes, each of which runs a free dispute service. An adjudicator decides on the written evidence alone, never visiting, and looks for the check-in inventory, the check-out report, photos and invoices for every pound claimed. No inventory at the start, and there's nothing to compare the end against.</p>
+
+<p>That doesn't mean tenants win everything. In the Dispute Service's figures for 2020–21, most disputed deposits in England and Wales (69 per cent) were split between the two sides, and the tenant got all of the disputed money back in about one in six. The adjudicators are doing exactly what the rule says: some of the claim is fair, most of the inflated part isn't. Which is the case for doing the pricing yourself first. Your reply, line by line, is close to what the adjudicator would decide, and the landlord knows it.</p>
+
+<h2>It isn't only deposits</h2>
+
+<p>The same sum answers more than tenancies. A friend borrows your eight-year-old lawnmower and it dies: what they owe is what it was worth, not a new one. A scrape on a fifteen-year-old car isn't a new bumper's worth of loss. An insurer paying "indemnity" rather than "new for old" is applying the same rule in reverse, and it's why the two kinds of cover are priced so differently. Whenever someone hands you a bill to replace something that was already wearing out, or you're about to hand one to someone else, ask the question: how much of its life was left?</p>
+
+<p>The line to keep: <em>photos on the way in and on the way out, and every deduction answered in writing; wear and tear isn't chargeable, and a replacement is charged only for the life the old one had left.</em></p>
+
+<p>There's a <a href="/deposit">tool for this</a> on the site. You enter each deduction, what it's for and what you think of it, with the age of anything they want to replace. It prices each line the way an adjudicator would, gives you one number to ask for, writes the reply and the statement for the scheme, and dates the last day to raise the dispute, which is about three months after you move out.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
