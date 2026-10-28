@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking"],
       },
     ],
     choices: [
@@ -644,6 +644,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "rule",
             note: "Photos on the way in and out, the scheme checked in month one. Decide that once.",
+          },
+        },
+      },
+      {
+        id: "parking",
+        label: "I've got a parking ticket, and I'm about to pay it, or ignore it.",
+        detail: "On the windscreen, or a camera letter in the post. A council or a private car park.",
+        rec: {
+          toolId: "parking",
+          because:
+            "Ask one thing first: what does appealing cost if you lose? Often nothing, because the discount is held while they decide, or has already gone. Sometimes it's the discount, and then it's worth it only when your chance beats the break-even. Ignoring it costs most: a council ticket goes up by half, a private one ends in a court claim.",
+          then: {
+            toolId: "rule",
+            note: "A photo of the sign on the way in, the receipt kept for a month. Decide that once.",
           },
         },
       },

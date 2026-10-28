@@ -1104,6 +1104,28 @@ export const situations: Situation[] = [
     essays: ["charge-for-the-life-that-was-left"],
   },
   {
+    id: "parking-ticket",
+    title: "You've got a parking ticket, and you're about to pay it or bin it",
+    scene:
+      "A letter with a photo of your number plate, from a car park you'd paid at. £100, or £60 if you pay within 14 days. Arguing feels like effort and risk, so your card is already out. Or the letter is already in the drawer.",
+    question: "Should I pay, or appeal, and what does appealing cost me if I lose?",
+    models: [
+      {
+        id: "expected-value",
+        move: "Don't argue the odds; find the break-even. If losing an appeal costs nothing more than paying now, any real chance is worth taking. If it costs the discount, appeal only when your chance beats extra ÷ full: £40 at risk to save £60 is 40%.",
+      },
+      {
+        id: "sludge",
+        move: "The discount is a deadline built to make you pay before you've thought. The appeal is a short letter; the hard part is starting it. Write it while the discount still stands, and the decision stops being urgent.",
+      },
+    ],
+    tool: {
+      id: "parking",
+      move: "This is the moment the tool is built for. It works out what paying, winning and losing each cost at your stage, whether a camera letter came too late, writes the challenge or appeal, and dates the next step.",
+    },
+    essays: ["what-does-losing-cost"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1514,6 +1536,7 @@ export const situationGroups: SituationGroup[] = [
       "something-went-wrong",
       "flight-went-wrong",
       "deposit-deductions",
+      "parking-ticket",
       "designing-incentives",
       "stubborn-system",
     ],

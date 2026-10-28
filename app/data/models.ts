@@ -53,7 +53,7 @@ export const models: Model[] = [
     tagline: "Multiply probability by magnitude for each outcome, then sum — the result is what a decision is worth in expectation.",
     explanation:
       "A 10% chance of winning $1,000 has the same expected value as a 100% chance of winning $100. Thinking in expected value makes you systematically better at trade-offs involving risk and uncertainty — you stop treating unlikely bad outcomes as reasons to avoid favorable bets, and stop treating unlikely good outcomes as justification for bad ones. The challenge: human intuition about probability is poorly calibrated, especially for small or large probabilities. The most useful everyday form isn't the raw sum but its threshold: for an either/or call, the probability at which acting and not acting break even is p* = R/(B+R), where B is how much better acting is if it works and R how much worse if it doesn't — so instead of arguing the exact odds you only have to judge which side of that line you're on. One caveat overrides the whole calculation: expected value assumes you survive to keep playing, so against a downside you can't recover from, the average is a lie and margin of safety wins.",
-    essays: ["decision-quality", "the-flip-point"],
+    essays: ["decision-quality", "the-flip-point", "what-does-losing-cost"],
   },
   {
     id: "inversion",
