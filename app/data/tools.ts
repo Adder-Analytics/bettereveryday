@@ -412,6 +412,18 @@ export const tools: Tool[] = [
     essays: ["charge-for-the-life-that-was-left"],
   },
   {
+    id: "parking",
+    href: "/parking",
+    name: "Parking Ticket: Pay or Appeal?",
+    short: "Parking ticket",
+    when: "A ticket on the windscreen, or a letter a fortnight later with a photo of your number plate. Your hand is on the card to pay the discount and make it go away, or the letter is heading for a drawer.",
+    ask: "Should I pay this, or appeal, and what does appealing cost me if I lose?",
+    does: "Tells a council ticket from a private one, works out what each choice costs (pay now, appeal and win, appeal and lose), and from that whether trying is free or worth it only above a break-even chance. Checks whether a camera letter came too late for the keeper to be liable, writes the challenge, appeal or reply for the stage you're at, and dates the next step before it goes up.",
+    payoff: "now",
+    models: ["expected-value", "sludge"],
+    essays: ["what-does-losing-cost"],
+  },
+  {
     id: "sell",
     href: "/sell",
     name: "Sell It, Keep It, or Let It Go?",
@@ -675,7 +687,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "walkaway", "later", "worth", "cover", "fix", "monthly", "debts", "sell", "keep", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "walkaway", "later", "worth", "cover", "fix", "monthly", "debts", "sell", "keep", "quit", "rule"],
   },
   {
     id: "big-commitment",

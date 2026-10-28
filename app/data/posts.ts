@@ -2779,6 +2779,44 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/deposit">tool for this</a> on the site. You enter each deduction, what it's for and what you think of it, with the age of anything they want to replace. It prices each line the way an adjudicator would, gives you one number to ask for, writes the reply and the statement for the scheme, and dates the last day to raise the dispute, which is about three months after you move out.</p>`,
   },
+  {
+    slug: "what-does-losing-cost",
+    title: "What Does Losing Cost?",
+    date: "2026-10-28",
+    excerpt:
+      "Before you decide whether to appeal, complain or ask, don't guess your odds. Work out what losing costs compared with giving in now. Surprisingly often it's nothing, and then any real chance is worth taking.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>A letter from a car park you'd paid at. A photo of your number plate, and a charge: £100, or £60 if you pay within 14 days. You'd keyed one letter of the registration wrong at the machine. You could appeal, but appeals take effort, you might lose, and the £60 offer won't last. So most people pay it that evening.</p>
+
+<p>That reasoning feels careful: weigh the chance of winning against the risk of losing. But it skips the one number that decides it, which isn't your chance of winning at all. It's what losing costs compared with giving in now.</p>
+
+<h2>Price the downside, not the odds</h2>
+
+<p>Lay out the three outcomes. Pay now: £60. Appeal and win: nothing. Appeal and lose: it depends, and that's the whole question. Most private operators re-offer the £60 for another 14 days if they reject your appeal. Most councils hold their discount while they consider a challenge sent inside the discount period. If losing means paying the same £60 you'd pay tonight, then appealing has no downside at all, apart from writing a letter. You don't need to know whether your chance is 30% or 80%. Any real chance beats zero.</p>
+
+<p>Later in the process the same thing happens for the opposite reason. Once a council's discount has gone, you owe the full amount whether you pay now or appeal and lose, and the formal representations and the independent tribunal after them are free. From there, appealing a ticket you think was wrong costs nothing extra either. The worst result of trying is the result you were about to choose anyway.</p>
+
+<h2>When it does cost something, find the line</h2>
+
+<p>Sometimes losing really does cost more. Take that private ticket to the independent appeals service, POPLA or the IAS, and you usually give up the discount: lose, and you owe £100, not £60. Now it's a bet, and the useful question isn't "what are my odds?" (nobody knows) but "what odds would make this worth it?" You'd risk £40 to save £60. Trying is worth it when your chance of winning is better than 40 ÷ 100: 40%. In general, it's the extra you'd lose divided by the most you could end up paying.</p>
+
+<p>That turns an unanswerable question into one you can answer. You don't have to know your exact chance, only which side of 40% it's on. For calibration, POPLA's annual reports for 2022 to 2024 show about 40% of the appeals that completed its process ending with the charge cancelled. An appeal with a real ground (you'd paid, the signs were hidden, the letter came too late) is well above that. "I was in the wrong but it feels steep" is well below it, and then paying the discount is the right call, made for the right reason.</p>
+
+<h2>The discount is doing a job</h2>
+
+<p>Early-payment discounts are useful, and they're also designed to make you decide fast, while appealing still feels like effort and paying feels like relief. That's sludge working in reverse: the easy path is the one that ends the matter in their favour. The fix is to notice that the deadline is for paying, not for thinking. Write the appeal while the discount still stands, and you keep both options.</p>
+
+<p>And there's one move that's never free: doing nothing. An ignored council ticket goes up by half and is registered as a debt. An ignored private charge gains a collector's fee and ends in a court claim, and an ignored claim becomes a county court judgment. Giving in is cheap, and trying is often free. Ignoring it is the one choice that costs most.</p>
+
+<h2>It isn't only parking</h2>
+
+<p>The same check works on most "should I bother?" questions. Asking a bank to drop a fee, asking a seller to match a price, appealing an insurance decision to the ombudsman, asking for a better rate at renewal: in each, find out what losing costs. Often the answer is "they say no and I'm where I am now". If so, the question of your odds doesn't matter. Make the ask.</p>
+
+<p>The line to keep: <em>before I give in, I ask what losing costs. If it's nothing, I try on any real ground. If it's something, I try only when my chance beats the break-even. And I never ignore a deadline.</em></p>
+
+<p>There's a <a href="/parking">tool for this</a> on the site, for parking tickets. You say who sent it, how it reached you, the dates and amounts, where it's got to and what happened. It lays out what paying, winning and losing each cost at your stage, tells you whether trying is free or where the break-even sits, checks whether a camera letter came too late for you to be liable as the keeper, writes the letter, and dates the next step.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

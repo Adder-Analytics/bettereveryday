@@ -78,6 +78,30 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A camera letter from a car park you&rsquo;d paid at: £100, or
+              £60 this fortnight.{" "}
+              <Link
+                href="/parking"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Parking ticket: pay or appeal?
+              </Link>{" "}
+              starts from one sum,{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                what appealing costs if you lose
+              </span>
+              . Often it&rsquo;s nothing; when it isn&rsquo;t, it gives you the
+              break-even chance. It writes the letter for your stage and dates
+              the next step. A new{" "}
+              <Link
+                href="/writing/what-does-losing-cost"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A new carpet, a full repaint and a professional clean, out of the
               deposit for a flat you lived in for three years.{" "}
               <Link
@@ -137,31 +161,6 @@ export default function Now() {
               small claims. A new{" "}
               <Link
                 href="/writing/ask-once-in-writing-with-a-date"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Two cards, a store card and an overdraft, and a bit paid off each
-              every month.{" "}
-              <Link
-                href="/debts"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Which debt first?
-              </Link>{" "}
-              runs costliest-first, smallest-first and spread-around on your
-              own debts, says{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                what the quick win really costs
-              </span>
-              , and gives you this month&rsquo;s payments and the month each
-              debt goes. It also shows what the minimums alone would cost,
-              which usually matters more than the order. A new{" "}
-              <Link
-                href="/writing/one-debt-at-a-time"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 essay

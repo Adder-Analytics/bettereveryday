@@ -326,6 +326,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Parking ticket: pay or appeal?",
+    href: "/parking",
+    snippet:
+      "A council or private parking ticket, on the windscreen or by post. What appealing costs if you lose (often nothing), the letter to send, and the date for the next step.",
+    meta: "Parking ticket — pay it or appeal it?",
+    titleText:
+      "parking ticket parking fine parking charge notice penalty charge notice pcn appeal parking ticket appeal parking fine challenge parking ticket should i pay parking fine private parking fine car park fine anpr camera parking letter number plate photo supermarket car park retail park hospital parking parkingeye euro car parks popla ias independent appeals service bpa ipc notice to keeper notice to owner charge certificate order for recovery traffic penalty tribunal london tribunals formal representations informal challenge keeper liability protection of freedoms act schedule 4 wrong registration keying error grace period debt collector parking letter before claim county court claim ccj parking".toLowerCase(),
+    bodyText:
+      "parking ticket: pay or appeal? (/parking): the instrument for a parking ticket on the windscreen or a camera letter in the post. the call turns on one sum: what does appealing cost if you lose? council penalty charge notices are halved if paid within 14 days (21 for a camera ticket by post); most councils hold the discount while they consider a challenge sent inside that window and re-offer it if they reject it, so the first challenge costs nothing. after a notice to owner the discount has gone, and formal representations and the traffic penalty tribunal (london tribunals in london) are free: losing costs the same full amount. ignored, a charge certificate adds 50%, then it is registered as a debt at the traffic enforcement centre and bailiffs follow. private parking charge notices are capped at £100 and cut by 40% if paid within 14 days; appeal to the operator within 28 days (most re-offer the discount if they reject); the independent appeal (popla for bpa members, ias for ipc members) is free but usually costs the discount, so it is worth it when your chance beats extra ÷ full, 40% for £60 against £100; popla cancels about 40% of completed appeals. in england and wales a camera notice to keeper must be given within 14 days of the parking (schedule 4, protection of freedoms act 2012), or the keeper isn't liable unless the driver is named. ignored, a private charge gains a debt collector's fee of up to £70, a letter before claim (30 days to reply) and a county court claim (14 days to acknowledge). the tool writes the challenge, formal representations, tribunal statement, operator appeal, popla statement and the reply to a letter before claim, and dates the next step.",
+  },
+  {
+    type: "Tool",
     title: "Get your deposit back",
     href: "/deposit",
     snippet:

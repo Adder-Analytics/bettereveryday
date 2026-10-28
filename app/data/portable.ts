@@ -484,6 +484,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a flight compensation claim in progress" : null),
   },
   {
+    key: "parking:v1",
+    tool: "Parking ticket: pay or appeal?",
+    href: "/parking",
+    label: "The parking ticket you last answered",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "a parking ticket appeal in progress" : null),
+  },
+  {
     key: "deposit:v1",
     tool: "Get your deposit back",
     href: "/deposit",
