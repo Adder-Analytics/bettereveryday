@@ -2817,6 +2817,42 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/parking">tool for this</a> on the site, for parking tickets. You say who sent it, how it reached you, the dates and amounts, where it's got to and what happened. It lays out what paying, winning and losing each cost at your stage, tells you whether trying is free or where the break-even sits, checks whether a camera letter came too late for you to be liable as the keeper, writes the letter, and dates the next step.</p>`,
   },
+  {
+    slug: "whose-delay-was-it",
+    title: "Whose Delay Was It?",
+    date: "2026-10-29",
+    excerpt:
+      "A bill that arrives late is a bill about two things: what you used, and who sat on the information. Before you ask whether you can afford it, ask whose delay it was. The rules often already answer.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>The smart meter in the hall stopped sending readings in the spring before last. Nobody noticed. The direct debit stayed at £95 a month, set from estimates, and the estimates were low. Then an engineer came to read the meter, and a week later the bill arrived: £1,840 more than you'd paid, for twenty months of gas and electricity.</p>
+
+<p>The usual reactions are two. One is to pay it, on a card if need be, because it's a bill and bills are owed. The other is to ring up and say it can't be right, which gets a polite explanation that it is right: you used the energy, and now you're paying for it.</p>
+
+<p>Both reactions treat the bill as one question: is the total correct? But a bill that arrives late is really about two things. What you used, and who sat on the information about it.</p>
+
+<h2>The delay belongs to someone</h2>
+
+<p>A supplier that can't read your meter has choices. It can ask you for a reading, send someone round, fix the smart meter, or bill you on an honest estimate and correct it each quarter. A supplier that does none of those for twenty months has made a choice too, and the cost of that choice is now on your doormat.</p>
+
+<p>In Great Britain the regulator decided, in 2018, whose problem that is. A supplier can't bill a household for gas or electricity used more than 12 months before the bill, unless the customer behaved "obstructively or manifestly unreasonably": refused access to the meter, tampered with it, ignored repeated requests. Northern Ireland's rule is 13 months. Ofgem's 2026 review of the largest suppliers found they had written off over £170 million under it, for almost a million customers: a measure of how often it applies, and of how much people would otherwise have paid.</p>
+
+<p>Notice what the rule cuts by. Not by amount, and not by whether the bill is fair, but by date: when the energy was used. So the useful question isn't "is £1,840 too much?" It's "how much of the £1,840 is for energy used before this date last year?" In that example, about eight of the twenty months, including the tail of a winter. That part isn't negotiable, and it isn't a favour. It was never theirs to bill.</p>
+
+<h2>Why the total is the wrong place to start</h2>
+
+<p>A single number due now is the framing most likely to get paid whole. It's sludge in a quiet form: no hold music, just a presentation that makes the important distinction invisible. And paying feels like the safe default, the status quo, while disputing feels like a risk. But the dispute costs nothing if you lose: you pay what the bill already says, and the ombudsman who decides it is free. The default is the expensive option.</p>
+
+<p>The same question works well beyond energy. A council that sends a parking penalty months after the event. An employer that finds it overpaid you two years ago. A landlord who mentions an old rent shortfall when you move out. A debt that resurfaces after six years of silence. Each time, before "can I afford this?", ask "whose delay was it, and what does the rule say about delays?" Law and regulation are full of limits that put the cost of delay on the party who controlled the information, because otherwise they'd have no reason to hurry.</p>
+
+<h2>What you still owe</h2>
+
+<p>None of this makes the recent part go away. The energy used in the last 12 months is owed, and it's fair that it is. But how you pay it is also yours to shape. A supplier has to offer a repayment plan you can afford, and the sensible ask is to spread it over at least as long as it took to build up: twenty months of shortfall, twenty months to pay it back. That's not special pleading. It's paying at the pace you'd have paid if the bills had been right.</p>
+
+<p>The line to keep: <em>when a big late bill arrives, I check one date before I check the total. What's older than the limit isn't mine to pay unless I caused the delay. What's newer, I pay at the pace it built up.</em> And a habit that makes it easier next time: a dated photo of the meter, once a quarter.</p>
+
+<p>There's a <a href="/catchup">tool for this</a> on the site, for catch-up energy bills. You give the amount, the bill's date and the period it covers, and why it was late. It splits the bill at the cut-off, weighting winter months for heating, says whether the limit applies, writes the complaint with the rule in it, sizes the repayment plan to ask for, and gives you the day the free ombudsman opens.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

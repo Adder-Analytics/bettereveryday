@@ -326,6 +326,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "A catch-up energy bill: what do you owe?",
+    href: "/catchup",
+    snippet:
+      "A catch-up gas or electricity bill after months of estimates or a smart meter that stopped sending. The part too old to charge under the back-billing rule, the complaint to send, the repayment plan to ask for, and the ombudsman date.",
+    meta: "Catch-up energy bill — what do you actually owe?",
+    titleText:
+      "catch-up bill catch up bill energy bill back bill backbill back-billing back billing rule backdated energy bill shock energy bill huge gas bill huge electricity bill high energy bill estimated bill estimated readings smart meter not sending readings smart meter stopped working smart meter fault meter reading underestimated energy bill ofgem 12 months energy ombudsman energy complaint deadlock letter repayment plan energy debt payment plan gas bill dispute electricity bill dispute utility regulator 13 months consumer council".toLowerCase(),
+    bodyText:
+      "a catch-up energy bill: what do you owe? (/catchup): the instrument for a catch-up gas or electricity bill after a smart meter stopped sending readings or estimates ran low. in great britain ofgem's back-billing rule (standard licence condition 21ba, since 2018) stops a supplier billing a household for energy used more than 12 months before the date of the bill, unless the customer behaved obstructively or manifestly unreasonably (refused access, tampered with the meter, ignored repeated requests). in northern ireland the utility regulator's rule is 13 months where the supplier was at fault. the rule cuts by when the energy was used, so the tool splits the period at the cut-off, weighting each month by a typical seasonal pattern for gas, electricity or both. it says whether the limit applies given why the bill was late, writes the complaint naming the rule (with a request to rebill on actual readings if the bill is estimated), sizes the repayment plan to ask for (spread over as long as the shortfall built up), and gives the date the energy ombudsman opens: eight weeks after the complaint, or at once with a deadlock letter, and within 12 months after. in northern ireland the consumer council takes complaints. includes a worked example: twenty months unbilled, £1,840. nothing is sent anywhere.",
+  },
+  {
+    type: "Tool",
     title: "Parking ticket: pay or appeal?",
     href: "/parking",
     snippet:

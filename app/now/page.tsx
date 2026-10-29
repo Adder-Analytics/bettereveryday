@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The smart meter went quiet, the estimates ran low, and twenty
+              months later one bill asks for £1,840.{" "}
+              <Link
+                href="/catchup"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                A catch-up energy bill
+              </Link>{" "}
+              checks{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                one date before the total
+              </span>
+              : energy used more than 12 months before the bill usually
+              can&rsquo;t be charged. It splits the bill at that date, writes
+              the complaint, sizes the repayment plan and dates the ombudsman.
+              A new{" "}
+              <Link
+                href="/writing/whose-delay-was-it"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              explains why.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A camera letter from a car park you&rsquo;d paid at: £100, or
               £60 this fortnight.{" "}
               <Link
@@ -141,31 +166,6 @@ export default function Now() {
               , answers the reason they gave (a technical fault isn&rsquo;t
               extraordinary), writes the claim, and dates the day the free
               referee can take it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The washing machine dies in month four and the shop says
-              it&rsquo;s the manufacturer&rsquo;s problem.{" "}
-              <Link
-                href="/refund"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Get your money back
-              </Link>{" "}
-              finds what the law gives you for this problem at this age, writes
-              the message with{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                a date to reply by
-              </span>
-              , and chooses the next step before you send it: section 75 or a
-              chargeback from your card company, the platform, an ombudsman, or
-              small claims. A new{" "}
-              <Link
-                href="/writing/ask-once-in-writing-with-a-date"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
             </li>
           </ul>
         </section>
