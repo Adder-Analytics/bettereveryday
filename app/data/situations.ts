@@ -1126,6 +1126,28 @@ export const situations: Situation[] = [
     essays: ["what-does-losing-cost"],
   },
   {
+    id: "catchup-bill",
+    title: "One energy bill asks for a year or two of use at once",
+    scene:
+      "The smart meter stopped sending readings in the spring before last, and the direct debit stayed the same on estimates. An engineer read the meter last week. The bill says £1,840 more, and your instinct is to pay it before it gets worse, or to ring up and say it can't be right.",
+    question: "How much of this do I actually owe, and how do I pay the rest without wrecking the next year?",
+    models: [
+      {
+        id: "sludge",
+        move: "The bill is presented as one total, due now, which is the framing that makes you pay it whole. The rule that cuts it is by date, not by amount, so split the period at 12 months before the bill before you think about the total.",
+      },
+      {
+        id: "status-quo-bias",
+        move: "Paying feels like the safe default and disputing like the risky one. But the dispute costs nothing if you lose (you pay what the bill already says), and the free ombudsman decides it. The default is the expensive choice here.",
+      },
+    ],
+    tool: {
+      id: "catchup",
+      move: "This is the moment the tool is built for. It splits the bill at the cut-off with a seasonal weighting, says whether the limit applies given why the bill was late, writes the complaint, sizes the repayment plan and dates the ombudsman.",
+    },
+    essays: ["whose-delay-was-it"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1537,6 +1559,7 @@ export const situationGroups: SituationGroup[] = [
       "flight-went-wrong",
       "deposit-deductions",
       "parking-ticket",
+      "catchup-bill",
       "designing-incentives",
       "stubborn-system",
     ],

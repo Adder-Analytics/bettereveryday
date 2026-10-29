@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup"],
       },
     ],
     choices: [
@@ -658,6 +658,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "rule",
             note: "A photo of the sign on the way in, the receipt kept for a month. Decide that once.",
+          },
+        },
+      },
+      {
+        id: "catchup",
+        label: "A huge catch-up energy bill has arrived after months of estimates.",
+        detail: "The smart meter stopped sending, or nobody read the meter, and now it's a year or two at once.",
+        rec: {
+          toolId: "catchup",
+          because:
+            "Check one date before you check the total. Energy used more than 12 months before the bill usually can't be charged at all, unless you blocked the meter being read. Split the bill at that date, dispute the old part, and ask for the rest spread over as long as it took to build up.",
+          then: {
+            toolId: "debts",
+            note: "If it sits beside other debts, put the plan in with them and decide which to pay first.",
           },
         },
       },

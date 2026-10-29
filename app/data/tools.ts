@@ -424,6 +424,18 @@ export const tools: Tool[] = [
     essays: ["what-does-losing-cost"],
   },
   {
+    id: "catchup",
+    href: "/catchup",
+    name: "A Catch-up Energy Bill: What Do You Owe?",
+    short: "Catch-up energy bill",
+    when: "The smart meter stopped sending readings, or the estimates ran low, and now one bill asks for a year or two of the difference at once. You're about to put it on a card, or argue with it in general terms.",
+    ask: "How much of this catch-up bill do I actually owe, and how do I pay the rest?",
+    does: "Splits the bill at the back-billing cut-off (12 months before the bill in Great Britain, 13 in Northern Ireland), weighting each month by how much gas or electricity a home typically uses then, so you know roughly what's too old to charge. Says whether the limit applies given why the bill was late, writes the complaint with the rule in it, sizes the repayment plan to ask for, and dates the day the free ombudsman opens.",
+    payoff: "now",
+    models: ["sludge", "status-quo-bias"],
+    essays: ["whose-delay-was-it"],
+  },
+  {
     id: "sell",
     href: "/sell",
     name: "Sell It, Keep It, or Let It Go?",
@@ -687,7 +699,7 @@ export const toolGroups: ToolGroup[] = [
     title: "You're facing a decision right now",
     blurb:
       "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "walkaway", "later", "worth", "cover", "fix", "monthly", "debts", "sell", "keep", "quit", "rule"],
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "walkaway", "later", "worth", "cover", "fix", "monthly", "debts", "sell", "keep", "quit", "rule"],
   },
   {
     id: "big-commitment",
