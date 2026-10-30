@@ -40,9 +40,9 @@ export default function Home() {
           Better Every Day.
         </h1>
         <p className="text-lg text-[var(--muted)] leading-relaxed max-w-lg">
-          A private toolkit of {toolCountWord}{" "}working instruments for thinking
-          through a real decision &mdash; the flip point, the pre-mortem, the
-          consequence trace, and more &mdash; with the essays and mental models
+          A private toolkit of {toolCountWord}{" "}working instruments for a real
+          decision &mdash; from a parking ticket, a refund or a catch-up bill to
+          a job, a move or a debt &mdash; with the essays and mental models
           behind them. Nothing you enter ever leaves your browser.
         </p>
         <DecideHero />

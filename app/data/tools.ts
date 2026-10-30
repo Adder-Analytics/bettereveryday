@@ -695,11 +695,39 @@ export type ToolGroup = {
 
 export const toolGroups: ToolGroup[] = [
   {
-    id: "deciding-now",
-    title: "You're facing a decision right now",
+    id: "money-letters",
+    title: "A letter, bill or message wants money — or you're owed some",
     blurb:
-      "Something's in front of you today. Start by asking how much thought it even deserves — then these give you an answer in this one sitting.",
-    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "test", "incentives", "enough", "stop", "trace", "cool", "regret", "advise", "crux", "round", "split", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "walkaway", "later", "worth", "cover", "fix", "monthly", "debts", "sell", "keep", "quit", "rule"],
+      "A parking ticket, a catch-up bill, a deposit the landlord's keeping, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
+    toolIds: ["scam", "refund", "flight", "deposit", "parking", "catchup"],
+  },
+  {
+    id: "money-calls",
+    title: "A money call: spend, borrow, lend, keep or sell",
+    blurb:
+      "The everyday money decisions that are usually made on feel: the payment plan, the debts, the friend who asks for a loan, the warranty, the broken appliance, the subscriptions, the thing in the cupboard, the number you'll negotiate. Each one comes down to a sum you can do here.",
+    toolIds: ["monthly", "debts", "lend", "cover", "fix", "sell", "keep", "worth", "walkaway"],
+  },
+  {
+    id: "with-others",
+    title: "Deciding with other people",
+    blurb:
+      "A shared home, a team or a couple: who pays what, who gets which room, who does which chore, where the disagreement actually is, and how to hear everyone before the loudest view sets the answer.",
+    toolIds: ["bills", "split", "chores", "crux", "round"],
+  },
+  {
+    id: "weighing",
+    title: "Weighing a decision of your own",
+    blurb:
+      "Something's in front of you today. Start by asking how much thought it even deserves, then find the options you haven't named and weigh them. Each gives you an answer in one sitting.",
+    toolIds: ["doors", "ruin", "widen", "weigh", "compare", "par", "outside", "enough", "stop", "trace", "quit"],
+  },
+  {
+    id: "checking-yourself",
+    title: "When you might not be seeing it straight",
+    blurb:
+      "You're angry or rushed, someone stands to gain from your yes, a far-off week looks empty, or you could advise anyone but yourself. These check the judgment before it makes the call.",
+    toolIds: ["test", "incentives", "cool", "regret", "advise", "later", "rule"],
   },
   {
     id: "big-commitment",
@@ -727,6 +755,13 @@ export const toolGroups: ToolGroup[] = [
 export type ResolvedToolGroup = ToolGroup & { tools: Tool[] };
 
 export function resolveToolGroups(): ResolvedToolGroup[] {
+  // Every tool sits in exactly one group, so a new tool can't be added to the
+  // list and left off the index pages, and a regroup can't drop or double one.
+  const placed = toolGroups.flatMap((g) => g.toolIds);
+  for (const t of tools) {
+    const n = placed.filter((id) => id === t.id).length;
+    if (n !== 1) throw new Error(`Tool "${t.id}" is in ${n} groups, not 1`);
+  }
   return toolGroups.map((g) => ({ ...g, tools: g.toolIds.map(getTool) }));
 }
 
