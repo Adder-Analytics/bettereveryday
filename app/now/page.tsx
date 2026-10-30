@@ -78,6 +78,21 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The toolkit was one list of thirty-eight. It&rsquo;s now{" "}
+              <Link
+                href="/tools"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                grouped by what&rsquo;s in front of you
+              </Link>
+              , with{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                a letter or bill that wants money
+              </span>{" "}
+              first: the parking ticket, the refund, the deposit, the flight,
+              the catch-up bill and the message that might be a scam.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The smart meter went quiet, the estimates ran low, and twenty
               months later one bill asks for £1,840.{" "}
               <Link
@@ -149,23 +164,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Four hours late into Faro, and the airline says extraordinary
-              circumstances.{" "}
-              <Link
-                href="/flight"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Flight delayed or cancelled
-              </Link>{" "}
-              works out what UK or EU rules owe{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                each passenger
-              </span>
-              , answers the reason they gave (a technical fault isn&rsquo;t
-              extraordinary), writes the claim, and dates the day the free
-              referee can take it.
             </li>
           </ul>
         </section>

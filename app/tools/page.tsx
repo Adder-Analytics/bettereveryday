@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { resolveToolGroups, payoffLabel, type Payoff } from "../data/tools";
+import { resolveToolGroups, payoffLabel, toolCount, type Payoff } from "../data/tools";
 import { getSituationsForTool } from "../data/situations";
 
 export const metadata: Metadata = {
   title: "The Toolkit — Better Every Day",
   description:
-    "Which tool for the moment you're in? A front door to the working instruments — the flip point, the consequence trace, the cooling-off tool, the pre-mortem, the decision journal, the return desk, and the trainers — organized by what your decision feels like, not by what the tool is called.",
+    "Which tool for the moment you're in? A front door to the working instruments, grouped by what's in front of you: a letter or bill that wants money, a money call, a decision shared with other people, a decision of your own, and the record you come back to.",
   openGraph: {
     title: "The Toolkit — Better Every Day",
     description:
@@ -31,12 +31,12 @@ export default function ToolsPage() {
           The Toolkit
         </h1>
         <p className="text-base text-[var(--muted)] leading-relaxed">
-          The site has a handful of working instruments, each built for a
-          different kind of moment. But you don&rsquo;t arrive knowing which one
-          you need — you arrive knowing what your decision <em>feels</em> like. So
-          this page runs by the moment, not the tool: find the row that matches
-          where you are, and it hands you the instrument and the one thing it does
-          there. Everything you enter stays in your browser and is sent nowhere.
+          {toolCount}{" "}working instruments, each built for a different kind
+          of moment. You don&rsquo;t arrive knowing which one you need; you
+          arrive knowing what&rsquo;s in front of you. So this page runs by the
+          moment, not the tool: find the group that matches where you are, and it
+          hands you the instrument and the one thing it does there. Everything
+          you enter stays in your browser and is sent nowhere.
         </p>
         <p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
           Don&rsquo;t want to read all of them? Answer{" "}
@@ -66,6 +66,26 @@ export default function ToolsPage() {
             hot one, cooled before it&rsquo;s decided →
           </Link>
         </p>
+        <nav aria-label="Groups on this page" className="mt-8">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-3">
+            Jump to
+          </h2>
+          <ul className="space-y-1.5">
+            {groups.map((group) => (
+              <li key={group.id}>
+                <a
+                  href={`#${group.id}`}
+                  className="text-sm text-[var(--accent)] hover:opacity-70 transition-opacity leading-snug"
+                >
+                  {group.title}
+                </a>{" "}
+                <span className="text-xs text-[var(--muted)]">
+                  ({group.tools.length})
+                </span>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </header>
 
       <div className="space-y-16">
