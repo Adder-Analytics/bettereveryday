@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector"],
       },
     ],
     choices: [
@@ -672,6 +672,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "debts",
             note: "If it sits beside other debts, put the plan in with them and decide which to pay first.",
+          },
+        },
+      },
+      {
+        id: "collector",
+        label: "A debt collector is chasing a debt from years ago.",
+        detail: "A company that bought the debt wants the balance, or a token payment to show goodwill.",
+        rec: {
+          toolId: "collector",
+          because:
+            "Before you pay anything, even £1, check one date: when you last paid or admitted it in writing. Six years on (five in Scotland) an ordinary debt can't be taken to court, but a payment before then starts the clock again. And never ignore court papers: the limit is a defence you have to raise.",
+          then: {
+            toolId: "scam",
+            note: "If you're not sure the letter or the company is real, check before you ring any number on it.",
           },
         },
       },

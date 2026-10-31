@@ -2853,6 +2853,46 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/catchup">tool for this</a> on the site, for catch-up energy bills. You give the amount, the bill's date and the period it covers, and why it was late. It splits the bill at the cut-off, weighting winter months for heating, says whether the limit applies, writes the complaint with the rule in it, sizes the repayment plan to ask for, and gives you the day the free ombudsman opens.</p>`,
   },
+  {
+    slug: "what-is-the-small-ask-worth-to-them",
+    title: "What Is the Small Ask Worth to Them?",
+    date: "2026-10-31",
+    excerpt:
+      "A debt collector asks for £1 a month to show goodwill. A pound costs you almost nothing, so why ask for it? When a small ask comes from someone who wants something big, the size of the ask is the wrong thing to judge.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>The letter is polite. A company you've never heard of has bought the debt on a store card you stopped paying seven years ago, when you lost your job. The balance is £1,260. It understands times are hard. It doesn't ask for the whole amount. If you can't pay in full, it says, "a token payment of just £1 a month will show your goodwill and stop further action."</p>
+
+<p>A pound a month. It's hard to think of a cheaper way to make a problem go away, and that's exactly how most people judge it: by what it costs them. Twelve pounds a year to stop the letters is a bargain.</p>
+
+<p>The better question is the other way round. Not "what does this cost me?" but "what is it worth to them?" A company that bought your debt didn't do it to collect a pound a month.</p>
+
+<h2>What the pound buys</h2>
+
+<p>In England, Wales and Northern Ireland, a creditor has six years to take an ordinary debt to court, usually counted from the last payment or the last time you admitted it in writing. After that the debt is "statute-barred": it still exists, but no court will order you to pay it. In Scotland the period is five years, and then the debt is extinguished altogether.</p>
+
+<p>Now look at the pound again. Made before the six years run out, any payment, however small, starts them again. The company gets another six years in which it can sue for the full £1,260, plus interest and costs. Made after, it doesn't revive the claim, but it's money the company had no way to get, and a sign that you might be persuaded to pay more. Either way the pound is worth far more to them than to you. Old debts change hands for a few pence in the pound, by campaigners' estimates, so a buyer that gets anything at all is doing well.</p>
+
+<p>The same goes for the other small asks: "just sign and return this form to confirm your details", "just confirm on the phone that the account is yours". A signed admission restarts the clock like a payment does. (A phone call doesn't, in England and Wales; the law asks for writing. That's why the next step after the call is often a form.)</p>
+
+<h2>Why small asks work</h2>
+
+<p>The pattern is old and not unique to debt. In 1966 Jonathan Freedman and Scott Fraser found that people who first agreed to put a small sign in their window were far more likely, weeks later, to agree to a large, ugly one on the lawn. The small yes changes how you see yourself, and it changes the relationship: you're now someone who pays this company, who has accepted the debt is yours. The second letter is easier to write, and harder to refuse.</p>
+
+<p>What makes the small ask effective is the same thing that makes it look harmless: it's priced so you won't think about it. So the test isn't its size. The test is the gap between what it costs you and what it's worth to the person asking. When that gap is wide, the small ask is a big ask in disguise.</p>
+
+<h2>What to do instead</h2>
+
+<p>None of this says you shouldn't pay debts you owe. If the debt is recent, it's yours and you can pay, then a plan you can keep to is the right thing, and free debt advice will help you set one. The point is to make that choice knowing what it means, not to be steered into it by a pound.</p>
+
+<p>So before anything else, find two dates: your last payment, and the last time you put the debt in writing. If they're more than six years ago (five in Scotland) and there's no court judgment, you can say, in writing, that the debt is statute-barred, and the regulator's rules say the firm must stop asking. If you don't know the dates, ask for them, in a letter that says it isn't an admission. Asking is the reversible move. Paying and signing aren't.</p>
+
+<p>And one exception to the advice to slow down: court papers. The time limit is a defence, not something the court applies for you. A claim form that's ignored becomes a judgment, however old the debt was. That one gets answered by its deadline.</p>
+
+<p>The line to keep: <em>when someone who wants something big asks me for something small, I ask what it's worth to them before I ask what it costs me. With an old debt, I don't pay, sign or agree to anything until I know the dates. Not even £1.</em></p>
+
+<p>There's a <a href="/collector">tool for this</a> on the site, for letters about old debts. You say where you lived, what kind of debt it is, whether anything has come from a court, and roughly when you last paid. It reads that date against the limit, flags the exceptions (court judgments, council tax, HMRC, student loans), writes the statute-barred letter, the prove-it letter or an offer, and dates any court deadline.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

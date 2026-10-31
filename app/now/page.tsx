@@ -78,6 +78,30 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A company that bought a store card debt from seven years ago
+              wants £1,260, or &ldquo;£1 a month to show goodwill&rdquo;.{" "}
+              <Link
+                href="/collector"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                An old debt, a new letter
+              </Link>{" "}
+              checks{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                when you last paid
+              </span>{" "}
+              against the six-year limit (five in Scotland), writes the
+              statute-barred or prove-it letter, and dates any court deadline,
+              because a limit is a defence you have to raise. A new{" "}
+              <Link
+                href="/writing/what-is-the-small-ask-worth-to-them"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              asks what the small ask is worth to them.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The toolkit was one list of thirty-eight. It&rsquo;s now{" "}
               <Link
                 href="/tools"
@@ -135,30 +159,6 @@ export default function Now() {
               the next step. A new{" "}
               <Link
                 href="/writing/what-does-losing-cost"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A new carpet, a full repaint and a professional clean, out of the
-              deposit for a flat you lived in for three years.{" "}
-              <Link
-                href="/deposit"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Get your deposit back
-              </Link>{" "}
-              prices each deduction{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                the way an adjudicator would
-              </span>
-              : wear and tear is nothing, and a five-year-old carpet is charged
-              for the life it had left. It writes the reply and dates the last
-              day for the free dispute. A new{" "}
-              <Link
-                href="/writing/charge-for-the-life-that-was-left"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 essay

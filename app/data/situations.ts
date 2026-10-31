@@ -1148,6 +1148,28 @@ export const situations: Situation[] = [
     essays: ["whose-delay-was-it"],
   },
   {
+    id: "old-debt-letter",
+    title: "A debt collector writes about a debt from years ago",
+    scene:
+      "A company you've never heard of says it has bought the debt on a store card you stopped paying when you lost your job, seven years ago. It wants £1,260, or \"a token payment of £1 a month to show goodwill\". A pound a month feels like the cheapest way to make the letters stop.",
+    question: "Do I still owe this, and what happens if I pay something, or nothing?",
+    models: [
+      {
+        id: "incentive-structures",
+        move: "Ask what the small ask is worth to them. Old debts are bought for a few pence in the pound, so any payment is profit, and a payment made before the limit runs out starts the six years again. The £1 isn't the point; the clock is.",
+      },
+      {
+        id: "reversibility",
+        move: "A payment or a signed admission can't be taken back, and a letter asking for the dates can be sent today at no cost. Do the reversible thing first: ask, in writing, without admitting anything.",
+      },
+    ],
+    tool: {
+      id: "collector",
+      move: "This is the moment the tool is built for. It reads your last payment against the limit, flags the exceptions, writes the statute-barred letter, the prove-it letter or an offer, and dates any court deadline.",
+    },
+    essays: ["what-is-the-small-ask-worth-to-them"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1560,6 +1582,7 @@ export const situationGroups: SituationGroup[] = [
       "deposit-deductions",
       "parking-ticket",
       "catchup-bill",
+      "old-debt-letter",
       "designing-incentives",
       "stubborn-system",
     ],
