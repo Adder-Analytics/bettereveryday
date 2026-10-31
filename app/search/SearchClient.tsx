@@ -338,6 +338,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "An old debt, a new letter: do you still owe it?",
+    href: "/collector",
+    snippet:
+      "A debt collector or debt buyer chasing a card, loan or bill from years ago. Whether it's past the six-year limit (five in Scotland), the letter to send, and any court deadline.",
+    meta: "Old debt, new letter — is it statute-barred?",
+    titleText:
+      "debt collector debt collection agency debt collection letter old debt statute barred statute-barred debt limitation act six years 6 years debt five years scotland prescription prescribed debt debt purchaser debt buyer sold my debt token payment £1 a month goodwill payment acknowledge debt restart clock letter of claim letter before action pre-action protocol county court claim form money claim online ccj defence prove it letter prove the debt cca request section 78 credit agreement request don't recognise debt not my debt breathing space".toLowerCase(),
+    bodyText:
+      "an old debt, a new letter: do you still owe it? (/collector): the instrument for a letter from a debt collector or a company that bought the debt, about a credit card, loan, overdraft, catalogue, phone, energy or other bill from years ago. in england, wales and northern ireland (limitation act 1980 section 5; limitation (northern ireland) order 1989) a creditor has six years to take an ordinary debt to court, counted from the last payment or written acknowledgement; after that it's statute-barred and still exists but can't be enforced in court. in scotland (prescription and limitation (scotland) act 1973 section 6) it's five years, and then the debt is extinguished. a payment or signed written admission before the limit restarts the clock; a payment after doesn't revive it (section 29(7)). the fca's rules (conc 7.15) say a firm must stop demanding payment once you've said it's statute-barred. exceptions: court judgments (ccj, council tax liability order or summary warrant), most hmrc tax, student loans company loans, benefit overpayments taken from benefits, mortgage shortfalls (six years interest, twelve capital). within three months of the line is read as too close to rely on. writes the statute-barred letter, the prove-it letter (statement of account, date of default, notice of assignment, consumer credit act section 77/78 copy of the agreement with a £1 fee) or an affordable offer. dates the 30 days to reply to a letter of claim under the pre-action protocol for debt claims, and for a county court claim form the deemed service (second business day after posting), the 14 days to respond and 28 for a defence, with a calendar file (.ics) and the wording for a limitation defence. free advice: national debtline, stepchange, citizens advice, advice ni; breathing space in england and wales. includes a worked example: a store card last paid seven years ago, £1,260 or £1 a month. nothing is sent anywhere.",
+  },
+  {
+    type: "Tool",
     title: "Parking ticket: pay or appeal?",
     href: "/parking",
     snippet:

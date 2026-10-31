@@ -436,6 +436,18 @@ export const tools: Tool[] = [
     essays: ["whose-delay-was-it"],
   },
   {
+    id: "collector",
+    href: "/collector",
+    name: "An Old Debt, a New Letter: Do You Still Owe It?",
+    short: "Old debt, new letter",
+    when: "A debt collector or a company that bought the debt writes about a card, a loan or a bill from years ago. It wants the balance, or a token £1 a month to show goodwill, and you're about to pay something to make it stop, or bin it.",
+    ask: "Is this old debt still one they can take me to court for, and what do I send?",
+    does: "Reads your last payment, or the last time you admitted the debt in writing, against the limit: six years in England, Wales and Northern Ireland, five in Scotland, where the debt is extinguished. Flags the exceptions (court judgments, council tax liability orders, HMRC tax, student loans, benefit deductions, mortgage shortfalls), treats a date within three months of the line as too close to rely on, writes the statute-barred letter, the prove-it letter or an affordable offer, and dates any reply to a letter of claim or court claim, because a time limit is a defence you have to raise.",
+    payoff: "now",
+    models: ["incentive-structures", "reversibility"],
+    essays: ["what-is-the-small-ask-worth-to-them"],
+  },
+  {
     id: "sell",
     href: "/sell",
     name: "Sell It, Keep It, or Let It Go?",
@@ -698,8 +710,8 @@ export const toolGroups: ToolGroup[] = [
     id: "money-letters",
     title: "A letter, bill or message wants money — or you're owed some",
     blurb:
-      "A parking ticket, a catch-up bill, a deposit the landlord's keeping, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
-    toolIds: ["scam", "refund", "flight", "deposit", "parking", "catchup"],
+      "A parking ticket, a catch-up bill, a collector chasing an old debt, a deposit the landlord's keeping, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
+    toolIds: ["scam", "refund", "flight", "deposit", "parking", "catchup", "collector"],
   },
   {
     id: "money-calls",

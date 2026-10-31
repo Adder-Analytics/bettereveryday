@@ -502,6 +502,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a catch-up energy bill in dispute" : null),
   },
   {
+    key: "collector:v1",
+    tool: "An old debt, a new letter",
+    href: "/collector",
+    label: "The old debt you last answered",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "an old debt being checked" : null),
+  },
+  {
     key: "deposit:v1",
     tool: "Get your deposit back",
     href: "/deposit",
