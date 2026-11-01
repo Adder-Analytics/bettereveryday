@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff"],
       },
     ],
     choices: [
@@ -686,6 +686,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "scam",
             note: "If you're not sure the letter or the company is real, check before you ring any number on it.",
+          },
+        },
+      },
+      {
+        id: "bailiff",
+        label: "A bailiff's letter has come, or a bailiff has been to the door.",
+        detail: "A notice of enforcement for council tax, a parking charge, a fine or a judgment, or a collector threatening a visit.",
+        rec: {
+          toolId: "bailiff",
+          because:
+            "Each stage of enforcement adds a fixed fee, so the cheapest day to deal with it is today. It dates the first day a bailiff can call, says what they can and can't do, checks the fees, and writes the offer to send before the knock. A debt collector with no court order can't send bailiffs at all.",
+          then: {
+            toolId: "debts",
+            note: "If there are other debts too, council tax and fines come first; put the rest side by side.",
           },
         },
       },

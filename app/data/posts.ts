@@ -2893,6 +2893,44 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/collector">tool for this</a> on the site, for letters about old debts. You say where you lived, what kind of debt it is, whether anything has come from a court, and roughly when you last paid. It reads that date against the limit, flags the exceptions (court judgments, council tax, HMRC, student loans), writes the statute-barred letter, the prove-it letter or an offer, and dates any court deadline.</p>`,
   },
+  {
+    slug: "the-fee-schedule-is-a-clock",
+    title: "The Fee Schedule Is a Clock",
+    date: "2026-11-01",
+    excerpt:
+      "A bailiff's letter goes in the drawer because opening it makes the problem real. But enforcement runs on its own timetable, and every stage you don't choose is chosen for you, at a higher price.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>The envelope has a window and a firm's name you've never seen. Inside: "Notice of Enforcement". Council tax, £640, plus a £79 compliance fee already added. An enforcement agent "will attend your property to take control of goods". You can't pay £719 this week. So the letter goes back in the envelope, and the envelope goes in the drawer with the council's earlier letters, which you also didn't open.</p>
+
+<p>That isn't laziness. It has a name. In 2009 the economists Niklas Karlsson, George Loewenstein and Duane Seppi found that investors in Sweden and the US checked their portfolios less often after markets had fallen. They called it the ostrich effect. A later study of more than a million investors' daily log-ins found the same thing: the more frightening the market, the less people looked. Looking makes bad news real. Not looking keeps it, for a while, as something that might not be as bad as you fear.</p>
+
+<p>For a portfolio, looking away is fairly cheap. The shares do what they do whether or not you watch. The trouble is that we bring the same instinct to problems that don't sit still.</p>
+
+<h2>A problem with a timetable</h2>
+
+<p>Enforcement in England and Wales runs on a fixed scale. Since 1 May 2026 the notice costs £79. Fourteen clear days later (Sundays and bank holidays don't count) a bailiff can call, and the first visit adds £247, plus 7.5% of anything owed over £1,900. If goods are taken for sale, more again. None of these fees depends on whether you've read the letter. The schedule runs anyway.</p>
+
+<p>So the choice isn't really "deal with it or don't". It's "deal with it at which stage". At the notice stage, an email with a budget and an offer of £60 a month usually ends it: firms are paid to recover money, and a plan someone can keep to is money recovered. After the visit, the same offer is made on a debt that's £247 bigger, with less goodwill and fewer options. The drawer doesn't postpone the decision. It makes it, by default, at the most expensive point on the scale.</p>
+
+<p>That's the general shape worth recognising. When costs step up at known moments, a fee schedule is a clock. Each step you don't choose is chosen for you. A parking charge doubles after its discount window. An ignored court claim can become a judgment after fourteen days. An energy supplier's complaint only reaches the ombudsman after eight weeks. In each, waiting feels like doing nothing, when it's doing something specific: letting the next stage arrive.</p>
+
+<h2>Making the first look small</h2>
+
+<p>Telling someone to "face it" doesn't help much, because the ostrich effect isn't a failure of courage. It's a reasonable reaction to information that feels threatening and offers no clear action. The cure is to change both halves: make the look smaller, and make the action concrete.</p>
+
+<p>Open the letter for one thing only: the date. Count fourteen clear days from it. That's the day a bailiff can first call. Then decide one action that has to happen before that day. Write to the firm, offering what you can actually pay, with a budget. Or ring a free debt adviser, who can ask for the period to be extended to twenty-eight days and, if you need it, apply for Breathing Space, which stops enforcement for sixty days. Write the date in your calendar. Now the letter isn't a dread; it's an appointment.</p>
+
+<p>Knowing the limits helps too, because much of the fear comes from not knowing what can actually happen. On a first visit, for most debts, a bailiff can only come in through a door that's open or unlocked. Not between 9pm and 6am. Not if the only people home are children. They can't take the cooker, the fridge, the beds or tools you need for work. And a debt collector chasing a credit card or a phone bill, with no court judgment, can't send a bailiff at all, however its letter is worded. Fear grows in the gap where those facts should be.</p>
+
+<h2>The line</h2>
+
+<p>None of this makes debt easy, or says the money isn't owed. It says that once a problem has a timetable, the cheapest day to deal with it is almost always the first one, and that the urge to look away is strongest exactly then.</p>
+
+<p>The line to keep: <em>when a letter frightens me, I open it to find one date, and I decide one thing to do before it. If the costs step up on a schedule, not deciding is deciding, at the highest price.</em></p>
+
+<p>There's a <a href="/bailiff">tool for this</a> on the site, for a bailiff's letter. You say what the debt is and what's happened so far. It dates the first day a bailiff can call, shows the fees that should be on the account, says what they can and can't do, and writes the offer to send before the knock.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

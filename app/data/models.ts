@@ -229,6 +229,15 @@ export const models: Model[] = [
     essays: ["availability-heuristic"],
   },
   {
+    id: "ostrich-effect",
+    name: "The Ostrich Effect",
+    domain: "Psychology",
+    tagline: "We look away from information when we expect it to be bad, which is exactly when it's most worth looking at.",
+    explanation:
+      "Niklas Karlsson, George Loewenstein and Duane Seppi (Journal of Risk and Uncertainty, 2009) found that investors in Sweden and the US logged in to check their portfolios less often when markets had fallen. A later study of 1.1 million investors' daily log-ins (Sicherman, Loewenstein, Seppi and Utkus, Review of Financial Studies, 2016) found the same pattern: attention dropped as fear rose. Checking feels like it makes bad news real, so we put it off, and for a portfolio that costs little, because nothing changes while you look away. The cost appears when the situation is moving on a schedule of its own: an unopened bill that gains a late fee, a court letter with a deadline, a bailiff's notice whose fees step up at fixed points. Then not looking isn't neutral; it's choosing the most expensive stage by default. The counter is to make the first look small and the next step concrete: open the letter only to find one date, decide one action before that date, and write it down. The tool A Bailiff's Letter does that for a notice of enforcement.",
+    essays: ["the-fee-schedule-is-a-clock"],
+  },
+  {
     id: "goal-gradient",
     name: "Goal Gradient",
     domain: "Psychology",

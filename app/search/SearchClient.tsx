@@ -350,6 +350,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "A bailiff's letter: what can they actually do?",
+    href: "/bailiff",
+    snippet:
+      "A notice of enforcement for council tax, a parking charge, a fine or a judgment. The first day a bailiff can call, the fees that should be on it, what they can and can't do, and the offer to send first.",
+    meta: "Bailiff's letter — notice of enforcement",
+    titleText:
+      "bailiff bailiffs enforcement agent enforcement agents notice of enforcement compliance stage compliance fee £75 £79 enforcement fee £235 £247 sale fee bailiff fees bailiff visit bailiff at the door bailiffs knocking let bailiffs in force entry forced entry peaceful entry controlled goods agreement walking possession take control of goods what can bailiffs take exempt goods tools of trade £1,350 clamp car motability blue badge council tax arrears liability order council tax bailiffs parking pcn warrant of control te9 te7 traffic enforcement centre magistrates fine court fine ccj county court bailiff warrant n245 suspend warrant high court enforcement officer hceo writ of control hmrc distraint debt collector field agent doorstep collector 14 days notice 28 days debt adviser breathing space vulnerable national standards enforcement conduct board ecb eac2 complaint about a bailiff".toLowerCase(),
+    bodyText:
+      "a bailiff's letter: what can they actually do? (/bailiff): the instrument for a notice of enforcement from enforcement agents (bailiffs) in england and wales, about council tax or business rates (liability order), a council parking, bus lane or congestion charge (warrant of control via the traffic enforcement centre), a magistrates' court fine, a county court judgment (county court bailiffs or a high court enforcement officer with a writ of control) or tax owed to hmrc. under the taking control of goods regulations 2013 and fees regulations 2014, as amended from 1 may 2026, a bailiff can't take control of goods until 14 clear days after the notice (7 before may 2026), or 28 if a debt adviser asks before the period ends; sundays and bank holidays don't count. fees from 1 may 2026: compliance £79, enforcement £247 plus 7.5% of the debt over £1,900 once a bailiff visits, sale about £116 plus 7.5%; before may £75, £235 and £110 with the 7.5% above £1,500. high court: £79, £200 plus 7.5% over £1,200, £520, £550. county court bailiffs add no fees. on a first visit a bailiff can only enter by an open or unlocked door, never between 9pm and 6am, not if only under-16s or vulnerable people are home; force is mostly for court fines, hmrc and broken controlled goods agreements. they can't take essentials, medical aids, a motability or blue badge car, work tools and vehicles up to £1,350, or other people's goods. a debt collector with no court judgment can't send bailiffs. writes the offer letter (with a vulnerability paragraph under the national standards), the letter asking a collector what power it has, dates the first visit and the adviser's 28-day deadline with a calendar file (.ics), and lists form te9/te7 for parking, n245 for a ccj warrant, breathing space, and complaints (the firm, the creditor, the local government and social care ombudsman, the enforcement conduct board, form eac2). scotland (sheriff officers) and northern ireland (enforcement of judgments office) get a pointer to free advice. includes a worked example: council tax arrears of £640 and a notice of enforcement. nothing is sent anywhere.",
+  },
+  {
+    type: "Tool",
     title: "Parking ticket: pay or appeal?",
     href: "/parking",
     snippet:
