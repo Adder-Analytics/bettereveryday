@@ -448,6 +448,18 @@ export const tools: Tool[] = [
     essays: ["what-is-the-small-ask-worth-to-them"],
   },
   {
+    id: "bailiff",
+    href: "/bailiff",
+    name: "A Bailiff's Letter: What Can They Actually Do?",
+    short: "Bailiff's letter",
+    when: "A notice of enforcement has come about council tax, a parking charge, a court fine or a judgment, with £79 already added and a bailiff due to call. Or a debt collector's letter talks about a field agent at the door. It's in a drawer, or you're about to pay money you need for rent.",
+    ask: "What stage is this at, what can they actually do, what should the fees be, and what do I send before the first visit?",
+    does: "Reads the stage you're at, because each one adds a fixed fee (from 1 May 2026: £79 at the notice, £247 plus 7.5% of the debt over £1,900 once a bailiff visits). Dates the first day a bailiff can call (14 clear days, or 28 if a debt adviser asks in time), says what they can and can't do there (no forced entry on a first visit for most debts, nothing between 9pm and 6am, no essentials or work tools under £1,350), tells a debt collector's bluff from a court order, and writes the offer to send before the knock, with the vulnerability paragraph if it applies.",
+    payoff: "now",
+    models: ["ostrich-effect", "reversibility"],
+    essays: ["the-fee-schedule-is-a-clock"],
+  },
+  {
     id: "sell",
     href: "/sell",
     name: "Sell It, Keep It, or Let It Go?",
@@ -710,8 +722,8 @@ export const toolGroups: ToolGroup[] = [
     id: "money-letters",
     title: "A letter, bill or message wants money — or you're owed some",
     blurb:
-      "A parking ticket, a catch-up bill, a collector chasing an old debt, a deposit the landlord's keeping, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
-    toolIds: ["scam", "refund", "flight", "deposit", "parking", "catchup", "collector"],
+      "A parking ticket, a catch-up bill, a collector chasing an old debt, a bailiff's letter, a deposit the landlord's keeping, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
+    toolIds: ["scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff"],
   },
   {
     id: "money-calls",

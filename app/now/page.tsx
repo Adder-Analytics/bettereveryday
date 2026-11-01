@@ -78,6 +78,30 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A &ldquo;notice of enforcement&rdquo; for £640 of council tax,
+              £79 already added, and a bailiff due to call.{" "}
+              <Link
+                href="/bailiff"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                A bailiff&rsquo;s letter
+              </Link>{" "}
+              dates{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                the first day they can call
+              </span>{" "}
+              under the rules that changed in May 2026, shows the fees that
+              should be on it, says what a bailiff can and can&rsquo;t do, and
+              writes the offer to send before the knock. A new{" "}
+              <Link
+                href="/writing/the-fee-schedule-is-a-clock"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              is about the urge not to open the letter.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A company that bought a store card debt from seven years ago
               wants £1,260, or &ldquo;£1 a month to show goodwill&rdquo;.{" "}
               <Link
@@ -135,30 +159,6 @@ export default function Now() {
               A new{" "}
               <Link
                 href="/writing/whose-delay-was-it"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A camera letter from a car park you&rsquo;d paid at: £100, or
-              £60 this fortnight.{" "}
-              <Link
-                href="/parking"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Parking ticket: pay or appeal?
-              </Link>{" "}
-              starts from one sum,{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                what appealing costs if you lose
-              </span>
-              . Often it&rsquo;s nothing; when it isn&rsquo;t, it gives you the
-              break-even chance. It writes the letter for your stage and dates
-              the next step. A new{" "}
-              <Link
-                href="/writing/what-does-losing-cost"
                 className="text-[var(--accent)] hover:opacity-70 transition-opacity"
               >
                 essay

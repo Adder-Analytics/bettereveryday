@@ -691,7 +691,7 @@ function ReadBlock({ inp, read, today }: { inp: ParkingInputs; read: ParkingRead
               <>
                 <li>After 28 days, a Notice to Owner: the full {money(read.full)}.</li>
                 <li>28 days after that, a Charge Certificate: {money(read.full * 1.5)}, and no more right to appeal.</li>
-                <li>14 days later, it&rsquo;s registered as a debt with a court fee, then bailiffs, whose fees start at £75.</li>
+                <li>14 days later, it&rsquo;s registered as a debt with a court fee, then bailiffs, whose fees start at £79 (since May 2026).</li>
               </>
             ) : (
               <>

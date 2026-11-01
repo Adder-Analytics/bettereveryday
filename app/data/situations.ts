@@ -1170,6 +1170,28 @@ export const situations: Situation[] = [
     essays: ["what-is-the-small-ask-worth-to-them"],
   },
   {
+    id: "bailiff-letter",
+    title: "A bailiff's letter has come",
+    scene:
+      "You fell behind on council tax when your hours were cut, and stopped opening the council's letters. Now a \"notice of enforcement\" from a firm you've never heard of says £640 plus £79 in fees, and that an enforcement agent will attend to take control of goods. You can't pay it all, so it's gone back in the drawer.",
+    question: "What can they actually do, and what should I do before they come?",
+    models: [
+      {
+        id: "ostrich-effect",
+        move: "Notice the urge not to look. Not opening the letter feels like holding the problem off, but enforcement runs on its own schedule: the first visit adds £247 whether or not you've read the notice. Open it to find one date, the first day they can call, and act before it.",
+      },
+      {
+        id: "reversibility",
+        move: "An offer in writing can be made today and changed later. A visit, and its fee, can't be undone. Make the cheap, reversible move first.",
+      },
+    ],
+    tool: {
+      id: "bailiff",
+      move: "This is the moment the tool is built for. It dates the first visit under the May 2026 rules, shows the fees that should be on the account, says what a bailiff can and can't do, and writes the offer to send before the knock.",
+    },
+    essays: ["the-fee-schedule-is-a-clock"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1583,6 +1605,7 @@ export const situationGroups: SituationGroup[] = [
       "parking-ticket",
       "catchup-bill",
       "old-debt-letter",
+      "bailiff-letter",
       "designing-incentives",
       "stubborn-system",
     ],
