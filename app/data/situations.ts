@@ -1192,6 +1192,28 @@ export const situations: Situation[] = [
     essays: ["the-fee-schedule-is-a-clock"],
   },
   {
+    id: "rent-going-up",
+    title: "The rent's going up",
+    scene:
+      "You pay £1,150 a month for a two-bed flat. The agent's notice says £1,295 from the first of the month after next: up 12.6%. It feels like a lot, but rents everywhere have gone up, the bedroom damp you reported in March is still there, and you don't want to be the tenant who makes trouble.",
+    question: "Is this fair, and is it worth challenging?",
+    models: [
+      {
+        id: "relative-thinking",
+        move: "The percentage is the wrong test. 12.6% on a rent that was well below the market can be fair; 4% on one that was already above it isn't. Ask what this home would let for today, as it is.",
+      },
+      {
+        id: "anchoring",
+        move: "The landlord's figure is the first number on the table, and it pulls your sense of what's reasonable towards it. Find four similar homes before you decide what you think.",
+      },
+    ],
+    tool: {
+      id: "rent",
+      move: "This is the moment the tool is built for. It checks the notice under the May 2026 rules, puts the new rent against the homes you found, dates the last day to ask the tribunal, and writes the offer.",
+    },
+    essays: ["not-how-much-it-went-up"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1606,6 +1628,7 @@ export const situationGroups: SituationGroup[] = [
       "catchup-bill",
       "old-debt-letter",
       "bailiff-letter",
+      "rent-going-up",
       "designing-incentives",
       "stubborn-system",
     ],

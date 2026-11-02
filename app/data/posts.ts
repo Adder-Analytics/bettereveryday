@@ -2931,6 +2931,48 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/bailiff">tool for this</a> on the site, for a bailiff's letter. You say what the debt is and what's happened so far. It dates the first day a bailiff can call, shows the fees that should be on the account, says what they can and can't do, and writes the offer to send before the knock.</p>`,
   },
+  {
+    slug: "not-how-much-it-went-up",
+    title: "Not How Much It Went Up, but What It Would Let For",
+    date: "2026-11-02",
+    excerpt:
+      "A rent rise feels fair or unfair by its percentage. But the percentage is measured from last year's rent, and the question that decides a challenge is what the home would let for today.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>The notice says the rent on the flat goes from £1,150 to £1,295 a month. Up 12.6%. The first thing almost everyone does is judge that percentage. Twelve per cent sounds a lot. Five would sound fine. Then they pay it, because the alternative, arguing with the person who can make you move, feels worse than the money.</p>
+
+<p>Both moves are understandable. And both are measured from the wrong place.</p>
+
+<h2>The wrong yardstick</h2>
+
+<p>In 1981 Amos Tversky and Daniel Kahneman asked people whether they'd drive twenty minutes to another shop to save $5. Far more said yes when the item cost $15 than when it cost $125. The saving was the same; what changed was the number it was measured against. We judge amounts as a share of whatever number is nearest to hand.</p>
+
+<p>For a rent rise, the number nearest to hand is last year's rent. That's why the percentage feels like the test. But last year's rent is an accident of history: when you moved in, how keen the landlord was to fill the place, how many years they let it drift. A 12.6% rise on a rent that had fallen well below the market can be fair. A 4% rise on a rent that was already above it isn't. The percentage tells you how much your rent has changed. It says nothing about whether the new figure is right.</p>
+
+<p>And the landlord's figure does a second thing: it anchors. Once £1,295 is on the table, your sense of a reasonable rent moves towards it, even if you'd never have guessed that number on your own. The standard counter to anchoring is to make your own estimate before you look at theirs. With rent, that's easy, because the market publishes its own.</p>
+
+<h2>The right question</h2>
+
+<p>In England, the question a tribunal asks about a rent increase is: what would this home let for on the open market, in its current condition? Not what you paid before, and not what the landlord needs to cover a mortgage. So that's the question to answer first. Find four or five homes like yours (same bedrooms, same kind of place, close by) that are listed now or were let in the last few months. Take the middle one, not the average, so one odd listing can't drag the answer around. Screenshot each, because listings vanish.</p>
+
+<p>Then compare. If the new rent sits at or below the middle, it's probably fair, however large the jump, and the useful lever is whatever needs fixing: the tribunal values the home as it is, damp and all. If it sits clearly above, you have evidence, and evidence is what a landlord who wants to keep a good tenant responds to.</p>
+
+<h2>What changed in May</h2>
+
+<p>The second half of the hesitation was the risk of arguing. Until this year, that risk was real: a tribunal could set a rent higher than the landlord had asked for, and backdate it. Challenging was a gamble.</p>
+
+<p>Since 1 May 2026, under the Renters' Rights Act, it mostly isn't. An increase has to come on the official form (Form 4A), with two months' notice, starting on a rent day, no more than once a year. A text or an email doesn't do it. If you apply to the tribunal before the new rent starts, it can't set the rent above the figure in the notice, and the new rent runs from its decision rather than being backdated. And with no-fault evictions gone, a landlord needs a legal ground to end the tenancy; a tenant using their rights isn't one.</p>
+
+<p>So the shape of the decision has changed. The worst case of challenging an increase that's above the market is roughly the outcome of accepting it, a little later, plus your time. That isn't a reason to challenge every rise; a rent that's at the market will probably be confirmed, and you still have to live with your landlord. It's a reason to stop treating "just pay it" as the safe option by default, and to send the evidence and an offer first.</p>
+
+<h2>The line</h2>
+
+<p>The general habit is worth more than the rent. When someone changes a price on you, the size of the change is the least useful thing about it. Ask what the thing is worth now, from a source that isn't the person asking, before you look at their number again.</p>
+
+<p>The line to keep: <em>when the rent goes up, I check the notice before the number, and the number against what similar homes let for, not against what I paid last year. If I'm going to challenge it, I apply before the start date.</em></p>
+
+<p>There's a <a href="/rent">tool for this</a> on the site, for private renters in England. You say how the landlord told you and when, and enter the rents of a few similar homes. It checks the notice, shows where the new rent sits against those homes, dates the last day to ask the tribunal, and writes the letter.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

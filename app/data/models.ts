@@ -253,7 +253,7 @@ export const models: Model[] = [
     tagline: "The first number we encounter disproportionately influences our estimates, even when it's irrelevant.",
     explanation:
       "Tell someone the Ganges River is 2,000 miles long before asking them to estimate the Nile's length, and their guess will be lower than if you'd said the Ganges is 5,000 miles — even though the Ganges has nothing to do with the Nile. Anchoring affects salary negotiations, price perception, and judicial sentencing. The counteraction: generate your own estimate before encountering external figures, and be especially suspicious of the first number offered in any negotiation.",
-    essays: ["anchoring", "one-debt-at-a-time", "charge-for-the-life-that-was-left"],
+    essays: ["anchoring", "one-debt-at-a-time", "charge-for-the-life-that-was-left", "not-how-much-it-went-up"],
   },
   {
     id: "independent-judgments",
@@ -316,7 +316,7 @@ export const models: Model[] = [
     tagline: "A saving feels big or small as a share of the price, but your time can't tell the difference: five pounds is five pounds.",
     explanation:
       "Amos Tversky and Daniel Kahneman (Science, 1981) asked people whether they'd drive 20 minutes to another branch to save $5 on a calculator. Far more said yes when the calculator cost $15 than when it cost $125, though the saving and the drive were identical. People judge a saving as a share of the price, not as an amount. The result is a pattern most of us follow without noticing: crossing town for a few pounds off something cheap, and waving through hundreds on a car, a house or a wedding because they're a small slice of a big number. Time makes it worse. Ritesh Saini and Ashwani Monga (Journal of Consumer Research, 2008) found that decisions about spending time lean more on rough rules of thumb than decisions about spending money, because time is harder to account for; the difference disappeared when people were prompted to account for it. The correction is to put both sides in one unit: divide the money by the hours to get the trade's price per hour, and set that against what an hour like that is worth to you. That's what an hour of commuting or cleaning is worth, not your wage, unless you could really work the hour for pay. Ashley Whillans and colleagues (PNAS, 2017) found that people who spent money to buy time were more satisfied with their lives, yet few think to. One caution runs the other way: Sanford DeVoe and Julian House (JESP, 2012) found people prompted to think of their hourly wage enjoyed their free time less, so set the number once and reuse it rather than pricing every hour. The tool Is It Worth the Time? runs the sum on a trade of your own.",
-    essays: ["an-hour-has-a-price"],
+    essays: ["an-hour-has-a-price", "not-how-much-it-went-up"],
   },
   {
     id: "probability-weighting",

@@ -350,6 +350,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "The rent's going up: pay it or challenge it?",
+    href: "/rent",
+    snippet:
+      "A landlord's notice of a new rent in England. Check it's valid under the May 2026 rules, see where the new rent sits against similar homes, and get the last day to ask the tribunal and the letter to send.",
+    meta: "Rent increase — section 13 notice",
+    titleText:
+      "rent increase rent rise rent going up landlord putting rent up landlord raising rent new rent notice section 13 section 13 notice form 4a form 4 landlord's notice proposing a new rent challenge rent increase dispute rent increase appeal rent increase rent tribunal first-tier tribunal property chamber market rent market rent determination form mr1 renters' rights act renters rights act 1 may 2026 two months notice once a year 52 weeks rent review clause periodic tenancy assured tenancy assured shorthold tenancy section 21 abolished no fault eviction retaliatory eviction letting agent comparable rents similar homes rightmove zoopla is my rent increase fair how much can my landlord increase rent lodger housing association rent increase".toLowerCase(),
+    bodyText:
+      "the rent's going up: pay it or challenge it? (/rent): the instrument for a private landlord's notice of a new rent in england. since 1 may 2026 (renters' rights act, amending section 13 of the housing act 1988) the only way to raise the rent on a periodic assured tenancy is a section 13 notice on form 4a with at least two months' notice, starting at the beginning of a rent period, and no sooner than 52 weeks after the last increase or the start of the tenancy; rent review clauses, texts, emails and letters in the landlord's own words don't do it, and notices on the old form 4 served before 1 may still stand. the tenant can apply to the first-tier tribunal (property chamber) on form mr1 for a market rent determination, but only before the new rent starts; for applications after 1 may 2026 the tribunal can't set a rent higher than the notice, the new rent runs from its decision and isn't backdated, and it can delay it by up to two months for undue hardship. section 21 no-fault evictions have ended. the tool checks the notice, then compares the new rent with the median of up to five similar homes you found (weekly or four-weekly rents converted), says whether it's above, about or below the market, shows what each month of the tribunal's wait is worth, dates the last day to apply with a calendar file (.ics), and writes the letter: why the notice doesn't work, the reply to a text or email, your evidence and an offer, or the note that you've applied. wales, scotland (rent officer within 21 days), northern ireland, social housing and lodgers get a pointer. includes a worked example: £1,150 a month to £1,295 with four similar flats around £1,210. nothing is sent anywhere. pairs with the relative thinking and anchoring models and the essay not how much it went up, but what it would let for.",
+  },
+  {
+    type: "Tool",
     title: "A bailiff's letter: what can they actually do?",
     href: "/bailiff",
     snippet:
