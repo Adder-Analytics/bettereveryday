@@ -460,6 +460,18 @@ export const tools: Tool[] = [
     essays: ["the-fee-schedule-is-a-clock"],
   },
   {
+    id: "rent",
+    href: "/rent",
+    name: "The Rent's Going Up: Pay It or Challenge It?",
+    short: "Rent increase",
+    when: "The landlord or the agent says the rent goes up in a couple of months. It feels like a lot, but you don't know whether it's unfair, and you don't want to be the tenant who makes trouble, so you're about to pay it.",
+    ask: "Is the notice valid, is the new rent above what similar homes let for, and what do I send before it starts?",
+    does: "Checks the notice before the number under the rules in force in England since 1 May 2026 (Form 4A, two months' notice, starting on a rent day, once every 52 weeks; a text or email isn't one). Then puts the new rent against what similar homes nearby let for, not against last year's rent, and says whether to accept, negotiate or ask the tribunal, which can no longer set the rent higher than the landlord asked, or backdate it. Dates the last day to apply, with a calendar file, and writes the letter: why the notice doesn't work, your evidence and an offer, or the note that you've applied.",
+    payoff: "now",
+    models: ["relative-thinking", "anchoring"],
+    essays: ["not-how-much-it-went-up"],
+  },
+  {
     id: "sell",
     href: "/sell",
     name: "Sell It, Keep It, or Let It Go?",
@@ -722,8 +734,8 @@ export const toolGroups: ToolGroup[] = [
     id: "money-letters",
     title: "A letter, bill or message wants money — or you're owed some",
     blurb:
-      "A parking ticket, a catch-up bill, a collector chasing an old debt, a bailiff's letter, a deposit the landlord's keeping, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
-    toolIds: ["scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff"],
+      "A parking ticket, a catch-up bill, a rent increase, a collector chasing an old debt, a bailiff's letter, a deposit the landlord's keeping, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
+    toolIds: ["scam", "refund", "flight", "deposit", "rent", "parking", "catchup", "collector", "bailiff"],
   },
   {
     id: "money-calls",

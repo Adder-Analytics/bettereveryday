@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff", "rent"],
       },
     ],
     choices: [
@@ -700,6 +700,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "debts",
             note: "If there are other debts too, council tax and fines come first; put the rest side by side.",
+          },
+        },
+      },
+      {
+        id: "rent",
+        label: "The landlord says the rent's going up.",
+        detail: "A notice, a letter or a text about a new rent from a date in a month or two, and I'm about to just pay it.",
+        rec: {
+          toolId: "rent",
+          because:
+            "Since 1 May 2026 in England, an increase has to come on the official form, with two months' notice, once a year, and a tribunal asked before the start date can't set the rent higher than the landlord did. It checks the notice, puts the new rent against similar homes rather than last year's rent, dates the last day to apply and writes the letter.",
+          then: {
+            toolId: "walkaway",
+            note: "If you'd rather negotiate, set your line first: what moving would really cost you decides the most you'd agree to.",
           },
         },
       },

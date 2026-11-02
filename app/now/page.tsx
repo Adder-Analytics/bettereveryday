@@ -78,6 +78,30 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The agent says the rent goes from £1,150 to £1,295 a month.{" "}
+              <Link
+                href="/rent"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                The rent&rsquo;s going up
+              </Link>{" "}
+              checks the notice under the rules that changed in England in May
+              2026, then puts the new rent{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                against what similar homes let for
+              </span>
+              , not against last year&rsquo;s rent. It dates the last day to
+              ask the tribunal, which can no longer set it higher than the
+              landlord asked, and writes the offer. A new{" "}
+              <Link
+                href="/writing/not-how-much-it-went-up"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              is about why the percentage is the wrong test.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A &ldquo;notice of enforcement&rdquo; for £640 of council tax,
               £79 already added, and a bailiff due to call.{" "}
               <Link
@@ -139,31 +163,6 @@ export default function Now() {
               </span>{" "}
               first: the parking ticket, the refund, the deposit, the flight,
               the catch-up bill and the message that might be a scam.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The smart meter went quiet, the estimates ran low, and twenty
-              months later one bill asks for £1,840.{" "}
-              <Link
-                href="/catchup"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                A catch-up energy bill
-              </Link>{" "}
-              checks{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                one date before the total
-              </span>
-              : energy used more than 12 months before the bill usually
-              can&rsquo;t be charged. It splits the bill at that date, writes
-              the complaint, sizes the repayment plan and dates the ombudsman.
-              A new{" "}
-              <Link
-                href="/writing/whose-delay-was-it"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              explains why.
             </li>
           </ul>
         </section>

@@ -4,4 +4,4 @@
  * homepage, which made a site changed yesterday say it had been quiet for weeks.
  * Bump it with each change that ships.
  */
-export const SITE_UPDATED = "November 1, 2026";
+export const SITE_UPDATED = "November 2, 2026";
