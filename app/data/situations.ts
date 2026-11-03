@@ -1214,6 +1214,28 @@ export const situations: Situation[] = [
     essays: ["not-how-much-it-went-up"],
   },
   {
+    id: "redundancy-offer",
+    title: "You're being made redundant",
+    scene:
+      "Eight years in the job, £38,000 a year. HR confirms your role is going, with a month's pay in lieu of notice, and slides a settlement agreement across the table: £16,000 if you sign within the week. It's about four months' salary. It sounds like a lot, and you'd like this to be over.",
+    question: "Is this a good offer, and should I sign?",
+    models: [
+      {
+        id: "mental-accounting",
+        move: "Don't judge the total as one windfall. Split it into jars: what the law owes you anyway (redundancy pay, notice, holiday) and what's on top. Only the jar on top is being paid for your signature.",
+      },
+      {
+        id: "batna",
+        move: "Your alternative to signing isn't nothing. It's everything you're owed by law, plus any claim you keep. Work that out before you judge the offer against it.",
+      },
+    ],
+    tool: {
+      id: "redundancy",
+      move: "This is the moment the tool is built for. It works out the three lines owed by law on the 2026 rates, splits the offer, turns it into months of your outgoings, dates the Acas deadline and writes the email asking for the breakdown.",
+    },
+    essays: ["the-price-of-your-signature"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1629,6 +1651,7 @@ export const situationGroups: SituationGroup[] = [
       "old-debt-letter",
       "bailiff-letter",
       "rent-going-up",
+      "redundancy-offer",
       "designing-incentives",
       "stubborn-system",
     ],

@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Eight years in the job, and a settlement agreement for £16,000
+              if you sign by Friday.{" "}
+              <Link
+                href="/redundancy"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Made redundant
+              </Link>{" "}
+              works out what the law owes you anyway (redundancy pay, notice,
+              holiday) on the 2026 rates, and{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                splits the offer into owed-anyway and on top
+              </span>
+              . Only the part on top is paying for your signature. It dates
+              the Acas deadline and writes the email asking for the
+              breakdown. A new{" "}
+              <Link
+                href="/writing/the-price-of-your-signature"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              is about why the total feels bigger than it is.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The agent says the rent goes from £1,150 to £1,295 a month.{" "}
               <Link
                 href="/rent"
@@ -148,21 +173,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               asks what the small ask is worth to them.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The toolkit was one list of thirty-eight. It&rsquo;s now{" "}
-              <Link
-                href="/tools"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                grouped by what&rsquo;s in front of you
-              </Link>
-              , with{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                a letter or bill that wants money
-              </span>{" "}
-              first: the parking ticket, the refund, the deposit, the flight,
-              the catch-up bill and the message that might be a scam.
             </li>
           </ul>
         </section>

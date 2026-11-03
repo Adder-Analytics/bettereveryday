@@ -350,6 +350,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Made redundant: is the money right?",
+    href: "/redundancy",
+    snippet:
+      "Your job's going and there's a figure on the table. Work out what the law owes you anyway, how much of the offer is on top, the dates that matter and the email asking for the breakdown.",
+    meta: "Redundancy pay — notice, holiday, settlement agreement",
+    titleText:
+      "redundancy redundant made redundant being made redundant redundancy pay statutory redundancy pay redundancy calculator redundancy payment enhanced redundancy at risk letter redundancy consultation selection criteria unfair selection settlement agreement compromise agreement severance severance pay termination payment pay in lieu of notice pilon garden leave notice pay holiday pay untaken holiday accrued holiday £30,000 tax free redundancy tax weekly cap £751 £783 acas early conciliation employment tribunal unfair dismissal laid off job loss lost my job layoffs insolvent employer administration liquidation redundancy payments service rp1 is my redundancy pay right".toLowerCase(),
+    bodyText:
+      "made redundant: is the money right? (/redundancy): the instrument for a redundancy letter and the figure that comes with it, for employees in great britain and northern ireland. three lines are owed by law whether or not you sign anything: statutory redundancy pay (employment rights act 1996 s.162: half a week's pay for each full year of service under 22, one week from 22 to 40, a week and a half from 41, counting back at most 20 years, with a week's pay capped at £751 in great britain and £783 in northern ireland from 6 april 2026, £719 before; two years' service needed), notice pay (the statutory minimum is a week per full year up to twelve, and often beats the contract; if they pay in lieu, the statutory notice still counts towards service under s.145(5), which can add a year or reach two) and holiday built up and not taken (5.6 weeks a year). the tool splits any offer into owed-anyway and on top, so a settlement agreement is judged by the part that pays for your signature; shows the £30,000 tax-free band for redundancy compensation (notice in lieu and holiday are taxed as pay); and turns the total into months of your outgoings. it dates the acas early conciliation deadline (six months less a day for employment ending from 1 october 2026 under the employment rights act 2025, three months before; labour relations agency in northern ireland), notes that unfair dismissal needs six months' service rather than two years where employment ends from 1 january 2027, and writes the email asking for a written breakdown and the reply to a settlement agreement (independent advice paid for, ten days to consider under the acas code). an insolvent employer gets the redundancy payments service's capped figures. includes a worked example: eight years at £38,000, age 46, £16,000 offered to sign, of which most was owed anyway. nothing is sent anywhere. pairs with the batna and mental accounting models and the essay the price of your signature.",
+  },
+  {
+    type: "Tool",
     title: "The rent's going up: pay it or challenge it?",
     href: "/rent",
     snippet:
