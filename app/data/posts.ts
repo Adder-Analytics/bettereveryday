@@ -2973,6 +2973,48 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/rent">tool for this</a> on the site, for private renters in England. You say how the landlord told you and when, and enter the rents of a few similar homes. It checks the notice, shows where the new rent sits against those homes, dates the last day to ask the tribunal, and writes the letter.</p>`,
   },
+  {
+    slug: "the-price-of-your-signature",
+    title: "The Price of Your Signature",
+    date: "2026-11-03",
+    excerpt:
+      "A redundancy offer arrives as one number, and one number of a few months' pay feels like a lot. Split it into what the law owes you anyway and what's on top, and only one part is paying for anything.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>The meeting is short. Your role is going. HR slides a letter across the table: £16,000, if you sign the settlement agreement by Friday. It's about four months' salary. It sounds like a lot, you'd like this to be over, and arguing about money with the people who've just let you go feels petty.</p>
+
+<p>So most people judge the number by how big it feels, and sign.</p>
+
+<h2>Why the total feels bigger than it is</h2>
+
+<p>In 2016 Daniel Goldstein, Hal Hershfield and Shlomo Benartzi showed people the same retirement savings two ways: as a lump sum, or as the monthly income it would buy. At the smaller amounts, the lump sum felt more adequate. $100,000 sounds like a cushion; $639 a month sounds like what it is. They called it the illusion of wealth. A redundancy payment is exactly the kind of sum it works on: a few thousand to a few tens of thousands, arriving all at once, at a moment when you want to feel that things are all right.</p>
+
+<p>The first correction is simple. Divide the total by what you spend in a month. £16,000 against £2,100 of outgoings is seven or eight months, before tax and before you've found anything. That's useful, and it isn't the same feeling as "£16,000".</p>
+
+<h2>The total hides the question</h2>
+
+<p>The second problem is bigger. The total mixes two kinds of money. Richard Thaler's mental accounting describes how we sort money into jars and judge each spend against its own jar. Here, the trick is to open more jars, not fewer.</p>
+
+<p>Some of that £16,000 is owed to you by law whether you sign or not. In Great Britain, with two years' service, there's statutory redundancy pay: a week's pay for each full year from 22 to 40, a week and a half from 41, with a week's pay capped at £751 from April 2026. There's notice, and the legal minimum (a week for every full year, up to twelve) often beats what the contract says. If they pay it in lieu, those statutory weeks still count towards your service. And there's the holiday you've built up and not taken. None of this is a favour. You'd get it if you tore the agreement up.</p>
+
+<p>Run the example. Eight years, age 46, £38,000: about £7,700 of redundancy pay, eight weeks' notice worth about £5,800 (not the month the letter said), and nine days of holiday, about £1,300. Roughly £14,800 owed anyway. So the agreement isn't paying £16,000 for your signature. It's paying about £1,200. That's the price being offered for giving up any claim about how you were picked, whether you were consulted, whether something else was going on.</p>
+
+<p>Sometimes £1,200 is a fair price for that, because you have no claim worth the name. Sometimes the offer is less than what's owed, and the problem is one missing line. And sometimes, once you look, you were the only person in your selection pool, and the price looks very different. But you can't tell which without the split. The total gives you no way to judge.</p>
+
+<h2>What you'd get without the deal</h2>
+
+<p>Negotiators call it your BATNA: the best alternative to a negotiated agreement. The alternative to signing isn't nothing. It's everything the law already gives you, plus whatever claims you keep. That's the number to beat, and it's usually most of the offer. Working it out turns "is this generous?" into "is the extra worth what I'm giving up?". You can answer that, with an adviser the employer usually pays for anyway. A settlement agreement isn't binding without one. And the Acas Code suggests you get at least ten days to decide, not until Friday.</p>
+
+<p>The rules are getting more generous, which makes the split matter more. For jobs ending from 1 October 2026 you have six months, not three, to start a tribunal claim. For jobs ending from 1 January 2027, six months' service is enough for unfair dismissal protection, and the cap on compensation goes. More of what you'd give up by signing is worth something.</p>
+
+<h2>The line</h2>
+
+<p>The general habit is worth keeping beyond redundancy. When someone offers you one number in exchange for giving something up, split it into what you'd get anyway and what's actually on the table. Only the second part is the offer.</p>
+
+<p>The line to keep: <em>when I'm made redundant, I split the money before I judge it: what the law owes me anyway, and what's on top. If I'm asked to sign, only the part on top is the price of my signature.</em></p>
+
+<p>There's a <a href="/redundancy">tool for this</a> on the site. You enter your dates, your pay and the offer. It works out each line owed by law, shows how much of the offer is on top and how many months it covers, dates the deadlines, and writes the email asking for the breakdown.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

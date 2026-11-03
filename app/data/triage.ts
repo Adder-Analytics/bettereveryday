@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff", "rent"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff", "rent", "redundancy"],
       },
     ],
     choices: [
@@ -714,6 +714,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "walkaway",
             note: "If you'd rather negotiate, set your line first: what moving would really cost you decides the most you'd agree to.",
+          },
+        },
+      },
+      {
+        id: "redundancy",
+        label: "I'm being made redundant and there's a figure on the table.",
+        detail: "A redundancy letter, a payment, maybe a settlement agreement to sign, and no idea whether the number is right.",
+        rec: {
+          toolId: "redundancy",
+          because:
+            "Three lines are owed by law whether or not you sign anything: statutory redundancy pay (with two years' service), notice and untaken holiday. It works them out on the 2026 rates, splits the offer into owed-anyway and on top, dates the Acas deadline and writes the email asking for the breakdown.",
+          then: {
+            toolId: "walkaway",
+            note: "If there's a package to negotiate, set your line first: what you'd get by not signing is your alternative.",
           },
         },
       },

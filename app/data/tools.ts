@@ -472,6 +472,18 @@ export const tools: Tool[] = [
     essays: ["not-how-much-it-went-up"],
   },
   {
+    id: "redundancy",
+    href: "/redundancy",
+    name: "Made Redundant: Is the Money Right?",
+    short: "Redundancy pay",
+    when: "Your role is going and a figure has arrived, maybe with a settlement agreement to sign. It sounds like a lot, a few months' pay, but you can't tell which parts you'd get anyway and which part they're paying you to sign for.",
+    ask: "What does the law owe me whether or not I sign, how much of the offer is on top, and what do I send before I agree?",
+    does: "Works out the three lines owed by law on the rates from 6 April 2026: statutory redundancy pay by age and full years (the £751 weekly cap, £783 in Northern Ireland), notice (the legal minimum often beats the contract, and still counts towards your service when they pay in lieu) and holiday not taken. Splits any offer into owed-anyway and on top, so a settlement agreement is judged by the part that pays for your signature, shows the £30,000 tax-free band, and turns the total into months of your outgoings. Dates the Acas deadline (six months for jobs ending from 1 October 2026) and writes the email asking for the breakdown and the reply to a settlement agreement. An insolvent employer gets the government scheme's capped figures.",
+    payoff: "now",
+    models: ["batna", "mental-accounting"],
+    essays: ["the-price-of-your-signature"],
+  },
+  {
     id: "sell",
     href: "/sell",
     name: "Sell It, Keep It, or Let It Go?",
@@ -734,8 +746,8 @@ export const toolGroups: ToolGroup[] = [
     id: "money-letters",
     title: "A letter, bill or message wants money — or you're owed some",
     blurb:
-      "A parking ticket, a catch-up bill, a rent increase, a collector chasing an old debt, a bailiff's letter, a deposit the landlord's keeping, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
-    toolIds: ["scam", "refund", "flight", "deposit", "rent", "parking", "catchup", "collector", "bailiff"],
+      "A parking ticket, a catch-up bill, a rent increase, a redundancy offer, a collector chasing an old debt, a bailiff's letter, a deposit the landlord's keeping, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
+    toolIds: ["scam", "refund", "flight", "deposit", "rent", "redundancy", "parking", "catchup", "collector", "bailiff"],
   },
   {
     id: "money-calls",
