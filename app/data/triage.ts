@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff", "rent", "redundancy"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff", "rent", "redundancy", "leaving"],
       },
     ],
     choices: [
@@ -728,6 +728,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "walkaway",
             note: "If there's a package to negotiate, set your line first: what you'd get by not signing is your alternative.",
+          },
+        },
+      },
+      {
+        id: "leaving",
+        label: "I've left a job and I'm not sure the last pay is right.",
+        detail: "Resigned or let go, and the final payslip has a holiday line, maybe a deduction, and numbers you can't check.",
+        rec: {
+          toolId: "leaving",
+          because:
+            "Holiday you built up and didn't take has to be paid, at a day's real pay (salary over the days you work, not over 365). It works that out, adds any notice cut short, checks each deduction against what you signed, dates the Acas deadline and writes the email.",
+          then: {
+            toolId: "monthly",
+            note: "If there's a gap before the next job, see which monthly costs are worth keeping meanwhile.",
           },
         },
       },

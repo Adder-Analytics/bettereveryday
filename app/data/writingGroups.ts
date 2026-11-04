@@ -88,6 +88,7 @@ const essayGroups: EssayGroup[] = [
       "the-fee-schedule-is-a-clock",
       "not-how-much-it-went-up",
       "the-price-of-your-signature",
+      "check-the-denominator",
       "future-you-is-not-less-busy",
       "metric-not-the-mission",
       "second-order-thinking",

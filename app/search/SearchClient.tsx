@@ -350,6 +350,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Leaving a job: is your last pay right?",
+    href: "/leaving",
+    snippet:
+      "You've left a job and the final payslip is in. Check the holiday you'd built up at a day's real pay, any notice cut short, and every deduction. Get the email and the deadline.",
+    meta: "Final pay — holiday pay, notice, deductions",
+    titleText:
+      "final pay final payslip last payslip last pay leaving a job left my job resigned resignation quit my job sacked dismissed fired let go gross misconduct fixed term contract ended holiday pay accrued holiday untaken holiday holiday pay on leaving payment in lieu of holiday day rate 260 365 calendar days working days salary divided by 365 holiday pay calculation irregular hours zero hours 12.07% rolled-up holiday pay notice pay notice not worked pay in lieu of notice deductions from wages unlawful deduction training costs clawback repay training uniform deduction overpayment taken holiday deduction minimum wage £12.71 p45 acas early conciliation employment tribunal is my final pay right".toLowerCase(),
+    bodyText:
+      "leaving a job: is your last pay right? (/leaving): the instrument for the final payslip, for employees and workers in great britain and northern ireland. holiday built up and not taken has to be paid on leaving (working time regulations 1998 reg 14): the proportion of the leave year worked times the year's entitlement (at least 5.6 weeks, capped at 28 days), plus any carried over, less what was taken. there's no exception for gross misconduct. a day's holiday is a day's pay: for a salaried worker, the salary over the days actually worked (about 260 a year on five days a week), not over 365 calendar days, which pays each day about 29% less; unless the contract sets its own formula, that's the reading the courts have used (leisure leagues v maconnachie, eat 2002; hartley v king edward vi college, uksc 2017). the tool shows the day rate both ways and checks the payslip's. irregular-hours and part-year workers build up 12.07% of hours worked for leave years from 1 april 2024, unless holiday pay was rolled up into each payslip. it adds notice cut short (the legal minimum is a week per full year up to twelve when the employer gives notice) and days not paid. each deduction is judged: it needs a written contract term or your written agreement before it was made (employment rights act 1996 s.13); overpaid wages are the exception (s.14); taking back holiday taken early needs a written agreement and can't exceed its value; training and kit deductions can't take pay below the minimum wage (£12.71 an hour from april 2026); not working notice doesn't forfeit wages already earned. it dates the acas early conciliation deadline (six months less a day for pay dates from 1 october 2026 under the employment rights act 2025, three months before; labour relations agency in northern ireland) and writes the email asking payroll to check it, then the formal unlawful deduction letter. includes a worked example: six days of holiday at salary over 365 and £450 taken for a course, about £717 short. nothing is sent anywhere. pairs with the denominator neglect model and the essay check the denominator.",
+  },
+  {
+    type: "Tool",
     title: "Made redundant: is the money right?",
     href: "/redundancy",
     snippet:

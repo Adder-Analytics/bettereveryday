@@ -3015,6 +3015,46 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/redundancy">tool for this</a> on the site. You enter your dates, your pay and the offer. It works out each line owed by law, shows how much of the offer is on top and how many months it covers, dates the deadlines, and writes the email asking for the breakdown.</p>`,
   },
+  {
+    slug: "check-the-denominator",
+    title: "Check the Denominator",
+    date: "2026-11-04",
+    excerpt:
+      "The last payslip pays six days of holiday at £85.48 a day. It's exact to the penny, so it looks right. The salary on top of that fraction is right. The 365 underneath it isn't.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>You've left a job. The last payslip arrives with a line you don't usually see: <em>Holiday pay, 6 days, £512.88.</em> It's exact to the penny. Someone has clearly worked it out. You glance at it, it looks about right, and you spend it.</p>
+
+<p>It's about £270 short. Nothing on the line is a typo. The days are close and the salary is right. The money went missing in the one part of the sum nobody shows you.</p>
+
+<h2>A rate is a fraction</h2>
+
+<p>£85.48 is a salary of £31,200 divided by 365. A year has 365 days, so it feels like the natural number. But a salary isn't paid for 365 days. It's paid for the days you work: about 260 on five days a week. A day of holiday is meant to be a day's pay, and a day's pay is £31,200 divided by 260, which is £120. Divide by 365 and every day of holiday is paid about 29% less. Six days lose about £207, and in this case the payslip had also missed half a day.</p>
+
+<p>This isn't an obscure point. Unless the contract sets its own formula, the working-days reading is the one courts have used. The Employment Appeal Tribunal used working days for holiday pay on leaving in 2002, and the Supreme Court read a salary as pay for working days in 2017. Plenty of payroll still divides by 365, because it's the number everyone has in their head.</p>
+
+<h2>Why nobody checks the bottom</h2>
+
+<p>In 1994 Veronika Denes-Raj and Seymour Epstein offered people a small prize for drawing a red jellybean. They could pick from a small bowl with one red bean in ten, or a large bowl with, say, seven in a hundred. Many chose the large bowl, and some said they knew the odds were worse. Seven red beans just felt like more chances than one. We look at the top of a fraction, the count of the thing we want, and let the bottom slide. Psychologists call it denominator neglect.</p>
+
+<p>A payslip line is that bowl with the fraction already worked out. The top is your own salary, a number you know, so it gets checked. The bottom is a choice payroll made, and it never appears on the slip. All you see is the result, to the penny, and a precise number feels like a careful one.</p>
+
+<h2>It's everywhere a figure is "per" something</h2>
+
+<p>The same blind spot runs through most of the rates you're quoted. A car at "£289 a month" that runs for 49 months and ends in a balloon payment. A phone tariff whose monthly price only lasts until April. A cost per wear that assumes you'll wear the coat 200 times. A loan's "flat rate" that charges interest on money you've already paid back. In each, the top of the fraction is the number you're shown and the bottom is the number that decides it. The person quoting chose the bottom, and they had a reason.</p>
+
+<p>The fix isn't to get good at arithmetic. It's one question, asked out loud: <em>divided by what?</em> Then check that the bottom really counts the thing you're being paid or charged for. Days you work, not days in the year. Months you'll pay, not months on the poster.</p>
+
+<h2>The other half of the last payslip</h2>
+
+<p>The final payslip has a second habit worth knowing: it's where deductions turn up. A course they sent you on, the notice you didn't work, holiday you took early. The test there is simpler than any fraction. An employer can only take money from your wages if a written contract term or your written agreement made before the deduction allows it. Recovering an overpayment is the main exception. "We always do this" isn't a clause.</p>
+
+<h2>The line</h2>
+
+<p>The line to keep: <em>when I leave a job, I check the last payslip before I spend it: the holiday I'd built up, priced at a day's real pay (salary over working days, not over 365), any notice cut short, and every deduction against something I signed.</em></p>
+
+<p>There's a <a href="/leaving">tool for this</a> on the site. You enter how the job ended, your dates, your pay and what the payslip says. It works out what the final pay should include, shows the day rate both ways, judges each deduction, dates the deadline and writes the email.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

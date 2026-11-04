@@ -319,6 +319,15 @@ export const models: Model[] = [
     essays: ["an-hour-has-a-price", "not-how-much-it-went-up"],
   },
   {
+    id: "denominator-neglect",
+    name: "Denominator Neglect",
+    domain: "Psychology",
+    tagline: "Every rate is a fraction, and we check the top of it. The bottom is where the money goes.",
+    explanation:
+      "Veronika Denes-Raj and Seymour Epstein (JPSP, 1994) offered people a prize for drawing a red jellybean, from a small bowl with 1 red in 10 or a large bowl with, say, 7 red in 100. Many chose the large bowl, and some said they knew the odds were worse but felt they had more chances. People attend to the numerator, the count of the thing they want, and neglect the denominator it's divided by. Valerie Reyna and Charles Brainerd (2008), reviewing the pattern they call denominator neglect, found it strongest in people less comfortable with numbers, but it catches almost anyone when the fraction is hidden inside a single figure. That is the everyday form. A day rate, a monthly price, a cost per use or an interest figure is a fraction someone else has already worked out, and the result looks exact to the penny, so it looks right. The top of the fraction is usually familiar (your salary, the price) and gets checked. The bottom (days, months, uses) is a choice the person quoting made, and nobody checks it. On a final payslip, a salary divided by 365 calendar days instead of the 260 or so days actually worked pays each day of holiday about 29% less. The correction is a habit, not a calculation: when a figure is a rate, ask what it was divided by, and whether that is the right count of the thing you're being paid or charged for. The tool Leaving a Job: Is Your Last Pay Right? runs it on a final payslip.",
+    essays: ["check-the-denominator"],
+  },
+  {
     id: "probability-weighting",
     name: "Probability Weighting",
     domain: "Psychology",

@@ -78,6 +78,32 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The last payslip pays six days of holiday at £85.48 a day, and
+              takes £450 for a course.{" "}
+              <Link
+                href="/leaving"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Leaving a job
+              </Link>{" "}
+              works out what the final pay should include and checks{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                the day rate
+              </span>
+              : a salary over the days you work, not over 365, which pays each
+              day about 29% less. It judges each deduction against what you
+              signed, dates the Acas deadline and writes the email. It sits
+              with the redundancy tool in a new group for a job that&rsquo;s
+              ending. A new{" "}
+              <Link
+                href="/writing/check-the-denominator"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              is about checking what a rate was divided by.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Eight years in the job, and a settlement agreement for £16,000
               if you sign by Friday.{" "}
               <Link
@@ -149,30 +175,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               is about the urge not to open the letter.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A company that bought a store card debt from seven years ago
-              wants £1,260, or &ldquo;£1 a month to show goodwill&rdquo;.{" "}
-              <Link
-                href="/collector"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                An old debt, a new letter
-              </Link>{" "}
-              checks{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                when you last paid
-              </span>{" "}
-              against the six-year limit (five in Scotland), writes the
-              statute-barred or prove-it letter, and dates any court deadline,
-              because a limit is a defence you have to raise. A new{" "}
-              <Link
-                href="/writing/what-is-the-small-ask-worth-to-them"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              asks what the small ask is worth to them.
             </li>
           </ul>
         </section>
