@@ -484,6 +484,18 @@ export const tools: Tool[] = [
     essays: ["the-price-of-your-signature"],
   },
   {
+    id: "leaving",
+    href: "/leaving",
+    name: "Leaving a Job: Is Your Last Pay Right?",
+    short: "Final pay",
+    when: "You've left a job, or you're about to, and the last payslip is the one nobody checks. It has a holiday line, maybe a deduction for training or notice, and you can't tell whether the numbers are right.",
+    ask: "What should the final pay include, does the payslip match, and can they take that deduction?",
+    does: "Works out the holiday you built up and didn't take (at a day's real pay: your salary over the days you work, not over 365, which pays each day about 29% less; or 12.07% of hours for irregular hours), any notice cut short and any days not paid, and checks them against the payslip. Judges each deduction against the rule that it needs a written term or your written agreement first, with overpayments the exception and the minimum wage as a floor. Dates the Acas deadline (six months for pay dates from 1 October 2026) and writes the email asking them to check it, then the formal one if they don't.",
+    payoff: "now",
+    models: ["denominator-neglect"],
+    essays: ["check-the-denominator"],
+  },
+  {
     id: "sell",
     href: "/sell",
     name: "Sell It, Keep It, or Let It Go?",
@@ -746,8 +758,15 @@ export const toolGroups: ToolGroup[] = [
     id: "money-letters",
     title: "A letter, bill or message wants money — or you're owed some",
     blurb:
-      "A parking ticket, a catch-up bill, a rent increase, a redundancy offer, a collector chasing an old debt, a bailiff's letter, a deposit the landlord's keeping, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
-    toolIds: ["scam", "refund", "flight", "deposit", "rent", "redundancy", "parking", "catchup", "collector", "bailiff"],
+      "A parking ticket, a catch-up bill, a rent increase, a collector chasing an old debt, a bailiff's letter, a deposit the landlord's keeping, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
+    toolIds: ["scam", "refund", "flight", "deposit", "rent", "parking", "catchup", "collector", "bailiff"],
+  },
+  {
+    id: "work",
+    title: "A job is ending",
+    blurb:
+      "You're being made redundant, or you've resigned or been let go, and the money on the way out is worked out by hand: the holiday you hadn't taken, notice cut short, deductions, redundancy pay, a settlement offer. These check each line against what the law gives you anyway, and write the email asking for the rest.",
+    toolIds: ["redundancy", "leaving"],
   },
   {
     id: "money-calls",

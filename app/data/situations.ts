@@ -1236,6 +1236,28 @@ export const situations: Situation[] = [
     essays: ["the-price-of-your-signature"],
   },
   {
+    id: "final-payslip",
+    title: "You've left a job and the last payslip is in",
+    scene:
+      "You resigned, worked your month's notice, and the final payslip has arrived: six days of holiday at £85.48 a day, and £450 off for a course they sent you on last year. It's exact to the penny, so it looks like someone checked it.",
+    question: "Is my final pay right, and can they take that money?",
+    models: [
+      {
+        id: "denominator-neglect",
+        move: "The day rate is a fraction. Your salary on top is right; check what it was divided by. A salary pays for the days you work, about 260 a year on five days a week, not 365.",
+      },
+      {
+        id: "mental-accounting",
+        move: "Don't treat the last payslip as a bonus to bank. Split it into what's owed (days worked, holiday built up, any notice cut short) and what's been taken, and check each jar on its own.",
+      },
+    ],
+    tool: {
+      id: "leaving",
+      move: "This is the moment the tool is built for. It works out the holiday and notice owed, shows the day rate both ways, judges each deduction against what you signed, dates the Acas deadline and writes the email.",
+    },
+    essays: ["check-the-denominator"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1652,6 +1674,7 @@ export const situationGroups: SituationGroup[] = [
       "bailiff-letter",
       "rent-going-up",
       "redundancy-offer",
+      "final-payslip",
       "designing-incentives",
       "stubborn-system",
     ],
