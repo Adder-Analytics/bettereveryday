@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff", "rent", "redundancy", "leaving"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff", "rent", "notice", "redundancy", "leaving"],
       },
     ],
     choices: [
@@ -714,6 +714,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "walkaway",
             note: "If you'd rather negotiate, set your line first: what moving would really cost you decides the most you'd agree to.",
+          },
+        },
+      },
+      {
+        id: "notice",
+        label: "The landlord has served a notice to leave.",
+        detail: "A notice, a letter or a text with a date to be out by, and I don't know if I have to go then.",
+        rec: {
+          toolId: "notice",
+          because:
+            "The date on a notice is the earliest a landlord can ask a court, not the day you have to leave, and since 1 May 2026 in England a notice has to be on Form 3A with a legal ground and the right notice. It checks the notice, lays out the earliest each step could come, works out the arrears figure that matters, and writes the letters to the landlord and the council.",
+          then: {
+            toolId: "debts",
+            note: "If rent arrears are part of it, see what to pay first: rent is a priority debt.",
           },
         },
       },

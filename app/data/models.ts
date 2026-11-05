@@ -235,7 +235,16 @@ export const models: Model[] = [
     tagline: "We look away from information when we expect it to be bad, which is exactly when it's most worth looking at.",
     explanation:
       "Niklas Karlsson, George Loewenstein and Duane Seppi (Journal of Risk and Uncertainty, 2009) found that investors in Sweden and the US logged in to check their portfolios less often when markets had fallen. A later study of 1.1 million investors' daily log-ins (Sicherman, Loewenstein, Seppi and Utkus, Review of Financial Studies, 2016) found the same pattern: attention dropped as fear rose. Checking feels like it makes bad news real, so we put it off, and for a portfolio that costs little, because nothing changes while you look away. The cost appears when the situation is moving on a schedule of its own: an unopened bill that gains a late fee, a court letter with a deadline, a bailiff's notice whose fees step up at fixed points. Then not looking isn't neutral; it's choosing the most expensive stage by default. The counter is to make the first look small and the next step concrete: open the letter only to find one date, decide one action before that date, and write it down. The tool A Bailiff's Letter does that for a notice of enforcement.",
-    essays: ["the-fee-schedule-is-a-clock"],
+    essays: ["the-fee-schedule-is-a-clock", "the-date-on-the-notice"],
+  },
+  {
+    id: "authority-bias",
+    name: "Authority Bias",
+    domain: "Psychology",
+    tagline: "A document that looks official gets obeyed for what it looks like, not for what it says.",
+    explanation:
+      "Stanley Milgram's obedience studies (Journal of Abnormal and Social Psychology, 1963) are the famous case: ordinary people kept following instructions from a man in a lab coat well past the point they were uneasy. The everyday version is quieter. Leonard Bickman (Journal of Applied Social Psychology, 1974) had a researcher stop passers-by on a New York street and ask them to pick up a bag or stand on the other side of a bus stop sign. People complied far more often when he wore a guard's uniform than when he wore ordinary clothes, though a guard has no power over either. We respond to the signs of authority, the uniform, the letterhead, the form number and the legal phrases, rather than to the authority itself. That's why a private parking charge is styled to look like a council penalty, and why a debt collector's letter talks about field agents. It's also why a tenant who gets a landlord's notice, printed on a government form and full of section numbers, reads its date as the day they have to be out. A notice is what one side has filled in. The decision belongs to a court, which hasn't seen it yet. The correction is to ask two questions of any official-looking paper: who actually has the power to make this happen, and what does this document say it is? A Form 3A says, in its own words, that it's the earliest date the landlord can start proceedings. The tool A Notice to Leave: Do You Have to Go? runs that check on a landlord's notice.",
+    essays: ["the-date-on-the-notice"],
   },
   {
     id: "goal-gradient",

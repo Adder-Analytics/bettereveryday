@@ -350,6 +350,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "A notice to leave: do you have to go?",
+    href: "/notice",
+    snippet:
+      "Your landlord in England has served a notice to leave. Check it against the May 2026 rules, see the earliest you could really have to leave, and get the letters to the landlord and the council.",
+    meta: "Notice to leave — section 8, Form 3A, eviction",
+    titleText:
+      "notice to leave eviction notice evicted eviction being evicted landlord wants me out landlord wants the house back landlord selling landlord moving in section 8 section 8 notice form 3a form 3 notice seeking possession section 21 form 6a no fault eviction renters' rights act renters rights act 1 may 2026 grounds for possession ground 1 ground 1a ground 6 ground 8 ground 8a ground 10 ground 11 ground 12 ground 14 rent arrears eviction three months arrears 13 weeks universal credit delay notice period four months four weeks two weeks first 12 months possession order possession claim n5 n119 n11r defence form hearing court bailiffs warrant of possession do i have to leave on the date illegal eviction locks changed council homelessness 56 days threatened with homelessness prevention duty housing options housing loss prevention advice service hlpas duty adviser deposit not protected".toLowerCase(),
+    bodyText:
+      "a notice to leave: do you have to go? (/notice): the instrument for a private landlord's notice to leave in england, under the renters' rights act rules in force from 1 may 2026. section 21 no-fault notices have ended, and a notice served before 1 may could only be taken to court by 31 july 2026. a landlord now needs a section 8 notice on form 3a, naming one or more grounds from schedule 2 of the housing act 1988, each with its own minimum notice: four months for selling (ground 1a), moving in (ground 1) or redevelopment (ground 6); four weeks for rent arrears (grounds 8, 8a, 10, 11); two weeks for breach of the tenancy or damage (12, 13, 15); none for anti-social behaviour (14, 7a). grounds 1 and 1a can't end a tenancy in its first 12 months, and the landlord can't re-let for 12 months after using them. the notice lapses if there's no court claim within 12 months. the date in the notice is the earliest the landlord can apply to court, not the day you have to leave: the first hearing is at least 28 days after a claim, a possession order usually gives 14 days (up to six weeks for exceptional hardship), and after that only bailiffs with a warrant can remove you; changing the locks without one is illegal eviction. the tool lays out each step at the earliest the law allows. ground 8 (mandatory) needs at least three months' rent (13 weeks for weekly rent) owed both at service and at the hearing, and universal credit delays don't count, so it works out how much takes you under the line. on most grounds a court can't order possession while a deposit is unprotected. the council owes a prevention duty once the date is within 56 days. writes the letter to the landlord (why the notice doesn't work, an offer on the arrears, or an acknowledgement) and to the council, with a calendar file (.ics). free help: housing loss prevention advice service, shelter, citizens advice. wales, scotland, northern ireland, social housing and lodgers get a pointer. includes a worked example: £950 a month, £3,100 behind, pay £251. nothing is sent anywhere. pairs with the authority bias model and the essay the date on the notice.",
+  },
+  {
+    type: "Tool",
     title: "Leaving a job: is your last pay right?",
     href: "/leaving",
     snippet:
