@@ -538,6 +538,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a redundancy offer being checked" : null),
   },
   {
+    key: "notice:v1",
+    tool: "A notice to leave: do you have to go?",
+    href: "/notice",
+    label: "The notice to leave you last checked",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "a notice to leave being checked" : null),
+  },
+  {
     key: "rent:v1",
     tool: "The rent's going up",
     href: "/rent",

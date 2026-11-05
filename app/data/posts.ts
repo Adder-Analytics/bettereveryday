@@ -3055,6 +3055,46 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/leaving">tool for this</a> on the site. You enter how the job ended, your dates, your pay and what the payslip says. It works out what the final pay should include, shows the day rate both ways, judges each deduction, dates the deadline and writes the email.</p>`,
   },
+  {
+    slug: "the-date-on-the-notice",
+    title: "The Date on the Notice",
+    date: "2026-11-05",
+    excerpt:
+      "A landlord's notice arrives on a government form, with section numbers and a date four weeks away. It reads like a deadline. It's the earliest day the landlord can ask a court, which hasn't seen it yet.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>The form is headed <em>Form 3A: Notice seeking possession</em>. It has your name and address, a list of numbered grounds, a paragraph of statute and, near the bottom, a date four weeks away. It looks like something a court sent. Most people who get one read that date the way you'd read a deadline on a summons: the day they have to be out.</p>
+
+<p>So they start looking at rooms they can't afford. Some stop paying the rent, because it feels over anyway. Some move out the week before, to save everyone the trouble, and find the council asking why they left a home they were still entitled to live in.</p>
+
+<h2>What the form actually says</h2>
+
+<p>Read it slowly and it tells you what it is. The date is the earliest the landlord can <em>start court proceedings</em>. It isn't an order. Nobody has decided anything yet. It's one side of a dispute, filled in by that side, on a form anyone can download.</p>
+
+<p>After that date the landlord has to make a claim. The court sets a hearing at least four weeks later. If a judge makes a possession order, it usually gives 14 days, and up to six weeks for exceptional hardship. If you're still there after that, the landlord has to apply for a warrant, and bailiffs give you a date. Only then do you have to be out. Even if every step happened at the soonest the rules allow, the four-week notice puts the earliest real date about ten weeks away, and in practice it's usually months.</p>
+
+<p>Doing anything else before that, like changing the locks, removing your things or cutting off the electricity, is illegal eviction, which is a crime.</p>
+
+<h2>Why the date wins anyway</h2>
+
+<p>In 1974 Leonard Bickman had a researcher stop people on a New York street and ask them to do small, pointless things: pick up a bag, stand somewhere else at a bus stop. When he wore a guard's uniform, far more people did as they were told, though a guard has no power over a pedestrian. We respond to the signs of authority (the uniform, the letterhead, the section numbers) rather than to whether anyone actually holds it. Psychologists call it authority bias, and official-looking paper is built to use it. A private parking charge is designed to look like a council fine for the same reason.</p>
+
+<p>A landlord's notice uses it without anyone meaning to. It's a real legal form, and serving it is a real legal step. But the power to make you leave sits with a judge who hasn't seen the case, and the form borrows that judge's authority before they've used it.</p>
+
+<h2>Where the leverage actually is</h2>
+
+<p>Since 1 May 2026 in England, the rules give a tenant more to stand on than most notices let on. No-fault section 21 notices have gone. A landlord needs a ground, and each ground has its own minimum notice: four months to sell or move in, which they can't use in your first year, and four weeks for rent arrears. A notice that gets those wrong doesn't work.</p>
+
+<p>For arrears, the rule that matters most is one almost nobody knows. The ground a court <em>must</em> follow needs at least three months' rent owed both when the notice was served and on the day of the hearing. Bring it under that line by the hearing, keep paying the rent, and the judge decides what's reasonable rather than having to evict. On £950 a month and £3,100 owed, the difference is £251. That's the opposite of what the date on the form makes people do. The next payment matters more than any before it.</p>
+
+<p>And the council's help starts from the notice, not the eviction. Once the date is within 56 days, it owes you help to keep the home or find another. You can ask before that.</p>
+
+<h2>The line</h2>
+
+<p>The line to keep: <em>when a notice to leave arrives, I check it before I pack: the form, the ground and the date. The date is when the landlord can ask a court, not when I have to go. I keep paying rent, contact the council and a free adviser, and only leave on a date I've chosen or a court has set.</em></p>
+
+<p>There's a <a href="/notice">tool for this</a> on the site. You enter what arrived, the dates and the grounds. It checks the notice, lays out the earliest each step could come, works out the arrears figure if there is one, and writes the letters to the landlord and the council.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

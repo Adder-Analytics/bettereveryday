@@ -472,6 +472,18 @@ export const tools: Tool[] = [
     essays: ["not-how-much-it-went-up"],
   },
   {
+    id: "notice",
+    href: "/notice",
+    name: "A Notice to Leave: Do You Have to Go?",
+    short: "Notice to leave",
+    when: "The landlord has served a notice saying they want the home back, with a date on it. It looks official, it reads like a deadline, and you're about to start packing, or to stop paying because it feels over anyway.",
+    ask: "Does this notice work, when could I really have to leave, and what do I send now?",
+    does: "Checks the notice under the rules in force in England since 1 May 2026: section 21 has gone; a section 8 has to be on Form 3A, name a ground and give that ground's notice (four months for selling or moving in, four weeks for arrears, two weeks for a breach); and selling or moving in can't end a tenancy in its first year. Then lays out the steps, each at the earliest the law allows, so the date on the notice reads as the earliest the landlord can ask a court, not the day you leave. For rent arrears it works out the figure that takes you under the three-month line the court has to follow. Writes the letter to the landlord (why it doesn't work, an offer on the arrears, or a calm acknowledgement) and the one to the council, which owes you help once the date is within 56 days.",
+    payoff: "now",
+    models: ["authority-bias", "ostrich-effect"],
+    essays: ["the-date-on-the-notice"],
+  },
+  {
     id: "redundancy",
     href: "/redundancy",
     name: "Made Redundant: Is the Money Right?",
@@ -758,8 +770,15 @@ export const toolGroups: ToolGroup[] = [
     id: "money-letters",
     title: "A letter, bill or message wants money — or you're owed some",
     blurb:
-      "A parking ticket, a catch-up bill, a rent increase, a collector chasing an old debt, a bailiff's letter, a deposit the landlord's keeping, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
-    toolIds: ["scam", "refund", "flight", "deposit", "rent", "parking", "catchup", "collector", "bailiff"],
+      "A parking ticket, a catch-up bill, a collector chasing an old debt, a bailiff's letter, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
+    toolIds: ["scam", "refund", "flight", "parking", "catchup", "collector", "bailiff"],
+  },
+  {
+    id: "renting",
+    title: "Renting: the rent, the deposit, a notice to leave",
+    blurb:
+      "The landlord is putting the rent up, wants the home back, or is keeping the deposit. The rules for private renters in England changed on 1 May 2026, and most letters from landlords lean on the old ones. These check the letter against the rules, date what matters, and write the reply.",
+    toolIds: ["rent", "notice", "deposit"],
   },
   {
     id: "work",

@@ -78,6 +78,32 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A Form 3A arrives with ground numbers and a date four weeks away,
+              and it reads like the day you have to be out.{" "}
+              <Link
+                href="/notice"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                A notice to leave
+              </Link>{" "}
+              checks it against the May 2026 rules and lays out{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                the earliest each step could come
+              </span>
+              : the date is when the landlord can ask a court, not when you
+              leave. For arrears it works out what takes you under the line a
+              court has to follow, and it writes the letters to the landlord
+              and the council. It sits with the rent and deposit tools in a
+              new renting group. A new{" "}
+              <Link
+                href="/writing/the-date-on-the-notice"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              is about why official-looking paper gets obeyed.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The last payslip pays six days of holiday at £85.48 a day, and
               takes £450 for a course.{" "}
               <Link
@@ -151,30 +177,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               is about why the percentage is the wrong test.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A &ldquo;notice of enforcement&rdquo; for £640 of council tax,
-              £79 already added, and a bailiff due to call.{" "}
-              <Link
-                href="/bailiff"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                A bailiff&rsquo;s letter
-              </Link>{" "}
-              dates{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                the first day they can call
-              </span>{" "}
-              under the rules that changed in May 2026, shows the fees that
-              should be on it, says what a bailiff can and can&rsquo;t do, and
-              writes the offer to send before the knock. A new{" "}
-              <Link
-                href="/writing/the-fee-schedule-is-a-clock"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              is about the urge not to open the letter.
             </li>
           </ul>
         </section>

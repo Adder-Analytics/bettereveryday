@@ -1214,6 +1214,28 @@ export const situations: Situation[] = [
     essays: ["not-how-much-it-went-up"],
   },
   {
+    id: "notice-to-leave",
+    title: "The landlord has served a notice to leave",
+    scene:
+      "You're £3,100 behind on a £950 rent after your hours were cut. A form arrives headed Form 3A, with ground numbers and a date four weeks away. It looks like a court document. You start looking at rooms and stop paying, because it feels over anyway.",
+    question: "Do I have to be out by that date, and is there anything I can do?",
+    models: [
+      {
+        id: "authority-bias",
+        move: "An official-looking form borrows the authority of the court it mentions. Read what it says it is: the earliest the landlord can ask a court. Only a judge can order you out.",
+      },
+      {
+        id: "ostrich-effect",
+        move: "Stopping paying because it feels hopeless is the move that makes it hopeless. The arrears on the day of the hearing decide the mandatory ground, so the next payment matters more than any before it.",
+      },
+    ],
+    tool: {
+      id: "notice",
+      move: "This is the moment the tool is built for. It checks the notice under the May 2026 rules, lays out the earliest each step could come, works out what takes you under the ground 8 line, and writes the letters to the landlord and the council.",
+    },
+    essays: ["the-date-on-the-notice"],
+  },
+  {
     id: "redundancy-offer",
     title: "You're being made redundant",
     scene:
@@ -1673,6 +1695,7 @@ export const situationGroups: SituationGroup[] = [
       "old-debt-letter",
       "bailiff-letter",
       "rent-going-up",
+      "notice-to-leave",
       "redundancy-offer",
       "final-payslip",
       "designing-incentives",
