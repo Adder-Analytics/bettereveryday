@@ -484,6 +484,18 @@ export const tools: Tool[] = [
     essays: ["the-date-on-the-notice"],
   },
   {
+    id: "repairs",
+    href: "/repairs",
+    name: "The Landlord Won't Fix It: What Now?",
+    short: "Repairs",
+    when: "The mould keeps coming back, the boiler cuts out, the window won't shut. You've mentioned it at the door and on the phone, they said they'd pass it on, and months later you're still living with it and assuming they're dealing with it.",
+    ask: "How long have they really known, what date do I give them, and what do I do when it passes?",
+    does: "Puts two clocks side by side: how long you've lived with it, and how long the landlord has known in writing, because a landlord's duty to repair starts on notice and every remedy counts from a report you can show. Grades the problem (an emergency gets 24 hours, and no heating counts as one from October to March or with someone vulnerable at home), gives council and housing association tenants Awaab's Law's statutory timescales (investigate within 10 working days, safety work within 5 more; phase 2 adds cold, electrics, pests and more from 30 November 2026), and dates the ladder: their reply-by, one chaser, then the council's housing team or a formal complaint and the Housing Ombudsman. Writes the report, the chaser and the council letter or complaint, and warns against holding back rent.",
+    payoff: "now",
+    models: ["illusion-of-transparency", "ostrich-effect"],
+    essays: ["they-dont-know-until-its-written"],
+  },
+  {
     id: "redundancy",
     href: "/redundancy",
     name: "Made Redundant: Is the Money Right?",
@@ -775,10 +787,10 @@ export const toolGroups: ToolGroup[] = [
   },
   {
     id: "renting",
-    title: "Renting: the rent, the deposit, a notice to leave",
+    title: "Renting: repairs, the rent, a notice to leave, the deposit",
     blurb:
-      "The landlord is putting the rent up, wants the home back, or is keeping the deposit. The rules for private renters in England changed on 1 May 2026, and most letters from landlords lean on the old ones. These check the letter against the rules, date what matters, and write the reply.",
-    toolIds: ["rent", "notice", "deposit"],
+      "The landlord won't fix the damp, is putting the rent up, wants the home back, or is keeping the deposit. The rules for renters in England changed on 1 May 2026, and social tenants now have Awaab's Law. These check where you stand, date what matters, and write the letter.",
+    toolIds: ["repairs", "rent", "notice", "deposit"],
   },
   {
     id: "work",

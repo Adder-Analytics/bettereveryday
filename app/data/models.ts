@@ -235,7 +235,7 @@ export const models: Model[] = [
     tagline: "We look away from information when we expect it to be bad, which is exactly when it's most worth looking at.",
     explanation:
       "Niklas Karlsson, George Loewenstein and Duane Seppi (Journal of Risk and Uncertainty, 2009) found that investors in Sweden and the US logged in to check their portfolios less often when markets had fallen. A later study of 1.1 million investors' daily log-ins (Sicherman, Loewenstein, Seppi and Utkus, Review of Financial Studies, 2016) found the same pattern: attention dropped as fear rose. Checking feels like it makes bad news real, so we put it off, and for a portfolio that costs little, because nothing changes while you look away. The cost appears when the situation is moving on a schedule of its own: an unopened bill that gains a late fee, a court letter with a deadline, a bailiff's notice whose fees step up at fixed points. Then not looking isn't neutral; it's choosing the most expensive stage by default. The counter is to make the first look small and the next step concrete: open the letter only to find one date, decide one action before that date, and write it down. The tool A Bailiff's Letter does that for a notice of enforcement.",
-    essays: ["the-fee-schedule-is-a-clock", "the-date-on-the-notice"],
+    essays: ["the-fee-schedule-is-a-clock", "the-date-on-the-notice", "they-dont-know-until-its-written"],
   },
   {
     id: "authority-bias",
@@ -245,6 +245,15 @@ export const models: Model[] = [
     explanation:
       "Stanley Milgram's obedience studies (Journal of Abnormal and Social Psychology, 1963) are the famous case: ordinary people kept following instructions from a man in a lab coat well past the point they were uneasy. The everyday version is quieter. Leonard Bickman (Journal of Applied Social Psychology, 1974) had a researcher stop passers-by on a New York street and ask them to pick up a bag or stand on the other side of a bus stop sign. People complied far more often when he wore a guard's uniform than when he wore ordinary clothes, though a guard has no power over either. We respond to the signs of authority, the uniform, the letterhead, the form number and the legal phrases, rather than to the authority itself. That's why a private parking charge is styled to look like a council penalty, and why a debt collector's letter talks about field agents. It's also why a tenant who gets a landlord's notice, printed on a government form and full of section numbers, reads its date as the day they have to be out. A notice is what one side has filled in. The decision belongs to a court, which hasn't seen it yet. The correction is to ask two questions of any official-looking paper: who actually has the power to make this happen, and what does this document say it is? A Form 3A says, in its own words, that it's the earliest date the landlord can start proceedings. The tool A Notice to Leave: Do You Have to Go? runs that check on a landlord's notice.",
     essays: ["the-date-on-the-notice"],
+  },
+  {
+    id: "illusion-of-transparency",
+    name: "The Illusion of Transparency",
+    domain: "Psychology",
+    tagline: "What's vivid to you feels visible to everyone else. Usually it isn't.",
+    explanation:
+      "In 1990 Elizabeth Newton, a Stanford graduate student, asked people to tap out the rhythm of a well-known song, like Happy Birthday, on a table, and to guess how many listeners would name it. The tappers guessed about half. Of 120 songs tapped, listeners named three. The tappers could hear the melody in their heads as they tapped; the listeners heard knocking. Thomas Gilovich, Kenneth Savitsky and Victoria Husted Medvec (Journal of Personality and Social Psychology, 1998) found the same thing with feelings: people who lied, or tasted something foul while keeping a straight face, thought observers could see far more than they could. We judge how obvious something is from how strongly we experience it. That's harmless in a party game and costly whenever someone else has to act. A tenant who has woken up next to the mould for seven months is sure the landlord knows; the landlord has a phone note from June, if that. A team member who has hinted at quitting for weeks is sure the manager has noticed. The law often makes the gap formal: a landlord's duty to repair starts when they have notice, and a complaint, an inspection or a claim all count from a report you can show. The correction is to stop asking whether they know and start asking what they have: a dated message, in writing, that says what's wrong, where, since when, and what you're asking for by when. The tool The Landlord Won't Fix It: What Now? puts the two clocks side by side, how long you've lived with it and how long they've known on paper, and writes that message.",
+    essays: ["they-dont-know-until-its-written"],
   },
   {
     id: "goal-gradient",
