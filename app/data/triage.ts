@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff", "rent", "notice", "redundancy", "leaving"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff", "repairs", "rent", "notice", "redundancy", "leaving"],
       },
     ],
     choices: [
@@ -700,6 +700,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "debts",
             note: "If there are other debts too, council tax and fines come first; put the rest side by side.",
+          },
+        },
+      },
+      {
+        id: "repairs",
+        label: "Something in my rented home needs fixing, and the landlord hasn't.",
+        detail: "Damp, mould, the heating, a leak, a door that won't lock. I've mentioned it, and nothing's happened.",
+        rec: {
+          toolId: "repairs",
+          because:
+            "A landlord's duty to repair starts when they know, and everything after (the council, a complaint, compensation) counts from a report you can show. It puts how long you've lived with it beside how long they've known in writing, gives them a fair date (Awaab's Law's deadlines if you rent from a council or housing association), dates the next step and writes each letter. Keep paying the rent while you do.",
+          then: {
+            toolId: "notice",
+            note: "If a notice to leave arrives after you've complained, check it before you pack.",
           },
         },
       },

@@ -78,6 +78,34 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The mould has been on the bedroom wall since the spring, and
+              you&rsquo;ve rung the agent twice.{" "}
+              <Link
+                href="/repairs"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                The landlord won&rsquo;t fix it
+              </Link>{" "}
+              puts{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                two clocks side by side
+              </span>
+              : how long you&rsquo;ve lived with it, and how long the landlord
+              has known in writing, which is the one every remedy counts from.
+              It gives them a fair date (Awaab&rsquo;s Law&rsquo;s deadlines
+              for council and housing association tenants), dates the chaser
+              and the council or complaint after it, and writes each letter.
+              It leads the renting group. A new{" "}
+              <Link
+                href="/writing/they-dont-know-until-its-written"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              is about why what&rsquo;s vivid to you isn&rsquo;t visible to
+              them.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A Form 3A arrives with ground numbers and a date four weeks away,
               and it reads like the day you have to be out.{" "}
               <Link
@@ -153,30 +181,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               is about why the total feels bigger than it is.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The agent says the rent goes from £1,150 to £1,295 a month.{" "}
-              <Link
-                href="/rent"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                The rent&rsquo;s going up
-              </Link>{" "}
-              checks the notice under the rules that changed in England in May
-              2026, then puts the new rent{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                against what similar homes let for
-              </span>
-              , not against last year&rsquo;s rent. It dates the last day to
-              ask the tribunal, which can no longer set it higher than the
-              landlord asked, and writes the offer. A new{" "}
-              <Link
-                href="/writing/not-how-much-it-went-up"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              is about why the percentage is the wrong test.
             </li>
           </ul>
         </section>

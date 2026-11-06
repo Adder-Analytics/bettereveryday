@@ -3095,6 +3095,44 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/notice">tool for this</a> on the site. You enter what arrived, the dates and the grounds. It checks the notice, lays out the earliest each step could come, works out the arrears figure if there is one, and writes the letters to the landlord and the council.</p>`,
   },
+  {
+    slug: "they-dont-know-until-its-written",
+    title: "They Don't Know Until It's Written",
+    date: "2026-11-06",
+    excerpt:
+      "You've lived with the mould for seven months, so of course the landlord knows. On paper, they might have a phone note from June. Every step that could fix it counts from a report you can show.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>The mould started in the spring, a grey bloom in the corner above your son's bed. You mentioned it when the agent came to read the meter. You rang in June, and again in August, and each time someone said they'd pass it on. It's November now. The mould is behind the wardrobe and along the window frame, and you've been assuming, the way you assume the bins will be collected, that somebody is dealing with it.</p>
+
+<p>You see it every morning. It's the first thing you think about when the weather turns. It feels impossible that the landlord doesn't know.</p>
+
+<h2>The tappers</h2>
+
+<p>In 1990 a Stanford graduate student called Elizabeth Newton split people into tappers and listeners. Tappers picked a well-known song, like Happy Birthday, and tapped its rhythm on a table. Before they started, they guessed how many listeners would name it. They guessed about half. Of 120 songs, listeners named three.</p>
+
+<p>The tappers weren't careless. They could hear the tune in their heads as they tapped, and couldn't hear it the way a listener did, as knocking. Psychologists later called this the illusion of transparency: we judge how obvious something is to others by how vividly we experience it ourselves. Thomas Gilovich and his colleagues found it with feelings too. People hiding a lie, or a disgusting taste, were sure it showed far more than it did.</p>
+
+<p>Living with a repair is the tune in your head. You hear it every day. The landlord hears knocking: a phone note, if anyone wrote one, on a desk with forty others.</p>
+
+<h2>What the law counts</h2>
+
+<p>In England, a landlord's duty to repair starts when they know about the problem, and the "reasonable time" to fix it runs from then. Every remedy that comes after counts from a report you can show someone. That includes the council's inspection, a complaint to the ombudsman and a claim for compensation. A call you can't prove is a report nobody can find. An email is enough, or a message in the agent's portal, or a text you screenshot. It needs a date, what's wrong and where, since when, a photo, and what you're asking for by when.</p>
+
+<p>That last part is the one people leave out. "Just letting you know about the damp" is information. "Please arrange an inspection by Friday 13 November" is a request with a date, and when the date passes, the next step is obvious to everyone, including the landlord.</p>
+
+<h2>Writing it isn't enough on its own</h2>
+
+<p>It would be neat to say the paper trail solves it. It doesn't. In December 2020 a two-year-old called Awaab Ishak died in Rochdale, from breathing in mould in his family's housing association flat. His father had reported it, more than once, years earlier. The landlord knew. It blamed the family's "lifestyle" and did nothing that worked. The coroner's findings led to Awaab's Law. Since October 2025, a social landlord in England has had fixed deadlines for damp and mould: investigate within 10 working days, and start the work to make it safe within five more. Emergencies get 24 hours. From 30 November 2026 the same deadlines cover cold homes, dangerous electrics, pests and more. Private landlords aren't covered yet.</p>
+
+<p>So the written report starts the clock, and the clock only matters if someone acts when it runs out. That's the second habit. Chase once, with a final date and what you'll do next. Then do it: the council's private housing team for a private landlord, a formal complaint and the Housing Ombudsman for a social one. And keep paying the rent. Holding it back feels like leverage, but it gives the landlord a ground to evict, whatever state the home is in.</p>
+
+<h2>The line</h2>
+
+<p>The line to keep: <em>when something in my home needs fixing, I report it in writing the day I notice it, with a photo and a date to reply by, and I keep paying the rent. If the date passes, I chase once with a final date, then go to the council or the ombudsman.</em></p>
+
+<p>There's a <a href="/repairs">tool for this</a> on the site. You enter what's wrong and how you've told them. It shows how long you've lived with it beside how long they've known in writing, gives them a fair date (or Awaab's Law's dates), lays out each step and writes the letters.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

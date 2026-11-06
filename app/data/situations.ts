@@ -1214,6 +1214,28 @@ export const situations: Situation[] = [
     essays: ["not-how-much-it-went-up"],
   },
   {
+    id: "repair-not-fixed",
+    title: "The landlord hasn't fixed something in your home",
+    scene:
+      "Mould started on the wall of your son's bedroom in the spring. You mentioned it when the agent came to read the meter and rang twice; each time they said they'd pass it on. Seven months later it's behind the wardrobe and on the window frame, and you'd assumed they were dealing with it.",
+    question: "Why hasn't anything happened, and what can I actually do?",
+    models: [
+      {
+        id: "illusion-of-transparency",
+        move: "You live with it every day, so it feels obvious that they know. On paper, they may not. Put it in writing, dated, with photos: that's the report every later step counts from.",
+      },
+      {
+        id: "ostrich-effect",
+        move: "Holding back the rent feels like leverage, and it's the move that hands the landlord a ground to evict. Keep paying; let the dates do the pushing.",
+      },
+    ],
+    tool: {
+      id: "repairs",
+      move: "This is the moment the tool is built for. It sets how long you've lived with it beside how long they've known in writing, gives them a fair date (Awaab's Law's deadlines for social tenants), dates the chaser and the council or complaint after it, and writes each letter.",
+    },
+    essays: ["they-dont-know-until-its-written"],
+  },
+  {
     id: "notice-to-leave",
     title: "The landlord has served a notice to leave",
     scene:
@@ -1694,6 +1716,7 @@ export const situationGroups: SituationGroup[] = [
       "catchup-bill",
       "old-debt-letter",
       "bailiff-letter",
+      "repair-not-fixed",
       "rent-going-up",
       "notice-to-leave",
       "redundancy-offer",
