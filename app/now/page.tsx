@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The PIP letter says 6 points, and it reads like the end of it.{" "}
+              <Link
+                href="/challenge"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                The DWP said no
+              </Link>{" "}
+              dates the{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                one-month deadline
+              </span>{" "}
+              to ask them to look again (or to appeal), puts your points against
+              the 8 and 12 lines activity by activity, says what the difference
+              is worth a week and what a challenge could put at risk, and writes
+              the letter. It covers Universal Credit sanctions and overpayments
+              and ESA too. A new{" "}
+              <Link
+                href="/writing/the-first-no-is-a-draft"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              is about why the first no is a draft.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The mould has been on the bedroom wall since the spring, and
               you&rsquo;ve rung the agent twice.{" "}
               <Link
@@ -156,31 +181,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               is about checking what a rate was divided by.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Eight years in the job, and a settlement agreement for £16,000
-              if you sign by Friday.{" "}
-              <Link
-                href="/redundancy"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Made redundant
-              </Link>{" "}
-              works out what the law owes you anyway (redundancy pay, notice,
-              holiday) on the 2026 rates, and{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                splits the offer into owed-anyway and on top
-              </span>
-              . Only the part on top is paying for your signature. It dates
-              the Acas deadline and writes the email asking for the
-              breakdown. A new{" "}
-              <Link
-                href="/writing/the-price-of-your-signature"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              is about why the total feels bigger than it is.
             </li>
           </ul>
         </section>
