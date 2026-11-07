@@ -556,6 +556,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a rent increase being checked" : null),
   },
   {
+    key: "challenge:v1",
+    tool: "The DWP said no: challenge it?",
+    href: "/challenge",
+    label: "The benefit decision you last challenged",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "a benefit decision being challenged" : null),
+  },
+  {
     key: "repairs:v1",
     tool: "The landlord won't fix it: what now?",
     href: "/repairs",

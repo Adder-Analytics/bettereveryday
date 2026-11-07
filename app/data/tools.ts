@@ -460,6 +460,18 @@ export const tools: Tool[] = [
     essays: ["the-fee-schedule-is-a-clock"],
   },
   {
+    id: "challenge",
+    href: "/challenge",
+    name: "The DWP Said No: Challenge It?",
+    short: "Benefit decision",
+    when: "A PIP letter says you scored 6 points, a Universal Credit sanction has landed, or the DWP says you were overpaid. It's printed, numbered and signed by a decision maker, and it reads like the end of the matter, so it goes in the drawer.",
+    ask: "How long do I have, how close am I to the line, what usually happens if I push, and what do I send?",
+    does: "Dates the one-month deadline for a mandatory reconsideration (and the 13-month outer limit for a late one), or the month to appeal once the reconsideration says no. For PIP, puts the points they gave against the points you think apply, activity by activity, shows how far each component is from the standard (8) and enhanced (12) rates and what the difference is worth a week at the April 2026 rates, and warns that a challenge reopens the whole award. Gives the base rates (about one in four PIP reconsiderations changes the award; about two in three PIP appeals go the claimant's way), and writes the request for the assessment report, the reconsideration letter with each disputed activity set out, or the grounds of appeal.",
+    payoff: "now",
+    models: ["administrative-burden", "sludge", "base-rates"],
+    essays: ["the-first-no-is-a-draft"],
+  },
+  {
     id: "rent",
     href: "/rent",
     name: "The Rent's Going Up: Pay It or Challenge It?",
@@ -782,8 +794,8 @@ export const toolGroups: ToolGroup[] = [
     id: "money-letters",
     title: "A letter, bill or message wants money — or you're owed some",
     blurb:
-      "A parking ticket, a catch-up bill, a collector chasing an old debt, a bailiff's letter, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
-    toolIds: ["scam", "refund", "flight", "parking", "catchup", "collector", "bailiff"],
+      "A parking ticket, a catch-up bill, a collector chasing an old debt, a bailiff's letter, a benefit decision that went against you, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
+    toolIds: ["scam", "refund", "flight", "parking", "catchup", "collector", "bailiff", "challenge"],
   },
   {
     id: "renting",

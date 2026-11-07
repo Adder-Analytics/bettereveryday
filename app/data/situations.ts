@@ -1214,6 +1214,28 @@ export const situations: Situation[] = [
     essays: ["not-how-much-it-went-up"],
   },
   {
+    id: "benefit-decision",
+    title: "A benefit decision went against you",
+    scene:
+      "The PIP letter came on a Thursday: 6 points for daily living, 4 for mobility, so nothing. The assessment lasted forty minutes, and the report says you can walk 50 metres because you walked from the waiting room. It reads like a verdict, and the thought of another form makes you want to put it in the drawer.",
+    question: "Is it worth challenging, and how long have I got?",
+    models: [
+      {
+        id: "administrative-burden",
+        move: "Every stage asks for another form, another wait, another account of your worst days, and people drop out at each one. That's the burden doing its work, not a judgement on your claim. Make the next step small: one letter, inside the month.",
+      },
+      {
+        id: "base-rates",
+        move: "About one in four PIP reconsiderations changes the award, and about two in three PIP appeals go the claimant's way. The first no isn't the likely last word.",
+      },
+    ],
+    tool: {
+      id: "challenge",
+      move: "This is the moment the tool is built for. It dates the one-month deadline, puts your points against the 8 and 12 lines, says what the difference is worth a week and what a challenge could put at risk, and writes the reconsideration letter or the grounds of appeal.",
+    },
+    essays: ["the-first-no-is-a-draft"],
+  },
+  {
     id: "repair-not-fixed",
     title: "The landlord hasn't fixed something in your home",
     scene:
@@ -1716,6 +1738,7 @@ export const situationGroups: SituationGroup[] = [
       "catchup-bill",
       "old-debt-letter",
       "bailiff-letter",
+      "benefit-decision",
       "repair-not-fixed",
       "rent-going-up",
       "notice-to-leave",

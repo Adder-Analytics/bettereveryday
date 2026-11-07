@@ -350,6 +350,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "The DWP said no: challenge it?",
+    href: "/challenge",
+    snippet:
+      "A PIP, Universal Credit or ESA decision went against you. Your one-month deadline, how far your points are from the line, what usually happens, and the letter.",
+    meta: "Benefit decision — PIP points, mandatory reconsideration, appeal",
+    titleText:
+      "dwp said no benefit decision challenge a benefit decision appeal benefit decision pip personal independence payment pip points pip refused pip turned down pip reduced pip review pip descriptors daily living mobility 8 points 12 points standard rate enhanced rate pa4 assessment report mandatory reconsideration mr request late mandatory reconsideration 13 months one month deadline mandatory reconsideration notice mrn appeal tribunal sscs1 hmcts social security and child support tribunal oral hearing universal credit sanction uc sanction hardship payment overpayment uc overpayment dwp debt management esa employment and support allowance work capability assessment wca fit for work limited capability for work lcwra carer's allowance attendance allowance pension credit official error new claim timms review four point rule adult disability payment social security scotland redetermination administrative burden".toLowerCase(),
+    bodyText:
+      "the dwp said no: challenge it? (/challenge): the instrument for a dwp benefit decision that went against you, in england, wales and scotland: pip, universal credit, esa, and others such as carer's allowance, attendance allowance and pension credit. a decision is a first draft with two corrections built in: a mandatory reconsideration, asked for within one calendar month of the date printed on the decision letter (a late request can be accepted with a good reason up to 13 months from the decision), then an appeal to the independent tribunal (hmcts, online or on form sscs1 with the mandatory reconsideration notice) within one month of the date on that notice (late up to 13 months). for pip, enter the points they gave and the points you think apply for each of the ten daily living and two mobility activities; it shows how far each component is from the standard rate (8 points) and enhanced rate (12), and the weekly difference at the rates from 6 april 2026 (daily living £76.70 and £114.60, mobility £30.30 and £80.00). a descriptor only counts if you can do the activity reliably (safely, to an acceptable standard, repeatedly, in a reasonable time) on more than half of days. a challenge reopens the whole award, so it can go down as well as up. base rates: about one in four pip reconsiderations changes the award (26%, dwp, quarter to july 2026); about two in three pip appeals go the claimant's way (67%, hmcts, january to march 2026). if you win, it's backdated. universal credit sanctions (good reason, hardship payments) and overpayments (recoverable whatever the cause; challenge whether and how much; ask dwp debt management to lower deductions). past 13 months: official error revision or a new claim. writes the request for the assessment report (pa4), the reconsideration letter with each disputed activity, a chaser, or the grounds of appeal, with a calendar file (.ics). scotland's adult disability payment and northern ireland get a pointer. includes a worked example: a first pip claim refused with 6 and 4 points. nothing is sent anywhere. pairs with the administrative burden model and the essay the first no is a draft.",
+  },
+  {
+    type: "Tool",
     title: "The landlord won't fix it: what now?",
     href: "/repairs",
     snippet:

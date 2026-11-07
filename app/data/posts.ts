@@ -3133,6 +3133,52 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/repairs">tool for this</a> on the site. You enter what's wrong and how you've told them. It shows how long you've lived with it beside how long they've known in writing, gives them a fair date (or Awaab's Law's dates), lays out each step and writes the letters.</p>`,
   },
+  {
+    slug: "the-first-no-is-a-draft",
+    title: "The First No Is a Draft",
+    date: "2026-11-07",
+    excerpt:
+      "A benefit decision reads like a verdict. It's a first draft, with two more goes built in, and the people who lose out are mostly the ones who stop.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>The letter comes on a Thursday. It has your name, your National Insurance number and a table: ten daily living activities and two mobility ones, each with a number beside it. Six points for daily living. Four for mobility. You needed eight. At the bottom it says the decision was made by a decision maker, which sounds final, as if someone weighed your life and found it wanting.</p>
+
+<p>The assessment lasted forty minutes. The report says you can walk fifty metres, because you walked from the waiting room. It doesn't mention that you sat on the stairs afterwards. You think about the forms, the phone queue, telling a stranger about your worst days again, and the letter goes in the drawer.</p>
+
+<h2>What the letter actually is</h2>
+
+<p>A DWP decision is made on paper, usually from an assessment report and whatever evidence was sent with the claim. The system expects it to be wrong often enough that it has two corrections built in. First, you can ask the DWP to look again: a mandatory reconsideration. If that still says no, you can appeal to a tribunal that isn't part of the DWP, with a judge, a doctor and a disability expert who hear you in person.</p>
+
+<p>The figures say both are worth having. In the DWP's latest published quarter, about one in four PIP reconsiderations changed the award. At the tribunal, about two in three PIP appeals went the claimant's way. The first no is a draft, and quite often the second one is too.</p>
+
+<p>But the corrections only reach people who ask for them, and each one has a deadline: one calendar month from the date printed on the letter. Then comes a wait of six weeks or more for the reconsideration and most of a year for an appeal. Between the decision and the tribunal there is a long, thinning queue.</p>
+
+<h2>A filter for stamina</h2>
+
+<p>The political scientists Pamela Herd and Donald Moynihan call this administrative burden. They split it into three costs. Learning costs are finding out that you can challenge at all, how and by when. Compliance costs are the forms, the evidence and the waiting. Psychological costs are the stress of being disbelieved and the sense that one more round is beyond you.</p>
+
+<p>None of these costs changes whether you are entitled. All of them change whether you end up being paid, and they fall hardest on the people with the least time, health and confidence to spare. For a disability benefit, that's often exactly the people it's for. The burden doesn't sort cases by merit. It sorts people by how much stamina they have left. And to the person who drops out, it feels like a judgement on their case.</p>
+
+<h2>Shrink each cost on purpose</h2>
+
+<p>You can't remove the burden, but you can make each piece of it smaller.</p>
+
+<p><strong>The learning cost is one date.</strong> Take the date printed on the letter, not the day it arrived, and add a calendar month. That's the deadline. Write it on the letter and put it in your phone. Miss it and a late request is still possible with a good reason, up to thirteen months, but inside the month you don't need a reason at all.</p>
+
+<p><strong>The compliance cost is one letter.</strong> You don't need to write an essay. Ask for the assessment report, so you can see what the assessor wrote. Then, for each activity you think was scored too low, write one paragraph: what happens when you try, how often, how long it takes, and whether you can do it safely and more than once. PIP only counts a descriptor if you can't do the activity <em>reliably</em>, on more than half of days. So the bad days are the evidence, not an exaggeration. Send the letter inside the month, even if the GP's letter hasn't come yet, and say more is on its way.</p>
+
+<p><strong>The psychological cost is the reading.</strong> The letter is the DWP's opinion, and its first attempt. If the reconsideration says no, that's the point where most of the remaining people stop, and the point where the odds turn in your favour.</p>
+
+<p>There's one honest caution. A challenge reopens the whole decision, so if you already have part of an award, it can go down as well as up. Read the report for the activities they <em>did</em> score, and make sure your evidence supports those too. A free adviser at Citizens Advice or a disability charity can look before you send it.</p>
+
+<p>If you win, the money is backdated to when the decision took effect. The wait costs you time, but not the money.</p>
+
+<h2>The line</h2>
+
+<p>The line to keep: <em>when a benefit decision goes against me, I write the deadline down the day the letter arrives, ask for the report, and send my reasons inside the month, with evidence to follow. If the answer is still no, I appeal.</em></p>
+
+<p>There's a <a href="/challenge">tool for this</a> on the site. You enter the benefit, the date on the letter and, for PIP, the points they gave and the points you think apply. It dates your deadline, shows how far each component is from the line and what that's worth a week, and writes the letter or the grounds of appeal.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

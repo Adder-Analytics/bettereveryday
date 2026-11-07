@@ -256,6 +256,15 @@ export const models: Model[] = [
     essays: ["they-dont-know-until-its-written"],
   },
   {
+    id: "administrative-burden",
+    name: "Administrative Burden",
+    domain: "Decisions",
+    tagline: "When a system makes you work, wait and explain yourself to get what you're owed, the people who get it are the ones with stamina left.",
+    explanation:
+      "Donald Moynihan, Pamela Herd and Hope Harvey (Journal of Public Administration Research and Theory, 2015), and then Herd and Moynihan's book Administrative Burden: Policymaking by Other Means (2018), name three costs a public system can put between a person and what the law says they're entitled to. Learning costs: finding out the benefit exists, what it asks for and what the deadline is. Compliance costs: the forms, the evidence, the assessment, the phone queue. Psychological costs: the stigma, the stress, the feeling of being disbelieved, the sense that one more round is beyond you. None of them changes who is entitled. All of them change who ends up getting it, because they fall hardest on the people with the least time, money, health and confidence, which for a disability benefit is often exactly who it's for. Policy in Practice has estimated that around £23 billion a year of UK benefits and social tariffs goes unclaimed. The same costs shape what happens after a refusal. A DWP decision can be challenged twice (a mandatory reconsideration, then an independent tribunal), each with a one-month deadline and a long wait; about one in four PIP reconsiderations changes the award, and about two in three PIP appeals go the claimant's way, yet many people stop after the first no. The burden is a filter that selects on stamina, and it reads to the person filtered out as a verdict on their case. The counter is to shrink each cost on purpose: learn the one date that matters, make the next step a single letter with the gaps marked, and treat the wait as time, not as an answer. The tool The DWP Said No: Challenge It? does that for a benefit decision.",
+    essays: ["the-first-no-is-a-draft"],
+  },
+  {
     id: "goal-gradient",
     name: "Goal Gradient",
     domain: "Psychology",
@@ -406,7 +415,7 @@ export const models: Model[] = [
     tagline: "Friction is a choice someone made. When it stands between you and what you're owed, it's there to make you stop.",
     explanation:
       "Richard Thaler and Cass Sunstein's nudge is a small push that makes the good option easier. Sludge is the reverse: friction that makes it harder, the claim form, the hold music, the 'please write to our head office', the cancellation that needs a phone call in office hours. Sunstein ('Sludge Audits', Behavioural Public Policy, 2020) argues that its costs are larger than the people who impose it admit, because time, attention and patience are scarce and run out first for the people with least of them. It works because most people decide whether to pursue something by how much effort it looks like. The TARP studies for the US government found that most unhappy customers, often 60 to 80 per cent depending on the industry, never complained at all; the reasons people give are that it wouldn't be worth the time, wouldn't work, or they didn't know how, and Huppertz's model of complaining puts expected effort first. A refund policy that pays out only to the persistent is a policy of paying out to fewer people. Two moves undo it. First, make the effort small: a template, the right law named, the right address. Second, take the decision about persistence out of the moment when you're tired and fobbed off: decide the next step, and the date you'll take it, before the first message goes. That's an implementation intention aimed at the sludge, and it turns 'they said no' from an ending into a trigger. The tool Get Your Money Back does both for a purchase that went wrong.",
-    essays: ["ask-once-in-writing-with-a-date", "whose-delay-was-it"],
+    essays: ["ask-once-in-writing-with-a-date", "whose-delay-was-it", "the-first-no-is-a-draft"],
   },
   {
     id: "parity",
@@ -462,7 +471,7 @@ export const models: Model[] = [
     tagline: "The prior probability of an event, before considering specific evidence.",
     explanation:
       "When a startup founder says their company will be worth $1 billion, the right starting place isn't enthusiasm or skepticism — it's the base rate: what fraction of startups actually reach that outcome? The specific evidence about this particular team and idea then updates that prior. Starting without a base rate is one of the most common sources of overconfidence in forecasting, investing, and career planning. The base rate is not the final answer — it's the right starting place. The classic demonstration of how badly we neglect it: a test that's 99% accurate, for a disease 1 person in 1,000 has, comes back positive — and the chance you're actually sick is about 9%, not 99%, because the rare true cases are swamped by false positives drawn from the huge healthy majority. Most people, including most doctors asked this exact question, are off by a factor of ten. The cure is Gerd Gigerenzer's: stop thinking in percentages and count a concrete crowd — natural frequencies make the answer something you can simply tally. The hard part isn't the arithmetic but choosing the right reference class and an honest prior; a confident wrong base rate produces a confident wrong answer — that upstream judgement is its own model, the Outside View. The base-rate trainer on this site is a place to practise updating evidence against the prior — and to find out whether you systematically land too high.",
-    essays: ["how-much-should-this-change-your-mind"],
+    essays: ["how-much-should-this-change-your-mind", "the-first-no-is-a-draft"],
   },
   {
     id: "outside-view",

@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff", "repairs", "rent", "notice", "redundancy", "leaving"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving"],
       },
     ],
     choices: [
@@ -700,6 +700,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "debts",
             note: "If there are other debts too, council tax and fines come first; put the rest side by side.",
+          },
+        },
+      },
+      {
+        id: "challenge",
+        label: "A benefit decision went against me: PIP, Universal Credit, ESA.",
+        detail: "Too few points, a sanction, an overpayment, a claim turned down or cut at review.",
+        rec: {
+          toolId: "challenge",
+          because:
+            "The decision is a first draft: you can ask the DWP to look again, then appeal to an independent tribunal, where about two in three PIP appeals go the claimant's way. Each step has a one-month deadline. It dates yours, shows how far your PIP points are from the line and what that's worth a week, and writes the letter.",
+          then: {
+            toolId: "debts",
+            note: "If money is short while you wait, put the bills side by side and see which come first.",
           },
         },
       },
