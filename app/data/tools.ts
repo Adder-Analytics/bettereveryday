@@ -460,6 +460,18 @@ export const tools: Tool[] = [
     essays: ["the-fee-schedule-is-a-clock"],
   },
   {
+    id: "counciltax",
+    href: "/counciltax",
+    name: "Behind on Council Tax: What Happens Next?",
+    short: "Council tax",
+    when: "You missed a council tax instalment, and now there's a reminder, a final notice or a court summons on the side. It's one month's money, so it feels like one month's problem, and the letter can wait until payday.",
+    ask: "What date keeps my monthly instalments, what does the next step add, and is the bill even right?",
+    does: "Reads the letter you've got against the steps in England and Wales: seven days after a reminder to pay the missed instalment, or the rest of the year falls due at once; then a summons with costs, a liability order, deductions or bailiffs. Shows that cliff in money (the missed instalment beside the balance that would fall due), dates the step that avoids it, and writes the letter: keep the instalments, get them back, agree a plan before the hearing, or ask for deductions instead of bailiffs. Checks the bill too: who lives there and who doesn't count (students, carers, apprentices, someone with a severe mental impairment), the 25% or 50% discount or exemption that follows, a disabled band reduction and Council Tax Reduction, with a letter asking for it backdated. Covers England's April 2027 changes.",
+    payoff: "now",
+    models: ["scarcity", "ostrich-effect", "defaults"],
+    essays: ["the-whole-year-falls-due"],
+  },
+  {
     id: "challenge",
     href: "/challenge",
     name: "The DWP Said No: Challenge It?",
@@ -787,6 +799,13 @@ export type ToolGroup = {
   /** One line under the heading. */
   blurb: string;
   toolIds: string[];
+  /**
+   * List the tools by their short labels on the homepage. For a group whose
+   * full names, run together, are too long to scan (the letters group is nine
+   * question-shaped titles), the short labels name the letter in front of you:
+   * "Parking ticket", "Council tax", "Bailiff's letter".
+   */
+  compact?: boolean;
 };
 
 export const toolGroups: ToolGroup[] = [
@@ -794,8 +813,9 @@ export const toolGroups: ToolGroup[] = [
     id: "money-letters",
     title: "A letter, bill or message wants money — or you're owed some",
     blurb:
-      "A parking ticket, a catch-up bill, a collector chasing an old debt, a bailiff's letter, a benefit decision that went against you, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
-    toolIds: ["scam", "refund", "flight", "parking", "catchup", "collector", "bailiff", "challenge"],
+      "A parking ticket, a catch-up bill, a council tax reminder, a collector chasing an old debt, a bailiff's letter, a benefit decision that went against you, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
+    toolIds: ["scam", "refund", "flight", "parking", "catchup", "counciltax", "collector", "bailiff", "challenge"],
+    compact: true,
   },
   {
     id: "renting",

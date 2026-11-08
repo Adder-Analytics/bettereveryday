@@ -3179,6 +3179,50 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/challenge">tool for this</a> on the site. You enter the benefit, the date on the letter and, for PIP, the points they gave and the points you think apply. It dates your deadline, shows how far each component is from the line and what that's worth a week, and writes the letter or the grounds of appeal.</p>`,
   },
+  {
+    slug: "the-whole-year-falls-due",
+    title: "The Whole Year Falls Due",
+    date: "2026-11-08",
+    excerpt:
+      "One missed council tax instalment feels like one month's problem. Seven days after the reminder, it can be the whole year's. Why the cheapest letter is the one that's easiest to put off.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>The car needed two tyres in the same week as the council tax, and the tyres won. It's £196, one month out of ten. You'll catch up at the end of the month. A reminder arrives a few days later, and it goes under the fruit bowl with the bill, because it's about the same £196 and you already have a plan for that: payday.</p>
+
+<p>Read the small print, though, and the reminder isn't really about £196. In England and Wales, if the missed instalment isn't paid within seven days of the reminder, you lose the right to pay by instalments, and everything left for the year falls due at once. With six months paid and four to go, that's £784. Leave that and the council can ask the magistrates for a summons, which adds costs, then a liability order, which lets it take money from your pay or benefits or send bailiffs, who add £79 the day they write and £247 more if one visits.</p>
+
+<p>Same debt. A week later, four times the bill.</p>
+
+<h2>Why it goes under the fruit bowl</h2>
+
+<p>It would be easy to call that carelessness. The research suggests something more useful. Sendhil Mullainathan and Eldar Shafir, in <em>Scarcity</em> (2013), argue that being short of money changes how attention works. It tunnels onto what's due now: the tyres, the rent, the food shop. That focus is useful inside the tunnel and expensive outside it, because the things just beyond it, like a letter whose real deadline is next Thursday, get pushed to "later".</p>
+
+<p>In one set of lab games, Anuj Shah, Mullainathan and Shafir gave some players a tight budget per round and others a generous one. The poorer players concentrated harder on each round. They also borrowed from future rounds at punishing rates, and ended up worse off. The richer players hardly borrowed at all. Nobody was being foolish. Scarcity made the present loud enough to drown out the arithmetic.</p>
+
+<p>Some of the bolder claims in this area haven't held up in every replication, so it's worth holding the details loosely. But the shape is familiar to anyone who has been short: the urgent thing gets your attention, and the important thing with a quiet deadline waits.</p>
+
+<h2>A system with a cliff in it</h2>
+
+<p>Council tax enforcement in England is a cliff, not a slope. Arrears were reported at about £7.4 billion in March 2026, and National Debtline's figures say councils sent about 1.7 million council tax cases to bailiffs in 2025/26. The government has accepted that the cliff comes too early. From April 2027 councils in England will have to send a final notice as well as a reminder, no sooner than 41 days after the first missed payment, then give 21 days to catch up, and twelve monthly instalments will become the default. That's a real improvement. It doesn't help anyone whose reminder is dated this winter.</p>
+
+<p>So the cliff is a fact to plan around. The good news is that it's cheap to step back from, if you do it early. Councils agree to spread a missed instalment over the rest of the year far more readily before the seven days run out than after a summons. A single email does it.</p>
+
+<h2>The bill is a guess about your household</h2>
+
+<p>There's a second thing under the fruit bowl, and it's often worth more than the missed month. A council tax bill assumes that every adult in the house counts. Many don't: a full-time student, an apprentice, an 18- or 19-year-old still at school, a carer who lives with the person they look after, someone with dementia or a severe learning disability. If only one adult counts, the bill should have 25% off. If nobody does, it's 50% off, or nothing to pay at all if everyone is a full-time student.</p>
+
+<p>The council doesn't know unless you tell it. That's a default at work: the outcome you get by doing nothing is the full bill. A parent with a student daughter living at home can pay a quarter too much for three years without anyone noticing, and councils will usually backdate it once they're asked.</p>
+
+<h2>Give the cheap fix a slot</h2>
+
+<p>The fix isn't to try harder to care about letters. It's to get the cheap move out of "later" and into a slot. When a reminder comes, look for one date, the one printed on it plus seven days, and send one email before then. Pay the missed instalment, or ask for it to be spread over the remaining months. While you're writing, ask to pay over twelve months instead of ten, so next year's months are smaller. And once a year, when the new bill comes, count the adults who actually count.</p>
+
+<h2>The line</h2>
+
+<p>The line to keep: <em>when a council tax reminder comes, I deal with it inside the seven days, by paying the missed instalment or writing to the council that week, because after that the whole year falls due. Once a year, when the bill comes, I check it counts only the people it should.</em></p>
+
+<p>There's a <a href="/counciltax">tool for this</a> on the site. You say which letter you've had and, if you like, the bill and who lives there. It dates what keeps your instalments, shows the missed instalment beside what would fall due, checks the bill for a missing discount, and writes the letters.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

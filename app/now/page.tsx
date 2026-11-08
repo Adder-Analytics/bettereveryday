@@ -78,6 +78,33 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              One council tax instalment didn&rsquo;t go out, and the reminder
+              is under the fruit bowl.{" "}
+              <Link
+                href="/counciltax"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Behind on council tax
+              </Link>{" "}
+              shows{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                the cliff
+              </span>
+              : the missed instalment beside the rest of the year, which falls
+              due at once if the reminder&rsquo;s seven days pass. It dates
+              the step that keeps the instalments (or gets them back before a
+              summons), checks whether the bill counts a student or a carer it
+              shouldn&rsquo;t, and writes both letters. It covers
+              England&rsquo;s April 2027 changes too. A new{" "}
+              <Link
+                href="/writing/the-whole-year-falls-due"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              is about why the cheapest letter is the easiest to put off.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The PIP letter says 6 points, and it reads like the end of it.{" "}
               <Link
                 href="/challenge"
@@ -155,32 +182,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               is about why official-looking paper gets obeyed.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The last payslip pays six days of holiday at £85.48 a day, and
-              takes £450 for a course.{" "}
-              <Link
-                href="/leaving"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Leaving a job
-              </Link>{" "}
-              works out what the final pay should include and checks{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                the day rate
-              </span>
-              : a salary over the days you work, not over 365, which pays each
-              day about 29% less. It judges each deduction against what you
-              signed, dates the Acas deadline and writes the email. It sits
-              with the redundancy tool in a new group for a job that&rsquo;s
-              ending. A new{" "}
-              <Link
-                href="/writing/check-the-denominator"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              is about checking what a rate was divided by.
             </li>
           </ul>
         </section>

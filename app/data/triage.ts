@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving"],
       },
     ],
     choices: [
@@ -686,6 +686,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "scam",
             note: "If you're not sure the letter or the company is real, check before you ring any number on it.",
+          },
+        },
+      },
+      {
+        id: "counciltax",
+        label: "I'm behind on council tax: a reminder, a final notice or a summons.",
+        detail: "Or I want to check the bill counts the right people in the house.",
+        rec: {
+          toolId: "counciltax",
+          because:
+            "One missed instalment, left seven days past the reminder, can make the rest of the year due at once, and then come court costs and bailiffs. It dates the step that keeps your instalments, shows what the next one adds, checks the bill for a discount you're missing, and writes the letter.",
+          then: {
+            toolId: "debts",
+            note: "If there are other debts too, council tax comes first; put the rest side by side.",
           },
         },
       },
