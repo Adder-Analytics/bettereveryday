@@ -1192,6 +1192,28 @@ export const situations: Situation[] = [
     essays: ["the-fee-schedule-is-a-clock"],
   },
   {
+    id: "council-tax-behind",
+    title: "You've fallen behind on council tax",
+    scene:
+      "The car needed tyres, so this month's £196 council tax didn't go out. A reminder came a few days later. It's one month, you'll catch up at payday, and the letter is under the fruit bowl. Your daughter's at university and lives at home, and you've never thought about whether the bill knows that.",
+    question: "How long have I got, and what happens if I leave it?",
+    models: [
+      {
+        id: "scarcity",
+        move: "When money is tight, attention narrows to what's due this week, and a letter about £196 feels like a problem for payday. But the reminder is the cheapest letter in the chain: seven days on, the rest of the year can fall due at once. Give it one slot this week, before the tunnel closes over it.",
+      },
+      {
+        id: "defaults",
+        move: "The bill is the council's default: it assumes everyone in the house counts until someone says otherwise. A student, a carer or an apprentice doesn't, and the 25% discount only arrives if you ask for it.",
+      },
+    ],
+    tool: {
+      id: "counciltax",
+      move: "This is the moment the tool is built for. It dates the seven days, shows the missed instalment beside what would fall due if the instalments went, checks whether the bill counts someone it shouldn't, and writes both letters.",
+    },
+    essays: ["the-whole-year-falls-due"],
+  },
+  {
     id: "rent-going-up",
     title: "The rent's going up",
     scene:
@@ -1737,6 +1759,7 @@ export const situationGroups: SituationGroup[] = [
       "parking-ticket",
       "catchup-bill",
       "old-debt-letter",
+      "council-tax-behind",
       "bailiff-letter",
       "benefit-decision",
       "repair-not-fixed",

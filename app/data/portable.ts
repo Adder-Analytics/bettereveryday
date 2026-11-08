@@ -511,6 +511,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "an old debt being checked" : null),
   },
   {
+    key: "counciltax:v1",
+    tool: "Behind on council tax: what happens next?",
+    href: "/counciltax",
+    label: "The council tax letter you last answered",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "a council tax letter being dealt with" : null),
+  },
+  {
     key: "bailiff:v1",
     tool: "A bailiff's letter",
     href: "/bailiff",

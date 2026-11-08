@@ -83,9 +83,10 @@ export default function Home() {
                     )}
                     <Link
                       href={tool.href}
+                      title={group.compact ? tool.name : undefined}
                       className="text-[var(--accent)] hover:opacity-70 transition-opacity"
                     >
-                      {tool.name}
+                      {group.compact ? tool.short : tool.name}
                     </Link>
                   </Fragment>
                 ))}
