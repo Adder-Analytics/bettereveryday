@@ -3223,6 +3223,50 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/counciltax">tool for this</a> on the site. You say which letter you've had and, if you like, the bill and who lives there. It dates what keeps your instalments, shows the missed instalment beside what would fall due, checks the bill for a missing discount, and writes the letters.</p>`,
   },
+  {
+    slug: "most-of-it-can-wait",
+    title: "Most of It Can Wait",
+    date: "2026-11-09",
+    excerpt:
+      "After a death, the paperwork arrives in the order other people send it, and every letter sounds urgent. Almost none is. The few that cost money if they wait are the quiet ones. On sorting a pile by cost of delay.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>David died on a Tuesday. By the end of the month there's a folder on the kitchen table. The bank wants a death certificate. The phone company wants to know whether to close the contract. His pension scheme has sent a form. The council has sent a letter about the account. The building society wants to talk about the mortgage. Each one has a reference number and a phone line, and most have a sentence somewhere asking you to respond "as soon as possible".</p>
+
+<p>The folder is sorted the way it arrived: by when each organisation got round to writing. That's the order most checklists use too, or they sort by agency (the registrar, the DWP, HMRC, the bank). Neither order tells you the one thing that would help, which is what happens if this waits a month.</p>
+
+<p>For almost everything in the folder, the answer is nothing. The bank account will still be there. Probate has no deadline. The phone company can wait. Nobody needs a decision about the house this month, or this year.</p>
+
+<p>A few things do cost money if they wait, and the odd thing about them is that nobody writes to you about them. Bereavement Support Payment is the clearest case. If your husband, wife or civil partner dies and you're under State Pension age, you can get a £3,500 lump sum and eighteen monthly payments of £350 if you have children (£2,500 and £100 a month if not). That's up to £9,800, untaxed. But you have to claim it, and a claim more than three months after the death can only be backdated three months, so every month you wait loses a payment. After a year, the lump sum goes. Which? has called it Britain's forgotten benefit. Nobody from the DWP rings to remind you.</p>
+
+<h2>Loud and quiet deadlines</h2>
+
+<p>The registrar's five days are loud: the funeral director mentions them, the hospital mentions them, and you can't hold a funeral without the paperwork. Missing them by a day costs nothing. The benefit's three months are silent, and missing them costs £350 a month.</p>
+
+<p>Meng Zhu, Yang Yang and Christopher Hsee found something like this in the lab (<em>Journal of Consumer Research</em>, 2018). Given a choice between a task with a deadline coming up and one with a bigger reward and no deadline, people chose the urgent one, even when it paid less and took the same time. They called it the mere urgency effect. Urgency is a feeling, and whoever's asking sets it. What waiting would cost is a fact about the task, and nobody prints it on the letter.</p>
+
+<p>Grief makes this worse. Mullainathan and Shafir's work on scarcity is about money and time, but the mechanism they describe, attention narrowing onto whatever is pressing right now, is easy to recognise in the weeks after a death. And the system adds to it. Herd and Moynihan call it administrative burden: what you're owed goes to the people with the stamina left to claim it. After a death, that stamina is the thing in shortest supply.</p>
+
+<h2>Sort by what waiting costs</h2>
+
+<p>Don Reinertsen, who wrote about managing product development, said that if you quantify one thing, quantify the cost of delay. It's a manager's idea, but it fits a kitchen table well. Take the pile and, next to each item, write what a month's wait would cost. For most it's nothing, and you can say so in as many words: this can wait. For a few it's money, and those go first:</p>
+
+<ul>
+<li><strong>Bereavement Support Payment</strong>, within three months of the death, if you were married or in a civil partnership, or you're an unmarried partner who gets Child Benefit.</li>
+<li><strong>A Funeral Expenses Payment</strong>, within six months of the funeral, if whoever's paying for it gets a means-tested benefit.</li>
+<li><strong>The home insurer</strong>, if the house is now empty. Most policies cut back cover after 30 or 60 days.</li>
+<li><strong>Inheritance tax</strong>, only if there is some, by the end of the sixth month after the death, when interest starts.</li>
+<li><strong>A pension lump sum</strong>, which is usually tax-free if they died before 75 and it's paid within two years.</li>
+</ul>
+
+<p>Then there's one thing to stop worrying about: their debts. Family don't inherit them. Cards, loans and overdrafts are paid from what was left, and if that runs out, they're written off. A collector who rings a son or daughter about a parent's credit card is asking for money nobody owes.</p>
+
+<p>Being told that most of it can wait isn't laziness. It's what makes the few urgent things visible. A list of seventy tasks gives everything the same weight. A list of four, with the rest set aside on purpose, gets done.</p>
+
+<p>The line to keep: <em>when someone dies, I sort what has to be done by what waiting would cost, not by who wrote first. I do the few with a money deadline this month, and give myself permission to leave the rest.</em></p>
+
+<p>There's a <a href="/bereavement">tool for this</a> on the site. You say when they died and who they were to you. It dates the few things that cost money from that day, lists what can wait, explains who does and doesn't pay the debts, and writes the letters to the bank, the council and anyone chasing the family for money.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

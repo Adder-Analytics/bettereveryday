@@ -472,6 +472,18 @@ export const tools: Tool[] = [
     essays: ["the-whole-year-falls-due"],
   },
   {
+    id: "bereavement",
+    href: "/bereavement",
+    name: "Someone Has Died: What's Due, and When?",
+    short: "After a death",
+    when: "Someone close to you has died, and the letters are arriving in the order other people send them: the registrar, the bank, the pension, the council. Each sounds urgent, and you can't tell which ones are.",
+    ask: "Which of these costs money if it waits, and which can wait as long as I need?",
+    does: "Sorts the admin after a death by cost of delay, dated from the day they died: registering (five days, eight in Scotland), Tell Us Once's 28 days, Bereavement Support Payment (claim within three months for all of it, up to £9,800; each month later loses a payment, and the lump sum goes after a year), a Funeral Expenses Payment within six months of the funeral, the home insurer for an empty house, inheritance tax by the end of the sixth month, a pension lump sum's two years. Says plainly what can wait (probate has no deadline), explains that family don't inherit debts, flags the hard fact for unmarried partners, and writes the letters: to banks and companies, to a creditor chasing the family, to the council and to a landlord.",
+    payoff: "now",
+    models: ["cost-of-delay", "administrative-burden", "scarcity"],
+    essays: ["most-of-it-can-wait"],
+  },
+  {
     id: "challenge",
     href: "/challenge",
     name: "The DWP Said No: Challenge It?",
@@ -830,6 +842,13 @@ export const toolGroups: ToolGroup[] = [
     blurb:
       "You're being made redundant, or you've resigned or been let go, and the money on the way out is worked out by hand: the holiday you hadn't taken, notice cut short, deductions, redundancy pay, a settlement offer. These check each line against what the law gives you anyway, and write the email asking for the rest.",
     toolIds: ["redundancy", "leaving"],
+  },
+  {
+    id: "after-a-death",
+    title: "Someone has died",
+    blurb:
+      "The paperwork after a death arrives in the order other people send it, and almost all of it can wait. A few things can't, and nobody rings to remind you about them. This sorts the list by what waiting would cost.",
+    toolIds: ["bereavement"],
   },
   {
     id: "money-calls",

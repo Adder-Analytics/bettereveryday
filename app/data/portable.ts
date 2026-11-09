@@ -511,6 +511,13 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "an old debt being checked" : null),
   },
   {
+    key: "bereavement:v1",
+    tool: "Someone has died: what's due, and when?",
+    href: "/bereavement",
+    label: "The dates and answers from your last visit",
+    describe: (raw) => (parse(raw) ? "a list of what's due after a death" : null),
+  },
+  {
     key: "counciltax:v1",
     tool: "Behind on council tax: what happens next?",
     href: "/counciltax",

@@ -78,6 +78,34 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A month after the funeral, there&rsquo;s a folder of letters on
+              the kitchen table, each one asking for something &ldquo;as soon
+              as possible&rdquo;.{" "}
+              <Link
+                href="/bereavement"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Someone has died
+              </Link>{" "}
+              sorts the admin by{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                what waiting would cost
+              </span>
+              , dated from the day of the death. A few things have a date that
+              costs money, and they&rsquo;re the quiet ones: Bereavement
+              Support Payment is worth up to £9,800 if claimed within three
+              months, and less each month after. It says plainly what can
+              wait, explains that family don&rsquo;t inherit debts, and writes
+              the letters. A new{" "}
+              <Link
+                href="/writing/most-of-it-can-wait"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Cost of Delay, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               One council tax instalment didn&rsquo;t go out, and the reminder
               is under the fruit bowl.{" "}
               <Link
@@ -156,32 +184,6 @@ export default function Now() {
               </Link>{" "}
               is about why what&rsquo;s vivid to you isn&rsquo;t visible to
               them.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A Form 3A arrives with ground numbers and a date four weeks away,
-              and it reads like the day you have to be out.{" "}
-              <Link
-                href="/notice"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                A notice to leave
-              </Link>{" "}
-              checks it against the May 2026 rules and lays out{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                the earliest each step could come
-              </span>
-              : the date is when the landlord can ask a court, not when you
-              leave. For arrears it works out what takes you under the line a
-              court has to follow, and it writes the letters to the landlord
-              and the council. It sits with the rent and deposit tools in a
-              new renting group. A new{" "}
-              <Link
-                href="/writing/the-date-on-the-notice"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              is about why official-looking paper gets obeyed.
             </li>
           </ul>
         </section>

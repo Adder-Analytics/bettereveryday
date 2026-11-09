@@ -93,6 +93,7 @@ const essayGroups: EssayGroup[] = [
       "they-dont-know-until-its-written",
       "the-first-no-is-a-draft",
       "the-whole-year-falls-due",
+      "most-of-it-can-wait",
       "future-you-is-not-less-busy",
       "metric-not-the-mission",
       "second-order-thinking",
