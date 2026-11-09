@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "bereavement"],
       },
     ],
     choices: [
@@ -686,6 +686,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "scam",
             note: "If you're not sure the letter or the company is real, check before you ring any number on it.",
+          },
+        },
+      },
+      {
+        id: "bereavement",
+        label: "Someone close to me has died, and the paperwork is piling up.",
+        detail: "The registrar, the bank, the pension, the council: I can't tell what's urgent.",
+        rec: {
+          toolId: "bereavement",
+          because:
+            "Most of it can wait, and the tool says which. A few things have a date that costs money if it passes, and they're the quiet ones: Bereavement Support Payment is worth up to £9,800 if claimed within three months, and less each month after. It dates those from the day they died and writes the letters for the rest.",
+          then: {
+            toolId: "scam",
+            note: "Fraudsters read death notices. Check any call, text or letter about their money before you pay or click.",
           },
         },
       },

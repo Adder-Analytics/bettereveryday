@@ -1214,6 +1214,28 @@ export const situations: Situation[] = [
     essays: ["the-whole-year-falls-due"],
   },
   {
+    id: "someone-has-died",
+    title: "Someone close to you has died",
+    scene:
+      "It's been a month. The funeral's done. There's a folder on the kitchen table: the bank, the pension, the phone company, the council, the building society, each wanting a certificate or a form or a call, each saying 'as soon as possible'. You open one a day, in the order they came, and the pile doesn't get smaller.",
+    question: "Which of these costs anything if it waits?",
+    models: [
+      {
+        id: "cost-of-delay",
+        move: "Next to each letter, write what a month's wait would cost. Almost all of them say nothing: probate has no deadline, the bank account will still be there. A few say money, like Bereavement Support Payment's three months. Do those, and set the rest aside on purpose.",
+      },
+      {
+        id: "administrative-burden",
+        move: "The money you're owed after a death mostly has to be claimed, and the claims go to whoever has the energy left. Hand the forms to someone who has some: a friend can make the calls with you on speaker.",
+      },
+    ],
+    tool: {
+      id: "bereavement",
+      move: "This is the moment the tool is built for. It dates what matters from the day they died, sorted by what waiting would cost, lists what can wait, explains that family don't inherit debts, and writes the letters.",
+    },
+    essays: ["most-of-it-can-wait"],
+  },
+  {
     id: "rent-going-up",
     title: "The rent's going up",
     scene:
@@ -1767,6 +1789,7 @@ export const situationGroups: SituationGroup[] = [
       "notice-to-leave",
       "redundancy-offer",
       "final-payslip",
+      "someone-has-died",
       "designing-incentives",
       "stubborn-system",
     ],
