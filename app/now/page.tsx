@@ -78,6 +78,32 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Eighteen weeks pregnant, and planning to tell work &ldquo;nearer
+              the time&rdquo;.{" "}
+              <Link
+                href="/baby"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                A baby&rsquo;s coming
+              </Link>{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                counts back from the due date
+              </span>{" "}
+              to the week that decides maternity and paternity pay, about 25
+              weeks in. It says whether statutory pay applies and how much,
+              draws the pay through the year with the drops dated, sorts the
+              claims after the birth (Child Benefit, the £500 grant) by what
+              waiting would cost, and writes the letter to your employer. A
+              new{" "}
+              <Link
+                href="/writing/count-back-from-the-due-date"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Backward Planning, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A month after the funeral, there&rsquo;s a folder of letters on
               the kitchen table, each one asking for something &ldquo;as soon
               as possible&rdquo;.{" "}
@@ -156,34 +182,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               is about why the first no is a draft.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The mould has been on the bedroom wall since the spring, and
-              you&rsquo;ve rung the agent twice.{" "}
-              <Link
-                href="/repairs"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                The landlord won&rsquo;t fix it
-              </Link>{" "}
-              puts{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                two clocks side by side
-              </span>
-              : how long you&rsquo;ve lived with it, and how long the landlord
-              has known in writing, which is the one every remedy counts from.
-              It gives them a fair date (Awaab&rsquo;s Law&rsquo;s deadlines
-              for council and housing association tenants), dates the chaser
-              and the council or complaint after it, and writes each letter.
-              It leads the renting group. A new{" "}
-              <Link
-                href="/writing/they-dont-know-until-its-written"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              is about why what&rsquo;s vivid to you isn&rsquo;t visible to
-              them.
             </li>
           </ul>
         </section>

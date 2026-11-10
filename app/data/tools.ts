@@ -484,6 +484,18 @@ export const tools: Tool[] = [
     essays: ["most-of-it-can-wait"],
   },
   {
+    id: "baby",
+    href: "/baby",
+    name: "A Baby's Coming: What to Tell, Claim, and By When?",
+    short: "A new baby",
+    when: "You're expecting, or your partner is. Everyone's counting down to the due date, you were going to tell work \"nearer the time\", and you don't know what you'll be paid while you're off, or what there is to claim.",
+    ask: "What decides my maternity or paternity pay, when do I have to tell my employer, and which claims after the birth can't wait?",
+    does: "Counts back from the due date to the week that decides the money: the qualifying week, 15 weeks before the due week. Says whether Statutory Maternity Pay (26 weeks with the employer by then, earnings over £129 a week) or Maternity Allowance applies, and how much (90% of pay for six weeks, then £194.32 a week to week 39); flags that unpaid leave in the eight weeks before it cuts the first six weeks' pay; draws your pay through the year so the drops at week 7 and week 40 are dated; and covers paternity leave (a day-one right in Great Britain since April 2026) and pay. Then sorts the rest by cost of delay: the MATB1, registering the birth (42 days, 21 in Scotland), Child Benefit (only three months backdated; claim even over £80,000 for the National Insurance credits), the £500 Sure Start Maternity Grant or Scotland's Pregnancy and Baby Payment (both gone six months after the birth), Healthy Start, and telling Universal Credit. Writes the notice letter to your employer.",
+    payoff: "now",
+    models: ["backward-planning", "cost-of-delay"],
+    essays: ["count-back-from-the-due-date"],
+  },
+  {
     id: "challenge",
     href: "/challenge",
     name: "The DWP Said No: Challenge It?",
@@ -849,6 +861,13 @@ export const toolGroups: ToolGroup[] = [
     blurb:
       "The paperwork after a death arrives in the order other people send it, and almost all of it can wait. A few things can't, and nobody rings to remind you about them. This sorts the list by what waiting would cost.",
     toolIds: ["bereavement"],
+  },
+  {
+    id: "new-baby",
+    title: "A baby's coming",
+    blurb:
+      "Maternity and paternity pay are decided by a week months before the due date that nobody marks, and the claims after the birth are only backdated a few months. This counts back from the due date and dates each one.",
+    toolIds: ["baby"],
   },
   {
     id: "money-calls",
