@@ -3267,6 +3267,55 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/bereavement">tool for this</a> on the site. You say when they died and who they were to you. It dates the few things that cost money from that day, lists what can wait, explains who does and doesn't pay the debts, and writes the letters to the bank, the council and anyone chasing the family for money.</p>`,
   },
+  {
+    slug: "count-back-from-the-due-date",
+    title: "Count Back from the Due Date",
+    date: "2026-11-10",
+    excerpt:
+      "Everyone counts down to the due date. Maternity pay is decided about fifteen weeks before it, by a week nobody marks. On deadlines that sit upstream of the date you're watching, and planning backward to find them.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>Priya is eighteen weeks pregnant with her first. The due date is on the fridge, in the app, in the group chat. She's been at the same firm for three years, on £2,600 a month, and she's planning to tell her manager "nearer the time". Work is quiet next month, so she's thinking of taking a couple of weeks' unpaid leave to get the nursery done.</p>
+
+<p>Nothing in that is careless. It's how almost everyone thinks about a pregnancy: forward, towards the date. And it would cost her about £800.</p>
+
+<h2>The week that decides</h2>
+
+<p>Statutory Maternity Pay doesn't care much about the due date. It cares about the <em>qualifying week</em>: the fifteenth week before the week the baby is due, about 25 weeks into the pregnancy. Three things hang on it.</p>
+
+<ul>
+<li><strong>Whether you get it at all.</strong> You need to have worked for the same employer for 26 weeks by then. Someone who changed jobs early in the pregnancy can miss it by days, and gets Maternity Allowance from the DWP instead, which is often less.</li>
+<li><strong>How much the first six weeks pay.</strong> They're 90% of your average pay over the eight weeks or so up to the end of that week, with no cap. Unpaid leave, cut hours or a new salary sacrifice in those weeks lowers all six. For Priya, two unpaid weeks out of eight cut her average by about a quarter.</li>
+<li><strong>When you have to tell your employer.</strong> The end of the qualifying week is the deadline for saying you're pregnant, when the baby's due and when you want leave to start.</li>
+</ul>
+
+<p>After that week, the pay is mostly settled. Everything people actually think about (the scans, the hospital bag, the due date) comes later. The decisive date sits fifteen weeks upstream of the one on the fridge.</p>
+
+<h2>Plan from the end</h2>
+
+<p>Jooyoung Park, Fang-Chi Lu and William Hedgcock tested this kind of planning (<em>Psychological Science</em>, 2017). They asked students to plan for an exam or a job interview either forward, from today towards the goal, or backward, from the goal to today. Over five studies, the backward planners were more motivated, felt less pressed for time and expected to succeed more often. In one study they got better marks. The effect showed mainly for goals with many steps. Their explanation is simple: starting from the end makes you ask what has to be true at each point for the next step to work, so the steps and their order become visible.</p>
+
+<p>Counted forward, the qualifying week is just week 25, a Tuesday like any other. Counted back from the due date, it's the first thing you hit. "For the pay to be right, the eight weeks before this week have to be normal. For the leave to start when I want, my employer has to know by this Saturday." Put that way, the unpaid leave moves to the spring and the letter goes this week.</p>
+
+<h2>Then the quiet ones</h2>
+
+<p>After the birth the deadlines change character. They're no longer early. They're quiet.</p>
+
+<ul>
+<li><strong>Child Benefit</strong> is only backdated three months. It's also how a parent who stops work gets National Insurance credits towards their State Pension. That's why it's worth claiming even when the higher earner is over £80,000 and would repay all of it: claim, and tick the box not to be paid.</li>
+<li><strong>The Sure Start Maternity Grant</strong> (£500 for a first child if you're on Universal Credit or another qualifying benefit) closes six months after the birth. So does Scotland's Pregnancy and Baby Payment.</li>
+<li><strong>Statutory Paternity Pay</strong> has to be taken within a year of the birth.</li>
+<li><strong>Universal Credit's</strong> extra for a child starts from the assessment period you report the birth in.</li>
+</ul>
+
+<p>None of them sends a reminder. They're the same kind of deadline as the three-month window for Bereavement Support Payment (in <a href="/writing/most-of-it-can-wait">Most of It Can Wait</a>): they cost money if they wait, and nobody rings.</p>
+
+<p>So the same two moves work at both ends of life. Count back from the date everyone's watching, to find the one that actually decides. Then sort what's left by what waiting would cost, and put the quiet ones in the calendar the day you find them.</p>
+
+<p>The line to keep: <em>when a baby's coming, I count back from the due date, not forward to it. The money is settled at about 25 weeks, and after the birth the deadlines are quiet ones, so they go in the calendar the day I find them.</em></p>
+
+<p>There's a <a href="/baby">tool for this</a> on the site. You give the due date, your work and roughly what you earn. It dates the qualifying week and the eight weeks before it, says whether maternity or paternity pay applies and how much, draws your pay through the year, sorts the claims after the birth by what waiting costs, and writes the letter to your employer.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

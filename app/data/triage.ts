@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "bereavement"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "bereavement", "baby"],
       },
     ],
     choices: [
@@ -700,6 +700,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "scam",
             note: "Fraudsters read death notices. Check any call, text or letter about their money before you pay or click.",
+          },
+        },
+      },
+      {
+        id: "baby",
+        label: "A baby's on the way, and I don't know what I'll be paid or what to claim.",
+        detail: "Maternity or paternity pay, when to tell work, Child Benefit, the grants.",
+        rec: {
+          toolId: "baby",
+          because:
+            "The pay is decided about fifteen weeks before the due date, by a week nobody marks: the qualifying week. The tool counts back to it, says whether statutory pay applies and how much, draws your pay through the year, and dates the claims after the birth that are only backdated a few months.",
+          then: {
+            toolId: "bills",
+            note: "When one pay drops to statutory, a half-each split of the bills stops being fair. Rework it before leave starts.",
           },
         },
       },

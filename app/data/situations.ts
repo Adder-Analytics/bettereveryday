@@ -1236,6 +1236,28 @@ export const situations: Situation[] = [
     essays: ["most-of-it-can-wait"],
   },
   {
+    id: "baby-on-the-way",
+    title: "A baby's on the way",
+    scene:
+      "You're eighteen weeks pregnant with your first. The due date is on the fridge and in the app. You've been at the same firm three years, you were going to tell your manager nearer the time, and work's quiet next month, so you're thinking of a couple of weeks' unpaid leave to get the nursery done.",
+    question: "What do I need to do, and when, so the money's right?",
+    models: [
+      {
+        id: "backward-planning",
+        move: "Start from the due date and count back. Maternity pay is decided about fifteen weeks before it, by the qualifying week: the 26 weeks with your employer, the eight weeks of pay that set the first six weeks, and the deadline to tell work all hang on it. Counted forward it's just week 25; counted back it's the first date you hit.",
+      },
+      {
+        id: "cost-of-delay",
+        move: "After the birth, sort the claims by what waiting would cost. Child Benefit is only backdated three months, the Sure Start grant closes at six, paternity pay at a year. The loud jobs can wait; these can't, and nothing reminds you.",
+      },
+    ],
+    tool: {
+      id: "baby",
+      move: "This is the moment the tool is built for. It dates the qualifying week and the eight weeks before it, says whether maternity or paternity pay applies and how much, draws your pay through the year, sorts the claims after the birth by what waiting costs, and writes the letter to your employer.",
+    },
+    essays: ["count-back-from-the-due-date"],
+  },
+  {
     id: "rent-going-up",
     title: "The rent's going up",
     scene:
@@ -1790,6 +1812,7 @@ export const situationGroups: SituationGroup[] = [
       "redundancy-offer",
       "final-payslip",
       "someone-has-died",
+      "baby-on-the-way",
       "designing-incentives",
       "stubborn-system",
     ],
