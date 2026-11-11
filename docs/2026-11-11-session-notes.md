@@ -11,7 +11,7 @@ passing. Nothing covered **the tax return**, and the 31 January deadline is
 
 Why it passed the "curated, not exhaustive" bar:
 - **About 12 million people file, and about a million miss the deadline
-  each year** (reports vary by year). Most of them aren't avoiding tax. They're avoiding the return.
+  each year** (reports vary by year). Many of them owe the money and are avoiding the return, not the tax.
 - **The common move is the expensive one.** People who can't pay put off
   filing until they can, so the filing penalties (£100, then £10 a day, then
   5% or £300) pile on top of the payment ones. Filing costs nothing to do on
