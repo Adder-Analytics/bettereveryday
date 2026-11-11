@@ -436,6 +436,18 @@ export const tools: Tool[] = [
     essays: ["whose-delay-was-it"],
   },
   {
+    id: "taxreturn",
+    href: "/taxreturn",
+    name: "A Tax Return Due: What Does Late Cost, and What Stops It?",
+    short: "Tax return",
+    when: "The Self Assessment return is due on 31 January, or it's already late. You haven't got the money for the bill, so you've been putting off the return until you have, and the letters from HMRC go in the drawer unopened.",
+    ask: "What will being late actually cost, what stops it growing, and what's the cheapest way through if I can't pay?",
+    does: "Puts the two clocks side by side. Filing late: £100 the day after the deadline, even if you owe nothing, £10 a day from three months (up to £900), then 5% of the tax or £300 at six and twelve months. Paying late: interest (Bank Rate plus 4%, about 8%), then 5% of what's unpaid at 30 days, six months and twelve months, unless a Time to Pay plan is agreed first. Draws the staircase of what filing and paying on each date would add, prices the usual mistake (waiting to file until you can pay) against filing on time and spreading the tax, and explains why the first January bill is half as big again as the tax (the first payment on account). Covers a late notice to file (three months from it), registering late (nothing extra if you file and pay by 31 January), and a notice you never needed. Writes the appeal for a reasonable excuse, the request to withdraw a notice, and the figures for a payment plan.",
+    payoff: "now",
+    models: ["tax-salience", "ostrich-effect"],
+    essays: ["file-it-even-if-you-cant-pay"],
+  },
+  {
     id: "collector",
     href: "/collector",
     name: "An Old Debt, a New Letter: Do You Still Owe It?",
@@ -837,8 +849,8 @@ export const toolGroups: ToolGroup[] = [
     id: "money-letters",
     title: "A letter, bill or message wants money — or you're owed some",
     blurb:
-      "A parking ticket, a catch-up bill, a council tax reminder, a collector chasing an old debt, a bailiff's letter, a benefit decision that went against you, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
-    toolIds: ["scam", "refund", "flight", "parking", "catchup", "counciltax", "collector", "bailiff", "challenge"],
+      "A parking ticket, a catch-up bill, a council tax reminder, a tax return due, a collector chasing an old debt, a bailiff's letter, a benefit decision that went against you, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
+    toolIds: ["scam", "refund", "flight", "parking", "catchup", "counciltax", "taxreturn", "collector", "bailiff", "challenge"],
     compact: true,
   },
   {

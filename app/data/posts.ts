@@ -3316,6 +3316,47 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/baby">tool for this</a> on the site. You give the due date, your work and roughly what you earn. It dates the qualifying week and the eight weeks before it, says whether maternity or paternity pay applies and how much, draws your pay through the year, sorts the claims after the birth by what waiting costs, and writes the letter to your employer.</p>`,
   },
+  {
+    slug: "file-it-even-if-you-cant-pay",
+    title: "File It Even If You Can't Pay It",
+    date: "2026-11-11",
+    excerpt:
+      "Self Assessment has two clocks, one for the return and one for the money. Waiting to file until you can pay lets both run at once. On the cheapest move in the tax year, and why the first January bill is bigger than the tax.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>Sam went freelance last year. The first tax return isn't done, and the tax on it comes to about £4,200, which Sam doesn't have. So the plan is sensible-sounding: do the return in the summer, once the money's saved. Until then, the brown envelopes from HMRC can sit on the shelf.</p>
+
+<p>That plan costs about £1,460. The alternative costs about £230. Same tax, paid off by about the same time.</p>
+
+<h2>Two clocks</h2>
+
+<p>Self Assessment runs two deadlines that land on the same day, 31 January, so they feel like one. They aren't.</p>
+
+<ul>
+<li><strong>The return.</strong> File late and it's £100 the next day, even if you owe nothing. From three months late, £10 a day for 90 days. At six months, 5% of the tax or £300, whichever is more, and the same again at twelve. Nothing stops this clock except filing.</li>
+<li><strong>The money.</strong> Pay late and interest starts the next day (Bank Rate plus 4%, about 8% a year now). Then 5% of whatever's unpaid at 30 days, six months and twelve months. But this clock has an off switch that isn't paying: a Time to Pay arrangement agreed before each of those dates stops that penalty, as long as you keep to it. If you owe £30,000 or less and the return is in, you can usually set one up online.</li>
+</ul>
+
+<p>Put Sam's plan through that. Filing at the end of July: £100, then £900 of daily penalties, then 5% for not paying by March, then six months' interest on the whole bill. Filing in January and paying over twelve months: interest, and nothing else. The return was what Sam couldn't face. It was also the only part that cost money to put off, and the only part that would have taken an evening.</p>
+
+<h2>Why the envelope stays shut</h2>
+
+<p>The plan wasn't really about the summer. It was about not looking. Niklas Karlsson, George Loewenstein and Duane Seppi called this the <a href="/models#ostrich-effect">ostrich effect</a> (<em>Journal of Risk and Uncertainty</em>, 2009): investors checked their portfolios less often when markets were falling, as if looking would make the loss real. For shares that costs little, because the price doesn't depend on whether you look. A penalty schedule does. It steps up on fixed dates, and not opening the letter just means you meet each step without choosing to.</p>
+
+<p>The move that works is small. Open one letter, find one date, and decide one thing to do before it. For most people in January, that one thing is: file, and then ask for a plan.</p>
+
+<h2>The bill is bigger than the tax</h2>
+
+<p>The second surprise is the size of the bill. Sam expects £4,200. HMRC asks for £6,300 in January and another £2,100 in July. The extra is the first <em>payment on account</em>: once your tax bill is over £1,000 and most of it isn't taken through PAYE, HMRC asks for next year's tax in two halves in advance. In a first year nothing was paid ahead, so January carries this year's tax and half of next year's together. From the second year it evens out. If next year's income will be lower, you can ask to reduce the payments.</p>
+
+<p>Why does it catch people out every year? Because tax they don't see as they go doesn't feel like a cost. Raj Chetty, Adam Looney and Kory Kroft showed this in a supermarket (<em>American Economic Review</em>, 2009): when shelf tags showed the sales tax that's normally added at the till, sales of those products fell about 8%, though every shopper already knew the tax existed. Knowing isn't feeling. An employee never feels income tax, because PAYE takes it before the money arrives. Go freelance and that disappears: the tax becomes a bill you have to find in one go, months after the money was spent.</p>
+
+<p>The fix is to make it visible where the money lands. Move a fixed share of every untaxed payment into a separate account the day it arrives, so January's money was never yours to spend.</p>
+
+<p>The line to keep: <em>I file by 31 January even if I can't pay, because the return and the money have separate clocks. If I can't pay, I set up a plan before the 30-day point. And I put a share of untaxed income aside the day it lands.</em></p>
+
+<p>There's a <a href="/taxreturn">tool for this</a> on the site. You pick the year and say where the return has got to. It dates every step of both clocks, shows what each one adds in pounds, puts filing on time with a plan beside waiting until you can pay, works out what January's bill really is, and writes the plan request, the appeal against a penalty or the request to withdraw a notice you never needed.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

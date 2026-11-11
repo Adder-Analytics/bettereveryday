@@ -525,6 +525,13 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "the dates for a baby on the way" : null),
   },
   {
+    key: "taxreturn:v1",
+    tool: "A tax return due: what does late cost, and what stops it?",
+    href: "/taxreturn",
+    label: "The year and answers from your last visit",
+    describe: (raw) => (parse(raw) ? "the dates and costs for a tax return" : null),
+  },
+  {
     key: "counciltax:v1",
     tool: "Behind on council tax: what happens next?",
     href: "/counciltax",

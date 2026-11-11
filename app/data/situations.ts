@@ -1214,6 +1214,28 @@ export const situations: Situation[] = [
     essays: ["the-whole-year-falls-due"],
   },
   {
+    id: "tax-return-due",
+    title: "Your tax return is due and you can't pay the bill",
+    scene:
+      "It's your first year freelance. The tax on it is about £4,200, which you don't have, so you've decided to do the return in the summer once you've saved it. HMRC's letters are in a pile you haven't opened. January's just a date.",
+    question: "What does leaving it actually cost, and is there a cheaper way?",
+    models: [
+      {
+        id: "ostrich-effect",
+        move: "Not opening the letters feels like it holds the bill still. It doesn't: the penalties step up on fixed dates whether you look or not. Open one, find one date, and decide one action before it.",
+      },
+      {
+        id: "tax-salience",
+        move: "Nobody took tax from that income as it came in, so it never felt like a cost, and January's bill is the first time it's visible. It's bigger than you think, too: the first year carries half of next year's tax as well. From now on, move a share of each payment into another account the day it lands.",
+      },
+    ],
+    tool: {
+      id: "taxreturn",
+      move: "This is the moment the tool is built for. It prices filing on time with a payment plan against waiting until you can pay, dates every step of both clocks, shows what's really due in January, and writes the plan request or the appeal.",
+    },
+    essays: ["file-it-even-if-you-cant-pay"],
+  },
+  {
     id: "someone-has-died",
     title: "Someone close to you has died",
     scene:
@@ -1804,6 +1826,7 @@ export const situationGroups: SituationGroup[] = [
       "catchup-bill",
       "old-debt-letter",
       "council-tax-behind",
+      "tax-return-due",
       "bailiff-letter",
       "benefit-decision",
       "repair-not-fixed",

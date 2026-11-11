@@ -446,6 +446,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "A tax return due: what does late cost, and what stops it?",
+    href: "/taxreturn",
+    snippet:
+      "Self Assessment's two clocks, in pounds and dates. What filing late and paying late add, the payment plan that stops the 5%, why the first January bill is bigger, and the letters to send.",
+    meta: "Tax return — Self Assessment penalties, payment plans, payments on account",
+    titleText:
+      "tax return self assessment self-assessment sa hmrc 31 january deadline late tax return late filing penalty £100 penalty £10 a day daily penalties £900 six months 12 months 5% or £300 late payment penalty 5% 30 days interest late payment interest bank rate plus 4% 8% can't pay my tax bill cannot pay tax time to pay arrangement payment plan hmrc £30,000 online payment plan payments on account first year self-employed tax bill bigger than expected sa303 reduce payments on account 31 july balancing payment freelance sole trader landlord rental income register for self assessment utr unique taxpayer reference 5 october notice to file withdraw notice to file don't need to file penalty appeal reasonable excuse sa370 30 days making tax digital mtd ostrich effect tax salience".toLowerCase(),
+    bodyText:
+      "a tax return due: what does late cost, and what stops it? (/taxreturn): the instrument for a uk self assessment return that's due, late, filed but unpaid, or on a payment plan. the return and the money run on separate clocks. filing late: £100 the day after the deadline (31 january online, or three months after a notice to file sent after 31 october), even if no tax is owed; £10 a day for 90 days from three months late (up to £900); 5% of the tax or £300, whichever is more, at six months and again at twelve. paying late: interest from the day after at bank rate plus 4% (about 8% from 24 november 2026); 5% of the balancing payment still unpaid at 30 days, six months and twelve months; payments on account get interest but no penalty. a time to pay arrangement agreed before a penalty date stops that penalty while it's kept to; online for £30,000 or less once the return is filed. draws the staircase of what filing and paying on each date would add, and compares filing on time with a twelve-month plan against waiting to file until you can pay (about £230 against £1,460 on £4,200 of tax). payments on account: half the year's tax each on 31 january and 31 july when the bill is over £1,000 and less than 80% was taken through paye, so the first january bill is the year's tax plus half again; reduce them with sa303. registering late: should be by 5 october, but nothing extra if the return is filed and tax paid by 31 january. a notice to file you didn't need can be withdrawn. writes the appeal for a reasonable excuse (illness, a death, hmrc system failure, post that never came; within 30 days of the notice), the request to withdraw a notice to file, and the figures for a payment plan, with a calendar file (.ics). includes a worked example: a first year freelance, £4,200 of tax and a january bill of £6,300. nothing is sent anywhere. pairs with the tax salience and ostrich effect models and the essay file it even if you can't pay it.",
+  },
+  {
+    type: "Tool",
     title: "Behind on council tax: what happens next?",
     href: "/counciltax",
     snippet:
