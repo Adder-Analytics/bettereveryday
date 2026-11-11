@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "bereavement", "baby"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "bereavement", "baby"],
       },
     ],
     choices: [
@@ -728,6 +728,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "debts",
             note: "If there are other debts too, council tax comes first; put the rest side by side.",
+          },
+        },
+      },
+      {
+        id: "taxreturn",
+        label: "My tax return is due or late, and I can't pay the bill.",
+        detail: "Self Assessment: the 31 January deadline, a penalty letter, or a first bill bigger than expected.",
+        rec: {
+          toolId: "taxreturn",
+          because:
+            "The return and the money run on separate clocks, and waiting to file until you can pay lets both run at once. It prices each step of both, shows filing on time with a payment plan against waiting, explains the first-year January bill, and writes the appeal or the plan request.",
+          then: {
+            toolId: "debts",
+            note: "Tax owed to HMRC is a priority debt. If there are others, put them side by side.",
           },
         },
       },

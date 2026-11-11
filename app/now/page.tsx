@@ -78,6 +78,32 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              The tax return&rsquo;s due on 31 January, the bill&rsquo;s more
+              than you have, so the plan is to file in the summer.{" "}
+              <Link
+                href="/taxreturn"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                A tax return due
+              </Link>{" "}
+              puts{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                the return&rsquo;s clock and the money&rsquo;s clock
+              </span>{" "}
+              side by side, prices each step of both, and shows filing on time
+              with a payment plan against waiting until you can pay (about
+              £230 against £1,460 on a £4,200 bill). It explains why the first
+              January bill is half as big again, and writes the plan request,
+              the appeal or the request to withdraw a notice. A new{" "}
+              <Link
+                href="/writing/file-it-even-if-you-cant-pay"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Tax Salience, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Eighteen weeks pregnant, and planning to tell work &ldquo;nearer
               the time&rdquo;.{" "}
               <Link
@@ -157,31 +183,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               is about why the cheapest letter is the easiest to put off.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The PIP letter says 6 points, and it reads like the end of it.{" "}
-              <Link
-                href="/challenge"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                The DWP said no
-              </Link>{" "}
-              dates the{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                one-month deadline
-              </span>{" "}
-              to ask them to look again (or to appeal), puts your points against
-              the 8 and 12 lines activity by activity, says what the difference
-              is worth a week and what a challenge could put at risk, and writes
-              the letter. It covers Universal Credit sanctions and overpayments
-              and ESA too. A new{" "}
-              <Link
-                href="/writing/the-first-no-is-a-draft"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              is about why the first no is a draft.
             </li>
           </ul>
         </section>
