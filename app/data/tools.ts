@@ -580,6 +580,18 @@ export const tools: Tool[] = [
     essays: ["check-the-denominator"],
   },
   {
+    id: "sick",
+    href: "/sick",
+    name: "Off Sick: What Are You Owed, and What Do You Send?",
+    short: "Off sick",
+    when: "You're off work ill, or you were last month, and the payslip has little or no sick pay on it. You assumed that was right: the first three days don't count, and part-timers don't earn enough to get it anyway. Or you've been off for months and haven't asked what happens when sick pay stops.",
+    ask: "What sick pay am I owed for these days, when does it run out, and what do I need to send before then?",
+    does: "Prices your days off under the rules since 6 April 2026: Statutory Sick Pay from the first day you'd have worked, with no earnings floor, at £123.25 a week or 80% of your average pay if less, divided across the days you normally work. Sets that against what the old rule (three waiting days, a £125 floor) would have paid, checks it against what's been paid, and flags any days a late notice could cost. If you're still off, draws the weeks ahead through company sick pay and SSP to where it stops at 28 weeks, counting a linked earlier spell, and dates the fit note (day eight), the SSP1 form (by week 23) and the New Style ESA claim (up to three months before the end). Writes the message telling work, the request for unpaid SSP, and the early request for the SSP1.",
+    payoff: "now",
+    models: ["half-life-of-facts", "backward-planning"],
+    essays: ["the-rule-you-remember"],
+  },
+  {
     id: "sell",
     href: "/sell",
     name: "Sell It, Keep It, or Let It Go?",
@@ -862,10 +874,10 @@ export const toolGroups: ToolGroup[] = [
   },
   {
     id: "work",
-    title: "A job is ending",
+    title: "Work: off sick, or a job ending",
     blurb:
-      "You're being made redundant, or you've resigned or been let go, and the money on the way out is worked out by hand: the holiday you hadn't taken, notice cut short, deductions, redundancy pay, a settlement offer. These check each line against what the law gives you anyway, and write the email asking for the rest.",
-    toolIds: ["redundancy", "leaving"],
+      "You're off sick and the payslip looks thin, or you're being made redundant, or you've resigned or been let go and the money on the way out is worked out by hand. Sick pay changed in April 2026; holiday, notice and redundancy pay have rules most payslips get wrong. These check each line against what the law gives you anyway, and write the email asking for the rest.",
+    toolIds: ["sick", "redundancy", "leaving"],
   },
   {
     id: "after-a-death",

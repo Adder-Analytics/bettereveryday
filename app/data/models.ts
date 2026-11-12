@@ -247,6 +247,15 @@ export const models: Model[] = [
     essays: ["file-it-even-if-you-cant-pay"],
   },
   {
+    id: "half-life-of-facts",
+    name: "The Half-Life of Facts",
+    domain: "Psychology",
+    tagline: "The rule you learned was true when you learned it. Rules change; memories don't update themselves.",
+    explanation:
+      "Samuel Arbesman's The Half-Life of Facts (2012) borrows the idea from radioactive decay: any single fact may hold for years, but a body of facts loses its truth at a fairly steady rate. Thierry Poynard and colleagues (Annals of Internal Medicine, 2002) measured it in one field, checking several hundred conclusions from fifty years of research on liver disease against what was later found; about half had been overturned or found obsolete within roughly 45 years. Rules about money and rights decay much faster, because a law can change on a single date. What we carry in our heads is the version we learned, from a parent, a colleague or a first job, with no date attached. The trap is lopsided. A remembered rule that says you're owed something gets tested the first time you claim it, and corrected if it's wrong. A remembered rule that says you're not owed anything never gets tested, because you never ask, so it survives long after the law has moved. Statutory Sick Pay is the clean case: until 6 April 2026 the first three days were unpaid and people earning under £125 a week got nothing. Both rules went that day, and anyone still acting on them is leaving money with their employer. The correction is to put a date on the rules you rely on (\"true as of when, and who told me?\") and to re-check the ones that say no, since those are the ones nothing will ever correct for you. The tool Off Sick: What Are You Owed? sets the old rule against the current one, in pounds, for your own days off.",
+    essays: ["the-rule-you-remember"],
+  },
+  {
     id: "authority-bias",
     name: "Authority Bias",
     domain: "Psychology",

@@ -78,6 +78,33 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Twelve days off with flu, no sick pay on the payslip, and no
+              question asked, because &ldquo;the first three days don&rsquo;t
+              count&rdquo; and part-timers don&rsquo;t earn enough anyway.{" "}
+              <Link
+                href="/sick"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Off sick
+              </Link>{" "}
+              prices your days under{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                the rules since April 2026
+              </span>{" "}
+              (sick pay from day one, no earnings floor) next to what the
+              rule you remember would have paid. If you&rsquo;re still off, it
+              draws the weeks ahead to where SSP stops at 28 weeks, dates the
+              fit note, the SSP1 and the benefit claim, and writes the
+              messages. A new{" "}
+              <Link
+                href="/writing/the-rule-you-remember"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, The Half-Life of Facts, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               The tax return&rsquo;s due on 31 January, the bill&rsquo;s more
               than you have, so the plan is to file in the summer.{" "}
               <Link
@@ -156,33 +183,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Cost of Delay, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              One council tax instalment didn&rsquo;t go out, and the reminder
-              is under the fruit bowl.{" "}
-              <Link
-                href="/counciltax"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Behind on council tax
-              </Link>{" "}
-              shows{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                the cliff
-              </span>
-              : the missed instalment beside the rest of the year, which falls
-              due at once if the reminder&rsquo;s seven days pass. It dates
-              the step that keeps the instalments (or gets them back before a
-              summons), checks whether the bill counts a student or a carer it
-              shouldn&rsquo;t, and writes both letters. It covers
-              England&rsquo;s April 2027 changes too. A new{" "}
-              <Link
-                href="/writing/the-whole-year-falls-due"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              is about why the cheapest letter is the easiest to put off.
             </li>
           </ul>
         </section>
