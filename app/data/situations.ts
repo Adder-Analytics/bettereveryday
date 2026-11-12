@@ -1412,6 +1412,28 @@ export const situations: Situation[] = [
     essays: ["check-the-denominator"],
   },
   {
+    id: "off-sick",
+    title: "You're off sick and the payslip looks thin",
+    scene:
+      "You work three days a week and were off for twelve days with flu, then a chest infection. The payslip had no sick pay on it. You didn't ask: everyone knows the first three days aren't paid, and you don't earn enough to get it anyway.",
+    question: "Am I actually owed anything, and how would I know?",
+    models: [
+      {
+        id: "half-life-of-facts",
+        move: "Both rules you remember were true until 6 April 2026. Neither is now. A rule that says you're not owed anything never gets tested, because you never ask. Put a date on it: when did you learn it, and from whom?",
+      },
+      {
+        id: "backward-planning",
+        move: "If you're off for longer, count back from where SSP stops at 28 weeks: the ESA claim up to three months before, the SSP1 form by week 23, a fit note from day eight. Those dates come round whether or not anyone mentions them.",
+      },
+    ],
+    tool: {
+      id: "sick",
+      move: "This is the moment the tool is built for. It prices your days off under the rule now, next to the rule you remember, checks what's been paid, draws the weeks ahead to the 28-week cliff, dates each step and writes the messages.",
+    },
+    essays: ["the-rule-you-remember"],
+  },
+  {
     id: "keep-re-deciding",
     title: "You keep re-deciding the same thing",
     scene:
@@ -1834,6 +1856,7 @@ export const situationGroups: SituationGroup[] = [
       "notice-to-leave",
       "redundancy-offer",
       "final-payslip",
+      "off-sick",
       "someone-has-died",
       "baby-on-the-way",
       "designing-incentives",

@@ -3357,6 +3357,44 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/taxreturn">tool for this</a> on the site. You pick the year and say where the return has got to. It dates every step of both clocks, shows what each one adds in pounds, puts filing on time with a plan beside waiting until you can pay, works out what January's bill really is, and writes the plan request, the appeal against a penalty or the request to withdraw a notice you never needed.</p>`,
   },
+  {
+    slug: "the-rule-you-remember",
+    title: "The Rule You Remember",
+    date: "2026-11-12",
+    excerpt:
+      "Most of what we know about our rights was learned once, from someone who was right at the time. A rule that says yes gets corrected the first time you use it. A rule that says no never does. On sick pay, and checking the rules that tell you not to ask.",
+    readTime: 4,
+    tags: ["decisions", "finance"],
+    content: `<p>Jo works three days a week in a café and earns about £120 a week. In late October Jo had flu, then a chest infection, and was off for twelve days. The payslip at the end of the month had no sick pay on it, and Jo didn't ask. Everyone knows the two rules: the first three days of sickness aren't paid, and you have to earn enough to get sick pay at all.</p>
+
+<p>Both rules were true for years. Both stopped being true on 6 April 2026. Statutory Sick Pay is now paid from the first day you'd have worked, to anyone on a payroll, at £123.25 a week or 80% of your average pay if that's less. For Jo that's £96 a week, £32 a day, £160 for the five days missed. Under the rule Jo remembers, it was nothing.</p>
+
+<h2>Facts have a half-life</h2>
+
+<p>Samuel Arbesman's book <em>The Half-Life of Facts</em> (2012) makes a point that sounds obvious and isn't: knowledge decays at a rate you can measure. Thierry Poynard and colleagues checked several hundred conclusions from fifty years of research on liver disease (<em>Annals of Internal Medicine</em>, 2002) and found that about half had been overturned or become obsolete within roughly 45 years. No single conclusion announced it was expiring. They just stopped being true, one at a time, while people went on citing them.</p>
+
+<p>Rules about money decay much faster than medicine, because a rule can change on one date by Act of Parliament. And the version in your head has no date on it. You learned it from a parent, a manager or a first job, and it was right when they told you.</p>
+
+<h2>The no that never gets checked</h2>
+
+<p>Here's the lopsided part. Suppose you remember a rule that says you're owed something, and it's out of date. The first time you claim, someone tells you no, and you update. The wrong belief lasts until you use it.</p>
+
+<p>Now suppose you remember a rule that says you're <em>not</em> owed something. You never claim. Nobody ever tells you you're wrong, because you never ask. The belief lasts until something else happens to correct it, and usually nothing does. Your employer has no reason to raise it. The payslip just has a missing line.</p>
+
+<p>So the out-of-date beliefs that survive longest are the ones that say "don't bother". They cost money quietly, and there's no feedback to fix them. It's the same shape as the <a href="/models#ostrich-effect">ostrich effect</a>, except that you aren't avoiding the information. You think you already have it.</p>
+
+<p>The move is small. When a rule you rely on says you can't, you won't get it, or it's not worth asking, put a date on it. When did I learn this, and from whom? If the answer is "years ago, from someone at work", check it. The ones that say no are the ones nothing else will check for you.</p>
+
+<h2>The cliff nobody draws</h2>
+
+<p>The other thing people don't know about sick pay is where it ends. SSP lasts 28 weeks in a period of sickness, counting an earlier spell if it ended within eight weeks, and then stops. Company sick pay, if you have it, usually runs out first. After that the employer owes nothing, and what replaces it is a benefit you have to claim: New Style ESA, based on your National Insurance record, or Universal Credit, based on income.</p>
+
+<p>None of that is hidden. It just isn't drawn. Someone off with a bad back in May hears "you're on sick pay" and assumes it keeps going. Planning backwards from week 28 gives three dates instead: a fit note from day eight, the SSP1 form from your employer by the start of week 23, and the ESA claim, which you can make up to three months before SSP ends so the money doesn't stop.</p>
+
+<p>The line to keep: <em>sick pay starts on the first day now, whatever I earn. I tell them that day, self-certify for seven days, get a fit note on day eight, and plan the claim before week 23. And when a rule I remember tells me not to ask, I check when I learned it.</em></p>
+
+<p>There's a <a href="/sick">tool for this</a> on the site. You give your first day off, the days you normally work and roughly what you earn. It works out what you're owed so far next to what the old rule would have paid, draws the weeks ahead to where SSP stops, dates the fit note, the SSP1 and the claim, and writes the messages to your employer.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

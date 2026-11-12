@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "bereavement", "baby"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "sick", "bereavement", "baby"],
       },
     ],
     choices: [
@@ -840,6 +840,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "monthly",
             note: "If there's a gap before the next job, see which monthly costs are worth keeping meanwhile.",
+          },
+        },
+      },
+      {
+        id: "sick",
+        label: "I'm off sick and I'm not sure what I'm owed.",
+        detail: "The payslip has little or no sick pay, or I've been off a while and don't know when it stops.",
+        rec: {
+          toolId: "sick",
+          because:
+            "Since April 2026 Statutory Sick Pay starts on the first day and there's no earnings floor, so the rule most people remember is out of date. It prices your days at £123.25 a week or 80% of your pay, shows what the old rule would have paid, dates the fit note, the SSP1 and the benefit claim before SSP stops at 28 weeks, and writes the messages.",
+          then: {
+            toolId: "monthly",
+            note: "If you'll be on SSP for a while, see which monthly costs are worth pausing until your pay is back.",
           },
         },
       },

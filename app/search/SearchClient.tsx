@@ -386,6 +386,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Off sick: what are you owed, and what do you send?",
+    href: "/sick",
+    snippet:
+      "Statutory Sick Pay since April 2026: from the first day, with no earnings floor. What you're owed for your days off, what the old rule would have paid, when it runs out at 28 weeks, and the messages to send.",
+    meta: "Off sick — Statutory Sick Pay, fit notes, SSP1, ESA",
+    titleText:
+      "off sick sick pay statutory sick pay ssp sick leave ill off work illness injury flu covid back pain stress signed off sick note fit note doctor's note self certification self-certify sc2 first three days waiting days day one sick pay lower earnings limit £125 earn enough part-time zero hours agency worker casual worker 80% average weekly earnings £123.25 ssp rate 2026 daily rate qualifying days linked spells 56 days 8 weeks 28 weeks ssp ends ssp1 form week 23 new style esa employment and support allowance universal credit company sick pay contractual sick pay half pay employer won't pay sick pay employer refused ssp hmrc statutory payment dispute team late notification employment rights act 2025 half-life of facts".toLowerCase(),
+    bodyText:
+      "off sick: what are you owed, and what do you send? (/sick): the instrument for statutory sick pay anywhere in the uk since the employment rights act 2025 changes of 6 april 2026. ssp is now paid from the first qualifying day off (no more three unpaid waiting days) to anyone on a payroll, including part-time, agency and zero-hours workers (no more lower earnings limit, which was £125 a week in 2025/26), at £123.25 a week for 2026/27 or 80% of average weekly earnings if that's lower. average weekly earnings are gross pay in the eight weeks before, divided by eight. the daily rate is the weekly rate over the days you normally work. the tool counts your qualifying days off, prices them, and sets the total against what the old rule would have paid. it checks what's been paid, and flags the days a late notification could cost (the employer's own rule, or seven days; it can withhold only the days of delay, unless there was good cause). self-certify for the first seven days (sc2); a fit note after that, from a gp, nurse, pharmacist, physiotherapist or occupational therapist; a late fit note isn't a reason to stop ssp. ssp lasts 28 weeks in a period of sickness; spells separated by 56 days or less link and count together. if you're still off it draws the weeks ahead through company sick pay (full and half pay) and ssp to the cliff, and dates the ssp1 form (by the start of week 23), the new style esa claim (up to three months before ssp ends) and universal credit. if the employer won't pay: ask for reasons on form ssp1, then hmrc's statutory payment dispute team (citizens advice says within six months). self-employed people don't get ssp: new style esa or universal credit. writes the message telling work, the request for unpaid ssp and the early request for the ssp1, with a calendar file (.ics). includes a worked example: three days a week in a café on £120 a week, off twelve days, £160 owed where the old rule paid nothing. nothing is sent anywhere. pairs with the half-life of facts and backward planning models and the essay the rule you remember.",
+  },
+  {
+    type: "Tool",
     title: "Leaving a job: is your last pay right?",
     href: "/leaving",
     snippet:
