@@ -386,6 +386,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Dismissed: do you have a claim, and by when?",
+    href: "/dismissed",
+    snippet:
+      "Sacked, given notice or pushed out? Six months to contact Acas for jobs ending from October 2026, and six months' service for unfair dismissal from January 2027. Your deadline, your service against the line, each claim, and the letters.",
+    meta: "Dismissed — unfair dismissal, tribunal deadline, Acas",
+    titleText:
+      "dismissed sacked fired let go dismissal unfair dismissal wrongful dismissal constructive dismissal forced to resign resigned because of treatment disciplinary disciplinary meeting capability performance gross misconduct misconduct summary dismissal dismissed without notice pay in lieu of notice pilon notice pay employment tribunal tribunal claim time limit tribunal deadline three months six months less a day acas early conciliation certificate et1 appeal against dismissal does an appeal stop the clock two years qualifying period six months 1 january 2027 employment rights act 2025 effective date of termination statutory notice section 97 written reasons for dismissal section 92 automatically unfair whistleblowing pregnancy maternity asserting a statutory right holiday pay complaint health and safety trade union discrimination disability basic award compensatory award cap £751 £123,543 labour relations agency notches".toLowerCase(),
+    bodyText:
+      "dismissed: do you have a claim, and by when? (/dismissed): the instrument for being dismissed, given notice or pushed into resigning, for employees in great britain with a shorter read for northern ireland. the tribunal time limit is six months less a day for jobs ending on or after 1 october 2026 under the employment rights act 2025 (three months less a day before, and in northern ireland). acas early conciliation is required first and is free; the days from contacting acas to the certificate don't count, and you always get at least a month after the certificate; conciliation lasts up to 12 weeks. an internal appeal does not pause the clock. unfair dismissal needs two years' service, or six months where the effective date of termination is on or after 1 january 2027 (one year in northern ireland). service is counted to the end of the notice, and if notice was cut short or paid in lieu the statutory minimum notice is added first (employment rights act 1996 s.97(2), s.97(4) for constructive dismissal), so a no-notice dismissal from about 25 december 2026 counts as ending in 2027. no service is needed for automatically unfair reasons (asking about pay, holiday, sick pay or the minimum wage, pregnancy and family leave, whistleblowing, health and safety, trade union) or for discrimination. notice pay is owed unless it was genuinely gross misconduct. the basic award is like statutory redundancy pay with a week's pay capped at £751 from april 2026; the compensatory award cap (the lower of £123,543 or a year's pay) goes for jobs ending from 1 january 2027; failing the acas code can move an award by up to 25%. writes the request for written reasons (s.92), the appeal, and the notice pay letter, with a calendar file (.ics). includes a worked example: eight months in, dismissed for performance with a week in lieu after asking about holiday pay. nothing is sent anywhere. pairs with the notches and backward planning models and the essay the day before the line.",
+  },
+  {
+    type: "Tool",
     title: "Off sick: what are you owed, and what do you send?",
     href: "/sick",
     snippet:

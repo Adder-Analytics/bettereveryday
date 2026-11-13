@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "sick", "bereavement", "baby"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "sick", "dismissed", "bereavement", "baby"],
       },
     ],
     choices: [
@@ -854,6 +854,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "monthly",
             note: "If you'll be on SSP for a while, see which monthly costs are worth pausing until your pay is back.",
+          },
+        },
+      },
+      {
+        id: "dismissed",
+        label: "I've been sacked, or I think it's coming.",
+        detail: "Dismissed, given notice or pushed into resigning, and told there's nothing I can do without two years.",
+        rec: {
+          toolId: "dismissed",
+          because:
+            "Since October 2026 you have six months, not three, to contact Acas, and an appeal doesn't pause it. From January 2027 six months' service is enough for unfair dismissal, counted with the notice you weren't given added on, and some claims need no service at all. It dates the deadline, counts your service against the line, goes through each claim and writes the letters.",
+          then: {
+            toolId: "leaving",
+            note: "Then check the final payslip: holiday built up and notice are owed whatever the reason.",
           },
         },
       },

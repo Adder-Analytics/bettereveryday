@@ -559,6 +559,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "sick pay being checked" : null),
   },
   {
+    key: "dismissed:v1",
+    tool: "Dismissed: do you have a claim, and by when?",
+    href: "/dismissed",
+    label: "The dismissal you last checked",
+    answerNow: true,
+    subject: subjectField("employer"),
+    describe: (raw) => (parse(raw) ? "a dismissal being checked" : null),
+  },
+  {
     key: "leaving:v1",
     tool: "Leaving a job: is your last pay right?",
     href: "/leaving",

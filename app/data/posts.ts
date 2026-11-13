@@ -3395,6 +3395,46 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/sick">tool for this</a> on the site. You give your first day off, the days you normally work and roughly what you earn. It works out what you're owed so far next to what the old rule would have paid, draws the weeks ahead to where SSP stops, dates the fit note, the SSP1 and the claim, and writes the messages to your employer.</p>`,
   },
+  {
+    slug: "the-day-before-the-line",
+    title: "The Day Before the Line",
+    date: "2026-11-13",
+    excerpt:
+      "Two rules decide whether someone who's been sacked can do anything about it, and both moved this autumn. Rules with a cliff in them reward whoever knows exactly where the cliff is. On dismissal, notches, and counting your distance from the line the law's way.",
+    readTime: 5,
+    tags: ["decisions", "finance"],
+    content: `<p>Sam started at a warehouse in March. In October Sam asked why the holiday pay on the last payslip looked short. Three weeks later came a meeting with no warning, a sentence about "performance", and a week's pay in lieu of notice. A friend who'd been through it said the same two things anyone would: you can't claim unfair dismissal without two years, and you've got three months anyway. So Sam decided to see how the appeal went.</p>
+
+<p>Both of those rules were true for a long time. Neither is the whole truth for Sam. For jobs ending from 1 October 2026, the deadline to start a tribunal claim in Great Britain is six months less a day, not three. Asking about holiday pay is asserting a legal right, and dismissing someone for that is automatically unfair at any length of service. And for jobs ending from 1 January 2027, the ordinary qualifying period falls from two years to six months. Sam was let go seven weeks before that line.</p>
+
+<h2>Rules with cliffs</h2>
+
+<p>Most rules change smoothly. Earn a pound more and you pay a few pence more tax. Economists call a rule that jumps instead a <a href="/models#notches">notch</a>: cross a line and the outcome changes all at once. Henrik Kleven and Mazhar Waseem studied notches in Pakistan's income tax (<em>Quarterly Journal of Economics</em>, 2013), where crossing a threshold raised the rate on all of a person's income. Plenty of people bunched just below the lines. But many sat just above them, in a band where earning slightly less would have left them with more, because they didn't know where the lines were or couldn't move.</p>
+
+<p>That's what notches do. They reward whoever knows exactly where the line is, and they're invisible to everyone else. Employment law is built out of them: the service you need, the deadline, the cap on compensation. And the people who deal with them every week are on one side.</p>
+
+<p>Employers notice. When the UK cut the qualifying period from two years to one in 1999, Ioana Marinescu found (<em>Journal of Labor Economics</em>, 2009) that the firing rate for people with one to two years' service fell by about a quarter compared with longer-serving staff. Where the line sits changes who gets let go, and when.</p>
+
+<h2>The line is further than the letter says</h2>
+
+<p>The second thing about notches is that you have to measure your distance the rule's way, and the rule's way is rarely the obvious one. For unfair dismissal, service runs to the "effective date of termination": the end of the notice, not the day of the meeting. And if the employer gives less than the statutory minimum notice (a week, after a month's service; then a week for each full year), or pays it in lieu instead of letting you work it, the law adds that notice before counting. Paying in lieu doesn't get around it.</p>
+
+<p>So a dismissal "with immediate effect" on 28 December 2026, for someone with eighteen months' service, counts as ending on 4 January 2027 for this purpose. That's the right side of the new line. On 20 December, it isn't. One week of statutory notice is the difference between a claim and no claim. Most people would only know that if someone told them.</p>
+
+<h2>The clock under the appeal</h2>
+
+<p>The other line is the deadline, and here the mistake is about what pauses it. An internal appeal feels like the main event, the place where the decision is still open. It is not part of the tribunal's clock. The six months run from the end of employment whatever the appeal is doing. What does pause them is contacting Acas for early conciliation, which is free, and which you have to do before you can claim at all. Sam can go to the appeal <em>and</em> contact Acas the same week. If the appeal works, the claim can be dropped. If Sam waits for it and it fails, the deadline hasn't moved.</p>
+
+<p>That's backward planning: count back from the date that can't move, not forward from the process that feels urgent.</p>
+
+<h2>What to do with a line</h2>
+
+<p>The move is the same for any rule with a cliff in it. Find the line. Learn how the rule counts: from which date, with what added. Then count your distance in days. If you're inside it, put the date in a calendar today. If you're just outside, look at what doesn't depend on the line at all: for dismissal, the reasons that need no service, discrimination, and notice pay.</p>
+
+<p>The line to keep: <em>the appeal is theirs; the clock is mine. I count my service the law's way, notice included, and I contact Acas by the date, whatever the appeal says.</em></p>
+
+<p>There's a <a href="/dismissed">tool for this</a> on the site. You give the day the job started, the day you were told and how notice was handled. It dates the Acas deadline, draws your service against the line that applies, goes through each claim, including the ones that need no service, and writes the letters: asking for the reason in writing, the appeal, and the notice pay.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

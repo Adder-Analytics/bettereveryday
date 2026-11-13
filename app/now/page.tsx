@@ -78,6 +78,34 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Sacked eight months in, with a week&rsquo;s pay in lieu, and
+              told you can&rsquo;t claim without two years and have three
+              months anyway.{" "}
+              <Link
+                href="/dismissed"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Dismissed
+              </Link>{" "}
+              dates the day to contact Acas by (six months now, and an appeal
+              doesn&rsquo;t pause it) and draws{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                your service against the line
+              </span>
+              , counted the law&rsquo;s way with the notice you weren&rsquo;t
+              given added on, which matters most for anyone let go around
+              1 January 2027, when two years becomes six months. Then each
+              claim, including the ones that need no service, and the letters.
+              A new{" "}
+              <Link
+                href="/writing/the-day-before-the-line"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Notches, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Twelve days off with flu, no sick pay on the payslip, and no
               question asked, because &ldquo;the first three days don&rsquo;t
               count&rdquo; and part-timers don&rsquo;t earn enough anyway.{" "}
@@ -155,34 +183,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Backward Planning, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A month after the funeral, there&rsquo;s a folder of letters on
-              the kitchen table, each one asking for something &ldquo;as soon
-              as possible&rdquo;.{" "}
-              <Link
-                href="/bereavement"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Someone has died
-              </Link>{" "}
-              sorts the admin by{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                what waiting would cost
-              </span>
-              , dated from the day of the death. A few things have a date that
-              costs money, and they&rsquo;re the quiet ones: Bereavement
-              Support Payment is worth up to £9,800 if claimed within three
-              months, and less each month after. It says plainly what can
-              wait, explains that family don&rsquo;t inherit debts, and writes
-              the letters. A new{" "}
-              <Link
-                href="/writing/most-of-it-can-wait"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Cost of Delay, go with it.
             </li>
           </ul>
         </section>
