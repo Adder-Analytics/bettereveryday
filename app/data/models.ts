@@ -256,6 +256,15 @@ export const models: Model[] = [
     essays: ["the-rule-you-remember"],
   },
   {
+    id: "notches",
+    name: "Notches",
+    domain: "Economics",
+    tagline: "Where a rule has a cliff, one day either side changes everything. The side that knows where the cliff is moves first.",
+    explanation:
+      "Most rules change gradually: earn a pound more, pay a few pence more tax. A notch is a rule that jumps: cross a line and the outcome changes all at once. Henrik Kleven and Mazhar Waseem (Quarterly Journal of Economics, 2013) studied notches in Pakistan's income tax, where crossing a threshold raised the tax on all of a person's income, not just the part above it. Many people bunched just below the lines, as you'd expect; but a large share sat just above them, where earning slightly less would have left them better off, because they didn't know or couldn't adjust. Notches reward whoever knows exactly where the line is. Employment law is full of them, and they're dated. In Great Britain unfair dismissal protection needed two years' service; for jobs ending from 1 January 2027 it needs six months. The tribunal deadline was three months; for jobs ending from 1 October 2026 it's six. Employers respond to these lines: Ioana Marinescu (Journal of Labor Economics, 2009) found that when the UK cut the qualifying period from two years to one in 1999, the firing rate for workers with one to two years' service fell by about a quarter compared with longer-serving staff. The person on the other side of the line usually doesn't know it's there, or measures it from the wrong date. The law counts service to the day employment ends, and if notice is cut short or paid in lieu, it adds the statutory notice first, so a dismissal with immediate effect after Christmas 2026 can count as ending in 2027. The correction: when a rule has a cliff, find the line, and count your distance from it in days, using the rule's own way of counting, not the date on the letter. The tool Dismissed: Do You Have a Claim? draws your service against the line that applies.",
+    essays: ["the-day-before-the-line"],
+  },
+  {
     id: "authority-bias",
     name: "Authority Bias",
     domain: "Psychology",

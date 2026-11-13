@@ -556,6 +556,18 @@ export const tools: Tool[] = [
     essays: ["they-dont-know-until-its-written"],
   },
   {
+    id: "dismissed",
+    href: "/dismissed",
+    name: "Dismissed: Do You Have a Claim, and By When?",
+    short: "Dismissed",
+    when: "You've been sacked, given notice, or pushed until you resigned. Someone says you can't do anything without two years' service, and that you've got three months anyway, so you're waiting to see how the appeal goes.",
+    ask: "Do I have a claim, how long do I really have, and what do I do this week?",
+    does: "Dates the day to contact Acas by: six months less a day for jobs ending from 1 October 2026 (three before; three in Northern Ireland), and an internal appeal doesn't pause it. Once you've contacted Acas, works out the claim deadline with the pause and the one-month rule. Counts your service the way the law does, adding the statutory notice you weren't given (so a dismissal on the spot in late December can count as ending in 2027), and sets it against the line: two years, or six months for jobs ending from 1 January 2027. Then each claim: unfair dismissal, the reasons that need no service at all (asking about pay or holiday, pregnancy, whistleblowing, health and safety), discrimination, notice pay. Gives the basic award and notice pay figures, and writes the request for written reasons, the appeal and the notice pay letter.",
+    payoff: "now",
+    models: ["notches", "backward-planning"],
+    essays: ["the-day-before-the-line"],
+  },
+  {
     id: "redundancy",
     href: "/redundancy",
     name: "Made Redundant: Is the Money Right?",
@@ -874,10 +886,10 @@ export const toolGroups: ToolGroup[] = [
   },
   {
     id: "work",
-    title: "Work: off sick, or a job ending",
+    title: "Work: off sick, let go, or a job ending",
     blurb:
-      "You're off sick and the payslip looks thin, or you're being made redundant, or you've resigned or been let go and the money on the way out is worked out by hand. Sick pay changed in April 2026; holiday, notice and redundancy pay have rules most payslips get wrong. These check each line against what the law gives you anyway, and write the email asking for the rest.",
-    toolIds: ["sick", "redundancy", "leaving"],
+      "You're off sick and the payslip looks thin, or you've been dismissed and don't know if you can do anything, or you're being made redundant and the money on the way out is worked out by hand. Sick pay changed in April 2026, tribunal deadlines in October, unfair dismissal in January 2027; holiday, notice and redundancy pay have rules most payslips get wrong. These check each one against what the law gives you, date what's due, and write the letters.",
+    toolIds: ["sick", "dismissed", "redundancy", "leaving"],
   },
   {
     id: "after-a-death",

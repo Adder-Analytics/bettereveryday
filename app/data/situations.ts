@@ -1412,6 +1412,28 @@ export const situations: Situation[] = [
     essays: ["check-the-denominator"],
   },
   {
+    id: "dismissed",
+    title: "You've been sacked and told there's nothing you can do",
+    scene:
+      "Eight months into the job you asked why your holiday pay was short. Three weeks later you were called in and told you were going, \"for performance\", with a week's pay in lieu. A friend says you need two years before you can claim anything, and you've got three months anyway, so you'll see how the appeal goes first.",
+    question: "Do I actually have a claim, and how long have I got?",
+    models: [
+      {
+        id: "notches",
+        move: "Two lines decide this, and both moved: the deadline went from three months to six for jobs ending from 1 October 2026, and the service from two years to six months for jobs ending from 1 January 2027. Count your distance from each in days, the law's way: service runs to the end of your notice, including notice you were paid instead of working.",
+      },
+      {
+        id: "backward-planning",
+        move: "Count back from the deadline, not forward from the appeal. Acas has to be contacted before it, and the appeal doesn't stop the clock. Put the date in the calendar today.",
+      },
+    ],
+    tool: {
+      id: "dismissed",
+      move: "This is the moment the tool is built for. It dates the Acas deadline, counts your service against the line that applies, goes through each claim (including the ones that need no service) and writes the letters.",
+    },
+    essays: ["the-day-before-the-line"],
+  },
+  {
     id: "off-sick",
     title: "You're off sick and the payslip looks thin",
     scene:
@@ -1857,6 +1879,7 @@ export const situationGroups: SituationGroup[] = [
       "redundancy-offer",
       "final-payslip",
       "off-sick",
+      "dismissed",
       "someone-has-died",
       "baby-on-the-way",
       "designing-incentives",
