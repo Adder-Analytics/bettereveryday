@@ -691,7 +691,11 @@ function ReadBlock({ inp, read, today }: { inp: ParkingInputs; read: ParkingRead
               <>
                 <li>After 28 days, a Notice to Owner: the full {money(read.full)}.</li>
                 <li>28 days after that, a Charge Certificate: {money(read.full * 1.5)}, and no more right to appeal.</li>
-                <li>14 days later, it&rsquo;s registered as a debt with a court fee, then bailiffs, whose fees start at £79 (since May 2026).</li>
+                <li>14 days later, it&rsquo;s registered as a debt with a court fee, then bailiffs, whose fees start at £79 (since May 2026).{" "}
+                  <Link href="/bailiff" className={link}>
+                    Already there?
+                  </Link>
+                </li>
               </>
             ) : (
               <>
@@ -768,6 +772,11 @@ function Handoffs({ inp }: { inp: ParkingInputs }) {
       href: withSubject("/scam", "a text about an unpaid parking fine"),
       label: "A text says you owe a parking fine?",
       note: "Fake parking and toll texts are common. Councils and operators write by post; check before you click or pay.",
+    },
+    {
+      href: "/bailiff",
+      label: "Already had a bailiff's letter?",
+      note: "Checks the fee for the stage you're at, dates the first day a bailiff can call, says what they can and can't do, and writes the offer to send before the knock.",
     },
     {
       href: withSubject("/rule", inp.what),

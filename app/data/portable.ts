@@ -550,6 +550,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a bailiff's letter being dealt with" : null),
   },
   {
+    key: "taxcode:v1",
+    tool: "Is your tax code right?",
+    href: "/taxcode",
+    label: "The tax code you last checked",
+    answerNow: true,
+    subject: subjectField("code"),
+    describe: (raw) => (parse(raw) ? "a tax code being checked" : null),
+  },
+  {
     key: "sick:v1",
     tool: "Off sick: what are you owed, and what do you send?",
     href: "/sick",

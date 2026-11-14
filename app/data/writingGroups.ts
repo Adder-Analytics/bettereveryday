@@ -98,6 +98,7 @@ const essayGroups: EssayGroup[] = [
       "file-it-even-if-you-cant-pay",
       "the-rule-you-remember",
       "the-day-before-the-line",
+      "before-the-total-closes",
       "future-you-is-not-less-busy",
       "metric-not-the-mission",
       "second-order-thinking",

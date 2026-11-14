@@ -78,6 +78,32 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A new job in October, no P45, the middle box ticked on the
+              starter form, and £270 of tax on the first payslip with a code
+              nobody read.{" "}
+              <Link
+                href="/taxcode"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Tax code
+              </Link>{" "}
+              reads the code part by part, builds the one your details should
+              give, and runs{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                both through the year, payslip by payslip
+              </span>
+              : what the gap costs by 5 April, how much has already gone, and
+              why a corrected code gives it all back in one payslip until the
+              year closes. Then what to tell HMRC and payroll. A new{" "}
+              <Link
+                href="/writing/before-the-total-closes"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Running Totals, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Sacked eight months in, with a week&rsquo;s pay in lieu, and
               told you can&rsquo;t claim without two years and have three
               months anyway.{" "}
@@ -157,32 +183,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Tax Salience, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Eighteen weeks pregnant, and planning to tell work &ldquo;nearer
-              the time&rdquo;.{" "}
-              <Link
-                href="/baby"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                A baby&rsquo;s coming
-              </Link>{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                counts back from the due date
-              </span>{" "}
-              to the week that decides maternity and paternity pay, about 25
-              weeks in. It says whether statutory pay applies and how much,
-              draws the pay through the year with the drops dated, sorts the
-              claims after the birth (Child Benefit, the £500 grant) by what
-              waiting would cost, and writes the letter to your employer. A
-              new{" "}
-              <Link
-                href="/writing/count-back-from-the-due-date"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Backward Planning, go with it.
             </li>
           </ul>
         </section>

@@ -942,6 +942,11 @@ function Handoffs() {
       note: "Add statutory redundancy pay, and split any settlement offer into owed-anyway and on top.",
     },
     {
+      href: "/dismissed",
+      label: "Were you sacked?",
+      note: "Some claims need no qualifying service, and the Acas deadline doesn't wait for an appeal. It dates it and goes through each claim.",
+    },
+    {
       href: "/monthly",
       label: "A gap before the next job?",
       note: "Find which monthly costs are worth keeping while the income stops.",

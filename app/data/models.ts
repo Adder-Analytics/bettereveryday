@@ -256,6 +256,15 @@ export const models: Model[] = [
     essays: ["the-rule-you-remember"],
   },
   {
+    id: "running-totals",
+    name: "Running Totals",
+    domain: "Systems",
+    tagline: "A system that keeps a running total forgives an early mistake once you fix the input. One that settles each period alone keeps every mistake. Know which you're in, and when the total closes.",
+    explanation:
+      "Donella Meadows' Thinking in Systems (2008) separates stocks, the amounts that build up, from flows, the rates that fill and drain them, and calls a stock the memory of the history of its flows. People find this harder than it sounds. Linda Booth Sweeney and John Sterman (System Dynamics Review, 2000) showed graduate students at an elite business school a bathtub with graphs of water flowing in and out and asked them to sketch the level; many couldn't, and education didn't predict who could. We read the flow in front of us and lose track of the total behind it. The useful question about any system that counts you is which kind it is. Some keep a running total and recompute from the start each time: fix the input today and every earlier error is absorbed in one step. Others settle each period on its own and forget: an error in March stays in March. A cumulative PAYE tax code is the first kind. Each payslip works out the tax due on all your pay since 6 April against all your allowance since 6 April and takes the difference, so a code corrected in January gives back every pound over-taken since April in one payslip. A W1 or M1 emergency code is the second kind: each payslip gets one period's allowance and the rest is never used, which is why someone who starts work in October on an emergency code pays tax on allowance they were owed for the months before. And every running total has a closing date. PAYE's is 5 April; after it, the year's errors stop correcting themselves and become a claim you have to make. The same split shows up elsewhere: an ISA allowance is settled each year and doesn't roll over, while unused pension annual allowance can be carried forward three years. The correction: before worrying about a mistake, ask whether the system remembers. If it does, fix the input before the total closes and the past takes care of itself. If it doesn't, the mistake is already permanent and only the next period is yours. The tool Is Your Tax Code Right? runs both versions of your year side by side.",
+    essays: ["before-the-total-closes"],
+  },
+  {
     id: "notches",
     name: "Notches",
     domain: "Economics",

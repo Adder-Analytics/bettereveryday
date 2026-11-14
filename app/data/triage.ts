@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "sick", "dismissed", "bereavement", "baby"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby"],
       },
     ],
     choices: [
@@ -840,6 +840,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "monthly",
             note: "If there's a gap before the next job, see which monthly costs are worth keeping meanwhile.",
+          },
+        },
+      },
+      {
+        id: "taxcode",
+        label: "The tax on my payslip looks wrong.",
+        detail: "A code I've never read, maybe with M1 or BR on it, a new job without a P45, two jobs, or a pension.",
+        rec: {
+          toolId: "taxcode",
+          because:
+            "Most tax codes are a running total: corrected before 5 April, every pound over-taken comes back in your next pay. After that it's a claim. It reads your code, builds the one your details should give, runs both through the year, says what the gap costs and how much has gone, and writes what to tell HMRC and payroll.",
+          then: {
+            toolId: "leaving",
+            note: "If you left a job this year, check that final payslip too, and keep the P45.",
           },
         },
       },

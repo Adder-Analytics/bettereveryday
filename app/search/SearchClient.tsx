@@ -398,6 +398,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Is your tax code right?",
+    href: "/taxcode",
+    snippet:
+      "1257L, M1, BR, K475: what your PAYE code means, the code your details should give, and what the difference costs by 5 April. Fixed before then, over-taken tax comes back in one payslip.",
+    meta: "Tax code — PAYE, emergency tax, refunds",
+    titleText:
+      "tax code is my tax code right wrong tax code check my tax code 1257l 1257 l emergency tax code emergency tax w1 m1 x week 1 month 1 non-cumulative cumulative br basic rate 0t nt d0 d1 k code k tax code negative allowance s1257l scottish tax code c1257l welsh tax code personal allowance £12,570 marriage allowance m n 1383m 1131n p45 no p45 starter checklist statement a b c new job second job two jobs pension tax code state pension private pension emergency tax pension lump sum p55 p53z p50z p50 company car benefit in kind p11d p2 coding notice p800 tax refund overpaid tax underpaid tax paye refund claim tax back four years hmrc app personal tax account too much tax payslip tax running totals".toLowerCase(),
+    bodyText:
+      "is your tax code right? (/taxcode): the instrument for checking a paye tax code anywhere in the uk with 2026/27 rates. the number times ten (plus nine in the tables) is the tax-free pay for the year, spread across paydays; l is the standard personal allowance (£12,570, reduced by £1 for every £2 over £100,000), m and n are marriage allowance received or given (£1,260), t means items to review, k means negative allowance added to pay (tax capped at half the pay in a period). s is scottish rates (19% starter to 48% top, bands to £16,537, £29,526, £43,662, £75,000 and £125,140), c is welsh (same as england). br, d0 and d1 tax every pound at a flat rate, for second jobs; 0t gives no allowance; nt takes no tax. w1, m1 or x is the emergency, non-cumulative basis: each payslip taxed alone with one period's allowance, so allowance for months before you started is never used. a cumulative code recomputes tax on all the pay since 6 april at every payslip, so a corrected code refunds everything over-taken in one payslip until the year closes on 5 april; after that it's a p800, which since 2024 mostly has to be claimed, within four years (2022/23 by 5 april 2027). the tool builds the code your details give from marriage allowance, taxable benefits, state pension (£241.30 a week in 2026/27), other untaxed income, job expenses and tax owed (coded out only under £3,000), runs both through the year, and says the gap by 5 april and how much has gone. checks the payslip's tax against the code, flags a second job with its own allowance, a missing p45, the wrong starter checklist statement (a gives 1257l cumulative, b gives 1257l w1/m1, c gives br, none gives 0t) and a pension's first withdrawal taxed on an emergency code (p55, p53z, p50z). writes what to tell hmrc and the message to payroll, with a calendar file (.ics). includes a worked example: a new job in october after six months off, 1257l m1, about £1,257 over-taken by april. nothing is sent anywhere. pairs with the running totals model and the essay before the total closes.",
+  },
+  {
+    type: "Tool",
     title: "Off sick: what are you owed, and what do you send?",
     href: "/sick",
     snippet:

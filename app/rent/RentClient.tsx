@@ -709,6 +709,11 @@ type Handoff = { href: string; label: string; note: string };
 function Handoffs({ inp }: { inp: RentInputs }) {
   const list: Handoff[] = [
     {
+      href: "/repairs",
+      label: "Something in the home needs fixing?",
+      note: "Puts how long you've lived with it next to how long the landlord has known on paper, and writes the dated report.",
+    },
+    {
       href: withSubject("/walkaway", inp.what),
       label: "Negotiating with the landlord?",
       note: "Set your line before you talk: what moving would really cost you, all in, decides the most you'd agree to.",

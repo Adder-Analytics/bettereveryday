@@ -710,6 +710,11 @@ function ReadBlock({ inp, read, today }: { inp: RedundancyInputs; read: Redundan
 function Handoffs() {
   const list = [
     {
+      href: "/dismissed",
+      label: "Doubt it's a real redundancy?",
+      note: "If the job isn't really going, or you were picked unfairly, it dates the Acas deadline and counts your service against the line.",
+    },
+    {
       href: "/walkaway",
       label: "Negotiating the package?",
       note: "Set your line before the meeting: what you'd get by not signing, and the least you'd sign for.",

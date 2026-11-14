@@ -909,6 +909,11 @@ function Handoffs({ inp }: { inp: DepositInputs }) {
   const s = inp.what;
   const list: Handoff[] = [
     {
+      href: "/repairs",
+      label: "Still there, with something the landlord hasn't fixed?",
+      note: "A dated report now is also your evidence at check-out that the damage was theirs to repair, not yours to pay for.",
+    },
+    {
       href: withSubject("/split", "the next flat"),
       label: "The next place, if you're sharing",
       note: "Who gets which room, and what each pays for it, so nobody feels they're subsidising someone else.",

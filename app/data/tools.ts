@@ -592,6 +592,18 @@ export const tools: Tool[] = [
     essays: ["check-the-denominator"],
   },
   {
+    id: "taxcode",
+    href: "/taxcode",
+    name: "Is Your Tax Code Right?",
+    short: "Tax code",
+    when: "Your payslip has a code on it you've never read: 1257L, maybe with an M1 after it, or BR, or a K. You started a job without a P45, or you've got two jobs, or a pension and a State Pension, or a company car that went back. The tax looks high, or suspiciously low, and you assumed it was just what tax is.",
+    ask: "Is my tax code right, what is it costing me by 5 April, and how do I get it back?",
+    does: "Reads the code part by part (the number times ten as tax-free pay, the letter, an S or C for Scotland or Wales, W1, M1 or X for the emergency basis), builds the code your details should give from the 2026/27 allowance and bands, Marriage Allowance, benefits, State Pension, expenses and tax owed, and runs both through the year payslip by payslip. Says what the difference comes to by 5 April and how much has already gone, which a corrected cumulative code gives back in one payslip until the year closes. Checks the payslip's own tax against the code, flags a second job with its own allowance, a missing P45, the wrong starter-checklist statement and a pension's first emergency-taxed withdrawal, and writes what to tell HMRC and the message to payroll.",
+    payoff: "now",
+    models: ["running-totals"],
+    essays: ["before-the-total-closes"],
+  },
+  {
     id: "sick",
     href: "/sick",
     name: "Off Sick: What Are You Owed, and What Do You Send?",
@@ -886,10 +898,10 @@ export const toolGroups: ToolGroup[] = [
   },
   {
     id: "work",
-    title: "Work: off sick, let go, or a job ending",
+    title: "Work: the payslip, off sick, let go, or a job ending",
     blurb:
-      "You're off sick and the payslip looks thin, or you've been dismissed and don't know if you can do anything, or you're being made redundant and the money on the way out is worked out by hand. Sick pay changed in April 2026, tribunal deadlines in October, unfair dismissal in January 2027; holiday, notice and redundancy pay have rules most payslips get wrong. These check each one against what the law gives you, date what's due, and write the letters.",
-    toolIds: ["sick", "dismissed", "redundancy", "leaving"],
+      "The tax code on your payslip is wrong and nobody's checked, or you're off sick and the payslip looks thin, or you've been dismissed and don't know if you can do anything, or you're being made redundant and the money on the way out is worked out by hand. Tax codes are a running total that closes on 5 April, sick pay changed in April 2026, tribunal deadlines in October, unfair dismissal in January 2027; holiday, notice and redundancy pay have rules most payslips get wrong. These check each one against what the law gives you, date what's due, and write the letters.",
+    toolIds: ["taxcode", "sick", "dismissed", "redundancy", "leaving"],
   },
   {
     id: "after-a-death",
