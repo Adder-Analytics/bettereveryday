@@ -1434,6 +1434,28 @@ export const situations: Situation[] = [
     essays: ["the-day-before-the-line"],
   },
   {
+    id: "tax-code",
+    title: "Your payslip's tax looks wrong and you've never read the code",
+    scene:
+      "You started a new job in October after six months off work. You had no P45, and the starter form asked about other jobs and benefits, so you ticked the middle box to be safe. The first payslip took £270 in tax with the code 1257L M1. It seemed a lot, but you assumed that's just what tax is.",
+    question: "Is my tax code right, and if it isn't, what do I lose by waiting?",
+    models: [
+      {
+        id: "running-totals",
+        move: "Ask whether the system remembers. A cumulative code recomputes your tax on the whole year at every payslip, so fixing it before 5 April gives back everything. The M1 on the end means it doesn't: each month is taxed alone, and the allowance for the months you didn't work is never used.",
+      },
+      {
+        id: "half-life-of-facts",
+        move: "\"That's just what tax is\" is a remembered rule with no date on it. Put a number on it instead: the code's digits times ten are your tax-free pay, and you can check that in a minute.",
+      },
+    ],
+    tool: {
+      id: "taxcode",
+      move: "This is the moment the tool is built for. It reads the code, builds the one your details give, runs both through the year, says what the gap costs by 5 April and how much has gone, and writes what to tell HMRC and payroll.",
+    },
+    essays: ["before-the-total-closes"],
+  },
+  {
     id: "off-sick",
     title: "You're off sick and the payslip looks thin",
     scene:
@@ -1878,6 +1900,7 @@ export const situationGroups: SituationGroup[] = [
       "notice-to-leave",
       "redundancy-offer",
       "final-payslip",
+      "tax-code",
       "off-sick",
       "dismissed",
       "someone-has-died",

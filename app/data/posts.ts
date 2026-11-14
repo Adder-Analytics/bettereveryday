@@ -3435,6 +3435,46 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/dismissed">tool for this</a> on the site. You give the day the job started, the day you were told and how notice was handled. It dates the Acas deadline, draws your service against the line that applies, goes through each claim, including the ones that need no service, and writes the letters: asking for the reason in writing, the appeal, and the notice pay.</p>`,
   },
+  {
+    slug: "before-the-total-closes",
+    title: "Before the Total Closes",
+    date: "2026-11-14",
+    excerpt:
+      "Some systems keep a running total and forgive an early mistake the moment you fix it. Others settle each period alone and keep every mistake for good. On tax codes, emergency tax, and asking whether the system remembers before you decide whether a mistake matters.",
+    readTime: 5,
+    tags: ["decisions", "finance"],
+    content: `<p>Priya spent the spring and summer looking after her dad and didn't work. On 1 October she started at a warehouse on £2,400 a month. She had no P45, and the starter form asked about other jobs and benefits since April, so she ticked the middle box to be safe. The first payslip took £270.20 in tax, under a code that read <em>1257L M1</em>. It seemed a lot. She assumed that was just what tax is.</p>
+
+<p>It wasn't. By 5 April that code would take about £1,620 from her. The right one would take about £364. The difference is about £1,257, and the reason is two characters on the end of the code.</p>
+
+<h2>What the code says</h2>
+
+<p>A tax code is HMRC's forecast of your year, written onto your payslip. The number times ten is the tax-free pay you'll get across the year: 1257 means £12,570 (the tables add nine, to £12,579). The L means it's the standard Personal Allowance. An S in front would mean Scottish rates.</p>
+
+<p>The M1 is the part that matters here. Without it, the code is <em>cumulative</em>: each payslip works out the tax due on all your pay since 6 April against all your allowance since 6 April, and takes off what's already been paid. With it, each payslip is treated as if it were the first month of the year. Priya gets one month's allowance, £1,048.25, every month, and nothing for the six months before she started. A cumulative code would have given her seven months' allowance on her first payslip, more than her pay for the next four months. She'd have paid no tax until February.</p>
+
+<h2>Stocks and flows</h2>
+
+<p>Donella Meadows' <em>Thinking in Systems</em> (2008) splits the world into stocks, the amounts that build up, and flows, the rates that fill and drain them. A stock, she says, is the memory of its flows. That sounds obvious, and people are bad at it. Linda Booth Sweeney and John Sterman (<em>System Dynamics Review</em>, 2000) showed graduate students at an elite business school a picture of a bathtub with graphs of the water running in and out, and asked them to sketch the water level. Many couldn't. Their education didn't predict who could. We read the flow in front of us, this month's payslip, and lose track of the total behind it.</p>
+
+<p>A cumulative tax code is a stock. It remembers. That's what makes it forgiving: if it's wrong in May and corrected in January, the January payslip recomputes the whole year with the right allowance and gives back everything over-taken since April. One payslip, no forms. An M1 code is a flow with no memory. Each month is settled and forgotten, and an error in October stays in October.</p>
+
+<p>So before asking how bad a mistake is, ask a different question: <a href="/models#running-totals">does this system keep a running total</a>? If it does, the mistake is cheap, as long as you fix the input. If it doesn't, the past is already permanent and only the next period is yours.</p>
+
+<h2>Every total closes</h2>
+
+<p>The second thing about running totals is that they end. PAYE's ends on 5 April. Until then, a corrected code puts the money back in your pay. After it, the year is closed with the mistake inside. HMRC works it out months later on a P800, usually from June, and since 2024 most of those refunds aren't paid automatically: you have to claim them, in the HMRC app or your Personal Tax Account, within four years. Plenty of people never do. The money is still yours, but it's moved from a correction that happens to you into a claim you have to make.</p>
+
+<p>That's the shape to watch for. A forgiving system with a closing date behaves like an unforgiving one if you only look after it closes. And other money has the same split: an ISA allowance is settled each year and doesn't roll over, while unused pension allowance can be carried forward three years. Knowing which kind you're in, and when its year ends, tells you whether to act now, later, or not at all.</p>
+
+<h2>What Priya did</h2>
+
+<p>She emailed payroll that statement A on the starter checklist applied to her: first job since 6 April, no benefits, no pension. That statement gives 1257L on a cumulative basis. The £270.20 came back in November's pay, and December's and January's payslips took nothing. Nothing else about her changed. The code started remembering.</p>
+
+<p>The line to keep: <em>my tax code is HMRC's guess about my year. I read it whenever it changes: the number times ten is my tax-free pay, and W1, M1 or X means each payslip stands alone. Fixed before 5 April, over-taken tax comes back in one payslip. After that, I have to claim it.</em></p>
+
+<p>There's a <a href="/taxcode">tool for this</a> on the site. You type the code from your payslip and it reads it back part by part. Then you give where you live, what the income is, when it started and what you're paid. It builds the code your details should give, runs both through the year, says what the gap costs by 5 April and how much has gone, and writes what to tell HMRC and payroll.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
