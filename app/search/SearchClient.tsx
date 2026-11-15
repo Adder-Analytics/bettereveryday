@@ -530,6 +530,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "A speeding letter: what now, and by when?",
+    href: "/speeding",
+    snippet:
+      "A camera flashed, or a Notice of Intended Prosecution came asking who was driving. What this speed usually leads to, what each answer costs, the 14 days and the 28-day form, because not answering is 6 points on its own.",
+    meta: "Speeding letter — NIP, course, points",
+    titleText:
+      "speeding speeding ticket speeding fine speeding letter speed camera flashed caught speeding notice of intended prosecution nip section 172 s172 driver nomination who was driving name the driver failing to identify driver failure to provide driver details ms90 6 points speed awareness course nsac course eligibility three years fixed penalty conditional offer £100 3 points penalty points totting up 12 points ban disqualification new driver 6 points revoked new drivers act probation 14 day rule nip late nip arrived late registered keeper v5c logbook old address company car lease car hire car single justice procedure sjp notice court summons plead guilty speeding court fine band a band b band c weekly income sentencing guidelines victim surcharge 20mph 30mph 40mph 50mph 60mph 70mph motorway speeding scotland conditional offer procurator fiscal shared car don't know who was driving reasonable diligence camera photos penalty defaults".toLowerCase(),
+    bodyText:
+      "a speeding letter: what now, and by when? (/speeding): the instrument for a speed camera flash or a notice of intended prosecution in england, wales and scotland. the notice must reach the driver or registered keeper within 14 days of the offence (road traffic offenders act 1988 s.1); a first-class letter counts as arriving two working days after posting. the 14 days don't help with an out-of-date logbook address, a driver named by the keeper (company, lease or hire car), a roadside warning or an accident. the keeper must name the driver within 28 days (road traffic act 1988 s.172): not doing it is 6 points and up to £1,000, more than the speed usually carries; the only defence is reasonable diligence; naming someone who wasn't driving is perverting the course of justice. npcc guidance: usually no action below the limit plus 10% plus 2 mph; a speed awareness course (about £80 to £110, no points) up to plus 10% plus 9 mph if none for an offence in the last three years, england and wales only (police scotland offers none); a conditional offer of a fixed penalty, £100 and 3 points, up to a higher line (50 in a 30, 96 in a 70); court above, or if 3 points would reach 12. court: sentencing council bands a (3 points, 25-75% of weekly income), b (4-6 points or 7-28 days ban, 75-125%), c (6 points or 7-56 days, 125-175%), capped at £1,000 (£2,500 motorway), a third off for an early guilty plea, plus a 40% surcharge and costs; low income treated as about £120 a week. points count three years, stay on the licence four; 12 in three years is usually a six-month ban; 6 within two years of passing revokes a new driver's licence. prosecution must start within six months. prices every answer side by side, with doing nothing last, counts points against 6 and 12, dates the form, the offer and the single justice procedure reply (21 days) with a calendar file (.ics), and writes the letter for a shared car when you can't say who drove, a note to keep for a late notice, and mitigation for a guilty plea. includes a worked example: 37 in a 30 in a shared car. nothing is sent anywhere. pairs with the penalty defaults model and the essay when silence is the worst answer.",
+  },
+  {
+    type: "Tool",
     title: "Get your deposit back",
     href: "/deposit",
     snippet:

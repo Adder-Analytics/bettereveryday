@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A speeding notice for a shared car, on the hall table for a week
+              because nobody&rsquo;s sure who was driving.{" "}
+              <Link
+                href="/speeding"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Speeding letter
+              </Link>{" "}
+              reads the speed against the lines police use and puts{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                every answer&rsquo;s price side by side
+              </span>
+              : a course, £100 and 3 points, court, and last, the unanswered
+              form, which is 6 points on its own. It checks the 14 days, counts
+              points against 6 and 12, dates the form, and writes the letter
+              when you can&rsquo;t say who drove. A new{" "}
+              <Link
+                href="/writing/when-silence-is-the-worst-answer"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Penalty Defaults, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A new job in October, no P45, the middle box ticked on the
               starter form, and £270 of tax on the first payslip with a code
               nobody read.{" "}
@@ -157,32 +182,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, The Half-Life of Facts, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              The tax return&rsquo;s due on 31 January, the bill&rsquo;s more
-              than you have, so the plan is to file in the summer.{" "}
-              <Link
-                href="/taxreturn"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                A tax return due
-              </Link>{" "}
-              puts{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                the return&rsquo;s clock and the money&rsquo;s clock
-              </span>{" "}
-              side by side, prices each step of both, and shows filing on time
-              with a payment plan against waiting until you can pay (about
-              £230 against £1,460 on a £4,200 bill). It explains why the first
-              January bill is half as big again, and writes the plan request,
-              the appeal or the request to withdraw a notice. A new{" "}
-              <Link
-                href="/writing/file-it-even-if-you-cant-pay"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Tax Salience, go with it.
             </li>
           </ul>
         </section>

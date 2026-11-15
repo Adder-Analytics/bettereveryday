@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby"],
       },
     ],
     choices: [
@@ -658,6 +658,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "rule",
             note: "A photo of the sign on the way in, the receipt kept for a month. Decide that once.",
+          },
+        },
+      },
+      {
+        id: "speeding",
+        label: "A speeding letter has come, and it's on the side.",
+        detail: "A camera flashed, or a notice with a form asking who was driving. A shared car, or a speed you don't think was much.",
+        rec: {
+          toolId: "speeding",
+          because:
+            "The speed is usually a course or 3 points. The form that came with it is a separate duty: not naming the driver within 28 days is 6 points and up to £1,000 on its own. It prices every answer side by side, checks the 14 days, counts your points against 6 and 12, dates the form, and writes the letter if you can't say who was driving.",
+          then: {
+            toolId: "scam",
+            note: "A text about the fine with a link isn't from the police. Check it before you pay.",
           },
         },
       },

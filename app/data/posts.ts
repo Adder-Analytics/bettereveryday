@@ -3475,6 +3475,48 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/taxcode">tool for this</a> on the site. You type the code from your payslip and it reads it back part by part. Then you give where you live, what the income is, when it started and what you're paid. It builds the code your details should give, runs both through the year, says what the gap costs by 5 April and how much has gone, and writes what to tell HMRC and payroll.</p>`,
   },
+  {
+    slug: "when-silence-is-the-worst-answer",
+    title: "When Silence Is the Worst Answer",
+    date: "2026-11-15",
+    excerpt:
+      "Some defaults are built to be worse than any answer, so that the person who knows something says it. On speeding notices, the form that comes with them, and pricing silence before you decide anything else.",
+    readTime: 5,
+    tags: ["decisions", "finance"],
+    content: `<p>Dan and Mira share a car. A letter came for it: 37 in a 30, on a road they both use most days. Neither remembered a camera. The letter went on the hall table and stayed there for a week, while they argued about who'd had the car that Tuesday afternoon, and somewhere in the arguing a thought settled: if we can't say who it was, they can't do anything.</p>
+
+<p>That thought is the most expensive one in the whole business. The letter wasn't really asking about the speed. It came with a form asking who was driving, and the form is a legal duty of its own. The registered keeper has 28 days to answer it. Not answering is a separate offence, and it carries 6 points and a fine of up to £1,000.</p>
+
+<p>Set that against what the speed itself would have cost. 37 in a 30 is in the band where police usually offer a speed awareness course: about £90, a morning, and no points. If a course isn't offered, it's a fixed penalty: £100 and 3 points. Even in court, a speed like that is 3 points and a fine based on a week's income. Every answer to the form is cheaper than not answering it.</p>
+
+<h2>A default built to be bad</h2>
+
+<p>Most defaults try to guess what we'd have chosen anyway. In 1989 the legal scholars Ian Ayres and Robert Gertner (<em>Yale Law Journal</em>) pointed out that some defaults are designed to do the opposite. They called them <a href="/models#penalty-defaults">penalty defaults</a>: rules set to be bad for whoever holds the information, so that keeping quiet costs more than speaking up.</p>
+
+<p>Their example was a case from 1854, <em>Hadley v Baxendale</em>. A mill's crankshaft broke and was sent off for a new one to be made, and the carrier was late. The mill stood idle, and the owners sued for the lost profits. The court said a carrier is liable only for losses it could reasonably have foreseen. That rule isn't a guess about what carriers and customers would agree. It's a lever. If your mill will stop without a quick delivery, you're the only one who knows that, so the rule makes you say it at the start, when the carrier can charge for the risk or decline it.</p>
+
+<p>The driver form works the same way. The police can't know who was driving. The keeper is the one person who can find out. So the law sets the default, the outcome you get for doing nothing, worse than every honest answer, and makes the keeper carry it.</p>
+
+<h2>Where else they hide</h2>
+
+<p>Once you see the shape, it turns up in a lot of the letters people leave on the side. A court claim nobody defends becomes a judgment by default, however weak the claim. A Self Assessment return filed late draws £100 even when no tax is owed. A benefit review form not returned stops the payment. In each case the silence feels like keeping your options open while you think. In each case it's the one option the system has priced to be worst, and you choose it by doing nothing.</p>
+
+<p>The trap is that silence doesn't feel like a choice. It feels like waiting. But a penalty default is waiting with a price on it, and the price was chosen by someone who expected you to wait.</p>
+
+<h2>Price the silence first</h2>
+
+<p>So when a letter asks a question, the first thing to find out isn't whether you agree with it. It's what not answering costs. If that's the most expensive line on the page, answer first and argue after. Doing it the other way round, arguing first and answering if you lose, is how 3 points turns into 6.</p>
+
+<p>That doesn't mean confessing to anything you didn't do. If you weren't driving, name who was. If you don't know, the law gives one defence, that you couldn't find out with reasonable diligence, and it expects real effort: asking for the camera photos, checking diaries and receipts, writing down who could have been driving and what you did to find out. The one thing never to do is name someone who wasn't driving. That's perverting the course of justice, and it ended with a former Cabinet minister and his ex-wife each sentenced to eight months in prison in 2013.</p>
+
+<h2>What Dan and Mira did</h2>
+
+<p>They asked the police for the photos. Most forces will send them, or show them online. The picture was blurred, but the coat was Mira's. The form went back with a week to spare, a course was offered, and she did it on a Saturday morning. Total cost: about £90 and no points. Had the form stayed on the table, the 6 points would have gone on the keeper's licence. That was Dan, who wasn't driving.</p>
+
+<p>The line to keep: <em>when a speeding letter comes, I answer the question it asks, who was driving, inside 28 days and truthfully, whatever I think of the speed. Doing nothing is the one answer that costs more than all the others.</em></p>
+
+<p>There's a <a href="/speeding">tool for this</a> on the site. You give the date, the speed and the limit, who the notice went to and who was driving, and your points. It reads the speed against the lines police use, puts every answer's price side by side with the unanswered form last, checks whether the notice came within 14 days, counts your points against 6 and 12, dates the form, and writes the letter to send if you can't say who was driving.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

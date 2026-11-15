@@ -1126,6 +1126,28 @@ export const situations: Situation[] = [
     essays: ["what-does-losing-cost"],
   },
   {
+    id: "speeding-letter",
+    title: "A speeding letter is on the hall table, and the car's shared",
+    scene:
+      "A notice came for the car you share: 37 in a 30, on a road you both use. Neither of you remembers the camera. It's been on the side for a week while you argue about who it was, and part of you thinks that if you can't say, they can't do anything.",
+    question: "What does this actually cost, and what happens if I just don't answer?",
+    models: [
+      {
+        id: "penalty-defaults",
+        move: "The law gave the keeper a default built to be worse than any answer: an unanswered form is 6 points and up to £1,000, against a course or 3 points for the speed. The person with the information is meant to find the silence too expensive. It is.",
+      },
+      {
+        id: "expected-value",
+        move: "Price the rungs side by side before you argue about any of them: a course at about £90 and no points, a fixed penalty at £100 and 3, court at a share of a week's pay, and doing nothing at 6. Only one of those is chosen by not deciding.",
+      },
+    ],
+    tool: {
+      id: "speeding",
+      move: "This is the moment the tool is built for. It reads the speed against the lines police use, prices every answer with doing nothing last, checks the 14 days, counts points against 6 and 12, dates the form, and writes the letter to send if you still can't say who was driving.",
+    },
+    essays: ["when-silence-is-the-worst-answer"],
+  },
+  {
     id: "catchup-bill",
     title: "One energy bill asks for a year or two of use at once",
     scene:
@@ -1889,6 +1911,7 @@ export const situationGroups: SituationGroup[] = [
       "flight-went-wrong",
       "deposit-deductions",
       "parking-ticket",
+      "speeding-letter",
       "catchup-bill",
       "old-debt-letter",
       "council-tax-behind",
