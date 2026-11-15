@@ -83,6 +83,7 @@ const essayGroups: EssayGroup[] = [
       "ask-once-in-writing-with-a-date",
       "charge-for-the-life-that-was-left",
       "what-does-losing-cost",
+      "when-silence-is-the-worst-answer",
       "whose-delay-was-it",
       "what-is-the-small-ask-worth-to-them",
       "the-fee-schedule-is-a-clock",

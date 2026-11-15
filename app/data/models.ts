@@ -265,6 +265,15 @@ export const models: Model[] = [
     essays: ["before-the-total-closes"],
   },
   {
+    id: "penalty-defaults",
+    name: "Penalty Defaults",
+    domain: "Economics",
+    tagline: "Some defaults are set to be worse than any answer, on purpose, so the person who knows something says it. When silence is the costliest option on the table, it was put there for you.",
+    explanation:
+      "Most defaults try to guess what people would have chosen. Ian Ayres and Robert Gertner (Yale Law Journal, 1989) pointed out that some are built to do the opposite. A penalty default is deliberately bad for the party who holds the information, so that staying quiet costs them more than speaking. Their example was Hadley v Baxendale (1854): a carrier is liable only for losses it could have foreseen, so a customer whose mill will stand idle without a quick delivery has to say so at the start. The rule isn't a guess about what anyone wants. It's a lever that makes the informed side reveal what it knows. Once you look, penalty defaults are everywhere in the letters people leave on the side. A speeding notice comes with a form asking who was driving, and the keeper is the one person who can find out. So the law makes not answering an offence of its own: 6 points and up to £1,000, against a course or 3 points for the speed itself. A court claim nobody defends becomes a judgment by default. A tax return not filed draws a penalty even when no tax is owed. The mistake is to read the silence as neutral, or as a way of keeping your options open while you think. It's the one option the system has priced to be worst, and it's chosen by doing nothing. The counter: when a letter asks you a question, find out what not answering costs before you decide anything about the rest. If it's the most expensive line on the page, answer first and argue later. The tool A Speeding Letter puts every answer's price side by side, with the unanswered form last.",
+    essays: ["when-silence-is-the-worst-answer"],
+  },
+  {
     id: "notches",
     name: "Notches",
     domain: "Economics",

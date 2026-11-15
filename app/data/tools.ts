@@ -424,6 +424,18 @@ export const tools: Tool[] = [
     essays: ["what-does-losing-cost"],
   },
   {
+    id: "speeding",
+    href: "/speeding",
+    name: "A Speeding Letter: What Now, and By When?",
+    short: "Speeding letter",
+    when: "A camera flashed, or a Notice of Intended Prosecution has come with a form asking who was driving. It's on the side while you work out whether you were really going that fast, who had the car that day, or whether the letter came too late.",
+    ask: "What does this speed usually lead to, what does each answer cost, and what do I have to send by when?",
+    does: "Reads your speed against the lines police use (usually nothing below the limit plus 10% plus 2 mph, a speed awareness course up to plus 9 if you haven't had one in three years, a £100 fixed penalty with 3 points, then court) and prices every answer side by side, with the one people drift into last: not naming the driver within 28 days, which is 6 points and up to £1,000 on its own. Checks the 14 days for the notice (and when they don't help), counts your points against 6 for a new driver and 12 for everyone, estimates a court fine from the sentencing bands and your income, dates the form, the offer and the court reply, and writes the letter for when you can't say who was driving.",
+    payoff: "now",
+    models: ["penalty-defaults", "expected-value"],
+    essays: ["when-silence-is-the-worst-answer"],
+  },
+  {
     id: "catchup",
     href: "/catchup",
     name: "A Catch-up Energy Bill: What Do You Owe?",
@@ -885,8 +897,8 @@ export const toolGroups: ToolGroup[] = [
     id: "money-letters",
     title: "A letter, bill or message wants money — or you're owed some",
     blurb:
-      "A parking ticket, a catch-up bill, a council tax reminder, a tax return due, a collector chasing an old debt, a bailiff's letter, a benefit decision that went against you, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
-    toolIds: ["scam", "refund", "flight", "parking", "catchup", "counciltax", "taxreturn", "collector", "bailiff", "challenge"],
+      "A parking ticket, a speeding letter, a catch-up bill, a council tax reminder, a tax return due, a collector chasing an old debt, a bailiff's letter, a benefit decision that went against you, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
+    toolIds: ["scam", "refund", "flight", "parking", "speeding", "catchup", "counciltax", "taxreturn", "collector", "bailiff", "challenge"],
     compact: true,
   },
   {
