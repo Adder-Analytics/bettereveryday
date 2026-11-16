@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby", "childcare"],
       },
     ],
     choices: [
@@ -728,6 +728,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "bills",
             note: "When one pay drops to statutory, a half-each split of the bills stops being fair. Rework it before leave starts.",
+          },
+        },
+      },
+      {
+        id: "childcare",
+        label: "The nursery bill is starting, and I don't know what help we get or when to apply.",
+        detail: "The 30 hours, Tax-Free Childcare, reconfirming every three months, or one of us is near £100,000.",
+        rec: {
+          toolId: "childcare",
+          because:
+            "The help is worth thousands a year and ends by default: the code has to be issued by the day before the term, and the account reconfirmed every three months. It dates both for your child, prices the hours and the top-up, checks each parent against the two income lines, and shows what a pension contribution does near £100,000.",
+          then: {
+            toolId: "bills",
+            note: "With the help counted, rework who pays what for the nursery between you.",
           },
         },
       },

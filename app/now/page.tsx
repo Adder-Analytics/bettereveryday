@@ -78,6 +78,33 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A baby turning 9 months in December, a nursery starting in
+              January, and a parent on £108,000 who&rsquo;d heard that means
+              no help.{" "}
+              <Link
+                href="/childcare"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Childcare codes
+              </Link>{" "}
+              dates the code for your child (issued by 31 December for
+              January), prices the 30 funded hours and Tax-Free Childcare, and
+              draws{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                the £100,000 line
+              </span>{" "}
+              with what a pension contribution costs to get back under it. It
+              puts every three-monthly reconfirmation in your calendar, because
+              the help ends by default. A new{" "}
+              <Link
+                href="/writing/the-benefit-that-ends-by-default"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Recertification, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A speeding notice for a shared car, on the hall table for a week
               because nobody&rsquo;s sure who was driving.{" "}
               <Link
@@ -155,33 +182,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Notches, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Twelve days off with flu, no sick pay on the payslip, and no
-              question asked, because &ldquo;the first three days don&rsquo;t
-              count&rdquo; and part-timers don&rsquo;t earn enough anyway.{" "}
-              <Link
-                href="/sick"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Off sick
-              </Link>{" "}
-              prices your days under{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                the rules since April 2026
-              </span>{" "}
-              (sick pay from day one, no earnings floor) next to what the
-              rule you remember would have paid. If you&rsquo;re still off, it
-              draws the weeks ahead to where SSP stops at 28 weeks, dates the
-              fit note, the SSP1 and the benefit claim, and writes the
-              messages. A new{" "}
-              <Link
-                href="/writing/the-rule-you-remember"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, The Half-Life of Facts, go with it.
             </li>
           </ul>
         </section>

@@ -96,6 +96,7 @@ const essayGroups: EssayGroup[] = [
       "the-whole-year-falls-due",
       "most-of-it-can-wait",
       "count-back-from-the-due-date",
+      "the-benefit-that-ends-by-default",
       "file-it-even-if-you-cant-pay",
       "the-rule-you-remember",
       "the-day-before-the-line",
