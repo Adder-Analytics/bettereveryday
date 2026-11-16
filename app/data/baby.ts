@@ -554,7 +554,7 @@ export function bbBody(inp: BbInputs, read: BbRead, today: string): string {
 /** What can wait: said plainly. */
 export function canWait(inp: BbInputs, read: BbRead): string[] {
   const out = [
-    "Childcare. Funded hours and Tax-Free Childcare (the government adds £2 for every £8, up to £2,000 a year) start months from now. Set a reminder for when the baby is about five months old; the codes have to be applied for the term before.",
+    "Childcare. Funded hours and Tax-Free Childcare (the government adds £2 for every £8, up to £2,000 a year) start months from now. Set a reminder for when the baby is about five months old; the codes have to be applied for the term before. The childcare tool (/childcare) dates it for your baby.",
     "A will and life cover. Worth doing in the first year, especially if you're not married, but nothing changes if it's next month rather than this one.",
     "A passport for the baby, a Junior ISA, a savings account. Whenever suits.",
   ];

@@ -642,6 +642,11 @@ function ReadBlock({ inp, read, today }: { inp: BbInputs; read: BbRead; today: s
 function Handoffs({ inp }: { inp: BbInputs }) {
   const list: { href: string; label: string; note: string }[] = [];
   list.push({
+    href: "/childcare",
+    label: "Date the childcare codes",
+    note: "The 30 funded hours start the term after 9 months, but the code has to be issued before that term. The childcare tool dates it and prices it.",
+  });
+  list.push({
     href: "/bills",
     label: "Rework who pays for what",
     note: "When one pay drops to statutory, a half-each split of the bills stops being fair. The bills tool lays out the three rules in money.",

@@ -525,6 +525,14 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "the dates for a baby on the way" : null),
   },
   {
+    key: "childcare:v1",
+    tool: "Childcare codes: what you can get, and by when?",
+    href: "/childcare",
+    label: "The childcare dates and answers from your last visit",
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "the childcare codes and reconfirmation dates" : null),
+  },
+  {
     key: "taxreturn:v1",
     tool: "A tax return due: what does late cost, and what stops it?",
     href: "/taxreturn",

@@ -520,6 +520,18 @@ export const tools: Tool[] = [
     essays: ["count-back-from-the-due-date"],
   },
   {
+    id: "childcare",
+    href: "/childcare",
+    name: "Childcare Codes: What You Can Get, and By When?",
+    short: "Childcare codes",
+    when: "The nursery bill is about to start, or has, and you've heard of the 30 hours and Tax-Free Childcare but not when to apply, whether you qualify, or what happens if one of you earns over £100,000. Or you have a code and the reconfirmation email is somewhere in your inbox.",
+    ask: "What can we get, when does the code have to be in, and what does each date cost if it's missed?",
+    does: "Dates the code for your child: in England, 30 funded hours a week (38 weeks a year) from the term after 9 months, with the code issued by the day before the term (31 December, 31 March, 31 August), and the universal 15 hours from the term after the third birthday. Prices the hours at your nursery's rate and the Tax-Free Childcare top-up (20% of what's left, up to £2,000 a year), and Universal Credit's 85% if you claim it (you can't have both). Checks each parent against both income tests: 16 hours at their minimum wage over the next three months (£2,644 at 21 and over), and £100,000 of adjusted net income, where £1 more loses all of it; draws that line, and what a pension contribution would cost to get back under it. Dates every three-monthly reconfirmation and the grace period if one's missed, with a calendar file, and writes the note to the nursery and the email to payroll.",
+    payoff: "now",
+    models: ["recertification", "notches"],
+    essays: ["the-benefit-that-ends-by-default"],
+  },
+  {
     id: "challenge",
     href: "/challenge",
     name: "The DWP Said No: Challenge It?",
@@ -924,10 +936,10 @@ export const toolGroups: ToolGroup[] = [
   },
   {
     id: "new-baby",
-    title: "A baby's coming",
+    title: "A baby's coming, or childcare to pay for",
     blurb:
-      "Maternity and paternity pay are decided by a week months before the due date that nobody marks, and the claims after the birth are only backdated a few months. This counts back from the due date and dates each one.",
-    toolIds: ["baby"],
+      "Maternity and paternity pay are decided by a week months before the due date that nobody marks, and the claims after the birth are only backdated a few months. Then the nursery bill starts, and the help with it (the 30 funded hours and Tax-Free Childcare) depends on a code issued before the term and an account reconfirmed every three months. These count back from the dates and price each one.",
+    toolIds: ["baby", "childcare"],
   },
   {
     id: "money-calls",

@@ -3517,6 +3517,38 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/speeding">tool for this</a> on the site. You give the date, the speed and the limit, who the notice went to and who was driving, and your points. It reads the speed against the lines police use, puts every answer's price side by side with the unanswered form last, checks whether the notice came within 14 days, counts your points against 6 and 12, dates the form, and writes the letter to send if you can't say who was driving.</p>`,
   },
+  {
+    slug: "the-benefit-that-ends-by-default",
+    title: "The Benefit That Ends by Default",
+    date: "2026-11-16",
+    excerpt:
+      "Childcare help in England is worth thousands a year and has to be re-proved every three months. On renewal dates, the line at £100,000, and treating the renewal as the real deadline.",
+    readTime: 5,
+    tags: ["decisions", "finance"],
+    content: `<p>Jo got the code in August. Her son was ten months old, both parents worked, and the 30 funded hours took about £700 a month off the nursery bill from September. It was the best piece of admin she'd ever done. In December an email came from HMRC asking her to reconfirm. It arrived in the week of the nativity play and the work party, and it sat under both. The date passed on the 28th.</p>
+
+<p>Nothing happened in January. The code had gone into a grace period, which in her council ran to the end of March, and reconfirming any time before then would have put everything back as it was. Nobody rang. The first she knew was the April invoice, at the full price. Reapplying took ten minutes, but a code issued in April is for the term starting in September. For the summer term she paid the whole bill, about £2,100 more than she'd budgeted. Nothing about her family had changed. She'd missed a date, and then a second one she didn't know existed.</p>
+
+<h2>Staying on is the hard part</h2>
+
+<p>Most of what's written about benefits is about getting them: who qualifies, how to apply. Much less is about keeping them, and that's where a lot of money is lost. Tatiana Homonoff and Jason Somerville (<em>American Economic Journal: Economic Policy</em>, 2021) studied food assistance in San Francisco, where households have to recertify at the end of each period. About half of cases were closed at that point. The authors used a quirk of scheduling: households given a later interview slot, with less time to rebook a missed appointment, were about 22% less likely to stay on. The ones who dropped off were as needy as the ones who stayed. Most came back within weeks; a quarter were still off a year later.</p>
+
+<p>That's the shape of <a href="/models#recertification">recertification</a>. A programme you have to re-prove on a schedule ends unless you act. A busy month, a changed email address or a message in the wrong folder all count as choosing to leave. It's a default, and it points the wrong way.</p>
+
+<h2>Two lines, both cliffs</h2>
+
+<p>England's childcare help is built on two of them. The first is the calendar. The 30 hours start the term after a child turns 9 months, but only if the code is issued by the day before that term: 31 December for January, 31 March for April, 31 August for September. Then the account has to be reconfirmed every three months, and the same account carries Tax-Free Childcare, where the government adds £2 for every £8 you pay. Miss a reconfirmation and the top-up stops that day.</p>
+
+<p>The second is income. Each parent has to expect to earn at least 16 hours a week at the minimum wage, and neither can have adjusted net income over £100,000. That line is a <a href="/models#notches">notch</a>: at £100,000 a family with a baby in nursery might get £9,000 of funded hours and £1,400 of top-up a year; at £100,001 it gets nothing. Many families near it hear "over £100k, no childcare" and never apply. But the test is on adjusted net income, which is income less pension contributions. A parent on £108,000 who puts another few thousand into a pension by salary sacrifice is back under it, for roughly 40p of take-home pay per pound, and the money is still theirs.</p>
+
+<h2>The renewal is the deadline</h2>
+
+<p>The fix for both is the same, and it's dull. Treat the renewal as the real deadline, not the first application. The day the code arrives, put every reconfirmation date for the next year in a calendar, two weeks early, where both parents will see it, and do it in the first five minutes of that day. Check the income lines at each one, because a bonus or a drop in hours can move you across either.</p>
+
+<p>Jo does hers on the 14th now: four days a year, five minutes each. The line to keep: <em>a benefit that has to be renewed ends by default. I put every renewal in the calendar the day I'm approved, and I do it first thing on the day.</em></p>
+
+<p>There's a <a href="/childcare">tool for this</a> on the site. You give your child's date of birth, where you live and what each of you earns. It dates the code and the term it unlocks, prices the hours and the top-up at your nursery's rate, checks both income lines, works out what a pension contribution would do near £100,000, and puts every reconfirmation in your calendar.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

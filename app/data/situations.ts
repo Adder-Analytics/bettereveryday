@@ -1302,6 +1302,28 @@ export const situations: Situation[] = [
     essays: ["count-back-from-the-due-date"],
   },
   {
+    id: "childcare-codes",
+    title: "The nursery starts in January, and one of you earns just over £100,000",
+    scene:
+      "Your daughter turns 9 months next month and you go back to work in January. The nursery is £1,350 a month. Your partner earns £108,000, and you'd both heard that over £100,000 you don't get the 30 hours, so you haven't applied for anything.",
+    question: "Is it really all or nothing, and what do we have to do by when?",
+    models: [
+      {
+        id: "notches",
+        move: "It is all or nothing, at £1 over £100,000 of adjusted net income: the hours and the top-up go for the whole family. But the line is drawn on adjusted net income, not salary, and a pension contribution moves it. Find the line and your distance from it before deciding it's out of reach.",
+      },
+      {
+        id: "recertification",
+        move: "Once you're in, the help ends by default: the account has to be reconfirmed every three months, and a missed date costs a term. Put the dates in a calendar the day you get the code, not in an inbox.",
+      },
+    ],
+    tool: {
+      id: "childcare",
+      move: "This is the moment the tool is built for. It dates the code for your child (here, issued by 31 December for January), prices the hours and the top-up, draws the £100,000 line and what a pension contribution costs to get under it, and puts every reconfirmation in your calendar.",
+    },
+    essays: ["the-benefit-that-ends-by-default"],
+  },
+  {
     id: "rent-going-up",
     title: "The rent's going up",
     scene:
@@ -1928,6 +1950,7 @@ export const situationGroups: SituationGroup[] = [
       "dismissed",
       "someone-has-died",
       "baby-on-the-way",
+      "childcare-codes",
       "designing-incentives",
       "stubborn-system",
     ],

@@ -283,6 +283,15 @@ export const models: Model[] = [
     essays: ["the-day-before-the-line"],
   },
   {
+    id: "recertification",
+    name: "Recertification",
+    domain: "Economics",
+    tagline: "A benefit you have to re-prove on a schedule ends by default. Most of the people who lose it at renewal still qualified; they missed a date.",
+    explanation:
+      "Getting onto a programme is the step everyone studies. Staying on is quieter, and it's where much of the loss happens. Tatiana Homonoff and Jason Somerville (American Economic Journal: Economic Policy, 2021) looked at food assistance in San Francisco, where households have to recertify at the end of each period, and found that about half of cases were closed at that point. They used the luck of the calendar: households given a later interview slot, with less time to rebook a missed one, were about 22% less likely to recertify. The households that dropped off were as needy as the ones that stayed. Most re-enrolled within weeks, but a quarter were still off a year later. Nothing about their eligibility had changed. The renewal date had simply turned staying on into a task, and a task can be missed. Pamela Herd and Donald Moynihan call this one of the compliance costs of administrative burden, and it works like a default: a programme that needs re-proving every period ends unless you act, so inertia, a busy month or an email in the wrong folder all count as a choice to leave. England's childcare support is built this way. The 30 funded hours and Tax-Free Childcare share one account that has to be reconfirmed every three months. A missed date stops the top-up at once and ends the funded place after a grace period, and a new place can't start in one. The correction: when something you're owed has a renewal date, treat the renewal as the real deadline, not the first application. Put every future date in a calendar the day you're approved, two weeks early, and do it in the first five minutes of that day. The tool Childcare Codes dates each reconfirmation and puts them in your calendar.",
+    essays: ["the-benefit-that-ends-by-default"],
+  },
+  {
     id: "authority-bias",
     name: "Authority Bias",
     domain: "Psychology",
