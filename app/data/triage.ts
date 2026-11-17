@@ -134,7 +134,7 @@ const nodes: Record<string, TriageNode> = {
         id: "options",
         label: "It's the options themselves",
         short: "The options",
-        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "sell", "monthly", "debts", "subscriptions", "trial"],
+        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "sell", "remortgage", "monthly", "debts", "subscriptions", "trial"],
       },
       {
         id: "stakes",
@@ -309,6 +309,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "rule",
             note: "There's always another thing in the cupboard. Make the buyer's question your standing rule.",
+          },
+        },
+      },
+      {
+        id: "remortgage",
+        label: "The fixed rate on my mortgage is ending, or has ended.",
+        detail: "A letter or app banner about the deal ending, an offer from the lender, a broker's quote, or a payment that's just jumped.",
+        rec: {
+          toolId: "remortgage",
+          because:
+            "If nothing is booked, the loan moves to the lender's reversion rate the day after the fix ends, often two or three points above any deal. Your own lender will book a new deal up to six months ahead; another lender needs about three. It prices a month on the reversion rate, compares the offers with the fees counted, and dates the bookings.",
+          then: {
+            toolId: "bills",
+            note: "If the payment's going up and you share it, rework who pays what before the first new bill.",
           },
         },
       },

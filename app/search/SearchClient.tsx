@@ -470,6 +470,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Fixed rate ending: what does waiting cost, and by when?",
+    href: "/remortgage",
+    snippet:
+      "Your fixed-rate mortgage is ending: what a month on the reversion rate costs, your offers side by side with the fees counted, and the dates to book by.",
+    meta: "Fixed rate ending — remortgage, product transfer, SVR",
+    titleText:
+      "mortgage fixed rate ending fixed rate deal ending fix ends mortgage deal ending remortgage remortgaging re-mortgage product transfer switch mortgage deal new mortgage deal svr standard variable rate reversion rate follow-on rate expired rate tracker variable rate mortgage payment going up payment shock mortgage rates rise bank of england base rate bank rate 4% mortgage charter lock in a rate six months early 6 months book early no affordability check like-for-like better deal broker mortgage broker fee-free broker arrangement fee product fee booking fee add fee to loan early repayment charge erc overpayment 10% overpay loan to value ltv 60% 75% 80% 85% 90% 95% band valuation legal fees conveyancing interest-only switch to interest only term extension extend the mortgage term mortgage arrears behind on mortgage payments mortgage prisoner esis offer expiry two-year fix five-year fix 2 year 5 year loyalty penalty".toLowerCase(),
+    bodyText:
+      "fixed rate ending: what does waiting cost, and by when? (/remortgage): the instrument for a uk residential fixed-rate mortgage deal coming to an end. if nothing is booked, the loan moves the next day to the lender's reversion rate (standard variable rate, svr), about 7.1% on average in september 2026 against new deals around 4.5% to 6%; bank rate rose to 4% on 5 november 2026. prices a month on the reversion rate as extra interest against the cheapest offer, and the payment change. compares your lender's product transfer and another lender's remortgage over a 2, 3 or 5 year deal as interest plus fees and other costs, showing the extra interest from adding a fee to the loan. dates: under the mortgage charter (2023, reaffirmed march 2026) a borrower who is up to date can book a new deal with their own lender up to six months ahead (some lenders three or four), with no new affordability check, and ask for a cheaper like-for-like deal before it starts; another lender needs an application, valuation and legal work, four to eight weeks, so apply about three months before and complete the day after the fix ends to avoid an early repayment charge. checks loan-to-value against the 60/75/80/85/90/95% bands and whether an overpayment within the usual 10% allowance reaches a lower band. if the new payment is a stretch, prices a five-year term extension and six months interest-only, mortgage charter options without a credit file mark, one-off. writes the message to the lender asking for product transfer rates and the reversion rate, and the request for charter help; calendar file (.ics) for the booking, the recheck a month before and the next deal's end. includes a worked example: a 1.89% five-year fix from 2021, £186,000 owed, offers at 4.79% (£999) and 4.49% (£1,499). nothing is sent anywhere. pairs with the loyalty penalty and defaults models and the essay the rate nobody chose.",
+  },
+  {
+    type: "Tool",
     title: "Childcare codes: what you can get, and by when?",
     href: "/childcare",
     snippet:

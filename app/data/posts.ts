@@ -3549,6 +3549,40 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/childcare">tool for this</a> on the site. You give your child's date of birth, where you live and what each of you earns. It dates the code and the term it unlocks, prices the hours and the top-up at your nursery's rate, checks both income lines, works out what a pension contribution would do near £100,000, and puts every reconfirmation in your calendar.</p>`,
   },
+  {
+    slug: "the-rate-nobody-chose",
+    title: "The Rate Nobody Chose",
+    date: "2026-11-17",
+    excerpt:
+      "When a fixed-rate mortgage ends, the loan moves to a rate nobody picks and stays there until somebody does. On the loyalty penalty, not getting round to it, and booking the next deal six months early.",
+    readTime: 5,
+    tags: ["decisions", "finance"],
+    content: `<p>Dan and Mei fixed at 1.89% for five years in 2021, when rates were the lowest they'd ever been. The fix ended on 30 June this year. A letter about it came in April, the month their second child was born, and went into the pile with the hospital leaflets. The bank's app showed a banner for weeks. In September they noticed the direct debit: £1,386, up from £831.</p>
+
+<p>Nothing had gone wrong, exactly. Nobody had missed a payment. The mortgage had simply done what mortgages do when a deal ends and nobody picks the next one: it moved to the lender's reversion rate, 7.24%, and stayed there. The bank's own two-year deal was 4.79%; a broker found 4.49% elsewhere. Three months on the reversion rate had cost them about £1,280 more in interest than the cheaper deal, and it would go on costing about £430 a month until they did something. They did it that week. It took forty minutes.</p>
+
+<h2>A price set for people who don't move</h2>
+
+<p>The reversion rate is usually called the "standard variable rate", which makes it sound like the normal one. It isn't. Hardly anyone chooses it; it's where a loan lands when the chosen deal runs out. And it's priced for exactly that. A lender knows that some borrowers won't move when a deal ends, for months or for years, so the rate after the deal can be far above the rate that wins new customers.</p>
+
+<p>That's the <a href="/models#loyalty-penalty">loyalty penalty</a>. Citizens Advice put it at about £4 billion a year across five markets in a 2018 super-complaint to the Competition and Markets Authority, and suggested that the "standard variable rate" be renamed the "expired rate". The name never changed. It's still worth saying to yourself: the deal hasn't been renewed, it has expired.</p>
+
+<h2>Not getting round to it</h2>
+
+<p>It's tempting to think people who stay on a bad rate must have a reason: fees, hassle, a credit problem. Some do. But the research keeps finding that many don't. Benjamin Keys, Devin Pope and Jaren Pope (<em>Journal of Financial Economics</em>, 2016) found that at the end of 2010 about a fifth of American households who would clearly have gained from refinancing hadn't, and the typical one was leaving about $160 a month on the table. In Denmark, where switching is simple, Steffen Andersen, John Campbell, Kasper Meisner Nielsen and Tarun Ramadorai (<em>American Economic Review</em>, 2020) found that much of the delay looked like a low chance of acting in any given quarter, whatever the gain. People weren't waiting for a better moment. They weren't getting round to it.</p>
+
+<p>Dan and Mei weren't unusual. They had a newborn. That's the point: the <a href="/models#defaults">default</a> wins in exactly the months when life is fullest, and a mortgage deal ending is a date, not an emergency, so it never gets to the top of the pile.</p>
+
+<h2>Six months early, and once more a month before</h2>
+
+<p>The fix is to move the decision to where it's cheap. Under the Mortgage Charter, signed in 2023 by lenders covering about nine in ten mortgages and reaffirmed with the Chancellor in March 2026, a borrower who's up to date can book a new deal with their own lender up to six months before the old one ends, with no new affordability check. If the lender's rates fall before the new deal starts, you can ask to move to the cheaper one. So booking early costs nothing and protects you if rates rise, as they did this month, when the Bank of England put Bank Rate up to 4%.</p>
+
+<p>A new lender takes longer, four to eight weeks once an application is in, and leaving the old deal early usually means a charge. So the dates fall out: compare from about six months before, book your own lender's deal as a fallback, apply elsewhere by about three months before if it's cheaper once the fees are counted, and check once more a month before the end. Then put the end of the new deal in the calendar, six months early, the day you sign.</p>
+
+<p>The line to keep: <em>a deal that ends on a date ends on the expired rate. Six months before, I book the next one; a month before, I check it's still the cheapest.</em></p>
+
+<p>There's a <a href="/remortgage">tool for this</a> on the site. You give the date your fix ends, what you owe, the years left and your rate, and any offers you have. It prices a month on the reversion rate, puts the offers side by side over the deal with the fees counted, dates the bookings, checks whether a small overpayment would reach a cheaper loan-to-value band, and writes the messages to your lender.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
