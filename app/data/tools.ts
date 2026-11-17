@@ -328,6 +328,18 @@ export const tools: Tool[] = [
     essays: ["what-the-repair-has-to-buy"],
   },
   {
+    id: "remortgage",
+    href: "/remortgage",
+    name: "Fixed Rate Ending: What Does Waiting Cost, and By When?",
+    short: "Fixed rate ending",
+    when: "The fixed rate on your mortgage ends in the next few months, or already has. A letter or an app banner says your deal is ending, there's a rate on offer, a broker has another, and it's on the list for after Christmas.",
+    ask: "What does each month on the reversion rate cost, which offer is cheaper once the fees are counted, and by when do I have to book?",
+    does: "Prices a month on the lender's reversion rate (the standard variable rate nobody chooses) against your offers, and puts a product transfer and a remortgage side by side over the deal as interest plus fees, with the extra interest from adding a fee to the loan. Dates the bookings: your own lender up to six months ahead under the Mortgage Charter, with no affordability check if you're up to date and the right to ask for a cheaper like-for-like deal before it starts; another lender about three months ahead, timed to complete the day after the fix ends. Checks whether a small overpayment would reach a cheaper loan-to-value band, prices a longer term or six months interest-only if the new payment is a stretch, puts the dates in your calendar, and writes the messages to your lender.",
+    payoff: "now",
+    models: ["loyalty-penalty", "defaults"],
+    essays: ["the-rate-nobody-chose"],
+  },
+  {
     id: "monthly",
     href: "/monthly",
     name: "Pay Now or Pay Monthly?",
@@ -945,8 +957,8 @@ export const toolGroups: ToolGroup[] = [
     id: "money-calls",
     title: "A money call: spend, borrow, lend, keep or sell",
     blurb:
-      "The everyday money decisions that are usually made on feel: the payment plan, the debts, the friend who asks for a loan, the warranty, the broken appliance, the subscriptions, the thing in the cupboard, the number you'll negotiate. Each one comes down to a sum you can do here.",
-    toolIds: ["monthly", "debts", "lend", "cover", "fix", "sell", "keep", "worth", "walkaway"],
+      "The everyday money decisions that are usually made on feel: the mortgage deal that's ending, the payment plan, the debts, the friend who asks for a loan, the warranty, the broken appliance, the subscriptions, the thing in the cupboard, the number you'll negotiate. Each one comes down to a sum you can do here.",
+    toolIds: ["remortgage", "monthly", "debts", "lend", "cover", "fix", "sell", "keep", "worth", "walkaway"],
   },
   {
     id: "with-others",

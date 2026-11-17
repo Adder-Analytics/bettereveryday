@@ -533,6 +533,13 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "the childcare codes and reconfirmation dates" : null),
   },
   {
+    key: "remortgage:v1",
+    tool: "Fixed rate ending: what does waiting cost, and by when?",
+    href: "/remortgage",
+    label: "The mortgage dates and offers from your last visit",
+    describe: (raw) => (parse(raw) ? "the mortgage deal ending and the offers" : null),
+  },
+  {
     key: "taxreturn:v1",
     tool: "A tax return due: what does late cost, and what stops it?",
     href: "/taxreturn",

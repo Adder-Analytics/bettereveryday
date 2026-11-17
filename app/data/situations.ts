@@ -1324,6 +1324,28 @@ export const situations: Situation[] = [
     essays: ["the-benefit-that-ends-by-default"],
   },
   {
+    id: "fixed-rate-ending",
+    title: "The fixed rate on the mortgage ends in a few months",
+    scene:
+      "You fixed at under 2% for five years, and it ends in March. The bank's app offers 4.79% with a £999 fee; a broker mentioned 4.49% elsewhere for £1,499. The letter is on the fridge, and the plan is to deal with it after Christmas.",
+    question: "Which deal is cheaper, and how long can this wait?",
+    models: [
+      {
+        id: "loyalty-penalty",
+        move: "Price the default first. If nothing is booked, the loan moves to the lender's reversion rate the day after the fix ends, a rate set for people who don't move. Put a month on it in pounds, against the offer; here it's over £400 a month in extra interest.",
+      },
+      {
+        id: "defaults",
+        move: "Change the default while it's cheap. Your own lender will let you book up to six months ahead, and you can ask to move to a cheaper deal of theirs before it starts. Book it now as the fallback, then compare, so doing nothing after Christmas still lands somewhere sensible.",
+      },
+    ],
+    tool: {
+      id: "remortgage",
+      move: "This is the moment the tool is built for. It prices a month on the reversion rate, puts both offers side by side over the deal with the fees counted (here the bigger fee wins), dates the booking and the last sensible day to apply elsewhere, and checks whether a small overpayment would reach a cheaper loan-to-value band.",
+    },
+    essays: ["the-rate-nobody-chose"],
+  },
+  {
     id: "rent-going-up",
     title: "The rent's going up",
     scene:
@@ -1951,6 +1973,7 @@ export const situationGroups: SituationGroup[] = [
       "someone-has-died",
       "baby-on-the-way",
       "childcare-codes",
+      "fixed-rate-ending",
       "designing-incentives",
       "stubborn-system",
     ],

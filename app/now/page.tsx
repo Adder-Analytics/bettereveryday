@@ -78,6 +78,32 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A five-year fix at 1.89% ending in March, an offer in the
+              bank&rsquo;s app, a broker&rsquo;s quote, and a plan to deal with
+              it after Christmas.{" "}
+              <Link
+                href="/remortgage"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Fixed rate ending
+              </Link>{" "}
+              prices{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                a month on the reversion rate
+              </span>{" "}
+              against your offers, compares them over the deal with the fees
+              counted, dates the booking (your lender up to six months ahead,
+              another about three) and checks whether a small overpayment would
+              reach a cheaper loan-to-value band. A new{" "}
+              <Link
+                href="/writing/the-rate-nobody-chose"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Loyalty Penalty, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A baby turning 9 months in December, a nursery starting in
               January, and a parent on £108,000 who&rsquo;d heard that means
               no help.{" "}
@@ -154,34 +180,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Running Totals, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Sacked eight months in, with a week&rsquo;s pay in lieu, and
-              told you can&rsquo;t claim without two years and have three
-              months anyway.{" "}
-              <Link
-                href="/dismissed"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Dismissed
-              </Link>{" "}
-              dates the day to contact Acas by (six months now, and an appeal
-              doesn&rsquo;t pause it) and draws{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                your service against the line
-              </span>
-              , counted the law&rsquo;s way with the notice you weren&rsquo;t
-              given added on, which matters most for anyone let go around
-              1 January 2027, when two years becomes six months. Then each
-              claim, including the ones that need no service, and the letters.
-              A new{" "}
-              <Link
-                href="/writing/the-day-before-the-line"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Notches, go with it.
             </li>
           </ul>
         </section>

@@ -292,6 +292,15 @@ export const models: Model[] = [
     essays: ["the-benefit-that-ends-by-default"],
   },
   {
+    id: "loyalty-penalty",
+    name: "Loyalty Penalty",
+    domain: "Economics",
+    tagline: "Where staying put is the default, the price is set for the people who stay put. The rate you didn't choose is the one built for not choosing.",
+    explanation:
+      "Firms that can tell new customers from existing ones often price them differently: a sharp deal to win you, and a worse one for after the deal ends, on the bet that many won't move. Economists call it price discrimination by inertia; Citizens Advice called it the loyalty penalty, in a 2018 super-complaint to the Competition and Markets Authority that put it at about £4 billion a year across mobile, broadband, savings, home insurance and mortgages, and suggested renaming the mortgage 'standard variable rate' the 'expired rate'. The bet pays because inaction is common even when the sums are large. Benjamin Keys, Devin Pope and Jaren Pope (Journal of Financial Economics, 2016) found that in December 2010 about a fifth of US households who would clearly have gained from refinancing hadn't, and the typical one was giving up around $160 a month, about $11,500 over the loan. Steffen Andersen, John Campbell, Kasper Meisner Nielsen and Tarun Ramadorai (American Economic Review, 2020) looked at Denmark, where refinancing is simple, and split the delay in two: a cost of switching that makes people wait for a bigger gain, and a low chance of acting at all in any given quarter, whatever the gain. Older, poorer and less educated households were mostly the second kind: they didn't wait for a better moment; they didn't get round to it. A UK fixed-rate mortgage is built on this pattern. When the deal ends the loan moves to the lender's reversion rate, often two or three points above anything on offer, and stays there until the borrower acts. The correction is to treat the end of a deal as a date, not a letter: price a month on the default rate in pounds, book the next deal as early as the rules allow, and put the next end date in the calendar the day you sign. The tool Fixed Rate Ending does it for a mortgage.",
+    essays: ["the-rate-nobody-chose"],
+  },
+  {
     id: "authority-bias",
     name: "Authority Bias",
     domain: "Psychology",
