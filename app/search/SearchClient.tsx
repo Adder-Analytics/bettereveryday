@@ -470,6 +470,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Student loan: overpay, or let it run out?",
+    href: "/studentloan",
+    snippet:
+      "Will you clear your student loan before it's written off? What you'd repay letting it run, with an overpayment and clearing it today, and the pay at which it would clear.",
+    meta: "Student loan — overpay or not, Plan 2 freeze, refunds",
+    titleText:
+      "student loan student loans company slc student finance england wales student finance wales saas scotland northern ireland pay off student loan early overpay student loan overpayment voluntary repayment should i pay off my student loan lump sum clear the loan written off write-off write off 25 years 30 years 40 years age 65 plan 1 plan 2 plan 4 plan 5 postgraduate loan masters loan doctoral loan pgl repayment threshold £29,385 £25,000 £26,900 £33,795 £21,000 9% 6% interest rate rpi rpi plus 3% 6% cap upper interest threshold £52,885 threshold freeze frozen april 2027 autumn budget graduate tax balance keeps growing interest bigger than repayments refund over-repaid overpaid student loan refund earned under the threshold p60 payslip plan type wrong plan direct debit last two years mortgage affordability lifetime isa pension salary sacrifice graduate debt".toLowerCase(),
+    bodyText:
+      "student loan: overpay, or let it run out? (/studentloan): the instrument for a uk student loan from the student loans company (plans 1, 2, 4, 5 and the postgraduate loan). repayments are 9% of pay above a threshold (6% for the postgraduate loan), whatever the balance; what's left at the end of the term is written off, so for anyone who won't clear it, the balance isn't the bill and an overpayment only shrinks the write-off. thresholds from 6 april 2026: plan 1 £26,900, plan 2 £29,385, plan 4 £33,795, plan 5 £25,000, postgraduate £21,000. plan 2 threshold frozen for three years from april 2027 (not for student finance wales borrowers). interest from september 2026: plans 1, 4 and 5 at rpi 4.1%; plan 2 rpi rising to rpi plus 3% between £29,385 and £52,885; postgraduate rpi plus 3%; plan 2 and postgraduate capped at 6% for 2026/27. write-off: plan 1 25 years (or at 65 for loans before september 2006), plan 2 30, plan 4 30 (or 65), plan 5 40, postgraduate 30. runs the loan month by month and shows the total paid letting it run, with a lump sum or monthly overpayment, and clearing it today, in pounds and in today's money at a savings rate; the pay or pay rises at which it would clear; the smallest lump that would cut the total if close to the line; what the freeze costs. refund check for a tax year under the threshold; switch to direct debit two years before the end to avoid over-repayment (about £184m over-repaid in a year). messages to the slc: check plan, balance, rate and write-off date; refund; direct debit. includes a worked example: plan 2, £52,000 owed on £34,000 and £8,000 from a grandparent. nothing is sent anywhere. pairs with the income-contingent debt and mental accounting models and the essay the balance isn't the bill.",
+  },
+  {
+    type: "Tool",
     title: "Fixed rate ending: what does waiting cost, and by when?",
     href: "/remortgage",
     snippet:

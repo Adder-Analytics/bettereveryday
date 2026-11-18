@@ -301,6 +301,15 @@ export const models: Model[] = [
     essays: ["the-rate-nobody-chose"],
   },
   {
+    id: "income-contingent-debt",
+    name: "Income-Contingent Debt",
+    domain: "Economics",
+    tagline: "When repayments are set by your pay and the rest is written off, the balance isn't the bill. What you'll repay depends on what you'll earn.",
+    explanation:
+      "Most debts are a sum you owe: pay it down and you owe less, ignore it and it grows until someone comes for it. An income-contingent loan is a different object. Milton Friedman sketched the idea in 1955, as a way to fund education like an investment, repaid out of what it earned; Australia built the first national scheme in 1989, and England's student loans have worked this way since 1998. You repay a fixed share of pay above a threshold, nothing below it, and whatever is left after a set number of years is written off. So for anyone who won't clear it in time, the balance is a number on a statement, not a bill: what they'll actually pay is set by their pay over the term, and a pound overpaid today doesn't lower it; it only shrinks the amount written off at the end. The interest rate stops mattering too, for the same reason. For someone who will clear it, the opposite holds: the balance is the bill, and overpaying saves interest at the loan's rate. The trouble is that the word debt pulls everyone towards the first instinct. Erica Field (American Economic Journal: Applied Economics, 2009) gave admitted NYU law students one of two aid packages worth the same money: a tuition waiver they'd repay if they left public-interest law, or a loan the school would repay if they stayed in it. Those given the waiver were about a third more likely to take a public-interest first job. The label debt changed careers even when the sums were identical. With a UK student loan the label pushes people to pay off a balance they'd never have repaid, with money that would have done more as savings, a pension or a deposit. For full-time students who started in 2022, the last on Plan 2, one government forecast put the share expected to repay in full at about a quarter. The correction is to find out which side of the line you're on before acting: run the loan forward on your own pay, and ask what clearing it would take. If it's out of reach, treat the repayment as a tax on pay above the threshold with an end date, and stop watching the balance. If you'll clear it anyway, an overpayment is a safe return at the loan's rate, after dearer debts and an emergency fund. The tool Student Loan: Overpay, or Let It Run Out? draws the line for your loan.",
+    essays: ["the-balance-isnt-the-bill"],
+  },
+  {
     id: "authority-bias",
     name: "Authority Bias",
     domain: "Psychology",

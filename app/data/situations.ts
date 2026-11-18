@@ -1346,6 +1346,28 @@ export const situations: Situation[] = [
     essays: ["the-rate-nobody-chose"],
   },
   {
+    id: "student-loan-overpay",
+    title: "You could pay off some of your student loan",
+    scene:
+      "You owe about £52,000 on Plan 2 and earn £34,000. The balance is higher than when you graduated, even though money goes every month. A grandparent has left you £8,000, and the debt feels like the obvious place for it.",
+    question: "Will I clear this loan before it's written off, and if not, what would paying it down change?",
+    models: [
+      {
+        id: "income-contingent-debt",
+        move: "Ask what the bill is, not what the balance is. You repay 9% of pay over the threshold, and what's left after 30 years goes. If you won't clear it, overpaying £8,000 doesn't lower what you'll repay by a penny; it shrinks the write-off.",
+      },
+      {
+        id: "mental-accounting",
+        move: "Notice the label doing the work. Money put in a box called debt feels responsibly spent; the same £8,000 as an emergency fund, a pension contribution or a deposit does more, and stays yours.",
+      },
+    ],
+    tool: {
+      id: "studentloan",
+      move: "This is the moment the tool is built for. It runs your loan forward on your pay, shows what you'd pay letting it run, with the overpayment and clearing it today, finds the pay at which it would clear, and prices the Plan 2 freeze.",
+    },
+    essays: ["the-balance-isnt-the-bill"],
+  },
+  {
     id: "rent-going-up",
     title: "The rent's going up",
     scene:
@@ -1974,6 +1996,7 @@ export const situationGroups: SituationGroup[] = [
       "baby-on-the-way",
       "childcare-codes",
       "fixed-rate-ending",
+      "student-loan-overpay",
       "designing-incentives",
       "stubborn-system",
     ],

@@ -134,7 +134,7 @@ const nodes: Record<string, TriageNode> = {
         id: "options",
         label: "It's the options themselves",
         short: "The options",
-        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "sell", "remortgage", "monthly", "debts", "subscriptions", "trial"],
+        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "sell", "remortgage", "studentloan", "monthly", "debts", "subscriptions", "trial"],
       },
       {
         id: "stakes",
@@ -323,6 +323,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "bills",
             note: "If the payment's going up and you share it, rework who pays what before the first new bill.",
+          },
+        },
+      },
+      {
+        id: "studentloan",
+        label: "I could pay off some of my student loan, and I'm not sure I should.",
+        detail: "A bonus, a gift or savings, a balance that keeps growing, and advice that points both ways.",
+        rec: {
+          toolId: "studentloan",
+          because:
+            "Repayments are a share of pay over a threshold and what's left is written off, so for anyone who won't clear it, overpaying only shrinks the write-off. It runs your loan forward to see which side of the line you're on, and prices an overpayment against letting it run.",
+          then: {
+            toolId: "debts",
+            note: "If you have card or loan debt too, that almost always comes first.",
           },
         },
       },

@@ -3583,6 +3583,40 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/remortgage">tool for this</a> on the site. You give the date your fix ends, what you owe, the years left and your rate, and any offers you have. It prices a month on the reversion rate, puts the offers side by side over the deal with the fees counted, dates the bookings, checks whether a small overpayment would reach a cheaper loan-to-value band, and writes the messages to your lender.</p>`,
   },
+  {
+    slug: "the-balance-isnt-the-bill",
+    title: "The Balance Isn't the Bill",
+    date: "2026-11-18",
+    excerpt:
+      "A UK student loan looks like a debt and is labelled as one, but for most graduates what they repay is set by their pay, not the balance. On income-contingent loans, the pull of the word debt, and when overpaying is money thrown away.",
+    readTime: 5,
+    tags: ["decisions", "finance"],
+    content: `<p>Priya finished her degree in 2020. She's on Plan 2, earns £34,000, and her online statement says she owes about £52,000, more than she borrowed, even though money has left every payslip for years. This autumn her grandmother left her £8,000. Her first thought was the obvious one: make the debt smaller.</p>
+
+<p>It would have been money thrown away. On her numbers, with pay rises of 4% a year, she repays about £35 a month now and about £38,500 over the 25 years until the loan is written off in April 2051, when something like £97,000 will still be on the statement. Put £8,000 in today and the repayments are exactly the same, month for month, to the same end date. The only thing that changes is the amount written off. She'd have paid £46,500 instead of £38,500.</p>
+
+<h2>Not that kind of debt</h2>
+
+<p>The reason is the shape of the thing. An ordinary debt is a sum you owe: pay it down and you owe less. A student loan from the Student Loans Company is <a href="/models#income-contingent-debt">income-contingent</a>. You repay 9% of whatever you earn above a threshold, £29,385 a year on Plan 2, and nothing below it. Whatever is left after 30 years goes. So for anyone who won't clear it in time, the balance is a number on a statement, and the bill is set by their pay. The interest rate stops mattering for the same reason: it changes the size of the write-off, not the repayments.</p>
+
+<p>For someone who will clear it, the opposite is true. Tom, on £70,000 with £48,000 left on Plan 2, is on course to finish in 2040. For him the balance is the bill, interest is 6% this year, and £8,000 paid in now would save about £9,000 by the end. Even then it's less than it looks: counted in today's money, against savings paying 4%, the gain is nearer £2,400, and money paid into the loan can't be taken back if he loses his job.</p>
+
+<p>Same loan, same word on the statement, opposite answers. The line between them is whether you'll clear it before the write-off, and you can find it. Priya would need to be earning about £54,500 now, or get rises of nearly 8% a year for the next 25 years.</p>
+
+<h2>What the word does</h2>
+
+<p>The pull of paying it off isn't about arithmetic. Erica Field (<em>American Economic Journal: Applied Economics</em>, 2009) gave admitted NYU law students one of two aid packages worth the same money: a tuition waiver they'd pay back if they left public-interest law, or a loan the school would pay off if they stayed in it. The ones with the waiver were about a third more likely to take a public-interest first job. Nothing differed but the label. People who'd been handed a debt behaved like people in debt.</p>
+
+<p>That's what happens with student loans. The word lands in the same <a href="/models#mental-accounting">mental account</a> as a credit card, and money put towards it feels responsible. For Priya, the same £8,000 in an emergency fund, a pension that her employer tops up, or a Lifetime ISA towards a deposit would have done far more, and stayed hers.</p>
+
+<h2>Two things worth doing anyway</h2>
+
+<p>Not paying it off doesn't mean ignoring it. The Plan 2 threshold is frozen at £29,385 for three years from April 2027 instead of rising with prices (the Welsh Government says it won't follow for its borrowers), so most people on Plan 2 will repay a bit more. Interest rates reset every September. And the loan's own paperwork goes wrong in ways that cost real money: the wrong plan type on a payslip; repayments taken in a year when total pay was under the threshold, which the Student Loans Company will refund if asked; and, at the end, payroll deductions that run on after the balance hits zero. Graduates over-repaid about £184 million in one recent year. The company says switching to Direct Debit for the last two years avoids it.</p>
+
+<p>The line to keep: <em>my student loan bill is set by my pay, not the balance. I only overpay if I'm on course to clear it before it's written off, and I run the sums again each April.</em></p>
+
+<p>There's a <a href="/studentloan">tool for this</a> on the site. You give your plan, what you owe, when repayments started and what you earn. It runs the loan forward month by month, shows what you'd pay letting it run, with an overpayment and clearing it today, finds the pay at which it would clear, prices the freeze, checks for a refund, and writes the messages to the Student Loans Company.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
