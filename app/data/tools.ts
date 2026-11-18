@@ -340,6 +340,18 @@ export const tools: Tool[] = [
     essays: ["the-rate-nobody-chose"],
   },
   {
+    id: "studentloan",
+    href: "/studentloan",
+    name: "Student Loan: Overpay, or Let It Run Out?",
+    short: "Student loan",
+    when: "You have a UK student loan and some money you could put towards it: a bonus, a gift, savings, or a monthly surplus. The balance keeps growing despite the repayments, it feels like a debt hanging over you, and someone has said you should never pay it off while someone else said you should.",
+    ask: "Will I clear it before it's written off, and if not, would overpaying change what I actually repay?",
+    does: "Runs the loan forward month by month on your plan's rules: 9% of pay over the threshold (6% for a Postgraduate Loan), interest by plan (Plan 2 on its sliding scale with the 6% cap for 2026/27), the Plan 2 threshold freeze from April 2027 (not for Student Finance Wales borrowers), and the write-off after 25, 30 or 40 years or at 65 for older loans. Shows what you'd pay in all letting it run, with your overpayment and clearing it today, in pounds and in today's money; the pay, or the pay rises, at which it would clear; the smallest lump that would cut what you repay if you're near the line; and what the freeze costs you. Checks for a refund if you earned under last year's threshold, dates the switch to Direct Debit two years before it clears, and writes the messages to the Student Loans Company.",
+    payoff: "now",
+    models: ["income-contingent-debt", "mental-accounting"],
+    essays: ["the-balance-isnt-the-bill"],
+  },
+  {
     id: "monthly",
     href: "/monthly",
     name: "Pay Now or Pay Monthly?",
@@ -957,8 +969,8 @@ export const toolGroups: ToolGroup[] = [
     id: "money-calls",
     title: "A money call: spend, borrow, lend, keep or sell",
     blurb:
-      "The everyday money decisions that are usually made on feel: the mortgage deal that's ending, the payment plan, the debts, the friend who asks for a loan, the warranty, the broken appliance, the subscriptions, the thing in the cupboard, the number you'll negotiate. Each one comes down to a sum you can do here.",
-    toolIds: ["remortgage", "monthly", "debts", "lend", "cover", "fix", "sell", "keep", "worth", "walkaway"],
+      "The everyday money decisions that are usually made on feel: the mortgage deal that's ending, the student loan, the payment plan, the debts, the friend who asks for a loan, the warranty, the broken appliance, the subscriptions, the thing in the cupboard, the number you'll negotiate. Each one comes down to a sum you can do here.",
+    toolIds: ["remortgage", "studentloan", "monthly", "debts", "lend", "cover", "fix", "sell", "keep", "worth", "walkaway"],
   },
   {
     id: "with-others",

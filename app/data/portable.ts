@@ -540,6 +540,13 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "the mortgage deal ending and the offers" : null),
   },
   {
+    key: "studentloan:v1",
+    tool: "Student loan: overpay, or let it run out?",
+    href: "/studentloan",
+    label: "The student loan plan, balance and pay from your last visit",
+    describe: (raw) => (parse(raw) ? "the student loan and the overpayment you were weighing" : null),
+  },
+  {
     key: "taxreturn:v1",
     tool: "A tax return due: what does late cost, and what stops it?",
     href: "/taxreturn",

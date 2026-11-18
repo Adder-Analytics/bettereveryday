@@ -78,6 +78,32 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              £52,000 owed on Plan 2, a salary of £34,000, £8,000 from a
+              grandparent, and the feeling that the debt is the obvious place
+              for it.{" "}
+              <Link
+                href="/studentloan"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Student loan
+              </Link>{" "}
+              runs the loan forward on your pay to find out{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                whether you&rsquo;ll clear it before it&rsquo;s written off
+              </span>
+              . If not, an overpayment only shrinks the write-off. It prices
+              one against letting it run and clearing it today, finds the pay
+              at which it would clear, shows what the Plan 2 freeze from April
+              2027 costs, and checks for a refund. A new{" "}
+              <Link
+                href="/writing/the-balance-isnt-the-bill"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Income-Contingent Debt, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A five-year fix at 1.89% ending in March, an offer in the
               bank&rsquo;s app, a broker&rsquo;s quote, and a plan to deal with
               it after Christmas.{" "}
@@ -154,32 +180,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Penalty Defaults, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A new job in October, no P45, the middle box ticked on the
-              starter form, and £270 of tax on the first payslip with a code
-              nobody read.{" "}
-              <Link
-                href="/taxcode"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Tax code
-              </Link>{" "}
-              reads the code part by part, builds the one your details should
-              give, and runs{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                both through the year, payslip by payslip
-              </span>
-              : what the gap costs by 5 April, how much has already gone, and
-              why a corrected code gives it all back in one payslip until the
-              year closes. Then what to tell HMRC and payroll. A new{" "}
-              <Link
-                href="/writing/before-the-total-closes"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Running Totals, go with it.
             </li>
           </ul>
         </section>
