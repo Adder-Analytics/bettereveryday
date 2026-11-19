@@ -352,6 +352,18 @@ export const tools: Tool[] = [
     essays: ["the-balance-isnt-the-bill"],
   },
   {
+    id: "statepension",
+    href: "/statepension",
+    name: "State Pension Gaps: Worth Paying, and By When?",
+    short: "State Pension gaps",
+    when: "Your National Insurance record has gaps: years abroad, out of work, caring, self-employed on low profits, or earning too little from any one job. Someone said you can buy them back for under £1,000 a year; someone else said you'd have to live to 90 to make it worth it. The oldest one you can still fill closes in April.",
+    ask: "Which gap years will I need whatever happens, which only if I stop work early, and what does each buy?",
+    does: "Works out your State Pension age and how many more years work or credits will add, from your gov.uk forecast or a count of your qualifying years (35 for the full £241.30 a week, 10 for any). Sorts the gaps you can still fill (2020/21 to 2025/26) into the years you'll be short of even if you work to the end (pay, oldest first), the ones you'd only need if you stop early (decide each spring before they close), and the ones that would add nothing. Prices each at Class 3 (£18.40 a week, or the lower own-year rate for 2024/25 and 2025/26 while it lasts), Class 2 for the self-employed or HMRC's own quote, and shows what it adds a year, how long after tax it takes to get back, and what an insurer would charge for the same income. Flags Pension Credit, the new rules for time abroad and the 10-year minimum, puts the deadlines in your calendar, and writes the messages to the Future Pension Centre and HMRC, including one for a gap that should have been a free credit.",
+    payoff: "now",
+    models: ["longevity-insurance", "cost-of-delay"],
+    essays: ["the-bet-you-want-to-lose"],
+  },
+  {
     id: "monthly",
     href: "/monthly",
     name: "Pay Now or Pay Monthly?",
@@ -969,8 +981,8 @@ export const toolGroups: ToolGroup[] = [
     id: "money-calls",
     title: "A money call: spend, borrow, lend, keep or sell",
     blurb:
-      "The everyday money decisions that are usually made on feel: the mortgage deal that's ending, the student loan, the payment plan, the debts, the friend who asks for a loan, the warranty, the broken appliance, the subscriptions, the thing in the cupboard, the number you'll negotiate. Each one comes down to a sum you can do here.",
-    toolIds: ["remortgage", "studentloan", "monthly", "debts", "lend", "cover", "fix", "sell", "keep", "worth", "walkaway"],
+      "The everyday money decisions that are usually made on feel: the mortgage deal that's ending, the student loan, the gaps in your State Pension, the payment plan, the debts, the friend who asks for a loan, the warranty, the broken appliance, the subscriptions, the thing in the cupboard, the number you'll negotiate. Each one comes down to a sum you can do here.",
+    toolIds: ["remortgage", "studentloan", "statepension", "monthly", "debts", "lend", "cover", "fix", "sell", "keep", "worth", "walkaway"],
   },
   {
     id: "with-others",

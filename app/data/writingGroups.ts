@@ -99,6 +99,7 @@ const essayGroups: EssayGroup[] = [
       "the-benefit-that-ends-by-default",
       "the-rate-nobody-chose",
       "the-balance-isnt-the-bill",
+      "the-bet-you-want-to-lose",
       "file-it-even-if-you-cant-pay",
       "the-rule-you-remember",
       "the-day-before-the-line",

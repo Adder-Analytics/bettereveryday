@@ -1368,6 +1368,28 @@ export const situations: Situation[] = [
     essays: ["the-balance-isnt-the-bill"],
   },
   {
+    id: "state-pension-gaps",
+    title: "There are gaps in your National Insurance record",
+    scene:
+      "You're 58. Your State Pension forecast says £234.41 a week if you work until 67, not the full £241.30, because you took three years out to look after your mum. The record offers to fill each year for about £957. A friend says you'd have to live to 90 to get it back.",
+    question: "Which of these years will I actually need, and is paying for them a good bet?",
+    models: [
+      {
+        id: "longevity-insurance",
+        move: "Ask what it pays if you live, not whether you'll get your money back. The State Pension is insurance against a long life, and £957 for £358 a year, inflation-linked, is several times cheaper than an insurer would sell it.",
+      },
+      {
+        id: "cost-of-delay",
+        move: "Each gap closes six years after it ends. Don't buy a year that work might fill, but don't let one you'll need lapse: the oldest closes on 5 April.",
+      },
+    ],
+    tool: {
+      id: "statepension",
+      move: "This is the moment the tool is built for. It sorts your open gaps into the ones you'll need whatever happens, the ones you'd only need if you stop work early, and the ones that add nothing, with the cost, what each adds and when each closes.",
+    },
+    essays: ["the-bet-you-want-to-lose"],
+  },
+  {
     id: "rent-going-up",
     title: "The rent's going up",
     scene:
@@ -1997,6 +2019,7 @@ export const situationGroups: SituationGroup[] = [
       "childcare-codes",
       "fixed-rate-ending",
       "student-loan-overpay",
+      "state-pension-gaps",
       "designing-incentives",
       "stubborn-system",
     ],

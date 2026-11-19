@@ -310,6 +310,15 @@ export const models: Model[] = [
     essays: ["the-balance-isnt-the-bill"],
   },
   {
+    id: "longevity-insurance",
+    name: "Longevity Insurance",
+    domain: "Economics",
+    tagline: "An income for life is insurance against living a long time. Judge it by what it pays if you do, not by whether you'll get your money back.",
+    explanation:
+      "The risk in retirement isn't dying early; your money is no use to you then. It's living longer than your money lasts. An income paid for as long as you live, an annuity, is insurance against that, and in theory it's very valuable: Menahem Yaari (Review of Economic Studies, 1965) showed that someone with no wish to leave money behind should turn most of their savings into one. In practice few people buy annuities when they have a choice, and economists call that the annuity puzzle. Part of the answer is how the question is put. Jeffrey Brown, Jeffrey Kling, Sendhil Mullainathan and Marian Wrobel (American Economic Review: Papers and Proceedings, 2008) asked over 1,300 Americans over 50 to choose between a life annuity and a savings account. When the choice was described in terms of what each would let them spend for the rest of their lives, 72% chose the annuity. When the same products were described in terms of investment and returns, 21% did. In the investment frame an annuity looks like a bet on your own lifespan that you lose by dying early: 'will I live long enough to get my money back?' In the spending frame it's insurance, and like any insurance the outcome where it pays out least is the one you'd choose. The UK State Pension is the annuity almost everyone already has, and the voluntary National Insurance contributions that fill a gap year are the cheapest way to buy more of it: in 2026/27 about £957 for about £358 a year, for life, rising each April at least with prices. An insurer charged about £100,000 for £5,000 a year of inflation-linked income at 65, which puts the same £358 at about £7,000. The correction is to change the question. Ask what you'd have to live on at 85 with and without it, not how many years it takes to break even; check you'd actually be short without it, since a year that work would fill buys nothing; and look for free credits first. The tool State Pension Gaps does the sorting for your record.",
+    essays: ["the-bet-you-want-to-lose"],
+  },
+  {
     id: "authority-bias",
     name: "Authority Bias",
     domain: "Psychology",
