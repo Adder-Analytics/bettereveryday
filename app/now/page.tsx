@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Three years out caring for a parent, a State Pension forecast
+              one year short, a button offering to fill each gap for £957,
+              and a friend saying you&rsquo;d have to live to ninety.{" "}
+              <Link
+                href="/statepension"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                State Pension gaps
+              </Link>{" "}
+              sorts your open years into{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                the ones you&rsquo;ll need whatever happens, the ones work
+                might fill, and the ones that add nothing
+              </span>
+              , prices what each buys, and dates the day each one closes (the
+              oldest on 5 April 2027). A new{" "}
+              <Link
+                href="/writing/the-bet-you-want-to-lose"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Longevity Insurance, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               £52,000 owed on Plan 2, a salary of £34,000, £8,000 from a
               grandparent, and the feeling that the debt is the obvious place
               for it.{" "}
@@ -155,31 +180,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Recertification, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A speeding notice for a shared car, on the hall table for a week
-              because nobody&rsquo;s sure who was driving.{" "}
-              <Link
-                href="/speeding"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Speeding letter
-              </Link>{" "}
-              reads the speed against the lines police use and puts{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                every answer&rsquo;s price side by side
-              </span>
-              : a course, £100 and 3 points, court, and last, the unanswered
-              form, which is 6 points on its own. It checks the 14 days, counts
-              points against 6 and 12, dates the form, and writes the letter
-              when you can&rsquo;t say who drove. A new{" "}
-              <Link
-                href="/writing/when-silence-is-the-worst-answer"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Penalty Defaults, go with it.
             </li>
           </ul>
         </section>

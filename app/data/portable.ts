@@ -540,6 +540,13 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "the mortgage deal ending and the offers" : null),
   },
   {
+    key: "statepension:v1",
+    tool: "State Pension gaps: worth paying, and by when?",
+    href: "/statepension",
+    label: "Your State Pension forecast and the gap years from your last visit",
+    describe: (raw) => (parse(raw) ? "the State Pension gaps you were weighing" : null),
+  },
+  {
     key: "studentloan:v1",
     tool: "Student loan: overpay, or let it run out?",
     href: "/studentloan",

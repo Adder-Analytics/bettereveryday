@@ -3617,6 +3617,40 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/studentloan">tool for this</a> on the site. You give your plan, what you owe, when repayments started and what you earn. It runs the loan forward month by month, shows what you'd pay letting it run, with an overpayment and clearing it today, finds the pay at which it would clear, prices the freeze, checks for a refund, and writes the messages to the Student Loans Company.</p>`,
   },
+  {
+    slug: "the-bet-you-want-to-lose",
+    title: "The Bet You Want to Lose",
+    date: "2026-11-19",
+    excerpt:
+      "Filling a gap in your National Insurance record costs about £957 and adds about £358 a year to your State Pension, for life. 'Will I live long enough to get it back?' is the wrong question. On longevity insurance, the annuity puzzle, and the year that work would have filled anyway.",
+    readTime: 5,
+    tags: ["decisions", "finance"],
+    content: `<p>Joanne is 58. In 2020 she stopped work for three years to look after her mother, and when she finally signed in to check her State Pension, the forecast said £234.41 a week if she works until 67, not the full £241.30. Under it was a list of three years marked "not a full year", and a button offering to fill each one for about £957. A friend told her not to bother: "You'd have to live to ninety to get your money back."</p>
+
+<p>Her friend was out by twenty years. One filled year adds about £358 a year to the State Pension, in today's money, rising every April. Even after 20% tax that's about £287 a year, so £957 comes back in a little over three years of pension, at about 70. A woman who reaches 67 can expect, on average, to live well into her eighties. But the arithmetic isn't the interesting part. The friend's question is.</p>
+
+<h2>The wrong frame</h2>
+
+<p>"Will I get my money back?" is how you'd judge an investment. The State Pension isn't one. It's an income that lasts exactly as long as you do, which makes it <a href="/models#longevity-insurance">insurance against a long life</a>: the risk that you live to 94 and your savings ran out at 82. Like any insurance, the outcome where it pays least, dying soon after you retire, is the one you'd least want, and it's also the one where you'll least need the money.</p>
+
+<p>Economists have known for decades that people undervalue this. Menahem Yaari showed in 1965 that someone who doesn't need to leave money behind should turn most of their savings into a lifetime income. Hardly anyone does when they have the choice, and the gap has a name: the annuity puzzle. Jeffrey Brown and colleagues found part of the answer in 2008, by describing the same two products, a lifetime income and a savings account, in two ways to over 1,300 Americans over 50. Told what each would let them spend for the rest of their lives, 72% chose the lifetime income. Told about returns and investment, 21% did. Joanne's friend was in the second frame.</p>
+
+<p>In the first frame, the price looks remarkable. An insurer in 2026 wanted about £100,000 for £5,000 a year of inflation-linked income starting at 65. At that rate the £358 a year Joanne can buy for £957 would cost about £7,000. There is no cheaper way to buy a pension in Britain.</p>
+
+<h2>But not every gap</h2>
+
+<p>That doesn't mean paying for every gap you see. You need 35 qualifying years for the full new State Pension (records that start before 2016 work it out a little differently, which is why the forecast matters), and every year you work, or get credits for caring or for a child under 12, adds one. Someone with 20 years at 45 will reach 35 without paying a penny, and a year they buy now adds nothing at all. The forecast assumes you keep going until State Pension age, so the real question is what happens if you don't.</p>
+
+<p>That splits Joanne's gaps in two. Even working to 67, she's one year short, so one gap is worth filling whatever happens. The other two she only needs if she stops at 65 as she hopes. And here the other half of the rule matters: each year can be filled for six years after it ends and then <a href="/models#cost-of-delay">closes for good</a>. The extended window back to 2006 shut in April 2025. 2020/21 closes on 5 April 2027; 2021/22 a year later. So she pays for the oldest now, and decides on the others each spring, before each one closes, when she knows more about her plans. A year you'll need, paid in time. A year you might not need, held open until the last spring you can still buy it.</p>
+
+<h2>Three things to check first</h2>
+
+<p>Some gaps shouldn't be gaps. If you were claiming Child Benefit for a child under 12, caring for 20 hours a week, or on Universal Credit, you may be owed credits for free, and a grandparent who looked after a grandchild while the parent worked can often claim the parent's spare credit back to 2011. Joanne's three years of caring might be covered by Carer's Credit, so she'll ask HMRC before paying anything. If you're likely to get Pension Credit in retirement, extra State Pension can mostly come off it, so ask the Pension Service first. And if you live abroad, the rules changed in April 2026: Class 2 for time abroad has ended, and Class 3 needs ten years of UK residence or contributions.</p>
+
+<p>The line to keep: <em>I pay for the State Pension years I'll be short of whatever happens, oldest first, before each one closes. The rest I decide each spring.</em></p>
+
+<p>There's a <a href="/statepension">tool for this</a> on the site. You give your date of birth, your forecast or your count of years, when you expect to stop and which recent years have gaps. It sorts them into pay, decide later and not needed, prices each and what it adds, dates every deadline, and writes the messages to the Future Pension Centre and HMRC.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

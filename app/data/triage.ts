@@ -134,7 +134,7 @@ const nodes: Record<string, TriageNode> = {
         id: "options",
         label: "It's the options themselves",
         short: "The options",
-        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "sell", "remortgage", "studentloan", "monthly", "debts", "subscriptions", "trial"],
+        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "sell", "remortgage", "studentloan", "statepension", "monthly", "debts", "subscriptions", "trial"],
       },
       {
         id: "stakes",
@@ -337,6 +337,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "debts",
             note: "If you have card or loan debt too, that almost always comes first.",
+          },
+        },
+      },
+      {
+        id: "statepension",
+        label: "My National Insurance record has gaps, and I could pay to fill them.",
+        detail: "Years abroad, caring or out of work, a forecast short of the full State Pension, and a deadline in April.",
+        rec: {
+          toolId: "statepension",
+          because:
+            "A gap year costs about £957 and adds about £358 a year for life, but only if you'd be short without it. It sorts your gaps into the ones you'll need whatever happens, the ones work might fill, and the ones that add nothing, with the date each closes.",
+          then: {
+            toolId: "cover",
+            note: "The same question underneath: insure what you couldn't pay yourself, and a long life is one of those.",
           },
         },
       },

@@ -470,6 +470,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "State Pension gaps: worth paying, and by when?",
+    href: "/statepension",
+    snippet:
+      "Gaps in your National Insurance record? Which years you'll need whatever happens, which only if you stop work early, what each costs and adds, and when each closes.",
+    meta: "State Pension — voluntary National Insurance, gap years, deadlines",
+    titleText:
+      "state pension gaps national insurance record ni record voluntary national insurance contributions voluntary ni class 3 class 2 buy back years top up state pension fill gaps missing years qualifying years 35 years 10 years full new state pension £241.30 £250.70 forecast check your state pension future pension centre hmrc payment reference six year deadline 5 april 2027 2020/21 £18.40 £956.80 £358 a year worth it break even pension credit contracted out starting amount state pension age 66 67 68 carers credit child benefit credits specified adult childcare grandparent credit ca9176 living abroad expat class 2 abroad ended self-employed small profits annuity".toLowerCase(),
+    bodyText:
+      "state pension gaps: worth paying, and by when? (/statepension): the instrument for gaps in a uk national insurance record. full new state pension £241.30 a week in 2026/27 (£250.70 from april 2027) for 35 qualifying years, at least 10 for any; each year about £6.89 a week, £358.50 a year. records before april 2016 have a starting amount, so the gov.uk forecast is the guide. voluntary class 3 £18.40 a week (£956.80 a year) in 2026/27; 2024/25 (£17.45) and 2025/26 (£17.75) at their own rate if paid within two tax years; older years at the current rate. class 2 £3.65 for the self-employed with low profits. each year can be filled until the 5 april six years after it ends: 2020/21 closes 5 april 2027; the extended window to 2006 closed 5 april 2025. from 6 april 2026 class 2 for time abroad ended, class 3 abroad needs 10 years of uk residence or contributions. state pension age 66 to 67 for those born 6 april 1960 to 5 march 1961, 67 after, 68 later under current law. sorts the open gaps into pay (short even working to state pension age), decide later (only if you stop early) and not needed; prices each, what it adds, payback after tax and what an insurer would charge (an rpi-linked annuity about £5,000 a year per £100,000 at 65). checks: free credits first (child benefit for a child under 12, carer's credit, universal credit, grandparent childcare credit), pension credit and housing benefit, abroad, self-employed. messages to the future pension centre (0800 731 0175) and hmrc (0300 200 3500), and one for a missing credit. calendar reminders before each deadline. includes a worked example: born 1968, three years caring, a forecast one year short and a plan to stop at 65. nothing is sent anywhere. pairs with the longevity insurance and cost of delay models and the essay the bet you want to lose.",
+  },
+  {
+    type: "Tool",
     title: "Student loan: overpay, or let it run out?",
     href: "/studentloan",
     snippet:
