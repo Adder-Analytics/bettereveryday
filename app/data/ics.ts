@@ -11,7 +11,7 @@
  * once so the two tools can't drift apart on conformance.
  */
 
-export const SITE_URL = "https://bettereveryday.vercel.app";
+export const SITE_URL = "https://bettereveryday.adder.dev";
 
 /** Escape a value for an iCalendar TEXT property (RFC 5545 §3.3.11). */
 export function icsEscape(text: string): string {

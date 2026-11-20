@@ -691,7 +691,7 @@ export function sickSummary(inp: SickInputs, read: SickRead, today = todayISO())
     lines.push("", "Worth checking:");
     for (const d of read.doubts) lines.push(`- ${d}`);
   }
-  lines.push("", "From bettereveryday.vercel.app/sick. Not legal advice.");
+  lines.push("", "From bettereveryday.adder.dev/sick. Not legal advice.");
   return lines.join("\n");
 }
 

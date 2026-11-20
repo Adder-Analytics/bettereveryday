@@ -666,7 +666,7 @@ export function childcareSummary(inp: ChildcareInputs, read: ChildcareRead, toda
   lines.push("");
   lines.push("Dates:");
   for (const d of datesOf(inp, read, today)) lines.push(`- ${letterDate(d.on)}: ${d.title}. ${d.body}`);
-  lines.push("", `Rule: ${childcareRule(inp, read)}`, "", "From https://bettereveryday.vercel.app/childcare. Not financial advice.");
+  lines.push("", `Rule: ${childcareRule(inp, read)}`, "", "From https://bettereveryday.adder.dev/childcare. Not financial advice.");
   return lines.join("\n");
 }
 

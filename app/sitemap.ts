@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { posts } from "./data/posts";
 
-const baseUrl = "https://bettereveryday.vercel.app";
+const baseUrl = "https://bettereveryday.adder.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const postEntries = posts.map((post) => ({

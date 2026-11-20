@@ -498,7 +498,7 @@ export function remortgageSummary(inp: RemortgageInputs, read: RemortgageRead, t
   for (const o of read.options) lines.push(`- ${o.label}, ${pct(o.rate)}: ${money(o.pay)} a month, ${money(o.cost)}${o.best ? " (cheapest)" : ""}`);
   lines.push("", "Dates:");
   for (const d of datesOf(inp, read, today)) lines.push(`- ${letterDate(d.on)}: ${d.title}. ${d.body}`);
-  lines.push("", `Rule: ${remortgageRule(inp, read)}`, "", "From https://bettereveryday.vercel.app/remortgage. Not financial advice.");
+  lines.push("", `Rule: ${remortgageRule(inp, read)}`, "", "From https://bettereveryday.adder.dev/remortgage. Not financial advice.");
   return lines.join("\n");
 }
 

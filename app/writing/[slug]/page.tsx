@@ -15,7 +15,7 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
-const SITE_URL = "https://bettereveryday.vercel.app";
+const SITE_URL = "https://bettereveryday.adder.dev";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
