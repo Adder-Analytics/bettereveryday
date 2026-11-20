@@ -3651,6 +3651,52 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/statepension">tool for this</a> on the site. You give your date of birth, your forecast or your count of years, when you expect to stop and which recent years have gaps. It sorts them into pay, decide later and not needed, prices each and what it adds, dates every deadline, and writes the messages to the Future Pension Centre and HMRC.</p>`,
   },
+  {
+    slug: "the-pound-that-costs-86",
+    title: "The Pound That Costs £86",
+    date: "2026-11-20",
+    excerpt:
+      "Carer's Allowance is £86.45 a week, and it stops entirely in any week your earnings pass £204. But the £204 isn't on your payslip: it's what's left after tax, National Insurance, half your pension and some care costs. On cliffs, effective tax rates, and the extra hours that leave you worse off.",
+    readTime: 5,
+    tags: ["decisions", "finance"],
+    content: `<p>Dev looks after his mum, who has Parkinson's and gets Attendance Allowance. He's there most mornings and every evening, well over 35 hours a week, and he works 16 hours on the tills at a supermarket for £12.71 an hour. He gets Carer's Allowance, £86.45 a week. In November his manager offered him 20 hours from January, and put him down for overtime in December. Four more hours a week is about £50 more pay. He said yes to both.</p>
+
+<p>Both would leave him worse off.</p>
+
+<h2>A cliff, not a slope</h2>
+
+<p>Most of the tax and benefits system takes a slice of each extra pound. Carer's Allowance doesn't. If your earnings in a week are £204 or less, after the deductions the rules allow, you get the full £86.45. If they're a penny more, you get nothing for that week. The limit was raised in April 2025 and tied to 16 hours a week at the National Living Wage, which is why Dev's 16 hours land almost exactly on it.</p>
+
+<p>Economists call the number that matters here the <a href="/models#effective-marginal-tax-rate">effective marginal tax rate</a>: out of the next pound you earn, how much do you lose, in tax and in help that stops? On a slope it's a share of the pound. On a cliff, the pound that crosses the line costs £86.45, and for a long stretch above it every extra pound is still worth less than nothing, because you haven't yet earned back what crossing cost. On 20 hours, Dev would keep about £42 a week less than he does on 16, for four more hours of work. He'd need around 25 hours a week before working more paid at all.</p>
+
+<p>The December overtime is worse, because Dev is paid monthly. Monthly pay is turned into a weekly figure (times 12, divided by 52), so a month that goes over goes over in every week it covers. About £220 of overtime would cost him about £375 of Carer's Allowance.</p>
+
+<h2>The line you can't see</h2>
+
+<p>The cruel part is that the £204 isn't the number on anyone's payslip. It's what's left after income tax and National Insurance, after half of whatever you pay into a pension, after work expenses, and after care costs for the person you look after (or a child under 16) while you're at work, up to half of your earnings. So people get it wrong in both directions. Some look at their gross pay, decide they're over, and never claim, when the deductions would have put them under. Others think they're comfortably under and find out from a letter, months later, that one bonus or one month of overtime crossed the line, and they owe it all back.</p>
+
+<p>That second group is large. An independent review in 2025 found the DWP's own guidance on averaging earnings had been applied wrongly, and in April 2026 the government began reviewing about 200,000 cases; around 25,000 carers may have debts cut, cancelled or refunded. At the Budget on 28 October the Chancellor announced work to remove the cliff edge altogether, "once the necessary infrastructure is in place". There's no date. The cliff is still there this week.</p>
+
+<p>People respond to lines like this when they can see them. Studies of benefits that stop at an earnings threshold, like Simon Ruh and Stefan Staubli's work on Austrian disability insurance, find people bunched just below the line. The ones who end up just above it are often the ones who couldn't see where it was.</p>
+
+<h2>Before you say yes</h2>
+
+<p>The correction is to work out what you'd keep, not what you'd earn, in the rule's own units. A few things move the number more than people expect:</p>
+
+<ul>
+<li><strong>Your pension.</strong> Half of what you pay in comes off your counted earnings. Opting out of a workplace pension to take home a bit more can push you over. If you're just over, paying a little more in can bring you back under, and you keep the money.</li>
+<li><strong>Care costs.</strong> If you pay someone (not a close relative) to look after the person you care for while you work, up to half your earnings can come off.</li>
+<li><strong>Timing.</strong> Pay is tested in the period it's paid. If your pay goes up and down, ask the Carer's Allowance Unit to average it over your normal cycle, and do it before a big month, not after.</li>
+<li><strong>Universal Credit.</strong> If you get UC, Carer's Allowance comes off it pound for pound, so a week you lose it is mostly made up by more UC. The cliff is gentler for you.</li>
+<li><strong>The person you care for.</strong> If they get a severe disability premium in Pension Credit, Housing Benefit or an older benefit, your claim can cost them theirs. Check before you claim.</li>
+</ul>
+
+<p>Dev kept his 16 hours, asked for the December overtime to go to someone else, and told his manager he'd take more hours when he could do 26 or more. It felt strange to turn down work. It was the right sum.</p>
+
+<p>The line to keep: <em>I check my counted earnings, not my gross pay, against £204 a week before I agree extra hours, and I report every change the week it happens.</em></p>
+
+<p>There's a <a href="/carers">tool for this</a> on the site. You answer a few questions about the caring and give your pay, pension and any care costs. It counts your earnings the way the test does, shows your headroom in pounds and hours, what your biggest month would cost, the ways back under if you're over and the band where extra pay leaves you worse off, and writes the messages to the Carer's Allowance Unit, to payroll and about an overpayment.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

@@ -470,6 +470,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Carer's Allowance: can you get it, and can you earn this?",
+    href: "/carers",
+    snippet:
+      "Look after someone and work too? Count your earnings the way the Carer's Allowance test does, see your headroom under the £204 limit, and when extra hours leave you worse off.",
+    meta: "Carer's Allowance — the earnings limit, deductions, overpayments",
+    titleText:
+      "carer's allowance carers allowance carer allowance carer support payment carer's credit earnings limit £204 £196 £212 £86.45 £89.50 cliff edge 35 hours caring for mum caring for dad unpaid carer work and care part time job overtime bonus pay rise extra hours worse off pension contributions half salary sacrifice care costs deductions net earnings averaging overpayment carer's allowance overpayment sayce review averaging review severe disability premium underlying entitlement universal credit carer element £209.34 attendance allowance pip daily living dla care component state pension overlap full-time education student backdate three months report a change carer's allowance unit".toLowerCase(),
+    bodyText:
+      "carer's allowance: can you get it, and can you earn this? (/carers): the instrument for carer's allowance in england and wales, with pointers for scotland's carer support payment and northern ireland. £86.45 a week in 2026/27 for caring 35 hours a week or more for someone getting pip daily living, attendance allowance, dla middle or highest care, adult or child disability payment, armed forces independence payment or constant attendance allowance; not in full-time education (21 hours a week); not paid on top of a state pension of the same or more, but underlying entitlement adds a carer amount to pension credit and housing benefit. the earnings limit is a cliff: £204 a week after deductions (16 hours at the £12.71 national living wage; about £212 expected from april 2027), and a penny over loses the whole week. counted earnings: gross pay as a weekly figure (monthly × 12 ÷ 52), less income tax, national insurance, half of your pension contributions, work expenses, and care costs while you work up to half of what's left. shows headroom in pounds and hours, what your biggest pay period would cost, ways back under (a pension contribution, salary sacrifice, fewer hours), and the band of pay where you keep less than at the limit. universal credit: carer's allowance comes off uc pound for pound; the carer element is £209.34 a month. the person you care for may lose a severe disability premium. the 2025 independent review found averaging guidance applied wrongly; about 200,000 cases under review from april 2026; the 28 october 2026 budget announced work to remove the cliff edge with no date. caring 20 to 34 hours: carer's credit (form cc1). writes the earnings report to the carer's allowance unit, a pension contribution request to payroll, and a mandatory reconsideration of an overpayment, with a calendar file (.ics). includes a worked example: 16 hours at the minimum wage, december overtime and an offer of 20 hours. nothing is sent anywhere. pairs with the effective marginal tax rate and notches models and the essay the pound that costs £86.",
+  },
+  {
+    type: "Tool",
     title: "State Pension gaps: worth paying, and by when?",
     href: "/statepension",
     snippet:

@@ -580,6 +580,18 @@ export const tools: Tool[] = [
     essays: ["the-first-no-is-a-draft"],
   },
   {
+    id: "carers",
+    href: "/carers",
+    name: "Carer's Allowance: Can You Get It, and Can You Earn This?",
+    short: "Carer's Allowance",
+    when: "You look after someone for most of the week and work a few shifts as well. Someone said you can't earn more than about £200 a week on Carer's Allowance, so you've either never claimed, or you claim and say no to every extra hour in case it tips you over, or a letter has just said you were overpaid for months you didn't know you were over.",
+    ask: "Can I get it, how do my earnings count against the limit, how much room do I have, and when is extra work not worth it?",
+    does: "Checks the caring (35 hours a week, a qualifying disability benefit, not in full-time education, the State Pension overlap) and, if you work, counts your earnings the way the test does: gross pay turned into a weekly figure (monthly × 12 ÷ 52), less tax, National Insurance, half of your pension contributions, work expenses, and care costs up to half of what's left. Reads that against the £204 weekly limit (2026/27), where a pound over loses all £86.45, and shows your headroom in pounds and hours, what your biggest pay period would cost, the ways back under if you're over (a pension contribution, salary sacrifice or fewer hours), and the band of pay where you'd keep less than at the limit. Flags the severe disability premium the person you care for could lose, Universal Credit, Scotland's Carer Support Payment and the expected April 2027 limit, and writes the messages to the Carer's Allowance Unit, to payroll, and about an overpayment.",
+    payoff: "now",
+    models: ["effective-marginal-tax-rate", "notches", "administrative-burden"],
+    essays: ["the-pound-that-costs-86"],
+  },
+  {
     id: "rent",
     href: "/rent",
     name: "The Rent's Going Up: Pay It or Challenge It?",
@@ -962,6 +974,13 @@ export const toolGroups: ToolGroup[] = [
     blurb:
       "The tax code on your payslip is wrong and nobody's checked, or you're off sick and the payslip looks thin, or you've been dismissed and don't know if you can do anything, or you're being made redundant and the money on the way out is worked out by hand. Tax codes are a running total that closes on 5 April, sick pay changed in April 2026, tribunal deadlines in October, unfair dismissal in January 2027; holiday, notice and redundancy pay have rules most payslips get wrong. These check each one against what the law gives you, date what's due, and write the letters.",
     toolIds: ["taxcode", "sick", "dismissed", "redundancy", "leaving"],
+  },
+  {
+    id: "caring",
+    title: "Looking after someone",
+    blurb:
+      "You care for a parent, a partner or a child for most of the week, and the help for carers comes with a rule that punishes the people it's meant for: earn a pound over the weekly limit and the whole allowance goes. This counts your earnings the way the rule does and shows how close you are.",
+    toolIds: ["carers"],
   },
   {
     id: "after-a-death",
