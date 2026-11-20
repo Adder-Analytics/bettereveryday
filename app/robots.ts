@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://bettereveryday.vercel.app/sitemap.xml",
+    sitemap: "https://bettereveryday.adder.dev/sitemap.xml",
   };
 }

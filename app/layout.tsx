@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = "https://bettereveryday.vercel.app";
+const SITE_URL = "https://bettereveryday.adder.dev";
 
 const SITE_DESCRIPTION =
   `A private toolkit of ${toolCountWord} working instruments for thinking through a real decision — the flip point, the pre-mortem, the consequence trace, and more — plus the essays and mental models behind them. Nothing you enter ever leaves your browser.`;

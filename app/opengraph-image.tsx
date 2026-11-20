@@ -52,7 +52,7 @@ export default function Image() {
           </div>
         </div>
         <div style={{ fontSize: 24, color: "#92400E" }}>
-          bettereveryday.vercel.app
+          bettereveryday.adder.dev
         </div>
       </div>
     ),

@@ -789,7 +789,7 @@ export function dismissedSummary(inp: DismissedInputs, read: DismissedRead, toda
     lines.push("", "Worth checking:");
     for (const d of read.doubts) lines.push(`- ${d}`);
   }
-  lines.push("", "From bettereveryday.vercel.app/dismissed. Not legal advice.");
+  lines.push("", "From bettereveryday.adder.dev/dismissed. Not legal advice.");
   return lines.join("\n");
 }
 

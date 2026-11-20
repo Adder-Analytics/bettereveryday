@@ -676,7 +676,7 @@ export function bvSummary(inp: BvInputs, read: BvRead, today: string): string {
   }
   lines.push("", "Can wait:");
   for (const w of canWait(inp, read)) lines.push(`- ${w}`);
-  lines.push("", bvRule(), "", "From https://bettereveryday.vercel.app/bereavement. Not legal advice.");
+  lines.push("", bvRule(), "", "From https://bettereveryday.adder.dev/bereavement. Not legal advice.");
   return lines.join("\n");
 }
 

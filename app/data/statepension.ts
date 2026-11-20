@@ -641,7 +641,7 @@ export function statePensionSummary(read: StatePensionRead, today = todayISO()):
     for (const d of dates) lines.push(`- ${letterDate(d.on)}: ${d.title}. ${d.body}`);
     lines.push("");
   }
-  lines.push(`Rule: ${statePensionRule(read)}`, "", "In 2026/27 money. From https://bettereveryday.vercel.app/statepension. Not financial advice.");
+  lines.push(`Rule: ${statePensionRule(read)}`, "", "In 2026/27 money. From https://bettereveryday.adder.dev/statepension. Not financial advice.");
   return lines.join("\n");
 }
 

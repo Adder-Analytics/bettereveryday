@@ -633,7 +633,7 @@ export function bbSummary(inp: BbInputs, read: BbRead, today: string): string {
   }
   lines.push("", "Can wait:");
   for (const w of canWait(inp, read)) lines.push(`- ${w}`);
-  lines.push("", bbRule(), "", "From https://bettereveryday.vercel.app/baby. Not legal advice.");
+  lines.push("", bbRule(), "", "From https://bettereveryday.adder.dev/baby. Not legal advice.");
   return lines.join("\n");
 }
 

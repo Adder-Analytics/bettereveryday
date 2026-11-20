@@ -717,7 +717,7 @@ export function studentLoanSummary(read: StudentLoanRead, today = todayISO()): s
     lines.push("", "Dates:");
     for (const d of datesOf(read, today)) lines.push(`- ${letterDate(d.on)}: ${d.title}. ${d.body}`);
   }
-  lines.push("", `Rule: ${studentLoanRule(read)}`, "", `Assumes pay rises of ${pct(read.growth)} a year and RPI of ${pct(read.rpi)} from September 2027.`, "From https://bettereveryday.vercel.app/studentloan. Not financial advice.");
+  lines.push("", `Rule: ${studentLoanRule(read)}`, "", `Assumes pay rises of ${pct(read.growth)} a year and RPI of ${pct(read.rpi)} from September 2027.`, "From https://bettereveryday.adder.dev/studentloan. Not financial advice.");
   return lines.join("\n");
 }
 

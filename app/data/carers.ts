@@ -756,7 +756,7 @@ export function carersSummary(read: CarersRead, today = todayISO()): string {
     for (const d of rem) lines.push(`- ${letterDate(d.on)}: ${d.title}. ${d.body}`);
     lines.push("");
   }
-  lines.push(`Rule: ${carersRule(read)}`, "", `2026/27 figures: ${pounds2(RATE)} a week, limit ${pounds2(LIMIT)}. From https://bettereveryday.vercel.app/carers. Not advice.`);
+  lines.push(`Rule: ${carersRule(read)}`, "", `2026/27 figures: ${pounds2(RATE)} a week, limit ${pounds2(LIMIT)}. From https://bettereveryday.adder.dev/carers. Not advice.`);
   return lines.join("\n");
 }
 
