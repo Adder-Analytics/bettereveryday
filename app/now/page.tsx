@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Sixteen hours on the tills, a mum who needs you every evening,
+              and an offer of four more hours a week from January.{" "}
+              <Link
+                href="/carers"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Carer&rsquo;s Allowance
+              </Link>{" "}
+              counts your earnings the way the £204 test does (after tax,
+              National Insurance, half your pension and care costs), shows{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                how close you are to the cliff, and the band of pay where more
+                work leaves you with less
+              </span>
+              , and writes the messages to the Carer&rsquo;s Allowance Unit, to
+              payroll and about an overpayment. A new{" "}
+              <Link
+                href="/writing/the-pound-that-costs-86"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Effective Marginal Tax Rate, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Three years out caring for a parent, a State Pension forecast
               one year short, a button offering to fill each gap for £957,
               and a friend saying you&rsquo;d have to live to ninety.{" "}
@@ -153,33 +178,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Loyalty Penalty, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A baby turning 9 months in December, a nursery starting in
-              January, and a parent on £108,000 who&rsquo;d heard that means
-              no help.{" "}
-              <Link
-                href="/childcare"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Childcare codes
-              </Link>{" "}
-              dates the code for your child (issued by 31 December for
-              January), prices the 30 funded hours and Tax-Free Childcare, and
-              draws{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                the £100,000 line
-              </span>{" "}
-              with what a pension contribution costs to get back under it. It
-              puts every three-monthly reconfirmation in your calendar, because
-              the help ends by default. A new{" "}
-              <Link
-                href="/writing/the-benefit-that-ends-by-default"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Recertification, go with it.
             </li>
           </ul>
         </section>

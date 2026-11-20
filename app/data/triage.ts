@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby", "childcare"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby", "childcare", "carers"],
       },
     ],
     choices: [
@@ -784,6 +784,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "bills",
             note: "With the help counted, rework who pays what for the nursery between you.",
+          },
+        },
+      },
+      {
+        id: "carers",
+        label: "I look after someone, and I work too. I don't know if I can get Carer's Allowance, or if extra hours will lose it.",
+        detail: "The £204 a week limit, a pay rise or overtime, or a letter saying I was overpaid.",
+        rec: {
+          toolId: "carers",
+          because:
+            "The limit is a cliff: a pound over loses the whole £86.45 for the week. But it's tested after tax, National Insurance, half your pension and some care costs, so your gross pay isn't the number. It counts yours the way the rule does, shows your headroom, and shows when more hours leave you worse off.",
+          then: {
+            toolId: "statepension",
+            note: "Years spent caring can leave gaps in your National Insurance record. Check whether credits filled them.",
           },
         },
       },

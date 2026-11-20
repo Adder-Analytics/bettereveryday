@@ -1324,6 +1324,28 @@ export const situations: Situation[] = [
     essays: ["the-benefit-that-ends-by-default"],
   },
   {
+    id: "carers-allowance-limit",
+    title: "You care for someone, and you've been offered more hours",
+    scene:
+      "You look after your mum, who gets Attendance Allowance, and work 16 hours a week at the minimum wage. You get Carer's Allowance. Your manager has offered you 20 hours from January, and December overtime is on the rota. Four more hours sounds like £50 a week more.",
+    question: "Will the extra work actually leave me better off?",
+    models: [
+      {
+        id: "effective-marginal-tax-rate",
+        move: "Ask what you'd keep, not what you'd earn. Near a cliff, the next hour can cost more than it pays: 20 hours would lose all £86.45 a week of Carer's Allowance for about £50 of pay.",
+      },
+      {
+        id: "notches",
+        move: "Find the line in the rule's own units: £204 a week after tax, National Insurance, half your pension and care costs, with monthly pay turned into a weekly figure. Then count your distance from it.",
+      },
+    ],
+    tool: {
+      id: "carers",
+      move: "This is the moment the tool is built for. It counts your earnings the way the test does, shows your headroom, what one big month would cost, the ways back under, and the band of pay where you'd keep less than you do now.",
+    },
+    essays: ["the-pound-that-costs-86"],
+  },
+  {
     id: "fixed-rate-ending",
     title: "The fixed rate on the mortgage ends in a few months",
     scene:
@@ -2017,6 +2039,7 @@ export const situationGroups: SituationGroup[] = [
       "someone-has-died",
       "baby-on-the-way",
       "childcare-codes",
+      "carers-allowance-limit",
       "fixed-rate-ending",
       "student-loan-overpay",
       "state-pension-gaps",

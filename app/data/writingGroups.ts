@@ -100,6 +100,7 @@ const essayGroups: EssayGroup[] = [
       "the-rate-nobody-chose",
       "the-balance-isnt-the-bill",
       "the-bet-you-want-to-lose",
+      "the-pound-that-costs-86",
       "file-it-even-if-you-cant-pay",
       "the-rule-you-remember",
       "the-day-before-the-line",

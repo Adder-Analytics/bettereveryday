@@ -525,6 +525,13 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "the dates for a baby on the way" : null),
   },
   {
+    key: "carers:v1",
+    tool: "Carer's Allowance: can you get it, and can you earn this?",
+    href: "/carers",
+    label: "Your caring and pay details from your last visit",
+    describe: (raw) => (parse(raw) ? "the Carer's Allowance earnings you were checking" : null),
+  },
+  {
     key: "childcare:v1",
     tool: "Childcare codes: what you can get, and by when?",
     href: "/childcare",
