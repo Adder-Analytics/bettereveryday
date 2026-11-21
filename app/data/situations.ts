@@ -1412,6 +1412,28 @@ export const situations: Situation[] = [
     essays: ["the-bet-you-want-to-lose"],
   },
   {
+    id: "pension-withdrawal",
+    title: "You want to take a lump sum out of your pension",
+    scene:
+      "You're 63, still working three days a week on £38,000, with £120,000 in an old workplace pension you've never touched. Your son is buying a flat and you'd like to give him £40,000. You've read that pensions get caught by inheritance tax from April 2027, so it feels like the moment. The provider's form has one box: how much?",
+    question: "How should I take it, and is now the time?",
+    models: [
+      {
+        id: "bracket-smoothing",
+        move: "Income tax is charged a year at a time, and the rate climbs with the total. A quarter of each payment tax-free puts £30,000 on top of your salary this year, much of it at 40%. The whole pot's tax-free quarter first leaves £10,000 taxable, all at 20%: about £2,000 instead of £9,500.",
+      },
+      {
+        id: "mental-accounting",
+        move: "Money in a pension and money in the bank are the same money for inheritance tax from April 2027. Moving it from one account to the other saves nothing unless it's spent or given away.",
+      },
+    ],
+    tool: {
+      id: "pension",
+      move: "This is the moment the tool is built for. It prices each way of taking the sum on your income, picks the cheapest, shows what the emergency code will take on the day and how to get it back, and what taking it starts.",
+    },
+    essays: ["same-money-different-tax"],
+  },
+  {
     id: "rent-going-up",
     title: "The rent's going up",
     scene:
@@ -2043,6 +2065,7 @@ export const situationGroups: SituationGroup[] = [
       "fixed-rate-ending",
       "student-loan-overpay",
       "state-pension-gaps",
+      "pension-withdrawal",
       "designing-incentives",
       "stubborn-system",
     ],

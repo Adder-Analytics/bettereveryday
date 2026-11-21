@@ -134,7 +134,7 @@ const nodes: Record<string, TriageNode> = {
         id: "options",
         label: "It's the options themselves",
         short: "The options",
-        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "sell", "remortgage", "studentloan", "statepension", "monthly", "debts", "subscriptions", "trial"],
+        choiceIds: ["whether-or-not", "two-odds", "even", "several", "keep-looking", "time-money", "repair", "sell", "remortgage", "studentloan", "statepension", "pension", "monthly", "debts", "subscriptions", "trial"],
       },
       {
         id: "stakes",
@@ -351,6 +351,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "cover",
             note: "The same question underneath: insure what you couldn't pay yourself, and a long life is one of those.",
+          },
+        },
+      },
+      {
+        id: "pension",
+        label: "I'm over 55 and I want to take money out of my pension.",
+        detail: "A lump sum for something big, help for the kids, income to live on, or worry about inheritance tax from April 2027.",
+        rec: {
+          toolId: "pension",
+          because:
+            "The same sum can cost a few hundred pounds in tax or thousands, depending on whether you take a quarter of each payment tax-free or the whole pot's quarter first, and which side of 5 April the taxable part lands. It prices each way on your income, shows the emergency tax on the day and the form to reclaim it, and what taking it starts.",
+          then: {
+            toolId: "statepension",
+            note: "Before you spend pension money, check your State Pension forecast: a gap year is often the best-value buy there is.",
           },
         },
       },

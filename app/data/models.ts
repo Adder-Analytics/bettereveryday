@@ -328,6 +328,15 @@ export const models: Model[] = [
     essays: ["the-bet-you-want-to-lose"],
   },
   {
+    id: "bracket-smoothing",
+    name: "Bracket Smoothing",
+    domain: "Finance",
+    tagline: "Income tax is charged a year at a time and the rate rises with the total, so the same money costs more in one lump than spread across years.",
+    explanation:
+      "A progressive income tax has a quirk built into its calendar: it looks at one year at a time. Two people with the same income over two years can pay very different tax if one earns it evenly and the other gets it in one lump, because the lump climbs into higher bands that the even earner never touches. William Vickrey set out the problem in 'Averaging of Income for Income-Tax Purposes' (Journal of Political Economy, 1939) and argued that a fair tax would look at income over several years. The United States let people average a spike in income over previous years from 1964 until the Tax Reform Act of 1986 flattened the rates; the UK still lets farmers and people with income from creative work average their profits, because their income is lumpy by nature. Everyone else has to do the smoothing themselves, and the occasions when you choose when income lands are few and easy to miss: a bonus or a sale of shares, a property, and above all money from a pension pot. From 55 (57 from April 2028) you can take a pension pot when you like; a quarter is usually tax-free and the rest is income in the tax year it's paid. Ask for £40,000 as a lump sum with a quarter tax-free and £30,000 lands on top of this year's pay, much of it at 40%. Take the tax-free quarter of the whole pot first and only £10,000 is taxable; or take half before 5 April and half after, and both halves can stay in the 20% band. The total is the same money; the tax can differ by thousands. The correction: before taking a lump of income you can time, ask which band each pound will land in this year and next, and put the taxable part in the years when your other income is lowest. The tool Taking Money From Your Pension prices each way on your own income.",
+    essays: ["same-money-different-tax"],
+  },
+  {
     id: "authority-bias",
     name: "Authority Bias",
     domain: "Psychology",
@@ -487,7 +496,7 @@ export const models: Model[] = [
     tagline: "Money is money, but we keep it in separate jars — and an old purchase keeps a balance in its jar long after the cash is gone.",
     explanation:
       "Richard Thaler (Marketing Science, 1985; Journal of Behavioral Decision Making, 1999) described how people sort money into mental accounts — groceries, treats, the holiday fund — and judge each spend against its own account rather than against everything they have. It's why a windfall gets spent more freely than a salary, and why the same saving feels different on different purchases. One account that matters for everyday calls is the one we keep for things we own. Erica Okada (Journal of Consumer Research, 2001) found people carry a 'mental book value' for a possession: they write its price down in their heads as they use it, and resist replacing it until it feels paid off, which is why a trade-in can persuade where an equal discount doesn't. The pull runs the other way too: Silvia Bellezza, Joshua Ackerman and Francesca Gino (Journal of Marketing Research, 2017) found that when an appealing upgrade is available, people treat what they own more carelessly, partly so replacing it won't feel wasteful. In a German Environment Agency study, about a third of the large household appliances people replaced in 2012/13 still worked. The correction is to close the jars before you decide: what you've paid is gone either way, and the only accounts that count are the money and time ahead. For a repair, that comes down to one division — the quote over what a new one costs per year of use is how long the repair has to last. The tool Fix It or Replace It? runs it on a repair of your own.",
-    essays: ["what-the-repair-has-to-buy", "the-price-of-your-signature"],
+    essays: ["what-the-repair-has-to-buy", "the-price-of-your-signature", "same-money-different-tax"],
   },
   {
     id: "communal-exchange",

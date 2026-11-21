@@ -364,6 +364,18 @@ export const tools: Tool[] = [
     essays: ["the-bet-you-want-to-lose"],
   },
   {
+    id: "pension",
+    href: "/pension",
+    name: "Taking Money From Your Pension: How Much Tax, and What Does It Start?",
+    short: "Pension withdrawal",
+    when: "You're over 55 with a pension pot and you need a chunk of it: for a car, a deposit for one of the kids, the mortgage, or because you've read that pensions get caught by inheritance tax from April 2027 and the Budget might change things again. The provider's form asks how much you want. Nobody has told you that how you ask, and when, can change the tax by thousands.",
+    ask: "What's the cheapest way to take the sum I need, what will come off on the day, and what does taking it start?",
+    does: "Prices the ways of taking the same sum on your own income: a lump sum a quarter tax-free (UFPLS), the tax-free quarter of the whole pot first through drawdown with the rest as income, either one split across 5 April (or three tax years), and a small pot of £10,000 or less. Picks the cheapest, a near tie going to no waiting. Works out the emergency month 1 tax the provider will take off the first payment, how much of it you'll get back and with which form (P55, P53Z or P50Z), or how much more HMRC will want later if you earn well. Flags the money purchase annual allowance (£10,000 a year into pensions once you take taxable money, employer's contributions included, and the 91 days to tell other schemes), the £50,270, £60,000 and £100,000 lines, means-tested benefits and the minimum pension age rising to 57 on 6 April 2028. If inheritance tax is the reason, shows what reaches your family from leaving it, taking it and keeping it, or giving it away. Writes the messages to your provider and your other schemes, with the dates in your calendar. England, Wales and Northern Ireland rates, and Scotland's.",
+    payoff: "now",
+    models: ["bracket-smoothing", "mental-accounting", "reversibility"],
+    essays: ["same-money-different-tax"],
+  },
+  {
     id: "monthly",
     href: "/monthly",
     name: "Pay Now or Pay Monthly?",
@@ -1001,7 +1013,7 @@ export const toolGroups: ToolGroup[] = [
     title: "A money call: spend, borrow, lend, keep or sell",
     blurb:
       "The everyday money decisions that are usually made on feel: the mortgage deal that's ending, the student loan, the gaps in your State Pension, the payment plan, the debts, the friend who asks for a loan, the warranty, the broken appliance, the subscriptions, the thing in the cupboard, the number you'll negotiate. Each one comes down to a sum you can do here.",
-    toolIds: ["remortgage", "studentloan", "statepension", "monthly", "debts", "lend", "cover", "fix", "sell", "keep", "worth", "walkaway"],
+    toolIds: ["remortgage", "studentloan", "statepension", "pension", "monthly", "debts", "lend", "cover", "fix", "sell", "keep", "worth", "walkaway"],
   },
   {
     id: "with-others",

@@ -3697,6 +3697,59 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/carers">tool for this</a> on the site. You answer a few questions about the caring and give your pay, pension and any care costs. It counts your earnings the way the test does, shows your headroom in pounds and hours, what your biggest month would cost, the ways back under if you're over and the band where extra pay leaves you worse off, and writes the messages to the Carer's Allowance Unit, to payroll and about an overpayment.</p>`,
   },
+  {
+    slug: "same-money-different-tax",
+    title: "Same Money, Different Tax",
+    date: "2026-11-21",
+    excerpt:
+      "Take £40,000 from a pension one way and the tax is about £9,500. Take it another way and it's about £2,000. Same pot, same person, same year. On lumpy income, a tax that looks at one year at a time, and the inheritance tax rush that doesn't save what people think.",
+    readTime: 5,
+    tags: ["decisions", "finance"],
+    content: `<p>Maureen is 63. She works three days a week for £38,000, and she has £120,000 in an old workplace pension she's never touched. Her son is buying a flat and she wants to give him £40,000. She'd also read that from April 2027 pensions get caught by inheritance tax, so taking the money now felt doubly sensible. The provider's form had one box that mattered: how much?</p>
+
+<p>She wrote £40,000. That would have cost her about £9,500 in tax. Asking for the same £40,000 differently would have cost about £2,000.</p>
+
+<h2>Which quarter</h2>
+
+<p>Everyone knows a quarter of a pension is tax-free. What the form doesn't tell you is <em>which</em> quarter. Ask for a lump sum and most providers pay what's called an uncrystallised funds pension lump sum: a quarter of <em>that payment</em> is tax-free and the rest is income. So £10,000 is tax-free and £30,000 lands on top of Maureen's salary, taking her from £38,000 to £68,000 for the year. Most of it is taxed at 40%.</p>
+
+<p>The other way is to move the pot into drawdown and take the tax-free quarter of <em>the whole pot</em> at once. A quarter of £120,000 is £30,000, tax-free. She needs £10,000 more, taken as income, and that stays inside the 20% band. About £2,000 in tax. And she hasn't lost anything: over her lifetime the tax-free total is the same quarter either way. She's just chosen to take it when it's useful, and keep the taxable part small in a year when her salary already fills the lower band.</p>
+
+<h2>A tax with a one-year memory</h2>
+
+<p>The reason this works is a quirk of how income tax is built. It's charged a year at a time, and the rate rises with the year's total. Two people with the same income over two years can pay very different tax if one gets it evenly and the other in one lump, because the lump climbs into bands the even earner never touches. William Vickrey pointed this out in 1939 and argued that a fair tax would average income over several years. The US let people do that for about two decades; the UK still lets farmers and people with creative income average their profits. Everyone else has to do the smoothing themselves. I've called this <a href="/models#bracket-smoothing">bracket smoothing</a>.</p>
+
+<p>Pension money is the one big lump most people can time. If Maureen had needed the full £40,000 as taxable income, taking half before 5 April and half after would have kept more of it at 20%. Someone about to retire can do better still, by waiting until the first tax year with no salary.</p>
+
+<h2>The day it's paid</h2>
+
+<p>Even the right choice can look wrong on the day. The first taxable payment from a pension is usually taxed on an emergency code that treats it as if you'd be paid the same every month. On Maureen's £30,000 lump sum that would have meant about £11,900 taken off, more than the £9,500 due; she'd have got the difference back only by filling in a form (P55 for part of a pot, P53Z or P50Z if you empty it) or by waiting until the tax year ends. HMRC repays tens of millions of pounds of this every quarter. For someone on a big salary it can go the other way: the emergency code takes too little and HMRC sends a bill later.</p>
+
+<p>And taking any taxable money, even £1, starts the money purchase annual allowance: from then on only £10,000 a year can go into pensions with tax relief, employer's contributions included. For someone still working, that's a real cost. Tax-free cash on its own doesn't start it.</p>
+
+<h2>The rush that doesn't save it</h2>
+
+<p>Then there's the reason Maureen was in a hurry. From 6 April 2027, most pension money left when you die counts towards inheritance tax. That's true. But money you take out and keep counts too. It's moved from one <a href="/models#mental-accounting">mental account</a> to another, from "pension" to "savings", and inheritance tax sees through the labels. Taking it out only reduces inheritance tax if you spend it or give it away, and a gift is only clear if you live seven years. Meanwhile, taking it out costs income tax now, at your rate, for certain.</p>
+
+<p>For most people it doesn't matter anyway. Inheritance tax is only paid on estates over £325,000, plus £175,000 if a home goes to children or grandchildren, nothing is paid on what goes to a spouse, and the survivor inherits unused allowances, so a couple can leave up to £1 million. Maureen's estate is well under. For her, the April 2027 change was never a reason. Giving her son the money was.</p>
+
+<p>Pension money taken out also can't go back. In the run-up to recent Budgets, rumours that tax-free cash would be cut sent many people to take theirs early; it wasn't cut, and HMRC said that cancelling a tax-free cash payment doesn't undo it. A Quilter survey this year found three in five of those who'd rushed regretted it. The 2026 Budget left the rules alone again.</p>
+
+<h2>Before you fill in the box</h2>
+
+<ul>
+<li><strong>Ask how, not just how much.</strong> If you need less than a quarter of your pot, you may be able to take it all as tax-free cash, with no tax and no cap on paying in afterwards. Not every workplace scheme offers drawdown; a transfer to one that does is usually free.</li>
+<li><strong>Ask when.</strong> If the taxable part would push you into a higher band, part before 5 April and part after can cost less. So can waiting for the first year without a salary.</li>
+<li><strong>Expect the emergency tax, and claim it back the same week.</strong> Or ask your provider which code they'll use, and send a P45 if you have one.</li>
+<li><strong>Don't move money to dodge a tax that may never come.</strong> Work out whether your estate would pay inheritance tax at all, and remember that a pension left to someone is free of income tax if you die before 75.</li>
+</ul>
+
+<p>Maureen took the tax-free £30,000 and £10,000 of income, gave her son his deposit, and booked a Pension Wise appointment for the rest.</p>
+
+<p>The line to keep: <em>I work out the tax on a pension withdrawal before I ask for it, take it the cheapest way, and claim back any emergency tax the same week.</em></p>
+
+<p>There's a <a href="/pension">tool for this</a> on the site. You give your date of birth, your pot, the sum you need and your other income. It prices each way of taking it, picks the cheapest, shows what will come off on the day and which form claims it back, flags what taking it starts, and writes the messages to your provider and your other schemes.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
