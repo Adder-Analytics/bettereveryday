@@ -482,6 +482,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Taking money from your pension: how much tax, and what does it start?",
+    href: "/pension",
+    snippet:
+      "Over 55 and taking money from a pension pot? Price each way of taking it on your income, see the emergency tax on the day and the form to reclaim it, and what it starts.",
+    meta: "Pension withdrawals — tax-free cash, emergency tax, the MPAA, inheritance tax",
+    titleText:
+      "pension withdrawal take money out of pension lump sum tax-free cash 25% tax free pension commencement lump sum pcls ufpls uncrystallised funds pension lump sum flexi-access drawdown drawdown small pot £10,000 emergency tax month 1 code 1257l m1 p55 p53z p50z reclaim overpaid pension tax money purchase annual allowance mpaa £10,000 flexible access statement 91 days lump sum allowance £268,275 normal minimum pension age 55 57 2028 protected pension age inheritance tax pensions april 2027 iht unused pension die before 75 after 75 gift seven years budget rumour tax-free cash pension wise moneyhelper scottish rates higher rate 40% 60% trap £100,000 split across tax years 5 april".toLowerCase(),
+    bodyText:
+      "taking money from your pension: how much tax, and what does it start? (/pension): the instrument for taking money from a uk defined contribution pension pot. from 55, rising to 57 on 6 april 2028 (born 6 april 1971 to 5 april 1973: access at 55 until then; protected pension ages). prices the ways of taking the same sum on your other income: a lump sum a quarter tax-free (ufpls); moving the pot into drawdown and taking the whole pot's tax-free quarter first with the rest as income; either split across 5 april or three tax years; a small pot lump sum of £10,000 or less (doesn't trigger the mpaa). 2026/27 rates, frozen for 2027/28: personal allowance £12,570 tapered over £100,000, 20% to £50,270, 40%, 45% over £125,140; scottish starter 19%, basic 20%, intermediate 21%, higher 42% from £43,663, advanced 45% from £75,001, top 48%. emergency tax on the first payment on a month 1 code: often too much on a one-off (reclaim with p55 for part of a pot, p53z if emptied with other income, p50z if emptied with none) or too little for a high earner. money purchase annual allowance £10,000 a year once you take taxable money, employer contributions included; notify other schemes within 91 days. tax-free cash capped by the £268,275 lump sum allowance. inheritance tax: from 6 april 2027 unused pensions count in the estate (nil-rate band £325,000, residence £175,000, spouse exempt); money taken out and kept still counts; compares leaving it, taking and keeping it, and giving it away; death before 75 free of income tax, after 75 taxed at the beneficiary's rate. flags the child benefit charge from £60,000, the £100,000 line, means-tested benefits, and budget rumours. writes messages to your provider and other schemes with a calendar file (.ics). includes a worked example: 63, £120,000 pot, £38,000 salary, £40,000 for a son's deposit: about £9,546 as a lump sum, about £2,000 taking the tax-free quarter of the whole pot first. nothing is sent anywhere. pairs with the bracket smoothing and mental accounting models and the essay same money, different tax.",
+  },
+  {
+    type: "Tool",
     title: "State Pension gaps: worth paying, and by when?",
     href: "/statepension",
     snippet:

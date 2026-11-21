@@ -547,6 +547,13 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "the mortgage deal ending and the offers" : null),
   },
   {
+    key: "pension:v1",
+    tool: "Taking money from your pension: how much tax, and what does it start?",
+    href: "/pension",
+    label: "Your pension pot, the sum and your income from your last visit",
+    describe: (raw) => (parse(raw) ? "the pension withdrawal you were pricing" : null),
+  },
+  {
     key: "statepension:v1",
     tool: "State Pension gaps: worth paying, and by when?",
     href: "/statepension",

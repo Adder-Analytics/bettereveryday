@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Sixty-three, £120,000 in an old workplace pension, a son buying
+              a flat, and a form with one box: how much?{" "}
+              <Link
+                href="/pension"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Taking money from your pension
+              </Link>{" "}
+              prices each way of taking the sum on your own income and shows{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                that the same £40,000 can cost £2,000 in tax or £9,500
+              </span>
+              , what the emergency code takes on the day and the form that
+              claims it back, the £10,000 cap on paying in it can start, and
+              what the April 2027 inheritance tax change does and doesn&rsquo;t
+              do. A new{" "}
+              <Link
+                href="/writing/same-money-different-tax"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Bracket Smoothing, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Sixteen hours on the tills, a mum who needs you every evening,
               and an offer of four more hours a week from January.{" "}
               <Link
@@ -152,32 +177,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Income-Contingent Debt, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A five-year fix at 1.89% ending in March, an offer in the
-              bank&rsquo;s app, a broker&rsquo;s quote, and a plan to deal with
-              it after Christmas.{" "}
-              <Link
-                href="/remortgage"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Fixed rate ending
-              </Link>{" "}
-              prices{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                a month on the reversion rate
-              </span>{" "}
-              against your offers, compares them over the deal with the fees
-              counted, dates the booking (your lender up to six months ahead,
-              another about three) and checks whether a small overpayment would
-              reach a cheaper loan-to-value band. A new{" "}
-              <Link
-                href="/writing/the-rate-nobody-chose"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Loyalty Penalty, go with it.
             </li>
           </ul>
         </section>
