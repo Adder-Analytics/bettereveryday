@@ -78,6 +78,32 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A mum who asked twice over Christmas whether you&rsquo;d eaten, a
+              pile of unopened letters, and a power of attorney you&rsquo;ve
+              been meaning to sort out for years.{" "}
+              <Link
+                href="/lpa"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Power of attorney
+              </Link>{" "}
+              reads whether one can still be made (a diagnosis isn&rsquo;t the
+              line) and prices{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                £92 an LPA now against a court deputyship later
+              </span>
+              : about £841 in the first year, £320 a year after, and 6 to 10
+              months when nobody can sign. It dates the steps and writes the
+              opening for the conversation. A new{" "}
+              <Link
+                href="/writing/sign-it-on-a-good-day"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Ulysses Contract, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Sixty-three, £120,000 in an old workplace pension, a son buying
               a flat, and a form with one box: how much?{" "}
               <Link
@@ -151,32 +177,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Longevity Insurance, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              £52,000 owed on Plan 2, a salary of £34,000, £8,000 from a
-              grandparent, and the feeling that the debt is the obvious place
-              for it.{" "}
-              <Link
-                href="/studentloan"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Student loan
-              </Link>{" "}
-              runs the loan forward on your pay to find out{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                whether you&rsquo;ll clear it before it&rsquo;s written off
-              </span>
-              . If not, an overpayment only shrinks the write-off. It prices
-              one against letting it run and clearing it today, finds the pay
-              at which it would clear, shows what the Plan 2 freeze from April
-              2027 costs, and checks for a refund. A new{" "}
-              <Link
-                href="/writing/the-balance-isnt-the-bill"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Income-Contingent Debt, go with it.
             </li>
           </ul>
         </section>

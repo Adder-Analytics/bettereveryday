@@ -118,6 +118,15 @@ export const models: Model[] = [
     essays: ["decision-quality", "the-river-is-four-feet-deep"],
   },
   {
+    id: "ulysses-contract",
+    name: "Ulysses Contract",
+    domain: "Decisions",
+    tagline: "Some choices can only be made by the person you are now, for the person you might become, and only before you need them.",
+    explanation:
+      "Ulysses wanted to hear the Sirens and knew he wouldn't be able to resist them, so he had his crew tie him to the mast and told them to ignore whatever he said next. Jon Elster made the story the centre of 'Ulysses and the Sirens' (Cambridge University Press, 1979): a rational person can bind their future self when they can predict that self will be unable to choose well. Thomas Schelling wrote about the same 'intimate contest for self-command' (The Public Interest, 1980). In medicine the name stuck: an advance decision made while well, to apply when you can't decide, is often called a Ulysses contract. The defining feature is the window. The binding has to be done while you can still do it; once the ship is near the rocks it's too late to ask for rope. That's why these choices get put off: there's never a day when it's urgent until the day it's impossible. A second finding says the rope matters less than the crew. David Shalowitz, Elizabeth Garrett-Mayer and David Wendler (Archives of Internal Medicine, 2006) pooled studies in which family members predicted what treatment a patient would want: they were right about 68% of the time, and the advance directives people had written didn't improve the accuracy much. A form names who decides; only a conversation tells them what you'd want. The correction: notice the decisions with a closing window (a power of attorney, a will, a conversation about care), make them while they're paperwork rather than an emergency, and talk them through with the people who'll carry them out. The tool Power of Attorney shows whether the window is still open and what it costs if it closes.",
+    essays: ["sign-it-on-a-good-day"],
+  },
+  {
     id: "reversibility",
     name: "Reversibility",
     domain: "Decisions",
@@ -235,7 +244,7 @@ export const models: Model[] = [
     tagline: "We look away from information when we expect it to be bad, which is exactly when it's most worth looking at.",
     explanation:
       "Niklas Karlsson, George Loewenstein and Duane Seppi (Journal of Risk and Uncertainty, 2009) found that investors in Sweden and the US logged in to check their portfolios less often when markets had fallen. A later study of 1.1 million investors' daily log-ins (Sicherman, Loewenstein, Seppi and Utkus, Review of Financial Studies, 2016) found the same pattern: attention dropped as fear rose. Checking feels like it makes bad news real, so we put it off, and for a portfolio that costs little, because nothing changes while you look away. The cost appears when the situation is moving on a schedule of its own: an unopened bill that gains a late fee, a court letter with a deadline, a bailiff's notice whose fees step up at fixed points. Then not looking isn't neutral; it's choosing the most expensive stage by default. The counter is to make the first look small and the next step concrete: open the letter only to find one date, decide one action before that date, and write it down. The tool A Bailiff's Letter does that for a notice of enforcement, and A Tax Return Due does it for HMRC's penalty dates.",
-    essays: ["the-fee-schedule-is-a-clock", "the-date-on-the-notice", "they-dont-know-until-its-written", "the-whole-year-falls-due", "file-it-even-if-you-cant-pay"],
+    essays: ["the-fee-schedule-is-a-clock", "the-date-on-the-notice", "they-dont-know-until-its-written", "the-whole-year-falls-due", "file-it-even-if-you-cant-pay", "sign-it-on-a-good-day"],
   },
   {
     id: "tax-salience",

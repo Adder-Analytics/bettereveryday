@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby", "childcare", "carers"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby", "childcare", "carers", "lpa"],
       },
     ],
     choices: [
@@ -812,6 +812,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "statepension",
             note: "Years spent caring can leave gaps in your National Insurance record. Check whether credits filled them.",
+          },
+        },
+      },
+      {
+        id: "lpa",
+        label: "A parent's memory is going, and nobody has power of attorney.",
+        detail: "Or I want to make my own, and I'm not sure where to start or what it costs.",
+        rec: {
+          toolId: "lpa",
+          because:
+            "It has to be made while they can still understand it, and a diagnosis alone doesn't mean it's too late. After that line the only route is the Court of Protection: about £841 in the first year, £320 a year after, and 6 to 10 months. It reads where you are, prices both, and writes the opening for the conversation.",
+          then: {
+            toolId: "carers",
+            note: "If you're caring 35 hours a week or more, check Carer's Allowance and its earnings limit.",
           },
         },
       },

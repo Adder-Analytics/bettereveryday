@@ -1346,6 +1346,28 @@ export const situations: Situation[] = [
     essays: ["the-pound-that-costs-86"],
   },
   {
+    id: "parent-forgetting",
+    title: "A parent is starting to forget, and there's no power of attorney",
+    scene:
+      "Over Christmas you noticed Mum, 79 and living alone, asking the same questions and leaving letters unopened. The GP has mentioned early Alzheimer's. She owns the house, and in a year or two it may have to be sold for care. You'd meant to sort out a power of attorney, but you assumed the diagnosis meant it was too late, and you can't think how to raise it.",
+    question: "Is it too late, and if not, how do I bring it up?",
+    models: [
+      {
+        id: "ulysses-contract",
+        move: "An LPA is a choice made now, by the person you are on a good day, about who decides when you can't. It only works if it's made before it's needed, so the right time is a calm afternoon, not the hospital corridor.",
+      },
+      {
+        id: "ostrich-effect",
+        move: "Not raising it feels kind, and it's mostly avoiding a hard conversation. Price the silence: £184 now, against a court deputyship at about £841 in the first year, £320 a year after, and 6 to 10 months when nobody can sign anything.",
+      },
+    ],
+    tool: {
+      id: "lpa",
+      move: "This is the moment the tool is built for. It reads whether she can still make one (a diagnosis isn't the line), prices now against later, dates the steps, and writes the opening for the conversation and the note to the GP.",
+    },
+    essays: ["sign-it-on-a-good-day"],
+  },
+  {
     id: "fixed-rate-ending",
     title: "The fixed rate on the mortgage ends in a few months",
     scene:
@@ -2062,6 +2084,7 @@ export const situationGroups: SituationGroup[] = [
       "baby-on-the-way",
       "childcare-codes",
       "carers-allowance-limit",
+      "parent-forgetting",
       "fixed-rate-ending",
       "student-loan-overpay",
       "state-pension-gaps",

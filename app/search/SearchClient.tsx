@@ -482,6 +482,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Power of attorney: is it too late, and what does waiting cost?",
+    href: "/lpa",
+    snippet:
+      "A parent's memory is going, or you want your own. See whether a Lasting Power of Attorney can still be made, what it costs now against a court deputyship later, and what to say.",
+    meta: "Lasting Power of Attorney — capacity, the £92 fee, deputyship, the conversation",
+    titleText:
+      "lasting power of attorney lpa power of attorney poa property and financial affairs health and welfare enduring power of attorney epa office of the public guardian opg register an lpa £92 fee £46 lpa120 remission exemption £12,000 make an lpa online gov.uk use a lasting power of attorney access code certificate provider attorneys replacement attorney jointly and severally life-sustaining treatment option a option b mental capacity act capacity assessment dementia alzheimer's diagnosis memory problems too late court of protection deputy deputyship £421 cop1 cop3 supervision fee £320 security bond appointee dwp next of kin joint account bank mandate sell parent's house care home fees deprivation of assets gifts opg100 search scotland continuing welfare power of attorney northern ireland mum dad elderly parent".toLowerCase(),
+    bodyText:
+      "power of attorney: is it too late, and what does waiting cost? (/lpa): the instrument for lasting powers of attorney in england and wales, with pointers for scotland (continuing and welfare powers, office of the public guardian scotland, guardianship from the sheriff court) and northern ireland (enduring power of attorney for money only, office of care and protection, controller). nobody, not a spouse or next of kin, can sign for someone on sole accounts, sell their share of a home or decide their care without an lpa or a deputy. an lpa must be made while the person can understand, remember, weigh up and communicate the decision; capacity is decision-specific and judged on the day, so a dementia diagnosis alone doesn't mean it's too late: do it on a good day, with a gp noting capacity if it might be questioned. fees: £92 per lpa to register since november 2025 (property and financial affairs; health and welfare), £46 with income of £12,000 or less, possibly nothing on some means-tested benefits (form lpa120, not universal credit alone since february 2026); £46 to resend within three months. registration takes roughly 8 to 20 weeks. a signed but unregistered lpa can usually still be registered after capacity is lost, but not after death. too late: court of protection deputyship, £421 application, £259 if a hearing, £100 opg assessment, £320 a year supervision (£35 minimal), a security bond, 6 to 10 months. meanwhile: dwp appointee for benefits, joint accounts, best interests decisions. attorneys can only make small customary gifts. old enduring powers of attorney (before october 2007) cover money only and must be registered when the donor is becoming unable. flags attendance allowance and the council tax severe mental impairment discount. writes the opening for the conversation, a note to the gp, letters to the bank and the dwp, with a calendar file (.ics). includes a worked example: mum, 79, early alzheimer's, owns her house, no lpa: £184 now against about £841 in the first year and 6 to 10 months later. nothing is sent anywhere. pairs with the ulysses contract and ostrich effect models and the essay sign it on a good day.",
+  },
+  {
+    type: "Tool",
     title: "Taking money from your pension: how much tax, and what does it start?",
     href: "/pension",
     snippet:
