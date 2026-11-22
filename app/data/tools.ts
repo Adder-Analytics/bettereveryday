@@ -604,6 +604,18 @@ export const tools: Tool[] = [
     essays: ["the-pound-that-costs-86"],
   },
   {
+    id: "lpa",
+    href: "/lpa",
+    name: "Power of Attorney: Is It Too Late, and What Does Waiting Cost?",
+    short: "Power of attorney",
+    when: "You noticed it over Christmas: a parent repeating questions, letters unopened, a bill gone unpaid. Or a friend's family has just spent months in court because nobody could sign for their dad. You know there's a form for this and you've been meaning to get to it. You're not sure whether a diagnosis means it's already too late, or how to bring it up at all.",
+    ask: "Can it still be made, what does it cost now against a court later, and what do I do this week?",
+    does: "Reads where you are against the line that matters, whether the person can understand what they're signing on a good day, not whether they have a diagnosis: planning ahead, early decline (do it now, with the GP noting capacity), too late (a Court of Protection deputyship), signed but never registered (send it now; it can usually still be registered), registered (show it to the bank), or an old Enduring Power of Attorney (money only; register it). Prices doing it now (£92 per LPA, half or nothing on a low income) against a deputyship (£421 to apply, £100 assessment, £320 a year, a bond, 6 to 10 months) and shows when each would be usable, against a sale or care move date if you have one. Covers joint homes, bank accounts, care fees, gifts, health decisions and DWP appointees, and flags Attendance Allowance and the council tax discount for dementia. Writes the opening for the conversation, a request to the GP, and letters to the bank and the DWP, with the dates in your calendar. England and Wales, with pointers for Scotland and Northern Ireland.",
+    payoff: "now",
+    models: ["ulysses-contract", "ostrich-effect", "reversibility"],
+    essays: ["sign-it-on-a-good-day"],
+  },
+  {
     id: "rent",
     href: "/rent",
     name: "The Rent's Going Up: Pay It or Challenge It?",
@@ -991,8 +1003,8 @@ export const toolGroups: ToolGroup[] = [
     id: "caring",
     title: "Looking after someone",
     blurb:
-      "You care for a parent, a partner or a child for most of the week, and the help for carers comes with a rule that punishes the people it's meant for: earn a pound over the weekly limit and the whole allowance goes. This counts your earnings the way the rule does and shows how close you are.",
-    toolIds: ["carers"],
+      "You care for a parent, a partner or a child for most of the week, and the help for carers comes with a rule that punishes the people it's meant for: earn a pound over the weekly limit and the whole allowance goes. Or someone you love is starting to forget, and nobody can sign for them unless they said so while they still could. These count your earnings the way the rule does, and show whether a power of attorney can still be made and what waiting would cost.",
+    toolIds: ["carers", "lpa"],
   },
   {
     id: "after-a-death",

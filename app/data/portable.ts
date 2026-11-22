@@ -547,6 +547,13 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "the mortgage deal ending and the offers" : null),
   },
   {
+    key: "lpa:v1",
+    tool: "Power of attorney: is it too late, and what does waiting cost?",
+    href: "/lpa",
+    label: "Whose power of attorney, how they are, and what's pressing, from your last visit",
+    describe: (raw) => (parse(raw) ? "the power of attorney you were working out" : null),
+  },
+  {
     key: "pension:v1",
     tool: "Taking money from your pension: how much tax, and what does it start?",
     href: "/pension",

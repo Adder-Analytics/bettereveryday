@@ -3750,6 +3750,62 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/pension">tool for this</a> on the site. You give your date of birth, your pot, the sum you need and your other income. It prices each way of taking it, picks the cheapest, shows what will come off on the day and which form claims it back, flags what taking it starts, and writes the messages to your provider and your other schemes.</p>`,
   },
+  {
+    slug: "sign-it-on-a-good-day",
+    title: "Sign It on a Good Day",
+    date: "2026-11-22",
+    excerpt:
+      "A power of attorney costs £92 and an afternoon, and it has to be made while the person can still understand it. Most families wait for the crisis that makes it impossible. On closing windows, the kindness of not asking, and why a diagnosis isn't the line.",
+    readTime: 5,
+    tags: ["decisions", "finance"],
+    content: `<p>Sam went home for Christmas and noticed things. Mum asked twice whether Sam had eaten. A pile of letters by the kettle hadn't been opened, and one was a final reminder for the water bill. In January the GP mentioned early Alzheimer's. Sam had meant to sort out a power of attorney for years, and now assumed the diagnosis meant it was too late. So nothing happened until the autumn, when Mum fell, went into hospital, and the question of selling the house to pay for care came up. Nobody could sign anything.</p>
+
+<p>The diagnosis hadn't made it too late. The waiting had.</p>
+
+<h2>Nobody can step in by right</h2>
+
+<p>Most people believe that if they can't manage, their husband, wife or children can manage for them. In England and Wales they can't. "Next of kin" has no legal power. A bank won't take instructions about an account in one person's name from anyone else. A house can't be sold, even one owned jointly, without someone with authority to sign for the owner who can't. Doctors decide about treatment in the person's best interests; they must ask the family, but the family can't insist.</p>
+
+<p>A Lasting Power of Attorney fixes that. You name who can deal with your money and property, and, in a second one, your health and care. Each costs £92 to register (half, or nothing, on a low income), and the gov.uk service walks you through it. Doing it yourself costs only the fee.</p>
+
+<p>The catch is the window. It has to be made while you can understand what it does, remember that long enough to decide, weigh it up and say what you want. After that line the only route is the Court of Protection, which appoints a deputy: £421 to apply, £100 for an assessment, £320 a year in supervision, a security bond, and usually six to ten months before anyone can act. The court picks the deputy, and the deputy reports every year.</p>
+
+<h2>A window that only closes</h2>
+
+<p>Philosophers call this kind of choice a Ulysses contract, after the sailor who had himself tied to the mast before the ship passed the Sirens. Jon Elster's point was that the binding has to be done in advance, by the person you are while you can still choose, for the person you might become. Once the ship is near the rocks, it's too late to ask for rope.</p>
+
+<p>What makes these choices so easy to put off is that they're never urgent until they're impossible. There's no deadline in the post. A power of attorney feels like something for later, and later feels like a time when you'll be less busy, more ready, better at difficult conversations. Then the window closes without a sound, usually in a hospital, and the cheap, quick version is gone for good.</p>
+
+<h2>A diagnosis isn't the line</h2>
+
+<p>Sam's mistake is common. Capacity isn't a label someone gets with a diagnosis; it's judged for a particular decision on a particular day. Plenty of people with early dementia can understand an LPA perfectly well, especially in the morning, in a familiar place, with nobody rushing them. The person who signs to say they understood it (the certificate provider) has to be satisfied, and if anyone might question it later, a GP or solicitor can assess capacity at the time and note it.</p>
+
+<p>So the practical advice runs the opposite way to the instinct. A diagnosis isn't a reason to give up; it's the reason to do it this month, on a good day.</p>
+
+<h2>The kindness of not asking</h2>
+
+<p>The real obstacle is rarely the form. It's the conversation. Raising a power of attorney with a parent can feel like telling them they're failing, so we don't, and call it tact. Researchers have a less flattering name for looking away from something we expect to be bad: the ostrich effect.</p>
+
+<p>The opening that tends to work is about their choices, not your worries. Without one, the law decides who manages their money and the doctors decide about their care; with one, they do. If you've made your own, say so. It turns the conversation into ordinary paperwork rather than a verdict.</p>
+
+<p>And the conversation matters in its own right. When researchers pooled studies in which family members predicted what treatment a patient would want, they were right only about two times in three, and written directives didn't improve that much. A form says who decides. Only talking tells them what you'd want them to decide.</p>
+
+<h2>This week</h2>
+
+<ul>
+<li><strong>Don't assume it's too late.</strong> If they can follow a conversation about it, it very likely isn't. Pick a good day.</li>
+<li><strong>Use the gov.uk service.</strong> Mistakes in the signing order are the main reason applications come back, and if the person can't sign again, a mistake may not be fixable.</li>
+<li><strong>Send it in.</strong> An LPA does nothing until it's registered, which can take months. One signed and left in a drawer can usually still be registered later, but not after the person dies.</li>
+<li><strong>Talk about what they'd want</strong>, especially about life-sustaining treatment, where to live and who they'd trust with what.</li>
+<li><strong>Make your own.</strong> Accidents and strokes don't wait for old age.</li>
+</ul>
+
+<p>Sam spent nine months and nearly a thousand pounds in fees and a bond becoming Mum's deputy, and now files a report and pays £320 every year. The two LPAs would have cost £184 and one afternoon the previous Christmas.</p>
+
+<p>The line to keep: <em>We do it on the next good day, not after the next crisis.</em></p>
+
+<p>There's a <a href="/lpa">tool for this</a> on the site. You say whose it is, how they are and whether there's one already. It tells you whether it can still be made, prices doing it now against a court later, shows when it would be usable, and writes the opening for the conversation and the letters to the GP, the bank and the DWP. Nothing is sent anywhere.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
