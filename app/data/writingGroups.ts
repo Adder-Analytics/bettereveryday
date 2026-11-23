@@ -103,6 +103,7 @@ const essayGroups: EssayGroup[] = [
       "same-money-different-tax",
       "the-pound-that-costs-86",
       "sign-it-on-a-good-day",
+      "the-key-not-the-coin",
       "file-it-even-if-you-cant-pay",
       "the-rule-you-remember",
       "the-day-before-the-line",

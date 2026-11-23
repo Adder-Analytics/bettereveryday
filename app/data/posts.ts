@@ -3806,6 +3806,59 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/lpa">tool for this</a> on the site. You say whose it is, how they are and whether there's one already. It tells you whether it can still be made, prices doing it now against a court later, shows when it would be usable, and writes the opening for the conversation and the letters to the GP, the bank and the DWP. Nothing is sent anywhere.</p>`,
   },
+  {
+    slug: "the-key-not-the-coin",
+    title: "The Key, Not the Coin",
+    date: "2026-11-23",
+    excerpt:
+      "Pat turned down Pension Credit for years: it would have been £8.95 a week, and Pat owns the house. But £8.95 of Pension Credit is a free TV licence and a Warm Home Discount, and with the Attendance Allowance Pat needed anyway, it was over £10,000 a year. On entitlements worth more for what they open than for what they pay.",
+    readTime: 5,
+    tags: ["decisions", "finance"],
+    content: `<p>Pat is 78, widowed, and has lived in the same house for forty years. The State Pension comes to about £220 a week, there's £150 a month from an old works pension, and £12,600 in the building society. Every winter someone on the radio says to check for Pension Credit, and every winter Pat thinks the same thing: that's for people who don't own their home. And if it isn't, it'll be a few pounds, and a few pounds isn't worth the forms.</p>
+
+<p>On the second point, Pat is nearly right. On those figures, Pension Credit would be about £8.95 a week. On the first point, Pat is wrong, and the two mistakes together cost more than ten thousand pounds a year.</p>
+
+<h2>The wrong number</h2>
+
+<p>The home you live in isn't counted for Pension Credit at all. Savings under £10,000 are ignored, and above that they count as £1 a week of income for every £500, with no upper limit. Pat's £12,600 counts as £6 a week. These aren't loopholes; they're the rules, and they're the opposite of what most people believe. In the DWP's research, about two-thirds of people who were entitled but hadn't claimed gave reasons that came down to assuming they wouldn't qualify. The DWP's latest estimate is that about 820,000 households who could get Pension Credit don't.</p>
+
+<p>But suppose Pat had known. £8.95 a week is still £8.95 a week. Against a phone call, a pile of statements and the feeling of asking, it can look like a fair trade to decline.</p>
+
+<p>That's the second mistake, and it's the more interesting one. It prices the claim by the number on the front.</p>
+
+<h2>What the key opens</h2>
+
+<p>Pension Credit, at any amount, is a key. For Pat, the £8.95 makes the £180 TV licence free, because Pat is over 75. It brings the £150 Warm Home Discount off the electricity bill, and Cold Weather Payments when the frost comes. That's about £800 a year from a claim that looked like £466.</p>
+
+<p>And the bigger door is the one nobody mentioned. Pat has started to need help getting out of the bath, and the stairs are getting hard. That's what Attendance Allowance is for: £76.70 a week at the lower rate, not means-tested, no diagnosis needed. It isn't counted as income for Pension Credit, and for someone who lives alone with nobody paid to care for them, it adds £86.05 a week to the minimum Pension Credit tops you up to. With it, Pat's Pension Credit goes from £8.95 to about £81 a week, and because that now includes Guarantee Credit, the council tax bill usually goes to nothing. Add the allowance itself and the doors it opens, and the household is over £10,000 a year better off.</p>
+
+<p>None of it was available to a person judging the coin.</p>
+
+<h2>Gateway value</h2>
+
+<p>I've started calling this gateway value: an entitlement worth less for what it pays than for what it opens. It's everywhere once you look. A bus pass. A Blue Badge. A first credit card used once a month so a credit file stops being empty. A first job on a CV. In each case the face value is small and the hassle is real, so the honest-looking sum says no, and it says no hardest to the people with the least time and confidence, who are the people it would help most.</p>
+
+<p>Amy Finkelstein and Matthew Notowidigdo tested this with older Americans who were likely eligible for food assistance but hadn't enrolled. They wrote to about 30,000 of them. A letter alone raised enrolment. A letter plus someone to help with the application tripled it. Need hadn't changed. What changed was knowing, and the effort.</p>
+
+<h2>How to bring it up</h2>
+
+<p>If it's a parent, the face-value framing is also the emotional one: "you could get a few pounds a week" sounds like "you're struggling". It hits pride and the word benefits, and the conversation ends there. Lead with the doors instead. "It would make your TV licence free." "It would probably sort the council tax." And the true sentence that does most of the work: it's part of the pension system you paid into. Then offer to make the call together, one morning, with the papers ready.</p>
+
+<h2>The clock</h2>
+
+<p>One more thing makes this urgent rather than merely worthwhile. Pension Credit can be backdated three months, and no further. Every week of "I'll look into it after Christmas" past that line is a week's money, and a week of everything it opens, gone for good.</p>
+
+<ul>
+<li><strong>Price the doors, not the coin.</strong> Before you decline a small entitlement, ask what holding it opens.</li>
+<li><strong>Check the rule, not the belief.</strong> The home doesn't count. Savings under £10,000 don't count. There's no upper limit.</li>
+<li><strong>Look for the second key.</strong> If someone needs help with personal care, Attendance Allowance may matter more than anything else on the list.</li>
+<li><strong>Claim this week.</strong> Three months back is the limit.</li>
+</ul>
+
+<p>The line to keep: <em>I count what an entitlement opens before I decide it isn't worth claiming.</em></p>
+
+<p>There's a <a href="/pensioncredit">tool for this</a> on the site. You enter the State Pension, any other pensions, savings, health and home. It estimates the award, adds up what it unlocks, shows what Attendance Allowance would change, dates the backdating line, and writes the opening for the conversation, what to say on the claim call, and the letters to TV Licensing and the council. Nothing is sent anywhere.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

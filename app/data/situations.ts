@@ -1368,6 +1368,28 @@ export const situations: Situation[] = [
     essays: ["sign-it-on-a-good-day"],
   },
   {
+    id: "parent-wont-claim",
+    title: "A parent lives on the State Pension and says Pension Credit isn't for them",
+    scene:
+      "Dad is 81, widowed, and lives alone in the house he's owned since 1979. He has the old State Pension, a small pension from the council, and about £12,000 saved. He turns the heating off in the afternoons. When you mention Pension Credit he says he's not on benefits, and anyway he owns his house. He's also started needing help getting out of the bath.",
+    question: "Could he actually get it, and how do I bring it up?",
+    models: [
+      {
+        id: "gateway-value",
+        move: "Don't judge the claim by its weekly figure. Even a few pounds of Savings Credit makes the £180 TV licence free and brings the £150 Warm Home Discount; Guarantee Credit usually clears the council tax. Count the doors it opens, not just the coin.",
+      },
+      {
+        id: "base-rates",
+        move: "About four in ten of the households who could get it don't, and most assume they wouldn't qualify. Owning a home and having modest savings are normal among people who are entitled, not reasons they aren't.",
+      },
+    ],
+    tool: {
+      id: "pensioncredit",
+      move: "This is the moment the tool is built for. It estimates the award from his figures, counts what it unlocks, shows what Attendance Allowance would change for someone living alone, dates the three-month backdating line, and writes the opening for the conversation.",
+    },
+    essays: ["the-key-not-the-coin"],
+  },
+  {
     id: "fixed-rate-ending",
     title: "The fixed rate on the mortgage ends in a few months",
     scene:
@@ -2085,6 +2107,7 @@ export const situationGroups: SituationGroup[] = [
       "childcare-codes",
       "carers-allowance-limit",
       "parent-forgetting",
+      "parent-wont-claim",
       "fixed-rate-ending",
       "student-loan-overpay",
       "state-pension-gaps",

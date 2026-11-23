@@ -373,6 +373,15 @@ export const models: Model[] = [
     essays: ["the-first-no-is-a-draft", "most-of-it-can-wait"],
   },
   {
+    id: "gateway-value",
+    name: "Gateway Value",
+    domain: "Decisions",
+    tagline: "Some entitlements are worth less for what they pay than for what they open, so judging them by their face value turns down the wrong thing.",
+    explanation:
+      "Most choices are priced by the number on the front. A pound a week of something looks like a pound a week, and a pound a week isn't worth a phone call, a form and the feeling of asking. But some entitlements are keys: holding one, at any amount, opens others. In the UK, Pension Credit is the clearest case. A few pounds a week of Savings Credit makes a £180 TV licence free at 75 and brings the £150 Warm Home Discount; its Guarantee Credit part usually brings the whole council tax bill, the maximum Housing Benefit and free dental treatment. Its value isn't the weekly sum; it's the weekly sum plus every door. The same shape appears in a low-income bus pass, a Blue Badge, a student card, a credit file that's thin rather than empty, a first job on a CV. The mistake runs one way: people compare the face value with the hassle and decline, without counting what's behind it, and the people who make that mistake most are the ones it would help most. In the US, Amy Finkelstein and Matthew Notowidigdo (Quarterly Journal of Economics, 2019) wrote to about 30,000 older people who were likely eligible for food assistance but not enrolled. A letter raised enrolment; a letter plus someone to help with the application tripled it. The barrier wasn't need. It was not knowing, and the effort. In the UK the DWP estimates that about 820,000 households entitled to Pension Credit don't claim it, and around two-thirds of non-claimants in its research gave reasons that came down to assuming they wouldn't qualify. The correction: before turning down a small entitlement, ask what it unlocks and add that to the price. And when it's someone else's to claim, lead with the doors, not the coin. The tool Pension Credit adds up what an award opens and dates the backdating line.",
+    essays: ["the-key-not-the-coin"],
+  },
+  {
     id: "scarcity",
     name: "Scarcity and Tunneling",
     domain: "Psychology",

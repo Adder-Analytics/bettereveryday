@@ -78,6 +78,32 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Seventy-eight, a house owned for forty years, £12,600 in the
+              building society, and a firm belief that Pension Credit is for
+              other people.{" "}
+              <Link
+                href="/pensioncredit"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Pension Credit
+              </Link>{" "}
+              estimates the award the way the rules do (the home isn&rsquo;t
+              counted, savings only over £10,000) and adds up what it opens:{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                £8.95 a week that&rsquo;s worth about £800 a year
+              </span>
+              , and over £10,000 with the Attendance Allowance nobody had
+              mentioned. It dates the three-month backdating line and writes
+              the opening for the conversation with a parent. A new{" "}
+              <Link
+                href="/writing/the-key-not-the-coin"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Gateway Value, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A mum who asked twice over Christmas whether you&rsquo;d eaten, a
               pile of unopened letters, and a power of attorney you&rsquo;ve
               been meaning to sort out for years.{" "}
@@ -152,31 +178,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Effective Marginal Tax Rate, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Three years out caring for a parent, a State Pension forecast
-              one year short, a button offering to fill each gap for £957,
-              and a friend saying you&rsquo;d have to live to ninety.{" "}
-              <Link
-                href="/statepension"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                State Pension gaps
-              </Link>{" "}
-              sorts your open years into{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                the ones you&rsquo;ll need whatever happens, the ones work
-                might fill, and the ones that add nothing
-              </span>
-              , prices what each buys, and dates the day each one closes (the
-              oldest on 5 April 2027). A new{" "}
-              <Link
-                href="/writing/the-bet-you-want-to-lose"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Longevity Insurance, go with it.
             </li>
           </ul>
         </section>
