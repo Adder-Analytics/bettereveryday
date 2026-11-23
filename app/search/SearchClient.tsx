@@ -494,6 +494,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Pension Credit: could you get it, and what does it unlock?",
+    href: "/pensioncredit",
+    snippet:
+      "On the State Pension and assume Pension Credit isn't for you? Estimate the award, see what it unlocks (free TV licence at 75, Warm Home Discount, council tax), what Attendance Allowance changes, and the backdating line.",
+    meta: "Pension Credit — eligibility, Savings Credit, what it unlocks, backdating",
+    titleText:
+      "pension credit pensioncredit guarantee credit savings credit minimum guarantee £238 £363.25 pension credit calculator pension credit eligibility am i eligible for pension credit can i get pension credit if i own my home pension credit savings £10,000 savings limit no upper limit deemed income tariff income pension credit backdate three months 3 months winter fuel payment free tv licence over 75 tv licence £180 warm home discount £150 cold weather payment £25 council tax reduction housing benefit severe disability addition £86.05 carer addition £48.15 attendance allowance £76.70 £114.60 lives alone mum dad parent won't claim not on benefits pride state pension too low basic state pension £184.90 new state pension £241.30 mixed age couple universal credit support for mortgage interest service charges ground rent nhs dental glasses pension service",
+    bodyText:
+      "pension credit: could you get it, and what does it unlock? (/pensioncredit): the instrument for pension credit in england and wales, with pointers for scotland (pension age winter heating payment, winter heating payment) and northern ireland. about 820,000 entitled households don't claim, a take-up of about 62%, and most assume they wouldn't qualify. the home isn't counted; savings over £10,000 count as £1 a week for every £500; there's no upper limit. guarantee credit tops income up to £238 a week single or £363.25 a couple in 2026/27, plus a severe disability addition for someone who gets attendance allowance, pip daily living or dla care and lives alone with nobody paid carer's allowance for them, a carer addition, and ground rent and service charges. savings credit for people who reached state pension age before 6 april 2016. any award opens a free tv licence at 75, the warm home discount and cold weather payments; guarantee credit usually brings the maximum council tax reduction and housing benefit and free nhs dental treatment. backdating is three months. writes the conversation opener, the claim call script, and letters to tv licensing and the council.",
+  },
+  {
+    type: "Tool",
     title: "Taking money from your pension: how much tax, and what does it start?",
     href: "/pension",
     snippet:

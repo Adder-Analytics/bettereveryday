@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby", "childcare", "carers", "lpa"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby", "childcare", "carers", "lpa", "pensioncredit"],
       },
     ],
     choices: [
@@ -826,6 +826,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "carers",
             note: "If you're caring 35 hours a week or more, check Carer's Allowance and its earnings limit.",
+          },
+        },
+      },
+      {
+        id: "pensioncredit",
+        label: "I'm, or a parent is, on the State Pension and money's tight, but surely Pension Credit isn't for us.",
+        detail: "We own the house, or there's some savings, or a small private pension.",
+        rec: {
+          toolId: "pensioncredit",
+          because:
+            "None of those rules you out: the home isn't counted and savings only start to count over £10,000. Any award opens a free TV licence at 75 and the Warm Home Discount, and Attendance Allowance can turn a no into a yes. It estimates the award, counts what it opens, and dates the three-month backdating line.",
+          then: {
+            toolId: "lpa",
+            note: "If you're helping a parent with forms and money, check nobody's left unable to sign for them.",
           },
         },
       },

@@ -554,6 +554,13 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "the power of attorney you were working out" : null),
   },
   {
+    key: "pensioncredit:v1",
+    tool: "Pension Credit: could you get it, and what does it unlock?",
+    href: "/pensioncredit",
+    label: "Who it's for, the pensions, savings and home from your last visit",
+    describe: (raw) => (parse(raw) ? "the Pension Credit check you were working out" : null),
+  },
+  {
     key: "pension:v1",
     tool: "Taking money from your pension: how much tax, and what does it start?",
     href: "/pension",

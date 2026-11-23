@@ -616,6 +616,18 @@ export const tools: Tool[] = [
     essays: ["sign-it-on-a-good-day"],
   },
   {
+    id: "pensioncredit",
+    href: "/pensioncredit",
+    name: "Pension Credit: Could You Get It, and What Does It Unlock?",
+    short: "Pension Credit",
+    when: "You, or a parent, live on the State Pension and a bit of a workplace pension. Money is tight in winter, but you own the house and there's some savings, so you've always assumed Pension Credit is for other people. Or a parent won't hear of it: \"I'm not on benefits.\"",
+    ask: "Could I get it, what would it be worth with everything it opens, and how far back can a claim made today reach?",
+    does: "Estimates the weekly award the way the rules work it out: the minimum (£238 single, £363.25 a couple, 2026/27) plus the severe disability, carer and service charge additions, less income that counts, with savings over £10,000 counted at £1 a week per £500 and the home ignored, and Savings Credit for people who reached State Pension age before April 2016. Adds up what an award unlocks (a free £180 TV licence at 75, the £150 Warm Home Discount, Cold Weather Payments, and with Guarantee Credit usually the whole council tax bill and the maximum Housing Benefit), shows what Attendance Allowance would change for someone who lives alone, and dates the three-month backdating line. Writes the opening for the conversation with a parent, what to say on the claim call, and the letters to TV Licensing and the council. England and Wales, with pointers for Scotland and Northern Ireland.",
+    payoff: "now",
+    models: ["gateway-value", "administrative-burden", "base-rates"],
+    essays: ["the-key-not-the-coin"],
+  },
+  {
     id: "rent",
     href: "/rent",
     name: "The Rent's Going Up: Pay It or Challenge It?",
@@ -1003,8 +1015,8 @@ export const toolGroups: ToolGroup[] = [
     id: "caring",
     title: "Looking after someone",
     blurb:
-      "You care for a parent, a partner or a child for most of the week, and the help for carers comes with a rule that punishes the people it's meant for: earn a pound over the weekly limit and the whole allowance goes. Or someone you love is starting to forget, and nobody can sign for them unless they said so while they still could. These count your earnings the way the rule does, and show whether a power of attorney can still be made and what waiting would cost.",
-    toolIds: ["carers", "lpa"],
+      "You care for a parent, a partner or a child for most of the week, and the help for carers comes with a rule that punishes the people it's meant for: earn a pound over the weekly limit and the whole allowance goes. Or someone you love is starting to forget, and nobody can sign for them unless they said so while they still could. Or a parent lives on the State Pension and won't claim the help that comes with it. These count your earnings the way the rule does, show whether a power of attorney can still be made and what waiting would cost, and what Pension Credit would pay and open.",
+    toolIds: ["carers", "lpa", "pensioncredit"],
   },
   {
     id: "after-a-death",
