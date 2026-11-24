@@ -78,6 +78,32 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              A strip wash at the sink because the bath is impossible, two falls
+              last winter, two trips a night along the wall to the toilet, and
+              the answer to every question on the form: &ldquo;I manage.&rdquo;{" "}
+              <Link
+                href="/attendance"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Attendance Allowance
+              </Link>{" "}
+              asks what happens instead of how someone is, reads which rate that
+              points to, and drafts each answer for the form in the words that
+              count:{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                £114.60 a week, and with the Pension Credit it opens, about
+                £10,400 a year
+              </span>
+              . It dates the claim from today&rsquo;s call for the form. A new{" "}
+              <Link
+                href="/writing/what-i-manage-means"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Response Shift, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Seventy-eight, a house owned for forty years, £12,600 in the
               building society, and a firm belief that Pension Credit is for
               other people.{" "}
@@ -153,31 +179,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Bracket Smoothing, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Sixteen hours on the tills, a mum who needs you every evening,
-              and an offer of four more hours a week from January.{" "}
-              <Link
-                href="/carers"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Carer&rsquo;s Allowance
-              </Link>{" "}
-              counts your earnings the way the £204 test does (after tax,
-              National Insurance, half your pension and care costs), shows{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                how close you are to the cliff, and the band of pay where more
-                work leaves you with less
-              </span>
-              , and writes the messages to the Carer&rsquo;s Allowance Unit, to
-              payroll and about an overpayment. A new{" "}
-              <Link
-                href="/writing/the-pound-that-costs-86"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Effective Marginal Tax Rate, go with it.
             </li>
           </ul>
         </section>

@@ -628,6 +628,18 @@ export const tools: Tool[] = [
     essays: ["the-key-not-the-coin"],
   },
   {
+    id: "attendance",
+    href: "/attendance",
+    name: "Attendance Allowance: Could They Get It, and What Do You Write?",
+    short: "Attendance Allowance",
+    when: "A parent can't get out of the bath without help any more, holds the wall on the way to the toilet at night, and fell twice last winter. Asked how they are, they say \"I manage\". Someone mentions Attendance Allowance, you download the form, and it's thirty pages of questions about what they can't do, which they will answer with what they can.",
+    ask: "Which rate do their needs point to, what else would it open, and what do I actually write on the form?",
+    does: "Asks what happens rather than what's wrong (which tasks need a hand, a reminder or watching over; how often by day; what happens at night; falls; whether things are slow or painful) and reads which rate that points to: the lower rate (£76.70 a week, 2026/27) for day or night, the higher (£114.60) for both, or the special rules for someone who may have 12 months or less to live. Counts what an award opens: the £86.05 severe disability amount in Pension Credit for someone who lives alone, Carer's Allowance for a carer (and the clash between the two), and the council tax discount that dementia plus the allowance brings. Drafts each answer for the form in the words the test turns on (the help needed, how often, how long, what goes wrong without it, the last fall), a night section, and the page for someone who knows them. Dates the claim from the call for the form (back within six weeks) and writes the conversation opener, the call, a letter for the GP, and the notes to the Pension Service and the council. Covers PIP under State Pension age, care homes, hospital stays, and Scotland's Pension Age Disability Payment.",
+    payoff: "now",
+    models: ["response-shift", "gateway-value", "administrative-burden"],
+    essays: ["what-i-manage-means"],
+  },
+  {
     id: "rent",
     href: "/rent",
     name: "The Rent's Going Up: Pay It or Challenge It?",
@@ -1015,8 +1027,8 @@ export const toolGroups: ToolGroup[] = [
     id: "caring",
     title: "Looking after someone",
     blurb:
-      "You care for a parent, a partner or a child for most of the week, and the help for carers comes with a rule that punishes the people it's meant for: earn a pound over the weekly limit and the whole allowance goes. Or someone you love is starting to forget, and nobody can sign for them unless they said so while they still could. Or a parent lives on the State Pension and won't claim the help that comes with it. These count your earnings the way the rule does, show whether a power of attorney can still be made and what waiting would cost, and what Pension Credit would pay and open.",
-    toolIds: ["carers", "lpa", "pensioncredit"],
+      "You care for a parent, a partner or a child for most of the week, and the help for carers comes with a rule that punishes the people it's meant for: earn a pound over the weekly limit and the whole allowance goes. Or someone you love is starting to forget, and nobody can sign for them unless they said so while they still could. Or a parent lives on the State Pension and won't claim the help that comes with it, or needs help with the bath and the stairs but says \"I manage\". These count your earnings the way the rule does, show whether a power of attorney can still be made and what waiting would cost, what Pension Credit would pay and open, and what to write on the Attendance Allowance form.",
+    toolIds: ["carers", "lpa", "pensioncredit", "attendance"],
   },
   {
     id: "after-a-death",
