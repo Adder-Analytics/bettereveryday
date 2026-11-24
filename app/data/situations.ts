@@ -1390,6 +1390,28 @@ export const situations: Situation[] = [
     essays: ["the-key-not-the-coin"],
   },
   {
+    id: "parent-says-i-manage",
+    title: "A parent needs more help than they admit, and the Attendance Allowance form is on the table",
+    scene:
+      "Mum is 84 and lives alone. You've noticed the strip washes at the sink, the cardigans instead of anything with buttons, the tablets taken twice, two falls last winter. Twice a night it's up and along the wall to the toilet. You've printed the Attendance Allowance form, and the first question you read out gets the answer: \"Oh, I manage.\"",
+    question: "Would Mum get it, and how do I fill it in without it sounding like we're exaggerating?",
+    models: [
+      {
+        id: "response-shift",
+        move: "People who've adapted to a decline rate themselves against a yardstick that has moved: \"I manage\" means \"I've found a way round it\", often by going without. Don't ask \"can you dress?\"; ask how long it takes, what hurts, and what happened last time.",
+      },
+      {
+        id: "gateway-value",
+        move: "The allowance is the key to more: living alone with Pension Credit, it adds £86.05 a week to it, and it's the benefit a carer needs for Carer's Allowance.",
+      },
+    ],
+    tool: {
+      id: "attendance",
+      move: "This is the moment it's built for. It reads which rate the needs point to, counts what the award opens, drafts each answer in the words the test turns on, with brackets for the specifics, and dates the claim from today's call for the form.",
+    },
+    essays: ["what-i-manage-means"],
+  },
+  {
     id: "fixed-rate-ending",
     title: "The fixed rate on the mortgage ends in a few months",
     scene:
@@ -2108,6 +2130,7 @@ export const situationGroups: SituationGroup[] = [
       "carers-allowance-limit",
       "parent-forgetting",
       "parent-wont-claim",
+      "parent-says-i-manage",
       "fixed-rate-ending",
       "student-loan-overpay",
       "state-pension-gaps",

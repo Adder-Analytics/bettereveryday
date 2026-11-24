@@ -3859,6 +3859,60 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/pensioncredit">tool for this</a> on the site. You enter the State Pension, any other pensions, savings, health and home. It estimates the award, adds up what it unlocks, shows what Attendance Allowance would change, dates the backdating line, and writes the opening for the conversation, what to say on the claim call, and the letters to TV Licensing and the council. Nothing is sent anywhere.</p>`,
   },
+  {
+    slug: "what-i-manage-means",
+    title: "What “I Manage” Means",
+    date: "2026-11-24",
+    excerpt:
+      "Asked whether they have trouble washing, an 84-year-old who hasn't had a bath in two years says no: they manage. They're not lying. They've adapted, and they rate themselves against a yardstick that has moved. On response shift, the Attendance Allowance form, and why you should ask what happens, not how someone is.",
+    readTime: 6,
+    tags: ["decisions", "psychology"],
+    content: `<p>Mum is 84, widowed, and lives alone. You read out the first question on the Attendance Allowance form: do you have difficulty washing, bathing or showering? &ldquo;No,&rdquo; says Mum. &ldquo;I manage.&rdquo;</p>
+
+<p>Mum hasn't been in the bath for two years. Getting out of it became frightening, and then impossible, so now it's a strip wash at the sink, standing, one hand on the basin. Feet and back get done when someone visits. That isn't difficulty, in Mum's account. It's just how washing is done now.</p>
+
+<p>Mum isn't lying, and isn't being proud, exactly. Something more interesting is going on, and once you see it, you'll see it on every form that asks people to rate themselves.</p>
+
+<h2>The yardstick moves</h2>
+
+<p>In 1999, two health researchers, Mirjam Sprangers and Carolyn Schwartz, named a puzzle that had been nagging at their field. When you ask people with a worsening illness to rate their own health or quality of life, the ratings often hold steady, or even improve, while every objective measure gets worse. They called the explanation <em>response shift</em>: the meaning of the rating changes underneath it.</p>
+
+<p>It happens three ways. The scale recalibrates: today's &ldquo;fine&rdquo; is what five years ago would have been &ldquo;struggling&rdquo;. Priorities shift: the things that have become hard quietly stop counting. And the idea itself is redefined: &ldquo;managing&rdquo; stops meaning <em>doing it</em> and starts meaning <em>having found a way round it</em>, which often means going without.</p>
+
+<p>That's not a flaw in people. It's how people keep living well through decline, and it's mostly a gift. But it has a cost in exactly one place: wherever help is handed out on the strength of self-report.</p>
+
+<h2>A form built to be under-answered</h2>
+
+<p>Attendance Allowance is £76.70 or £114.60 a week (2026/27) for anyone over State Pension age who needs help with personal care or needs someone to keep them safe. It's not means-tested, needs no diagnosis, and it's about the help someone <em>needs</em>, whether or not anyone gives it. It's also the key to more: for someone who lives alone and gets Pension Credit, it adds £86.05 a week to that; it's the benefit a carer needs to claim Carer's Allowance; with dementia, it can take the council tax bill away.</p>
+
+<p>And it's decided, mostly, on a long form that asks people who have adapted to describe what they can't do. Every question is a self-rating. Every answer passes through the moved yardstick. &ldquo;Do you have difficulty dressing?&rdquo; gets answered by someone who switched to cardigans two winters ago. &ldquo;Do you need help at night?&rdquo; gets answered by someone who holds the wall to the toilet twice a night and has decided that counts as walking.</p>
+
+<p>The form isn't refused because the rules say no. It's refused because it says &ldquo;I manage&rdquo;.</p>
+
+<h2>Ask for behaviour, not a rating</h2>
+
+<p>The fix isn't to doubt the person, or to coach them to exaggerate. It's to stop asking for a rating and ask for behaviour, which doesn't drift with the yardstick:</p>
+
+<ul>
+<li><strong>Not &ldquo;can you?&rdquo; but &ldquo;how?&rdquo;</strong> How do you get washed now? What did you do before?</li>
+<li><strong>How long, and what does it cost?</strong> Forty minutes to dress, and then you need a sit down? That's not dressing unaided.</li>
+<li><strong>How often?</strong> Count a whole day: getting up, each meal, each tablet, each trip to the toilet. Count the nights.</li>
+<li><strong>What happens without help?</strong> Not &ldquo;could&rdquo; but &ldquo;did&rdquo;: the date of the last fall, the double dose, the day without eating.</li>
+<li><strong>Which day?</strong> The form wants a typical bad day, not the best one.</li>
+</ul>
+
+<p>Written that way, Mum's washing answer stops being &ldquo;I manage&rdquo; and becomes: <em>I can't get in or out of the bath safely. I strip wash at the sink, standing, holding the basin. I can't reach my back or feet. I need someone to steady me and help me wash every day, about twenty minutes.</em> Every word is true. None of it is new. It was all there under the yardstick.</p>
+
+<p>Watched for a week, Mum needs help several times a day and twice a night. That's the higher rate: £114.60 a week. Living alone with a little Pension Credit, the award adds £86.05 a week to that too. About £10,400 a year, from a form that would have said &ldquo;I manage&rdquo; on every page.</p>
+
+<h2>Beyond this form</h2>
+
+<p>Response shift turns up wherever people describe themselves: a GP asking &ldquo;how are you getting on?&rdquo;, a care assessment, a PIP form, a parent asked over the phone whether they're coping. The same correction works everywhere. Keep a diary for a few days. Ask the person who sees it, as well as the person who lives it. Ask what happened, not how it feels.</p>
+
+<p>The line to keep: <em>I ask what happens, not how they are, because &ldquo;I manage&rdquo; measures the yardstick, not the need.</em></p>
+
+<p>There's a <a href="/attendance">tool for this</a> on the site. You tick what needs a hand, a reminder or watching over, how often, and what happens at night. It reads which rate that points to, counts what an award opens, drafts each answer for the form with brackets for the specifics, and dates the claim from today's call for the form. Nothing is sent anywhere.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby", "childcare", "carers", "lpa", "pensioncredit"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby", "childcare", "carers", "lpa", "pensioncredit", "attendance"],
       },
     ],
     choices: [
@@ -840,6 +840,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "lpa",
             note: "If you're helping a parent with forms and money, check nobody's left unable to sign for them.",
+          },
+        },
+      },
+      {
+        id: "attendance",
+        label: "A parent needs help with the bath, the stairs or their tablets, but says \"I manage\".",
+        detail: "Or I've got the Attendance Allowance form and don't know what to write.",
+        rec: {
+          toolId: "attendance",
+          because:
+            "It isn't means-tested and needs no diagnosis: it's £76.70 or £114.60 a week for the help someone needs, even if nobody gives it. Claims are mostly lost on the form, by describing the good days. It reads which rate the needs point to, counts what an award opens, and drafts each answer in the words that count.",
+          then: {
+            toolId: "pensioncredit",
+            note: "If they live alone, the award adds £86.05 a week to the Pension Credit minimum. Check what that does.",
           },
         },
       },

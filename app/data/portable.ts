@@ -554,6 +554,13 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "the power of attorney you were working out" : null),
   },
   {
+    key: "attendance:v1",
+    tool: "Attendance Allowance: could they get it, and what do you write?",
+    href: "/attendance",
+    label: "Who it's for, the help needed by day and night, and the household from your last visit",
+    describe: (raw) => (parse(raw) ? "the Attendance Allowance claim you were drafting" : null),
+  },
+  {
     key: "pensioncredit:v1",
     tool: "Pension Credit: could you get it, and what does it unlock?",
     href: "/pensioncredit",

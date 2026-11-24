@@ -382,6 +382,15 @@ export const models: Model[] = [
     essays: ["the-key-not-the-coin"],
   },
   {
+    id: "response-shift",
+    name: "Response Shift",
+    domain: "Psychology",
+    tagline: "People who adapt to a decline rate themselves against a yardstick that has moved, so asking how they're doing measures the yardstick, not the decline.",
+    explanation:
+      "Mirjam Sprangers and Carolyn Schwartz (Social Science & Medicine, 1999) gave a name to a puzzle in health research: people's ratings of their own health and quality of life often hold steady, or even improve, while their condition gets measurably worse. Their explanation was response shift, a change in what a self-rating means, with three sources. Recalibration: the internal scale moves, so the \"fair\" of today is the \"poor\" of five years ago. Reprioritisation: what matters changes, so the things that have become hard stop counting. Reconceptualisation: the idea itself is redefined, so \"managing\" comes to mean \"finding a way round it\" rather than \"doing it\". Gary Albrecht and Patrick Devlieger, in the same year, called a related finding the disability paradox: many people with serious disabilities report a good quality of life. Adaptation is a strength; it's how people keep living well. But it has a cost wherever a system relies on self-report to hand out help. A form that asks \"do you have difficulty dressing?\" gets answered by someone who has spent two years quietly switching to cardigans, and the true answer, \"it takes forty minutes and I've stopped wearing anything with buttons\", never reaches the page. It's why carers' and assessors' accounts so often differ from the person's own, and why older people are among the likeliest to understate what they need. The correction isn't to doubt people. It's to stop asking for a rating and ask for behaviour instead: how long it takes, how often, what happens without help, what changed, when the last fall was. Behaviour doesn't drift with the yardstick. The tool Attendance Allowance asks those questions and turns the answers into the form's words.",
+    essays: ["what-i-manage-means"],
+  },
+  {
     id: "scarcity",
     name: "Scarcity and Tunneling",
     domain: "Psychology",

@@ -494,6 +494,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Attendance Allowance: could they get it, and what do you write?",
+    href: "/attendance",
+    snippet:
+      "Help with the bath, the stairs or tablets, but \"I manage\"? See which rate the needs point to (£76.70 or £114.60 a week), what it opens, and draft answers for the form that describe the bad days.",
+    meta: "Attendance Allowance — the day and night tests, what to write, what it unlocks",
+    titleText:
+      "attendance allowance aa aa1 attendance allowance form how to fill in attendance allowance form what to write attendance allowance tips attendance allowance higher rate lower rate £76.70 £114.60 day and night needs help washing dressing toilet bath stairs falls medication supervision dementia mum dad parent i manage elderly parent care needs not means tested no diagnosis needed special rules sr1 terminal 12 months pension age disability payment padp scotland severe disability premium carer's allowance qualifying benefit council tax severe mental impairment helpline 0800 731 0122",
+    bodyText:
+      "attendance allowance: could they get it, and what do you write? (/attendance): the instrument for attendance allowance in england and wales, with pointers for scotland's pension age disability payment and northern ireland. £76.70 a week (lower) or £114.60 (higher) in 2026/27 for someone over state pension age who needs help with personal care or watching over. not means-tested, no diagnosis needed, about the help needed even if nobody gives it. lower rate for day or night, higher for both, or under the special rules for someone who may have 12 months or less to live. six-month qualifying period. paid from the date of claim; calling the helpline for the form fixes the claim date if it's back within six weeks. counts what an award opens: the £86.05 severe disability amount in pension credit for someone living alone, carer's allowance for a carer and the clash between them, and the council tax severe mental impairment disregard with dementia. drafts each answer for the form, the night section and the page for someone who knows them, with brackets for specifics. response shift: people who adapt rate themselves against a yardstick that has moved.",
+  },
+  {
+    type: "Tool",
     title: "Pension Credit: could you get it, and what does it unlock?",
     href: "/pensioncredit",
     snippet:
