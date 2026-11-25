@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Some days the hob is fine; other days the pan is too heavy to
+              drain and thirty metres needs a wall to lean on. The GP saw a
+              good day.{" "}
+              <Link
+                href="/pip"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                PIP
+              </Link>{" "}
+              asks what happens on a bad day and how many days a week are like
+              that, scores the twelve activities both ways, and{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                prints a two-week day count, because a descriptor counts only on
+                more than half the days
+              </span>
+              . It drafts each answer with the reliability test built in. A new{" "}
+              <Link
+                href="/writing/which-day-are-you-describing"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, the Peak-End Rule, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               A strip wash at the sink because the bath is impossible, two falls
               last winter, two trips a night along the wall to the toilet, and
               the answer to every question on the form: &ldquo;I manage.&rdquo;{" "}
@@ -154,31 +179,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Ulysses Contract, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Sixty-three, £120,000 in an old workplace pension, a son buying
-              a flat, and a form with one box: how much?{" "}
-              <Link
-                href="/pension"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Taking money from your pension
-              </Link>{" "}
-              prices each way of taking the sum on your own income and shows{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                that the same £40,000 can cost £2,000 in tax or £9,500
-              </span>
-              , what the emergency code takes on the day and the form that
-              claims it back, the £10,000 cap on paying in it can start, and
-              what the April 2027 inheritance tax change does and doesn&rsquo;t
-              do. A new{" "}
-              <Link
-                href="/writing/same-money-different-tax"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Bracket Smoothing, go with it.
             </li>
           </ul>
         </section>

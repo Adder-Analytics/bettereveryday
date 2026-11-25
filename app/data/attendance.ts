@@ -422,7 +422,7 @@ export function aaBody(read: AaRead): string {
       parts.push(
         read.where === "scotland"
           ? "Pension Age Disability Payment (Attendance Allowance's replacement in Scotland) is only for people over State Pension age. Under it, the benefit is Adult Disability Payment, which also has a mobility part. Claim it from Social Security Scotland."
-          : "Attendance Allowance is only for people over State Pension age. Under it, the benefit is Personal Independence Payment (PIP), which has a mobility part as well as daily living. Someone already getting PIP or DLA when they reach State Pension age usually keeps it, and shouldn't claim Attendance Allowance instead.",
+          : "Attendance Allowance is only for people over State Pension age. Under it, the benefit is Personal Independence Payment (PIP), which has a mobility part as well as daily living; the PIP tool on this site scores it. Someone already getting PIP or DLA when they reach State Pension age usually keeps it, and shouldn't claim Attendance Allowance instead.",
       );
       break;
     case "funded":

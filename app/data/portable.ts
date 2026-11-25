@@ -554,6 +554,13 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "the power of attorney you were working out" : null),
   },
   {
+    key: "pip:v1",
+    tool: "PIP: could you get it, and what do you write?",
+    href: "/pip",
+    label: "Who it's for, and the bad days and how often for each activity, from your last visit",
+    describe: (raw) => (parse(raw) ? "the PIP claim you were scoring" : null),
+  },
+  {
     key: "attendance:v1",
     tool: "Attendance Allowance: could they get it, and what do you write?",
     href: "/attendance",

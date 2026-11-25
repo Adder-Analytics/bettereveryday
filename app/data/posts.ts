@@ -3913,6 +3913,64 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/attendance">tool for this</a> on the site. You tick what needs a hand, a reminder or watching over, how often, and what happens at night. It reads which rate that points to, counts what an award opens, drafts each answer for the form with brackets for the specifics, and dates the claim from today's call for the form. Nothing is sent anywhere.</p>`,
   },
+  {
+    slug: "which-day-are-you-describing",
+    title: "Which Day Are You Describing?",
+    date: "2026-11-25",
+    excerpt:
+      "PIP counts a descriptor if it applies on more than half the days. Memory doesn't keep that count: it keeps the worst day and the latest one, and the assessor sees the day you managed to get there. On the peak-end rule, fluctuating conditions, and why a fortnight of ticks beats the most careful recollection.",
+    readTime: 6,
+    tags: ["decisions", "psychology"],
+    content: `<p>Priya is 41 and has relapsing MS. Last week, at the GP, the doctor asked how things were. &ldquo;Not bad, actually,&rdquo; said Priya, and meant it. It was a good day.</p>
+
+<p>Now the PIP form is on the table. It goes activity by activity: can you prepare a simple meal? Can you wash? How far can you walk? And the honest answer to almost every question is &ldquo;it depends&rdquo;. Some days Priya cooks. Other days standing at the hob for ten minutes isn't possible, and the pan is too heavy to drain. Some days it's a walk to the corner shop. Others it's thirty metres and a wall to lean on.</p>
+
+<p>&ldquo;It depends&rdquo; isn't an answer the form can score. So Priya will answer from a day. The question is which one.</p>
+
+<h2>The rule nobody hears</h2>
+
+<p>PIP is scored. Twelve activities each have a ladder of descriptors worth 0 to 12 points: needing an aid to cook is 2, needing someone there to cook safely is 4, not being able to cook at all is 8. Eight points across daily living is the standard rate, £76.70 a week (2026/27); twelve is the enhanced, £114.60. Mobility works the same way.</p>
+
+<p>Two rules sit under the ladders, and they decide most claims for conditions that come and go. First, something only counts as done if it's done safely, to an acceptable standard, as often as needed, and in no more than twice the time someone without the condition would take. Second, a descriptor applies only if it applies on <em>more than half the days</em>. So every question on the form is really two: what happens on a bad day, and on how many days?</p>
+
+<p>Nobody knows the second answer. Not because they're careless, but because of how memory works.</p>
+
+<h2>A highlight reel, not a tally</h2>
+
+<p>In the 1990s, Daniel Kahneman and Donald Redelmeier asked patients after a colonoscopy how bad it had been. The answers tracked two things: the worst moment, and the last few minutes. How long the whole thing lasted barely registered. In a lab version, most people would rather repeat 90 seconds of cold-water pain than 60, if the extra 30 were slightly less bad. They called it the <em>peak-end rule</em>, and the blindness to length <em>duration neglect</em>.</p>
+
+<p>Arthur Stone and colleagues then took it out of the lab. People with rheumatoid arthritis rated their pain several times a day on a handheld device, and at the end of the week said how the week had been. The recalled week was predicted better by the worst pain and the most recent pain than by the average of what they'd actually reported, day by day.</p>
+
+<p>Memory keeps the peak and the latest. It doesn't keep the count.</p>
+
+<h2>Three wrong days</h2>
+
+<p>So when Priya sits down with the form, three days are on offer, and none of them is right.</p>
+
+<ul>
+<li><strong>The peak.</strong> The worst relapse, the day on the bathroom floor. Vivid, true, and not typical. Written up, it reads as exaggeration, and when the assessor asks about last Tuesday, the story falls apart.</li>
+<li><strong>The latest.</strong> Today. Well enough to sit down with a form, which is often a good day. Written up, it understates everything.</li>
+<li><strong>The assessment.</strong> The day Priya got dressed, got there, sat upright for forty minutes and was polite. By definition, a day it was possible to do that.</li>
+</ul>
+
+<p>The rule wants none of these. It wants the proportion. Is &ldquo;needs someone there to cook safely&rdquo; true on four days a week or two? That's the difference between 4 points and none for that activity, and across two or three activities it's the difference between an award and a refusal.</p>
+
+<h2>Count, don't recall</h2>
+
+<p>The fix is old and dull and works: count, in the moment, for long enough to see the pattern. Each evening for two weeks, tick each activity that was like the bad-day answer. At the end, the ticks say what memory couldn't: &ldquo;needed help getting out of the shower on 10 days out of 14&rdquo;, &ldquo;could walk no more than 30 metres on 6&rdquo;.</p>
+
+<p>That does three things. It turns &ldquo;it depends&rdquo; into a number the rule can use. It's more believable, because it's specific and because it includes the good days. And it's more honest, in both directions: some activities you thought were bad most days turn out to be bad on four days in fourteen, and they shouldn't be claimed as more.</p>
+
+<p>Priya's count came out like this. On most days: someone needed in the kitchen (4), help out of the shower (3), help with socks and shoes (2), a pill organiser and alarms (1). That's 10 daily living points, the standard rate. Walking was 50 to 200 metres on most days (4 mobility points, not enough), and 30 metres on the bad ones. If those bad walking days are three a week, it stays at 4. If they're four, it's 8 points, and the standard mobility rate too: about £1,576 a year more, decided by a fortnight of ticks rather than by which day memory happened to serve up.</p>
+
+<h2>Beyond this form</h2>
+
+<p>The peak-end rule turns up wherever a decision rests on a remembered stretch of time: the GP's &ldquo;how have you been?&rdquo;, a work capability assessment, a sickness review at work, a child's &ldquo;how was school this term?&rdquo;. Whenever the honest answer is a proportion, don't ask memory. Keep the count.</p>
+
+<p>The line to keep: <em>I count the days for two weeks and answer for most days, not my best one or my worst.</em></p>
+
+<p>There's a <a href="/pip">tool for this</a> on the site. For each of the twelve activities, you say what happens on a bad day and how many days a week are like that. It scores both ways, shows what the count could change, prints a two-week tick sheet for the activities in play, and drafts each answer with the reliability test built in. Nothing is sent anywhere.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

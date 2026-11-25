@@ -391,6 +391,15 @@ export const models: Model[] = [
     essays: ["what-i-manage-means"],
   },
   {
+    id: "peak-end-rule",
+    name: "Peak-End Rule",
+    domain: "Psychology",
+    tagline: "Memory scores an experience by its worst moment and its latest one, and drops how long it lasted, so a remembered week isn't a counted one.",
+    explanation:
+      "Daniel Kahneman and colleagues (Psychological Science, 1993) had people hold a hand in painfully cold water for 60 seconds, and, separately, for 90 seconds, where the last 30 were slightly less cold. Asked which to repeat, most chose the longer one: more pain in total, but a better ending. Donald Redelmeier and Kahneman (Pain, 1996) found the same in real colonoscopies. How bad patients remembered the procedure tracked the worst moment and the last few minutes, and barely tracked how long it went on. They called the two halves the peak-end rule and duration neglect. Arthur Stone and colleagues took it out of the lab. People with rheumatoid arthritis rated their pain several times a day on a handheld device, then recalled the week; the recall was predicted better by the peak and the most recent pain than by the average of what they'd actually reported (Journal of Pain, 2000), and a later study of chronic pain patients (Pain, 2004) concluded that weekly recall and averaged momentary reports are not interchangeable. Memory isn't a tally; it's a highlight reel with a recency bias. That usually doesn't matter. It matters a great deal when a rule turns on a count. Personal Independence Payment applies a descriptor only if it's true on more than half the days, so for a condition that comes and goes, the question under every question on the form is \"on how many days?\" Asked from memory, people answer from the peak (and sound as though they're exaggerating), from the latest day (and if they're well enough to fill in a form, it's often a good one), or from the day of the assessment, which is by definition a day they managed to get there. None of those is the count. The correction is old and dull and works: count, in the moment, for long enough to see the pattern. A tick a day for two weeks turns \"it depends\" into \"9 days out of 14\", which is both more honest and more likely to be believed. The tool PIP scores each activity both ways and prints the two-week count.",
+    essays: ["which-day-are-you-describing"],
+  },
+  {
     id: "scarcity",
     name: "Scarcity and Tunneling",
     domain: "Psychology",

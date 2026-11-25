@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby", "childcare", "carers", "lpa", "pensioncredit", "attendance"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby", "childcare", "carers", "lpa", "pensioncredit", "attendance", "pip"],
       },
     ],
     choices: [
@@ -854,6 +854,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "pensioncredit",
             note: "If they live alone, the award adds £86.05 a week to the Pension Credit minimum. Check what that does.",
+          },
+        },
+      },
+      {
+        id: "pip",
+        label: "My health stops me doing things on some days and not others, and someone says I should claim PIP.",
+        detail: "Or the PIP form, or a PIP review form, is on the table and every answer is \"it depends\".",
+        rec: {
+          toolId: "pip",
+          because:
+            "PIP is scored, not diagnosed: 8 points for the standard rate, 12 for the enhanced, in daily living and in mobility. A descriptor counts if it applies on more than half the days, and nobody remembers that count. It scores each activity from what happens on bad days and how often, shows what a fortnight's count could change, and drafts each answer.",
+          then: {
+            toolId: "challenge",
+            note: "Refused, or fewer points than the count supports? Ask for a mandatory reconsideration within a month.",
           },
         },
       },

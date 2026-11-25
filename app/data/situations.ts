@@ -1412,6 +1412,28 @@ export const situations: Situation[] = [
     essays: ["what-i-manage-means"],
   },
   {
+    id: "pip-it-depends",
+    title: "Your condition comes and goes, and every question on the PIP form gets the answer \"it depends\"",
+    scene:
+      "Some weeks the MS barely shows. Other days you can't stand at the hob long enough to boil pasta, need help out of the shower, and stop to lean on a wall after thirty metres. The GP saw you on a good day. Now the PIP form asks, activity by activity, whether you can do things, and you can, sometimes. You're tempted to answer from today, and today is fine.",
+    question: "Would I get PIP, and how do I answer honestly when it changes from day to day?",
+    models: [
+      {
+        id: "peak-end-rule",
+        move: "Memory doesn't store how many days were bad. It stores the worst one and the latest one. PIP counts a descriptor if it applies on more than half the days, so the only honest answer is a count. Keep one for two weeks before you write.",
+      },
+      {
+        id: "response-shift",
+        move: "Adapting hides need: the stool by the cooker, the shower you only take when someone's home, the walk planned around benches. Each workaround is an answer the form wants. Write what you do, not how you rate yourself.",
+      },
+    ],
+    tool: {
+      id: "pip",
+      move: "This is the moment it's built for. For each activity, it asks what happens on a bad day and how many days a week are like that, scores both ways, shows what a fortnight's count could change, prints the count, and drafts each answer with the reliability test built in.",
+    },
+    essays: ["which-day-are-you-describing"],
+  },
+  {
     id: "fixed-rate-ending",
     title: "The fixed rate on the mortgage ends in a few months",
     scene:
@@ -2131,6 +2153,7 @@ export const situationGroups: SituationGroup[] = [
       "parent-forgetting",
       "parent-wont-claim",
       "parent-says-i-manage",
+      "pip-it-depends",
       "fixed-rate-ending",
       "student-loan-overpay",
       "state-pension-gaps",
