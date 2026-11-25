@@ -752,6 +752,11 @@ function Handoffs() {
       note: "Check a power of attorney can still be made. Nobody can sign for them without one.",
     },
     {
+      href: "/pip",
+      label: "Under State Pension age?",
+      note: "It's PIP: scored on twelve activities, and decided by how many days are bad.",
+    },
+    {
       href: "/counciltax",
       label: "Dementia in the household?",
       note: "The severe mental impairment discount, and the rest of the bill.",

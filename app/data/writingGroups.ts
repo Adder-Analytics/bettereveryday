@@ -104,6 +104,7 @@ const essayGroups: EssayGroup[] = [
       "the-pound-that-costs-86",
       "sign-it-on-a-good-day",
       "what-i-manage-means",
+      "which-day-are-you-describing",
       "the-key-not-the-coin",
       "file-it-even-if-you-cant-pay",
       "the-rule-you-remember",

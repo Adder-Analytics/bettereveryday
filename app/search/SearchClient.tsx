@@ -494,6 +494,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "PIP: could you get it, and what do you write?",
+    href: "/pip",
+    snippet:
+      "Good days and bad days, and a PIP form that asks whether you can? Score the twelve activities from bad days and how often, see what a two-week count could change, and get draft answers.",
+    meta: "PIP — points, the more-than-half-the-days rule, what to write",
+    titleText:
+      "pip personal independence payment pip form pip2 how your disability affects you how to fill in pip form what to write on pip form pip points calculator pip descriptors pip test daily living mobility standard rate enhanced rate 8 points 12 points £76.70 £114.60 £30.30 £80.00 fluctuating condition good days bad days more than half the days 50% of days reliability safely repeatedly reasonable time twice as long ms multiple sclerosis fibromyalgia arthritis depression anxiety long covid me cfs pip review ar1 award review pip assessment record assessment pa4 special rules sr1 adult disability payment adp scotland four point rule timms review blue badge motability carer's allowance pip claim 0800 917 2222",
+    bodyText:
+      "pip: could you get it, and what do you write? (/pip): the instrument for personal independence payment in england and wales, with pointers for scotland's adult disability payment and northern ireland. for people from 16 to state pension age. not means-tested, can work, not about the diagnosis: scored. twelve activities: preparing food, taking nutrition, managing therapy or monitoring a health condition, washing and bathing, managing toilet needs or incontinence, dressing and undressing, communicating verbally, reading and understanding signs symbols and words, engaging with other people face to face, making budgeting decisions, planning and following journeys, moving around. 8 points standard, 12 enhanced in each part. 2026/27: daily living £76.70 / £114.60, mobility £30.30 / £80.00. a descriptor applies only on more than 50% of days; an activity counts as done only if safely, to an acceptable standard, repeatedly and within twice the normal time. asks what happens on a bad day, how many days a week, and the other days; scores both ways; prints a two-week day count; drafts each answer and a paragraph on how it varies. claim call, gp letter, asking for the assessment to be recorded, dates for the form, what an award opens: carer's allowance, benefit cap, blue badge, vehicle tax, motability, railcard. the four-point rule was dropped in 2025. peak-end rule: memory keeps the worst and the latest day, not the count.",
+  },
+  {
+    type: "Tool",
     title: "Attendance Allowance: could they get it, and what do you write?",
     href: "/attendance",
     snippet:

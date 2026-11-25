@@ -640,6 +640,18 @@ export const tools: Tool[] = [
     essays: ["what-i-manage-means"],
   },
   {
+    id: "pip",
+    href: "/pip",
+    name: "PIP: Could You Get It, and What Do You Write?",
+    short: "PIP",
+    when: "Some days the MS, the arthritis, the depression or the long Covid means you can't stand at the hob or face the shop; other days you're nearly fine. Someone says you should claim PIP. You look at the form, and every question asks whether you can do something, and the honest answer is \"sometimes\". You'd answer from today, and today is a good day.",
+    ask: "Would I score enough, which answers decide it, and what do I write when it varies?",
+    does: "For each of the twelve PIP activities (preparing food, eating, medicines, washing, the toilet, dressing, talking, reading, mixing with people, budgeting, planning journeys, moving around) it asks what happens on a bad day, how many days a week are like that, and what happens on the others, in plain words mapped to the statutory descriptors and their points. It scores both ways: what counts on most days, and what would count if the bad days turn out to be more than half, since a descriptor applies only on more than 50% of days. Shows the daily living and mobility points against the 8 and 12 lines and the weekly rates (2026/27: £76.70 or £114.60, and £30.30 or £80.00), prints a two-week day count for the activities in play, and drafts each answer with the reliability test built in (safely, well enough, repeatedly, in under twice the time), plus a paragraph on how it varies. Writes the claim call, a letter for the GP or consultant, and a request to record the assessment, dates the form, lists what an award opens (Carer's Allowance, the benefit cap, a Blue Badge, vehicle tax, Motability), and covers the special rules, review forms, Scotland's Adult Disability Payment and the four-point rule that isn't law.",
+    payoff: "now",
+    models: ["peak-end-rule", "response-shift", "administrative-burden"],
+    essays: ["which-day-are-you-describing"],
+  },
+  {
     id: "rent",
     href: "/rent",
     name: "The Rent's Going Up: Pay It or Challenge It?",
@@ -1025,10 +1037,10 @@ export const toolGroups: ToolGroup[] = [
   },
   {
     id: "caring",
-    title: "Looking after someone",
+    title: "Health, disability and looking after someone",
     blurb:
-      "You care for a parent, a partner or a child for most of the week, and the help for carers comes with a rule that punishes the people it's meant for: earn a pound over the weekly limit and the whole allowance goes. Or someone you love is starting to forget, and nobody can sign for them unless they said so while they still could. Or a parent lives on the State Pension and won't claim the help that comes with it, or needs help with the bath and the stairs but says \"I manage\". These count your earnings the way the rule does, show whether a power of attorney can still be made and what waiting would cost, what Pension Credit would pay and open, and what to write on the Attendance Allowance form.",
-    toolIds: ["carers", "lpa", "pensioncredit", "attendance"],
+      "You care for a parent, a partner or a child for most of the week, and the help for carers comes with a rule that punishes the people it's meant for: earn a pound over the weekly limit and the whole allowance goes. Or someone you love is starting to forget, and nobody can sign for them unless they said so while they still could. Or a parent lives on the State Pension and won't claim the help that comes with it, or needs help with the bath and the stairs but says \"I manage\". Or your own condition comes and goes, and the PIP form asks whether you can do things you can do on some days and not others. These count your earnings the way the rule does, show whether a power of attorney can still be made and what waiting would cost, what Pension Credit would pay and open, what to write on the Attendance Allowance form, and how PIP scores days you'd otherwise describe from memory.",
+    toolIds: ["carers", "lpa", "pensioncredit", "attendance", "pip"],
   },
   {
     id: "after-a-death",
