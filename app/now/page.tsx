@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              Nine years together, two children, a house in both names, and an
+              assumption that without a will it would all go to each other.{" "}
+              <Link
+                href="/will"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Making a will
+              </Link>{" "}
+              shows who the intestacy rules would give your estate to, in
+              pounds, beside what passes outside a will anyway, and{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                that an unmarried partner gets nothing, however long
+                you&rsquo;ve been together
+              </span>
+              . It flags the gaps, compares Will Aid with the other routes, and
+              drafts the notes to take with you. A new{" "}
+              <Link
+                href="/writing/the-will-you-already-have"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              and a new model, Mortality Salience, go with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Some days the hob is fine; other days the pan is too heavy to
               drain and thirty metres needs a wall to lean on. The GP saw a
               good day.{" "}
@@ -153,32 +178,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Gateway Value, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              A mum who asked twice over Christmas whether you&rsquo;d eaten, a
-              pile of unopened letters, and a power of attorney you&rsquo;ve
-              been meaning to sort out for years.{" "}
-              <Link
-                href="/lpa"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Power of attorney
-              </Link>{" "}
-              reads whether one can still be made (a diagnosis isn&rsquo;t the
-              line) and prices{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                £92 an LPA now against a court deputyship later
-              </span>
-              : about £841 in the first year, £320 a year after, and 6 to 10
-              months when nobody can sign. It dates the steps and writes the
-              opening for the conversation. A new{" "}
-              <Link
-                href="/writing/sign-it-on-a-good-day"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Ulysses Contract, go with it.
             </li>
           </ul>
         </section>

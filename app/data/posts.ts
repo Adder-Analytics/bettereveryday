@@ -3971,6 +3971,50 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/pip">tool for this</a> on the site. For each of the twelve activities, you say what happens on a bad day and how many days a week are like that. It scores both ways, shows what the count could change, prints a two-week tick sheet for the activities in play, and drafts each answer with the reliability test built in. Nothing is sent anywhere.</p>`,
   },
+  {
+    slug: "the-will-you-already-have",
+    title: "The Will You Already Have",
+    date: "2026-11-26",
+    excerpt:
+      "About half of UK adults haven't made a will, and every one of them has one anyway: the intestacy rules, a default written in 1925 for a family that may not be theirs. On defaults, the psychology of putting off anything to do with death, and why the useful question isn't \"should I make a will?\" but \"who does mine give it to?\"",
+    readTime: 6,
+    tags: ["decisions", "psychology"],
+    content: `<p>Jo is 38 and has lived with Sam for nine years. Two children, 7 and 4. A house they own together, a bit in savings, a life insurance policy a broker set up when the second baby came. No will. &ldquo;We'll do it when we get married,&rdquo; they said a few years ago, and then they didn't get married, and then it stopped coming up.</p>
+
+<p>Ask Jo what happens if she dies and she'll say, without much hesitation, that it all goes to Sam. That's what nearly everyone in Jo's position believes. It's wrong.</p>
+
+<h2>Everyone has a will</h2>
+
+<p>The choice isn't between having a will and not having one. If you don't write one, the law has already written one for you. In England and Wales it's the intestacy rules in the Administration of Estates Act 1925, amended many times since. They're a perfectly reasonable will for one kind of family: a married couple whose children are all from that marriage. For that family the rules say, roughly, &ldquo;everything to my husband or wife, and if the estate is large, the children get half of what's over £322,000.&rdquo;</p>
+
+<p>For every other family, it's a will you'd never have signed. An unmarried partner, however long you've been together, gets nothing. A stepchild gets nothing. Children from an earlier relationship can get nothing, if the estate is under the £322,000 that goes to a new spouse first. A friend, a carer, a godchild or a charity gets nothing. Children under 18 have their share held in trust and handed over outright on their eighteenth birthday, and nobody you chose is named to bring them up.</p>
+
+<p>Under Jo's default, Sam gets her half of the house, because they own it as joint tenants and that passes outside any will. Everything else, the savings and the £150,000 insurance payout, goes to the children: £90,000 each, held until they're 18. Sam would have to bring them up on one income in a house with a mortgage, while the money Jo meant for exactly that sits in trust for the children instead. Sam's only route to it is a court claim against their own children's inheritance.</p>
+
+<h2>Why the default wins</h2>
+
+<p>Behavioural economics has a lot to say about defaults. Eric Johnson and Daniel Goldstein found organ donor consent near universal in countries where it was the default, and far lower where people had to opt in. Automatic enrolment did the same for pensions. Defaults win because doing nothing is easy, because a default reads like a recommendation, and because leaving it means acting.</p>
+
+<p>The intestacy default has all of that, plus something extra. Making a will means imagining your own death. Terror management theory, from Jeff Greenberg, Tom Pyszczynski and Sheldon Solomon in the 1980s, starts from the observation that we cope with knowing we'll die mostly by not thinking about it. Reminders produce defences, and the easiest defence is &ldquo;not now&rdquo;. Russell James has argued that this, more than ordinary procrastination, is why estate planning gets put off for decades. Studies of advance care planning reach the same place: avoiding the subject of one's own death is a main reason the forms don't get filled in.</p>
+
+<p>So &ldquo;should I make a will?&rdquo; is a question built to be postponed. It's about your death, it has no deadline, and the default looks like it'll probably be fine.</p>
+
+<h2>Ask a different question</h2>
+
+<p>The most useful finding in this literature is about what gets people moving. In a 2021 experiment with 1,771 people, James and colleagues tested messages encouraging people to make a living will. The most effective combined two things: the benefit to family, and the fact that most people like them had done it. Not &ldquo;think about your death&rdquo;. Think about the people who'll still be here.</p>
+
+<p>That suggests a different question: <em>who does my will, the one I already have, give it to?</em> It's a question about the living, with an answer in names and pounds. And for most people outside the one family the default was written for, the answer is a surprise. Once you've seen &ldquo;Sam: £0&rdquo; written down, the decision isn't abstract any more. It's about whether you're happy with that line, and you aren't.</p>
+
+<p>Then the rest is admin, and smaller than it looked. Jo and Sam need two wills (each leaving everything to the other, then to the children in trust to 25, with guardians named), a free trust form from the insurer so the payout skips probate, and the pension's nomination form, which takes ten minutes. In November, Will Aid solicitors write basic wills for a donation to charity. It's an afternoon.</p>
+
+<h2>Beyond wills</h2>
+
+<p>The same move works on every default you've never read: the pension nomination you filled in at 24 naming your mum, a joint account that passes to someone you've separated from, a life policy not in trust. Don't ask whether you should &ldquo;sort your affairs&rdquo;. Ask what happens now if you do nothing, find out in names and pounds, and change the lines you wouldn't have written.</p>
+
+<p>The line to keep: <em>Everyone has a will. Mine will be one I wrote.</em></p>
+
+<p>There's a <a href="/will">tool for this</a> on the site. You say who your family is and how you own your home, and it shows who the default rules would give your estate to, in pounds, what passes outside a will anyway, the gaps a will would close, and the notes to take to whoever writes it. Nothing is sent anywhere.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
