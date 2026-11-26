@@ -124,7 +124,7 @@ export const models: Model[] = [
     tagline: "Some choices can only be made by the person you are now, for the person you might become, and only before you need them.",
     explanation:
       "Ulysses wanted to hear the Sirens and knew he wouldn't be able to resist them, so he had his crew tie him to the mast and told them to ignore whatever he said next. Jon Elster made the story the centre of 'Ulysses and the Sirens' (Cambridge University Press, 1979): a rational person can bind their future self when they can predict that self will be unable to choose well. Thomas Schelling wrote about the same 'intimate contest for self-command' (The Public Interest, 1980). In medicine the name stuck: an advance decision made while well, to apply when you can't decide, is often called a Ulysses contract. The defining feature is the window. The binding has to be done while you can still do it; once the ship is near the rocks it's too late to ask for rope. That's why these choices get put off: there's never a day when it's urgent until the day it's impossible. A second finding says the rope matters less than the crew. David Shalowitz, Elizabeth Garrett-Mayer and David Wendler (Archives of Internal Medicine, 2006) pooled studies in which family members predicted what treatment a patient would want: they were right about 68% of the time, and the advance directives people had written didn't improve the accuracy much. A form names who decides; only a conversation tells them what you'd want. The correction: notice the decisions with a closing window (a power of attorney, a will, a conversation about care), make them while they're paperwork rather than an emergency, and talk them through with the people who'll carry them out. The tool Power of Attorney shows whether the window is still open and what it costs if it closes.",
-    essays: ["sign-it-on-a-good-day"],
+    essays: ["sign-it-on-a-good-day", "the-will-you-already-have"],
   },
   {
     id: "reversibility",
@@ -391,6 +391,15 @@ export const models: Model[] = [
     essays: ["what-i-manage-means"],
   },
   {
+    id: "mortality-salience",
+    name: "Mortality Salience",
+    domain: "Psychology",
+    tagline: "Anything that makes us think about our own death gets put off, so the decisions that only matter after it get made last, or never.",
+    explanation:
+      "Terror management theory (Jeff Greenberg, Tom Pyszczynski and Sheldon Solomon, from 1986) starts from a plain observation: we know we'll die, and most of the time we manage that knowledge by not thinking about it. Reminders of death (mortality salience) produce defences, and the simplest defence is avoidance: change the subject, put it off, do it later. Russell James built an economic model of how this shapes money decisions (Journal of Financial Therapy, 2016): estate planning, life insurance and annuities all ask you to imagine your own death, and so all get deferred in ways ordinary procrastination doesn't explain. Studies of advance care planning reach the same place, finding avoidance of one's own mortality to be a main reason people don't complete the documents. The useful finding is what helps. In an online experiment with 1,771 people (James and colleagues, Financial Services Review, 2021), messages that framed a living will around the benefit to family, combined with the fact that most people like them had done one, raised intentions the most. In other words: make it about the people left behind, not about dying, and make it ordinary. The correction: don't ask \"have I thought about my death?\". Ask a concrete question about the living (\"who would get the house, and who would look after the children?\"), see the answer in pounds and names, and do it in one sitting. The tool No Will Yet does that: it shows who the default rules would give your estate to.",
+    essays: ["the-will-you-already-have"],
+  },
+  {
     id: "peak-end-rule",
     name: "Peak-End Rule",
     domain: "Psychology",
@@ -568,7 +577,7 @@ export const models: Model[] = [
     tagline: "Whatever happens when nobody acts is the option most people end up with. Choose it on purpose.",
     explanation:
       "Every choice has a default: the outcome you get by doing nothing. It wins far more often than its merits would explain, partly from inertia, partly because a default reads as a recommendation, and partly because leaving it means acting. Eric Johnson and Daniel Goldstein (Science, 2003) found consent to organ donation near universal in European countries where it was the default and far lower where people had to opt in. Brigitte Madrian and Dennis Shea (Quarterly Journal of Economics, 2001) found that when one US firm enrolled new staff in its pension plan automatically, participation among new hires rose from under half to over 85%, and most stayed at the default contribution rate. Defaults are sold to you too. A free trial is a subscription whose default is paying. Klaus Miller, Navdeep Sahni and Avner Strulov-Shlain randomly offered about two million readers of a European newspaper trials that either renewed automatically or ended on their own: around half of those who took the auto-renewing kind kept paying out of inertia and hardly read the paper, while many readers, knowing this about themselves, avoided auto-renewing offers altogether. The lesson for a person is not to resist defaults by willpower at the last moment, when the default is strongest, but to change them at the start, when it's cheap: cancel a trial the day you start it if the free time survives, set up the transfer to savings on payday, make the useful thing the thing that happens if you do nothing. Status quo bias explains why defaults stick; this is how to use that. The tool Before the Trial Ends does it for free trials.",
-    essays: ["make-the-trial-end-on-its-own", "the-whole-year-falls-due"],
+    essays: ["make-the-trial-end-on-its-own", "the-whole-year-falls-due", "the-will-you-already-have"],
   },
   {
     id: "sludge",

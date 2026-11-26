@@ -575,6 +575,13 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "the Pension Credit check you were working out" : null),
   },
   {
+    key: "will:v1",
+    tool: "No will yet: who would get what, and what would you change?",
+    href: "/will",
+    label: "Your family, your home and what you own, from your last visit",
+    describe: (raw) => (parse(raw) ? "who your estate would go to without a will" : null),
+  },
+  {
     key: "pension:v1",
     tool: "Taking money from your pension: how much tax, and what does it start?",
     href: "/pension",

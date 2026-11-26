@@ -1346,6 +1346,28 @@ export const situations: Situation[] = [
     essays: ["the-pound-that-costs-86"],
   },
   {
+    id: "no-will-unmarried",
+    title: "You've never made a will, and you assume it would all go to your partner",
+    scene:
+      "Nine years together, two small children, a house in both names, a life policy from when the baby came. Not married. You've always meant to do wills, and always assumed that without one everything would go to each other anyway.",
+    question: "Without a will, who would actually get what?",
+    models: [
+      {
+        id: "defaults",
+        move: "You already have a will: the intestacy rules. Read it before you decide you don't need another. For an unmarried couple it gives your partner nothing; the children get it at 18.",
+      },
+      {
+        id: "mortality-salience",
+        move: "\"Should I make a will?\" is a question about your death, so it gets put off. \"Who gets the savings and the insurance, and who brings up the kids?\" is a question about the living, and it has an answer in names and pounds.",
+      },
+    ],
+    tool: {
+      id: "will",
+      move: "It shows who the default gives your estate to, in pounds, what passes outside a will anyway (the joint home, insurance in trust, a pension), the gaps, and drafts the notes to take to Will Aid or a solicitor.",
+    },
+    essays: ["the-will-you-already-have"],
+  },
+  {
     id: "parent-forgetting",
     title: "A parent is starting to forget, and there's no power of attorney",
     scene:
@@ -2151,6 +2173,7 @@ export const situationGroups: SituationGroup[] = [
       "childcare-codes",
       "carers-allowance-limit",
       "parent-forgetting",
+      "no-will-unmarried",
       "parent-wont-claim",
       "parent-says-i-manage",
       "pip-it-depends",

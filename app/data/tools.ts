@@ -616,6 +616,18 @@ export const tools: Tool[] = [
     essays: ["sign-it-on-a-good-day"],
   },
   {
+    id: "will",
+    href: "/will",
+    name: "No Will Yet: Who Would Get What, and What Would You Change?",
+    short: "Making a will",
+    when: "You've been meaning to make a will for years. You assume it would all go to your partner anyway, or that there isn't enough to bother. Then a friend dies young, or a baby arrives, or someone at work mentions Will Aid, and you realise you don't actually know what happens.",
+    ask: "Without a will, who would get what, and what would I change?",
+    does: "Shows who the intestacy rules (England and Wales) would give your estate to, in pounds: an unmarried partner gets nothing; a husband, wife or civil partner takes your belongings, the first £322,000 and half the rest; children share the rest, held in trust until 18; then parents, brothers and sisters, and the Crown. Sets beside it what passes outside a will anyway: a home owned as joint tenants, life insurance in trust, pension death benefits. Flags the gaps: stepchildren, children from an earlier relationship, a separated spouse who still inherits, a will cancelled by marriage, tenants in common, no guardian named, insurance not in trust, a pension nomination never filled in, and a rough inheritance tax figure (unmarried partners get no spouse exemption). Compares Will Aid, Free Wills Month, online services and solicitors, and drafts the notes to take with you, the opener for your partner, a guardian request and letters to the pension scheme and insurer, with the dates in your calendar. Scotland and Northern Ireland explained in words.",
+    payoff: "now",
+    models: ["defaults", "mortality-salience", "ulysses-contract"],
+    essays: ["the-will-you-already-have"],
+  },
+  {
     id: "pensioncredit",
     href: "/pensioncredit",
     name: "Pension Credit: Could You Get It, and What Does It Unlock?",
@@ -1044,10 +1056,10 @@ export const toolGroups: ToolGroup[] = [
   },
   {
     id: "after-a-death",
-    title: "Someone has died",
+    title: "Before and after a death",
     blurb:
-      "The paperwork after a death arrives in the order other people send it, and almost all of it can wait. A few things can't, and nobody rings to remind you about them. This sorts the list by what waiting would cost.",
-    toolIds: ["bereavement"],
+      "The paperwork after a death arrives in the order other people send it, and almost all of it can wait. A few things can't, and nobody rings to remind you about them. Before that, most people have no will, and assume the law would do what they'd want; for an unmarried partner, a stepchild or a child under 18, it doesn't. These sort the list by what waiting would cost, and show who the default would give your estate to.",
+    toolIds: ["will", "bereavement"],
   },
   {
     id: "new-baby",

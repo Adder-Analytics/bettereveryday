@@ -482,6 +482,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "No will yet: who would get what, and what would you change?",
+    href: "/will",
+    snippet:
+      "Without a will the law decides. See who would get what from your estate, in pounds, what passes outside a will anyway, the gaps, and the notes to take to whoever writes it.",
+    meta: "Making a will — intestacy rules, unmarried partners, guardians, Will Aid",
+    titleText:
+      "make a will making a will write a will no will dying without a will die without a will intestacy intestate rules of intestacy who inherits who gets what unmarried partner cohabiting cohabitee common law husband common law wife not married living together statutory legacy £322,000 spouse civil partner children inherit at 18 statutory trust guardian guardians for children stepchild stepchildren children from a previous relationship blended family separated not divorced marriage revokes a will divorce joint tenants tenants in common severance life insurance in trust pension nomination expression of wish death in service inheritance tax nil rate band residence nil rate band 1975 act inheritance claim will aid free wills month free will online will solicitor mirror wills witnesses executor executors letter of wishes bona vacantia crown scotland prior rights legal rights northern ireland".toLowerCase(),
+    bodyText:
+      "no will yet: who would get what, and what would you change? (/will): the instrument for making a will in england and wales, with the rules for scotland (prior rights, legal rights, a cohabitant's six-month court claim, wills from age 12, one witness) and northern ireland (a fixed sum then a half or a third) in words. without a will the intestacy rules in the administration of estates act 1925 decide: a husband, wife or civil partner who survives by 28 days takes personal belongings, a statutory legacy of £322,000 (deaths since 26 july 2023) and half the rest, with the other half to the children on statutory trusts until 18; with no children, everything; with no spouse, children, then parents, brothers and sisters of the whole blood, half blood, grandparents, aunts and uncles, then the crown (bona vacantia). an unmarried partner gets nothing, however long together, and can only claim under the inheritance (provision for family and dependants) act 1975. stepchildren get nothing unless adopted. a separated spouse still inherits until a final divorce order. marriage revokes an earlier will; divorce treats the ex as having died. outside the will: a home owned as joint tenants passes to the co-owner; tenants in common shares go by the will; life insurance in trust; pension death benefits by nomination. rough inheritance tax: £325,000 nil-rate band, £175,000 residence nil-rate band, spouse exemption (not for unmarried partners), 40%; most unused pensions count from april 2027. compares will aid (november; suggested donation £120 single, £200 mirror wills), free wills month (march and october, 55 and over), online wills (£50 to £150) and solicitors. drafts notes for whoever writes it, an opener for your partner, a request to a guardian, letters to the pension scheme and the life insurer, with a calendar file (.ics). includes a worked example: jo and sam, not married, nine years, two children, a joint home and £150,000 of insurance not in trust: sam would get nothing from the £180,000 estate. nothing is sent anywhere. pairs with the defaults, mortality salience and ulysses contract models and the essay the will you already have.",
+  },
+  {
+    type: "Tool",
     title: "Power of attorney: is it too late, and what does waiting cost?",
     href: "/lpa",
     snippet:

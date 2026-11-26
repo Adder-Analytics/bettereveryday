@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "baby", "childcare", "carers", "lpa", "pensioncredit", "attendance", "pip"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "will", "baby", "childcare", "carers", "lpa", "pensioncredit", "attendance", "pip"],
       },
     ],
     choices: [
@@ -812,6 +812,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "statepension",
             note: "Years spent caring can leave gaps in your National Insurance record. Check whether credits filled them.",
+          },
+        },
+      },
+      {
+        id: "will",
+        label: "I haven't made a will, or mine is out of date.",
+        detail: "I assume it would all go to my partner, or there isn't enough to bother.",
+        rec: {
+          toolId: "will",
+          because:
+            "Without one the law decides: an unmarried partner gets nothing, a spouse takes the first £322,000, children inherit outright at 18, and nobody you chose brings them up. It shows who would get what from your estate in pounds, what passes outside a will anyway, and the notes to take to whoever writes it.",
+          then: {
+            toolId: "lpa",
+            note: "A will covers after you die; a power of attorney covers the years you might not be able to decide. Do both.",
           },
         },
       },
