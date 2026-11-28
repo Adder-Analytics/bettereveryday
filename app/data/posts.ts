@@ -4015,6 +4015,46 @@ export const posts: Post[] = [
 
 <p>There's a <a href="/will">tool for this</a> on the site. You say who your family is and how you own your home, and it shows who the default rules would give your estate to, in pounds, what passes outside a will anyway, the gaps a will would close, and the notes to take to whoever writes it. Nothing is sent anywhere.</p>`,
   },
+  {
+    slug: "the-first-number-on-the-table",
+    title: "The First Number on the Table",
+    date: "2026-11-28",
+    excerpt:
+      "An energy arrears letter opens with a number: pay £160 a month, or we'll fit a prepayment meter. It reads like a demand. It's an opening offer, and the rules say the supplier has to consider yours. On anchoring, the 2023 prepayment meter scandal, and why the person who writes first usually sets the plan.",
+    readTime: 5,
+    tags: ["decisions", "finance"],
+    content: `<p>Dee is £640 behind on gas and electricity. Some of it goes back to the winter of 2022, when the bills doubled and never quite came back down. She's on Universal Credit and her son is 14 months old. The letter says: pay £160 a month on top of your £118 Direct Debit, or we'll apply for a warrant to fit a prepayment meter.</p>
+
+<p>She can find £30. So the letter goes in the drawer, because £30 against £160 feels like there's nothing to say.</p>
+
+<h2>A number is an anchor</h2>
+
+<p>In 1974 Amos Tversky and Daniel Kahneman had people spin a wheel rigged to land on 10 or 65, then estimate the share of African countries in the United Nations. People who saw 65 guessed far higher than people who saw 10, from a number they knew was random. Anchoring has been found in house valuations, court sentences and salary talks. In negotiation research, Adam Galinsky and Thomas Mussweiler found that whoever makes the first offer tends to pull the final deal towards it.</p>
+
+<p>The arrears letter is a first offer. It's written by the side that wants the debt cleared fast, so it suggests a number that clears it fast. The anchor works on Dee in a quieter way than it does in a negotiation. She doesn't counter at £120. She compares her £30 with £160, decides she has no standing, and says nothing. Then the supplier's number is the only one there is.</p>
+
+<h2>The rule the letter doesn't mention</h2>
+
+<p>Energy suppliers in Great Britain have to take a customer's ability to pay into account when they set a repayment plan, and when they set how much a prepayment meter takes towards debt. That's in their licence. So the question isn't whether £30 is close enough to £160. It's whether £30 is what Dee can afford, with her income and spending written down to show it.</p>
+
+<p>The other rule the letter doesn't mention is about the meter. In early 2023 a newspaper investigation found debt agents forcing prepayment meters into homes where they plainly shouldn't have gone, including homes with very young children and people who were seriously ill. Forced installations were paused. Ofgem wrote new rules and, from November 2023, made them part of every supplier's licence. A supplier mustn't force a meter into a home where someone needs a constant supply for their health, where everyone is 75 or over with no other support, where there's a child under 2, or where someone is seriously ill and nobody could top up. Everyone else has to be assessed first.</p>
+
+<p>Dee's son is 14 months old. The threat in the letter doesn't apply to her home at all. She only finds that out if she answers it.</p>
+
+<h2>Write first</h2>
+
+<p>The practical move is small. Before ringing, before anything else, write down the number you can keep: income, essential spending, what's left. A free debt adviser will turn it into the standard sheet suppliers accept. Then write, so there's a dated record: here is the arrears, here is what I can pay, you must take that into account, please confirm it and hold collection while you do. If your household is in one of the protected groups, say so in the same letter.</p>
+
+<p>Now there are two numbers on the table, and yours comes with evidence and the rule behind it. That's usually enough. When it isn't, the Energy Ombudsman is free after eight weeks.</p>
+
+<h2>Beyond energy</h2>
+
+<p>Council tax, rent arrears, an overpayment the DWP wants back, a catch-up bill: they all open the same way, with a number chosen by the other side. Most come with a rule that makes your circumstances matter. The anchor only wins when it's the only number written down.</p>
+
+<p>The line to keep: <em>Offer first, in writing, at what I can actually keep.</em></p>
+
+<p>There's a <a href="/energy">tool for this</a> on the site. You say how you pay, where you are and who lives with you. It flags the rules that protect your home, sizes the plan, lists the winter money you may be missing (the Warm Home Discount, Cold Weather Payments, the Debt Relief Scheme), and writes the letter. Nothing is sent anywhere.</p>`,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {

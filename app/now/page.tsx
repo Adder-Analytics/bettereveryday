@@ -78,6 +78,31 @@ export default function Now() {
           </h2>
           <ul className="space-y-3">
             <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
+              £640 behind on gas and electricity, a baby of 14 months, and a
+              letter saying pay £160 a month or they&rsquo;ll fit a
+              prepayment meter, a month before the price cap rises about a
+              quarter.{" "}
+              <Link
+                href="/energy"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                Behind on energy bills
+              </Link>{" "}
+              flags the homes where{" "}
+              <span className="text-[var(--foreground)] font-medium">
+                a meter mustn&rsquo;t be forced in at all
+              </span>
+              , sizes the plan to offer from what you can afford, lists the
+              winter money you may be missing, and writes the letter. A new{" "}
+              <Link
+                href="/writing/the-first-number-on-the-table"
+                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
+              >
+                essay
+              </Link>{" "}
+              goes with it.
+            </li>
+            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
               Nine years together, two children, a house in both names, and an
               assumption that without a will it would all go to each other.{" "}
               <Link
@@ -152,32 +177,6 @@ export default function Now() {
                 essay
               </Link>{" "}
               and a new model, Response Shift, go with it.
-            </li>
-            <li className="text-sm text-[var(--foreground)] leading-relaxed pl-4 border-l-2 border-[var(--border)]">
-              Seventy-eight, a house owned for forty years, £12,600 in the
-              building society, and a firm belief that Pension Credit is for
-              other people.{" "}
-              <Link
-                href="/pensioncredit"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                Pension Credit
-              </Link>{" "}
-              estimates the award the way the rules do (the home isn&rsquo;t
-              counted, savings only over £10,000) and adds up what it opens:{" "}
-              <span className="text-[var(--foreground)] font-medium">
-                £8.95 a week that&rsquo;s worth about £800 a year
-              </span>
-              , and over £10,000 with the Attendance Allowance nobody had
-              mentioned. It dates the three-month backdating line and writes
-              the opening for the conversation with a parent. A new{" "}
-              <Link
-                href="/writing/the-key-not-the-coin"
-                className="text-[var(--accent)] hover:opacity-70 transition-opacity"
-              >
-                essay
-              </Link>{" "}
-              and a new model, Gateway Value, go with it.
             </li>
           </ul>
         </section>

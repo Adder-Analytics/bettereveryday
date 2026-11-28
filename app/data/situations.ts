@@ -1170,6 +1170,28 @@ export const situations: Situation[] = [
     essays: ["whose-delay-was-it"],
   },
   {
+    id: "energy-arrears-meter",
+    title: "Behind on energy, and a letter says they'll fit a prepayment meter",
+    scene:
+      "£640 behind on gas and electricity, some of it from the 2022 winter. A baby of 14 months. The letter asks for £160 a month on top of the Direct Debit, or they'll apply for a warrant to fit a prepayment meter. The price cap goes up on 1 January.",
+    question: "What can they actually do, and what do I offer?",
+    models: [
+      {
+        id: "anchoring",
+        move: "The letter's £160 is an opening number, not a rule. Suppliers must take ability to pay into account, so write first with what you can keep, and your number becomes the one being discussed.",
+      },
+      {
+        id: "ostrich-effect",
+        move: "The warrant letter is the one most likely to go in the drawer, and the one where an answer changes the most. A plan offered in writing is what a court looks for.",
+      },
+    ],
+    tool: {
+      id: "energy",
+      move: "It flags that a home with a child under 2 is one a meter mustn't be forced into, sizes the plan, lists the Warm Home Discount and the Debt Relief Scheme, and writes the letter.",
+    },
+    essays: ["the-first-number-on-the-table"],
+  },
+  {
     id: "old-debt-letter",
     title: "A debt collector writes about a debt from years ago",
     scene:
@@ -2155,6 +2177,7 @@ export const situationGroups: SituationGroup[] = [
       "parking-ticket",
       "speeding-letter",
       "catchup-bill",
+      "energy-arrears-meter",
       "old-debt-letter",
       "council-tax-behind",
       "tax-return-due",

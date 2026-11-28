@@ -158,7 +158,7 @@ const nodes: Record<string, TriageNode> = {
         id: "people",
         label: "It's other people",
         short: "Other people",
-        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "will", "baby", "childcare", "carers", "lpa", "pensioncredit", "attendance", "pip"],
+        choiceIds: ["being-sold", "negotiate", "far-off-ask", "disagree", "group-number", "split-rooms", "chores", "bills", "lend", "scam", "refund", "flight", "deposit", "parking", "speeding", "catchup", "energy", "collector", "counciltax", "taxreturn", "bailiff", "challenge", "repairs", "rent", "notice", "redundancy", "leaving", "taxcode", "sick", "dismissed", "bereavement", "will", "baby", "childcare", "carers", "lpa", "pensioncredit", "attendance", "pip"],
       },
     ],
     choices: [
@@ -742,6 +742,20 @@ const nodes: Record<string, TriageNode> = {
           then: {
             toolId: "debts",
             note: "If it sits beside other debts, put the plan in with them and decide which to pay first.",
+          },
+        },
+      },
+      {
+        id: "energy",
+        label: "I'm behind on gas or electricity, or there's a letter about a prepayment meter.",
+        detail: "Or the prepayment meter takes so much of each top-up that we're going without.",
+        rec: {
+          toolId: "energy",
+          because:
+            "Suppliers have to take what you can afford into account, so the first written offer usually sets the plan. Some homes (a child under 2, everyone over 75 with no support, a medical need for power, a serious illness) mustn't have a meter forced in at all. It flags which rules cover you, the winter money you may be missing, and writes the letter.",
+          then: {
+            toolId: "debts",
+            note: "If energy sits beside other debts, put them side by side and pay the ones with the worst consequences first.",
           },
         },
       },

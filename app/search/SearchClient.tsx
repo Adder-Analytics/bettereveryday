@@ -326,6 +326,18 @@ const docs: SearchDoc[] = [
   },
   {
     type: "Tool",
+    title: "Behind on energy bills: what can they do, and what do you offer?",
+    href: "/energy",
+    snippet:
+      "Behind on gas or electricity, a letter about a prepayment meter, or a meter that takes too much. See who a meter can't be forced on, the plan to offer, the winter money you may be due, and the letter to send.",
+    meta: "Energy arrears — prepayment meters, warrants, Warm Home Discount, price cap",
+    titleText:
+      "energy arrears energy debt behind on energy bills behind on gas bill behind on electricity bill can't pay energy bill final demand energy debt collector prepayment meter pay as you go meter forced prepayment meter warrant prepayment meter installed without consent smart meter switched to prepay self-disconnection can't top up emergency credit additional support credit friendly credit debt deduction prepayment meter ability to pay repayment plan direct debit increase price cap january 2027 price cap rise ofgem priority services register warm home discount cold weather payment winter fuel payment fuel direct hardship fund british gas energy trust debt relief scheme energy debt write off energy ombudsman complaint".toLowerCase(),
+    bodyText:
+      "behind on energy bills: what can they do, and what do you offer? (/energy): the instrument for energy arrears and prepayment meter trouble in great britain, with a pointer for northern ireland (utility regulator, consumer council). ofgem's price cap for 1 january to 31 march 2027 was reported as £2,166 a year for a typical dual-fuel home, up from £1,723 (about 26%); shows your direct debit at the same use and dates meter readings on 1 january. suppliers must take ability to pay into account when setting a repayment plan or a prepayment debt deduction. since 8 november 2023 ofgem's rules bar forced prepayment meters where someone needs a constant supply for health, everyone is 75 or over with no other support, there's a child under 2, or a severe or terminal illness where nobody could top up; others must be assessed first. stages: worried about january, behind, final demand or debt collector, warrant letter, can't top up, deductions too high, meter forced in. money in: warm home discount £150 (means-tested benefits, automatic, by 31 march 2027, helpline 0800 030 9322), cold weather payment £25 a spell, winter fuel payment, fuel direct, supplier hardship funds, british gas energy trust, ofgem's debt relief scheme for debt from april 2022 to march 2024 (delayed to early 2027). writes the letter: a plan instead of a meter, a lower deduction and extra credit, or switch it back with compensation; priority services register; energy ombudsman after eight weeks; calendar file (.ics). includes a worked example: £640 behind, a 14-month-old, universal credit and a warrant letter. nothing is sent anywhere. pairs with the anchoring, ostrich effect and administrative burden models and the essay the first number on the table.",
+  },
+  {
+    type: "Tool",
     title: "A catch-up energy bill: what do you owe?",
     href: "/catchup",
     snippet:

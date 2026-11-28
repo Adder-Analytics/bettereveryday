@@ -244,7 +244,7 @@ export const models: Model[] = [
     tagline: "We look away from information when we expect it to be bad, which is exactly when it's most worth looking at.",
     explanation:
       "Niklas Karlsson, George Loewenstein and Duane Seppi (Journal of Risk and Uncertainty, 2009) found that investors in Sweden and the US logged in to check their portfolios less often when markets had fallen. A later study of 1.1 million investors' daily log-ins (Sicherman, Loewenstein, Seppi and Utkus, Review of Financial Studies, 2016) found the same pattern: attention dropped as fear rose. Checking feels like it makes bad news real, so we put it off, and for a portfolio that costs little, because nothing changes while you look away. The cost appears when the situation is moving on a schedule of its own: an unopened bill that gains a late fee, a court letter with a deadline, a bailiff's notice whose fees step up at fixed points. Then not looking isn't neutral; it's choosing the most expensive stage by default. The counter is to make the first look small and the next step concrete: open the letter only to find one date, decide one action before that date, and write it down. The tool A Bailiff's Letter does that for a notice of enforcement, and A Tax Return Due does it for HMRC's penalty dates.",
-    essays: ["the-fee-schedule-is-a-clock", "the-date-on-the-notice", "they-dont-know-until-its-written", "the-whole-year-falls-due", "file-it-even-if-you-cant-pay", "sign-it-on-a-good-day"],
+    essays: ["the-fee-schedule-is-a-clock", "the-date-on-the-notice", "they-dont-know-until-its-written", "the-whole-year-falls-due", "file-it-even-if-you-cant-pay", "sign-it-on-a-good-day", "the-first-number-on-the-table"],
   },
   {
     id: "tax-salience",
@@ -451,7 +451,7 @@ export const models: Model[] = [
     tagline: "The first number we encounter disproportionately influences our estimates, even when it's irrelevant.",
     explanation:
       "Tell someone the Ganges River is 2,000 miles long before asking them to estimate the Nile's length, and their guess will be lower than if you'd said the Ganges is 5,000 miles — even though the Ganges has nothing to do with the Nile. Anchoring affects salary negotiations, price perception, and judicial sentencing. The counteraction: generate your own estimate before encountering external figures, and be especially suspicious of the first number offered in any negotiation.",
-    essays: ["anchoring", "one-debt-at-a-time", "charge-for-the-life-that-was-left", "not-how-much-it-went-up"],
+    essays: ["anchoring", "one-debt-at-a-time", "charge-for-the-life-that-was-left", "not-how-much-it-went-up", "the-first-number-on-the-table"],
   },
   {
     id: "independent-judgments",

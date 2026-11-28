@@ -493,6 +493,15 @@ export const STORES: StoreDescriptor[] = [
     describe: (raw) => (parse(raw) ? "a parking ticket appeal in progress" : null),
   },
   {
+    key: "energy:v1",
+    tool: "Behind on energy bills",
+    href: "/energy",
+    label: "Your energy arrears, meter and household from your last visit",
+    answerNow: true,
+    subject: subjectField("what"),
+    describe: (raw) => (parse(raw) ? "energy arrears and what to offer" : null),
+  },
+  {
     key: "catchup:v1",
     tool: "A catch-up energy bill",
     href: "/catchup",

@@ -496,6 +496,18 @@ export const tools: Tool[] = [
     essays: ["whose-delay-was-it"],
   },
   {
+    id: "energy",
+    href: "/energy",
+    name: "Behind on Energy Bills: What Can They Do, and What Do You Offer?",
+    short: "Behind on energy bills",
+    when: "The heating's on, the price cap rises about a quarter on 1 January, and you're already behind. A letter suggests a monthly amount you can't pay and mentions a prepayment meter, or the meter you already have takes so much of each top-up that you're going without.",
+    ask: "What can the supplier actually do, and what should I offer?",
+    does: "Reads where you are: worried about January, behind, a final demand, a letter about a prepayment meter or warrant, or a prepayment meter you can't keep topped up. Flags the homes where Ofgem's rules say a meter mustn't be forced in (a constant-supply health need, everyone 75 or over with no support, a child under 2, a serious or terminal illness) and the ones that must be assessed first. Sizes the plan to offer from what you can afford, since suppliers must take ability to pay into account, and shows January's cost at the same use. Lists the money you may be missing: the £150 Warm Home Discount, Cold Weather Payments, Fuel Direct, hardship funds, and the delayed Debt Relief Scheme for 2022 to 2024 debt. Writes the letter (a plan instead of a meter, a lower deduction, or switch it back), with the meter-reading day and the ombudsman date in your calendar. Northern Ireland gets a pointer.",
+    payoff: "now",
+    models: ["anchoring", "ostrich-effect", "administrative-burden"],
+    essays: ["the-first-number-on-the-table"],
+  },
+  {
     id: "taxreturn",
     href: "/taxreturn",
     name: "A Tax Return Due: What Does Late Cost, and What Stops It?",
@@ -1029,8 +1041,8 @@ export const toolGroups: ToolGroup[] = [
     id: "money-letters",
     title: "A letter, bill or message wants money — or you're owed some",
     blurb:
-      "A parking ticket, a speeding letter, a catch-up bill, a council tax reminder, a tax return due, a collector chasing an old debt, a bailiff's letter, a benefit decision that went against you, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
-    toolIds: ["scam", "refund", "flight", "parking", "speeding", "catchup", "counciltax", "taxreturn", "collector", "bailiff", "challenge"],
+      "A parking ticket, a speeding letter, a catch-up bill, an energy bill you've fallen behind on, a council tax reminder, a tax return due, a collector chasing an old debt, a bailiff's letter, a benefit decision that went against you, a flight that left you stranded, a purchase that went wrong, a message that wants paying now. Each comes with a rule most people don't know and a deadline that won't wait. These turn the rule into a number, a letter you can send and the date to send it by.",
+    toolIds: ["scam", "refund", "flight", "parking", "speeding", "catchup", "energy", "counciltax", "taxreturn", "collector", "bailiff", "challenge"],
     compact: true,
   },
   {
